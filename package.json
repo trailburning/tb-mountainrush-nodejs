@@ -1,0 +1,16 @@
+{
+  "name": "nodejs",
+  "version": "0.0.0",
+  "engines": {
+    "node": "8.9.1"
+  },
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "node app.js"
+  },
+  "dependencies": {
+    "express": "~4.14.0",
+    "ejs": "^2.5.6"
+  }
+}
