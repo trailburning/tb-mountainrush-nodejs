@@ -1,0 +1,530 @@
+.beta {
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 92px;
+}
+
+.beta img {
+  width: 100%;
+}
+
+/* FOOTER VIEW */
+/******************************************/
+#footer-view {
+  height: 166px;
+}
+
+#footer-view .logo-container {
+  display: none;
+  position: absolute;
+  top: -80px;
+  width: 100%;
+}
+
+#footer-view .mr-logo {
+  margin: 0 auto;
+  width: 160px;
+  text-align: center;
+}
+
+#footer-view .mr-logo img {
+  width: 100%;
+}
+
+/* PAGE VIEW */
+/******************************************/
+#page-view {
+}
+
+#page-view a.link,
+#page-view a.link:hover, 
+#page-view a.link:active,
+#page-view a.link:visited {
+  color: inherit;
+  text-decoration: underline;
+}
+
+#page-view .fundraising-partner img {
+  width: 80px;
+  padding: 0 0 4px 4px;
+}
+
+/* VIDEO VIEW */
+/******************************************/
+.video-container {
+  position: relative;
+  top: 0;
+  width: 100%;
+}
+
+.video-container .video {
+  position: relative;
+}
+
+.video-container .overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* PLAYER VIEW */
+/******************************************/
+#player-view {
+  position: relative;
+  width: 100%;
+}
+
+#player-view #hero-view {
+  position: relative;
+  background-color: #f3f3f3;
+  height: 392px;
+}
+
+#player-view #hero-view #titles-view {
+  position: absolute;
+  z-index: 3;
+  display: table;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  font-family: 'radikalbold', sans-serif;
+  text-align: center;
+}
+#player-view #hero-view #titles-view.overlay {
+  background: #f3f3f3;
+}
+
+#player-view #hero-view .play-btn {
+  display: none;
+  font-size: 5em;
+}
+#player-view #hero-view .play-btn:hover {
+  color: #f75f36;
+  cursor: pointer;
+}
+
+#player-view #hero-view #titles-view .titles {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#player-view #hero-view #titles-view .titles .scene {
+  display: none;
+}
+
+#player-view #hero-view #titles-view h1,
+#player-view #hero-view #titles-view h2 {
+  position: relative;
+  text-shadow: 1px 5px 5px rgba(25, 56, 72, 0.4);
+  opacity: 0;
+  -webkit-transition: left 1s, right 1s, opacity 0.5s;
+  transition: left 1s, right 1s, opacity 0.5s;
+}
+
+#player-view #hero-view #titles-view h1 {
+  left: 100px;
+  font-size: 2.6em;
+  line-height: 1.6em;
+}
+
+#player-view #hero-view #titles-view h2 {
+  left: -100px;
+  font-size: 3.4em;
+  line-height: 1.2em;
+  text-transform: uppercase;
+}
+
+#player-view #piste-view #loading-splash,
+#player-view #piste-view .compass {
+  display: none;
+}
+
+#player-view #piste-view {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  -webkit-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
+  -moz-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
+  box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
+}
+
+/* GAME VIEW */
+/******************************************/
+#page-view .game-view {
+  position: relative;
+  padding-bottom: 40px;
+  text-align: center;
+  background-color: #FFF;
+}
+
+#page-view .game-view a:hover {
+  color: inherit;
+  text-decoration: none;
+} 
+
+#page-view .game-container-view {
+  padding-bottom: 32px;
+  margin: 36px auto 0 auto;
+}
+
+#page-view .game-view .grab {
+}
+
+#page-view .game-view .grab img {
+  width: 208px;
+}
+
+#page-view .game-view .synopsis {
+  padding-bottom: 46px;
+  text-align: center;
+}
+
+#page-view .game-view .synopsis .text {
+  margin: 0 20px;
+}
+
+#page-view .game-view .synopsis .overview {
+  padding-top: 8px;
+}
+
+#page-view .game-view .synopsis .btns {
+  padding-top: 12px;
+}
+
+#page-view .game-view .synopsis h1 {
+  font-family: 'radikalbold', sans-serif;
+  font-size: 2em;
+}
+
+#page-view .game-view .synopsis h2 {
+  font-family: 'radikalregular', sans-serif;
+  padding-top: 10px;
+  font-size: 1em;
+  line-height: 1.4em;
+  text-transform: uppercase;
+}
+
+#page-view .game-view .synopsis .overview {
+  font-size: 0.9em;
+}
+
+#page-view .game-view .synopsis .btns .btn {
+  margin: 0 4px 0 4px;
+}
+#page-view .game-view .synopsis .btns .btn:first-child {
+  margin-left: 0;
+}
+#page-view .game-view .synopsis .btns .btn:last-child {
+  margin-right: 0;
+}
+
+/* COMMUNITY VIEW */
+/******************************************/
+#community-view {
+  padding-top: 44px;
+  background-color: #EFEFEF;
+  text-align: center;
+}
+
+#community-view h1,
+#community-view h2,
+#community-view h3 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+#community-view h1 {
+  padding-bottom: 14px;
+  font-family: 'radikalbold', sans-serif;
+  font-size: 2em;
+}
+
+#community-view h2 {
+  padding-bottom: 10px;
+  font-family: 'radikalbold', sans-serif;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
+#community-view h3 {
+  padding-bottom: 15px;
+  font-size: 1em;
+}
+
+#community-view .post p {
+  margin: 0;
+  padding: 0;
+}
+
+#community-view .loader-view {
+  margin-top: 40px;
+}
+
+#community-view .icons {
+  font-size: 2em;
+}
+
+#community-view a,
+#community-view a:hover, 
+#community-view a:active,
+#community-view a:visited {
+  color: inherit;
+}
+
+#community-view .photos {
+  padding: 0 0 116px 0;
+  text-align: center;
+}
+
+#community-view .post {
+  display: none;
+  margin: 0 auto;
+  vertical-align: top;
+  width: 256px;
+  padding: 32px 0 0 0;
+  font-size: 0.9em;
+  text-align: left;
+}
+
+#community-view .post:nth-child(1),
+#community-view .post:nth-child(2),
+#community-view .post:nth-child(3),
+#community-view .post:nth-child(4),
+#community-view .post:nth-child(5),
+#community-view .post:nth-child(6) {
+  display: block;
+}
+
+#community-view .post
+#community-view .post .photo {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+}
+
+#community-view .post .media {
+  position: relative;
+}
+
+#community-view .post .media:hover {
+  cursor: pointer;
+}
+
+#community-view .post .image {
+  width: 256px;
+  height: 256px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#community-view .post .details {
+  padding-top: 8px;
+}
+
+#community-view .post .text {
+  line-height: 1.4em;
+}
+
+#community-view .post .name {
+  color: #3c5b6e;
+  font-weight: bold;
+}
+
+#community-view .post .name a,
+#community-view .post .name a:hover, 
+#community-view .post .name a:active,
+#community-view .post .name a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+#community-view .post .credit {
+}
+
+#community-view .post .media .likes {
+  position: absolute;
+  bottom: 4px;
+  right: 10px;
+  color: #FFF;
+}
+
+#community-view .post .media .likes .icon {
+  padding-right: 6px;
+}
+
+#community-view .post .media-icon {
+  position: absolute;
+  top: 2px;
+  right: 6px;
+  font-size: 1.4em;
+  color: #fff;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .beta {
+    width: 125px;
+  }
+
+  .stripe {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 88px;
+    top: 72px;
+    background: #fff;
+  }
+
+  #footer-view {
+    height: 200px;
+  }
+
+  #footer-view .logo-container {
+    display: block;
+    top: -100px;
+  }
+
+  #footer-view .mr-logo {
+    width: 200px;
+  }
+
+  #player-view #hero-view {
+    height: 490px;
+  }
+
+  #player-view #hero-view #titles-view h1 {
+    font-size: 3.6em;
+  }
+
+  #player-view #hero-view #titles-view h2 {
+    font-size: 4.6em;
+  }
+
+  #player-view .signup {
+    top: -22px;
+  }
+
+  #page-view .game-container-view {
+    margin-top: 62px;
+    width: 670px;
+  }
+
+  #page-view .game-view .grab {
+    float: left;
+    width: 322px;
+    text-align: left;
+  }
+
+  #page-view .game-view .grab img {
+    width: auto;
+  }
+
+  #page-view .game-view .synopsis {
+    margin: 0;
+    padding: 52px 0 0 0;
+    width: 348px;
+    text-align: left;
+  }
+
+  #page-view .game-view .synopsis .text {
+    margin: 0;
+  }
+
+  #page-view .game-view .synopsis h1 {
+    font-size: 2.5em;
+  }
+
+  #page-view .game-view .synopsis h2 {
+    font-size: 1.2em;
+  }
+
+  #page-view .game-view .synopsis .overview {
+    padding-right: 14px;
+    font-size: 1em;
+  }
+
+  #page-view .game-view .synopsis .btns {
+    padding-top: 12px;
+  }
+
+  #page-view .game-view .stripe {
+    top: -86px;
+    height: 86px;
+  }
+
+  #community-view h1 {
+    font-size: 2.4em;
+  }
+
+  #community-view h2 {
+    font-size: 1.2em;
+  }
+
+  #community-view {
+    padding-top: 74px;
+  }
+
+  #community-view .photos {
+    padding: 30px 0 160px 0;
+    width: 630px;
+    margin: 0 auto;
+  }
+
+  #community-view .post {
+    width: 210px;
+    padding: 22px 7px 0 7px;
+  }
+
+  #community-view .post:nth-child(1),
+  #community-view .post:nth-child(2),
+  #community-view .post:nth-child(3),
+  #community-view .post:nth-child(4),
+  #community-view .post:nth-child(5),
+  #community-view .post:nth-child(6),
+  #community-view .post:nth-child(7),
+  #community-view .post:nth-child(8),
+  #community-view .post:nth-child(9) {
+    display: inline-block;
+  }
+
+  #community-view .post .image {
+    width: 196px;
+    height: 196px;
+  }
+
+  #community-view .post .details {
+    height: 60px;
+    overflow: hidden;
+  }
+}
+
+/* Small devices (tablets, 992px and up) */
+@media (min-width: 992px) {
+  #player-view {
+    margin: 0 auto 0 auto;
+    width: 942px;
+  }
+
+  #player-view #piste-view {
+  }
+
+  #player-view .flare1 {
+    display: inline-block;
+  }
+
+  #community-view .photos {
+    width: 840px;
+  }
+
+  #community-view .post {
+    display: inline-block;
+  }
+}

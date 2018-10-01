@@ -1,0 +1,358 @@
+var MEASUREMENT_METRIC = 0;
+var MEASUREMENT_IMPERIAL = 1;
+
+var METRIC_SHORT = 'm';
+var METRIC_LONG = 'km';
+
+var IMPERIAL_SHORT = 'ft';
+var IMPERIAL_LONG = 'mi.';
+
+var METRE_TO_FOOT = 3.28084;
+var KM_TO_MILE = 0.621371;
+
+var DEF_NUM_PHOTOS_TO_SHOW = 6;
+
+define([
+  'underscore', 
+  'backbone',
+  'moment',
+  'views/FundraisingDonationSummaryView',
+  'views/FundraisingDonationsView',
+  'views/PlayerActivityCommentView',
+  'views/PlayerActivityMorePhotosView',
+  'views/PlayerActivityPhotosView',
+  'views/PlayerActivityPhotoView'
+], function(_, Backbone, moment, FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentView, PlayerActivityMorePhotosView, PlayerActivityPhotosView, PlayerActivityPhotoView){
+
+  var Player = Backbone.View.extend({
+    initialize: function(options){
+      app.dispatcher.on("PlayerActivityPhotosView:loaded", this.onPlayerActivityPhotosLoaded, this);
+      app.dispatcher.on("PlayerActivityPhotosView:photoRendered", this.onPlayerActivityPhotosPhotoRendered, this);
+      app.dispatcher.on("PlayerActivityMorePhotosView:click", this.onPlayerActivityMorePhotosClick, this);
+
+      this.options = options;
+      this.jsonProgress = null;
+      this.jsonFundraisingPage = null;
+      this.jsonDonations = null;
+      this.bMorePhotosBtnNotShow = false;
+      this.nCurrPhotoActivity = 0;
+      this.currPhotoActivityId = null;
+      this.currPlayerActivityPhotosView = null;
+      this.bFundraisingLoaded = false;
+      this.bDonationsLoaded = false;
+      this.bCommentsLoaded = false, this.bPhotosLoaded = false;
+      this.elPlayerSummary = null;
+      this.elPlayerList = null;
+      this.elPlayerDetail = null;
+    },
+
+    create: function(){
+      var self = this;
+
+      var jsonData = {avatar: 'none',
+                      firstname: 'Fred',
+                      lastname: 'Blogs',
+                      email: 'me@me.com',
+                      city: 'this one',
+                      country: 'world'};
+
+      var url = GAME_API_URL + "player";
+//      console.log(url);
+      $.ajax({
+        type: 'post',
+        dataType: 'json',
+        url: url,
+        data: JSON.stringify(jsonData),
+        error: function(data) {
+          console.log('error');
+          console.log(data);
+        },
+        success: function(data) {
+          console.log('success');
+          console.log(data);
+        }
+      });
+    },
+
+    getProgress: function(){
+      var self = this;
+
+      var url = GAME_API_URL + 'game/' + this.options.gameID + '/player/' + this.model.get('id') + '/progress';
+//      console.log(url);
+      $.getJSON(url, function(result){
+        self.jsonProgress = result[0];
+
+        self.model.set('measurement_adjustment', 0);
+        self.model.set('measurement_shortname', METRIC_SHORT);
+        self.model.set('measurement_longname', METRIC_LONG);
+
+        self.model.set('activities', self.jsonProgress.activities);
+
+        var fDistance = 0, fElevationGain = 0;
+        $.each(self.jsonProgress.activities, function(index, activity){
+//          console.log(activity);
+          var dtStartDate = new Date(activity.start_date);
+          activity.start_date_ago = moment(dtStartDate).fromNow();
+
+          fDistance += Number(activity.distance);
+          fElevationGain += Number(activity.total_elevation_gain);
+        });
+
+        if (TEST_PROGRESS) {
+          if (TEST_PROGRESS == 100) {
+            fElevationGain = self.options.journeyAscent;
+          }
+        }
+
+        self.model.set('mediaCaptured', self.jsonProgress.bMediaCaptured == '1' ? true : false);
+        // calc progress
+        var fAscentPercent = (fElevationGain / self.options.journeyAscent) * 100;
+        self.model.set('elevationGainPercent', fAscentPercent);
+
+        self.model.set('distance', fDistance);
+        self.model.set('elevationGain', fElevationGain);
+
+        var fElevationToSummit = 0;
+        if (fElevationGain < self.options.journeyAscent) {
+          fElevationToSummit = self.options.journeyAscent - fElevationGain;
+        }
+
+        self.model.set('elevationToSummit', fElevationToSummit);
+
+        // contains date player reached ascent, if they did that is
+        self.model.set('ascentCompleted', self.jsonProgress.ascentCompleted);
+
+        // set fundraising details
+        self.model.set('fundraisingGoal', self.jsonProgress.fundraising_goal);
+        self.model.set('fundraisingRaised', self.jsonProgress.fundraising_raised);
+        self.model.set('fundraisingCurrency', self.jsonProgress.fundraising_currency);
+        self.model.set('fundraisingCurrencySymbol', self.jsonProgress.fundraising_currency_symbol);
+
+        // fire event
+        app.dispatcher.trigger("Player:loaded", self.model);
+      });
+    },
+
+    getLatestDetails: function(){
+      var self = this;
+
+      var url = GAME_API_URL + 'client/' + CLIENT_ID + '/player/' + this.model.get('playerProviderToken') + '/update';
+//      console.log(url);
+      $.getJSON(url, function(result){
+//        console.log(result);
+      });
+    },
+
+    getFundraising: function(){
+      if (this.bFundraisingLoaded) {
+        return;
+      }
+      this.bFundraisingLoaded = true;
+
+      var self = this;
+
+      // first render with cached donation info
+      var jsonFields = {totalRaisedPercentageOfFundraisingTarget: (this.model.get('fundraisingRaised') / this.model.get('fundraisingGoal')) * 100,
+                        currencySymbol: this.model.get('fundraisingCurrencySymbol'),
+                        totalRaisedOnline: this.model.get('fundraisingRaised'),
+                        fundraisingTarget: this.model.get('fundraisingGoal'),
+                        playerID: self.model.get('id'),
+                        fundraisingPageID: self.model.get('fundraising_pageID')
+                        }
+
+      this.summaryFundraisingDonationSummaryView = new FundraisingDonationSummaryView({ el: $('.fundraising-donation-summary-view', self.elPlayerSummary) });
+      this.summaryFundraisingDonationSummaryView.render(jsonFields);
+
+      this.detailFundraisingDonationSummaryView = new FundraisingDonationSummaryView({ el: $('.fundraising-donation-summary-view', self.elPlayerDetail) });
+      this.detailFundraisingDonationSummaryView.render(jsonFields);
+
+      // now go and get live data
+      var url = GAME_API_URL + 'game/' + this.options.gameID + "/player/" + this.model.get('id') + '/fundraiser/details';
+      if (FUNDRAISING_PROVIDER == FUNDRAISING_PROVIDER_JUSTGIVING) {
+        url = GAME_API_URL + 'game/' + this.options.gameID + "/player/" + this.model.get('id') + '/fundraiser/page/' + this.jsonProgress.fundraising_page;
+      }
+//      console.log(url);
+      $.getJSON(url, function(result){
+        if (result) {
+          self.jsonFundraisingPage = result;
+          self.jsonFundraisingPage.playerID = self.model.get('id');
+          self.jsonFundraisingPage.fundraisingPageID = self.model.get('fundraising_pageID');
+          if (self.jsonFundraisingPage.fundraisingTarget != undefined) {
+            self.jsonFundraisingPage.totalRaisedPercentageOfFundraisingTarget = ((self.jsonFundraisingPage.totalRaisedOnline) / self.jsonFundraisingPage.fundraisingTarget) * 100;
+            // render again
+            self.summaryFundraisingDonationSummaryView.render(self.jsonFundraisingPage);
+            self.detailFundraisingDonationSummaryView.render(self.jsonFundraisingPage);
+          }
+        }
+        else {
+          console.log('getFundraising:ERR');
+        }
+      });
+
+    },
+
+    getDonations: function(){
+      if (this.bDonationsLoaded) {
+        return;
+      }
+      this.bDonationsLoaded = true;
+
+      var self = this;
+
+      if (this.jsonProgress.fundraising_goal) {
+        this.fundraisingDonationsView = new FundraisingDonationsView({ el: $('.fundraising-donations-view .fundraisers', self.elPlayerDetail) });
+
+        var url = GAME_API_URL + 'game/' + this.options.gameID + "/player/" + this.model.get('id') + '/fundraiser/donations';
+        if (FUNDRAISING_PROVIDER == FUNDRAISING_PROVIDER_JUSTGIVING) {
+          url = GAME_API_URL + 'fundraiser/page/' + this.jsonProgress.fundraising_page + '/donations';
+        }
+//        console.log(url);
+        $.getJSON(url, function(result){
+          self.jsonDonations = result;
+          if (self.jsonDonations) {
+            if (FUNDRAISING_PROVIDER == FUNDRAISING_PROVIDER_JUSTGIVING) {
+              if (self.jsonDonations.donations) {
+                if (self.jsonDonations.donations.length) {
+                  $('.welcome.with-donations', this.elPlayerDetail).show();
+                  $('.welcome.without-donations', this.elPlayerDetail).hide();
+                  self.fundraisingDonationsView.render(self.jsonDonations.donations);
+                }
+              }
+            }
+            else {
+              if (self.jsonDonations.result.transactions) {
+                if (self.jsonDonations.result.transactions.length) {
+                  $('.welcome.with-donations', this.elPlayerDetail).show();
+                  $('.welcome.without-donations', this.elPlayerDetail).hide();
+                  self.fundraisingDonationsView.render(self.jsonDonations.result.transactions);
+                }
+              }
+            }
+          }
+        });
+      }
+    },
+
+    getActivityComments: function(){
+      if (this.bCommentsLoaded) {
+        return;
+      }
+      this.bCommentsLoaded = true;
+
+      var self = this;
+
+      var elPlayerComments = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"] .activity-comment');
+      var playerActivityCommentView = new PlayerActivityCommentView({ el: elPlayerComments });
+
+      // most recent activity
+      var activity = this.jsonProgress.activities[0];
+
+      // get comments
+      var url = GAME_API_URL + 'game/' + this.options.gameID + "/player/" + this.model.get('id') + '/activity/' + activity.activity + '/comments';
+//      console.log(url);
+      $.getJSON(url, function(result){
+        if (result) {
+          playerActivityCommentView.render(result);
+        }
+      });
+    },
+
+    getActivityPhotosByPos: function(nPos){
+      this.nCurrPhotoActivity = nPos;
+
+      var activity = this.jsonProgress.activities[nPos];
+      this.currPhotoActivityId = activity.activity;
+
+      var elPlayerPhotos = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"] .posts .photos');
+      var playerActivityPhotosView = new PlayerActivityPhotosView({ el: elPlayerPhotos, gameID: this.options.gameID, playerID: this.model.get('id'), activityID: activity.activity });
+      playerActivityPhotosView.load();
+    },
+
+    getActivityPhotos: function(){
+      if (this.bPhotosLoaded) {
+        return;
+      }
+      this.bPhotosLoaded = true;
+      
+      this.nCurrPhotoActivity = 0;
+
+      var elPlayerPhotos = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"] .posts .photos');      
+      this.playerActivityMorePhotosView = new PlayerActivityMorePhotosView({ playerID: this.model.get('id'), elParent: elPlayerPhotos });
+
+      $('.posts .photos', this.elPlayerDetail).html('');
+
+      // check for activities
+      if (this.jsonProgress.activities) {
+        if (this.jsonProgress.activities.length) {
+          this.getActivityPhotosByPos(this.nCurrPhotoActivity);
+        }
+      }
+    },
+
+    render: function(){
+      this.elPlayerSummary = $('#players-summary-view .player-summary[data-id="' + this.model.get('id') + '"]');
+      this.elPlayerList = $('#players-list-view .player-ranking[data-id="' + this.model.get('id') + '"]');
+      this.elPlayerDetail = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"]');
+    },
+
+    onPlayerActivityMorePhotosClick: function (params) {
+      if (params.playerID == this.model.get('id')) {
+        // show all photos
+        var elPlayerPhotos = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"] .posts .photos');      
+        $(elPlayerPhotos).addClass('show-all');
+        $('.post', elPlayerPhotos).removeClass('no-show');
+
+        params.PlayerActivityMorePhotosView.hide();
+      }
+    },
+
+    onPlayerActivityPhotosLoaded: function (playerActivityPhotosView) {
+      if (this.currPhotoActivityId == playerActivityPhotosView.activityID) {
+        if (playerActivityPhotosView.jsonPhotos.length) {
+          this.currPlayerActivityPhotosView = playerActivityPhotosView;
+
+          // we have some photos!
+          $('.photo-icon', this.elPlayerSummary).addClass('show');
+          $('.photo-icon', this.elPlayerList).addClass('show');
+          $('.photo-icon', this.elPlayerDetail).addClass('show');
+
+          $('.welcome.with-photos', this.elPlayerDetail).show();
+          $('.welcome.without-photos', this.elPlayerDetail).hide();
+
+          // render
+          playerActivityPhotosView.render().el;
+        }
+
+        //any more?
+        if ((this.nCurrPhotoActivity+1) < this.jsonProgress.activities.length) {
+          this.getActivityPhotosByPos(this.nCurrPhotoActivity + 1);
+        }
+      }
+    },
+
+    onPlayerActivityPhotosPhotoRendered: function (params) {
+      var elPlayerPhotos = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"] .posts .photos');      
+
+      if (this.currPhotoActivityId == params.PlayerActivityPhotosView.activityID) {
+        var nPhotos = $('.post', params.PlayerActivityPhotosView.el).length;
+
+        if (elPlayerPhotos.hasClass('show-all')) {
+          params.PlayerActivityPhotoView.el.removeClass('no-show');
+        }
+        else {
+          // show 1st photos
+          if (nPhotos <= DEF_NUM_PHOTOS_TO_SHOW) {
+            params.PlayerActivityPhotoView.el.removeClass('no-show');
+          }
+
+          if (nPhotos > DEF_NUM_PHOTOS_TO_SHOW) {
+            this.playerActivityMorePhotosView.render().el;
+          }
+        }
+      }
+    }
+    
+  });
+
+  return Player;
+});

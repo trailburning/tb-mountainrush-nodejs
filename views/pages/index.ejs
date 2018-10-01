@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/includes.ejs %>
+<link href='static-assets/css/home.css' rel='stylesheet' />
+</head>
+<body>
+<script>
+var APP = 'HomeApp';
+var GAME_API_URL = '<%= Defs.MRAPIURL %>';
+var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
+var TB_JOURNEY_ID = '59a0091680d4a677217766';
+</script>
+
+<div class="container-fluid nopadding">
+  <% include ../partials/header.ejs %>
+
+  <div id="page-view">
+    <div id="player-view">
+      <div id="hero-view">
+        <div id="piste-view">
+          <div id="container">
+            <div id="engine-container"></div>
+          </div>
+        </div>
+        <div id="titles-view" class="overlay">
+          <div class="titles">
+            <div id="loader-view">
+              <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+                <div class="loader-text"><span class="percent">0</span></div>
+              </div>
+            </div>
+            <div class="play-btn">
+            <i class="fa fa-play-circle"></i>
+            </div>
+            <span class="scene">
+            <h1>Virtually Climb</h1>
+            <h2>real mountains</h2>
+            </span>
+            <span class="scene">
+            <h1>Hike, Run or Cycle</h1>
+            <h2>with Strava</h2>
+            </span>
+            <span class="scene">
+            <h1>Against Yourself</h1>
+            <h2>Beat the Clock</h2>
+            </span>
+            <span class="scene">
+            <h1>Invite Your Mates</h1>
+            <h2>Make It Social</h2>
+            </span>
+            <span class="scene">
+            <h1>Reach The Summit With</h1>
+            <h2>Mountain Rush</h2>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="game-view clearfix">
+      <div class="game-container-view clearfix">
+        <div class="grab hidden-sm hidden-xs"><img src="static-assets/images/phones.png"></div>
+        <div class="synopsis pull-right">
+          <div class="text">
+            <h1>A challenging game</h1>
+            <h2>To virtually ascend real mountains</h2>
+            <div class="overview">
+            <p>
+            Hike, run or cycle with <a href="https://www.strava.com" target="_blank" class="link">Strava</a> to virtually climb beautifully rendered 3D mountains, against yourself, or your friends. Mountain Rush promotes physical activity and local exploration in a fun package.
+            </p>
+            <p>
+            Oh and you can <a href="https://www.raisenow.com" target="_blank" class="link">fundraise</a> too!
+            </p>
+            </div>
+          </div>
+          <div class="btns">
+          <a href="{$BaseHTTPSURL}campaign/{$Campaign.CampaignID}/register" class="signup btn mr-btn btn-primary">Sign up</a> 
+          <span class="btn mr-btn demo-video">Demo Video</span>
+          </div>
+        </div>
+        <div class="grab hidden-md hidden-lg"><img src="static-assets/images/phones.png"></div>
+      </div>
+
+      <div class="fundraising-partner">
+      Fundraising by <a href="https://www.raisenow.com" target="_blank"><img src="static-assets/images/logos/RaiseNow_logo_techpartner_no_margin.png"></a>
+      </div>
+
+      <div class="stripe"></div>
+    </div>
+  </div>
+
+  <div id="community-view">
+    <h1>Journey to the Summit</h1>
+    <h2>Follow our Mountain Rush climbers</h2>
+    <h3>#playmountainrush</h3>
+
+    <div class="icons"><a href="https://www.instagram.com/trailburning/" target="_blank"><i class="fa fa-instagram"></i></a></div>
+
+    <div id="community-photos-loader-view" class="loader-view">
+      <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </div>
+
+    <div id="community-photos-view" class="photos"></div>
+  </div>
+
+  <div class="stripe"></div>
+
+  <% include ../partials/footer.ejs %>
+</div>
+
+<div id="device-capable-modal-view"></div>
+<div id="player-game-view"></div>
+<div id="player-connected-view"></div>
+<div id="demo-video-view"></div>
+
+<div id="mobileTest" class="visible-xs"></div>
+
+<script type="text/template" id="deviceCapableModalViewTemplate">
+  <div class="modal msg-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="details">
+            <div class="title">Sorry, we're having trouble presenting the 3D mountain</div>
+            <div class="description">
+            This appears to be because your device is not be capable of showing 3D.
+            <br/><br/>
+            Reloading may fix the issue but if not then please contact <% if (Campaign.CampaignTemplate != 'default') { %>Mountain Rush <% } %><a class="link" href="mailto:support@mountainrush.co.uk">support</a>.
+            </div>
+          </div>
+          <div class="action-field">
+            <span class="btn mr-btn btn-primary reload-btn" data-dismiss="modal">Reload Page</span>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</script>
+
+<script type="text/template" id="communityPhotosViewTemplate">
+  {{ _.each(juicer.posts.items, function(post, index) { }}<div class="post">
+    <div class="media">
+      <a href="{{= post.full_url }}" target="_blank"><div class="image" style="background-image: url('{{= post.image }}')"></div>
+      <div class="likes ago">
+      {{ if (post.likes >= 1) { }}
+        <i class="icon fa fa-heart"></i> {{= post.likes }}
+      {{ } }}
+      </div>
+      </a>
+    </div>
+    <div class="details">
+      <div class="text">
+        <div class="name"><a href="{{= post.full_url }}" target="_blank">{{= post.poster_name }}</a></div>
+        <div class="credit truncate" data-truncate="64"> {{= post.message }}</div>
+      </div>
+    </div>
+  </div>{{ }); }}
+</script>
+
+<script type="text/template" id="playerGameViewTemplate">
+  <div class="modal msg-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          {{ var activeGames = _.where(player.games, {game_state:'active'}) }}
+          {{ var pendingGames = _.where(player.games, {game_state:'pending'}) }}
+
+          {{ if (activeGames.length) { }}
+            {{ var game = activeGames[0] }}
+
+            <div class="details">
+              <div class="title">Latest Challenge</div>
+              <div class="description">
+              Hi {{= player.firstname }}, would you like to check out your <strong>{{= game.name }}</strong> <span class="lowercase">{{= game.type }}</span> challenge?
+              </div>
+            </div>
+
+            <div class="action-fields">
+              <div class="action-field"><a href="{$BaseHTTPURL}game/{{= game.game }}" class="btn mr-btn btn-primary">Yes please</a></div>
+              <div class="action-field"><span class="btn mr-btn" data-dismiss="modal">Maybe later</span></div>
+            </div>
+          {{ } else if (pendingGames.length) { }}
+            {{ var game = pendingGames[0] }}
+
+            <div class="details">
+              <div class="title">Upcoming Challenge</div>
+              <div class="description">
+              Hi {{= player.firstname }}, would you like to check out your upcoming <strong>{{= game.name }}</strong> <span class="lowercase">{{= game.type }}</span> challenge?
+              </div>
+            </div>
+
+            <div class="action-fields">
+              <div class="action-field"><a href="{$BaseHTTPURL}game/{{= game.game }}" class="btn mr-btn btn-primary">Yes please</a></div>
+              <div class="action-field"><span class="btn mr-btn" data-dismiss="modal">Maybe later</span></div>
+            </div>
+          {{ } }}
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</script>
+
+<% include ../partials/demoVideoTemplate.ejs %>
+<% include ../partials/analytics.ejs %>
+</body>
+<script data-main="static-assets/js/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+
+<!-- Example of how to use Piste API -->
+<script type="text/javascript">
+if ( typeof Procedural === 'undefined' ) { Procedural = {}; }
+</script>
+</html>
