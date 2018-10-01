@@ -9,7 +9,8 @@ const PORT = process.env.PORT || 3000
 // viewed at http://localhost:3000
 app.get('/', function(req, res) {
   var user = new Object();
-  user.firstname  = 'Matt'
+  user.firstname  = 'Matt';
+  user.lastname  = 'Allbeury';
 
   res.render('index', {user: user});
 });
