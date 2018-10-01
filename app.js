@@ -4,7 +4,7 @@ var path = require('path');
 
 app.set('view engine', 'ejs');
 
-const DATABASE_URL = process.env.DATABASE_URL || 'empty'
+const DATABASE_URL = process.env.CLEARDB_DATABASE_URL || 'empty'
 const PORT = process.env.PORT || 3000
 
 // viewed at http://localhost:3000
