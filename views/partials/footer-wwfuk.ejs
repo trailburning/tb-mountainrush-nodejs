@@ -1,0 +1,49 @@
+<div id="footer-view">
+  <div class="footer-credits-container clearfix">
+    <div><a href="https://www.strava.com/mobile" target="_blank"><img src="static-assets/images/logos/api_logo_pwrdBy_strava_stack_gray.png"></a></div>
+
+    <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
+      <div class="right"><a href="https://www.justgiving.com" target="_blank"><img src="static-assets/images/logos/JustGiving_logo_techpartner.png"></a></div>
+    <% } else { %>
+      <div class="right"><a href="https://www.raisenow.com" target="_blank"><img src="static-assets/images/logos/RaiseNow_logo_techpartner.png"></a></div>
+    <% } %>
+  </div>
+  <div class="footer-menus-container">
+    <div class="footer-menus clearfix">
+    <div class="logo"><a href="{$BaseHTTPURL}campaign/<%= Campaign.CampaignID %>"><div></div></a></div>
+    <ul class="menus clearfix">
+      <li class="legal hidden-xs">
+        <div class="registered">
+        WWF-UK is a registered charity in England and Wales 1081247 and in Scotland SC039593 and a company limited by guarantee registered in England and Wales 4016725
+        </div>
+        <div class="copyright">
+        <span class="hidden-md hidden-lg">
+        <% if (Defs.imageCopyright) { %>
+          $ImageCopyright;<br/>
+        <% } %>
+        &#169; Mountain Rush; &#169; WWF
+        </span>
+        <span class="visible-md visible-lg">
+        <% if (Defs.imageCopyright) { %><%= Defs.imageCopyright %>; <% } %>&#169; Mountain Rush; &#169; WWF
+        </span>
+        </div>
+      </li>
+      <div class="right">
+        <li><a href="{$BaseHTTPURL}campaign/{$Campaign.CampaignID}/privacy">Mountain Rush<br/><strong>Privacy Policy</strong></a></li>
+        <li class="user-action action-signup"><a class="btn mr-btn btn-primary" href="{$BaseHTTPURL}campaign/{$Campaign.CampaignID}/register">Sign Up</a></li>
+        <li class="user-action action-signout"><a href="{$BaseHTTPURL}campaign/<%= Campaign.CampaignID %>" class="signout">Sign out</a></li>
+      </div>
+    </ul>
+    </div>  
+
+    <div class="legal visible-xs">
+      <div class="registered">
+      WWF-UK is a registered charity in England and Wales 1081247 and in Scotland SC039593 and a company limited by guarantee registered in England and Wales 4016725
+      </div>
+      <div class="copyright">
+      <% if (Defs.imageCopyright) { %><%= Defs.imageCopyright %><br/><% } %>      
+      &#169; Mountain Rush; &#169; WWF
+      </div>
+    </div>  
+  </div>  
+</div>
