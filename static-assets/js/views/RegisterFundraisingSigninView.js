@@ -10,7 +10,8 @@ define([
 
       this.options = options;
 
-      this.jsonFields = {email: '',
+      this.jsonFields = {playerID: 0,
+                        email: '',
                         password: ''}
     },
 
@@ -18,12 +19,16 @@ define([
       return this.jsonFields;
     },
 
+    setFields: function(jsonFields) {
+      this.jsonFields.playerID = jsonFields.playerID;
+    },
+
     getFundraiserRegister: function(strEmail, strPassword) {
       var self = this;
 
       $('.err, .err .msg, .warning, .warning .msg', $(this.el)).hide();
 
-      var url = GAME_API_URL + 'fundraiser/user/' + strEmail + '/' + strPassword;
+      var url = GAME_API_URL + 'fundraiser/player/' + this.jsonFields.playerID + '/user/' + strEmail + '/' + strPassword;
 //      console.log(url);
       $.getJSON(url, function(result){
         console.log(result);

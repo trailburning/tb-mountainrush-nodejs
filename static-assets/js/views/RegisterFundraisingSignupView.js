@@ -10,7 +10,8 @@ define([
 
       this.options = options;
 
-      this.jsonFields = {email: '',
+      this.jsonFields = {playerID: 0,
+                        email: '',
                         password: '',
                         firstname: '',
                         lastname: ''}
@@ -23,6 +24,7 @@ define([
     },
 
     setFields: function(jsonFields) {
+      this.jsonFields.playerID = jsonFields.playerID;
       this.jsonFields.email = jsonFields.email;
       this.jsonFields.password = jsonFields.password;
     },
@@ -49,8 +51,8 @@ define([
 //                      country: 'United Kingdom',
                       acceptTerms: true};
 
-      var url = GAME_API_URL + 'fundraiser/user/lite';
-      console.log(url);
+      var url = GAME_API_URL + 'fundraiser/player/' + this.jsonFields.playerID + '/user/lite';
+//      console.log(url);
       $.ajax({
         type: 'post',
         dataType: 'json',
