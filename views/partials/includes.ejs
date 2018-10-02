@@ -6,10 +6,54 @@
 
 <meta property="fb:app_id" content="626606520795449" />
 
+<% if (Campaign.CampaignName) { %>
+<meta property="og:title" content="<%= Campaign.CampaignName %>"/>
+<% } else { %>
+<meta property="og:title" content="Mountain Rush"/>
+<% } %>
+
+<% if (Campaign.CampaignDescription) { %>
+<meta property="og:description" content="<%= Campaign.CampaignDescription %>"/>
+<% } else { %>
+<meta property="og:description" content="Hike, run or cycle with Strava to virtually climb beautifully rendered 3D mountains, against yourself, or your friends. Mountain Rush promotes physical activity and local exploration in a fun package.  Oh and you can fundraise too!"/>
+<% } %>
+
 <meta property="og:type" content="website" />
+<% if (Defs.PlayerGoal) { %>
+  <meta property="og:url" content="http://mountainrush.co.uk/game/<%= Defs.GameID %>/player/<%= Defs.PlayerID %>/goal/<%= Des.PlayerGoal %>"/>
+  <meta property="og:image" content="<%= Defs.$SocialImage %>"/>
+<% } else if (Defs.PlayerProgress) { %>
+  <meta property="og:url" content="http://mountainrush.co.uk/game/<%= GameID %>/player/<%= Defs.PlayerID %>/progress/<%= Defs.PlayerProgress %>"/>
+  <meta property="og:image" content="<%= Defs.SocialImage %>"/>
+<% } else if (Defs.GameID) { %>
+  <meta property="og:url" content="http://mountainrush.co.uk/game/<%= Defs.GameID %>"/>
+  <% if (Campaign.CampaignTemplate == 'default') { %>
+  <meta property="og:image" content="<%= Defs.SocialImage %>"/>
+  <% } else { %>
+  <meta property="og:image" content="http://mountainrush.co.uk/static-assets/images/<%= Campaign.CampaignTemplate %>/share_facebook.jpg"/>
+  <% } %>
+<% } else if (Campaign.CampaignName) { %>
+  <meta property="og:url" content="{$BaseHTTPURL}campaign/<%= Campaign.CampaignID %>"/>
+  <meta property="og:image" content="http://mountainrush.co.uk/static-assets/images/<%= Campaign.CampaignTemplate %>/share_facebook.jpg"/>
+<% } else { %>
+  <meta property="og:url" content="http://mountainrush.co.uk/"/>
+  <meta property="og:image" content="http://mountainrush.co.uk/static-assets/images/share_facebook.jpg"/>
+<% } %>
 
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
+
+<% if (Campaign.CampaignTemplate == 'default') { %>
+<link rel="shortcut icon" href="/static-assets/imagesfavicon/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/static-assets/images/favicon/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" sizes="150x150" href="/static-assets/images/favicon/apple-touch-icon.png"/>
+<% } else { %>
+<link rel="shortcut icon" href="/static-assets/images/<%= Campaign.CampaignTemplate %>/favicon/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/static-assets/images/<%= Campaign.CampaignTemplate %>/favicon/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" sizes="150x150" href="/static-assets/images/<%= Campaign.CampaignTemplate %>/favicon/apple-touch-icon.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/static-assets/images/<%= Campaign.CampaignTemplate %>/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static-assets/images/<%= Campaign.CampaignTemplate %>/favicon/favicon-16x16.png">
+<% } %>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
