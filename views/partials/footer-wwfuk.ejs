@@ -10,7 +10,7 @@
   </div>
   <div class="footer-menus-container">
     <div class="footer-menus clearfix">
-    <div class="logo"><a href="{$BaseHTTPURL}campaign/<%= Campaign.CampaignID %>"><div></div></a></div>
+    <div class="logo"><a href="<%= Defs.BaseHTTPURL %>/campaign/<%= Campaign.CampaignID %>"><div></div></a></div>
     <ul class="menus clearfix">
       <li class="legal hidden-xs">
         <div class="registered">
@@ -18,20 +18,20 @@
         </div>
         <div class="copyright">
         <span class="hidden-md hidden-lg">
-        <% if (Defs.imageCopyright) { %>
-          $ImageCopyright;<br/>
+        <% if (Defs.ImageCopyright) { %>
+          <%= Defs.ImageCopyright %>;<br/>
         <% } %>
         &#169; Mountain Rush; &#169; WWF
         </span>
         <span class="visible-md visible-lg">
-        <% if (Defs.imageCopyright) { %><%= Defs.imageCopyright %>; <% } %>&#169; Mountain Rush; &#169; WWF
+        <% if (Defs.ImageCopyright) { %><%= Defs.ImageCopyright %>; <% } %>&#169; Mountain Rush; &#169; WWF
         </span>
         </div>
       </li>
       <div class="right">
-        <li><a href="{$BaseHTTPURL}campaign/{$Campaign.CampaignID}/privacy">Mountain Rush<br/><strong>Privacy Policy</strong></a></li>
-        <li class="user-action action-signup"><a class="btn mr-btn btn-primary" href="{$BaseHTTPURL}campaign/{$Campaign.CampaignID}/register">Sign Up</a></li>
-        <li class="user-action action-signout"><a href="{$BaseHTTPURL}campaign/<%= Campaign.CampaignID %>" class="signout">Sign out</a></li>
+        <li><a href="<%= Defs.BaseHTTPURL %>/campaign/<%= Campaign.CampaignID %>/privacy">Mountain Rush<br/><strong>Privacy Policy</strong></a></li>
+        <li class="user-action action-signup"><a class="btn mr-btn btn-primary" href="<%= Defs.BaseHTTPURL %>/campaign/<%= Campaign.CampaignID %>/register">Sign Up</a></li>
+        <li class="user-action action-signout"><a href="<%= Defs.BaseHTTPURL %>/campaign/<%= Campaign.CampaignID %>" class="signout">Sign out</a></li>
       </div>
     </ul>
     </div>  
@@ -41,7 +41,7 @@
       WWF-UK is a registered charity in England and Wales 1081247 and in Scotland SC039593 and a company limited by guarantee registered in England and Wales 4016725
       </div>
       <div class="copyright">
-      <% if (Defs.imageCopyright) { %><%= Defs.imageCopyright %><br/><% } %>      
+      <% if (Defs.ImageCopyright) { %><%= Defs.ImageCopyright %><br/><% } %>      
       &#169; Mountain Rush; &#169; WWF
       </div>
     </div>  

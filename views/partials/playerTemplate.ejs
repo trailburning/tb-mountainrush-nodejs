@@ -1,0 +1,316 @@
+<script type="text/template" id="playersSummaryTemplate">
+  <ul class="players-summary">
+  {{ _.each(players, function(player, index) { }}
+    <li class="player-summary" data-id="{{= player.id }}" data-pos="{{= index }}">
+      <div class="photo">
+        <div class="avatar"><img src="{{= player.avatar }}"></div>
+        <div class="photo-icon {{ if (player.mediaCaptured) { }}show{{ } }}"><i class="fa fa-camera"></i></div>
+      </div><div class="overview">
+        <div class="name"><h1 class="truncate" data-truncate="10">{{= player.firstname }}</h1><span class="truncate" data-truncate="10">{{= player.lastname }}</span></div>
+        <div class="fundraising-donation-summary-view"></div>
+        <div class="summit">
+        {{ if (player.elevationToSummit) { }}
+          <h1>{{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m</h1>to summit
+        {{ } else { }}
+          <h1>Summit!</h1>{{= Math.round(player.elevationGain) }}m climbed
+        {{ } }}
+        </div>
+      </div>
+    </li>
+  {{ }); }}
+  </ul>
+
+  <div class="nav-arrow arrow arrow-left"><i class="fa fa-chevron-left"></i></div>
+  <div class="nav-arrow arrow arrow-right"><i class="fa fa-chevron-right"></i></div>
+
+  <div class="summary-max">
+    <div class="arrow arrow-down"><i class="fa fa-chevron-down"></i></div>
+    <div class="arrow arrow-up"><i class="fa fa-chevron-up"></i></div>
+  </div>
+</script>
+
+<script type="text/template" id="playersListTemplate">
+  <ul class="players-ranking">
+  {{ _.each(players, function(player, index) { }}
+    <li class="player-ranking" data-id="{{= player.id }}" data-pos="{{= index }}">
+      <div class="pos">
+        <div class="ranking">{{= index+1 }}</div>
+      </div>
+      <div class="photo">
+        <div class="avatar"><img src="{{= player.avatar }}"></div>
+        <div class="photo-icon {{ if (player.mediaCaptured) { }}show{{ } }}"><i class="fa fa-camera"></i></div>
+      </div>
+      <div class="overview">
+      <h1 class="truncate" data-truncate="15">{{= player.firstname }}</h1>
+      {{ if (player.elevationToSummit) { }}
+        {{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m to summit
+      {{ } else { }}
+        summit reached
+      {{ } }}
+      </div>
+    </li>
+  {{ }); }}
+  </ul>
+</script>
+
+<script type="text/template" id="playersDetailTemplate">
+  <div class="scroll">
+    {{ _.each(players, function(player, index) { }}
+      {{ var fundraising_item = fundraising.items[fundraising.random_item_pos] }}
+
+      <div class="player" data-id="{{= player.id }}">
+        <div class="player-stats">
+          <div class="fundraising-donation-summary-view"></div>
+
+          <div class="photo">
+            <a href="https://www.strava.com/athletes/{{= player.playerProviderID }}" target="_blank"><div class="avatar"><img src="{{= player.avatar }}"></div></a>
+            <div class="photo-icon {{ if (player.mediaCaptured) { }}show{{ } }}"><i class="fa fa-camera"></i></div>
+          </div>
+
+          <div class="overview clearfix">
+            <div class="name"><h1 class="player-name" data-pos="{{= index }}">{{= player.firstname }} {{= player.lastname }}</h1>
+            {{ if (player.city && player.country) { }}
+              {{= player.city }}, {{= player.country }}
+            {{ } else if (player.country) { }}
+              {{= player.country }}
+            {{ } else { }}
+              Where am I?
+            {{ } }}
+            </div>
+
+            <div class="summit-container">
+              <div class="summit">
+              {{ if (player.elevationToSummit) { }}
+                <h1>{{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m</h1>to summit<br/>{{= game.name }}
+              {{ } else { }}
+                <h1>Summit!</h1>{{= Math.round(player.elevationGain) }}m climbed on<br/>{{= game.name }}
+              {{ } }}
+              </div>
+              <div class="pos">
+                <div class="ranking">{{= index+1 }}</div>
+                {{= index+1 }}{{ if (index+1 == 1) { }}st{{ } else if (index+1 == 2) { }}nd{{ } else if (index+1 == 3) { }}rd{{ } else { }}th{{ } }} place
+              </div>
+            </div>
+          </div>
+
+          {{ if (player.activities.length) { }}
+            {{ var latestActivity = player.activities[0] }}
+            <div class="latest-activity">
+              <a href="https://www.strava.com/activities/{{= latestActivity.activity }}" target="_blank">
+              <span class="latest"><span class="icon"></span><span class="title">Latest Activity:</span></span>
+              <span class="stats">
+              Climbed <strong>{{= Math.round(latestActivity.total_elevation_gain) }}m</strong> over <strong>{{= (latestActivity.distance / 1000).toFixed(1) }}km</strong></span>
+              <span class="ago">{{= latestActivity.start_date_ago }}</span>
+              </a>
+              <div class="external-view"><a href="https://www.strava.com/activities/{{= latestActivity.activity }}" target="_blank"><span class="provider">View on Strava</span></a></div>
+              <div class="activity-comment"></div>
+            </div>
+          {{ } else { }}
+            <div class="latest-activity-blank"></div>
+          {{ } }}
+        </div>
+
+        {{ if (player.fundraising_pageID) { }}
+          <div class="fundraising-donation-view above-photos">
+            <div class="shopping-list">
+              <div class="shopping-list-item">
+                <div class="image"><img class="fade_on_load" src="{{= fundraising_item.image }}?fm=jpg&q=80&w=248"></div>
+                <div class="content">
+                  <div class="text">
+                    <div class="amount">£{{= fundraising_item.amount }}</div>
+                    <div class="item-title">{{= fundraising_item.buy }}</div>
+                    <div class="item-title big">{{= fundraising_item.title }}</div>
+                    {{= fundraising_item.description }}
+                  </div>
+                </div>
+              </div>
+              <div class="donate-item">
+              <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary btn-large double"><div>Donate</div><div>£10</div></a></div>
+              <div class="shopping-list-sticker-container visible-xs">
+                <div class="shopping-list-sticker"></div>
+              </div>
+            </div>
+          </div>
+        {{ } }}
+
+        <div class="photo-posts-view clearfix">
+          {{ var firstname = player.firstname }}
+
+          {{ if (!firstname) { }}
+            {{ firstname = 'unknown' }}
+          {{ } }}
+
+          <div class="posts">
+            <div class="welcome without-photos">Waiting for photos of {{= firstname }}'s journey to the summit...</div>
+            <div class="welcome with-photos">Check out {{= firstname }}'s journey to the summit!</div>
+            <div class="photos"></div>
+          </div>
+        </div>
+
+        {{ if (player.fundraisingGoal && player.fundraisingGoal > 0) { }}
+          <div class="fundraising-donation-view below-photos">
+            <div class="shopping-list">
+              <div class="shopping-list-item clearfix">
+                <div class="image"><img class="fade_on_load" src="{{= fundraising_item.image }}?fm=jpg&q=80&w=248"></div>
+                <div class="content">
+                  <div class="text">
+                    <div class="amount">£{{= fundraising_item.amount }}</div>
+                    <div class="item-title">{{= fundraising_item.buy }}</div>
+                    <div class="item-title big">{{= fundraising_item.title }}</div>
+                    {{= fundraising_item.description }}
+                  </div>
+                </div>
+              </div>
+              <div class="donate-item">
+              <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
+                <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary btn-large double"><div>Donate</div><div>£10</div></a>
+              <% } else { %>
+                <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/donate?amount=1000" class="btn mr-btn btn-primary btn-large double"><div>Donate</div><div>£10</div></a>
+              <% } %>
+              </div>
+            </div>
+          </div>
+        {{ } }}
+
+        {{ if (player.fundraisingGoal && player.fundraisingGoal > 0) { }}
+          <div class="fundraising-donations-view">
+            <div class="donations">
+              <div class="title">donations</div>
+              <div class="welcome without-donations">Waiting for donations to help {{= player.firstname }} to the summit...</div>
+              <div class="welcome with-donations"> Check out who's helping {{= player.firstname }} to the summit!</div>
+              <div class="fundraisers"></div>
+            </div>
+          </div>
+        {{ } }}
+      </div>
+    {{ }); }}
+    <div class="back-to-mountain">Back to mountain<i class="fa fa-arrow-up arrow"></i></div>
+  </div>
+
+  <div class="shopping-list-sticker-container visible-sm visible-md visible-lg">
+    <div class="shopping-list-sticker"></div>
+  </div>
+</script>
+
+<script type="text/template" id="commentViewTemplate">
+  {{ var latestComment = comments[0] }}
+
+  {{ if (latestComment) { }}
+    {{= latestComment.text }}
+  {{ } }}
+</script>
+
+<script type="text/template" id="photoViewTemplate"><div class="post no-show">
+  {{ if (type == 'InstagramPhoto' || type == 'InstagramVideo') { }}
+    <div class="media">
+    <div class="image" style="background-image: url('{{= urls[640] }}')"></div>
+    {{ if (type == 'InstagramVideo') { }}
+      <div class="media-icon"><i class="fa fa-video-camera" aria-hidden="true"></i></div>
+    {{ } }}
+    </div>
+  {{ } else { }}
+    <div class="media viewer">
+    <div class="image" style="background-image: url('{{= urls[640] }}')"></div>
+    {{ if (type == 'InstagramVideo') { }}
+      <div class="media-icon"><i class="fa fa-video-camera" aria-hidden="true"></i></div>
+    {{ } }}
+    </div>
+  {{ } }}
+  <div class="details">
+    <div class="credit truncate" data-truncate="50">{{= caption }}</div>
+    <div class="ago">{{= uploaded_at_ago }}</div>
+  </div>
+</div></script>
+
+<script type="text/template" id="morePhotosViewTemplate">
+<div class="more-posts">
+  <span class="btn mr-btn more-btn">Show more photos</span>
+</div>
+</script>
+
+<script type="text/template" id="fundraisingDonationSummayViewTemplate">
+  <div class="fundraise-sticker-continer">
+    <div class="fundraise-sticker">
+      {{ if (page.fundraisingTarget && page.fundraisingTarget > 0) { }}
+        <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
+          <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= page.fundraisingPageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + page.playerID + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}">
+        <% } else { %>
+          <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= page.playerID }}/donate?amount=1000">
+        <% } %>
+        <div class="details">
+          <div class="percent" style="top: {{= (100 - page.totalRaisedPercentageOfFundraisingTarget) }}%;height: {{= page.totalRaisedPercentageOfFundraisingTarget }}%;"></div>
+          <div class="raised">{{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}<span class="amount">{{= Math.round(page.totalRaisedOnline) }}</span></div>
+          {{ if (page.fundraisingTarget) { }}
+            <div class="target">Raised of {{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}{{= page.fundraisingTarget }}<br/>target</div>
+          {{ } else { }}
+            <div class="target">Waiting for donations..</div>
+          {{ } }}
+        </div>
+        </a>
+      {{ } else { }}
+        <div class="details">
+          <div class="percent" style="top: {{= (100 - page.totalRaisedPercentageOfFundraisingTarget) }}%;height: {{= page.totalRaisedPercentageOfFundraisingTarget }}%;"></div>
+          <div class="raised">{{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}<span class="amount">{{= Math.round(page.totalRaisedOnline) }}</span></div>
+          {{ if (page.fundraisingTarget) { }}
+            <div class="target">Raised of {{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}{{= page.fundraisingTarget }}<br/>target</div>
+          {{ } else { }}
+            <div class="target">Waiting for donations..</div>
+          {{ } }}
+        </div>
+      {{ } }}
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="fundraisingDonationsViewTemplate">
+  {{ _.each(donations, function(donation, index) { }}
+    {{ if (donation.amount) { }}
+      <div class="donator">
+        <div class="content">
+          <div class="avatar">
+          {{ if (donation.image) { }}
+            <img src="{{= donation.image }}">
+          {{ } else { }}
+            <img src="<%= Defs.MRAPIURL %>imageproxy.php?url=http://mountainrush.co.uk/static-assets/images/<%= Campaign.CampaignTemplate %>/avatar_unknown.jpg">
+          {{ } }}            
+          </div><div class="donation-detail">
+            <div class="name">
+            {{ if (donation.stored_anonymous_donation == 'true') { }}
+              Anonymous
+            {{ } else { }}
+              {{ if (donation.donorDisplayName) { }}
+                {{= donation.donorDisplayName }}
+              {{ } else if (donation.stored_customer_nickname) { }}
+                {{= donation.stored_customer_nickname }}
+              {{ } else if (donation.stored_customer_firstname) { }}
+                {{= donation.stored_customer_firstname }} {{= donation.stored_customer_lastname }}
+              {{ } else { }}
+                Anonymous
+              {{ } }}            
+            {{ } }}       
+            </div>
+            <div class="amount-detail">
+            {{ if (donation.donorLocalAmount) { }}
+              Donated<span class="amount">{{ if (donation.donorLocalCurrencyCode == 'GBP') { }}£{{ } else if (donation.donorLocalCurrencyCode == 'EUR') { }}€{{ } else { }}${{ } }}{{= Math.round(donation.donorLocalAmount) }}</span>
+            {{ } else { }}
+              Donated<span class="amount">{{= donation.currency_identifier }}{{= Math.round(donation.amount / 100) }}</span>
+            {{ } }}            
+            </div>
+          </div>
+          {{ if (donation.message || donation.stored_customer_additional_message) { }}
+            <div class="donation-msg">
+              <div class="quote">“</div>
+              <div class="msg">
+              {{ if (donation.message) { }}
+                {{= donation.message }}
+              {{ } else { }}
+                {{= donation.stored_customer_additional_message }}
+              {{ } }}            
+              </div>
+            </div>
+          {{ } }}
+        </div>
+      </div>
+    {{ } }}
+  {{ }); }}
+</script>
