@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include ../partials/includes.ejs %>
+<link href='/static-assets/css/photoswipe.css' rel='stylesheet' />
+<link href='/static-assets/css/default-skin/default-skin-with-ig.css' rel='stylesheet' />
+<% if (Campaign.CampaignFundraising) { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/web_platform.css' rel='stylesheet' />
+<% } %>
+<link href='/static-assets/css/game.css' rel='stylesheet' />
+<% if (Campaign.CampaignFundraising) { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/game.css' rel='stylesheet' />
+<% } %>
+<% include ../partials/analyticsFBPixel.ejs %>
+</head>
+
+<body>
+<script>
+var APP = 'GameApp';
+var GAME_API_URL = '<%= Defs.MRAPIURL %>';
+var GAME_FUNDRAISING = <%= Campaign.CampaignFundraising %>;
+var CLIENT_ID = '<%= Campaign.ClientID %>';
+var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
+var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
+var GAME_ID = '<%= Defs.GameID %>';
+var PLAYER_ID = '<%= Defs.PlayerID %>';
+var FUNDRAISING_PROVIDER = '<%= Campaign.CampaignFundraisingProvider %>';
+var FUNDRAISING_DONATION_ID = '<%= Defs.FundraisingDonationID %>';
+var TEST_PROGRESS = '<%= Defs.TestProgress %>';
+var Demo = <%= Defs.Demo %>;
+</script>
+
+<div id="wrapper">
+  <div class="container-fluid nopadding">
+    <div id="page-view">
+      <% if (Campaign.CampaignTemplate == 'default') { %>
+        <% include ../partials/header.ejs %>
+      <% } else { %>
+        <% include ../partials/header-wwfuk.ejs %>
+      <% } %>
+
+      <div id="game-view">
+        <div id="map-view">
+          <div id="piste-view" class="map"></div>
+
+          <div class="map-overlay"></div>
+
+          <div class="embelish embelish-left"></div>
+          <div class="embelish embelish-right"></div>
+
+          <div class="overlay-loader-view">
+            <div class="overlay-loader">
+              <div id="loader-view">
+                <div class="spinner">
+                  <div class="double-bounce1"></div>
+                  <div class="double-bounce2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="game-details-container">
+            <div class="countdown-container">
+              <div class="countdown">
+                <span class="clock"></span>
+                <span class="end">
+                  <span class="days"><span class="time">0</span><span class="days-marker"> Days</span></span>
+                  <span class="hours"><span class="time"><span>00</span><span class="marker">:</span><span>00</span><span class="marker">:</span><span>00</span></span></span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="player-view">
+        <div class="summary" id="players-summary-view"></div>
+        <div class="list" id="players-list-view"></div>
+        <div class="detail-container">
+          <div class="detail" id="players-detail-view"></div>
+        </div>
+      </div>
+
+      <div class="stripe top"></div>
+      <div class="show-when-ready"><div class="stripe bottom"></div></div>
+    </div>
+
+    <div class="show-when-ready">
+      <div class="visible-sm visible-md visible-lg">
+
+      <% if (Campaign.CampaignTemplate == 'default') { %>
+        <% include ../partials/footer.ejs %>
+      <% } else { %>
+        <% include ../partials/footer-wwfuk.ejs %>
+      <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include ../partials/photoSwipe.ejs %>
+
+<div id="device-capable-modal-view"></div>
+<div id="mountain-story-modal-view"></div>
+<div id="mountain-locked-story-modal-view"></div>
+<div id="fundraising-shopping-modal-view"></div>
+<div id="player-connect-view"></div>
+<div id="demo-video-view"></div>
+
+<div id="challengePendingModal" class="modal msg-overlay" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="details">
+          <div class="title">Challenge</div>
+          <div class="description">This <span class="type"></span> challenge starts on <span class="date"></span><br/>at <span class="time"></span> local time.
+          <br/><br/>
+          Share so that everyone can follow progress to the summit!
+          </div>
+          <div class="social">
+          <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/$GameID" target="_blank" class="social-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20{$Campaign.CampaignName}%20challenge%20-%20http://mountainrush.co.uk/game/$GameID" target="_blank" class="social-btn"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="action-field">
+          <span class="btn mr-btn btn-primary" data-dismiss="modal">Okay</span>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="challengeCompleteModal" class="modal msg-overlay" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="details">
+          <div class="title">Challenge Over</div>
+          <div class="description">You can still share this challenge and inspire others to take on a $Campaign.CampaignName virtual ascent!</div>
+          <div class="social">
+          <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/$GameID" target="_blank" class="social-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20{$Campaign.CampaignName}%20challenge%20-%20http://mountainrush.co.uk/game/$GameID" target="_blank" class="social-btn"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="action-field">
+          <span class="btn mr-btn btn-primary" data-dismiss="modal">Okay</span>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="player-challenge-success-view"></div>
+
+<div id="mobileTest" class="visible-xs"></div>
+
+<script type="text/template" id="deviceCapableModalViewTemplate">
+  <div class="modal msg-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="details">
+            <div class="title">Sorry, we're having trouble presenting the challenge</div>
+            <div class="description">
+            This appears to be because your device is not be capable of showing 3D.
+            <br/><br/>
+            {{ if (player.fundraising_pageID) { }}
+              Don't worry, you can still make a donation!
+              <br/><br/>
+              <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary double"><div>Donate</div><div>£10</div></a>            
+              <br/><br/>
+            {{ } }}
+            Please contact <% if (Campaign.CampaignTemplate != 'default') { %>Mountain Rush <% } %><a class="link" href="mailto:support@mountainrush.co.uk">support</a> for further information.
+            </div>
+          </div>
+          <div class="action-field">
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</script>
+
+<script type="text/template" id="mountainLockedStoryModalViewTemplate">
+  <div class="modal fade locked-story-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="details">
+            <div class="info-detail">
+              <div class="detail-title">Raise funds to unlock inspiring WWF content</div>
+              Just 1000 mountain gorillas are left in the wild, the time to protect them is now.
+              <br/><br/>
+              <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/game/<%= Defs.GameID %>/fundraise" class="btn mr-btn btn-primary">Enable Fundraising</a>
+            </div>
+          </div>
+        </div>
+        <div class="big-close-btn"><i class="fa fa-times"></i></div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</script>
+
+<script type="text/template" id="mountainStoryModalViewTemplate">
+  {{ var asset = story.assets[0] }}
+  {{ var socialShareURL = 'goal/' + Math.round(player.fundraisingGoal) }}
+  {{ if (player.fundraisingRaised > 0) { }}
+    {{ socialShareURL = 'progress/' + Math.round(player.fundraisingRaised) }}
+  {{ } }}
+
+  <div class="modal fade story-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="details">
+            <div class="info-detail hidden-xs hidden-sm">
+              <div class="detail-title">{{= story.name }}</div>
+              {{= story.about }}
+            </div>
+
+            <div class="content-container">
+              <div class="media-container">
+              {{ if (_.where(asset.media, {mime_type:'video/mp4'}).length) { }}
+                <div class="video">
+                  <video id="media" url="{{= _.where(asset.media, {mime_type:'video/mp4'})[0].path }}" class="media-player video-js vjs-default-skin" controls preload="auto" width="auto" height="auto" poster="{{= _.where(asset.media, {mime_type:'image/jpeg'})[0].path }}?fm=jpg&w=420&h=236&fit=crop&q=80">
+                   <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                  </video>
+                </div>
+              {{ } else { }}
+                <div class="image"><img class="fade_on_load" src="{{= _.where(asset.media, {mime_type:'image/jpeg'})[0].path }}?fm=jpg&w=420&h=236&fit=crop&q=80"></div>
+              {{ } }}
+              </div><div class="content">
+                <div class="text">
+                  Did you know?
+                  <div class="text-title big">{{= asset.name }}</div>
+                  <div class="text-title about">{{= asset.about }}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="share-detail visible-xs visible-sm">
+              <div class="btns">
+              <a href="http://www.facebook.com/share.php?u=<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/{{= socialShareURL }}" class="btn mr-btn btn-primary" target="_blank"><i class="fa fa-facebook"></i></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20<%= Campaign.CampaignName %>%20challenge%20-%20<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>" class="btn mr-btn btn-primary" target="_blank"><i class="fa fa-twitter"></i></a>
+              </div>
+            </div>
+
+            <div class="share-detail hidden-xs hidden-sm">
+              <div class="share-text">Share your journey to help your fundraising soar.</div>
+              <div class="btns">
+              <a href="http://www.facebook.com/share.php?u=<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/{{= socialShareURL }}" class="btn mr-btn btn-primary double" target="_blank"><div>Share on facebook</div><div><i class="fa fa-facebook"></i></div></a>
+              <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20<%= Campaign.CampaignName %>%20challenge%20-%20<%= Defs.BaseHTTPURL %>game/<%= Defs.GameID %>" class="btn mr-btn btn-primary double" target="_blank"><div>Share on Twitter</div><div><i class="fa fa-twitter"></i></div></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="big-close-btn"><i class="fa fa-times"></i></div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</script>
+
+<script type="text/template" id="fundraisingShoppingModalViewTemplate">
+  {{ var fundraising_item = fundraising.items[fundraising.random_item_pos] }}
+
+  <div class="modal fade shopping-list-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="shopping-list">
+            <div class="shopping-list-item clearfix">
+              <div class="image"><img class="fade_on_load" src="{{= fundraising_item.image }}?fm=jpg&q=80&w=248"></div>
+              <div class="content">
+                <div class="text">
+                  <div class="amount">£{{= fundraising_item.amount }}</div>
+                  <div class="item-title">{{= fundraising_item.buy }}</div>
+                  <div class="item-title big">{{= fundraising_item.title }}</div>
+                  {{= fundraising_item.description }}
+                </div>
+                <div class="donate-item"><a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary double"><div>Donate</div><div>£10</div></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="big-close-btn"><i class="fa fa-times"></i></div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</script>
+
+<% include ../partials/demoVideoTemplate.ejs %>
+<% include ../partials/challengeSuccessTemplate.ejs %>
+<% include ../partials/playerTemplate.ejs %>
+<% include ../partials/analytics.ejs %>
+</body>
+
+<script data-main="/static-assets/js/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+
+<!-- Example of how to use Piste API -->
+<script type="text/javascript">
+if ( typeof Procedural === 'undefined' ) { Procedural = {}; }
+</script>
+</html>

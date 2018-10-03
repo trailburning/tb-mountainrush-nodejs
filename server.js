@@ -10,8 +10,7 @@ app.use('/static-assets',express.static(__dirname + '/static-assets'));
 
 app.set('view engine', 'ejs');
 
-const DATABASE_URL = process.env.CLEARDB_DATABASE_URL || 'empty'
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8000;
 
 routes(app);
 

@@ -366,6 +366,17 @@ define([
             changeState(STATE_FUNDRAISING_CREATE);
           }
           else {
+            var jsonWelcomeFields = registerWelcomeConnectedView.getFields();
+
+            var playerID = jsonWelcomeFields.playerID;
+            if (jsonCurrPlayer) {
+              playerID = jsonCurrPlayer.id;
+            }
+
+            var jsonFields = registerFundraisingSigninView.getFields();
+            jsonFields.playerID = playerID;
+            registerFundraisingSigninView.setFields(jsonFields);
+
             registerFundraisingSigninView.render({ jsonCampaign: jsonCampaign });
             showView('#register-fundraising-signin-view');
           }
