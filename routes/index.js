@@ -120,6 +120,29 @@ function getCampaignDataByGame(gameID, callback) {
   });
 }
 
+function getSocialImage(gameID, callback) {
+  var request = require('request');
+
+  var url = MRAPIURL + 'game/' + gameID +'/socialimage';
+  console.log(url);
+  request.get({
+      url: url,
+      json: true,
+      headers: {'User-Agent': 'request'}
+    }, (err, res, data) => {
+      if (err) {
+        console.log('Error:', err);
+        return callback(err, null);
+      } else if (res.statusCode !== 200) {
+        console.log('Status:', res.statusCode);
+        return callback(err, null);
+      } else {
+        // data is already parsed as JSON:
+        return callback(err, data);
+      }
+  });
+}
+
 module.exports = function(app) {
   app.get('/', function(req, res) {
     var defs = getDefs(req);
@@ -129,12 +152,22 @@ module.exports = function(app) {
     });
   });
 
-  app.get('/campaign/:campaignID', function(req, res) {
+  app.get('/campaign/:campaignID/game/:gameID/fundraise', function(req, res) {
     var defs = getDefs(req);
+    defs.GameID = req.params.gameID;
+    defs.PageRegisterState = 'fundraise';
+    defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
 
     getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
-      defs.ImageCopyright = '© naturepl.com / Andy Rouse / WWF';
+      res.render('pages/register', {Defs: defs, Campaign: campaign});
+    });
+  });
 
+  app.get('/campaign/:campaignID', function(req, res) {
+    var defs = getDefs(req);
+    defs.ImageCopyright = '© naturepl.com / Andy Rouse / WWF';
+
+    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
       res.render('pages/campaign', {Defs: defs, Campaign: campaign});
     });
   });
@@ -147,18 +180,18 @@ module.exports = function(app) {
     defs.FundraisingDonationID = '';
 
     // is there a passed donation id?
-/*    
-    if ($this->getRequest()->getVar('jgDonationId')) {
-      $this->FundraisingDonationID = $this->getRequest()->getVar('jgDonationId');
+    if (req.query.jgDonationId) {
+      defs.FundraisingDonationID = req.query.jgDonationId;
     }
-*/
+
     getCampaignDataByGame(defs.GameID, function(err, campaign){ 
-      res.render('pages/game', {Defs: defs, Campaign: campaign});
+      // get social image
+      getSocialImage(defs.GameID, function(err, strImage){ 
+        defs.SocialImage = strImage;
+
+        res.render('pages/game', {Defs: defs, Campaign: campaign});
+      });
     });
-/*
-    $url = $this->HomePage->MRAPIURL . 'game/' . $this->GameID . '/socialimage';
-    $this->SocialImage = file_get_contents($url);
-*/
   });
 
   app.get('/game/:gameID/player/:playerID', function(req, res) {
@@ -169,18 +202,28 @@ module.exports = function(app) {
     defs.FundraisingDonationID = '';
 
     // is there a passed donation id?
-/*    
-    if ($this->getRequest()->getVar('jgDonationId')) {
-      $this->FundraisingDonationID = $this->getRequest()->getVar('jgDonationId');
+    if (req.query.jgDonationId) {
+      defs.FundraisingDonationID = req.query.jgDonationId;
     }
-*/
+
     getCampaignDataByGame(defs.GameID, function(err, campaign){ 
-      res.render('pages/game', {Defs: defs, Campaign: campaign});
+      // get social image
+      getSocialImage(defs.GameID, function(err, strImage){ 
+        defs.SocialImage = strImage;
+
+        res.render('pages/game', {Defs: defs, Campaign: campaign});
+      });
     });
-/*
-    $url = $this->HomePage->MRAPIURL . 'game/' . $this->GameID . '/socialimage';
-    $this->SocialImage = file_get_contents($url);
-*/
+  });
+
+  app.get('/campaign/:campaignID/profile', function(req, res) {
+    var defs = getDefs(req);
+    defs.PageRegisterState = 'register';
+    defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
+
+    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+      res.render('pages/register', {Defs: defs, Campaign: campaign});
+    });
   });
 
 };
