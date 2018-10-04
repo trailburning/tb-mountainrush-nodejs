@@ -310,7 +310,25 @@ module.exports = function(app) {
     defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
 
     getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
-      res.render('pages/register', {Defs: defs, Campaign: campaign});
+      getCampaignProviderConnectData(req.params.campaignID, function(err, data){ 
+        defs.StravaOauthConnectURL = data.oauthConnectURL;
+        
+        res.render('pages/register', {Defs: defs, Campaign: campaign});
+      });        
+    });
+  });
+
+  app.get('/campaign/:campaignID/invite', function(req, res) {
+    var defs = getDefs(req);
+    defs.PageRegisterState = 'invite';
+    defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
+
+    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+      getCampaignProviderConnectData(req.params.campaignID, function(err, data){ 
+        defs.StravaOauthConnectURL = data.oauthConnectURL;
+        
+        res.render('pages/register', {Defs: defs, Campaign: campaign});
+      });        
     });
   });
 
