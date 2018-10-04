@@ -295,7 +295,7 @@ module.exports = function(app) {
           res.render('pages/register', {Defs: defs, Campaign: campaign});
         });
       } else {
-        getCampaignProviderConnectData(req.params.campaignID, activityProviderCode, function(err, data){ 
+        getCampaignProviderConnectData(req.params.campaignID, function(err, data){ 
           defs.StravaOauthConnectURL = data.oauthConnectURL;
           
           res.render('pages/register', {Defs: defs, Campaign: campaign});
