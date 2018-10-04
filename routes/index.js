@@ -78,7 +78,7 @@ function getCampaignDataByCampaign(campaignID, callback) {
   var request = require('request');
 
   var url = MRAPIURL + 'campaign/' + campaignID;
-  console.log(url);
+//  console.log(url);
   request.get({
       url: url,
       json: true,
@@ -101,7 +101,7 @@ function getCampaignDataByGame(gameID, callback) {
   var request = require('request');
 
   var url = MRAPIURL + 'game/' + gameID + '/campaign';
-  console.log(url);
+//  console.log(url);
   request.get({
       url: url,
       json: true,
@@ -124,7 +124,7 @@ function getCampaignProviderConnectData(campaignID, callback) {
   var request = require('request');
 
   var url = MRAPIURL + 'campaign/' + campaignID + '/strava/oauth';
-  console.log(url);
+//  console.log(url);
   request.get({
       url: url,
       json: true,
@@ -147,7 +147,7 @@ function getCampaignProviderConnectDataAndToken(campaignID, activityProviderCode
   var request = require('request');
 
   var url = MRAPIURL + 'campaign/' + campaignID + '/strava/code/' + activityProviderCode + '/token';
-  console.log(url);
+//  console.log(url);
   request.get({
       url: url,
       json: true,
@@ -170,7 +170,7 @@ function getSocialImage(gameID, callback) {
   var request = require('request');
 
   var url = MRAPIURL + 'game/' + gameID +'/socialimage';
-  console.log(url);
+//  console.log(url);
   request.get({
       url: url,
       json: true,
@@ -295,7 +295,7 @@ module.exports = function(app) {
           res.render('pages/register', {Defs: defs, Campaign: campaign});
         });
       } else {
-        getCampaignProviderConnectData(req.params.campaignID, activityProviderCode, function(err, data){ 
+        getCampaignProviderConnectData(req.params.campaignID, function(err, data){ 
           defs.StravaOauthConnectURL = data.oauthConnectURL;
           
           res.render('pages/register', {Defs: defs, Campaign: campaign});
