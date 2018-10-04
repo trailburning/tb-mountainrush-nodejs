@@ -120,6 +120,52 @@ function getCampaignDataByGame(gameID, callback) {
   });
 }
 
+function getCampaignProviderConnectData(campaignID, callback) {
+  var request = require('request');
+
+  var url = MRAPIURL + 'campaign/' + campaignID + '/strava/oauth';
+  console.log(url);
+  request.get({
+      url: url,
+      json: true,
+      headers: {'User-Agent': 'request'}
+    }, (err, res, data) => {
+      if (err) {
+        console.log('Error:', err);
+        return callback(err, null);
+      } else if (res.statusCode !== 200) {
+        console.log('Status:', res.statusCode);
+        return callback(err, null);
+      } else {
+        // data is already parsed as JSON:
+        return callback(err, data);
+      }
+  });
+}
+
+function getCampaignProviderConnectDataAndToken(campaignID, activityProviderCode, callback) {
+  var request = require('request');
+
+  var url = MRAPIURL + 'campaign/' + campaignID + '/strava/code/' + activityProviderCode + '/token';
+  console.log(url);
+  request.get({
+      url: url,
+      json: true,
+      headers: {'User-Agent': 'request'}
+    }, (err, res, data) => {
+      if (err) {
+        console.log('Error:', err);
+        return callback(err, null);
+      } else if (res.statusCode !== 200) {
+        console.log('Status:', res.statusCode);
+        return callback(err, null);
+      } else {
+        // data is already parsed as JSON:
+        return callback(err, data);
+      }
+  });
+}
+
 function getSocialImage(gameID, callback) {
   var request = require('request');
 
@@ -230,6 +276,31 @@ module.exports = function(app) {
 
         res.render('pages/game', {Defs: defs, Campaign: campaign});
       });
+    });
+  });
+
+  app.get('/campaign/:campaignID/register', function(req, res) {
+    var defs = getDefs(req);
+    defs.PageRegisterState = 'register';
+    defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
+
+    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+      // do we have a connect code from Strava?
+      if (req.query.code) {
+        // Use code to get token
+        getCampaignProviderConnectDataAndToken(req.params.campaignID, req.query.code, function(err, data){ 
+          defs.StravaOauthConnectURL = data.oauthConnectURL;
+          defs.StravaToken = data.token;
+          
+          res.render('pages/register', {Defs: defs, Campaign: campaign});
+        });
+      } else {
+        getCampaignProviderConnectData(req.params.campaignID, activityProviderCode, function(err, data){ 
+          defs.StravaOauthConnectURL = data.oauthConnectURL;
+          
+          res.render('pages/register', {Defs: defs, Campaign: campaign});
+        });        
+      }
     });
   });
 

@@ -24,7 +24,7 @@ var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
 var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
 var CAMPAIGN_INVITATION_CODE = '<%= Campaign.CampaignInvitationCode %>';
 var GAME_ID = '<%= Defs.GameID %>';
-var PLAYER_TOKEN = '<%= Defs.token %>';
+var PLAYER_TOKEN = '<%= Defs.StravaToken %>';
 var REGISTER_STATE = '<%= Defs.PageRegisterState %>';
 var TEST = '<%= Defs.Test %>';
 </script>
@@ -148,7 +148,7 @@ var TEST = '<%= Defs.Test %>';
   Clicking 'Connect with Strava' means that you agree to our <a href="<%= Defs.BaseHTTPURL %>/campaign/<%= Campaign.CampaignID %>/privacy" class="link">privacy policy</a>.
   </p>
   <p>
-  <div class="connect"><a href="<%= Defs.oauth_connect %>"><img src="static-assets/images/btn_strava_connectwith_orange.png"></a></div>
+  <div class="connect"><a href="<%= Defs.StravaOauthConnectURL %>"><img src="/static-assets/images/btn_strava_connectwith_orange.png"></a></div>
 </script>
 
 <script type="text/template" id="registerWelcomeConnectedViewTemplate">
