@@ -172,6 +172,23 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/demo', function(req, res) {
+    var defs = getDefs(req);
+    defs.Demo = 1;
+    defs.PlayerID = null;
+    defs.GameID = 'l6x4weZBDV';
+    defs.FundraisingDonationID = '';
+
+    getCampaignDataByGame(defs.GameID, function(err, campaign){ 
+      // get social image
+      getSocialImage(defs.GameID, function(err, strImage){ 
+        defs.SocialImage = strImage;
+
+        res.render('pages/game', {Defs: defs, Campaign: campaign});
+      });
+    });
+  });
+
   app.get('/game/:gameID', function(req, res) {
     var defs = getDefs(req);
     defs.Demo = 0;
