@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include ../partials/includes.ejs %>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<% if (Campaign.CampaignFundraising) { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/web_platform.css' rel='stylesheet' />
+<% } %>
+<link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<link href='/static-assets/css/datepicker.css' rel='stylesheet' />
+<link href='/static-assets/css/register.css' rel='stylesheet' />
+<% if (Campaign.CampaignFundraising) { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/register.css' rel='stylesheet' />
+<% } %>
+<% include ../partials/analyticsFBPixel.ejs %>
+</head>
+<body>
+<script>
+var APP = 'RegisterApp';
+var GAME_API_URL = '<%= Defs.MRAPIURL %>';
+var HOST_URL = '<%= Defs.BaseHTTPURL %>';
+var CLIENT_ID = '<%= Campaign.ClientID %>';
+var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
+var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
+var CAMPAIGN_INVITATION_CODE = '<%= Campaign.CampaignInvitationCode %>';
+var GAME_ID = '<%= Defs.GameID %>';
+var PLAYER_TOKEN = '<%= Defs.StravaToken %>';
+var REGISTER_STATE = '<%= Defs.PageRegisterState %>';
+var TEST = '<%= Defs.Test %>';
+</script>
+
+<div class="container-fluid nopadding">
+  <div id="page-view">
+    <% if (Campaign.CampaignTemplate == 'default') { %>
+      <% include ../partials/header.ejs %>
+    <% } else { %>
+      <% include ../partials/header-wwfuk.ejs %>
+    <% } %>
+
+    <div id="hero-view">
+      <div class="image fade_on_ready">
+      <% if (Campaign.CampaignTemplate == 'default') { %>
+        <img class="scale" src="https://tbassets2.imgix.net/images/brands/mountainrush/pages/olivier-miche-102259-unsplash.jpg?fm=jpg&q=80&w=1280">
+      <% } else { %>
+        <img class="scale" src="https://tbassets2.imgix.net/images/brands/mountainrush/clients/<%= Campaign.CampaignTemplate %>/pages/WW267199.jpg?fm=jpg&q=80&w=1280">
+      <% } %>
+      </div>
+    </div>
+
+    <div id="register-process-view">
+      <div id="register-loader-view" class="loader-view">
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+        </div>
+      </div>
+
+      <div class="register-views">
+        <div class="register-view" id="register-invitation-view"></div>
+        <div class="register-view" id="register-welcome-view"></div>
+        <div class="register-view" id="register-welcome-connected-view"></div>
+        <div class="register-view" id="register-welcome-preferences-view"></div>
+        <div class="register-view" id="register-game-create-view"></div>
+        <div class="register-view" id="register-game-created-view"></div>
+        <div class="register-view" id="register-game-invite-view"></div>
+        <div class="register-view" id="register-games-view"></div>
+        <div class="register-view" id="register-fundraising-create-view"></div>
+        <div class="register-view" id="register-fundraising-created-view"></div>
+        <div class="register-view" id="register-fundraising-signin-view"></div>
+        <div class="register-view" id="register-fundraising-signup-view"></div>
+        <div class="register-view" id="register-fundraising-page-create-view"></div>
+        <div class="register-view" id="register-fundraising-page-created-view"></div>
+        <div class="support">
+        <% if (Campaign.CampaignTemplate != 'default') { %>
+          <%= Campaign.ClientShortName %>'s <%= Campaign.CampaignName %> campaign is brought to you by <a href="http://mountainrush.co.uk/" class="link" target="_blank">Mountain Rush</a>.<br/>
+        <% } %>
+        Please contact Mountain Rush <a class="link" href="mailto:support@mountainrush.co.uk">support</a> if you have any questions.
+        </div>
+      </div>
+
+      <div class="step-container">
+        <div class="step">
+          <div class="step-image">
+          <% if (Campaign.CampaignTemplate == 'default') { %>
+            <img class="step-player active" src="/static-assets/images/ui/player.svg">
+            <img class="step-challenge" src="/static-assets/images/ui/challenge.svg">
+            <img class="step-fundraising" src="/static-assets/images/ui/fundraising.svg">
+          <% } else { %>
+            <img class="step-player active" src="/static-assets/images/<%= Campaign.CampaignTemplate %>/ui/player.svg">
+            <img class="step-challenge" src="/static-assets/images/<%= Campaign.CampaignTemplate %>/ui/challenge.svg">
+            <img class="step-fundraising" src="/static-assets/images/<%= Campaign.CampaignTemplate %>/ui/fundraising.svg">
+          <% } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-sticker-container">
+        <div class="campaign-sticker">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if (Campaign.CampaignTemplate == 'default') { %>
+    <% include ../partials/footer.ejs %>
+  <% } else { %>
+    <% include ../partials/footer-wwfuk.ejs %>
+  <% } %>
+</div>
+
+<div id="mobileTest" class="visible-xs"></div>
+<div id="demo-video-view"></div>
+
+<script type="text/template" id="registerInvitationViewTemplate">
+  <h1>Welcome to {{= campaign.name }}</h1>
+  <div class="intro-text centre-text">
+  Shhh... You're one of the first to test <%= Campaign.ClientShortName %>'s new virtual event. Thank you! Currently registration for Climb For Your World is by invitation only. 
+  </div>
+
+  <form>
+  <div class="form-group">
+    <div class="form-label"><label>Your Code</label></div><input class="field form-control required" id="invitation-code">
+    <div class="help-block">Please fill in your code</div>
+  </div>
+  <div class="form-button">
+  <button type="submit" class="btn mr-btn btn-primary invite-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Please Wait">Submit Code</button>
+  </div>
+  <div class="err">
+    <div class="msg" data-msg="invalid-code">
+    <p>Sorry, your invitation code is not recognised</p>
+    </div>
+  </div>
+  </form>
+</script>
+
+<script type="text/template" id="registerWelcomeViewTemplate">
+  <h1>Connect to Strava</h1>
+  <div class="intro-text centre-text">
+  <p>Track your hiking, cycling or running activities recorded by the <a class="link" href="https://www.strava.com/mobile" target="_blank">Strava App</a> in {{= campaign.name }} challenges.</p>
+  <% if (Defs.PageRegisterState == 'invite') { %>
+    Connect below to view your <strong>invite</strong> and get started!
+  <% } else { %>
+    Connect below to get started!
+  <% } %>
+  </p>
+  </div>
+  <p>
+  Clicking 'Connect with Strava' means that you agree to our <a href="<%= Defs.BaseHTTPURL %>/campaign/<%= Campaign.CampaignID %>/privacy" class="link">privacy policy</a>.
+  </p>
+  <p>
+  <div class="connect"><a href="<%= Defs.StravaOauthConnectURL %>"><img src="/static-assets/images/btn_strava_connectwith_orange.png"></a></div>
+</script>
+
+<script type="text/template" id="registerWelcomeConnectedViewTemplate">
+  {{ var firstname = player.firstname }}
+
+  {{ if (!firstname) { }}
+    {{ firstname = 'unknown' }}
+  {{ } }}
+
+  <h1>Thanks for signing up</h1>
+  <% include ../partials/registerWelcome.ejs %>
+
+  {{ if (currGame) { }}
+    <div class="challenge">
+      <div class="intro-text centre-text">
+      You have a {{= currGame.name }} <span class="lowercase">{{= currGame.type }}</span> challenge.
+      </div>  
+      <div class="btns">
+      {{ if (currGame.game_state == 'active') { }}
+        <a href="<%= Defs.BaseHTTPURL %>/game/{{= currGame.game }}" class="btn mr-btn">View Active Challenge</a>
+      {{ } else if (currGame.game_state == 'pending') { }}
+        <a href="<%= Defs.BaseHTTPURL %>/game/{{= currGame.game }}" class="btn mr-btn">View Pending Challenge</a>
+      {{ } else { }}
+        <a href="<%= Defs.BaseHTTPURL %>/game/{{= currGame.game }}" class="btn mr-btn">View Challenge</a>
+      {{ }; }}
+      </div>
+    </div>
+
+    {{ if (currGame.multiplayer && (currGame.ownerPlayerID == player.id)) { }}
+      <span class="link link-invite">Invite friends</span> to your challenge!
+    {{ }; }}
+    
+    <% if (Campaign.CampaignFundraisingProvider) { %>
+      {{ if (currGame.fundraising_goal && currGame.fundraising_goal > 0) { }}
+        <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
+          <div class="text centre-text">
+          You have successfully added fundraising to your challenge and created a <a href="{{= campaign.fundraising_page }}{{= currGame.fundraising_page }}" class="link" target="_blank">JustGiving fundraising page</a>.
+          </div>
+        <% } %>
+      {{ } else { }}
+        <% include ../partials/registerAddFundraisingTemplate.ejs %>
+      {{ }; }}
+    <% } %>
+
+  {{ } else { }}
+    <div class="challenge">
+    {{ if (player.invitations.length) { }}
+      {{ var invitation = player.invitations[0]; }}
+
+      <div class="invitation">
+        <div class="invite">
+          <div class="intro-text centre-text">
+          You have a <strong>{{= invitation.name }} <span class="lowercase">{{= invitation.type }}</span></strong> challenge invitation from <strong>{{= invitation.owner[0].firstname }} {{= invitation.owner[0].lastname }}</strong>!
+          </div>
+
+          <div class="invitation-accept">
+            <div class="btns">
+            <span class="btn mr-btn btn-primary btn-accept-invite" data-game-id="{{= invitation.gameID }}" data-id="{{= invitation.id }}">Accept</span>&nbsp;<span class="btn mr-btn btn-reject-invite" data-game-id="{{= invitation.gameID }}" data-id="{{= invitation.id }}">Reject</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="invitation-accepted">
+          <div class="intro-text centre-text">
+          You now have a <strong>{{= invitation.name }} <span class="lowercase">{{= invitation.type }}</span></strong> challenge.
+          </div>  
+          <div class="btns">
+          {{ if (invitation.game_state == 'active') { }}
+            <a href="<%= Defs.BaseHTTPURL %>/game/{{= invitation.gameID }}" class="btn mr-btn">View Active Challenge</a>
+          {{ } else if (invitation.game_state == 'pending') { }}
+            <a href="<%= Defs.BaseHTTPURL %>/game/{{= invitation.gameID }}" class="btn mr-btn">View Pending Challenge</a>
+          {{ } else { }}
+            <a href="<%= Defs.BaseHTTPURL %>/game/{{= invitation.gameID }}" class="btn mr-btn">View Challenge</a>
+          {{ }; }}
+          </div>
+        </div>
+
+        <div class="invitation-rejected">
+          <div class="intro-text centre-text">
+          Challenge rejected! <br/>You can now create your own challenge.
+          </div>
+          <div class="btns">
+            <span class="btn mr-btn btn-primary btn-create">Create Challenge</span>
+          </div>
+        </div>
+      </div>
+    {{ } else { }}
+      <div class="intro-text centre-text">
+      You're now ready to create your climb challenge!
+      </div>
+      <div class="btns">
+        <span class="btn mr-btn btn-primary btn-create">Create Challenge</span>
+      </div>
+    {{ }; }}
+    </div>
+  {{ }; }}
+
+  {{ var completeGames = _.where(player.games, {game_state:'complete'}) }}
+
+  {{ if (completeGames.length) { }}
+    <div class="section">
+      <div class="form-block">
+      <h2>Previous Challenge{{ if (completeGames.length > 1) { }}s{{ }; }}</h2>
+      <ul class="form-field pills">
+      {{ _.each(completeGames, function(completeGame, index) { }}
+        <li><a href="<%= Defs.BaseHTTPURL %>/game/{{= completeGame.game }}" class="pill">{{= completeGame.name }} {{= completeGame.type }}</a></li>
+      {{ }); }}
+      </ul>
+      </div>
+    </div>
+  {{ }; }}
+</script>
+
+<script type="text/template" id="registerWelcomePreferencesViewTemplate">
+  <h1>Challenge Preferences</h1>
+  <form>
+  <div class="form-check">
+    <button type="button" id="preferences-game-email" class="btn btn-sm btn-toggle {{ if (player.game_notifications == '1') { }}active{{ }; }}" data-toggle="button" aria-pressed="false" autocomplete="off">
+      <div class="handle"></div>
+    </button>
+    <label>Activity email during challenge</label>
+  </div>
+  <div class="btns">
+  <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Please Wait">Update Preferences</button>
+  </div>
+  </form>
+
+  <% if (Defs.PageRegisterState != 'prefs') { %>
+    &lt; <span class="link link-back">go back</span>
+  <% } %>
+</script>
+
+<script type="text/template" id="registerGamesViewTemplate">
+{{ if (games.length) { }}
+  <p>Games</p>
+  {{ _.each(games, function(game, index) { }}
+    <div class="game">
+    <strong>{{= game.campaign_name }}</strong> - <a href="<%= Defs.BaseHTTPURL %>/game/{{= game.game }}" target="_blank">{{= game.name }}, {{= game.region }}</a> ({{= game.game_state }})
+
+    {{ if (game.fundraising_pageID) { }}
+      <p><a href="{{= game.campaign_fundraising_page }}{{= game.fundraising_page }}" target="_blank">Your Fundraising Page</a></p>
+      <p><a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= game.fundraising_pageID }}?amount=10.00&currency=GBP&reference=testref&exitUrl=http%3A%2F%2Fmountainrush.co.uk%3FjgDonationId%3DJUSTGIVING-DONATION-ID" target="_blank">Donate 10</a></p>
+    {{ }; }}
+
+    </div>
+  {{ }); }}
+{{ }; }}
+</script>
+
+<script type="text/template" id="registerGameCreateViewTemplate">
+  <h1>Create Challenge</h1>
+  <div class="intro-text centre-text">
+  Choose your challenge preferences
+  </div>
+
+  <form>
+    <div class="form-block">
+      {{ if (gameLevels.length > 1) { }}
+        <h2>How much ascent are you up for?</h2>
+        <ul class="form-field pills" data-id="level">
+        {{ _.each(gameLevels, function(gameLevel, index) { }}
+          <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameLevel.id }}" data-season-id="{{= gameLevel.seasonDefault }}">{{= gameLevel.name }} {{= gameLevel.ascent }}m</span></li>
+        {{ }); }}
+        </ul>
+      {{ } else { }}
+        <h2>You will be ascending:</h2>
+        <ul class="form-field pills" data-id="level">
+        {{ _.each(gameLevels, function(gameLevel, index) { }}
+          <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameLevel.id }}" data-season-id="{{= gameLevel.seasonDefault }}">{{= gameLevel.name }} {{= gameLevel.ascent }}m</span></li>
+        {{ }); }}
+        </ul>
+      {{ } }}
+    </div>
+
+    <div class="form-block">
+      {{ if (gameOptions.types.length > 1) { }}
+        <h2>What's your activity of choice?</h2>
+        <ul class="form-field pills" data-id="type">
+        {{ _.each(gameOptions.types, function(gameActivityType, index) { }}
+          <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameActivityType.name }}">{{= gameActivityType.description }}</span></li>
+        {{ }); }}
+        </ul>
+      {{ } else { }}
+        <h2>Your activity will be:</h2>
+        <ul class="form-field pills" data-id="type">
+        {{ _.each(gameOptions.types, function(gameActivityType, index) { }}
+          <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameActivityType.name }}">{{= gameActivityType.description }}</span></li>
+        {{ }); }}
+        </ul>
+      {{ } }}      
+    </div>
+
+    <div class="form-block">
+      <h2>How long would you like to reach the summit?</h2>
+      <ul class="form-field pills" data-id="duration">
+        {{ _.each(gameOptions.durations, function(gameDuration, index) { }}
+          <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameDuration.days }}">{{= gameDuration.description }}</span></li>
+        {{ }); }}
+      </ul>
+    </div>
+
+    <div class="form-block">
+      <h2>When will you start your challenge?</h2>
+      <div class="form-field">
+        <div class="search-date-field"><input class="field form-control date-field" type="text" id="dpd1"></div>
+      </div>
+    </div>
+
+    <div class="form-block">
+    <button type="submit" class="btn mr-btn btn-primary create-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Please Wait">Create Challenge</button>
+    </div>
+  </form>
+</script>
+
+<script type="text/template" id="registerGameCreatedViewTemplate">
+  <% if (Campaign.CampaignFundraisingProvider) { %>
+    <h1>You're nearly ready!</h1>
+    <div class="intro-text centre-text">Your challenge has been set up and will start on:</div>
+  <% } else { %>
+    <h1>{{= fields.type }} Challenge ready!</h1>
+    <div class="intro-text centre-text">Your challenge is now ready and will start on:</div>
+  <% } %>
+
+  <div class="calendar">
+    <div class="day">{{= fields.gameStartFormatted.day }}</div>
+    <div class="date">{{= fields.gameStartFormatted.date }}</div>
+    <div class="month">{{= fields.gameStartFormatted.month }}</div>
+  </div>
+
+  <div class="btns">
+    <a href="<%= Defs.BaseHTTPURL %>/game/{{= fields.gameID }}" class="btn mr-btn">View Challenge</a>
+  </div>
+
+  {{ if (fields.multiplayer) { }}
+    <span class="link link-invite">Invite friends</span> to your challenge!
+  {{ }; }}
+
+  <% if (Campaign.CampaignFundraisingProvider) { %>
+    <% include ../partials/registerAddFundraisingTemplate.ejs %>
+  <% } else { %>
+    <div class="social">
+      <h2>Get social</h2>
+      <div class"text">
+      Let everyone know what you're doing and share!
+      </div>
+    </div>
+
+    <div class="btns">
+    <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn double" target="_blank"><div>Share on facebook</div><div><i class="fa fa-facebook"></i></div></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20Mountain%20Rush%20challenge%20-%20http://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn double" target="_blank"><div>Share on Twitter</div><div><i class="fa fa-twitter"></i></div></a>
+    </div>
+  <% } %>
+</script>
+
+<script type="text/template" id="registerGameInviteViewTemplate">
+  <h1>Invite Friends</h1>
+  <div class="intro-text centre-text">
+  Invite friends to join your challenge!
+  </div>
+
+  <form>
+  <div class="info">
+    <div class="msg" data-msg="invite-sent">
+    <p>Invitation sent!</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-label"><label>Friend's Name</label></div><input class="field form-control required" id="invite-name">
+    <div class="help-block">Please fill in your friend's name</div>
+  </div>
+  <div class="form-group">
+    <div class="form-label"><label>Friend's Email</label></div><input class="field form-control required" id="invite-email">
+    <div class="help-block">Please fill in your friend's email</div>
+  </div>
+  <div class="form-button">
+  <button type="submit" class="btn mr-btn btn-primary invite-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Please Wait">Invite Friend</button>
+  </div>
+  </form>
+  &lt; <span class="link link-back">go back</span>
+</script>
+
+<script type="text/template" id="registerFundraisingCreateViewTemplate">
+  <h1>Fundraising</h1>
+  <div class="intro-text centre-text">You're nearly there! Set your target and tell us if {$Campaign.ClientShortName} can keep you informed about their conservation work and other ways you can help.</div>
+
+  <form>
+  <div class="form-group">
+    <div class="form-label"><label>Target {{= campaign.fundraising_currency_symbol }}</label></div><input class="field form-control required" data-min-required="{$Campaign.CampaignFundraisingMinimum}" type="Number" id="fundraising-page-create-targetamount">
+    <div class="help-block">Please set at least {{= campaign.fundraising_currency_symbol }}{$Campaign.CampaignFundraisingMinimum} as your fundraising target</div>
+  </div>
+  <div class="form-group">
+    <div class="form-info">I’m happy for {{= campaign.client_name }} to keep me informed, by email, about the impact of my fundraising and other ways to stay involved including future events, campaigns and appeals.</div>
+  </div>
+  <div class="form-container">
+    <div class="form-check">
+      <div class="form-label"></div><label class="form-check-label">
+      <input class="form-check-input required" type="radio" name="fundraising-receive-charity-email" value="1">
+      <span class="terms">Yes please, opt me in</span></label>
+    </div>
+    <div class="form-check">
+      <div class="form-label"></div><label class="form-check-label">
+      <input class="form-check-input required" type="radio" name="fundraising-receive-charity-email" value="0">
+      <span class="terms">No thanks, opt me out</span></label>
+    </div>
+    <div class="help-block">Please select your communication preference</div>
+    <div class="form-group">
+      <div class="form-info form-note ">NOTE: {{= campaign.client_name }} will receive your details and may need to contact you to support you in this fundraising effort. You can update your preferences directly with {{= campaign.client_name }} at any time.</div>
+    </div>    
+  </div>
+
+  <div class="form-button">
+  <button type="submit" class="btn mr-btn btn-primary create-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Please Wait">Complete Fundraising Set-up</button>
+  </div>
+
+  <div class="err">
+  </div>
+  </form>
+</script>
+
+<script type="text/template" id="registerFundraisingCreatedViewTemplate">
+  <h1>You're ready!</h1>
+  <div class="intro-text centre-text">Thank you, you've successfully added fundraising to your challenge, now it's time to {{= campaign.name }}!</div>
+
+  <div class="btns">
+    <a href="<%= Defs.BaseHTTPURL %>/game/{{= fields.gameID }}" class="btn mr-btn">View Challenge</a>
+  </div>
+
+  <div class="social">
+    <h2>Get social</h2>
+    <div class"text">
+    Let everyone know what you're doing and share!
+    </div>
+  </div>
+
+  <div class="btns">
+  <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/{{= fields.gameID }}/player/{{= fields.playerID}}/goal/{{= fields.targetAmount}}" class="btn mr-btn btn-primary double" target="_blank"><div>Share on facebook</div><div><i class="fa fa-facebook"></i></div></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20Mountain%20Rush%20challenge%20-%20http://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn btn-primary double" target="_blank"><div>Share on Twitter</div><div><i class="fa fa-twitter"></i></div></a>
+  </div>
+</script>
+
+<script type="text/template" id="registerFundraisingSigninViewTemplate">
+  <h1>Fundraising</h1>
+  <div class="intro-text centre-text">To support {$Campaign.ClientShortName}'s vital conservation work while you {{= campaign.name }}, you need to be registered with our fundraising partner <a class="link" href="https://www.justgiving.com/" target="_blank">JustGiving</a>.</div>
+
+  <form>
+  <div class="form-group">
+    <div class="form-label"><label>Email address</label></div><input class="field form-control required" id="fundraising-signin-email">
+    <div class="help-block">Please fill in your email</div>
+  </div>
+  <div class="form-group">
+    <div class="form-label"><label>Password</label></div><input type="password" class="field form-control required" id="fundraising-signin-password">
+    <div class="help-block">Please fill in your password</div>
+  </div>
+
+  <div class="form-button">
+  <button type="submit" class="btn mr-btn btn-primary signin-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Please Wait">Sign in to JustGiving</button>
+  </div>  
+
+  <div class="err">
+  </div>
+  <div class="msg">
+  <p>
+  Don't have a JustGiving account? <span class="register-link link">Register</span> now
+  <br/>
+  Forgotten your JustGiving password?  <a class="link" href="https://www.justgiving.com/signin" target="_blank">Reset</a> it on JustGiving
+  </p>
+  </div>
+  </form>
+</script>
+
+<script type="text/template" id="registerFundraisingSignupViewTemplate">
+  <h1>Fundraising</h1>
+  <div class="intro-text centre-text">To help you raise funds for {$Campaign.ClientShortName} while you {{= campaign.name }} please fill in your details and we will create a <a class="link" href="https://www.justgiving.com/" target="_blank">JustGiving</a> profile for you.</div>
+
+  <form>
+  <div class="warning">
+    <div class="msg" data-msg="not-registered">
+    <p>The email address is not registered with JustGiving or the password is incorrect.  Please try registering below.</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-label"><label>Email address</label></div><input class="field form-control required" id="fundraising-register-email">
+    <div class="help-block">Please fill in your email</div>
+  </div>
+  <div class="form-group">
+    <div class="form-label"><label>Password</label></div><input type="password" class="field form-control required" id="fundraising-register-password">
+    <div class="help-block">Please fill in your password</div>
+  </div>
+<!--  
+  <div class="form-group">
+    <div class="form-label"><label>Title</label></div><select class="field form-control required" id="fundraising-register-title">
+      <option>Select a title</option>
+      <option>Mr</option>
+      <option>Mrs</option>
+      <option>Miss</option>
+      <option>Ms</option>
+      <option>Dr</option>
+      <option>Other</option>
+    </select>
+  </div>
+-->  
+  <div class="form-group">
+    <div class="form-label"><label>First Name</label></div><input class="field form-control required" id="fundraising-register-firstname">
+    <div class="help-block">Please fill in your firstname</div>
+  </div>
+  <div class="form-group">
+    <div class="form-label"><label>Last Name</label></div><input class="field form-control required" id="fundraising-register-lastname">
+    <div class="help-block">Please fill in your lastname</div>
+  </div>
+<!--    
+  <div class="form-group">
+    <div class="form-label"><label>Address Line 1</label></div><input class="field form-control required" id="fundraising-register-addressline1">
+    <div class="help-block">Please fill in your address</div>
+  </div>
+  <div class="form-group">
+    <div class="form-label"><label>Address Line 2</label></div><input class="field form-control" id="fundraising-register-addressline2">
+  </div>
+  <div class="form-group">
+    <div class="form-label"><label>Town/City</label></div><input class="field form-control required" id="fundraising-register-town">
+    <div class="help-block">Please fill in your town/city</div>
+  </div>
+  <div class="form-group">
+    <div class="form-label"><label>County/State</label></div><input class="field form-control" id="fundraising-register-state">
+  </div>
+  <div class="form-group">
+    <div class="form-label"><label>Postcode/Zipcode</label></div><input class="field form-control required" id="fundraising-register-postcode">
+    <div class="help-block">Please fill in your postcode/zipcode</div>
+  </div>
+  <div class="form-group">
+    <div class="form-label"><label>Country</label></div><input class="field form-control required" id="fundraising-register-country">
+    <div class="help-block">Please fill in your country</div>
+  </div>
+-->  
+  <div class="form-check">
+    <div class="form-label"></div><label class="form-check-label"><input type="checkbox" class="form-check-input required" value="1" id="fundraising-accept-conditions"><span class="terms">Accept <a class="link" href="https://www.justgiving.com/info/terms-of-service-versions/terms-of-service-v10" target="_blank">Terms and Conditions</a></span></label>
+    <div class="help-block">Please accept the terms and conditions</div>
+  </div>
+
+  <div class="form-button">
+  <button type="submit" class="btn mr-btn btn-primary register-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Please Wait">Register with JustGiving</button>
+  </div>
+
+  <div class="err">
+    <div class="msg" data-msg="already-registered">
+    <p>The email address is already registered with JustGiving</p>
+    </div>
+    <div class="msg" data-msg="jg-internal-err">
+    <p>Internal JustGiving error, please contact <a href="mailto:support@trailburning.com">support</a></p>
+    </div>
+  </div>
+  <div class="msg">
+  <p>
+  Already have a JustGiving account? <span class="signin-link link">Sign in</span>
+  <br/>
+  Forgotten your JustGiving password? <a class="link" href="https://www.justgiving.com/signin" target="_blank">Reset</a> it on JustGiving
+  </p>
+  </div>
+  </form>
+</script>
+
+<script type="text/template" id="registerFundraisingPageCreateViewTemplate">
+  <h1>Fundraising</h1>
+  <div class="intro-text centre-text">You're nearly there! Set your target and tell us if {$Campaign.ClientShortName} can keep you informed about their conservation work and other ways you can help.</div>
+
+  <form>
+  <div class="form-group">
+    <div class="form-label"><label>Target {{= campaign.fundraising_currency_symbol }}</label></div><input class="field form-control required" data-min-required="{$Campaign.CampaignFundraisingMinimum}" type="Number" id="fundraising-page-create-targetamount">
+    <div class="help-block">Please set at least {{= campaign.fundraising_currency_symbol }}{$Campaign.CampaignFundraisingMinimum} as your fundraising target</div>
+  </div>
+<!--  
+  <div class="form-check">
+    <div class="form-label"></div><label class="form-check-label"><input type="checkbox" class="form-check-input" value="1" id="fundraising-receive-partner-email"><span class="terms">Receive JustGiving emails</span></label>
+  </div>
+-->  
+  <div class="form-group">
+    <div class="form-info">I’m happy for {{= campaign.client_name }} to keep me informed, by email, about the impact of my fundraising and other ways to stay involved including future events, campaigns and appeals.</div>
+  </div>
+  <div class="form-container">
+    <div class="form-check">
+      <div class="form-label"></div><label class="form-check-label">
+      <input class="form-check-input required" type="radio" name="fundraising-receive-charity-email" value="1">
+      <span class="terms">Yes please, opt me in</span></label>
+    </div>
+    <div class="form-check">
+      <div class="form-label"></div><label class="form-check-label">
+      <input class="form-check-input required" type="radio" name="fundraising-receive-charity-email" value="0">
+      <span class="terms">No thanks, opt me out</span></label>
+    </div>
+    <div class="help-block">Please select your communication preference</div>
+    <div class="form-group">
+      <div class="form-info form-note ">NOTE: {{= campaign.client_name }} will receive your details and may need to contact you to support you in this fundraising effort. You can update your preferences directly with {{= campaign.client_name }} at any time.</div>
+    </div>    
+  </div>
+
+  <div class="form-button">
+  <button type="submit" class="btn mr-btn btn-primary create-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Please Wait">Complete Fundraising Set-up</button>
+  </div>
+
+  <div class="err">
+    <div class="msg" data-msg="no-user">
+    <p>You are not registered to play Mountain Rush</p>
+    </div>
+    <div class="msg" data-msg="already-exists">
+    <p>Your fundraising page already exists</p>
+    </div>
+  </div>
+  </form>
+</script>
+
+<script type="text/template" id="registerFundraisingPageCreatedViewTemplate">
+  <h1>You're ready!</h1>
+  <div class="intro-text centre-text">Thank you, you've created your <a href="{{= campaign.fundraising_page }}{{= fields.fundraising_page }}" class="link" target="_blank">fundraising page</a> with <a class="link" href="https://www.justgiving.com/" target="_blank">JustGiving</a>. It's time to {{= campaign.name }}!</div>
+
+  <div class="btns">
+    <a href="<%= Defs.BaseHTTPURL %>/game/{{= fields.gameID }}" class="btn mr-btn">View Challenge</a>
+  </div>
+
+  <div class="social">
+    <h2>Get social</h2>
+    <div class"text">
+    Let everyone know what you're doing and share!
+    </div>
+  </div>
+
+  <div class="btns">
+  <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/{{= fields.gameID }}/player/{{= fields.playerID}}/goal/{{= fields.targetAmount}}" class="btn mr-btn btn-primary double" target="_blank"><div>Share on facebook</div><div><i class="fa fa-facebook"></i></div></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20Mountain%20Rush%20challenge%20-%20http://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn btn-primary double" target="_blank"><div>Share on Twitter</div><div><i class="fa fa-twitter"></i></div></a>
+  </div>
+</script>
+
+<% include ../partials/demoVideoTemplate.ejs %>
+<% include ../partials/analytics.ejs %>
+<script data-main="/static-assets/js/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+</html>
