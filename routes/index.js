@@ -3,6 +3,9 @@
 const DATABASE_URL = process.env.CLEARDB_DATABASE_URL || 'empty';
 const MRAPIURL = 'https://tb-game-api.herokuapp.com/';
 
+const DEF_CAMPAIGN = 'djJrblYlXV';
+const DEF_GAME = 'l6x4weZBDV';
+
 function BaseHTTPURL(req) {
   var url = require('url');
 
@@ -189,6 +192,33 @@ function getSocialImage(gameID, callback) {
   });
 }
 
+function handlePageRegister(req, res, strPageState) {
+  var defs = getDefs(req);
+  defs.PageRegisterState = strPageState;
+  defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
+
+  getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+    getCampaignProviderConnectData(req.params.campaignID, function(err, data){ 
+      if (data) {
+        defs.StravaOauthConnectURL = data.oauthConnectURL;
+      
+        res.render('pages/register', {Defs: defs, Campaign: campaign});
+      }
+      else {
+        // something went wrong getting data
+        if (req.params.campaignID == DEF_CAMPAIGN) {
+          res.render('pages/index', {Defs: defs, Campaign: campaign});
+        }
+        else {
+          defs.ImageCopyright = '© naturepl.com / Andy Rouse / WWF';
+
+          res.render('pages/campaign', {Defs: defs, Campaign: campaign});
+        }
+      }
+    });
+  });
+}
+
 module.exports = function(app) {
   app.get('/', function(req, res) {
     var defs = getDefs(req);
@@ -222,7 +252,7 @@ module.exports = function(app) {
     var defs = getDefs(req);
     defs.Demo = 1;
     defs.PlayerID = null;
-    defs.GameID = 'l6x4weZBDV';
+    defs.GameID = DEF_GAME;
     defs.FundraisingDonationID = '';
 
     getCampaignDataByGame(defs.GameID, function(err, campaign){ 
@@ -305,31 +335,31 @@ module.exports = function(app) {
   });
 
   app.get('/campaign/:campaignID/profile', function(req, res) {
-    var defs = getDefs(req);
-    defs.PageRegisterState = 'register';
-    defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
+    handlePageRegister(req, res, 'register');
+  });
 
-    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
-      getCampaignProviderConnectData(req.params.campaignID, function(err, data){ 
-        defs.StravaOauthConnectURL = data.oauthConnectURL;
-        
-        res.render('pages/register', {Defs: defs, Campaign: campaign});
-      });        
-    });
+  app.get('/campaign/:campaignID/preferences', function(req, res) {
+    handlePageRegister(req, res, 'prefs');
   });
 
   app.get('/campaign/:campaignID/invite', function(req, res) {
-    var defs = getDefs(req);
-    defs.PageRegisterState = 'invite';
-    defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
+    handlePageRegister(req, res, 'invite');
+  });
 
-    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
-      getCampaignProviderConnectData(req.params.campaignID, function(err, data){ 
-        defs.StravaOauthConnectURL = data.oauthConnectURL;
-        
-        res.render('pages/register', {Defs: defs, Campaign: campaign});
-      });        
-    });
+  app.get('/campaign/:campaignID/gamecreate', function(req, res) {
+    handlePageRegister(req, res, 'gamecreate');
+  });
+
+  app.get('/campaign/:campaignID/gamecreated', function(req, res) {
+    handlePageRegister(req, res, 'gamecreated');
+  });
+
+  app.get('/campaign/:campaignID/fundraise', function(req, res) {
+    handlePageRegister(req, res, 'fundraise');
+  });
+
+  app.get('/campaign/:campaignID/fundraisecreated', function(req, res) {
+    handlePageRegister(req, res, 'fundraisecreated');
   });
 
 };

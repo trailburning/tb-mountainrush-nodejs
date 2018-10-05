@@ -227,10 +227,54 @@ define([
       $(viewID).show();
     }
 
+    function updateURLState(nState) {
+      var query = window.location.href;
+      var vars = query.split("/");
+      var nPagePos = vars.length - 1;
+
+      switch (nState) {
+        case STATE_PLAYER_SIGNUP:
+          vars[nPagePos] = 'register';
+          break;
+
+        case STATE_PLAYER_SIGNEDUP:
+          vars[nPagePos] = 'profile';
+          break;
+
+        case STATE_PLAYER_PREFERENCES:
+          vars[nPagePos] = 'preferences';
+          break;
+
+        case STATE_GAME_CREATE:
+          vars[nPagePos] = 'gamecreate';
+          break;
+
+        case STATE_GAME_CREATED:
+          vars[nPagePos] = 'gamecreated';
+          break;
+
+        case STATE_FUNDRAISING_SIGNIN:
+          vars[nPagePos] = 'fundraise';
+          break;
+
+        case STATE_FUNDRAISING_PAGE_CREATED:
+          vars[nPagePos] = 'fundraisecreated';
+          break;
+      }
+
+      var strURL = vars.join('/');
+
+      history.replaceState(null, null, strURL);
+
+      return strURL;
+    }
+
     function changeState(nNewState) {
       var jsonFields;
 
       hideView();
+
+      updateURLState(nNewState);
 
       switch (nNewState) {
         case STATE_PLAYER_INVITATION:
