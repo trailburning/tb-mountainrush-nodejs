@@ -601,8 +601,10 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         mountain3DView.focusLocation(coords[0], coords[1]);
 
         timeoutStoryID = window.setTimeout(function(){
-          // is the player fundraising=
-          if (this.currPlayerModel.get('fundraising_pageID')) {
+          // is the player fundraising?
+          var fFundRaisingGoal = this.currPlayerModel.get('fundraisingGoal');
+
+          if (fFundRaisingGoal && fFundRaisingGoal > 0) {
             // bring up feature overlay
             mountainStoryModalView.render(this.currPlayerModel, mountainStoryModel);
             mountainStoryModalView.show();
@@ -703,7 +705,9 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           // is it different from what the player has already seen?
           if (latestEnabledMarkerID != activePlayer.get('latestMarkerID')) {
             // it is, but is the player fundraising?
-            if (activePlayer.get('fundraising_pageID')) {
+            var fFundRaisingGoal = activePlayer.get('fundraisingGoal');
+
+            if (fFundRaisingGoal && fFundRaisingGoal > 0) {
               // yes so update marker
               setLatestEnabledMarker(latestEnabledMarkerID);
             }
