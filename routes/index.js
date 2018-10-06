@@ -239,12 +239,94 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/campaign/:campaignID/game/:gameID/fundraisecreated', function(req, res) {
+    var defs = getDefs(req);
+    defs.GameID = req.params.gameID;
+    defs.PageRegisterState = 'fundraise';
+    defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
+
+    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+      res.render('pages/register', {Defs: defs, Campaign: campaign});
+    });
+  });
+
   app.get('/campaign/:campaignID', function(req, res) {
     var defs = getDefs(req);
     defs.ImageCopyright = '© naturepl.com / Andy Rouse / WWF';
 
     getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
-      res.render('pages/campaign', {Defs: defs, Campaign: campaign});
+      if (campaign) {
+        res.render('pages/campaign', {Defs: defs, Campaign: campaign});
+      }
+      else {
+        getCampaignDataByCampaign(DEF_CAMPAIGN, function(err, campaign){ 
+          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+        });
+      }
+    });
+  });
+
+  app.get('/campaign/:campaignID/privacy', function(req, res) {
+    var defs = getDefs(req);
+    defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
+
+    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+      if (campaign) {
+        res.render('pages/privacy', {Defs: defs, Campaign: campaign});
+      }
+      else {
+        getCampaignDataByCampaign(DEF_CAMPAIGN, function(err, campaign){ 
+          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+        });
+      }
+    });
+  });
+
+  app.get('/campaign/:campaignID/about', function(req, res) {
+    var defs = getDefs(req);
+    defs.ImageCopyright = '© Martin Harvey / WWF';
+
+    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+      if (campaign) {
+        res.render('pages/about', {Defs: defs, Campaign: campaign});
+      }
+      else {
+        getCampaignDataByCampaign(DEF_CAMPAIGN, function(err, campaign){ 
+          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+        });
+      }
+    });
+  });
+
+  app.get('/campaign/:campaignID/faq', function(req, res) {
+    var defs = getDefs(req);
+    defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
+
+    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+      if (campaign) {
+        res.render('pages/faq', {Defs: defs, Campaign: campaign});
+      }
+      else {
+        getCampaignDataByCampaign(DEF_CAMPAIGN, function(err, campaign){ 
+          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+        });
+      }
+    });
+  });
+
+  app.get('/campaign/:campaignID/support', function(req, res) {
+    var defs = getDefs(req);
+    defs.ImageCopyright = '© Martin Harvey / WWF';
+
+    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+      if (campaign) {
+        res.render('pages/support', {Defs: defs, Campaign: campaign});
+      }
+      else {
+        getCampaignDataByCampaign(DEF_CAMPAIGN, function(err, campaign){ 
+          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+        });
+      }
     });
   });
 
@@ -309,6 +391,21 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/game/:gameID/player/:playerID/donate', function(req, res) {
+    var defs = getDefs(req);
+    defs.PlayerID = req.params.playerID;
+    defs.GameID = req.params.gameID;
+
+    // is there a passed amount?
+    if (req.query.amount) {
+      defs.FundraisingDonationAmount = req.query.amount;
+    }
+
+    getCampaignDataByGame(defs.GameID, function(err, campaign){ 
+      res.render('pages/gamedonate', {Defs: defs, Campaign: campaign});
+    });
+  });
+
   app.get('/campaign/:campaignID/register', function(req, res) {
     var defs = getDefs(req);
     defs.PageRegisterState = 'register';
@@ -362,4 +459,11 @@ module.exports = function(app) {
     handlePageRegister(req, res, 'fundraisecreated');
   });
 
+  app.use(function(req, res){
+    var defs = getDefs(req);
+
+    getCampaignDataByCampaign(DEF_CAMPAIGN, function(err, campaign){ 
+      res.render('pages/page-not-found', {Defs: defs, Campaign: campaign});
+    });
+  });
 };

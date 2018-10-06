@@ -558,10 +558,11 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       selectPlayer(nPlayer);
     }
 
-    function addMapMarkers() {
+    function addMapMarkers(activePlayer) {
       // modify images to use image proxy
       var strImageHost = GAME_API_URL + 'imageproxy.php?url=';
-      var fProgressKM = playerCollection.at(0).get('progress');
+
+      var fProgressKM = activePlayer.get('progress');
       var bEnabled = false;
       var latestEnabledMarkerID = 0;
 
@@ -696,7 +697,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
       // is player active?
       if (activePlayer) {
-        var latestEnabledMarkerID = addMapMarkers();
+        var latestEnabledMarkerID = addMapMarkers(activePlayer);
         // do we have an enabled marker?
         if (latestEnabledMarkerID) {
           // is it different from what the player has already seen?
