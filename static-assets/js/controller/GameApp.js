@@ -602,8 +602,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
         timeoutStoryID = window.setTimeout(function(){
           // is the player fundraising?
-          var fFundRaisingGoal = this.currPlayerModel.get('fundraisingGoal');
-
+          var fFundRaisingGoal = this.currPlayerModel.get('fundraising_goal');
           if (fFundRaisingGoal && fFundRaisingGoal > 0) {
             // bring up feature overlay
             mountainStoryModalView.render(this.currPlayerModel, mountainStoryModel);
