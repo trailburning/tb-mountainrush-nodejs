@@ -221,6 +221,10 @@ function handlePageRegister(req, res, strPageState) {
 
 module.exports = function(app) {
   app.get('/', function(req, res) {
+    console.log('NODE_ENV:' + process.env.NODE_ENV);
+
+    res.setLocale('de');
+
     var defs = getDefs(req);
 
     getCampaignDataByCampaign('djJrblYlXV', function(err, campaign){ 
