@@ -656,7 +656,7 @@ video::-webkit-media-controls-start-playback-button {
   background: #193848;
 }
 
-#header-view .link, #header-view a.link, #mainmenu ul li a, 
+#header-view .link, #header-view a.link, #mainmenu ul li a, #mainmenu .link, 
 #header-view .link:visited, #header-view a.link:visited, #mainmenu ul li a:visited, 
 #header-view .link:active, #header-view a.link:active, #mainmenu ul li a:active {
   text-decoration: none;
@@ -783,11 +783,6 @@ video::-webkit-media-controls-start-playback-button {
 #mainmenu ul li {
   padding: 6px 18px;
   text-transform: uppercase;
-}
-
-#mainmenu .link {
-  text-decoration: none;
-  color: inherit;
 }
 
 /* FOOTER VIEW */
