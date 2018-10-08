@@ -4,7 +4,7 @@ var routes = require('./routes/index.js');
 var path = require('path');
 
 i18n.configure({
-  locales:['en', 'de'],
+  locales:['en', 'de', 'fr'],
   directory: __dirname + '/locales'
 });
 

@@ -785,6 +785,11 @@ video::-webkit-media-controls-start-playback-button {
   text-transform: uppercase;
 }
 
+#mainmenu .link {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* FOOTER VIEW */
 /******************************************/
 #footer-view {
