@@ -8,6 +8,11 @@ i18n.configure({
   directory: __dirname + '/locales'
 });
 
+// use .env for dev use
+if (process.env.NODE_ENV != "staging" && process.env.NODE_ENV != "production") {
+  require('dotenv').config();
+}
+
 var app = express();
 
 app.use(i18n.init);
