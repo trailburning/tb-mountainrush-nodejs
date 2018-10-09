@@ -164,10 +164,14 @@ var Demo = <%= Defs.Demo %>;
             <div class="description">
             This appears to be because your device is not be capable of showing 3D.
             <br/><br/>
-            {{ if (player.fundraising_pageID) { }}
+            {{ if (player.fundraising_goal && player.fundraising_goal > 0) { }}
               Don't worry, you can still make a donation!
               <br/><br/>
-              <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary double"><div>Donate</div><div>£10</div></a>            
+              <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
+                <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary double"><div>Donate</div><div>£10</div></a>            
+              <% } else { %>
+                <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/donate?amount=1000" class="btn mr-btn btn-primary btn-large double"><div>Donate</div><div>£10</div></a>
+              <% } %>
               <br/><br/>
             {{ } }}
             Please contact <% if (Campaign.CampaignTemplate != 'default') { %>Mountain Rush <% } %><a class="link" href="mailto:support@mountainrush.co.uk">support</a> for further information.
@@ -203,9 +207,9 @@ var Demo = <%= Defs.Demo %>;
 
 <script type="text/template" id="mountainStoryModalViewTemplate">
   {{ var asset = story.assets[0] }}
-  {{ var socialShareURL = 'goal/' + Math.round(player.fundraisingGoal) }}
-  {{ if (player.fundraisingRaised > 0) { }}
-    {{ socialShareURL = 'progress/' + Math.round(player.fundraisingRaised) }}
+  {{ var socialShareURL = 'goal/' + Math.round(player.fundraising_goal) }}
+  {{ if (player.fundraising_raised > 0) { }}
+    {{ socialShareURL = 'progress/' + Math.round(player.fundraising_raised) }}
   {{ } }}
 
   <div class="modal fade story-overlay" tabindex="-1" role="dialog">
@@ -276,7 +280,13 @@ var Demo = <%= Defs.Demo %>;
                   <div class="item-title big">{{= fundraising_item.title }}</div>
                   {{= fundraising_item.description }}
                 </div>
-                <div class="donate-item"><a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary double"><div>Donate</div><div>£10</div></a></div>
+                <div class="donate-item">
+                <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
+                  <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary double"><div>Donate</div><div>£10</div></a>
+                <% } else { %>
+                  <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/donate?amount=1000" class="btn mr-btn btn-primary btn-large double"><div>Donate</div><div>£10</div></a>
+                <% } %>
+                </div>
               </div>
             </div>
           </div>

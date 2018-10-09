@@ -558,10 +558,11 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       selectPlayer(nPlayer);
     }
 
-    function addMapMarkers() {
+    function addMapMarkers(activePlayer) {
       // modify images to use image proxy
       var strImageHost = GAME_API_URL + 'imageproxy.php?url=';
-      var fProgressKM = playerCollection.at(0).get('progress');
+
+      var fProgressKM = activePlayer.get('progress');
       var bEnabled = false;
       var latestEnabledMarkerID = 0;
 
@@ -600,8 +601,9 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         mountain3DView.focusLocation(coords[0], coords[1]);
 
         timeoutStoryID = window.setTimeout(function(){
-          // is the player fundraising=
-          if (this.currPlayerModel.get('fundraising_pageID')) {
+          // is the player fundraising?
+          var fFundRaisingGoal = this.currPlayerModel.get('fundraising_goal');
+          if (fFundRaisingGoal && fFundRaisingGoal > 0) {
             // bring up feature overlay
             mountainStoryModalView.render(this.currPlayerModel, mountainStoryModel);
             mountainStoryModalView.show();
@@ -696,13 +698,15 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
       // is player active?
       if (activePlayer) {
-        var latestEnabledMarkerID = addMapMarkers();
+        var latestEnabledMarkerID = addMapMarkers(activePlayer);
         // do we have an enabled marker?
         if (latestEnabledMarkerID) {
           // is it different from what the player has already seen?
           if (latestEnabledMarkerID != activePlayer.get('latestMarkerID')) {
             // it is, but is the player fundraising?
-            if (activePlayer.get('fundraising_pageID')) {
+            var fFundRaisingGoal = activePlayer.get('fundraisingGoal');
+
+            if (fFundRaisingGoal && fFundRaisingGoal > 0) {
               // yes so update marker
               setLatestEnabledMarker(latestEnabledMarkerID);
             }

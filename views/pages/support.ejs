@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include ../partials/includes.ejs %>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<% if (Campaign.CampaignFundraising) { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/web_platform.css' rel='stylesheet' />
+<% } %>
+<link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<link href='/static-assets/css/datepicker.css' rel='stylesheet' />
+<link href='/static-assets/css/page.css' rel='stylesheet' />
+<% if (Campaign.CampaignFundraising) { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/register.css' rel='stylesheet' />
+<% } %>
+<% include ../partials/analyticsFBPixel.ejs %>
+</head>
+<body>
+<script>
+var APP = 'DefApp';
+var GAME_API_URL = '<%= Defs.MRAPIURL %>';
+var HOST_URL = '<%= Defs.BaseHTTPURL %>';
+var CLIENT_ID = '<%= Campaign.ClientID %>';
+var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
+var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
+</script>
+
+<div class="container-fluid nopadding">
+  <% if (Campaign.CampaignTemplate == 'default') { %>
+    <% include ../partials/header.ejs %>
+  <% } else { %>
+    <% include ../partials/header-wwfuk.ejs %>
+  <% } %>
+
+  <div id="page-view">
+    <div id="hero-view">
+      <div class="image fade_on_ready">        
+      <% if (Campaign.CampaignTemplate == 'default') { %>
+        <img class="scale" src="http://tbassets2.imgix.net/images/brands/mountainrush/pages/olivier-miche-102259-unsplash.jpg?fm=jpg&q=80&w=1280">
+      <% } else { %>
+        <img class="scale" src="http://tbassets2.imgix.net/images/brands/mountainrush/clients/<%= Campaign.CampaignTemplate %>/pages/WW185891.jpg?fm=jpg&q=80&w=1280">
+      <% } %>
+      </div>
+    </div>
+
+    <div id="page-content-view">
+      <div class="content-view">
+        <h1>How your support matters</h1>
+        <div class="intro-text centre-text">
+        <p>When you take part in Climb For Your World and raise funds, you'll be helping WWF’s vital work with the International Gorilla Conservation Programme (IGCP) to protect the critically endangered mountain gorilla.</p><p>Through IGCP – a coalition of Fauna &amp; Flora International and WWF, we’re working with the protected area authorities of Rwanda, Uganda and the Democratic Republic of Congo, local communities and other NGOs to strengthen the monitoring and protection of mountain gorillas and their habitat, reduce human-wildlife conflict and improve local livelihoods. For example, we’ve been helping to install rainwater harvesting tanks in communities living around mountain gorilla habitats. This reduces the need for local communities to enter the protected areas and so reduces the risk of human diseases being passed to the mountain gorillas. We also promote responsible ecotourism that follows international best practice, to help local communities realise benefits from living alongside mountain gorillas.</p><p>Here are just a few things the money you raise could do to help protect threatened wildlife:</p><ul><li><strong>£10</strong> could help to maintain the stone 'buffalo wall' built by community members to reduce human-wildlife conflict</li>
+        <li><strong>£15</strong> could pay for one locally made bee keeping suit, helping to provide an alternative source of income for local communities</li>
+        <li><strong>£30</strong> could pay for the participation of a ranger in intensive mountain gorilla identification training</li>
+        <li><strong>£120</strong> could support one GPS device to help monitor mountain gorillas</li>
+        <li><strong>£150</strong> could pay for a radio programme to be broadcast locally in Uganda to help educate local people about conversation efforts to help protect mountain gorillas in the region</li>
+        <li><strong>£240</strong> could fund a hand held radio for a park ranger’s post in Volcanoes National Park</li>
+        <li><strong>£6000</strong> could support the piloting of a certification scheme for ‘gorilla friendly’ tourism</li>
+        </ul>
+        </div>
+      </div>
+
+      <div class="campaign-sticker-container">
+        <div class="campaign-sticker">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if (Campaign.CampaignTemplate == 'default') { %>
+    <% include ../partials/footer.ejs %>
+  <% } else { %>
+    <% include ../partials/footer-wwfuk.ejs %>
+  <% } %>
+</div>
+
+<div id="mobileTest" class="visible-xs"></div>
+<div id="demo-video-view"></div>
+
+<% include ../partials/demoVideoTemplate.ejs %>
+<% include ../partials/analytics.ejs %>
+<script data-main="/static-assets/js/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+</html>

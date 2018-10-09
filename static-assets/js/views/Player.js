@@ -123,9 +123,6 @@ define([
         self.model.set('ascentCompleted', self.jsonProgress.ascentCompleted);
 
         // set fundraising details
-        self.model.set('fundraisingGoal', self.jsonProgress.fundraising_goal);
-        self.model.set('fundraisingRaised', self.jsonProgress.fundraising_raised);
-        self.model.set('fundraisingCurrency', self.jsonProgress.fundraising_currency);
         self.model.set('fundraisingCurrencySymbol', self.jsonProgress.fundraising_currency_symbol);
 
         // fire event
@@ -152,10 +149,10 @@ define([
       var self = this;
 
       // first render with cached donation info
-      var jsonFields = {totalRaisedPercentageOfFundraisingTarget: (this.model.get('fundraisingRaised') / this.model.get('fundraisingGoal')) * 100,
+      var jsonFields = {totalRaisedPercentageOfFundraisingTarget: (this.model.get('fundraising_raised') / this.model.get('fundraising_goal')) * 100,
                         currencySymbol: this.model.get('fundraisingCurrencySymbol'),
-                        totalRaisedOnline: this.model.get('fundraisingRaised'),
-                        fundraisingTarget: this.model.get('fundraisingGoal'),
+                        totalRaisedOnline: this.model.get('fundraising_raised'),
+                        fundraisingTarget: this.model.get('fundraising_goal'),
                         playerID: self.model.get('id'),
                         fundraisingPageID: self.model.get('fundraising_pageID')
                         }

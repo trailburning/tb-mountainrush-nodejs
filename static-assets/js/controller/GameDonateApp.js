@@ -34,8 +34,8 @@ define([
           options.defaults['ui_onetime_amount_default'] = FUNDRAISING_DONATION_AMOUNT;
         } 
 
-        options.defaults['stored_TBGameID'] = '6x4wxw8YBD';
-        options.defaults['stored_TBPlayerID'] = 'l6x4wV0rBD';
+        options.defaults['stored_TBGameID'] = GAME_ID;
+        options.defaults['stored_TBPlayerID'] = PLAYER_ID;
 
         options.extend({
           custom_fields : {

@@ -1,11 +1,5 @@
 'use strict';
 
-const DATABASE_URL = process.env.CLEARDB_DATABASE_URL || 'empty';
-const MRAPIURL = 'https://tb-game-api.herokuapp.com/';
-
-const DEF_CAMPAIGN = 'djJrblYlXV';
-const DEF_GAME = 'l6x4weZBDV';
-
 function BaseHTTPURL(req) {
   var url = require('url');
 
@@ -38,7 +32,7 @@ function BaseHTTPSURL(req) {
 
 function getDefs(req) {
   var defs = new Object();
-  defs.MRAPIURL = MRAPIURL;
+  defs.MRAPIURL = process.env.MR_API_URL;
   defs.BaseHTTPURL = BaseHTTPURL(req);
   defs.BaseHTTPSURL = BaseHTTPSURL(req);
 
@@ -80,7 +74,7 @@ function fillCampaignData(data) {
 function getCampaignDataByCampaign(campaignID, callback) {
   var request = require('request');
 
-  var url = MRAPIURL + 'campaign/' + campaignID;
+  var url = process.env.MR_API_URL + 'campaign/' + campaignID;
 //  console.log(url);
   request.get({
       url: url,
@@ -103,7 +97,7 @@ function getCampaignDataByCampaign(campaignID, callback) {
 function getCampaignDataByGame(gameID, callback) {
   var request = require('request');
 
-  var url = MRAPIURL + 'game/' + gameID + '/campaign';
+  var url = process.env.MR_API_URL + 'game/' + gameID + '/campaign';
 //  console.log(url);
   request.get({
       url: url,
@@ -126,7 +120,7 @@ function getCampaignDataByGame(gameID, callback) {
 function getCampaignProviderConnectData(campaignID, callback) {
   var request = require('request');
 
-  var url = MRAPIURL + 'campaign/' + campaignID + '/strava/oauth';
+  var url = process.env.MR_API_URL + 'campaign/' + campaignID + '/strava/oauth';
 //  console.log(url);
   request.get({
       url: url,
@@ -149,7 +143,7 @@ function getCampaignProviderConnectData(campaignID, callback) {
 function getCampaignProviderConnectDataAndToken(campaignID, activityProviderCode, callback) {
   var request = require('request');
 
-  var url = MRAPIURL + 'campaign/' + campaignID + '/strava/code/' + activityProviderCode + '/token';
+  var url = process.env.MR_API_URL + 'campaign/' + campaignID + '/strava/code/' + activityProviderCode + '/token';
 //  console.log(url);
   request.get({
       url: url,
@@ -172,7 +166,7 @@ function getCampaignProviderConnectDataAndToken(campaignID, activityProviderCode
 function getSocialImage(gameID, callback) {
   var request = require('request');
 
-  var url = MRAPIURL + 'game/' + gameID +'/socialimage';
+  var url = process.env.MR_API_URL + 'game/' + gameID +'/socialimage';
 //  console.log(url);
   request.get({
       url: url,
@@ -206,7 +200,7 @@ function handlePageRegister(req, res, strPageState) {
       }
       else {
         // something went wrong getting data
-        if (req.params.campaignID == DEF_CAMPAIGN) {
+        if (req.params.campaignID == process.env.MR_DEF_CAMPAIGN) {
           res.render('pages/index', {Defs: defs, Campaign: campaign});
         }
         else {
@@ -221,6 +215,8 @@ function handlePageRegister(req, res, strPageState) {
 
 module.exports = function(app) {
   app.get('/', function(req, res) {
+    console.log('NODE_ENV:' + process.env.NODE_ENV);
+    
     var defs = getDefs(req);
 
     getCampaignDataByCampaign('djJrblYlXV', function(err, campaign){ 
@@ -239,12 +235,94 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/campaign/:campaignID/game/:gameID/fundraisecreated', function(req, res) {
+    var defs = getDefs(req);
+    defs.GameID = req.params.gameID;
+    defs.PageRegisterState = 'fundraise';
+    defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
+
+    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+      res.render('pages/register', {Defs: defs, Campaign: campaign});
+    });
+  });
+
   app.get('/campaign/:campaignID', function(req, res) {
     var defs = getDefs(req);
     defs.ImageCopyright = '© naturepl.com / Andy Rouse / WWF';
 
     getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
-      res.render('pages/campaign', {Defs: defs, Campaign: campaign});
+      if (campaign) {
+        res.render('pages/campaign', {Defs: defs, Campaign: campaign});
+      }
+      else {
+        getCampaignDataByCampaign(process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+        });
+      }
+    });
+  });
+
+  app.get('/campaign/:campaignID/privacy', function(req, res) {
+    var defs = getDefs(req);
+    defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
+
+    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+      if (campaign) {
+        res.render('pages/privacy', {Defs: defs, Campaign: campaign});
+      }
+      else {
+        getCampaignDataByCampaign(process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+        });
+      }
+    });
+  });
+
+  app.get('/campaign/:campaignID/about', function(req, res) {
+    var defs = getDefs(req);
+    defs.ImageCopyright = '© Martin Harvey / WWF';
+
+    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+      if (campaign) {
+        res.render('pages/about', {Defs: defs, Campaign: campaign});
+      }
+      else {
+        getCampaignDataByCampaign(process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+        });
+      }
+    });
+  });
+
+  app.get('/campaign/:campaignID/faq', function(req, res) {
+    var defs = getDefs(req);
+    defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
+
+    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+      if (campaign) {
+        res.render('pages/faq', {Defs: defs, Campaign: campaign});
+      }
+      else {
+        getCampaignDataByCampaign(process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+        });
+      }
+    });
+  });
+
+  app.get('/campaign/:campaignID/support', function(req, res) {
+    var defs = getDefs(req);
+    defs.ImageCopyright = '© Martin Harvey / WWF';
+
+    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+      if (campaign) {
+        res.render('pages/support', {Defs: defs, Campaign: campaign});
+      }
+      else {
+        getCampaignDataByCampaign(process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+        });
+      }
     });
   });
 
@@ -252,7 +330,7 @@ module.exports = function(app) {
     var defs = getDefs(req);
     defs.Demo = 1;
     defs.PlayerID = null;
-    defs.GameID = DEF_GAME;
+    defs.GameID = process.env.MR_DEF_GAME;
     defs.FundraisingDonationID = '';
 
     getCampaignDataByGame(defs.GameID, function(err, campaign){ 
@@ -278,12 +356,19 @@ module.exports = function(app) {
     }
 
     getCampaignDataByGame(defs.GameID, function(err, campaign){ 
-      // get social image
-      getSocialImage(defs.GameID, function(err, strImage){ 
-        defs.SocialImage = strImage;
+      if (campaign) {
+        // get social image
+        getSocialImage(defs.GameID, function(err, strImage){ 
+          defs.SocialImage = strImage;
 
-        res.render('pages/game', {Defs: defs, Campaign: campaign});
-      });
+          res.render('pages/game', {Defs: defs, Campaign: campaign});
+        });        
+      }
+      else {
+        getCampaignDataByCampaign(process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+        });        
+      }
     });
   });
 
@@ -306,6 +391,21 @@ module.exports = function(app) {
 
         res.render('pages/game', {Defs: defs, Campaign: campaign});
       });
+    });
+  });
+
+  app.get('/game/:gameID/player/:playerID/donate', function(req, res) {
+    var defs = getDefs(req);
+    defs.PlayerID = req.params.playerID;
+    defs.GameID = req.params.gameID;
+
+    // is there a passed amount?
+    if (req.query.amount) {
+      defs.FundraisingDonationAmount = req.query.amount;
+    }
+
+    getCampaignDataByGame(defs.GameID, function(err, campaign){ 
+      res.render('pages/gamedonate', {Defs: defs, Campaign: campaign});
     });
   });
 
@@ -362,4 +462,11 @@ module.exports = function(app) {
     handlePageRegister(req, res, 'fundraisecreated');
   });
 
+  app.use(function(req, res){
+    var defs = getDefs(req);
+
+    getCampaignDataByCampaign(process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+      res.render('pages/page-not-found', {Defs: defs, Campaign: campaign});
+    });
+  });
 };

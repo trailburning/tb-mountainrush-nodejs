@@ -37,28 +37,27 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
             <i class="fa fa-play-circle"></i>
             </div>
             <span class="scene">
-            <h1>Virtually Climb</h1>
-            <h2>real mountains</h2>
+            <h1><%= __('Virtually Climb') %></h1>
+            <h2><%= __('real mountains') %></h2>
             </span>
             <span class="scene">
-            <h1>Hike, Run or Cycle</h1>
-            <h2>with Strava</h2>
+            <h1><%= __('Hike, Run or Cycle') %></h1>
+            <h2><%= __('with Strava') %></h2>
             </span>
             <span class="scene">
-            <h1>Against Yourself</h1>
-            <h2>Beat the Clock</h2>
+            <h1><%= __('Against Yourself') %></h1>
+            <h2><%= __('Beat the Clock') %></h2>
             </span>
             <span class="scene">
-            <h1>Invite Your Mates</h1>
-            <h2>Make It Social</h2>
+            <h1><%= __('Invite Your Mates') %></h1>
+            <h2><%= __('Make It Social') %></h2>
             </span>
             <span class="scene">
-            <h1>Reach The Summit With</h1>
-            <h2>Mountain Rush</h2>
+            <h1><%= __('Reach The Summit With') %></h1>
+            <h2><%= __('Mountain Rush') %></h2>
             </span>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -67,27 +66,27 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
         <div class="grab hidden-sm hidden-xs"><img src="/static-assets/images/phones.png"></div>
         <div class="synopsis pull-right">
           <div class="text">
-            <h1>A challenging game</h1>
-            <h2>To virtually ascend real mountains</h2>
+            <h1><%= __('A challenging game') %></h1>
+            <h2><%= __('To virtually ascend real mountains') %></h2>
             <div class="overview">
             <p>
-            Hike, run or cycle with <a href="https://www.strava.com" target="_blank" class="link">Strava</a> to virtually climb beautifully rendered 3D mountains, against yourself, or your friends. Mountain Rush promotes physical activity and local exploration in a fun package.
+            <%- __('Hike, run or cycle with <a href="https://www.strava.com" target="_blank" class="link">Strava</a> to virtually climb beautifully rendered 3D mountains, against yourself, or your friends. Mountain Rush promotes physical activity and local exploration in a fun package.') %>
             </p>
             <p>
-            Oh and you can <a href="https://www.raisenow.com" target="_blank" class="link">fundraise</a> too!
+            <%- __('Oh and you can <a href="https://www.raisenow.com" target="_blank" class="link">fundraise</a> too!') %>
             </p>
             </div>
           </div>
           <div class="btns">
-          <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary">Sign up</a> 
-          <span class="btn mr-btn demo-video">Demo Video</span>
+          <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('Sign up') %></a> 
+          <span class="btn mr-btn demo-video"><%= __('Demo Video') %></span>
           </div>
         </div>
         <div class="grab hidden-md hidden-lg"><img src="/static-assets/images/phones.png"></div>
       </div>
 
       <div class="fundraising-partner">
-      Fundraising by <a href="https://www.raisenow.com" target="_blank"><img src="/static-assets/images/logos/RaiseNow_logo_techpartner_no_margin.png"></a>
+      <%= __('Fundraising by') %> <a href="https://www.raisenow.com" target="_blank"><img src="/static-assets/images/logos/RaiseNow_logo_techpartner_no_margin.png"></a>
       </div>
 
       <div class="stripe"></div>
@@ -95,8 +94,8 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
   </div>
 
   <div id="community-view">
-    <h1>Journey to the Summit</h1>
-    <h2>Follow our Mountain Rush climbers</h2>
+    <h1><%= __('Journey to the Summit') %></h1>
+    <h2><%= __('Follow our Mountain Rush climbers') %></h2>
     <h3>#playmountainrush</h3>
 
     <div class="icons"><a href="https://www.instagram.com/trailburning/" target="_blank"><i class="fa fa-instagram"></i></a></div>
