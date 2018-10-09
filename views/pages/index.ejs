@@ -37,24 +37,24 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
             <i class="fa fa-play-circle"></i>
             </div>
             <span class="scene">
-            <h1><%= __('Virtually Climb') %></h1>
-            <h2><%= __('real mountains') %></h2>
+            <h1><%= __('intro.scene1_1') %></h1>
+            <h2><%= __('intro.scene1_2') %></h2>
             </span>
             <span class="scene">
-            <h1><%= __('Hike, Run or Cycle') %></h1>
-            <h2><%= __('with Strava') %></h2>
+            <h1><%= __('intro.scene2_1') %></h1>
+            <h2><%= __('intro.scene2_2') %></h2>
             </span>
             <span class="scene">
-            <h1><%= __('Against Yourself') %></h1>
-            <h2><%= __('Beat the Clock') %></h2>
+            <h1><%= __('intro.scene3_1') %></h1>
+            <h2><%= __('intro.scene3_2') %></h2>
             </span>
             <span class="scene">
-            <h1><%= __('Invite Your Mates') %></h1>
-            <h2><%= __('Make It Social') %></h2>
+            <h1><%= __('intro.scene4_1') %></h1>
+            <h2><%= __('intro.scene4_2') %></h2>
             </span>
             <span class="scene">
-            <h1><%= __('Reach The Summit With') %></h1>
-            <h2><%= __('Mountain Rush') %></h2>
+            <h1><%= __('intro.scene5_1') %></h1>
+            <h2><%= __('intro.scene5_2') %></h2>
             </span>
           </div>
         </div>
@@ -70,10 +70,10 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
             <h2><%= __('To virtually ascend real mountains') %></h2>
             <div class="overview">
             <p>
-            <%- __('Hike, run or cycle with <a href="https://www.strava.com" target="_blank" class="link">Strava</a> to virtually climb beautifully rendered 3D mountains, against yourself, or your friends. Mountain Rush promotes physical activity and local exploration in a fun package.') %>
+            <%- __('Hike, run or cycle with %s to virtually climb beautifully rendered 3D mountains, against yourself, or your friends. Mountain Rush promotes physical activity and local exploration in a fun package.', '<a href="https://www.strava.com" target="_blank" class="link">Strava</a>') %>
             </p>
             <p>
-            <%- __('Oh and you can <a href="https://www.raisenow.com" target="_blank" class="link">fundraise</a> too!') %>
+            <%- __('Oh and you can %s too!', '<a href="https://www.raisenow.com" target="_blank" class="link">fundraise</a>') %>
             </p>
             </div>
           </div>
@@ -128,15 +128,12 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
       <div class="modal-content">
         <div class="modal-body">
           <div class="details">
-            <div class="title">Sorry, we're having trouble presenting the 3D mountain</div>
+            <div class="title"><%= __('Sorry, we\'re having trouble presenting the 3D mountain') %></div>
             <div class="description">
-            This appears to be because your device is not be capable of showing 3D.
+            <%= __('This appears to be because your device is not be capable of showing 3D.') %>
             <br/><br/>
-            Reloading may fix the issue but if not then please contact <% if (Campaign.CampaignTemplate != 'default') { %>Mountain Rush <% } %><a class="link" href="mailto:support@mountainrush.co.uk">support</a>.
+            <%= __('Reloading may fix the issue but if not then please contact') %> <% if (Campaign.CampaignTemplate != 'default') { %><%= __('Mountain Rush') %> <% } %><a class="link" href="mailto:support@mountainrush.co.uk"><%= __('support') %></a>.
             </div>
-          </div>
-          <div class="action-field">
-            <span class="btn mr-btn btn-primary reload-btn" data-dismiss="modal">Reload Page</span>
           </div>
         </div>
       </div><!-- /.modal-content -->
@@ -176,9 +173,9 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
             {{ var game = activeGames[0] }}
 
             <div class="details">
-              <div class="title">Latest Challenge</div>
+              <div class="title"><%= __('Latest Challenge') %></div>
               <div class="description">
-              Hi {{= player.firstname }}, would you like to check out your <strong>{{= game.name }}</strong> <span class="lowercase">{{= game.type }}</span> challenge?
+              <%= __('Hi') %> {{= player.firstname }}<%= __(', would you like to check out your') %> <strong>{{= game.name }}</strong> <span class="lowercase">{{= game.type }}</span> <%= __('challenge?') %>
               </div>
             </div>
 

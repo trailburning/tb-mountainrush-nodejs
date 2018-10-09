@@ -5,7 +5,7 @@
       <div class="logo-view">
         <div class="logo"><a href="<%= Defs.BaseHTTPURL %>"><div></div></a></div>
       </div>
-      <div class="user-action action-signup"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary">Sign up</a></div>
+      <div class="user-action action-signup"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('menu.signup') %></a></div>
       <div class="user-action action-profile"><span class="active-player-view"></span></div>
     </div>
     <div class="full-menu">
@@ -14,10 +14,10 @@
         <div class="logo">
         <a href="<%= Defs.BaseHTTPURL %>"><div></div></a></div>
         <ul class="menus">
-          <li><span class="link demo-video"><%= __('Demo Video') %></span></li>
-          <li><a class="link" href="<%= Defs.BaseHTTPURL %>/demo"><%= __('Example Game') %></a></li>
+          <li><span class="link demo-video"><%= __('menu.demo') %></span></li>
+          <li><a class="link" href="<%= Defs.BaseHTTPURL %>/demo"><%= __('menu.example') %></a></li>
           <li><a class="link" href="https://www.instagram.com/explore/tags/playmountainrush/" target="_blank">#playmountainrush</a></li>
-          <li class="user-action action-signup"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('Sign up') %></a></li>
+          <li class="user-action action-signup"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('menu.signup') %></a></li>
           <li class="user-action action-profile"><span class="active-player-view"></span></li>
         </ul>
       </div>
@@ -27,8 +27,8 @@
 
 <div class="collapse" id="mainmenu" aria-expanded="false">
   <ul class="menus">
-    <li><span class="link demo-video"><%= __('Demo Video') %></span></li>
-    <li><a href="<%= Defs.BaseHTTPURL %>/demo"><%= __('Example Game') %></a></li>
+    <li><span class="link demo-video"><%= __('menu.demo') %></span></li>
+    <li><a href="<%= Defs.BaseHTTPURL %>/demo"><%= __('menu.example') %></a></li>
     <li><a href="https://www.instagram.com/explore/tags/playmountainrush/" target="_blank">#playmountainrush</a></li>
   </ul>
 </div>
@@ -40,5 +40,5 @@
     {{ firstname = 'unknown' }}
   {{ } }}
 
-  <div class="name"><a class="link" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/profile"><%= __('Hi') %> {{= firstname }}!</a></div>
+  <div class="name"><a class="link" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/profile"><%= __('menu.greeting') %> {{= firstname }}!</a></div>
 </script>

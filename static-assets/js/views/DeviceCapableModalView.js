@@ -11,10 +11,15 @@ define([
       this.options = options;
     },
 
-    render: function(playerModel, storyModel){
+    render: function(playerModel){
       var self = this;
       
-      $(this.el).html(this.template({player: playerModel.toJSON()}));
+      if (playerModel) {
+        $(this.el).html(this.template({player: playerModel.toJSON()}));
+      }
+      else {
+        $(this.el).html(this.template());
+      }
 
       return this;
     },

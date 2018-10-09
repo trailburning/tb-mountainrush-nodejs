@@ -20,10 +20,10 @@
 
 <meta property="og:type" content="website" />
 <% if (Defs.PlayerGoal) { %>
-  <meta property="og:url" content="http://mountainrush.co.uk/game/<%= Defs.GameID %>/player/<%= Defs.PlayerID %>/goal/<%= Des.PlayerGoal %>"/>
+  <meta property="og:url" content="http://mountainrush.co.uk/game/<%= Defs.GameID %>/player/<%= Defs.PlayerID %>/goal/<%= Defs.PlayerGoal %>"/>
   <meta property="og:image" content="<%= Defs.SocialImage %>"/>
 <% } else if (Defs.PlayerProgress) { %>
-  <meta property="og:url" content="http://mountainrush.co.uk/game/<%= GameID %>/player/<%= Defs.PlayerID %>/progress/<%= Defs.PlayerProgress %>"/>
+  <meta property="og:url" content="http://mountainrush.co.uk/game/<%= Defs.GameID %>/player/<%= Defs.PlayerID %>/progress/<%= Defs.PlayerProgress %>"/>
   <meta property="og:image" content="<%= Defs.SocialImage %>"/>
 <% } else if (Defs.GameID) { %>
   <meta property="og:url" content="http://mountainrush.co.uk/game/<%= Defs.GameID %>"/>

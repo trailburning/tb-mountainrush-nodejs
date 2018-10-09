@@ -6,8 +6,7 @@
   },
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "node server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "~4.14.0",

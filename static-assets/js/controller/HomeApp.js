@@ -258,7 +258,7 @@ define([
 
     function onDeviceNotCapable() {
       // there was a problem
-      deviceCapableModalView.render();
+      deviceCapableModalView.render(null);
       deviceCapableModalView.show();
     }
 
