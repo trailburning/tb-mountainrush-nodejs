@@ -5,7 +5,8 @@ var path = require('path');
 
 i18n.configure({
   locales:['en', 'de', 'fr'],
-  directory: __dirname + '/locales'
+  directory: __dirname + '/locales',
+  objectNotation: true
 });
 
 // use .env for dev use
