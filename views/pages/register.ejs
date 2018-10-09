@@ -70,11 +70,16 @@ var TEST = '<%= Defs.Test %>';
         <div class="register-view" id="register-fundraising-signup-view"></div>
         <div class="register-view" id="register-fundraising-page-create-view"></div>
         <div class="register-view" id="register-fundraising-page-created-view"></div>
-        <div class="support">
+        <div class="support">          
         <% if (Campaign.CampaignTemplate != 'default') { %>
           <%= Campaign.ClientShortName %>'s <%= Campaign.CampaignName %> campaign is brought to you by <a href="http://mountainrush.co.uk/" class="link" target="_blank">Mountain Rush</a>.<br/>
         <% } %>
-        Please contact Mountain Rush <a class="link" href="mailto:support@mountainrush.co.uk">support</a> if you have any questions.
+
+        <% if (Campaign.CampaignTemplate != 'default') { %>
+          <%- __('register.help.mr_contact', '<a class="link" href="mailto:support@mountainrush.co.uk">' + __('error.device.support') + '</a>') %>
+        <% } else { %>
+          <%- __('register.help.contact', '<a class="link" href="mailto:support@mountainrush.co.uk">' + __('register.help.support') + '</a>') %>
+        <% } %>
         </div>
       </div>
 
@@ -134,19 +139,17 @@ var TEST = '<%= Defs.Test %>';
 </script>
 
 <script type="text/template" id="registerWelcomeViewTemplate">
-  <h1>Connect to Strava</h1>
+  <h1><%= __('register.welcome.title') %></h1>
   <div class="intro-text centre-text">
-  <p>Track your hiking, cycling or running activities recorded by the <a class="link" href="https://www.strava.com/mobile" target="_blank">Strava App</a> in {{= campaign.name }} challenges.</p>
+  <p><%- __('register.welcome.description', '<a class="link" href="https://www.strava.com/mobile" target="_blank">' +  __('register.welcome.strava_app') + '</a>') %></p>
   <% if (Defs.PageRegisterState == 'invite') { %>
-    Connect below to view your <strong>invite</strong> and get started!
+    <%- __('register.welcome.start_invite', '<strong>' + __('register.welcome.invite') + '</strong>') %>
   <% } else { %>
-    Connect below to get started!
+    <%= __('register.welcome.start') %>
   <% } %>
   </p>
   </div>
-  <p>
-  Clicking 'Connect with Strava' means that you agree to our <a href="<%= Defs.BaseHTTPURL %>/campaign/<%= Campaign.CampaignID %>/privacy" class="link">privacy policy</a>.
-  </p>
+  <p><%- __('register.welcome.privacy_agree', '<a href="' + Defs.BaseHTTPURL + '/campaign/' + Campaign.CampaignID + '/privacy" class="link">' + __('register.welcome.privacy') + '</a>') %></p>
   <p>
   <div class="connect"><a href="<%= Defs.StravaOauthConnectURL %>"><img src="/static-assets/images/btn_strava_connectwith_orange.png"></a></div>
 </script>
@@ -158,27 +161,35 @@ var TEST = '<%= Defs.Test %>';
     {{ firstname = 'unknown' }}
   {{ } }}
 
-  <h1>Thanks for signing up</h1>
-  <% include ../partials/registerWelcome.ejs %>
+  <h1><%= __('register.welcome_connected.title') %></h1>
+
+  <div class="intro-text centre-text">
+  <%= __('register.welcome_connected.greeting') %> {{= player.firstname }}<%= __('register.welcome_connected.pre') %>
+  {{ if (player.game_notifications == '1') { }}
+    <%- __('register.welcome_connected.preferences.game_notifications_on', '<span class="btn-prefs link">' + __('register.here') + '</span>') %>
+  {{ } else { }}
+    <%- __('register.welcome_connected.preferences.game_notifications_off', '<span class="btn-prefs link">' + __('register.here') + '</span>') %>
+  {{ }; }}
+  </div>
 
   {{ if (currGame) { }}
     <div class="challenge">
       <div class="intro-text centre-text">
-      You have a {{= currGame.name }} <span class="lowercase">{{= currGame.type }}</span> challenge.
+      <%= __('register.welcome_connected.game_current.pre') %> {{= currGame.name }} <span class="lowercase">{{= currGame.type }}</span> <%= __('register.welcome_connected.game_current.post') %>
       </div>  
       <div class="btns">
       {{ if (currGame.game_state == 'active') { }}
-        <a href="<%= Defs.BaseHTTPURL %>/game/{{= currGame.game }}" class="btn mr-btn">View Active Challenge</a>
+        <a href="<%= Defs.BaseHTTPURL %>/game/{{= currGame.game }}" class="btn mr-btn"><%= __('register.welcome_connected.game_active') %></a>
       {{ } else if (currGame.game_state == 'pending') { }}
-        <a href="<%= Defs.BaseHTTPURL %>/game/{{= currGame.game }}" class="btn mr-btn">View Pending Challenge</a>
+        <a href="<%= Defs.BaseHTTPURL %>/game/{{= currGame.game }}" class="btn mr-btn"><%= __('register.welcome_connected.game_upcoming') %></a>
       {{ } else { }}
-        <a href="<%= Defs.BaseHTTPURL %>/game/{{= currGame.game }}" class="btn mr-btn">View Challenge</a>
+        <a href="<%= Defs.BaseHTTPURL %>/game/{{= currGame.game }}" class="btn mr-btn"><%= __('register.welcome_connected.game') %></a>
       {{ }; }}
       </div>
     </div>
 
     {{ if (currGame.multiplayer && (currGame.ownerPlayerID == player.id)) { }}
-      <span class="link link-invite">Invite friends</span> to your challenge!
+      <%- __('register.welcome_connected.msg_invite', '<span class="link link-invite">' + __('register.welcome_connected.invite') + '</span>') %>
     {{ }; }}
     
     <% if (Campaign.CampaignFundraisingProvider) { %>
@@ -201,37 +212,39 @@ var TEST = '<%= Defs.Test %>';
       <div class="invitation">
         <div class="invite">
           <div class="intro-text centre-text">
-          You have a <strong>{{= invitation.name }} <span class="lowercase">{{= invitation.type }}</span></strong> challenge invitation from <strong>{{= invitation.owner[0].firstname }} {{= invitation.owner[0].lastname }}</strong>!
+          <%- __('register.welcome_connected.msg_invitation.pre') %> <strong>{{= invitation.name }} <span class="lowercase">{{= invitation.type }}</span></strong> <%- __('register.welcome_connected.msg_invitation.post') %> <strong>{{= invitation.owner[0].firstname }} {{= invitation.owner[0].lastname }}</strong>!
           </div>
 
           <div class="invitation-accept">
             <div class="btns">
-            <span class="btn mr-btn btn-primary btn-accept-invite" data-game-id="{{= invitation.gameID }}" data-id="{{= invitation.id }}">Accept</span>&nbsp;<span class="btn mr-btn btn-reject-invite" data-game-id="{{= invitation.gameID }}" data-id="{{= invitation.id }}">Reject</span>
+            <span class="btn mr-btn btn-primary btn-accept-invite" data-game-id="{{= invitation.gameID }}" data-id="{{= invitation.id }}"><%= __('register.welcome_connected.yes') %></span>&nbsp;<span class="btn mr-btn btn-reject-invite" data-game-id="{{= invitation.gameID }}" data-id="{{= invitation.id }}"><%= __('register.welcome_connected.no') %></span>
             </div>
           </div>
         </div>
 
         <div class="invitation-accepted">
           <div class="intro-text centre-text">
-          You now have a <strong>{{= invitation.name }} <span class="lowercase">{{= invitation.type }}</span></strong> challenge.
+          <%= __('register.welcome_connected.game_accepted.pre') %> <strong>{{= invitation.name }} <span class="lowercase">{{= invitation.type }}</span></strong> <%= __('register.welcome_connected.game_accepted.post') %>
           </div>  
           <div class="btns">
           {{ if (invitation.game_state == 'active') { }}
-            <a href="<%= Defs.BaseHTTPURL %>/game/{{= invitation.gameID }}" class="btn mr-btn">View Active Challenge</a>
+            <a href="<%= Defs.BaseHTTPURL %>/game/{{= invitation.gameID }}" class="btn mr-btn"><%= __('register.welcome_connected.game_active') %></a>
           {{ } else if (invitation.game_state == 'pending') { }}
-            <a href="<%= Defs.BaseHTTPURL %>/game/{{= invitation.gameID }}" class="btn mr-btn">View Pending Challenge</a>
+            <a href="<%= Defs.BaseHTTPURL %>/game/{{= invitation.gameID }}" class="btn mr-btn"><%= __('register.welcome_connected.game_upcoming') %></a>
           {{ } else { }}
-            <a href="<%= Defs.BaseHTTPURL %>/game/{{= invitation.gameID }}" class="btn mr-btn">View Challenge</a>
+            <a href="<%= Defs.BaseHTTPURL %>/game/{{= invitation.gameID }}" class="btn mr-btn"><%= __('register.welcome_connected.game') %></a>
           {{ }; }}
           </div>
         </div>
 
         <div class="invitation-rejected">
           <div class="intro-text centre-text">
-          Challenge rejected! <br/>You can now create your own challenge.
+          <%= __('register.welcome_connected.game_rejected.pre') %>
+          <br/>
+          <%= __('register.welcome_connected.game_rejected.post') %>
           </div>
           <div class="btns">
-            <span class="btn mr-btn btn-primary btn-create">Create Challenge</span>
+            <span class="btn mr-btn btn-primary btn-create"><%= __('register.welcome_connected.game_create') %></span>
           </div>
         </div>
       </div>
@@ -240,7 +253,7 @@ var TEST = '<%= Defs.Test %>';
       You're now ready to create your climb challenge!
       </div>
       <div class="btns">
-        <span class="btn mr-btn btn-primary btn-create">Create Challenge</span>
+        <span class="btn mr-btn btn-primary btn-create"><%= __('register.welcome_connected.game_create') %></span>
       </div>
     {{ }; }}
     </div>
@@ -251,7 +264,7 @@ var TEST = '<%= Defs.Test %>';
   {{ if (completeGames.length) { }}
     <div class="section">
       <div class="form-block">
-      <h2>Previous Challenge{{ if (completeGames.length > 1) { }}s{{ }; }}</h2>
+      <h2><%= __('register.welcome_connected.previous_challenges') %> {{ if (completeGames.length > 1) { }}<%= __n('register.challenge', 2) %>{{ } else { }}<%= __n('register.challenge', 1) %>{{ } }}</h2>
       <ul class="form-field pills">
       {{ _.each(completeGames, function(completeGame, index) { }}
         <li><a href="<%= Defs.BaseHTTPURL %>/game/{{= completeGame.game }}" class="pill">{{= completeGame.name }} {{= completeGame.type }}</a></li>
@@ -263,21 +276,21 @@ var TEST = '<%= Defs.Test %>';
 </script>
 
 <script type="text/template" id="registerWelcomePreferencesViewTemplate">
-  <h1>Challenge Preferences</h1>
+  <h1><%= __('register.preferences.title') %></h1>
   <form>
   <div class="form-check">
     <button type="button" id="preferences-game-email" class="btn btn-sm btn-toggle {{ if (player.game_notifications == '1') { }}active{{ }; }}" data-toggle="button" aria-pressed="false" autocomplete="off">
       <div class="handle"></div>
     </button>
-    <label>Activity email during challenge</label>
+    <label><%= __('register.preferences.game_notifications') %></label>
   </div>
   <div class="btns">
-  <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Please Wait">Update Preferences</button>
+  <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('register.preferences.update') %></button>
   </div>
   </form>
 
   <% if (Defs.PageRegisterState != 'prefs') { %>
-    &lt; <span class="link link-back">go back</span>
+    &lt; <span class="link link-back"><%= __('register.go_back') %></span>
   <% } %>
 </script>
 

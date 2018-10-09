@@ -66,27 +66,27 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
         <div class="grab hidden-sm hidden-xs"><img src="/static-assets/images/phones.png"></div>
         <div class="synopsis pull-right">
           <div class="text">
-            <h1><%= __('A challenging game') %></h1>
-            <h2><%= __('To virtually ascend real mountains') %></h2>
+            <h1><%= __('welcome.title') %></h1>
+            <h2><%= __('welcome.description') %></h2>
             <div class="overview">
             <p>
-            <%- __('Hike, run or cycle with %s to virtually climb beautifully rendered 3D mountains, against yourself, or your friends. Mountain Rush promotes physical activity and local exploration in a fun package.', '<a href="https://www.strava.com" target="_blank" class="link">Strava</a>') %>
+            <%- __('welcome.text', '<a href="https://www.strava.com" target="_blank" class="link">Strava</a>') %>
             </p>
             <p>
-            <%- __('Oh and you can %s too!', '<a href="https://www.raisenow.com" target="_blank" class="link">fundraise</a>') %>
+            <%- __('welcome.text_fundraise', '<a href="https://www.raisenow.com" target="_blank" class="link">' + __('welcome.fundraise') + '</a>') %>
             </p>
             </div>
           </div>
           <div class="btns">
-          <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('Sign up') %></a> 
-          <span class="btn mr-btn demo-video"><%= __('Demo Video') %></span>
+          <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('welcome.signup') %></a> 
+          <span class="btn mr-btn demo-video"><%= __('welcome.demo') %></span>
           </div>
         </div>
         <div class="grab hidden-md hidden-lg"><img src="/static-assets/images/phones.png"></div>
       </div>
 
       <div class="fundraising-partner">
-      <%= __('Fundraising by') %> <a href="https://www.raisenow.com" target="_blank"><img src="/static-assets/images/logos/RaiseNow_logo_techpartner_no_margin.png"></a>
+      <%- __('welcome.fundraising_provider', '<a href="https://www.raisenow.com" target="_blank"><img src="/static-assets/images/logos/RaiseNow_logo_techpartner_no_margin.png"></a>') %>
       </div>
 
       <div class="stripe"></div>
@@ -94,8 +94,8 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
   </div>
 
   <div id="community-view">
-    <h1><%= __('Journey to the Summit') %></h1>
-    <h2><%= __('Follow our Mountain Rush climbers') %></h2>
+    <h1><%= __('community.title') %></h1>
+    <h2><%= __('community.description') %></h2>
     <h3>#playmountainrush</h3>
 
     <div class="icons"><a href="https://www.instagram.com/trailburning/" target="_blank"><i class="fa fa-instagram"></i></a></div>
@@ -128,11 +128,15 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
       <div class="modal-content">
         <div class="modal-body">
           <div class="details">
-            <div class="title"><%= __('Sorry, we\'re having trouble presenting the 3D mountain') %></div>
+            <div class="title"><%= __('error.device.title') %></div>
             <div class="description">
-            <%= __('This appears to be because your device is not be capable of showing 3D.') %>
+            <%= __('error.device.description') %>
             <br/><br/>
-            <%= __('Reloading may fix the issue but if not then please contact') %> <% if (Campaign.CampaignTemplate != 'default') { %><%= __('Mountain Rush') %> <% } %><a class="link" href="mailto:support@mountainrush.co.uk"><%= __('support') %></a>.
+            <% if (Campaign.CampaignTemplate != 'default') { %>
+              <%- __('error.device.resolve', '<a class="link" href="mailto:support@mountainrush.co.uk">' + __('error.device.support') + '</a>') %>
+            <% } else { %>
+              <%- __('error.device.mr_resolve', '<a class="link" href="mailto:support@mountainrush.co.uk">' + __('error.device.support') + '</a>') %>
+            <% } %>
             </div>
           </div>
         </div>
@@ -173,23 +177,24 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
             {{ var game = activeGames[0] }}
 
             <div class="details">
-              <div class="title"><%= __('Latest Challenge') %></div>
+              <div class="title"><%= __('overlay.challenge.latest.title') %></div>
               <div class="description">
-              <%= __('Hi') %> {{= player.firstname }}<%= __(', would you like to check out your') %> <strong>{{= game.name }}</strong> <span class="lowercase">{{= game.type }}</span> <%= __('challenge?') %>
+
+              <%= __('overlay.challenge.greeting') %> {{= player.firstname }} <%= __('overlay.challenge.latest.pre') %> <strong>{{= game.name }}</strong> <span class="lowercase">{{= game.type }}</span> <%= __('overlay.challenge.latest.post') %>
               </div>
             </div>
 
             <div class="action-fields">
-              <div class="action-field"><a href="<%= Defs.BaseHTTPURL %>/game/{{= game.game }}" class="btn mr-btn btn-primary">Yes please</a></div>
-              <div class="action-field"><span class="btn mr-btn" data-dismiss="modal">Maybe later</span></div>
+              <div class="action-field"><a href="<%= Defs.BaseHTTPURL %>/game/{{= game.game }}" class="btn mr-btn btn-primary"><%= __('overlay.challenge.yes') %></a></div>
+              <div class="action-field"><span class="btn mr-btn" data-dismiss="modal"><%= __('overlay.challenge.no') %></span></div>
             </div>
           {{ } else if (pendingGames.length) { }}
             {{ var game = pendingGames[0] }}
 
             <div class="details">
-              <div class="title">Upcoming Challenge</div>
+              <div class="title"><%= __('overlay.challenge.upcoming.title') %></div>
               <div class="description">
-              Hi {{= player.firstname }}, would you like to check out your upcoming <strong>{{= game.name }}</strong> <span class="lowercase">{{= game.type }}</span> challenge?
+              <%= __('overlay.challenge.greeting') %> {{= player.firstname }} <%= __('overlay.challenge.upcoming.pre') %> <strong>{{= game.name }}</strong> <span class="lowercase">{{= game.type }}</span> <%= __('overlay.challenge.upcoming.post') %>
               </div>
             </div>
 
