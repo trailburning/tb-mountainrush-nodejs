@@ -11,13 +11,14 @@ define([
   'truncate',
   'animateNumber',
   'videojs',
+  'views/LanguageSelectorView',
   'views/ActivePlayerView',
   'views/PlayerGameView',
   'views/PromoMountainPlayerView',
   'views/DeviceCapableModalView',
   'views/DemoVideoView',
   'views/SocialPhotosView'
-], function(_, Backbone, jqueryUI, cookie, truncate, animateNumber, videojs, ActivePlayerView, PlayerGameView, PromoMountainPlayerView, DeviceCapableModalView, DemoVideoView, SocialPhotosView){
+], function(_, Backbone, jqueryUI, cookie, truncate, animateNumber, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, PromoMountainPlayerView, DeviceCapableModalView, DemoVideoView, SocialPhotosView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -81,6 +82,8 @@ define([
     var mountainModel = new Backbone.Model();
     var mountainPlayerView = null;
 
+    var languageSelectorView = new LanguageSelectorView({ el: '#language-selector-view' });
+    languageSelectorView.render();
     var socialPhotosView = new SocialPhotosView({ el: '#community-photos-view', feed: '' });
     socialPhotosView.loadFeed();
 

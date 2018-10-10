@@ -10,9 +10,10 @@ define([
   'imageScale',
   'imagesLoaded',
   'videojs',
+  'views/LanguageSelectorView',
   'views/ActivePlayerView',
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, ActivePlayerView, DemoVideoView){
+], function(_, Backbone, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -50,6 +51,9 @@ define([
     $('img.scale').imageScale({
       'rescaleOnResize': true
     });
+
+    var languageSelectorView = new LanguageSelectorView({ el: '#language-selector-view' });
+    languageSelectorView.render();
 
     enableUserActions(CLIENT_ID);
 

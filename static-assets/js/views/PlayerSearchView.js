@@ -37,7 +37,7 @@ define([
         select: function(event, ui) {
           $(this).val(ui.item.firstname + ' ' + ui.item.lastname);
 
-          window.location.href = self.options.hostURL + 'game/' + ui.item.gameID;
+          window.location.href = self.options.hostURL + '/game/' + ui.item.gameID;
 
           return false;
         }

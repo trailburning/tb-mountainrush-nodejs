@@ -245,6 +245,14 @@ function getUserCookies(clientID){
   return { token: $.cookie(cookiePrefix +'usertoken'), firstname: $.cookie(cookiePrefix + 'firstname'), avatar: $.cookie(cookiePrefix + 'avatar') };
 }
 
+function getLangCookie(){
+  return $.cookie(COOKIE_PREFIX + COOKIE_DELIM + 'lang');
+}
+
+function setLangCookie(strLang){
+  $.cookie(COOKIE_PREFIX + COOKIE_DELIM + 'lang', strLang, { path: '/' });
+}
+
 // Load our app module and pass it to our definition function
 require(['controller/' + APP], function(App){
   App.initialize();

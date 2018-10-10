@@ -11,6 +11,7 @@ define([
   'imageScale',
   'imagesLoaded',
   'videojs',
+  'views/LanguageSelectorView',
   'views/ActivePlayerView',
   'views/PlayerGameView',
   'views/CampaignSummaryView',
@@ -18,7 +19,7 @@ define([
   'views/PlayerSearchView',
   'views/DemoVideoView',
   'views/SocialPhotosView'
-], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, ActivePlayerView, PlayerGameView, CampaignSummaryView, PlayerLeaderboardView, PlayerSearchView, DemoVideoView, SocialPhotosView){
+], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, CampaignSummaryView, PlayerLeaderboardView, PlayerSearchView, DemoVideoView, SocialPhotosView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -109,6 +110,9 @@ define([
       demoVideoView.render();
       demoVideoView.show();
     });
+
+    var languageSelectorView = new LanguageSelectorView({ el: '#language-selector-view' });
+    languageSelectorView.render();
 
     enableUserActions(CLIENT_ID);
 
