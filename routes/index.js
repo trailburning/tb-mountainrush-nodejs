@@ -1,43 +1,6 @@
 'use strict';
 
-function BaseHTTPURL(req) {
-  var url = require('url');
-
-  var completeURL = url.format({
-    protocol: req.protocol.replace('https', 'http'),
-    host: req.get('host')
-  });
-
-  return completeURL;
-}
-
-function BaseHTTPSURL(req) {
-  var url = require('url');
-
-  var completeURL = url.format({
-    protocol: req.protocol,
-    host: req.get('host')
-  });
-
-  // only change if not localhost
-  if (!req.get('host').includes('localhost')) {
-    completeURL = url.format({
-      protocol: req.protocol.replace('http', 'https'),
-      host: req.get('host')
-    });
-  }
-
-  return completeURL;
-}
-
-function getDefs(req) {
-  var defs = new Object();
-  defs.MRAPIURL = process.env.MR_API_URL;
-  defs.BaseHTTPURL = BaseHTTPURL(req);
-  defs.BaseHTTPSURL = BaseHTTPSURL(req);
-
-  return defs;
-}
+var helper = require('./helper.js');
 
 function fillCampaignData(data) {
   var campaignData = null;
@@ -233,7 +196,7 @@ function getSocialImageProgress(gameID, progress, callback) {
 }
 
 function handlePageRegister(req, res, strPageState) {
-  var defs = getDefs(req);
+  var defs = helper.getDefs(req);
   defs.PageRegisterState = strPageState;
   defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
 
@@ -263,7 +226,7 @@ module.exports = function(app) {
   app.get('/', function(req, res) {
     console.log('NODE_ENV:' + process.env.NODE_ENV);
     
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
 
     getCampaignDataByCampaign('djJrblYlXV', function(err, campaign){ 
       res.render('pages/index', {Defs: defs, Campaign: campaign});
@@ -271,7 +234,7 @@ module.exports = function(app) {
   });
 
   app.get('/campaign/:campaignID/game/:gameID/fundraise', function(req, res) {
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
     defs.GameID = req.params.gameID;
     defs.PageRegisterState = 'fundraise';
     defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
@@ -282,7 +245,7 @@ module.exports = function(app) {
   });
 
   app.get('/campaign/:campaignID/game/:gameID/fundraisecreated', function(req, res) {
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
     defs.GameID = req.params.gameID;
     defs.PageRegisterState = 'fundraise';
     defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
@@ -293,7 +256,7 @@ module.exports = function(app) {
   });
 
   app.get('/campaign/:campaignID', function(req, res) {
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
     defs.ImageCopyright = '© naturepl.com / Andy Rouse / WWF';
 
     getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
@@ -309,7 +272,7 @@ module.exports = function(app) {
   });
 
   app.get('/campaign/:campaignID/privacy', function(req, res) {
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
     defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
 
     getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
@@ -325,7 +288,7 @@ module.exports = function(app) {
   });
 
   app.get('/campaign/:campaignID/about', function(req, res) {
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
     defs.ImageCopyright = '© Martin Harvey / WWF';
 
     getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
@@ -341,7 +304,7 @@ module.exports = function(app) {
   });
 
   app.get('/campaign/:campaignID/faq', function(req, res) {
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
     defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
 
     getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
@@ -357,7 +320,7 @@ module.exports = function(app) {
   });
 
   app.get('/campaign/:campaignID/support', function(req, res) {
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
     defs.ImageCopyright = '© Martin Harvey / WWF';
 
     getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
@@ -373,7 +336,7 @@ module.exports = function(app) {
   });
 
   app.get('/demo', function(req, res) {
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
     defs.Demo = 1;
     defs.PlayerID = null;
     defs.GameID = process.env.MR_DEF_GAME;
@@ -390,7 +353,7 @@ module.exports = function(app) {
   });
 
   app.get('/game/:gameID', function(req, res) {
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
     defs.Demo = 0;
     defs.PlayerID = null;
     defs.GameID = req.params.gameID;
@@ -419,7 +382,7 @@ module.exports = function(app) {
   });
 
   app.get('/game/:gameID/player/:playerID', function(req, res) {
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
     defs.Demo = 0;
     defs.GameID = req.params.gameID;
     defs.PlayerID = req.params.playerID;
@@ -441,7 +404,7 @@ module.exports = function(app) {
   });
 
   app.get('/game/:gameID/player/:playerID/test/:testProgress', function(req, res) {
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
     defs.Demo = 0;
     defs.GameID = req.params.gameID;
     defs.PlayerID = req.params.playerID;
@@ -464,7 +427,7 @@ module.exports = function(app) {
   });
 
   app.get('/game/:gameID/player/:playerID/goal/:goal', function(req, res) {
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
     defs.Demo = 0;
     defs.GameID = req.params.gameID;
     defs.PlayerID = req.params.playerID;
@@ -482,7 +445,7 @@ module.exports = function(app) {
   });
 
   app.get('/game/:gameID/player/:playerID/progress/:progress', function(req, res) {
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
     defs.Demo = 0;
     defs.GameID = req.params.gameID;
     defs.PlayerID = req.params.playerID;
@@ -499,7 +462,7 @@ module.exports = function(app) {
     });
   });
   app.get('/game/:gameID/player/:playerID/donate', function(req, res) {
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
     defs.PlayerID = req.params.playerID;
     defs.GameID = req.params.gameID;
 
@@ -514,7 +477,7 @@ module.exports = function(app) {
   });
 
   app.get('/campaign/:campaignID/register', function(req, res) {
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
     defs.PageRegisterState = 'register';
     defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
 
@@ -567,7 +530,7 @@ module.exports = function(app) {
   });
 
   app.use(function(req, res){
-    var defs = getDefs(req);
+    var defs = helper.getDefs(req);
 
     getCampaignDataByCampaign(process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
       res.render('pages/page-not-found', {Defs: defs, Campaign: campaign});
