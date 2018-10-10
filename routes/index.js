@@ -224,7 +224,7 @@ function handlePageRegister(req, res, strPageState) {
 
 module.exports = function(app) {
   app.get('/', function(req, res) {
-    console.log('Cookies: ', req.cookies);
+//    console.log('Cookies: ', req.cookies);
 //    console.log('NODE_ENV:' + process.env.NODE_ENV);
     
     var defs = helper.getDefs(req);
