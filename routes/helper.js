@@ -20,8 +20,6 @@ module.exports = {
       host: req.get('host')
     });
 
-// 181010 - mla temp removed until SSL installed on Heroku
-/*
     // only change if not localhost
     if (!req.get('host').includes('localhost')) {
       completeURL = url.format({
@@ -29,7 +27,7 @@ module.exports = {
         host: req.get('host')
       });
     }
-*/
+
     return completeURL;
   },
 
