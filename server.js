@@ -1,4 +1,5 @@
 var express = require('express');
+var cookieParser = require('cookie-parser')
 var i18n = require("i18n");
 var routes = require('./routes/index.js');
 var path = require('path');
@@ -16,6 +17,7 @@ if (process.env.NODE_ENV != "staging" && process.env.NODE_ENV != "production") {
 
 var app = express();
 
+app.use(cookieParser());
 app.use(i18n.init);
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/static-assets', express.static(__dirname + '/static-assets'));
