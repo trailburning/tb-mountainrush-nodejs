@@ -28,6 +28,7 @@ define([
   'views/PlayerActivityPhotosView',
   'views/PlayerActivityPhotoView',
 /* player.js */
+  'views/LanguageSelectorView',
   'views/ActivePlayerView',
   'views/Player',
   'views/PlayerChallengeSuccessView',
@@ -45,7 +46,7 @@ define([
 /* player.js */
 FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentView, PlayerActivityMorePhotosView, PlayerActivityPhotosView, PlayerActivityPhotoView,
 /* player.js */
-  ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, MountainLockedStoryModalView, MountainStoryModalView, FundraisingShoppingModalView, DemoVideoView){
+  LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, MountainLockedStoryModalView, MountainStoryModalView, FundraisingShoppingModalView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -96,6 +97,9 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         activePlayerView.render();
       });
     }
+
+    var languageSelectorView = new LanguageSelectorView({ el: '#language-selector-view' });
+    languageSelectorView.render();
 
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
 
