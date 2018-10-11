@@ -300,34 +300,30 @@ var TEST = '<%= Defs.Test %>';
   {{ _.each(games, function(game, index) { }}
     <div class="game">
     <strong>{{= game.campaign_name }}</strong> - <a href="<%= Defs.BaseHTTPURL %>/game/{{= game.game }}" target="_blank">{{= game.name }}, {{= game.region }}</a> ({{= game.game_state }})
-
     {{ if (game.fundraising_pageID) { }}
       <p><a href="{{= game.campaign_fundraising_page }}{{= game.fundraising_page }}" target="_blank">Your Fundraising Page</a></p>
       <p><a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= game.fundraising_pageID }}?amount=10.00&currency=GBP&reference=testref&exitUrl=http%3A%2F%2Fmountainrush.co.uk%3FjgDonationId%3DJUSTGIVING-DONATION-ID" target="_blank">Donate 10</a></p>
     {{ }; }}
-
     </div>
   {{ }); }}
 {{ }; }}
 </script>
 
 <script type="text/template" id="registerGameCreateViewTemplate">
-  <h1>Create Challenge</h1>
-  <div class="intro-text centre-text">
-  Choose your challenge preferences
-  </div>
+  <h1><%= __('register.game_create.title') %></h1>
+  <div class="intro-text centre-text"><%= __('register.game_create.description') %></div>
 
   <form>
     <div class="form-block">
       {{ if (gameLevels.length > 1) { }}
-        <h2>How much ascent are you up for?</h2>
+        <h2><%= __('register.game_create.choose_ascent') %></h2>
         <ul class="form-field pills" data-id="level">
         {{ _.each(gameLevels, function(gameLevel, index) { }}
           <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameLevel.id }}" data-season-id="{{= gameLevel.seasonDefault }}">{{= gameLevel.name }} {{= gameLevel.ascent }}m</span></li>
         {{ }); }}
         </ul>
       {{ } else { }}
-        <h2>You will be ascending:</h2>
+        <h2><%= __('register.game_create.fixed_ascent') %></h2>
         <ul class="form-field pills" data-id="level">
         {{ _.each(gameLevels, function(gameLevel, index) { }}
           <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameLevel.id }}" data-season-id="{{= gameLevel.seasonDefault }}">{{= gameLevel.name }} {{= gameLevel.ascent }}m</span></li>
@@ -338,14 +334,14 @@ var TEST = '<%= Defs.Test %>';
 
     <div class="form-block">
       {{ if (gameOptions.types.length > 1) { }}
-        <h2>What's your activity of choice?</h2>
+        <h2><%= __('register.game_create.choose_activity') %></h2>
         <ul class="form-field pills" data-id="type">
         {{ _.each(gameOptions.types, function(gameActivityType, index) { }}
           <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameActivityType.name }}">{{= gameActivityType.description }}</span></li>
         {{ }); }}
         </ul>
       {{ } else { }}
-        <h2>Your activity will be:</h2>
+        <h2><%= __('register.game_create.fixed_activity') %></h2>
         <ul class="form-field pills" data-id="type">
         {{ _.each(gameOptions.types, function(gameActivityType, index) { }}
           <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameActivityType.name }}">{{= gameActivityType.description }}</span></li>
@@ -355,7 +351,7 @@ var TEST = '<%= Defs.Test %>';
     </div>
 
     <div class="form-block">
-      <h2>How long would you like to reach the summit?</h2>
+      <h2><%= __('register.game_create.choose_duration') %></h2>
       <ul class="form-field pills" data-id="duration">
         {{ _.each(gameOptions.durations, function(gameDuration, index) { }}
           <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameDuration.days }}">{{= gameDuration.description }}</span></li>
@@ -364,14 +360,14 @@ var TEST = '<%= Defs.Test %>';
     </div>
 
     <div class="form-block">
-      <h2>When will you start your challenge?</h2>
+      <h2><%= __('register.game_create.choose_start') %></h2>
       <div class="form-field">
         <div class="search-date-field"><input class="field form-control date-field" type="text" id="dpd1"></div>
       </div>
     </div>
 
     <div class="form-block">
-    <button type="submit" class="btn mr-btn btn-primary create-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Please Wait">Create Challenge</button>
+    <button type="submit" class="btn mr-btn btn-primary create-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('register.game_create.create_challenge') %></button>
     </div>
   </form>
 </script>

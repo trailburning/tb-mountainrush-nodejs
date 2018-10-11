@@ -120,6 +120,17 @@
 			"game_notifications": "Activity email during challenge",
 			"update": "Update Preferences"
 		},
-		"please_wait": "Please Wait"
+		"please_wait": "Please Wait",
+		"game_create": {
+			"title": "Create Challenge",
+			"description": "Choose your challenge preferences",
+			"choose_ascent": "How much ascent are you up for?",
+			"fixed_ascent": "You will be ascending:",
+			"choose_activity": "What's your activity of choice?",
+			"fixed_activity": "Your activity will be:",
+			"choose_duration": "How long would you like to reach the summit?",
+			"choose_start": "When will you start your challenge?",
+			"create_challenge": "Create Challenge"
+		}
 	}
 }
