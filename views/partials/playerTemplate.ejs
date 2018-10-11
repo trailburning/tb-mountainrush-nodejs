@@ -10,9 +10,9 @@
         <div class="fundraising-donation-summary-view"></div>
         <div class="summit">
         {{ if (player.elevationToSummit) { }}
-          <h1>{{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m</h1>to summit
+          <h1>{{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m</h1><%= __('game.to_summit') %>
         {{ } else { }}
-          <h1>Summit!</h1>{{= Math.round(player.elevationGain) }}m climbed
+          <h1><%= __('game.summited') %></h1>{{= Math.round(player.elevationGain) }}m <%= __('game.climbed') %>
         {{ } }}
         </div>
       </div>
@@ -43,9 +43,9 @@
       <div class="overview">
       <h1 class="truncate" data-truncate="15">{{= player.firstname }}</h1>
       {{ if (player.elevationToSummit) { }}
-        {{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m to summit
+        {{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m <%= __('game.to_summit') %>
       {{ } else { }}
-        summit reached
+      <%= __('game.summited_long') %>
       {{ } }}
       </div>
     </li>
@@ -74,21 +74,20 @@
             {{ } else if (player.country) { }}
               {{= player.country }}
             {{ } else { }}
-              Where am I?
+              <%= __('game.unknown_location') %>
             {{ } }}
             </div>
 
             <div class="summit-container">
               <div class="summit">
               {{ if (player.elevationToSummit) { }}
-                <h1>{{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m</h1>to summit<br/>{{= game.name }}
+                <h1>{{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m</h1><%= __('game.to_summit') %><br/>{{= game.name }}
               {{ } else { }}
-                <h1>Summit!</h1>{{= Math.round(player.elevationGain) }}m climbed on<br/>{{= game.name }}
+                <h1>Summit!</h1>{{= Math.round(player.elevationGain) }}m <%= __('game.climbed_on') %><br/>{{= game.name }}
               {{ } }}
               </div>
               <div class="pos">
-                <div class="ranking">{{= index+1 }}</div>
-                {{= index+1 }}{{ if (index+1 == 1) { }}st{{ } else if (index+1 == 2) { }}nd{{ } else if (index+1 == 3) { }}rd{{ } else { }}th{{ } }} place
+                <div class="ranking">{{= index+1 }}</div>{{= index+1 }}{{ if (index+1 == 1) { }}<%= __n('game.player_position.position.first') %>{{ } else if (index+1 == 2) { }}<%= __n('game.player_position.position.second') %>{{ } else if (index+1 == 3) { }}<%= __n('game.player_position.position.third') %>{{ } else { }}<%= __n('game.player_position.position.def') %>{{ } }} <%= __('game.player_position.place') %>
               </div>
             </div>
           </div>
@@ -97,12 +96,13 @@
             {{ var latestActivity = player.activities[0] }}
             <div class="latest-activity">
               <a href="https://www.strava.com/activities/{{= latestActivity.activity }}" target="_blank">
-              <span class="latest"><span class="icon"></span><span class="title">Latest Activity:</span></span>
+              <span class="latest"><span class="icon"></span><span class="title"><%= __('game.latest_activity.title') %></span></span>
               <span class="stats">
-              Climbed <strong>{{= Math.round(latestActivity.total_elevation_gain) }}m</strong> over <strong>{{= (latestActivity.distance / 1000).toFixed(1) }}km</strong></span>
+              <%= __('game.latest_activity.climbed') %> <strong>{{= Math.round(latestActivity.total_elevation_gain) }}m</strong> <%= __('game.latest_activity.over') %> <strong>{{= (latestActivity.distance / 1000).toFixed(1) }}km
+              </strong></span>
               <span class="ago">{{= latestActivity.start_date_ago }}</span>
               </a>
-              <div class="external-view"><a href="https://www.strava.com/activities/{{= latestActivity.activity }}" target="_blank"><span class="provider">View on Strava</span></a></div>
+              <div class="external-view"><a href="https://www.strava.com/activities/{{= latestActivity.activity }}" target="_blank"><span class="provider"><%= __('game.view_strava') %></span></a></div>
               <div class="activity-comment"></div>
             </div>
           {{ } else { }}
@@ -141,8 +141,8 @@
           {{ } }}
 
           <div class="posts">
-            <div class="welcome without-photos">Waiting for photos of {{= firstname }}'s journey to the summit...</div>
-            <div class="welcome with-photos">Check out {{= firstname }}'s journey to the summit!</div>
+            <div class="welcome without-photos"><%= __('game.photos.waiting.description.pre') %> {{= firstname }}'s <%= __('game.photos.waiting.description.post') %></div>
+            <div class="welcome with-photos"><%= __('game.photos.description.pre') %> {{= firstname }}'s <%= __('game.photos.description.post') %></div>
             <div class="photos"></div>
           </div>
         </div>
@@ -175,9 +175,9 @@
         {{ if (player.fundraising_goal && player.fundraising_goal > 0) { }}
           <div class="fundraising-donations-view">
             <div class="donations">
-              <div class="title">donations</div>
-              <div class="welcome without-donations">Waiting for donations to help {{= player.firstname }} to the summit...</div>
-              <div class="welcome with-donations"> Check out who's helping {{= player.firstname }} to the summit!</div>
+              <div class="title"><%= __('game.fundraising.donations.title') %></div>
+              <div class="welcome without-donations"><%= __('game.fundraising.donations.waiting.description.pre') %> {{= player.firstname }} <%= __('game.fundraising.donations.waiting.description.post') %></div>
+              <div class="welcome with-donations"><%= __('game.fundraising.donations.description.pre') %> {{= player.firstname }} <%= __('game.fundraising.donations.description.post') %></div>
               <div class="fundraisers"></div>
             </div>
           </div>
@@ -224,7 +224,7 @@
 
 <script type="text/template" id="morePhotosViewTemplate">
 <div class="more-posts">
-  <span class="btn mr-btn more-btn">Show more photos</span>
+  <span class="btn mr-btn more-btn"><%= __('game.photos.show_more') %></span>
 </div>
 </script>
 
@@ -241,9 +241,9 @@
           <div class="percent" style="top: {{= (100 - page.totalRaisedPercentageOfFundraisingTarget) }}%;height: {{= page.totalRaisedPercentageOfFundraisingTarget }}%;"></div>
           <div class="raised">{{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}<span class="amount">{{= Math.round(page.totalRaisedOnline) }}</span></div>
           {{ if (page.fundraisingTarget) { }}
-            <div class="target">Raised of {{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}{{= page.fundraisingTarget }}<br/>target</div>
+            <div class="target"><%= __('game.fundraising.summary.raised') %> {{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}{{= page.fundraisingTarget }}<br/><%= __('game.fundraising.summary.target') %></div>
           {{ } else { }}
-            <div class="target">Waiting for donations..</div>
+            <div class="target"><%= __('game.fundraising.summary.waiting') %></div>
           {{ } }}
         </div>
         </a>
@@ -252,9 +252,9 @@
           <div class="percent" style="top: {{= (100 - page.totalRaisedPercentageOfFundraisingTarget) }}%;height: {{= page.totalRaisedPercentageOfFundraisingTarget }}%;"></div>
           <div class="raised">{{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}<span class="amount">{{= Math.round(page.totalRaisedOnline) }}</span></div>
           {{ if (page.fundraisingTarget) { }}
-            <div class="target">Raised of {{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}{{= page.fundraisingTarget }}<br/>target</div>
+            <div class="target"><%= __('game.fundraising.summary.raised') %> {{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}{{= page.fundraisingTarget }}<br/><%= __('game.fundraising.summary.target') %></div>
           {{ } else { }}
-            <div class="target">Waiting for donations..</div>
+            <div class="target"><%= __('game.fundraising.summary.waiting') %></div>
           {{ } }}
         </div>
       {{ } }}
@@ -276,7 +276,7 @@
           </div><div class="donation-detail">
             <div class="name">
             {{ if (donation.stored_anonymous_donation == 'true') { }}
-              Anonymous
+              <%= __('game.fundraising.donations.anonymous') %>
             {{ } else { }}
               {{ if (donation.donorDisplayName) { }}
                 {{= donation.donorDisplayName }}
@@ -285,13 +285,13 @@
               {{ } else if (donation.stored_customer_firstname) { }}
                 {{= donation.stored_customer_firstname }} {{= donation.stored_customer_lastname }}
               {{ } else { }}
-                Anonymous
+                <%= __('game.fundraising.donations.anonymous') %>
               {{ } }}            
             {{ } }}       
             </div>
             <div class="amount-detail">
             {{ if (donation.donorLocalAmount) { }}
-              Donated<span class="amount">{{ if (donation.donorLocalCurrencyCode == 'GBP') { }}£{{ } else if (donation.donorLocalCurrencyCode == 'EUR') { }}€{{ } else { }}${{ } }}{{= Math.round(donation.donorLocalAmount) }}</span>
+              <%= __('game.fundraising.donations.donated') %><span class="amount">{{ if (donation.donorLocalCurrencyCode == 'GBP') { }}£{{ } else if (donation.donorLocalCurrencyCode == 'EUR') { }}€{{ } else { }}${{ } }}{{= Math.round(donation.donorLocalAmount) }}</span>
             {{ } else { }}
               Donated<span class="amount">{{= donation.currency_identifier }}{{= Math.round(donation.amount / 100) }}</span>
             {{ } }}            

@@ -807,12 +807,16 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           dLocalGameEnd.setDate(dLocalGameEnd.getDate() + 5);
         }
 
-        $('#map-view .countdown-container').show();
+        var elCountdownContainer = $('#map-view .countdown-container');
+        var strDay = elCountdownContainer.attr('data-value-day');
+        var strDays = elCountdownContainer.attr('data-value-days');
+
+        elCountdownContainer.show();
         $('.countdown .end').countdown(dLocalGameEnd).on('update.countdown', function(event) {
           var $this = $(this).html(event.strftime(''
             + '<span class="days">'
               + '<span class="time">%-D</span>'
-              + '<span class="days-marker"> Day' + ((Number(event.strftime('%-D')) == 1) ? '' : 's') + '</span>'
+              + '<span class="days-marker"> ' + ((Number(event.strftime('%-D')) == 1) ? strDay : strDays) + '</span>'
             + '</span>'
             + '<span class="hours">'
               + '<span class="time"><span>%H</span><span class="marker">:</span><span>%M</span><span class="marker">:</span><span>%S</span></span>'

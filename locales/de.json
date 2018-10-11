@@ -1,7 +1,7 @@
 {
   "menu": {
     "demo": "Demo Video",
-    "example": "Beispiel",
+    "example": "Spiel",
     "signup": "Sign up",
     "signout": "Sign out",
     "privacy": "Privacy",
@@ -40,6 +40,18 @@
       "resolve": "Reloading may fix the issue but if not then please contact %s.",
       "support": "support",
       "mr_resolve": "Reloading may fix the issue but if not then please contact Mountain Rush %s."
+    },
+    "challenge": {
+      "device": {
+        "title": "Sorry, we're having trouble presenting the challenge",
+        "description": "This appears to be because your device is not be capable of showing 3D.",
+        "resolve": "Reloading may fix the issue but if not then please contact %s.",
+        "support": "support",
+        "mr_resolve": "Reloading may fix the issue but if not then please contact Mountain Rush %s.",
+        "fundraise": {
+          "title": "Don't worry, you can still make a donation!"
+        }
+      }
     }
   },
   "overlay": {
@@ -57,6 +69,24 @@
         "pre": ", would you like to check out your upcoming",
         "post": "challenge?"
       }
+    },
+    "challenge_upcoming": {
+      "title": "Challenge",
+      "description": {
+        "pre": "This",
+        "starts_on": "challenge starts on",
+        "starts_at": "at",
+        "post": "local time."
+      },
+      "social": {
+        "description": "Share so that everyone can follow progress to the summit!"
+      }
+    },
+    "okay": "Okay",
+    "challenge_complete": {
+      "title": "Challenge Over",
+      "description_pre": "You can still share this challenge and inspire others to take on a",
+      "description_post": "virtual ascent!"
     }
   },
   "register": {
@@ -120,6 +150,111 @@
       "game_notifications": "Activity email during challenge",
       "update": "Update Preferences"
     },
-    "please_wait": "Please Wait"
+    "please_wait": "Please Wait",
+    "game_create": {
+      "title": "Create Challenge",
+      "description": "Choose your challenge preferences",
+      "choose_ascent": "How much ascent are you up for?",
+      "fixed_ascent": "You will be ascending:",
+      "choose_activity": "What's your activity of choice?",
+      "fixed_activity": "Your activity will be:",
+      "choose_duration": "How long would you like to reach the summit?",
+      "choose_start": "When will you start your challenge?",
+      "create_challenge": "Create Challenge"
+    },
+    "game_created": {
+      "fundraising": {
+        "title": "You're nearly ready!",
+        "description": "Your challenge has been set up and will start on:"
+      },
+      "title": "Challenge ready!",
+      "description": "Your challenge is now ready and will start on:",
+      "view_challenge": "View Challenge",
+      "invite_friends": "Invite friends",
+      "invite_friends_challenge": "%s to your challenge!",
+      "social": {
+        "title": "Get social",
+        "description": "Let everyone know what you're doing and share!"
+      }
+    },
+    "invite_friends": {
+      "title": "Invite Friends",
+      "description": "Invite friends to join your challenge!",
+      "invitation_sent": "Invitation sent!",
+      "friend_name": "Friend's Name",
+      "friend_name_help": "Please fill in your friend's name",
+      "friend_email": "Friend's Email",
+      "friend_email_help": "Please fill in your friend's email",
+      "invite_friend": "Invite Friend"
+    }
+  },
+  "game": {
+    "to_summit": "to summit",
+    "climbed": "climbed",
+    "summited": "Summit!",
+    "summited_long": "summit reached",
+    "unknown_location": "Where am I?",
+    "climbed_on": "climbed on",
+    "player_position": {
+      "position": {
+        "first": "st",
+        "second": "nd",
+        "third": "rd",
+        "def": "th"
+      },
+      "place": "place"
+    },
+    "latest_activity": {
+      "title": "Latest Activity:",
+      "climbed": "Climbed",
+      "over": "over"
+    },
+    "view_strava": "View on Strava",
+    "photos": {
+      "waiting": {
+        "description": {
+          "pre": "Waiting for photos of",
+          "post": "journey to the summit..."
+        }
+      },
+      "description": {
+        "pre": "Check out",
+        "post": "journey to the summit!"
+      },
+      "show_more": "Show more photos"
+    },
+    "fundraising": {
+      "donations": {
+        "waiting": {
+          "description": {
+            "pre": "Waiting for donations to help",
+            "post": "to the summit..."
+          }
+        },
+        "description": {
+          "pre": "Check out who's helping",
+          "post": "to the summit!"
+        },
+        "title": "donations",
+        "anonymous": "Anonymous",
+        "donated": "Donated"
+      },
+      "summary": {
+        "waiting": "Waiting for donations..",
+        "raised": "Raised of",
+        "target": "target"
+      }
+    },
+    "day": {
+      "one": "day",
+      "other": "days"
+    }
+  },
+  "defs": {
+    "donate": "Donate",
+    "social": {
+      "share_facebook": "Share on Facebook",
+      "share_twitter": "Share on Twitter"
+    }
   }
 }

@@ -60,11 +60,11 @@ var Demo = <%= Defs.Demo %>;
           </div>
 
           <div class="game-details-container">
-            <div class="countdown-container">
+            <div class="countdown-container" data-value-day="<%= __n('game.day', 1) %>" data-value-days="<%= __n('game.day', 2) %>">
               <div class="countdown">
                 <span class="clock"></span>
                 <span class="end">
-                  <span class="days"><span class="time">0</span><span class="days-marker"> Days</span></span>
+                  <span class="days"><span class="time">0</span><span class="days-marker"> <%= __n('game.day', 2) %></span></span>
                   <span class="hours"><span class="time"><span>00</span><span class="marker">:</span><span>00</span><span class="marker">:</span><span>00</span></span></span>
                 </span>
               </div>
@@ -112,10 +112,10 @@ var Demo = <%= Defs.Demo %>;
     <div class="modal-content">
       <div class="modal-body">
         <div class="details">
-          <div class="title">Challenge</div>
-          <div class="description">This <span class="type"></span> challenge starts on <span class="date"></span><br/>at <span class="time"></span> local time.
+          <div class="title"><%= __('overlay.challenge_upcoming.title') %></div>
+          <div class="description"><%= __('overlay.challenge_upcoming.description.pre') %> <span class="type"></span> <%= __('overlay.challenge_upcoming.description.starts_on') %><span class="date"></span><br/><%= __('overlay.challenge_upcoming.description.starts_at') %> <span class="time"></span> <%= __('overlay.challenge_upcoming.description.post') %>
           <br/><br/>
-          Share so that everyone can follow progress to the summit!
+          <%= __('overlay.challenge_upcoming.social.description') %>
           </div>
           <div class="social">
           <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/$GameID" target="_blank" class="social-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -123,7 +123,7 @@ var Demo = <%= Defs.Demo %>;
           </div>
         </div>
         <div class="action-field">
-          <span class="btn mr-btn btn-primary" data-dismiss="modal">Okay</span>
+          <span class="btn mr-btn btn-primary" data-dismiss="modal"><%= __('overlay.okay') %></span>
         </div>
       </div>
     </div><!-- /.modal-content -->
@@ -135,15 +135,15 @@ var Demo = <%= Defs.Demo %>;
     <div class="modal-content">
       <div class="modal-body">
         <div class="details">
-          <div class="title">Challenge Over</div>
-          <div class="description">You can still share this challenge and inspire others to take on a $Campaign.CampaignName virtual ascent!</div>
+          <div class="title"><%= __('overlay.challenge_complete.title') %></div>
+          <div class="description"><%= __('overlay.challenge_complete.description_pre') %> <%= Campaign.CampaignName %> <%= __('overlay.challenge_complete.description_post') %></div>
           <div class="social">
           <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/$GameID" target="_blank" class="social-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a>
           <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20{$Campaign.CampaignName}%20challenge%20-%20http://mountainrush.co.uk/game/$GameID" target="_blank" class="social-btn"><i class="fa fa-twitter" aria-hidden="true"></i></a>
           </div>
         </div>
         <div class="action-field">
-          <span class="btn mr-btn btn-primary" data-dismiss="modal">Okay</span>
+          <span class="btn mr-btn btn-primary" data-dismiss="modal"><%= __('overlay.okay') %></span>
         </div>
       </div>
     </div><!-- /.modal-content -->
@@ -160,21 +160,25 @@ var Demo = <%= Defs.Demo %>;
       <div class="modal-content">
         <div class="modal-body">
           <div class="details">
-            <div class="title">Sorry, we're having trouble presenting the challenge</div>
-            <div class="description">
-            This appears to be because your device is not be capable of showing 3D.
+            <div class="title"><%= __('error.challenge.device.title') %></div>
+            <div class="description"><%= __('error.challenge.device.description') %>            
             <br/><br/>
             {{ if (player.fundraising_goal && player.fundraising_goal > 0) { }}
-              Don't worry, you can still make a donation!
+              <%= __('error.challenge.device.fundraise.title') %>
               <br/><br/>
               <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
-                <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary double"><div>Donate</div><div>£10</div></a>            
+                <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary double"><div><%= __('defs.donate') %></div><div>£10</div></a>
               <% } else { %>
-                <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/donate?amount=1000" class="btn mr-btn btn-primary btn-large double"><div>Donate</div><div>£10</div></a>
+                <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/donate?amount=1000" class="btn mr-btn btn-primary btn-large double"><div><%= __('defs.donate') %></div><div>£10</div></a>
               <% } %>
               <br/><br/>
             {{ } }}
-            Please contact <% if (Campaign.CampaignTemplate != 'default') { %>Mountain Rush <% } %><a class="link" href="mailto:support@mountainrush.co.uk">support</a> for further information.
+
+            <% if (Campaign.CampaignTemplate != 'default') { %>
+              <%- __('error.challenge.device.mr_resolve', '<a class="link" href="mailto:support@mountainrush.co.uk">' + __('error.challenge.device.support') + '</a>') %>
+            <% } else { %>
+              <%- __('error.challenge.device.mr_resolve', '<a class="link" href="mailto:support@mountainrush.co.uk">' + __('error.challenge.device.support') + '</a>') %>
+            <% } %>
             </div>
           </div>
           <div class="action-field">
@@ -251,8 +255,8 @@ var Demo = <%= Defs.Demo %>;
             <div class="share-detail hidden-xs hidden-sm">
               <div class="share-text">Share your journey to help your fundraising soar.</div>
               <div class="btns">
-              <a href="http://www.facebook.com/share.php?u=<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/{{= socialShareURL }}" class="btn mr-btn btn-primary double" target="_blank"><div>Share on facebook</div><div><i class="fa fa-facebook"></i></div></a>
-              <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20<%= Campaign.CampaignName %>%20challenge%20-%20<%= Defs.BaseHTTPURL %>game/<%= Defs.GameID %>" class="btn mr-btn btn-primary double" target="_blank"><div>Share on Twitter</div><div><i class="fa fa-twitter"></i></div></a>
+              <a href="http://www.facebook.com/share.php?u=<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/{{= socialShareURL }}" class="btn mr-btn btn-primary double" target="_blank"><div><%= __('defs.social.share_facebook') %></div><div><i class="fa fa-facebook"></i></div></a>
+              <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20<%= Campaign.CampaignName %>%20challenge%20-%20<%= Defs.BaseHTTPURL %>game/<%= Defs.GameID %>" class="btn mr-btn btn-primary double" target="_blank"><div><%= __('defs.social.share_twitter') %></div><div><i class="fa fa-twitter"></i></div></a>
               </div>
             </div>
           </div>
@@ -282,7 +286,7 @@ var Demo = <%= Defs.Demo %>;
                 </div>
                 <div class="donate-item">
                 <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
-                  <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary double"><div>Donate</div><div>£10</div></a>
+                  <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary double"><div><%= __('defs.donate') %></div><div>£10</div></a>
                 <% } else { %>
                   <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/donate?amount=1000" class="btn mr-btn btn-primary btn-large double"><div>Donate</div><div>£10</div></a>
                 <% } %>

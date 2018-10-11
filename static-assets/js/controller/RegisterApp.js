@@ -120,7 +120,7 @@ define([
 //          PLAYER_TOKEN = '3c107313f14fd3fee78e75ee2cfa5e5429155595'; // CFYW - Amelia
 //        } 
 
-//        changeState(STATE_FUNDRAISING_PAGE_CREATE);
+//        changeState(STATE_GAME_INVITE);
 //        return;
 
         if (PLAYER_TOKEN != '') { // do we have a passed player?

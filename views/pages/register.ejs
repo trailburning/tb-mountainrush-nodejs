@@ -374,11 +374,11 @@ var TEST = '<%= Defs.Test %>';
 
 <script type="text/template" id="registerGameCreatedViewTemplate">
   <% if (Campaign.CampaignFundraisingProvider) { %>
-    <h1>You're nearly ready!</h1>
-    <div class="intro-text centre-text">Your challenge has been set up and will start on:</div>
+    <h1><%= __('register.game_created.fundraising.title') %></h1>
+    <div class="intro-text centre-text"><%= __('register.game_created.fundraising.description') %></div>
   <% } else { %>
-    <h1>{{= fields.type }} Challenge ready!</h1>
-    <div class="intro-text centre-text">Your challenge is now ready and will start on:</div>
+    <h1>{{= fields.type }} <%= __('register.game_created.title') %></h1>
+    <div class="intro-text centre-text"><%= __('register.game_created.description') %></div>
   <% } %>
 
   <div class="calendar">
@@ -388,54 +388,50 @@ var TEST = '<%= Defs.Test %>';
   </div>
 
   <div class="btns">
-    <a href="<%= Defs.BaseHTTPURL %>/game/{{= fields.gameID }}" class="btn mr-btn">View Challenge</a>
+    <a href="<%= Defs.BaseHTTPURL %>/game/{{= fields.gameID }}" class="btn mr-btn"><%= __('register.game_created.view_challenge') %></a>
   </div>
 
   {{ if (fields.multiplayer) { }}
-    <span class="link link-invite">Invite friends</span> to your challenge!
+    <%- __('register.game_created.invite_friends_challenge', '<span class="link link-invite">' + __('register.game_created.invite_friends') + '</span>') %>
   {{ }; }}
 
   <% if (Campaign.CampaignFundraisingProvider) { %>
     <% include ../partials/registerAddFundraisingTemplate.ejs %>
   <% } else { %>
     <div class="social">
-      <h2>Get social</h2>
-      <div class"text">
-      Let everyone know what you're doing and share!
-      </div>
+      <h2><%= __('register.game_created.social.title') %></h2>
+      <div class"text"><%= __('register.game_created.social.description') %></div>
     </div>
 
     <div class="btns">
-    <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn double" target="_blank"><div>Share on facebook</div><div><i class="fa fa-facebook"></i></div></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20Mountain%20Rush%20challenge%20-%20http://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn double" target="_blank"><div>Share on Twitter</div><div><i class="fa fa-twitter"></i></div></a>
+    <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn double" target="_blank"><div><%= __('defs.social.share_facebook') %></div><div><i class="fa fa-facebook"></i></div></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20Mountain%20Rush%20challenge%20-%20http://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn double" target="_blank"><div><%= __('defs.social.share_twitter') %></div><div><i class="fa fa-twitter"></i></div></a>
     </div>
   <% } %>
 </script>
 
 <script type="text/template" id="registerGameInviteViewTemplate">
-  <h1>Invite Friends</h1>
-  <div class="intro-text centre-text">
-  Invite friends to join your challenge!
-  </div>
+  <h1><%= __('register.invite_friends.title') %></h1>
+  <div class="intro-text centre-text"><%= __('register.invite_friends.description') %></div>
 
   <form>
   <div class="info">
     <div class="msg" data-msg="invite-sent">
-    <p>Invitation sent!</p>
+    <p><%= __('register.invite_friends.invitation_sent') %></p>
     </div>
   </div>
   <div class="form-group">
-    <div class="form-label"><label>Friend's Name</label></div><input class="field form-control required" id="invite-name">
-    <div class="help-block">Please fill in your friend's name</div>
+    <div class="form-label"><label><%= __('register.invite_friends.friend_name') %></label></div><input class="field form-control required" id="invite-name">
+    <div class="help-block"><%= __('register.invite_friends.friend_name_help') %></div>
   </div>
   <div class="form-group">
-    <div class="form-label"><label>Friend's Email</label></div><input class="field form-control required" id="invite-email">
-    <div class="help-block">Please fill in your friend's email</div>
+    <div class="form-label"><label><%= __('register.invite_friends.friend_email') %></label></div><input class="field form-control required" id="invite-email">
+    <div class="help-block"><%= __('register.invite_friends.friend_email_help') %></div>
   </div>
   <div class="form-button">
-  <button type="submit" class="btn mr-btn btn-primary invite-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Please Wait">Invite Friend</button>
+  <button type="submit" class="btn mr-btn btn-primary invite-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('register.invite_friends.invite_friend') %></button>
   </div>
   </form>
-  &lt; <span class="link link-back">go back</span>
+  &lt; <span class="link link-back"><%= __('register.go_back') %></span>
 </script>
 
 <script type="text/template" id="registerFundraisingCreateViewTemplate">
