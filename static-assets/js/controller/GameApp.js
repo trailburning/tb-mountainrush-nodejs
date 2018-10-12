@@ -265,8 +265,9 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         this.currPlayerModel.get('playerObj').getFundraising();
         // get donations
         this.currPlayerModel.get('playerObj').getDonations();
+
         // show if player has a fundraising goal, not already signed in, not already shown and a donation id is not present (passed when a donation has been made)
-        if (Number(this.currPlayerModel.get('fundraisingGoal')) && !FundraisingShoppingModelShown && getUserCookie(CLIENT_ID) == undefined && (FUNDRAISING_DONATION_ID == '')) {
+        if (Number(this.currPlayerModel.get('fundraising_goal')) && !FundraisingShoppingModelShown && getUserCookie(CLIENT_ID) == undefined && (FUNDRAISING_DONATION_ID == '')) {
           FundraisingShoppingModelShown = true;
           fundraisingShoppingModalView.render(this.currPlayerModel);
           // delay before showing
