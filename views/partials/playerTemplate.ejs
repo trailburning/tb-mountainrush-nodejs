@@ -141,8 +141,8 @@
           {{ } }}
 
           <div class="posts">
-            <div class="welcome without-photos"><%= __('game.photos.waiting.description.pre') %> {{= firstname }}'s <%= __('game.photos.waiting.description.post') %></div>
-            <div class="welcome with-photos"><%= __('game.photos.description.pre') %> {{= firstname }}'s <%= __('game.photos.description.post') %></div>
+            <div class="welcome without-photos">{{= '<%= __('game.photos.waiting.description') %>'.replace('%s', firstname) }}</div>
+            <div class="welcome with-photos">{{= '<%= __('game.photos.description') %>'.replace('%s', firstname) }}</div>
             <div class="photos"></div>
           </div>
         </div>
@@ -176,8 +176,8 @@
           <div class="fundraising-donations-view">
             <div class="donations">
               <div class="title"><%= __('game.fundraising.donations.title') %></div>
-              <div class="welcome without-donations"><%= __('game.fundraising.donations.waiting.description.pre') %> {{= player.firstname }} <%= __('game.fundraising.donations.waiting.description.post') %></div>
-              <div class="welcome with-donations"><%= __('game.fundraising.donations.description.pre') %> {{= player.firstname }} <%= __('game.fundraising.donations.description.post') %></div>
+              <div class="welcome without-donations">{{= '<%= __('game.fundraising.donations.waiting.description') %>'.replace('%s', firstname) }}</div>
+              <div class="welcome with-donations">{{= '<%= __('game.fundraising.donations.description') %>'.replace('%s', firstname) }}</div>
               <div class="fundraisers"></div>
             </div>
           </div>

@@ -164,18 +164,19 @@ var TEST = '<%= Defs.Test %>';
   <h1><%= __('register.welcome_connected.title') %></h1>
 
   <div class="intro-text centre-text">
-  <%= __('register.welcome_connected.greeting') %> {{= player.firstname }}<%= __('register.welcome_connected.pre') %>
+  {{= '<%= __('register.welcome_connected.greeting') %>'.replace('%s', player.firstname) }}
+
   {{ if (player.game_notifications == '1') { }}
-    <%- __('register.welcome_connected.preferences.game_notifications_on', '<span class="btn-prefs link">' + __('register.here') + '</span>') %>
+    {{= '<%= __('register.welcome_connected.preferences.game_notifications_on') %>'.replace('%s', '<span class="btn-prefs link"><%= __('register.welcome_connected.preferences.here') %></span>') }}    
   {{ } else { }}
-    <%- __('register.welcome_connected.preferences.game_notifications_off', '<span class="btn-prefs link">' + __('register.here') + '</span>') %>
+    {{= '<%= __('register.welcome_connected.preferences.game_notifications_off') %>'.replace('%s', '<span class="btn-prefs link"><%= __('register.welcome_connected.preferences.here') %></span>') }}    
   {{ }; }}
   </div>
 
   {{ if (currGame) { }}
     <div class="challenge">
       <div class="intro-text centre-text">
-      <%= __('register.welcome_connected.game_current.pre') %> {{= currGame.name }} <span class="lowercase">{{= currGame.type }}</span> <%= __('register.welcome_connected.game_current.post') %>
+      {{= '<%- __('register.welcome_connected.game_current.description') %>'.replace('%s', '<span class="lowercase">' + currGame.type + '</span>') }}
       </div>  
       <div class="btns">
       {{ if (currGame.game_state == 'active') { }}
@@ -212,7 +213,7 @@ var TEST = '<%= Defs.Test %>';
       <div class="invitation">
         <div class="invite">
           <div class="intro-text centre-text">
-          <%- __('register.welcome_connected.msg_invitation.pre') %> <strong>{{= invitation.name }} <span class="lowercase">{{= invitation.type }}</span></strong> <%- __('register.welcome_connected.msg_invitation.post') %> <strong>{{= invitation.owner[0].firstname }} {{= invitation.owner[0].lastname }}</strong>!
+          {{= '<%- __('register.welcome_connected.msg_invitation') %>'.replace('%s', '<strong>' + invitation.name + '</strong>').replace('%s', '<strong><span class="lowercase">' + invitation.type + '</span></strong>').replace('%s', '<strong>' + invitation.owner[0].firstname + ' ' + invitation.owner[0].lastname + '</strong>') }}
           </div>
 
           <div class="invitation-accept">
@@ -223,9 +224,7 @@ var TEST = '<%= Defs.Test %>';
         </div>
 
         <div class="invitation-accepted">
-          <div class="intro-text centre-text">
-          <%= __('register.welcome_connected.game_accepted.pre') %> <strong>{{= invitation.name }} <span class="lowercase">{{= invitation.type }}</span></strong> <%= __('register.welcome_connected.game_accepted.post') %>
-          </div>  
+          <div class="intro-text centre-text">{{= '<%= __('register.welcome_connected.game_accepted') %>'.replace('%s', '<strong>' + invitation.name + '</strong>').replace('%s', '<strong><span class="lowercase">' + invitation.type + '</span></strong>') }}</div>  
           <div class="btns">
           {{ if (invitation.game_state == 'active') { }}
             <a href="<%= Defs.BaseHTTPURL %>/game/{{= invitation.gameID }}" class="btn mr-btn"><%= __('register.welcome_connected.game_active') %></a>
@@ -238,11 +237,7 @@ var TEST = '<%= Defs.Test %>';
         </div>
 
         <div class="invitation-rejected">
-          <div class="intro-text centre-text">
-          <%= __('register.welcome_connected.game_rejected.pre') %>
-          <br/>
-          <%= __('register.welcome_connected.game_rejected.post') %>
-          </div>
+          <div class="intro-text centre-text"><%= __('register.welcome_connected.game_rejected') %></div>
           <div class="btns">
             <span class="btn mr-btn btn-primary btn-create"><%= __('register.welcome_connected.game_create') %></span>
           </div>

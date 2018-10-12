@@ -56,37 +56,28 @@
 	},
 	"overlay": {
 		"challenge": {
-			"greeting": "Hi",
 			"yes": "Yes please",
 			"no": "Maybe later",
 			"latest": {
 				"title": "Latest Challenge",
-				"pre": ", would you like to check out your",
-				"post": "challenge?"
+				"description": "Hi %s, would you like to check out your %s challenge?"
 			},
 			"upcoming": {
 				"title": "Upcoming Challenge",
-				"pre": ", would you like to check out your upcoming",
-				"post": "challenge?"
+				"description": "Hi %s, would you like to check out your upcoming %s challenge?"
 			}
 		},
 		"challenge_upcoming": {
 			"title": "Challenge",
-			"description": {
-				"pre": "This",
-				"starts_on": "challenge starts on",
-				"starts_at": "at",
-				"post": "local time."
-			},
 			"social": {
 				"description": "Share so that everyone can follow progress to the summit!"
-			}
+			},
+			"description": "This %s challenge starts on %s at %s local time."
 		},
 		"okay": "Okay",
 		"challenge_complete": {
 			"title": "Challenge Over",
-			"description_pre": "You can still share this challenge and inspire others to take on a",
-			"description_post": "virtual ascent!"
+			"description": "You can still share this challenge and inspire others to take on a %s virtual ascent!"
 		}
 	},
 	"register": {
@@ -108,35 +99,25 @@
 		"welcome_connected": {
 			"title": "Thanks for signing up",
 			"game_current": {
-				"pre": "You have a ",
-				"post": "challenge."
+				"description": "You have a %s challenge."
 			},
 			"game_active": "View Active Challenge",
 			"game_upcoming": "View Pending Challenge",
 			"game": "View Challenge",
 			"invite": "Invite friends",
 			"msg_invite": "%s to your challenge!",
-			"msg_invitation": {
-				"pre": "You have a",
-				"post": "challenge invitation from"
-			},
+			"msg_invitation": "You have a %s %s challenge invitation from %s!",
 			"yes": "Accept",
 			"no": "Reject",
-			"game_accepted": {
-				"pre": "You now have a",
-				"post": "challenge."
-			},
-			"game_rejected": {
-				"pre": "Challenge rejected!",
-				"post": "You can now create your own challenge."
-			},
+			"game_accepted": "You now have a %s %s challenge!",
+			"game_rejected": "Challenge rejected! You can now create your own challenge.",
 			"game_create": "Create Challenge",
 			"previous_challenges": "Previous",
-			"greeting": "Hi",
-			"pre": ",",
+			"greeting": "Hi %s,",
 			"preferences": {
-				"game_notifications_on": "during your climb you'll receive activity emails with your progress up the mountain, click %s",
-				"game_notifications_off": "during your climb you won't receive any activity emails with your progress up the mountain, click %s"
+				"game_notifications_on": "during your climb you'll receive activity emails with your progress up the mountain, click %s if you'd rather not get them.",
+				"game_notifications_off": "during your climb you won't receive any activity emails with your progress up the mountain, click %s if you'd like to get them.",
+				"here": "here"
 			}
 		},
 		"challenge": {
@@ -212,29 +193,17 @@
 		"view_strava": "View on Strava",
 		"photos": {
 			"waiting": {
-				"description": {
-					"pre": "Waiting for photos of",
-					"post": "journey to the summit..."
-				}
+				"description": "Waiting for photos of %s's journey to the summit..."
 			},
-			"description": {
-				"pre": "Check out",
-				"post": "journey to the summit!"
-			},
+			"description": "Check out %s's journey to the summit!",
 			"show_more": "Show more photos"
 		},
 		"fundraising": {
 			"donations": {
 				"waiting": {
-					"description": {
-						"pre": "Waiting for donations to help",
-						"post": "to the summit..."
-					}
+					"description": "Waiting for donations to help %s to the summit..."
 				},
-				"description": {
-					"pre": "Check out who's helping",
-					"post": "to the summit!"
-				},
+				"description": "Check out who's helping %s to the summit!",
 				"title": "donations",
 				"anonymous": "Anonymous",
 				"donated": "Donated"

@@ -101,54 +101,13 @@ var Demo = <%= Defs.Demo %>;
 <% include ../partials/photoSwipe.ejs %>
 
 <div id="device-capable-modal-view"></div>
+<div id="challenge-pending-modal-view"></div>
+<div id="challenge-complete-modal-view"></div>
 <div id="mountain-story-modal-view"></div>
 <div id="mountain-locked-story-modal-view"></div>
 <div id="fundraising-shopping-modal-view"></div>
 <div id="player-connect-view"></div>
 <div id="demo-video-view"></div>
-
-<div id="challengePendingModal" class="modal msg-overlay" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="details">
-          <div class="title"><%= __('overlay.challenge_upcoming.title') %></div>
-          <div class="description"><%= __('overlay.challenge_upcoming.description.pre') %> <span class="type"></span> <%= __('overlay.challenge_upcoming.description.starts_on') %><span class="date"></span><br/><%= __('overlay.challenge_upcoming.description.starts_at') %> <span class="time"></span> <%= __('overlay.challenge_upcoming.description.post') %>
-          <br/><br/>
-          <%= __('overlay.challenge_upcoming.social.description') %>
-          </div>
-          <div class="social">
-          <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/$GameID" target="_blank" class="social-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-          <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20{$Campaign.CampaignName}%20challenge%20-%20http://mountainrush.co.uk/game/$GameID" target="_blank" class="social-btn"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-          </div>
-        </div>
-        <div class="action-field">
-          <span class="btn mr-btn btn-primary" data-dismiss="modal"><%= __('overlay.okay') %></span>
-        </div>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<div id="challengeCompleteModal" class="modal msg-overlay" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="details">
-          <div class="title"><%= __('overlay.challenge_complete.title') %></div>
-          <div class="description"><%= __('overlay.challenge_complete.description_pre') %> <%= Campaign.CampaignName %> <%= __('overlay.challenge_complete.description_post') %></div>
-          <div class="social">
-          <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/$GameID" target="_blank" class="social-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-          <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20{$Campaign.CampaignName}%20challenge%20-%20http://mountainrush.co.uk/game/$GameID" target="_blank" class="social-btn"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-          </div>
-        </div>
-        <div class="action-field">
-          <span class="btn mr-btn btn-primary" data-dismiss="modal"><%= __('overlay.okay') %></span>
-        </div>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
 <div id="player-challenge-success-view"></div>
 
@@ -182,6 +141,54 @@ var Demo = <%= Defs.Demo %>;
             </div>
           </div>
           <div class="action-field">
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</script>
+
+<script type="text/template" id="challengeCompleteModalViewTemplate">
+  <div class="modal msg-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="details">
+            <div class="title"><%= __('overlay.challenge_complete.title') %></div>
+            <div class="description"><%= __('overlay.challenge_complete.description', Campaign.CampaignName) %></div>
+            <div class="social">
+            <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/<%= Defs.GameID %>" target="_blank" class="social-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20<%= Campaign.CampaignName %>%20challenge%20-%20http://mountainrush.co.uk/game/<%= Defs.GameID %>" target="_blank" class="social-btn"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <div class="action-field">
+            <span class="btn mr-btn btn-primary" data-dismiss="modal"><%= __('overlay.okay') %></span>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</script>
+
+<script type="text/template" id="challengePendingModalViewTemplate">
+  <div class="modal msg-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="details">
+            <div class="title"><%= __('overlay.challenge_upcoming.title') %></div>
+            <div class="description">
+            {{= '<%- __('overlay.challenge_upcoming.description') %>'.replace('%s', '<span class="type"></span>').replace('%s', '<span class="date"></span>').replace('%s', '<span class="time"></span>') }}
+            <br/><br/>
+            <%= __('overlay.challenge_upcoming.social.description') %>
+            </div>
+            <div class="social">
+            <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/<%= Defs.GameID %>" target="_blank" class="social-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20<%= Campaign.CampaignName %>%20challenge%20-%20http://mountainrush.co.uk/game/<%= Defs.GameID %>" target="_blank" class="social-btn"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <div class="action-field">
+            <span class="btn mr-btn btn-primary" data-dismiss="modal"><%= __('overlay.okay') %></span>
           </div>
         </div>
       </div><!-- /.modal-content -->

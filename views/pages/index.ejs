@@ -179,8 +179,7 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
             <div class="details">
               <div class="title"><%= __('overlay.challenge.latest.title') %></div>
               <div class="description">
-
-              <%= __('overlay.challenge.greeting') %> {{= player.firstname }} <%= __('overlay.challenge.latest.pre') %> <strong>{{= game.name }}</strong> <span class="lowercase">{{= game.type }}</span> <%= __('overlay.challenge.latest.post') %>
+              {{= '<%= __('overlay.challenge.latest.description') %>'.replace('%s', player.firstname).replace('%s', '<strong>' + game.name + '</strong> <span class="lowercase">' + game.type + '</span>') }}
               </div>
             </div>
 
@@ -194,7 +193,7 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
             <div class="details">
               <div class="title"><%= __('overlay.challenge.upcoming.title') %></div>
               <div class="description">
-              <%= __('overlay.challenge.greeting') %> {{= player.firstname }} <%= __('overlay.challenge.upcoming.pre') %> <strong>{{= game.name }}</strong> <span class="lowercase">{{= game.type }}</span> <%= __('overlay.challenge.upcoming.post') %>
+              {{= '<%= __('overlay.challenge.upcoming.description') %>'.replace('%s', player.firstname).replace('%s', '<strong>' + game.name + '</strong> <span class="lowercase">' + game.type + '</span>') }}
               </div>
             </div>
 
