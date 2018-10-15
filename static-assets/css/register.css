@@ -114,31 +114,6 @@ ul.pills li {
   text-decoration: none;
 }
 
-#register-process-view .step-container {
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-
-#register-process-view .step {
-  margin: -28px auto 0 auto;
-  border: 2px solid #fff;
-  width: 56px;
-  height: 56px;
-  overflow: hidden;
-  border-radius: 50%;
-  background: #103849;
-}
-
-#register-process-view .step-image {
-  width: 100%;
-  height: 100%;
-}
-
-#register-process-view .step-image img {
-  width: 100%;
-}
-
 #register-process-view .campaign-sticker-container {
   display: none;
   position: absolute;
