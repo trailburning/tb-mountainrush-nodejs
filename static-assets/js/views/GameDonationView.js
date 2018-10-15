@@ -1,8 +1,9 @@
 define([
   'underscore', 
   'backbone',
-  'bootstrap'
-], function(_, Backbone, bootstrap){
+  'bootstrap',
+  'raisenow'
+], function(_, Backbone, bootstrap, raisenow){
 
   var GameDonationView = Backbone.View.extend({
     initialize: function(options){
@@ -86,7 +87,7 @@ define([
 
       $(this.el).html(this.template({ player: self.jsonResult }));
 
-      setupDonationForm();
+//      setupDonationForm();
 
       return this;
     }
