@@ -1,110 +1,110 @@
 {
   "menu": {
-    "demo": "Demo Video",
-    "example": "Beispiel",
-    "signup": "Sign up",
-    "signout": "Sign out",
-    "privacy": "Privacy",
-    "greeting": "Hi"
+    "demo": "Demo-Video",
+    "example": "Beispielspiel",
+    "signup": "Registrieren",
+    "signout": "Abmelden",
+    "privacy": "Datenschutz",
+    "greeting": "Hallo"
   },
   "intro": {
-    "scene1_1": "Virtually Climb",
-    "scene1_2": "real mountains",
-    "scene2_1": "Hike, Run or Cycle",
-    "scene2_2": "with Strava",
-    "scene3_1": "Against Yourself",
-    "scene3_2": "Beat the Clock",
-    "scene4_1": "Invite Your Mates",
-    "scene4_2": "Make It Social",
-    "scene5_1": "Reach The Summit With",
+    "scene1_1": "Virtueller Aufstieg",
+    "scene1_2": "echte Gebirge",
+    "scene2_1": "Wandern, Laufen oder Radfahren",
+    "scene2_2": "mit Strava",
+    "scene3_1": "gegen Dich selbst",
+    "scene3_2": "die Uhr schlagen",
+    "scene4_1": "Lade Deine Kumpeln ein",
+    "scene4_2": "Mach es sozial ",
+    "scene5_1": "den Gipfel mit XX erreichen",
     "scene5_2": "Mountain Rush"
   },
   "welcome": {
-    "title": "A challenging game",
-    "description": "To virtually ascend real mountains",
-    "text": "Hike, run or cycle with %s to virtually climb beautifully rendered 3D mountains, against yourself, or your friends. Mountain Rush promotes physical activity and local exploration in a fun package.",
-    "text_fundraise": "Oh and you can %s too!",
-    "fundraise": "fundraise",
-    "signup": "Sign up",
-    "demo": "Demo Video",
-    "fundraising_provider": "Fundraising by %s"
+    "title": "Ein herausforderndes Spiel",
+    "description": "Echte Berge virtuell besteigen",
+    "text": "Wandern, Laufen oder Radfahren mit %s, um wunderschön gerenderte Berge virtuell besteigen, gegen Dich selbst oder Deine Kumpeln. Mountain Rush fördert sowie körperliche Bewegung als auch lokale Erkundung, dessen Art und Weise viel spaß anbietet.",
+    "text_fundraise": "Dabei kannst Du auch %s sammeln!",
+    "fundraise": "Spenden",
+    "signup": "Registrieren",
+    "demo": "Demo-Video",
+    "fundraising_provider": "Spendensammlung durch %s"
   },
   "community": {
-    "title": "Journey to the Summit",
-    "description": "Follow our Mountain Rush climbers"
+    "title": "Reise zum Gipfel",
+    "description": "Unsere Mountain Rush Teilnehmende folgen"
   },
   "error": {
     "device": {
-      "title": "Sorry, we're having trouble presenting the 3D mountain",
-      "description": "This appears to be because your device is not be capable of showing 3D.",
-      "resolve": "Reloading may fix the issue but if not then please contact %s.",
-      "support": "support",
-      "mr_resolve": "Reloading may fix the issue but if not then please contact Mountain Rush %s."
+      "title": "Ups, es befindet sich ein Problem mit dem 3D Bergpanorama",
+      "description": "Dein Gerät kann leider kein 3D anzeigen.",
+      "resolve": "Bitte die Seite neu laden. Falls das Problem noch bleibt, nimmst Du bitte Kontakt mit unserem %s auf.",
+      "support": "Support",
+      "mr_resolve": "Bitte die Seite neu laden. Falls das Problem noch bleibt, nimmst Du bitte Kontakt mit Montain Rush %s auf."
     },
     "challenge": {
       "device": {
-        "title": "Sorry, we're having trouble presenting the challenge",
-        "description": "This appears to be because your device is not be capable of showing 3D.",
-        "resolve": "Reloading may fix the issue but if not then please contact %s.",
-        "support": "support",
-        "mr_resolve": "Reloading may fix the issue but if not then please contact Mountain Rush %s.",
+        "title": "Ups, es befindet sich ein Problem mit der Anzeige des Spiels",
+        "description": "Dein Gerät kann leider kein 3D anzeigen.",
+        "resolve": "Bitte die Seite neu laden. Falls das Problem noch bleibt, nimmst Du bitte Kontakt mit unserem %s auf.",
+        "support": "Support",
+        "mr_resolve": "Bitte die Seite neu laden. Falls das Problem noch bleibt, nimmst Du bitte Kontakt mit Montain Rush %s auf.",
         "fundraise": {
-          "title": "Don't worry, you can still make a donation!"
+          "title": "Keine Sorge, Du kannst tortzdem eine Spende machen!"
         }
       }
     }
   },
   "overlay": {
     "challenge": {
-      "yes": "Yes please",
-      "no": "Maybe later",
+      "yes": "Ja, klar",
+      "no": "Vielleicht später",
       "latest": {
-        "title": "Latest Challenge",
-        "description": "Hi %s, would you like to check out your %s challenge?"
+        "title": "Aktuelles Spiel",
+        "description": "Hallo %s, willst Du Dein %s Spiel anschauen?"
       },
       "upcoming": {
-        "title": "Upcoming Challenge",
-        "description": "Hi %s, would you like to check out your upcoming %s challenge?"
+        "title": "Nächtes Spiel",
+        "description": "Hallo %s, willst Du Dein nächstes %s Spiel anschauen?"
       }
     },
     "challenge_upcoming": {
-      "title": "Challenge",
+      "title": "Spiel",
       "social": {
-        "description": "Share so that everyone can follow progress to the summit!"
+        "description": "Teile, damit Alle Deine Reise zum Gipfel folgen können!"
       },
-      "description": "This %s challenge starts on %s at %s local time."
+      "description": "Dieses %s Spiel fängt am %s um %s (lokale Uhrzeit)."
     },
     "okay": "Okay",
     "challenge_complete": {
-      "title": "Challenge Over",
-      "description": "You can still share this challenge and inspire others to take on a %s virtual ascent!"
+      "title": "Geschafft",
+      "description": "Teile es noch, um andere Leute inspirieren, wie sie auch %s virtuell besteigen könnten!"
     }
   },
   "register": {
     "help": {
-      "support": "support",
-      "mr_contact": "Please contact Mountain Rush %s if you have any questions.",
-      "contact": "Please contact %s if you have any questions."
+      "support": "Support",
+      "mr_contact": "Bei Fragen bitte Mountain Rush %s kontaktieren.",
+      "contact": "Bei Fragen bitte %s kontaktieren."
     },
     "welcome": {
-      "title": "Connect to Strava",
+      "title": "Verbindung zur Strava herstellen",
       "strava_app": "Strava App",
-      "description": "Track your hiking, cycling or running activities recorded by the %s challenges.",
-      "start": "Connect below to get started!",
-      "invite": "invite",
-      "start_invite": "Connect below to view your %s and get started!",
-      "privacy": "privacy policy",
-      "privacy_agree": "Clicking 'Connect with Strava' means that you agree to our %s."
+      "description": "Verfolge Deine Wandern-, Radfahren- oder Lauf-aktivitäten aufgezeichnet durch die %s Spiele.",
+      "start": "Fang an, unten verbinden!",
+      "invite": "Einladung",
+      "start_invite": "Unten verbinden, um Dein %s anzuschauen and fang an!",
+      "privacy": "Datenschutz",
+      "privacy_agree": "Auf 'Connect with Strava' klicken bedeutet zustimmen zu unserem %s."
     },
     "welcome_connected": {
-      "title": "Thanks for signing up",
+      "title": "Danke für's Anmelden",
       "game_current": {
-        "description": "You have a %s challenge."
+        "description": "Du hast ein %s Spiel."
       },
-      "game_active": "View Active Challenge",
-      "game_upcoming": "View Pending Challenge",
-      "game": "View Challenge",
-      "invite": "Invite friends",
+      "game_active": "Aktuelles Spiel anschauen",
+      "game_upcoming": "Nächstes Spiel anschauen",
+      "game": "Spiel anschauen",
+      "invite": "Freunde einladen",
       "msg_invite": "%s to your challenge!",
       "msg_invitation": "You have a %s %s challenge invitation from %s!",
       "yes": "Accept",
