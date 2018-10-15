@@ -293,6 +293,12 @@ body {
   background-color: #f69741;
 }
 
+/* STEP */
+/******************************************/
+.step-container .step {
+  background: #f69741;
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   #header-view {

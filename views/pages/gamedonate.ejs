@@ -46,17 +46,7 @@ var FUNDRAISING_DONATION_AMOUNT = '<%= Defs.FundraisingDonationAmount %>';
     </div>
 
     <div id="page-content-view">
-      <div class="content-view">
-        <h1>Make a donation</h1>
-        <div class="intro-text centre-text">
-          <div class="dds-widget-container" data-widget="lema"></div>
-        </div>
-      </div>
-
-      <div class="campaign-sticker-container">
-        <div class="campaign-sticker">
-        </div>
-      </div>
+      <div id="game-donation-view"></div>
     </div>
   </div>
 
@@ -69,6 +59,36 @@ var FUNDRAISING_DONATION_AMOUNT = '<%= Defs.FundraisingDonationAmount %>';
 
 <div id="mobileTest" class="visible-xs"></div>
 <div id="demo-video-view"></div>
+
+<script type="text/template" id="gameDonationViewTemplate">
+  <div class="content-view">
+    <h1>Support {{= player.firstname }}</h1>
+
+    <div class="intro-text centre-text">
+      <p>
+      {{= player.fundraising_msg }}
+      </p>
+    </div>    
+
+    <h1>Make a donation</h1>
+    <div class="intro-text centre-text">
+      <div class="dds-widget-container" data-widget="lema"></div>
+    </div>
+  </div>
+
+  <div class="step-container">
+    <div class="step">
+      <div class="step-image">
+        <img class="step-player active" src="{{= player.avatar }}">
+      </div>
+    </div>
+  </div>
+
+  <div class="campaign-sticker-container">
+    <div class="campaign-sticker">
+    </div>
+  </div>
+</script>
 
 <% include ../partials/demoVideoTemplate.ejs %>
 <% include ../partials/analytics.ejs %>

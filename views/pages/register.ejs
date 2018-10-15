@@ -444,12 +444,12 @@ var TEST = '<%= Defs.Test %>';
 
 <script type="text/template" id="registerFundraisingCreateViewTemplate">
   <h1>Fundraising</h1>
-  <div class="intro-text centre-text">You're nearly there! Set your target and tell us if {$Campaign.ClientShortName} can keep you informed about their conservation work and other ways you can help.</div>
+  <div class="intro-text centre-text">You're nearly there! Set your target and tell us if <%= Campaign.ClientShortName %> can keep you informed about their conservation work and other ways you can help.</div>
 
   <form>
   <div class="form-group">
-    <div class="form-label"><label>Target {{= campaign.fundraising_currency_symbol }}</label></div><input class="field form-control required" data-min-required="{$Campaign.CampaignFundraisingMinimum}" type="Number" id="fundraising-page-create-targetamount">
-    <div class="help-block">Please set at least {{= campaign.fundraising_currency_symbol }}{$Campaign.CampaignFundraisingMinimum} as your fundraising target</div>
+    <div class="form-label"><label>Target {{= campaign.fundraising_currency_symbol }}</label></div><input class="field form-control required" data-min-required="<%= Campaign.CampaignFundraisingMinimum %>" type="Number" id="fundraising-page-create-targetamount">
+    <div class="help-block">Please set at least {{= campaign.fundraising_currency_symbol }}<%= Campaign.CampaignFundraisingMinimum %> as your fundraising target</div>
   </div>
   <div class="form-group">
     <div class="form-info">I’m happy for {{= campaign.client_name }} to keep me informed, by email, about the impact of my fundraising and other ways to stay involved including future events, campaigns and appeals.</div>
@@ -502,7 +502,7 @@ var TEST = '<%= Defs.Test %>';
 
 <script type="text/template" id="registerFundraisingSigninViewTemplate">
   <h1>Fundraising</h1>
-  <div class="intro-text centre-text">To support {$Campaign.ClientShortName}'s vital conservation work while you {{= campaign.name }}, you need to be registered with our fundraising partner <a class="link" href="https://www.justgiving.com/" target="_blank">JustGiving</a>.</div>
+  <div class="intro-text centre-text">To support <%= Campaign.ClientShortName %>'s vital conservation work while you {{= campaign.name }}, you need to be registered with our fundraising partner <a class="link" href="https://www.justgiving.com/" target="_blank">JustGiving</a>.</div>
 
   <form>
   <div class="form-group">
@@ -532,7 +532,7 @@ var TEST = '<%= Defs.Test %>';
 
 <script type="text/template" id="registerFundraisingSignupViewTemplate">
   <h1>Fundraising</h1>
-  <div class="intro-text centre-text">To help you raise funds for {$Campaign.ClientShortName} while you {{= campaign.name }} please fill in your details and we will create a <a class="link" href="https://www.justgiving.com/" target="_blank">JustGiving</a> profile for you.</div>
+  <div class="intro-text centre-text">To help you raise funds for <%= Campaign.ClientShortName %> while you {{= campaign.name }} please fill in your details and we will create a <a class="link" href="https://www.justgiving.com/" target="_blank">JustGiving</a> profile for you.</div>
 
   <form>
   <div class="warning">
@@ -622,12 +622,12 @@ var TEST = '<%= Defs.Test %>';
 
 <script type="text/template" id="registerFundraisingPageCreateViewTemplate">
   <h1>Fundraising</h1>
-  <div class="intro-text centre-text">You're nearly there! Set your target and tell us if {$Campaign.ClientShortName} can keep you informed about their conservation work and other ways you can help.</div>
+  <div class="intro-text centre-text">You're nearly there! Set your target and tell us if <%= Campaign.ClientShortName %> can keep you informed about their conservation work and other ways you can help.</div>
 
   <form>
   <div class="form-group">
-    <div class="form-label"><label>Target {{= campaign.fundraising_currency_symbol }}</label></div><input class="field form-control required" data-min-required="{$Campaign.CampaignFundraisingMinimum}" type="Number" id="fundraising-page-create-targetamount">
-    <div class="help-block">Please set at least {{= campaign.fundraising_currency_symbol }}{$Campaign.CampaignFundraisingMinimum} as your fundraising target</div>
+    <div class="form-label"><label>Target {{= campaign.fundraising_currency_symbol }}</label></div><input class="field form-control required" data-min-required="<%= Campaign.CampaignFundraisingMinimum %>" type="Number" id="fundraising-page-create-targetamount">
+    <div class="help-block">Please set at least {{= campaign.fundraising_currency_symbol }}<%= Campaign.CampaignFundraisingMinimum %> as your fundraising target</div>
   </div>
 <!--  
   <div class="form-check">
