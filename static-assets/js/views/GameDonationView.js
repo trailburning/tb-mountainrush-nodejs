@@ -32,62 +32,11 @@ define([
     render: function(){
       var self = this;
 
-      function setupDonationForm() {
-        window.rnwWidget = window.rnwWidget || {};
-        window.rnwWidget.configureWidget = [];
-
-        window.rnwWidget.configureWidget.push(function(options) {
-          if (FUNDRAISING_DONATION_AMOUNT) {
-            options.defaults['ui_onetime_amount_default'] = FUNDRAISING_DONATION_AMOUNT;
-          } 
-
-          options.defaults['stored_TBGameID'] = GAME_ID;
-          options.defaults['stored_TBPlayerID'] = PLAYER_ID;
-
-          options.extend({
-            custom_fields : {
-              stored_anonymous_donation : {
-                type : 'checkbox',
-                location : 'after',
-                reference : 'empty-step',          
-                label : 'Make my donation anonymous',
-                value : 'true'
-              },
-              stored_customer_nickname : {
-                type : 'text',
-                location : 'after',
-                reference : 'empty-step',          
-                placeholder : 'Your name'
-              },
-              stored_customer_additional_message : {
-                type : 'textarea',
-                location : 'after',
-                reference : 'empty-step',          
-                placeholder : 'Your message of support',
-                initial : '',
-                rows: 8
-              }
-            }
-          });
-
-          options.widget.on(window.rnwWidget.constants.events.WIDGET_LOADED, function(event) {
-  /*        
-            event.widget.hideStep("donation-target");
-            event.widget.hideStep("customer-address");
-
-            event.widget.hideBlock("customer_salutation");
-            event.widget.hideBlock("customer_permission");
-            event.widget.hideBlock("customer_email");
-            event.widget.hideBlock("customer_message");
-            event.widget.hideBlock("customer_receipt");
-  */
-          });
-        });        
-      }
-
       $(this.el).html(this.template({ player: self.jsonResult }));
 
-//      setupDonationForm();
+      // 181015mla - render step here until we can seperate the form (currently form renders when js loaded!)
+      var template = _.template($('#gameDonationStepViewTemplate').text());
+      $('#game-donation-step-view').html(template({ player: self.jsonResult }));
 
       return this;
     }
