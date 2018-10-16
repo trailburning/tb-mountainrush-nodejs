@@ -158,6 +158,11 @@ ul.pills li {
   border-radius: 0;
   box-shadow: none;
   -webkit-appearance: none;
+  resize: none;
+}
+
+.register-view textarea {
+  height: 150px;
 }
 
 .register-view .form-group,
@@ -174,6 +179,10 @@ ul.pills li {
   display: block;
 }
 
+.register-view .form-label.top {
+  vertical-align: top;  
+}
+
 .register-view label {
   margin: 0;
   text-transform: uppercase;
@@ -187,7 +196,6 @@ ul.pills li {
   padding: 0 22px 0 0;
   font-family: 'radikalbold', sans-serif;
   font-size: 0.8em;
-  line-height: 34px;
 }
 
 .register-view input[type='checkbox'],

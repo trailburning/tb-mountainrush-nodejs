@@ -82,6 +82,10 @@ require.config({
       deps: ['jquery'],
       exports: 'imagesLoaded'
     },
+    'controller/GameDonateApp': {
+      deps: ['truncate'],
+      deps: ['cookie']
+    },
     'controller/GameApp': {
       deps: ['truncate'],
       deps: ['countdown'],

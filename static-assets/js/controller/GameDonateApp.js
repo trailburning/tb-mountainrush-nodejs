@@ -10,10 +10,11 @@ define([
   'imageScale',
   'imagesLoaded',
   'videojs',
+  'raisenow',
   'views/ActivePlayerView',
   'views/DemoVideoView',
   'views/GameDonationView'
-], function(_, Backbone, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, ActivePlayerView, DemoVideoView, GameDonationView){
+], function(_, Backbone, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, raisenow, ActivePlayerView, DemoVideoView, GameDonationView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -89,8 +90,6 @@ define([
       });        
     }
     
-    setupDonationForm();
-
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
 
     // check for player
@@ -112,6 +111,8 @@ define([
     });
 
     enableUserActions(CLIENT_ID);
+
+    setupDonationForm();
 
     var gameDonationView = new GameDonationView({ el: '#game-donation-view', gameID: GAME_ID, playerID: PLAYER_ID });
     gameDonationView.loadPlayerProgress();
