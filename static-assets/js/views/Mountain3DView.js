@@ -442,6 +442,45 @@ define([
               "id": id,
               "properties": {
                 "selectable": true,
+                "fadeDistance": nFadeDistance,
+                "borderRadius": 27,
+                "image": strMarkerImage,
+                "height": 54,
+                "width": 54,
+                "borderWidth": 2,
+                "anchor": {
+                  "y": 5.25,
+                  "x": 0
+                }
+              }
+            },
+            {
+              "geometry": {
+                "type": "Point",
+                "coordinates": [ fLong, fLat ]
+              },
+              "type": "Feature",
+              "id": id,
+              "properties": {
+                "fadeDistance": nFadeDistance,
+                "fontSize": 12,
+                "anchor": {
+                  "y": 20.3,
+                  "x": 0
+                },
+                "icon": "caret-down"
+              }
+            },
+            {
+              "geometry": {
+                "type": "Point",
+                "coordinates": [ fLong, fLat ]
+              },
+              "type": "Feature",
+              "id": id,
+              "properties": {
+                "selectable": true,
+                "fadeDistance": nFadeDistance,
                 "borderRadius": 32,
                 "image": strMarkerImageOn,
                 "height": 24,
