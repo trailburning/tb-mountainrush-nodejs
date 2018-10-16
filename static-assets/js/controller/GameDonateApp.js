@@ -11,9 +11,11 @@ define([
   'imagesLoaded',
   'videojs',
   'raisenow',
+  'views/LanguageSelectorView',
   'views/ActivePlayerView',
-  'views/DemoVideoView'
-], function(_, Backbone, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, raisenow, ActivePlayerView, DemoVideoView){
+  'views/DemoVideoView',
+  'views/GameDonationView'
+], function(_, Backbone, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, raisenow, LanguageSelectorView, ActivePlayerView, DemoVideoView, GameDonationView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -24,6 +26,17 @@ define([
 
   var initialize = function() {
     var self = this;
+
+    app.dispatcher.on("GameDonationView:playerProgressLoaded", onPlayerProgressLoaded);
+
+    function showActivePlayer() {
+      var jsonUser = getUserCookies(CLIENT_ID);
+
+      $('.active-player-view').each(function(index){
+        var activePlayerView = new ActivePlayerView({ el: $(this), player: jsonUser });
+        activePlayerView.render();
+      });
+    }
 
     function setupDonationForm() {
       window.rnwWidget = window.rnwWidget || {};
@@ -77,17 +90,10 @@ define([
         });
       });        
     }
-
-    function showActivePlayer() {
-      var jsonUser = getUserCookies(CLIENT_ID);
-      $('.active-player-view').each(function(index){
-        var activePlayerView = new ActivePlayerView({ el: $(this), player: jsonUser });
-        activePlayerView.render();
-      });
-    }
-
-    setupDonationForm();
-
+    
+    var languageSelectorView = new LanguageSelectorView({ el: '#language-selector-view' });
+    languageSelectorView.render();
+    
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
 
     // check for player
@@ -110,6 +116,11 @@ define([
 
     enableUserActions(CLIENT_ID);
 
+    setupDonationForm();
+
+    var gameDonationView = new GameDonationView({ el: '#game-donation-view', gameID: GAME_ID, playerID: PLAYER_ID });
+    gameDonationView.loadPlayerProgress();
+
     var elImages = $('body');
     var imgLoad = imagesLoaded(elImages);
     imgLoad.on('always', function(instance) {
@@ -119,6 +130,11 @@ define([
         }
       }
     });    
+
+    function onPlayerProgressLoaded() {
+      gameDonationView.render();
+    }
+
   };
 
   return { 

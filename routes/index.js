@@ -523,7 +523,7 @@ module.exports = function(app) {
   });
 
   app.get('/campaign/:campaignID/fundraise', function(req, res) {
-    handlePageRegister(req, res, 'fundraise');
+    handlePageRegister(req, res, 'register');
   });
 
   app.get('/campaign/:campaignID/fundraisecreated', function(req, res) {

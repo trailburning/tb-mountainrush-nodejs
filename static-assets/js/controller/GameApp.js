@@ -269,8 +269,9 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         this.currPlayerModel.get('playerObj').getFundraising();
         // get donations
         this.currPlayerModel.get('playerObj').getDonations();
+
         // show if player has a fundraising goal, not already signed in, not already shown and a donation id is not present (passed when a donation has been made)
-        if (Number(this.currPlayerModel.get('fundraisingGoal')) && !FundraisingShoppingModelShown && getUserCookie(CLIENT_ID) == undefined && (FUNDRAISING_DONATION_ID == '')) {
+        if (Number(this.currPlayerModel.get('fundraising_goal')) && !FundraisingShoppingModelShown && getUserCookie(CLIENT_ID) == undefined && (FUNDRAISING_DONATION_ID == '')) {
           FundraisingShoppingModelShown = true;
           fundraisingShoppingModalView.render(this.currPlayerModel);
           // delay before showing
@@ -474,7 +475,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       var jsonData = {markerID: markerID};
 
       var url = GAME_API_URL + 'game/' + GAME_ID + '/player/' + activePlayer.id + '/marker';
-//      console.log(url);
+      console.log(url);
       $.ajax({
         type: 'post',
         dataType: 'json',
@@ -704,8 +705,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           // is it different from what the player has already seen?
           if (latestEnabledMarkerID != activePlayer.get('latestMarkerID')) {
             // it is, but is the player fundraising?
-            var fFundRaisingGoal = activePlayer.get('fundraisingGoal');
-
+            var fFundRaisingGoal = activePlayer.get('fundraising_goal');
             if (fFundRaisingGoal && fFundRaisingGoal > 0) {
               // yes so update marker
               setLatestEnabledMarker(latestEnabledMarkerID);

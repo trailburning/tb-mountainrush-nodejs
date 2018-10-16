@@ -39,10 +39,6 @@ h2 {
 
 /* REGISTER PROCESS VIEWS */
 /******************************************/
-#register-process-view .step {
-  background: #f69741;
-}
-
 #register-process-view .register-views {
   padding-bottom: 72px;
 }
