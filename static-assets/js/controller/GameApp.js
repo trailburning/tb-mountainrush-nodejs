@@ -479,7 +479,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       var jsonData = {markerID: markerID};
 
       var url = GAME_API_URL + 'game/' + GAME_ID + '/player/' + activePlayer.id + '/marker';
-//      console.log(url);
+      console.log(url);
       $.ajax({
         type: 'post',
         dataType: 'json',
@@ -709,8 +709,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           // is it different from what the player has already seen?
           if (latestEnabledMarkerID != activePlayer.get('latestMarkerID')) {
             // it is, but is the player fundraising?
-            var fFundRaisingGoal = activePlayer.get('fundraisingGoal');
-
+            var fFundRaisingGoal = activePlayer.get('fundraising_goal');
             if (fFundRaisingGoal && fFundRaisingGoal > 0) {
               // yes so update marker
               setLatestEnabledMarker(latestEnabledMarkerID);

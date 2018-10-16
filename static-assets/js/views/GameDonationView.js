@@ -1,9 +1,8 @@
 define([
   'underscore', 
   'backbone',
-  'bootstrap',
-  'raisenow'
-], function(_, Backbone, bootstrap, raisenow){
+  'bootstrap'
+], function(_, Backbone, bootstrap){
 
   var GameDonationView = Backbone.View.extend({
     initialize: function(options){
@@ -31,6 +30,9 @@ define([
 
     render: function(){
       var self = this;
+
+      // format newlines
+      self.jsonResult.fundraising_msg = self.jsonResult.fundraising_msg.replace(/(?:\r\n|\r|\n)/g, '<br>');
 
       $(this.el).html(this.template({ player: self.jsonResult }));
 

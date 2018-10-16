@@ -13,6 +13,7 @@ define([
       this.jsonFields = {campaignID: '',
                         gameID: '',
                         playerID: '',
+                        supporterMsg: '',
                         targetAmount: 0,
                         currencyCode: 'CHF',
                         charityOptIn: false}
@@ -28,19 +29,19 @@ define([
       this.jsonFields.playerID = jsonFields.playerID;
     },
 
-    createFundraiserDetails: function(fTargetAmount, currencyCode, bCharityOptIn) {
+    createFundraiserDetails: function(fTargetAmount, strSupporterMsg, currencyCode, bCharityOptIn) {
       var self = this;
 
       $('.err', $(this.el)).hide();
       $('.err .msg', $(this.el)).hide();
 
       var jsonData = {targetAmount: fTargetAmount,
+                      supporterMsg: strSupporterMsg,
                       currencyCode: currencyCode,
                       charityOptIn: bCharityOptIn};
-      console.log(jsonData);
 
       var url = GAME_API_URL + 'fundraiser/campaign/' + this.jsonFields.campaignID + '/game/' + this.jsonFields.gameID + '/player/' + this.jsonFields.playerID + '/details';
-      console.log(url);
+//      console.log(url);
       $.ajax({
         type: 'post',
         dataType: 'json',
@@ -78,9 +79,11 @@ define([
         if (bValid) {
           $('.create-btn', $(self.el)).button('loading');
           self.jsonFields.targetAmount = $('#fundraising-page-create-targetamount', elForm).val();
+          self.jsonFields.supporterMsg = $('[name="fundraising-supporter-msg"]', elForm).val();
           self.jsonFields.charityOptIn = $('[name="fundraising-receive-charity-email"]:checked', elForm).val();
+console.log(self.jsonFields);
 
-          self.createFundraiserDetails(self.jsonFields.targetAmount, self.jsonFields.currencyCode, self.jsonFields.charityOptIn);
+          self.createFundraiserDetails(self.jsonFields.targetAmount, self.jsonFields.supporterMsg, self.jsonFields.currencyCode, self.jsonFields.charityOptIn);
         }
       });
 
