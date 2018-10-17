@@ -36,7 +36,7 @@ var Demo = <%= Defs.Demo %>;
       <% if (Campaign.CampaignTemplate == 'default') { %>
         <% include ../partials/header.ejs %>
       <% } else { %>
-        <% include ../partials/header-wwfuk.ejs %>
+        <%- include('../partials/' + Campaign.CampaignTemplate + '/header.ejs') %>
       <% } %>
 
       <div id="game-view">
@@ -91,7 +91,7 @@ var Demo = <%= Defs.Demo %>;
       <% if (Campaign.CampaignTemplate == 'default') { %>
         <% include ../partials/footer.ejs %>
       <% } else { %>
-        <% include ../partials/footer-wwfuk.ejs %>
+        <%- include('../partials/' + Campaign.CampaignTemplate + '/footer.ejs') %>
       <% } %>
       </div>
     </div>

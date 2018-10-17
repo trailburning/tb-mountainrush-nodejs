@@ -34,7 +34,7 @@ var TEST = '<%= Defs.Test %>';
     <% if (Campaign.CampaignTemplate == 'default') { %>
       <% include ../partials/header.ejs %>
     <% } else { %>
-      <% include ../partials/header-wwfuk.ejs %>
+      <%- include('../partials/' + Campaign.CampaignTemplate + '/header.ejs') %>
     <% } %>
 
     <div id="hero-view">
@@ -109,7 +109,7 @@ var TEST = '<%= Defs.Test %>';
   <% if (Campaign.CampaignTemplate == 'default') { %>
     <% include ../partials/footer.ejs %>
   <% } else { %>
-    <% include ../partials/footer-wwfuk.ejs %>
+    <%- include('../partials/' + Campaign.CampaignTemplate + '/footer.ejs') %>
   <% } %>
 </div>
 

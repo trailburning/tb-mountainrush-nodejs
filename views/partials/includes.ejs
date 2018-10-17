@@ -33,7 +33,7 @@
   <meta property="og:image" content="http://mountainrush.co.uk/static-assets/images/<%= Campaign.CampaignTemplate %>/share_facebook.jpg"/>
   <% } %>
 <% } else if (Campaign.CampaignName) { %>
-  <meta property="og:url" content="{$BaseHTTPURL}campaign/<%= Campaign.CampaignID %>"/>
+  <meta property="og:url" content="<%= Defs.BaseHTTPURL %>/campaign/<%= Campaign.CampaignID %>"/>
   <meta property="og:image" content="http://mountainrush.co.uk/static-assets/images/<%= Campaign.CampaignTemplate %>/share_facebook.jpg"/>
 <% } else { %>
   <meta property="og:url" content="http://mountainrush.co.uk/"/>

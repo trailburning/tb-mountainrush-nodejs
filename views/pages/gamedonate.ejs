@@ -32,7 +32,7 @@ var FUNDRAISING_DONATION_AMOUNT = '<%= Defs.FundraisingDonationAmount %>';
   <% if (Campaign.CampaignTemplate == 'default') { %>
     <% include ../partials/header.ejs %>
   <% } else { %>
-    <% include ../partials/header-wwfuk.ejs %>
+    <%- include('../partials/' + Campaign.CampaignTemplate + '/header.ejs') %>
   <% } %>
 
   <div id="page-view">
@@ -70,7 +70,7 @@ var FUNDRAISING_DONATION_AMOUNT = '<%= Defs.FundraisingDonationAmount %>';
   <% if (Campaign.CampaignTemplate == 'default') { %>
     <% include ../partials/footer.ejs %>
   <% } else { %>
-    <% include ../partials/footer-wwfuk.ejs %>
+    <%- include('../partials/' + Campaign.CampaignTemplate + '/footer.ejs') %>
   <% } %>
 </div>
 
@@ -83,6 +83,9 @@ var FUNDRAISING_DONATION_AMOUNT = '<%= Defs.FundraisingDonationAmount %>';
   <div class="intro-text centre-text">
     <p>
     {{= player.fundraising_msg }}
+    </p>
+    <p>
+    View my challenge <a href="<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/<%= Defs.PlayerID %>">here</a>.
     </p>
   </div>    
 </script>
