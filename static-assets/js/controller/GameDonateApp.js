@@ -10,10 +10,11 @@ define([
   'imageScale',
   'imagesLoaded',
   'videojs',
+  'raisenow',
   'views/ActivePlayerView',
   'views/DemoVideoView',
   'views/GameDonationView'
-], function(_, Backbone, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, ActivePlayerView, DemoVideoView, GameDonationView){
+], function(_, Backbone, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, raisenow, ActivePlayerView, DemoVideoView, GameDonationView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
