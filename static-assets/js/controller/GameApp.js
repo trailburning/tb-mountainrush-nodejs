@@ -699,8 +699,6 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     }
 
     function onFeaturesLoaded() {
-      mountain3DView.addPlayers(playerCollection);
-
       // is player active?
       if (activePlayer) {
         var latestEnabledMarkerID = addMapMarkers(activePlayer);
@@ -718,9 +716,11 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           }
         }
 
+        mountain3DView.addPlayers(playerCollection);
         mountain3DView.showMarkers();
       }
       else {
+        mountain3DView.addPlayers(playerCollection);
         // not in game
         onMarkersReady();
       }

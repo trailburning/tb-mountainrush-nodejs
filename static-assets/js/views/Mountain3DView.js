@@ -181,23 +181,36 @@ define([
         bMultiPlayer = true;
       }
 
+      var nFadeDistance = 7000;
+
       this.playerCollection = playerCollection;
 
       this.playerCollection.each(function(model, index){
         var bAllowPlayerSelect = true;
-        jsonPlayer = self.buildPlayerJSON(model.get('id'), model.get('progress'), model.get('imagePath'), index+1, bMultiPlayer, bAllowPlayerSelect);
+        jsonPlayer = self.buildPlayerJSON(model.get('id'), model.get('progress'), model.get('imagePath'), index+1, bMultiPlayer, bAllowPlayerSelect, nFadeDistance);
 
         model.set('jsonPlayer', jsonPlayer);
       });
     },
 
-    buildPlayerJSON: function(id, fProgressKM, strAvatar, nPosLabel, bShowPosLabel, bAllowPlayerSelect){
+    buildPlayerJSON: function(id, fProgressKM, strAvatar, nPosLabel, bShowPosLabel, bAllowPlayerSelect, nFadeDistance){
       var along = turf.along(this.jsonRoute, fProgressKM, {units: 'kilometers'});
       var fLat = along.geometry.coordinates[1];
       var fLong = along.geometry.coordinates[0];
 
-      var fIconY = 2.05;
-      var fCaretY = 5;
+      // see if the  player overlaps a marker
+      var nOverlapYAdjust = 0, nOverlapCaretYAdjust = 0, nOverlapPosYAdjust = 0;
+
+      $.each(this.arrMarkers, function(index, jsonMarker){
+        if (jsonMarker.features[0].geometry.coordinates[1] == fLat && jsonMarker.features[0].geometry.coordinates[0] == fLong) {
+          nOverlapYAdjust = 3;
+          nOverlapCaretYAdjust = 16.9;
+          nOverlapPosYAdjust = 8.4;
+        }
+      });
+
+      var fIconY = 2;
+      var fCaretY = 5.55;
 
       var jsonPlayer = {
         "name": id,
@@ -211,6 +224,7 @@ define([
             "id": id,
             "properties": {
               "selectable": bAllowPlayerSelect,
+              "fadeDistance": nFadeDistance,
               "borderRadius": 32,
               "image": strAvatar,
               "height": 64,
@@ -218,7 +232,7 @@ define([
               "borderWidth": 2,
               "background": "#ccc",
               "anchor": {
-                "y": fIconY,
+                "y": nOverlapYAdjust + fIconY,
                 "x": 0
               }
             }
@@ -231,9 +245,10 @@ define([
             "type": "Feature",
             "id": id,
             "properties": {
+              "fadeDistance": nFadeDistance,
               "fontSize": 12,
               "anchor": {
-                "y": fCaretY,
+                "y": nOverlapCaretYAdjust + fCaretY,
                 "x": 0
               },
               "icon": "caret-down"
@@ -248,20 +263,24 @@ define([
             "id": id,
             "properties": {
               "selectable": false,
+              "fadeDistance": nFadeDistance,
               "name": String(nPosLabel),
               "borderRadius": 23,
               "padding": 5,
               "fontSize": 13,
-              "background": "#44b6f7",
-              "anchor": "bottom"
+              "anchor": {
+                "y": nOverlapPosYAdjust + 1.4,
+                "x": 0
+              },
+              "background": "#44b6f7"
             }
           }
         ]
       }
 
       if (!bShowPosLabel) {
-        fIconY = 1.35;
-        fCaretY = 1.8;
+        fIconY = 1.05;
+        fCaretY = 0.2;
 
         jsonPlayer = {
           "name": id,
@@ -275,6 +294,7 @@ define([
               "id": id,
               "properties": {
                 "selectable": bAllowPlayerSelect,
+                "fadeDistance": nFadeDistance,
                 "borderRadius": 32,
                 "image": strAvatar,
                 "height": 64,
@@ -282,7 +302,7 @@ define([
                 "borderWidth": 2,
                 "background": "#ccc",
                 "anchor": {
-                  "y": fIconY,
+                  "y": nOverlapYAdjust + fIconY,
                   "x": 0
                 }
               }
@@ -295,9 +315,10 @@ define([
               "type": "Feature",
               "id": id,
               "properties": {
+                "fadeDistance": nFadeDistance,
                 "fontSize": 12,
                 "anchor": {
-                  "y": fCaretY,
+                  "y": nOverlapCaretYAdjust + fCaretY,
                   "x": 0
                 },
                 "icon": "caret-down"
@@ -329,7 +350,7 @@ define([
       app.dispatcher.trigger("Mountain3DView:onMarkersReady");
     },
 
-    buildMarkerOff: function(id, fLat, fLong, bOverlap, strMarkerImageOff, nFadeDistance){
+    buildMarkerOff: function(id, fLat, fLong, strMarkerImageOff, nFadeDistance){
       var jsonMarker = {
         "name": id,
         "features": [ 
@@ -359,8 +380,8 @@ define([
       return jsonMarker;
     },
 
-    buildMarkerOn: function(id, fLat, fLong, bOverlap, strMarkerImage, strMarkerImageOn, nFadeDistance){
-      var fMarkerY = 1.2;
+    buildMarkerOn: function(id, fLat, fLong, strMarkerImage, strMarkerImageOn, nFadeDistance){
+      var fMarkerY = 1.2, nCaretYPos = 6.4;
 
       var jsonMarker = {
         "name": id,
@@ -397,7 +418,7 @@ define([
               "fadeDistance": nFadeDistance,
               "fontSize": 12,
               "anchor": {
-                "y": 6.4,
+                "y": nCaretYPos,
                 "x": 0
               },
               "icon": "caret-down"
@@ -425,75 +446,6 @@ define([
             }
           }
         ]
-      }
-
-      if (bOverlap) {
-        fMarkerY = 7.2;
-
-        jsonMarker = {
-          "name": id,
-          "features": [ 
-            {
-              "geometry": {
-                "type": "Point",
-                "coordinates": [ fLong, fLat ]
-              },
-              "type": "Feature",
-              "id": id,
-              "properties": {
-                "selectable": true,
-                "fadeDistance": nFadeDistance,
-                "borderRadius": 27,
-                "image": strMarkerImage,
-                "height": 54,
-                "width": 54,
-                "borderWidth": 2,
-                "anchor": {
-                  "y": 5.25,
-                  "x": 0
-                }
-              }
-            },
-            {
-              "geometry": {
-                "type": "Point",
-                "coordinates": [ fLong, fLat ]
-              },
-              "type": "Feature",
-              "id": id,
-              "properties": {
-                "fadeDistance": nFadeDistance,
-                "fontSize": 12,
-                "anchor": {
-                  "y": 20.3,
-                  "x": 0
-                },
-                "icon": "caret-down"
-              }
-            },
-            {
-              "geometry": {
-                "type": "Point",
-                "coordinates": [ fLong, fLat ]
-              },
-              "type": "Feature",
-              "id": id,
-              "properties": {
-                "selectable": true,
-                "fadeDistance": nFadeDistance,
-                "borderRadius": 32,
-                "image": strMarkerImageOn,
-                "height": 24,
-                "width": 24,
-                "borderWidth": 2,
-                "anchor": {
-                  "y": fMarkerY,
-                  "x": 0
-                }
-              }
-            }
-          ]
-        }
       }
 
       return jsonMarker;
@@ -530,17 +482,11 @@ define([
         bEnable = true;
       }
 
-      var bOverlap = false;
-      // does the marker overlap the player marker?
-      if (fProgressKM == fMarkerKM) {
-        bOverlap = true;
-      }
-
       if (bEnable) {
-        jsonMarker = this.buildMarkerOn(id, fLat, fLong, bOverlap, strMarkerImage, strMarkerImageOn, nFadeDistance);
+        jsonMarker = this.buildMarkerOn(id, fLat, fLong, strMarkerImage, strMarkerImageOn, nFadeDistance);
       }
       else {
-        jsonMarker = this.buildMarkerOff(id, fLat, fLong, bOverlap, strMarkerImageOff, nFadeDistance);
+        jsonMarker = this.buildMarkerOff(id, fLat, fLong, strMarkerImageOff, nFadeDistance);
       }
       this.arrMarkers.push(jsonMarker);
 
