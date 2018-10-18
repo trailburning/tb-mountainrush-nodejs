@@ -88,6 +88,11 @@ h2 {
 
 /* LEADER VIEW */
 /******************************************/
+#leader-view {
+  color: #474747;
+  background: #d3d1c8 url(../../images/wwf-uk/leaderboard.jpg) no-repeat bottom center;
+}
+
 #leader-view .fundraise-detail .name,
 #leader-view .fundraise-detail .amount {
   font-family: 'PFDINTextPro-Black', sans-serif;

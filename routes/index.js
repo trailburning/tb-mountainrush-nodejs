@@ -29,6 +29,7 @@ function fillCampaignData(data) {
     campaign.CampaignFundraisingPage = campaignData.fundraising_page;
     campaign.CampaignFundraisingDonation = campaignData.fundraising_donation;
     campaign.CampaignFundraising = campaignFundraising;    
+    campaign.languages = campaignData.languages;
   }
 
   return campaign;
@@ -226,7 +227,7 @@ module.exports = function(app) {
   app.get('/', function(req, res) {
 //    console.log('Cookies: ', req.cookies);
 //    console.log('NODE_ENV:' + process.env.NODE_ENV);
-    
+
     var defs = helper.getDefs(req);
 
     getCampaignDataByCampaign('djJrblYlXV', function(err, campaign){ 
@@ -531,10 +532,13 @@ module.exports = function(app) {
   });
 
   app.use(function(req, res){
+//    console.log('FALLBACK');
+
     var defs = helper.getDefs(req);
 
     getCampaignDataByCampaign(process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
       res.render('pages/page-not-found', {Defs: defs, Campaign: campaign});
     });
   });
+
 };
