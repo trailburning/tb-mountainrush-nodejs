@@ -113,6 +113,8 @@
 			"game": "Spiel anschauen",
 			"invite": "Freunde einladen",
 			"msg_invite": "%s to your challenge!",
+			"yes": "Accept",
+			"no": "Reject",
 			"msg_invitation": "You have a %s %s challenge invitation from %s!",
 			"yes": "Accept",
 			"no": "Reject",
