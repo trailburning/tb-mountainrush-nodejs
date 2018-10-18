@@ -68,10 +68,6 @@
 				"social": {
 					"description": "overlay.challenge.upcoming.social.description"
 				}
-			},
-			"complete": {
-				"title": "overlay.challenge.complete.title",
-				"description": "overlay.challenge.complete.description"
 			}
 		},
 		"challenge_upcoming": {
