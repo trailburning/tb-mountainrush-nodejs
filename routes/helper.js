@@ -31,7 +31,7 @@ module.exports = {
     return completeURL;
   },
 
-  getDefs:function(req) {
+  getDefs:function(req) {    
     var defs = new Object();
     defs.MRAPIURL = process.env.MR_API_URL;
     defs.BaseHTTPURL = this.BaseHTTPURL(req);
