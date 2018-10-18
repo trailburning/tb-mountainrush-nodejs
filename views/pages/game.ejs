@@ -159,8 +159,8 @@ var Demo = <%= Defs.Demo %>;
       <div class="modal-content">
         <div class="modal-body">
           <div class="details">
-            <div class="title"><%= __('overlay.challenge.complete.title') %></div>
-            <div class="description"><%= __('overlay.challenge.complete.description', Campaign.CampaignName) %></div>
+            <div class="title"><%= __('overlay.challenge_complete.title') %></div>
+            <div class="description"><%= __('overlay.challenge_complete.description', Campaign.CampaignName) %></div>
             <div class="social">
             <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/<%= Defs.GameID %>" target="_blank" class="social-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a>
             <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20<%= Campaign.CampaignName %>%20challenge%20-%20http://mountainrush.co.uk/game/<%= Defs.GameID %>" target="_blank" class="social-btn"><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -181,11 +181,11 @@ var Demo = <%= Defs.Demo %>;
       <div class="modal-content">
         <div class="modal-body">
           <div class="details">
-            <div class="title"><%= __('overlay.challenge.upcoming.title') %></div>
+            <div class="title"><%= __('overlay.challenge_upcoming.title') %></div>
             <div class="description">
-            {{= '<%- __('overlay.challenge.upcoming.description') %>'.replace('%s', '<span class="type"></span>').replace('%s', '<span class="date"></span>').replace('%s', '<span class="time"></span>') }}
+            {{= '<%- __('overlay.challenge_upcoming.description') %>'.replace('%s', '<span class="type"></span>').replace('%s', '<span class="date"></span>').replace('%s', '<span class="time"></span>') }}
             <br/><br/>
-            <%= __('overlay.challenge.upcoming.social.description') %>
+            <%= __('overlay.challenge_upcoming.social.description') %>
             </div>
             <div class="social">
             <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/<%= Defs.GameID %>" target="_blank" class="social-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a>
