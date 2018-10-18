@@ -2,7 +2,7 @@
 
 var helper = require('./helper.js');
 
-function fillCampaignData(data) {
+function fillCampaignData(req, data) {
   var campaignData = null;
 
   if (data) {
@@ -29,12 +29,26 @@ function fillCampaignData(data) {
     campaign.CampaignFundraisingPage = campaignData.fundraising_page;
     campaign.CampaignFundraisingDonation = campaignData.fundraising_donation;
     campaign.CampaignFundraising = campaignFundraising;    
+    campaign.CampaignLanguages = campaignData.languages;
+
+    // only accept selected locale if it's available
+    var selLang = campaign.CampaignLanguages[0]['name']; // def to 1st lang
+
+    for (var i = 0; i < campaign.CampaignLanguages.length; i++){
+      var obj = campaign.CampaignLanguages[i];
+      // selected locale is available
+      if (obj['name'] == req.getLocale()) {
+        selLang = obj['name'];
+      }
+    }
+    req.setLocale(selLang);
+    campaign.SelLanguage = selLang;
   }
 
   return campaign;
 }
 
-function getCampaignDataByCampaign(campaignID, callback) {
+function getCampaignDataByCampaign(req, campaignID, callback) {
   var request = require('request');
 
   var url = process.env.MR_API_URL + 'campaign/' + campaignID;
@@ -52,12 +66,12 @@ function getCampaignDataByCampaign(campaignID, callback) {
         return callback(err, null);
       } else {
         // data is already parsed as JSON:
-        return callback(err, fillCampaignData(data));
+        return callback(err, fillCampaignData(req, data));
       }
   });
 }
 
-function getCampaignDataByGame(gameID, callback) {
+function getCampaignDataByGame(req, gameID, callback) {
   var request = require('request');
 
   var url = process.env.MR_API_URL + 'game/' + gameID + '/campaign';
@@ -75,7 +89,7 @@ function getCampaignDataByGame(gameID, callback) {
         return callback(err, null);
       } else {
         // data is already parsed as JSON:
-        return callback(err, fillCampaignData(data));
+        return callback(err, fillCampaignData(req, data));
       }
   });
 }
@@ -224,12 +238,9 @@ function handlePageRegister(req, res, strPageState) {
 
 module.exports = function(app) {
   app.get('/', function(req, res) {
-//    console.log('Cookies: ', req.cookies);
-//    console.log('NODE_ENV:' + process.env.NODE_ENV);
-    
     var defs = helper.getDefs(req);
 
-    getCampaignDataByCampaign('djJrblYlXV', function(err, campaign){ 
+    getCampaignDataByCampaign(req, 'djJrblYlXV', function(err, campaign){ 
       res.render('pages/index', {Defs: defs, Campaign: campaign});
     });
   });
@@ -240,7 +251,7 @@ module.exports = function(app) {
     defs.PageRegisterState = 'fundraise';
     defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
 
-    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+    getCampaignDataByCampaign(req, req.params.campaignID, function(err, campaign){ 
       res.render('pages/register', {Defs: defs, Campaign: campaign});
     });
   });
@@ -251,7 +262,7 @@ module.exports = function(app) {
     defs.PageRegisterState = 'fundraise';
     defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
 
-    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+    getCampaignDataByCampaign(req, req.params.campaignID, function(err, campaign){ 
       res.render('pages/register', {Defs: defs, Campaign: campaign});
     });
   });
@@ -260,12 +271,12 @@ module.exports = function(app) {
     var defs = helper.getDefs(req);
     defs.ImageCopyright = '© naturepl.com / Andy Rouse / WWF';
 
-    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+    getCampaignDataByCampaign(req, req.params.campaignID, function(err, campaign){ 
       if (campaign) {
         res.render('pages/campaign', {Defs: defs, Campaign: campaign});
       }
       else {
-        getCampaignDataByCampaign(process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+        getCampaignDataByCampaign(req, process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
           res.render('pages/page-error', {Defs: defs, Campaign: campaign});
         });
       }
@@ -276,12 +287,12 @@ module.exports = function(app) {
     var defs = helper.getDefs(req);
     defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
 
-    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+    getCampaignDataByCampaign(req, req.params.campaignID, function(err, campaign){ 
       if (campaign) {
         res.render('pages/privacy', {Defs: defs, Campaign: campaign});
       }
       else {
-        getCampaignDataByCampaign(process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+        getCampaignDataByCampaign(req, process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
           res.render('pages/page-error', {Defs: defs, Campaign: campaign});
         });
       }
@@ -292,12 +303,12 @@ module.exports = function(app) {
     var defs = helper.getDefs(req);
     defs.ImageCopyright = '© Martin Harvey / WWF';
 
-    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+    getCampaignDataByCampaign(req, req.params.campaignID, function(err, campaign){ 
       if (campaign) {
         res.render('pages/about', {Defs: defs, Campaign: campaign});
       }
       else {
-        getCampaignDataByCampaign(process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+        getCampaignDataByCampaign(req, process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
           res.render('pages/page-error', {Defs: defs, Campaign: campaign});
         });
       }
@@ -308,12 +319,12 @@ module.exports = function(app) {
     var defs = helper.getDefs(req);
     defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
 
-    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+    getCampaignDataByCampaign(req, req.params.campaignID, function(err, campaign){ 
       if (campaign) {
         res.render('pages/faq', {Defs: defs, Campaign: campaign});
       }
       else {
-        getCampaignDataByCampaign(process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+        getCampaignDataByCampaign(req, process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
           res.render('pages/page-error', {Defs: defs, Campaign: campaign});
         });
       }
@@ -324,12 +335,12 @@ module.exports = function(app) {
     var defs = helper.getDefs(req);
     defs.ImageCopyright = '© Martin Harvey / WWF';
 
-    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+    getCampaignDataByCampaign(req, req.params.campaignID, function(err, campaign){ 
       if (campaign) {
         res.render('pages/support', {Defs: defs, Campaign: campaign});
       }
       else {
-        getCampaignDataByCampaign(process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+        getCampaignDataByCampaign(req, process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
           res.render('pages/page-error', {Defs: defs, Campaign: campaign});
         });
       }
@@ -343,7 +354,7 @@ module.exports = function(app) {
     defs.GameID = process.env.MR_DEF_GAME;
     defs.FundraisingDonationID = '';
 
-    getCampaignDataByGame(defs.GameID, function(err, campaign){ 
+    getCampaignDataByGame(req, defs.GameID, function(err, campaign){ 
       // get social image
       getSocialImage(defs.GameID, function(err, strImage){ 
         defs.SocialImage = strImage;
@@ -365,7 +376,7 @@ module.exports = function(app) {
       defs.FundraisingDonationID = req.query.jgDonationId;
     }
 
-    getCampaignDataByGame(defs.GameID, function(err, campaign){ 
+    getCampaignDataByGame(req, defs.GameID, function(err, campaign){ 
       if (campaign) {
         // get social image
         getSocialImage(defs.GameID, function(err, strImage){ 
@@ -375,7 +386,7 @@ module.exports = function(app) {
         });        
       }
       else {
-        getCampaignDataByCampaign(process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+        getCampaignDataByCampaign(req, process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
           res.render('pages/page-error', {Defs: defs, Campaign: campaign});
         });        
       }
@@ -394,7 +405,7 @@ module.exports = function(app) {
       defs.FundraisingDonationID = req.query.jgDonationId;
     }
 
-    getCampaignDataByGame(defs.GameID, function(err, campaign){ 
+    getCampaignDataByGame(req, defs.GameID, function(err, campaign){ 
       // get social image
       getSocialImage(defs.GameID, function(err, strImage){ 
         defs.SocialImage = strImage;
@@ -417,7 +428,7 @@ module.exports = function(app) {
       defs.FundraisingDonationID = req.query.jgDonationId;
     }
 
-    getCampaignDataByGame(defs.GameID, function(err, campaign){ 
+    getCampaignDataByGame(req, defs.GameID, function(err, campaign){ 
       // get social image
       getSocialImage(defs.GameID, function(err, strImage){ 
         defs.SocialImage = strImage;
@@ -435,7 +446,7 @@ module.exports = function(app) {
     defs.PlayerGoal = req.params.goal;
     defs.FundraisingDonationID = '';
 
-    getCampaignDataByGame(defs.GameID, function(err, campaign){ 
+    getCampaignDataByGame(req, defs.GameID, function(err, campaign){ 
       // get social goal image
       getSocialImageGoal(defs.GameID, defs.PlayerGoal, function(err, strImage){ 
         defs.SocialImage = strImage;
@@ -453,7 +464,7 @@ module.exports = function(app) {
     defs.PlayerProgress = req.params.progress;
     defs.FundraisingDonationID = '';
 
-    getCampaignDataByGame(defs.GameID, function(err, campaign){ 
+    getCampaignDataByGame(req, defs.GameID, function(err, campaign){ 
       // get social goal image
       getSocialImageProgress(defs.GameID, defs.PlayerProgress, function(err, strImage){ 
         defs.SocialImage = strImage;
@@ -472,7 +483,7 @@ module.exports = function(app) {
       defs.FundraisingDonationAmount = req.query.amount;
     }
 
-    getCampaignDataByGame(defs.GameID, function(err, campaign){ 
+    getCampaignDataByGame(req, defs.GameID, function(err, campaign){ 
       res.render('pages/gamedonate', {Defs: defs, Campaign: campaign});
     });
   });
@@ -482,7 +493,7 @@ module.exports = function(app) {
     defs.PageRegisterState = 'register';
     defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
 
-    getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+    getCampaignDataByCampaign(req, req.params.campaignID, function(err, campaign){ 
       // do we have a connect code from Strava?
       if (req.query.code) {
         // Use code to get token
@@ -531,10 +542,13 @@ module.exports = function(app) {
   });
 
   app.use(function(req, res){
+//    console.log('FALLBACK');
+
     var defs = helper.getDefs(req);
 
-    getCampaignDataByCampaign(process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+    getCampaignDataByCampaign(req, process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
       res.render('pages/page-not-found', {Defs: defs, Campaign: campaign});
     });
   });
+
 };

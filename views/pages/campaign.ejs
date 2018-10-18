@@ -4,12 +4,12 @@
 <% include ../partials/includes.ejs %>
 <link href='/static-assets/css/photoswipe.css' rel='stylesheet' />
 <link href='/static-assets/css/default-skin/default-skin-with-ig.css' rel='stylesheet' />
-<% if (Campaign.CampaignFundraising) { %>
+<% if (Campaign.CampaignTemplate != 'default') { %>
   <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/web_platform.css' rel='stylesheet' />
 <% } %>
 <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <link href='/static-assets/css/campaign.css' rel='stylesheet' />
-<% if (Campaign.CampaignFundraising) { %>
+<% if (Campaign.CampaignTemplate != 'default') { %>
   <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/campaign.css' rel='stylesheet' />
 <% } %>
 <% include ../partials/analyticsFBPixel.ejs %>

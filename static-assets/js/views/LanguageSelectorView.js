@@ -12,10 +12,6 @@ define([
     },
 
     render: function(){
-      // 181010 mla - currently only proceed on default campaign
-      if (CAMPAIGN_ID != 'djJrblYlXV') {
-        return;
-      }
       var self = this;
 
       var strLangSel = 'en';

@@ -64,7 +64,14 @@
 			},
 			"upcoming": {
 				"title": "Upcoming Challenge",
-				"description": "Hi %s, would you like to check out your upcoming %s challenge?"
+				"description": "Hi %s, would you like to check out your upcoming %s challenge?",
+				"social": {
+					"description": "overlay.challenge.upcoming.social.description"
+				}
+			},
+			"complete": {
+				"title": "overlay.challenge.complete.title",
+				"description": "overlay.challenge.complete.description"
 			}
 		},
 		"challenge_upcoming": {

@@ -3,13 +3,13 @@
 <head>
 <% include ../partials/includes.ejs %>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<% if (Campaign.CampaignFundraising) { %>
+<% if (Campaign.CampaignTemplate != 'default') { %>
   <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/web_platform.css' rel='stylesheet' />
 <% } %>
 <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <link href='/static-assets/css/datepicker.css' rel='stylesheet' />
 <link href='/static-assets/css/page.css' rel='stylesheet' />
-<% if (Campaign.CampaignFundraising) { %>
+<% if (Campaign.CampaignTemplate != 'default') { %>
   <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/page.css' rel='stylesheet' />
 <% } %>
 <% include ../partials/analyticsFBPixel.ejs %>
@@ -48,7 +48,7 @@ var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
         <div class="intro-text centre-text">
         Sorry, it seems we encountered an unexpected error.
         <br/><br/>
-        Try refreshing the page and if the problem persists please contact Mountain Rush <a class="link" href="mailto:support@mountainrush.co.uk">support</a>.
+        Try refreshing the page and if the problem persists please contact Mountain Rush <a class="link" href="mailto:support@trailburning.com">support</a>.
         </div>
       </div>
 
