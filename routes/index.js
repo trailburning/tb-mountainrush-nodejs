@@ -214,7 +214,7 @@ function handlePageRegister(req, res, strPageState) {
   defs.PageRegisterState = strPageState;
   defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
 
-  getCampaignDataByCampaign(req.params.campaignID, function(err, campaign){ 
+  getCampaignDataByCampaign(req, req.params.campaignID, function(err, campaign){ 
     getCampaignProviderConnectData(req.params.campaignID, function(err, data){ 
       if (data) {
         defs.StravaOauthConnectURL = data.oauthConnectURL;
