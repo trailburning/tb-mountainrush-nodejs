@@ -14,23 +14,7 @@ define([
     render: function(){
       var self = this;
 
-      var strLangSel = 'en';
-
-      if (getLangCookie()) {
-        strLangSel = getLangCookie();
-      }
-
-      this.jsonLang = { langs: [{name: 'English', value: 'en'}, {name: 'Deutsch', value: 'de'}] };
-
-      var found = this.jsonLang.langs.find(function(lang){
-        return lang.value == strLangSel;
-      });
-
-      if (found) {
-        this.jsonLang.sel = found;
-      }
-
-      $(this.el).html(this.template({ lang: this.jsonLang }));
+      $(this.el).html(this.template());
 
       $('.change-lang', $(this.el)).click(function(evt){
         // change language
