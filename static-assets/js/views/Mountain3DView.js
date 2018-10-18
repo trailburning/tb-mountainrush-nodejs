@@ -211,7 +211,7 @@ define([
 
       var fIconY = 2;
       var fCaretY = 5.55;
-
+      
       var jsonPlayer = {
         "name": id,
         "features": [ 

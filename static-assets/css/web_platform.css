@@ -1149,6 +1149,11 @@ img.scale {
   animation-delay: -1.0s;
 }
 
+#piste-view {
+  /* to ensure icon carets do not move we must use 1 font! */
+  font-family: 'PFDinTextPro-Regular', sans-serif;
+}
+
 @-webkit-keyframes sk-bounce {
   0%, 100% { -webkit-transform: scale(0.0) }
   50% { -webkit-transform: scale(1.0) }

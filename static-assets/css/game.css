@@ -109,11 +109,6 @@ body {
   width: 100%;
 }
 
-#map-view #piste-view {
-  /* to ensure icon carets do not move we must use 1 font! */
-  font-family: 'PFDinTextPro-Regular', sans-serif;
-}
-
 #map-view #piste-view #loading-splash,
 #map-view #piste-view .compass {
   display: none;
