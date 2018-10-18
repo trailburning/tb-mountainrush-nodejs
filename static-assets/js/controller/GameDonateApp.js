@@ -11,10 +11,11 @@ define([
   'imagesLoaded',
   'videojs',
   'raisenow',
+  'views/LanguageSelectorView',
   'views/ActivePlayerView',
   'views/DemoVideoView',
   'views/GameDonationView'
-], function(_, Backbone, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, raisenow, ActivePlayerView, DemoVideoView, GameDonationView){
+], function(_, Backbone, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, raisenow, LanguageSelectorView, ActivePlayerView, DemoVideoView, GameDonationView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -89,6 +90,9 @@ define([
         });
       });        
     }
+    
+    var languageSelectorView = new LanguageSelectorView({ el: '#language-selector-view' });
+    languageSelectorView.render();
     
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
 

@@ -18,13 +18,15 @@
 </div>
 
 <script type="text/template" id="languageSelectorViewTemplate">
-  <div class="dropdown dropup mr-dropdown">
-    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{= lang.sel.name }} <span class="caret"></span>
+  <% if (Campaign.CampaignLanguages.length > 1) { %>
+    <div class="dropdown dropup mr-dropdown">
+    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= Campaign.SelLanguage.description %> <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dLabel">
-      {{ _.each(lang.langs, function(lang, index) { }}
-        <li><a href="#" class="change-lang" data-id="{{= lang.value }}">{{= lang.name }}</a></li>
-      {{ }); }}
+    <% for (var i=0; i < Campaign.CampaignLanguages.length; i++) { %>
+      <li><a href="#" class="change-lang" data-id="<%= Campaign.CampaignLanguages[i]['name'] %>"><%= Campaign.CampaignLanguages[i]['description'] %></a></li>
+    <% } %>  
     </ul>
-  </div>      
+    </div>      
+  <% } %>
 </script>

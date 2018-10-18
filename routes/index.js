@@ -32,16 +32,16 @@ function fillCampaignData(req, data) {
     campaign.CampaignLanguages = campaignData.languages;
 
     // only accept selected locale if it's available
-    var selLang = campaign.CampaignLanguages[0]['name']; // def to 1st lang
+    var selLang = campaign.CampaignLanguages[0]; // def to 1st lang
 
     for (var i = 0; i < campaign.CampaignLanguages.length; i++){
       var obj = campaign.CampaignLanguages[i];
       // selected locale is available
       if (obj['name'] == req.getLocale()) {
-        selLang = obj['name'];
+        selLang = obj;
       }
     }
-    req.setLocale(selLang);
+    req.setLocale(selLang['name']);
     campaign.SelLanguage = selLang;
   }
 
