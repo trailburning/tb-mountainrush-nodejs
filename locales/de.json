@@ -106,29 +106,20 @@
 		"welcome_connected": {
 			"title": "Danke für's Anmelden",
 			"game_current": {
-				"description": "Du hast ein %s Spiel.",
-				"pre": "register.welcome_connected.game_current.pre",
-				"post": "register.welcome_connected.game_current.post"
+				"description": "Du hast ein %s Spiel."
 			},
 			"game_active": "Aktuelles Spiel anschauen",
 			"game_upcoming": "Nächstes Spiel anschauen",
 			"game": "Spiel anschauen",
 			"invite": "Freunde einladen",
 			"msg_invite": "%s to your challenge!",
-			"msg_invitation": {
-				"pre": "register.welcome_connected.msg_invitation.pre",
-				"post": "register.welcome_connected.msg_invitation.post"
-			},
 			"yes": "Accept",
 			"no": "Reject",
-			"game_accepted": {
-				"pre": "register.welcome_connected.game_accepted.pre",
-				"post": "register.welcome_connected.game_accepted.post"
-			},
-			"game_rejected": {
-				"pre": "register.welcome_connected.game_rejected.pre",
-				"post": "register.welcome_connected.game_rejected.post"
-			},
+			"msg_invitation": "You have a %s %s challenge invitation from %s!",
+			"yes": "Accept",
+			"no": "Reject",
+			"game_accepted": "You now have a %s %s challenge!",
+			"game_rejected": "Challenge rejected! You can now create your own challenge.",
 			"game_create": "Create Challenge",
 			"previous_challenges": "Previous",
 			"greeting": "Hi %s,",
@@ -136,8 +127,7 @@
 				"game_notifications_on": "during your climb you'll receive activity emails with your progress up the mountain, click %s if you'd rather not get them.",
 				"game_notifications_off": "during your climb you won't receive any activity emails with your progress up the mountain, click %s if you'd like to get them.",
 				"here": "here"
-			},
-			"pre": "register.welcome_connected.pre"
+			}
 		},
 		"challenge": {
 			"one": "Challenge",
