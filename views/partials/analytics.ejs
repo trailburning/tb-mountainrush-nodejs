@@ -8,6 +8,6 @@
   var host = window.location.hostname;
   if(host != "localhost") {
     // track campaigns
-    gtag('config', 'UA-121351570-1', { 'dimension1': '{$Campaign.CampaignID}' });
+    gtag('config', 'UA-121351570-1', { 'dimension1': '<%= Campaign.CampaignID %>' });
   }
 </script>
