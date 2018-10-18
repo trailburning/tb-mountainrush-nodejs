@@ -8,11 +8,14 @@ i18n.configure({
   locales:['en', 'de', 'fr'],
   directory: __dirname + '/locales',
   cookie: 'mountainrush_lang',
-  objectNotation: true
+  objectNotation: true,
+  autoReload: true, // while translating
+  updateFiles: true // while translating
 });
 
 // use .env for dev use
 if (process.env.NODE_ENV != "staging" && process.env.NODE_ENV != "production") {
+  console.log('dotenv');
   require('dotenv').config();
 }
 

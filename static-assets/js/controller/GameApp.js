@@ -38,6 +38,8 @@ define([
   'views/PlayersDetailView',
   'views/Mountain3DView',
   'views/DeviceCapableModalView',
+  'views/ChallengePendingModalView',
+  'views/ChallengeCompleteModalView',
   'views/MountainLockedStoryModalView',
   'views/MountainStoryModalView',
   'views/FundraisingShoppingModalView',
@@ -46,7 +48,7 @@ define([
 /* player.js */
 FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentView, PlayerActivityMorePhotosView, PlayerActivityPhotosView, PlayerActivityPhotoView,
 /* player.js */
-  LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, MountainLockedStoryModalView, MountainStoryModalView, FundraisingShoppingModalView, DemoVideoView){
+  LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, ChallengePendingModalView, ChallengeCompleteModalView, MountainLockedStoryModalView, MountainStoryModalView, FundraisingShoppingModalView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -104,6 +106,8 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
 
     var deviceCapableModalView = new DeviceCapableModalView({ el: '#device-capable-modal-view' });
+    var challengePendingModalView = new ChallengePendingModalView({ el: '#challenge-pending-modal-view' });
+    var challengeCompleteModalView = new ChallengeCompleteModalView({ el: '#challenge-complete-modal-view' });
     var fundraisingShoppingModalView = new FundraisingShoppingModalView({ el: '#fundraising-shopping-modal-view', jsonFundraising: jsonFundraising });
     var mountainLockedStoryModalView = new MountainLockedStoryModalView({ el: '#mountain-locked-story-modal-view' });
     var mountainStoryModalView = new MountainStoryModalView({ el: '#mountain-story-modal-view' });
@@ -448,21 +452,13 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       // has the game finished?
       if (jsonCurrGame.game_now > jsonCurrGame.game_end && !Demo) {
 // 180527 MLA - hide for now
-//        $('#challengeCompleteModal').modal();
+//        challengeCompleteModalView.render(jsonCurrGame);
+//        challengeCompleteModalView.show();
       }
       else if (jsonCurrGame.game_now < jsonCurrGame.game_start) {
         // is the game pending?
-        var dLocalGameStart = new Date(jsonCurrGame.game_start);
-
-        var strDate = moment(dLocalGameStart).format('dddd MMMM Do');
-        $('#challengePendingModal .date').html(strDate);
-
-        var strTime = moment(dLocalGameStart).format('h:mm a');
-        $('#challengePendingModal .time').html(strTime);
-
-        $('#challengePendingModal .type').html(jsonCurrGame.type);
-
-        $('#challengePendingModal').modal();
+        challengePendingModalView.render(jsonCurrGame);
+        challengePendingModalView.show();
       }
     }
 
@@ -807,12 +803,16 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           dLocalGameEnd.setDate(dLocalGameEnd.getDate() + 5);
         }
 
-        $('#map-view .countdown-container').show();
+        var elCountdownContainer = $('#map-view .countdown-container');
+        var strDay = elCountdownContainer.attr('data-value-day');
+        var strDays = elCountdownContainer.attr('data-value-days');
+
+        elCountdownContainer.show();
         $('.countdown .end').countdown(dLocalGameEnd).on('update.countdown', function(event) {
           var $this = $(this).html(event.strftime(''
             + '<span class="days">'
               + '<span class="time">%-D</span>'
-              + '<span class="days-marker"> Day' + ((Number(event.strftime('%-D')) == 1) ? '' : 's') + '</span>'
+              + '<span class="days-marker"> ' + ((Number(event.strftime('%-D')) == 1) ? strDay : strDays) + '</span>'
             + '</span>'
             + '<span class="hours">'
               + '<span class="time"><span>%H</span><span class="marker">:</span><span>%M</span><span class="marker">:</span><span>%S</span></span>'
