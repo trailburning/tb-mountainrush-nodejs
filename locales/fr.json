@@ -5,7 +5,7 @@
     "signup": "Sign up",
     "signout": "Sign out",
     "privacy": "Privacy",
-    "greeting": "Hi"
+    "greeting": "Bonjour"
   },
   "intro": {
     "scene1_1": "Virtually Climb",
@@ -127,7 +127,7 @@
     "here": "here",
     "go_back": "go back",
     "preferences": {
-      "title": "Challenge Preferences",
+      "title": "Your Preferences",
       "game_notifications": "Activity email during challenge",
       "update": "Update Preferences"
     },
