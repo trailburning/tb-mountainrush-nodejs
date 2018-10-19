@@ -64,10 +64,7 @@
 			},
 			"upcoming": {
 				"title": "Upcoming Challenge",
-				"description": "Hi %s, would you like to check out your upcoming %s challenge?",
-				"social": {
-					"description": "overlay.challenge.upcoming.social.description"
-				}
+				"description": "Hi %s, would you like to check out your upcoming %s challenge?"
 			}
 		},
 		"challenge_upcoming": {
@@ -130,7 +127,7 @@
 		"here": "here",
 		"go_back": "go back",
 		"preferences": {
-			"title": "Challenge Preferences",
+			"title": "Your Preferences",
 			"game_notifications": "Activity email during challenge",
 			"update": "Update Preferences"
 		},
@@ -228,8 +225,5 @@
 			"share_facebook": "Share on Facebook",
 			"share_twitter": "Share on Twitter"
 		}
-	},
-	"challenge_upcoming": {
-		"title": "challenge_upcoming.title"
 	}
 }
