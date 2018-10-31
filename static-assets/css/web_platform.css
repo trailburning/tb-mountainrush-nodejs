@@ -1263,6 +1263,12 @@ img.scale {
   .modal.shopping-list-overlay .shopping-list .shopping-list-item .content {
     padding-top: 14px;
   }
+
+  .fundraise-sticker {  
+    -webkit-box-shadow: 0px 5px 5px 0 rgba(25,56,72,0.2);
+    -moz-box-shadow: 0px 5px 5px 0 rgba(25,56,72,0.2);
+    box-shadow: 0px 5px 5px 0 rgba(25,56,72,0.2);
+  }
 }
 
 /* Small devices (tablets, 992px and up) */
