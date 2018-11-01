@@ -41,6 +41,12 @@ define([
       window.rnwWidget.configureWidget = [];
 
       window.rnwWidget.configureWidget.push(function(options) {
+
+        options.widget.on(window.rnwWidget.constants.events.WIDGET_LOADED, function(event) {
+          console.log("The widget is loaded, please go on with your donation");
+          console.log(event);
+        });
+
         if (FUNDRAISING_DONATION_AMOUNT) {
           options.defaults['ui_onetime_amount_default'] = FUNDRAISING_DONATION_AMOUNT;
         } 
