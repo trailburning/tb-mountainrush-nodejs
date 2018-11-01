@@ -27,6 +27,8 @@ define([
   var initialize = function() {
     var self = this;
 
+    setupDonationForm();
+
     function showActivePlayer() {
       var jsonUser = getUserCookies(CLIENT_ID);
 
@@ -41,6 +43,12 @@ define([
       window.rnwWidget.configureWidget = [];
 
       window.rnwWidget.configureWidget.push(function(options) {
+
+        options.widget.on(window.rnwWidget.constants.events.WIDGET_LOADED, function(event) {
+          console.log("The widget is loaded, please go on with your donation");
+          console.log(event);
+        });
+
         if (FUNDRAISING_DONATION_AMOUNT) {
           options.defaults['ui_onetime_amount_default'] = FUNDRAISING_DONATION_AMOUNT;
         } 
@@ -73,19 +81,6 @@ define([
             }
           }
         });
-
-        options.widget.on(window.rnwWidget.constants.events.WIDGET_LOADED, function(event) {
-/*        
-          event.widget.hideStep("donation-target");
-          event.widget.hideStep("customer-address");
-
-          event.widget.hideBlock("customer_salutation");
-          event.widget.hideBlock("customer_permission");
-          event.widget.hideBlock("customer_email");
-          event.widget.hideBlock("customer_message");
-          event.widget.hideBlock("customer_receipt");
-*/
-        });
       });        
     }
     
@@ -113,8 +108,6 @@ define([
     });
 
     enableUserActions(CLIENT_ID);
-
-    setupDonationForm();
 
     var elImages = $('body');
     var imgLoad = imagesLoaded(elImages);
