@@ -27,6 +27,8 @@ define([
   var initialize = function() {
     var self = this;
 
+    setupDonationForm();
+
     function showActivePlayer() {
       var jsonUser = getUserCookies(CLIENT_ID);
 
@@ -119,8 +121,6 @@ define([
     });
 
     enableUserActions(CLIENT_ID);
-
-    setupDonationForm();
 
     var elImages = $('body');
     var imgLoad = imagesLoaded(elImages);
