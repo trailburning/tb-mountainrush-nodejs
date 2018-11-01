@@ -3,6 +3,7 @@ var app = app || {};
 define([
   'underscore',
   'backbone',
+  'jquery',
   'bootstrap',
   'cookie',
   'truncate',
@@ -13,7 +14,7 @@ define([
   'views/LanguageSelectorView',
   'views/ActivePlayerView',
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, DemoVideoView){
+], function(_, Backbone, $, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
