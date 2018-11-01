@@ -81,19 +81,6 @@ define([
             }
           }
         });
-
-        options.widget.on(window.rnwWidget.constants.events.WIDGET_LOADED, function(event) {
-/*        
-          event.widget.hideStep("donation-target");
-          event.widget.hideStep("customer-address");
-
-          event.widget.hideBlock("customer_salutation");
-          event.widget.hideBlock("customer_permission");
-          event.widget.hideBlock("customer_email");
-          event.widget.hideBlock("customer_message");
-          event.widget.hideBlock("customer_receipt");
-*/
-        });
       });        
     }
     
