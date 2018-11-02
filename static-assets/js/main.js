@@ -37,7 +37,8 @@ require.config({
     truncate: 'libs/jquery.truncate',
     cookie: 'libs/js.cookie',
     videojs: '//vjs.zencdn.net/4.12/video',
-    modernizr: 'libs/modernizr-custom'
+    modernizr: 'libs/modernizr-custom',
+    raisenow: 'https://widget.raisenow.com/widgets/lema/amp-test/js/dds-init-widget-en'
   },
   shim: {
     'jqueryUI' : {
@@ -75,6 +76,9 @@ require.config({
       deps: ['jquery']
     },
     'cookie' : {
+      deps: ['jquery']
+    },
+    'raisenow' : {
       deps: ['jquery']
     },
     'imagesLoaded': {
