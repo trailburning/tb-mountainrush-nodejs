@@ -37,8 +37,7 @@ require.config({
     truncate: 'libs/jquery.truncate',
     cookie: 'libs/js.cookie',
     videojs: '//vjs.zencdn.net/4.12/video',
-    modernizr: 'libs/modernizr-custom',
-    raisenow: 'https://widget.raisenow.com/widgets/lema/amp-test/js/dds-init-widget-en'
+    modernizr: 'libs/modernizr-custom'
   },
   shim: {
     'jqueryUI' : {
@@ -81,6 +80,11 @@ require.config({
     'imagesLoaded': {
       deps: ['jquery'],
       exports: 'imagesLoaded'
+    },
+    'controller/GameDonateApp': {
+      deps: ['jquery'],
+      deps: ['truncate'],
+      deps: ['cookie']
     },
     'controller/GameApp': {
       deps: ['truncate'],

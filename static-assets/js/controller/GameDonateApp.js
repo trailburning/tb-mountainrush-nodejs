@@ -3,7 +3,6 @@ var app = app || {};
 define([
   'underscore',
   'backbone',
-  'jquery',
   'bootstrap',
   'cookie',
   'truncate',
@@ -11,11 +10,10 @@ define([
   'imageScale',
   'imagesLoaded',
   'videojs',
-  'raisenow',
   'views/LanguageSelectorView',
   'views/ActivePlayerView',
   'views/DemoVideoView'
-], function(_, Backbone, $, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, raisenow, LanguageSelectorView, ActivePlayerView, DemoVideoView){
+], function(_, Backbone, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -27,8 +25,6 @@ define([
   var initialize = function() {
     var self = this;
 
-    setupDonationForm();
-
     function showActivePlayer() {
       var jsonUser = getUserCookies(CLIENT_ID);
 
@@ -36,52 +32,6 @@ define([
         var activePlayerView = new ActivePlayerView({ el: $(this), player: jsonUser });
         activePlayerView.render();
       });
-    }
-
-    function setupDonationForm() {
-      window.rnwWidget = window.rnwWidget || {};
-      window.rnwWidget.configureWidget = [];
-
-      window.rnwWidget.configureWidget.push(function(options) {
-
-        options.widget.on(window.rnwWidget.constants.events.WIDGET_LOADED, function(event) {
-          console.log("The widget is loaded, please go on with your donation");
-          console.log(event);
-        });
-
-        if (FUNDRAISING_DONATION_AMOUNT) {
-          options.defaults['ui_onetime_amount_default'] = FUNDRAISING_DONATION_AMOUNT;
-        } 
-
-        options.defaults['stored_TBGameID'] = GAME_ID;
-        options.defaults['stored_TBPlayerID'] = PLAYER_ID;
-
-        options.extend({
-          custom_fields : {
-            stored_anonymous_donation : {
-              type : 'checkbox',
-              location : 'after',
-              reference : 'empty-step',          
-              label : 'Make my donation anonymous',
-              value : 'true'
-            },
-            stored_customer_nickname : {
-              type : 'text',
-              location : 'after',
-              reference : 'empty-step',          
-              placeholder : 'Your name'
-            },
-            stored_customer_additional_message : {
-              type : 'textarea',
-              location : 'after',
-              reference : 'empty-step',          
-              placeholder : 'Your message of support',
-              initial : '',
-              rows: 8
-            }
-          }
-        });
-      });        
     }
     
     var languageSelectorView = new LanguageSelectorView({ el: '#language-selector-view' });
