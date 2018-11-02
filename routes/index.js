@@ -24,6 +24,7 @@ function fillCampaignData(req, data) {
     campaign.CampaignTemplate = campaignData.template;
     campaign.CampaignJuicerFeed = campaignData.juicer_feed;
     campaign.CampaignInvitationCode = campaignData.invitation_code;
+    campaign.CampaignFundraisingCurrency = campaignData.fundraising_currency;
     campaign.CampaignFundraisingMinimum = campaignData.fundraising_minimum;
     campaign.CampaignFundraisingProvider = campaignData.fundraising_provider;
     campaign.CampaignFundraisingPage = campaignData.fundraising_page;

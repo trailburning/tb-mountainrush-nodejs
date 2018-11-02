@@ -27,6 +27,7 @@ define([
       this.jsonFields.campaignID = jsonFields.campaignID;
       this.jsonFields.gameID = jsonFields.gameID;
       this.jsonFields.playerID = jsonFields.playerID;
+      this.jsonFields.currencyCode = jsonFields.currencyCode;
     },
 
     createFundraiserDetails: function(fTargetAmount, strSupporterMsg, currencyCode, bCharityOptIn) {
@@ -81,7 +82,6 @@ define([
           self.jsonFields.targetAmount = $('#fundraising-page-create-targetamount', elForm).val();
           self.jsonFields.supporterMsg = $('[name="fundraising-supporter-msg"]', elForm).val();
           self.jsonFields.charityOptIn = $('[name="fundraising-receive-charity-email"]:checked', elForm).val();
-console.log(self.jsonFields);
 
           self.createFundraiserDetails(self.jsonFields.targetAmount, self.jsonFields.supporterMsg, self.jsonFields.currencyCode, self.jsonFields.charityOptIn);
         }
