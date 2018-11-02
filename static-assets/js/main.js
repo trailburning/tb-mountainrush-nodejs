@@ -191,13 +191,16 @@ function enableUserActions(clientID){
   }
 }
 
-function updateUserCookies(clientID, strFirstname, strAvatar){
+function updateUserCookies(clientID, strUser, strFirstname, strAvatar){
   var cookiePrefix = COOKIE_PREFIX + COOKIE_DELIM + clientID + COOKIE_DELIM;
   if (clientID == DEF_CLIENT_ID) {
     cookiePrefix = COOKIE_PREFIX + COOKIE_DELIM;
   }
 
   // store in cookies
+  $.removeCookie(cookiePrefix + 'user', { path: '/' });
+  $.cookie(cookiePrefix + 'user', strUser, { expires: 365, path: '/' });
+
   $.removeCookie(cookiePrefix + 'firstname', { path: '/' });
   $.cookie(cookiePrefix + 'firstname', strFirstname, { expires: 365, path: '/' });
 
@@ -215,12 +218,13 @@ function storeUserCookies(clientID, token, objUser){
 
   // store in cookies
   $.removeCookie(cookiePrefix + 'usertoken', { path: '/' });
+  $.removeCookie(cookiePrefix + 'user', { path: '/' });
   $.removeCookie(cookiePrefix + 'firstname', { path: '/' });
   $.removeCookie(cookiePrefix + 'avatar', { path: '/' });
   
   $.cookie(cookiePrefix + 'usertoken', token, { expires: 365, path: '/' });
 
-  updateUserCookies(clientID, objUser.firstname, objUser.avatar);
+  updateUserCookies(clientID, objUser.id, objUser.firstname, objUser.avatar);
 }
 
 function removeUserCookie(clientID){
@@ -230,6 +234,9 @@ function removeUserCookie(clientID){
   }
 
   $.removeCookie(cookiePrefix + 'usertoken', { path: '/' });
+  $.removeCookie(cookiePrefix + 'user', { path: '/' });
+  $.removeCookie(cookiePrefix + 'firstname', { path: '/' });
+  $.removeCookie(cookiePrefix + 'avatar', { path: '/' });
 }
 
 function getUserCookie(clientID){
@@ -241,6 +248,15 @@ function getUserCookie(clientID){
   return $.cookie(cookiePrefix + 'usertoken');
 }
 
+function getUserIDCookie(clientID){
+  var cookiePrefix = COOKIE_PREFIX + COOKIE_DELIM + clientID + COOKIE_DELIM;
+  if (clientID == DEF_CLIENT_ID) {
+    cookiePrefix = COOKIE_PREFIX + COOKIE_DELIM;
+  }
+
+  return $.cookie(cookiePrefix + 'user');
+}
+
 function getUserCookies(clientID){
   var cookiePrefix = COOKIE_PREFIX + COOKIE_DELIM + clientID + COOKIE_DELIM;
   if (clientID == DEF_CLIENT_ID) {
@@ -250,7 +266,7 @@ function getUserCookies(clientID){
   if ($.cookie(cookiePrefix + 'usertoken') == undefined) {
     return false;
   }
-  return { token: $.cookie(cookiePrefix +'usertoken'), firstname: $.cookie(cookiePrefix + 'firstname'), avatar: $.cookie(cookiePrefix + 'avatar') };
+  return { user: $.cookie(cookiePrefix +'user'), token: $.cookie(cookiePrefix +'usertoken'), firstname: $.cookie(cookiePrefix + 'firstname'), avatar: $.cookie(cookiePrefix + 'avatar') };
 }
 
 function getLangCookie(){

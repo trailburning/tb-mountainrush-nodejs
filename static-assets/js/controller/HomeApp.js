@@ -96,6 +96,7 @@ define([
     // check for player game
     if (getUserCookie(DEF_CLIENT_ID) != undefined) {
       var jsonUser = getUserCookies(DEF_CLIENT_ID);
+//      console.log(jsonUser);
 
       app.dispatcher.on("PlayerGameView:loaded", onPlayerGameViewReady);
 
