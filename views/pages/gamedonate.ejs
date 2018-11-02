@@ -52,7 +52,11 @@ var FUNDRAISING_DONATION_AMOUNT = '<%= Defs.FundraisingDonationAmount %>';
         <div class="step-container">
           <div class="step">
             <div class="step-image">
-              <img class="step-player active" src="/static-assets/images/ui/fundraising.svg">
+            <% if (Campaign.CampaignTemplate == 'default') { %>
+              <img class="step-fundraising active" src="/static-assets/images/ui/fundraising.svg">
+            <% } else { %>
+              <img class="step-fundraising active" src="/static-assets/images/<%= Campaign.CampaignTemplate %>/ui/fundraising.svg">
+            <% } %>
             </div>
           </div>
         </div>
