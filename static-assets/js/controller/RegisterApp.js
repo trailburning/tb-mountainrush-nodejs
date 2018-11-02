@@ -390,6 +390,7 @@ define([
 
           var jsonCreateFields = registerFundraisingCreateView.getFields();
           jsonCreateFields.campaignID = CAMPAIGN_ID;
+          jsonCreateFields.currencyCode = CAMPAIGN_FUNDRAISING_CURRENCY;
           jsonCreateFields.gameID = gameID;
           jsonCreateFields.playerID = playerID;
           registerFundraisingCreateView.setFields(jsonCreateFields);
