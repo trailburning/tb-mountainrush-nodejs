@@ -753,7 +753,7 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   margin-left: 5px;
   padding: 4px;
   color: #fff;
-  background-color: #44b6f7;
+  background-color: #f75f36;
 }
 
 #player-view .detail .player .fundraising-donations-view .donation-msg {
@@ -1041,7 +1041,7 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   }
 
   body.fundraising #player-view .detail .player .fundraise-sticker .details .raised {
-    margin-top: 24px;
+    margin-top: 20px;
   }
 
   body.fundraising #player-view .detail .player .fundraise-sticker {

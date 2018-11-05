@@ -182,6 +182,7 @@ video::-webkit-media-controls-start-playback-button {
   border-color: #3c5b6e;
   background-color: transparent;
   outline: none;
+  overflow: hidden;
 }
 .mr-btn.active.focus, 
 .mr-btn.active:focus, 
@@ -198,14 +199,29 @@ video::-webkit-media-controls-start-playback-button {
   background-color: #f75f36;
 }
 
+.mr-btn.btn-large {
+  font-size: 1.2em;
+}
+
 .mr-btn.double {
   padding: 0;
+  border: none;
+  border-color: transparent;
 }
 
 .mr-btn.double div {
   float: left;
   display: inline-block;
   padding: 6px 16px;
+}
+
+.mr-btn.double div:last-child {
+  background-color: #ff8665;
+}
+
+.mr-btn.double:hover div:last-child {
+  color: #fff;
+  background-color: #3c5b6e;
 }
 
 .mr-btn.with-sub {
@@ -691,18 +707,26 @@ video::-webkit-media-controls-start-playback-button {
 
 .fundraise-sticker .details .raised {
   position: relative;
-  margin: 20px 10px 8px 10px;
-  padding: 0 0 2px 0;
+  margin: 16px 10px 0 10px;
   font-size: 1.7em;
   line-height: 1em;
-  border-bottom: 1px solid #fff;
 }
 
 .fundraise-sticker .details .target {
   position: relative;
   z-index: 2;
-  font-size: 0.9em;
-  line-height: 1.6em;
+  font-size: .75em;
+  line-height: 1.3em;
+}
+
+.fundraise-sticker .details .target:before {
+  content: ' ';
+  display: block;
+  margin: 0 auto 6px auto;
+  padding: 6px 0 0 0;
+  width: 60px;
+  height: 2px;
+  border-bottom: 1px solid #fff;
 }
 
 /* MAP */
@@ -1268,6 +1292,19 @@ img.scale {
     -webkit-box-shadow: 0px 5px 5px 0 rgba(25,56,72,0.2);
     -moz-box-shadow: 0px 5px 5px 0 rgba(25,56,72,0.2);
     box-shadow: 0px 5px 5px 0 rgba(25,56,72,0.2);
+  }
+
+  .fundraise-sticker .details .raised {
+    margin-top: 20px;
+  }
+
+  .fundraise-sticker .details .target {
+    font-size: 0.9em;
+    line-height: 1.6em;
+  }
+
+  .fundraise-sticker .details .target:before {
+    padding-top: 8px;
   }
 }
 
