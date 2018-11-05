@@ -293,6 +293,16 @@ body {
   background-color: #f69741;
 }
 
+.fundraise-sticker .details .raised {
+  margin-top: 20px;
+}
+
+.fundraise-sticker .details .target:before {
+  margin-bottom: 8px;
+  padding-top: 4px;
+  width: 76px;
+}
+
 /* STEP */
 /******************************************/
 .step-container .step {

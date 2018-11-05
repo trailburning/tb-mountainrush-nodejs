@@ -68,11 +68,6 @@ body.map-ready #page-view {
   padding-left: 6px;
 }
 
-.fundraise-sticker .details .target {
-  font-size: .75em;
-  line-height: 1.3em;
-}
-
 /* SHOPPING LIST */
 /******************************************/
 .shopping-list-sticker {
@@ -252,6 +247,10 @@ body.map-ready #page-view {
 
   .btn.btn-large {
     font-size: 1.1em;
+  }
+
+  body.fundraising #player-view .detail .player .fundraise-sticker .details .raised {
+    margin-top: 24px;
   }
 }
 
