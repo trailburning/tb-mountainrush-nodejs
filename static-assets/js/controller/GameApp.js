@@ -539,7 +539,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       var self = this;
       var nPlayer = 0;
 
-      var url = GAME_API_URL + "client/" + CLIENT_ID + "/player/" + playerToken;
+      var url = GAME_API_URL + "client/" + CLIENT_ID + "/playertoken/" + playerToken;
 //      console.log(url);
       $.getJSON(url, function(result){
         onActivePlayerLoaded(result[0].id);

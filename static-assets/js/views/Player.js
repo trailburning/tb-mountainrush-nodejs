@@ -133,7 +133,7 @@ define([
     getLatestDetails: function(){
       var self = this;
 
-      var url = GAME_API_URL + 'client/' + CLIENT_ID + '/player/' + this.model.get('playerProviderToken') + '/update';
+      var url = GAME_API_URL + 'client/' + CLIENT_ID + '/playertoken/' + this.model.get('playerProviderToken') + '/update';
 //      console.log(url);
       $.getJSON(url, function(result){
 //        console.log(result);
