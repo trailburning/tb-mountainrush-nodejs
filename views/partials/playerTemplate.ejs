@@ -303,7 +303,7 @@
             {{ if (donation.donorLocalAmount) { }}
               <%= __('game.fundraising.donations.donated') %><span class="amount">{{ if (donation.donorLocalCurrencyCode == 'GBP') { }}£{{ } else if (donation.donorLocalCurrencyCode == 'EUR') { }}€{{ } else { }}${{ } }}{{= Math.round(donation.donorLocalAmount) }}</span>
             {{ } else { }}
-              Donated<span class="amount">{{= donation.currency_identifier }}{{= Math.round(donation.amount / 100) }}</span>
+              Donated<span class="amount">{{= donation.currency_symbol }}{{= Math.round(donation.amount / 100) }}</span>
             {{ } }}            
             </div>
           </div>
