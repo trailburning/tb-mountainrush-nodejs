@@ -24,7 +24,7 @@ define([
     getPlayer: function(clientID) {
       var self = this;
 
-      var url = GAME_API_URL + "client/" + clientID + "/player/" + this.jsonFields.playerToken;
+      var url = GAME_API_URL + "client/" + clientID + "/playertoken/" + this.jsonFields.playerToken;
 //      console.log(url);
       $.getJSON(url, function(result){
         $('.get-btn', $(self.el)).button('reset');
