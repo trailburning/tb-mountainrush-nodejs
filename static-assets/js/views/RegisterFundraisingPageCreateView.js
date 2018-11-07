@@ -15,6 +15,7 @@ define([
                         playerID: '',
                         email: '',
                         password: '',
+                        supporterMsg: '',
                         targetAmount: 0,
                         justGivingOptIn: false,
                         charityOptIn: false,
@@ -33,7 +34,7 @@ define([
       this.jsonFields.password = jsonFields.password;
     },
 
-    createFundraiserPage: function(strEmail, strPassword, fTargetAmount, bJustGivingOptIn, bCharityOptIn) {
+    createFundraiserPage: function(strEmail, strPassword, fTargetAmount, strSupporterMsg, bJustGivingOptIn, bCharityOptIn) {
       var self = this;
 
       $('.err', $(this.el)).hide();
@@ -41,6 +42,7 @@ define([
 
       var jsonData = {email: strEmail,
                       password: strPassword,
+                      supporterMsg: strSupporterMsg,
                       targetAmount: fTargetAmount,
                       justGivingOptIn: bJustGivingOptIn,
                       charityOptIn: bCharityOptIn};
@@ -110,12 +112,13 @@ define([
         if (bValid) {
           $('.create-btn', $(self.el)).button('loading');
           self.jsonFields.targetAmount = $('#fundraising-page-create-targetamount').val();
+          self.jsonFields.supporterMsg = $('[name="fundraising-supporter-msg"]', elForm).val();
           self.jsonFields.justGivingOptIn = $('#fundraising-receive-partner-email').is(':checked') ? true : false;
           if ($('[name="fundraising-receive-charity-email"]:checked', elForm).val() == '1') {
             self.jsonFields.charityOptIn = true;
           }
 
-          self.createFundraiserPage(self.jsonFields.email, self.jsonFields.password, self.jsonFields.targetAmount, self.jsonFields.justGivingOptIn, self.jsonFields.charityOptIn);
+          self.createFundraiserPage(self.jsonFields.email, self.jsonFields.password, self.jsonFields.targetAmount, self.jsonFields.supporterMsg, self.jsonFields.justGivingOptIn, self.jsonFields.charityOptIn);
         }
       });
 
