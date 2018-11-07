@@ -264,7 +264,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       }
 
       this.currPlayerModel.get('playerObj').render();
-      if (GAME_FUNDRAISING) {
+      if (Number(this.currPlayerModel.get('fundraising_goal'))) {
         // get fundraising
         this.currPlayerModel.get('playerObj').getFundraising();
         // get donations

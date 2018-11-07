@@ -31,7 +31,7 @@ define([
       var url = GAME_API_URL + 'fundraiser/player/' + this.jsonFields.playerID + '/user/' + strEmail + '/' + strPassword;
 //      console.log(url);
       $.getJSON(url, function(result){
-        console.log(result);
+//        console.log(result);
         $('.signin-btn', $(self.el)).button('reset');
 
         if (result.exists) {
