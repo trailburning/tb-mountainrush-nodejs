@@ -166,9 +166,12 @@ define([
       // now go and get live data
       var url = GAME_API_URL + 'game/' + this.options.gameID + "/player/" + this.model.get('id') + '/fundraiser/details';
       if (FUNDRAISING_PROVIDER == FUNDRAISING_PROVIDER_JUSTGIVING) {
-        url = GAME_API_URL + 'game/' + this.options.gameID + "/player/" + this.model.get('id') + '/fundraiser/page/' + this.jsonProgress.fundraising_page;
+        if (this.jsonProgress.fundraising_page) {
+          url = GAME_API_URL + 'game/' + this.options.gameID + "/player/" + this.model.get('id') + '/fundraiser/page/' + this.jsonProgress.fundraising_page;
+        }
       }
 //      console.log(url);
+
       $.getJSON(url, function(result){
         if (result) {
           self.jsonFundraisingPage = result;
