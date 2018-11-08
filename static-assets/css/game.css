@@ -1,7 +1,3 @@
-body {
-  font-family: 'radikalregular', sans-serif;
-}
-
 .touchevents #wrapper{
   height: 100%;
   width: 100%;
@@ -46,6 +42,19 @@ body {
 /******************************************/
 #footer-view .logo-container {
   display: none;
+  position: absolute;
+  top: -80px;
+  width: 100%;
+}
+
+#footer-view .mr-logo {
+  margin: 0 auto;
+  width: 160px;
+  text-align: center;
+}
+
+#footer-view .mr-logo img {
+  width: 100%;
 }
 
 /* PAGE VIEW */
@@ -54,6 +63,7 @@ body {
   position: relative;
   height: 100%;
   overflow: hidden;
+  font-family: 'radikalregular', sans-serif;
 }
 
 /* GAME VIEW */
@@ -957,11 +967,6 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     top: 72px;
   }
 
-  #page-view .stripe.bottom {
-    bottom: 0;
-    height: 140px;
-  }
-
   #game-view {
     overflow: initial;
   }
@@ -1202,6 +1207,20 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
 
   body.fundraising #player-view .detail {
     margin-bottom: 62px;
+  }
+
+  #footer-view {
+    margin-top: 200px;
+    height: 200px;
+  }
+
+  #footer-view .logo-container {
+    display: block;
+    top: -100px;
+  }
+
+  #footer-view .mr-logo {
+    width: 200px;
   }
 }
 
