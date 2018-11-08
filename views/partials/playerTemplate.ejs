@@ -81,7 +81,7 @@
             <div class="summit-container">
               <div class="summit">
               {{ if (player.elevationToSummit) { }}
-                <h1>{{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m</h1><%= __('game.to_summit') %><br/>{{= game.name }}
+                <h1>{{ if (player.elevationToSummit < 1) { }}1{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m</h1><%= __('game.to_summit') %><br/>{{= game.name }}
               {{ } else { }}
                 <h1>Summit!</h1>{{= Math.round(player.elevationGain) }}m <%= __('game.climbed_on') %><br/>{{= game.name }}
               {{ } }}
