@@ -15,6 +15,11 @@ define([
 
       $(this.el).html(this.template({game: this.options.jsonGame, players: this.options.playerCollection.toJSON(), fundraising: this.options.jsonFundraising}));
 
+      // truncate
+      $('.truncate', $(this.el)).each(function(index){
+        $(this).html($.truncate($(this).html(), {length: $(this).attr('data-truncate')}));
+      });
+
       $('img', $(this.el)).imagesLoaded().progress( function( instance, image ) {
         if ($(image.img).hasClass('fade_on_load')) {
           $(image.img).css('opacity', 1);
