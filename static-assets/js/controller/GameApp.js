@@ -565,7 +565,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
       var fProgressKM = activePlayer.get('progress');
       var bEnabled = false;
-      var latestEnabledMarkerID = 0;
+      var latestMarker = null;
 
       mountainEventsCollection.each(function(event, index) {
         var strImage = '';
@@ -583,11 +583,11 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         bEnabled = mountain3DView.addMarker(event.get('id'), event.get('coords'), fProgressKM, strImage, strImageHost + 'http://mountainrush.trailburning.com/static-assets/images/markers/marker-event-unlocked.png', strImageHost + 'http://mountainrush.trailburning.com/static-assets/images/markers/marker-event-locked.png');
 
         if (bEnabled) {
-          latestEnabledMarkerID = event.get('id');
+          latestMarker = event;
         }
       });
 
-      return latestEnabledMarkerID;
+      return latestMarker;
     }
 
     function focusStory(id) {
@@ -600,11 +600,12 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         // focus on feature
         var coords = mountainStoryModel.get('coords');
         mountain3DView.focusLocation(coords[0], coords[1]);
-
         timeoutStoryID = window.setTimeout(function(){
-          // is the player fundraising?
+          var nMarkerPos = mountainEventsCollection.indexOf(mountainStoryModel);
+          console.log('p:'+nMarkerPos);
+          // is the player fundraising, or is the first 'free' marker?
           var fFundRaisingGoal = this.currPlayerModel.get('fundraising_goal');
-          if (fFundRaisingGoal && fFundRaisingGoal > 0) {
+          if ((fFundRaisingGoal && fFundRaisingGoal > 0) || (nMarkerPos == 0))  {
             // bring up feature overlay
             mountainStoryModalView.render(this.currPlayerModel, mountainStoryModel);
             mountainStoryModalView.show();
@@ -697,14 +698,16 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     function onFeaturesLoaded() {
       // is player active?
       if (activePlayer) {
-        var latestEnabledMarkerID = addMapMarkers(activePlayer);
+        var latestEnabledMarker = addMapMarkers(activePlayer);
         // do we have an enabled marker?
-        if (latestEnabledMarkerID) {
+        if (latestEnabledMarker) {
+          latestEnabledMarkerID = latestEnabledMarker.get('id');
           // is it different from what the player has already seen?
           if (latestEnabledMarkerID != activePlayer.get('latestMarkerID')) {
-            // it is, but is the player fundraising?
+            var nMarkerPos = mountainEventsCollection.indexOf(latestEnabledMarker);
+            // it is, but is the player fundraising, or is the first 'free' marker?
             var fFundRaisingGoal = activePlayer.get('fundraising_goal');
-            if (fFundRaisingGoal && fFundRaisingGoal > 0) {
+            if ((fFundRaisingGoal && fFundRaisingGoal > 0) || (nMarkerPos == 0)) {
               // yes so update marker
               setLatestEnabledMarker(latestEnabledMarkerID);
             }
