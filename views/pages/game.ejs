@@ -222,7 +222,13 @@ var Demo = <%= Defs.Demo %>;
 
 <script type="text/template" id="mountainStoryModalViewTemplate">
   {{ var asset = story.assets[0] }}
-  {{ var socialShareURL = 'goal/' + Math.round(player.fundraising_goal) }}
+
+  {{ var socialShareURL = '' }}
+
+  {{ if (player.fundraising_goal > 0) { }}
+    {{ socialShareURL = 'goal/' + Math.round(player.fundraising_goal) }}
+  {{ } }}
+
   {{ if (player.fundraising_raised > 0) { }}
     {{ socialShareURL = 'progress/' + Math.round(player.fundraising_raised) }}
   {{ } }}
