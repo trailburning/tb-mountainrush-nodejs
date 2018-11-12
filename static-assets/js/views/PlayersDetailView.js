@@ -15,7 +15,9 @@ define([
 
       // format msg
       this.options.playerCollection.each(function(model){
-        model.set('fundraising_msg_formatted', '<p>' + model.get('fundraising_msg').replace(/(?:\r\n|\r|\n)/g, '<p></p>') + '</p>');
+        if (model.get('fundraising_msg')) {
+          model.set('fundraising_msg_formatted', '<p>' + model.get('fundraising_msg').replace(/(?:\r\n|\r|\n)/g, '<p></p>') + '</p>');
+        }
       });
 
       $(this.el).html(this.template({game: this.options.jsonGame, players: this.options.playerCollection.toJSON(), fundraising: this.options.jsonFundraising}));
