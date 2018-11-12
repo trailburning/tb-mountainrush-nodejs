@@ -544,6 +544,24 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
   background-color: #44b6f7;
 }
 
+#player-view .detail .player .fundraising-story {
+  display: none;
+  padding: 20px 32px 32px 32px;
+}
+
+body.fundraising #player-view .detail .player .fundraising-story {
+  display: block;
+}
+
+#player-view .detail .player .donate-info {
+  position: relative;
+}
+
+#player-view .detail .player .donate-info .donate-btn {
+  display: inline-block;
+  padding-top: 14px;
+}
+
 #player-view .detail .player .latest-activity {
   padding-top: 12px;
   padding-bottom: 10px;
@@ -1029,12 +1047,21 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     font-size: 1.6em;
   }
 
+  body.fundraising #player-view .detail .player .fundraising-story {
+    padding: 20px 0 100px 0;
+    margin-left: 132px;
+    text-align: left;
+  }
+
   body.fundraising #player-view .detail .player .latest-activity {
     border-bottom: 1px solid #d7d7d7;
   }
 
   body.fundraising #player-view .detail .player .fundraising-donation-summary-view {
-    display: block;
+    display: inline-block;
+    position: absolute;
+    top: 14px;
+    right: 0;
   }
 
   body.fundraising #player-view .detail .player .fundraising-donation-view.above-photos {
@@ -1067,10 +1094,6 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     display: block;
     padding-left: 7px;
     text-align: left;
-  }
-
-  body.fundraising #player-view .detail .player .photo {
-    display: none;
   }
 
   body.fundraising #player-view .detail .player .fundraise-sticker-continer {
