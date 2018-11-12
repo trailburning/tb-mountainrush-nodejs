@@ -634,6 +634,15 @@ body.fundraising #player-view .detail .player .latest-activity {
   color: #FC4C02;
 }
 
+#player-view .detail .shopping-list,
+#player-view .detail .fundraising-donations-view {
+  background: #efefef;
+}
+
+#player-view .detail .shopping-list {
+  padding-top: 34px;
+}
+
 #player-view .detail .photo-posts-view {
   padding: 0 0 26px 0;
 }
@@ -1041,6 +1050,12 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
 
   #player-view .detail .player .overview h1 {
     font-size: 2em;
+  }
+
+  #player-view .detail .shopping-list,
+  #player-view .detail .photo-posts-view,
+  #player-view .detail .fundraising-donations-view {
+    background: #FFF;
   }
 
   body.fundraising #player-view .detail .player .overview h1 {
