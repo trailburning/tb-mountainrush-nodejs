@@ -95,8 +95,7 @@
 
           {{ if (player.fundraising_goal && player.fundraising_goal > 0) { }}
             <div class="fundraising-story clearfix">
-              <div class="story">{{= player.fundraising_msg }}</div>
-
+              <div class="story">{{= player.fundraising_msg_formatted }}</div>
               <div class="donate-info">
                 <div class="donate-btn">
                 <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
