@@ -557,8 +557,8 @@ body.fundraising #player-view .detail .player .fundraising-story {
   position: relative;
 }
 
-#player-view .detail .player .donate-info .donate-btn {
-  display: inline-block;
+#player-view .detail .player .donate-info .donate-btn,
+#player-view .detail .player .donate-info .fundraising-provider-btn {
   padding-top: 14px;
 }
 
