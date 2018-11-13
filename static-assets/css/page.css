@@ -42,14 +42,14 @@ h2 {
   min-height: 500px;
 }
 
-#page-content-view a,
-#page-content-view a:active,
-#page-content-view a:visited {
+#page-content-view a.link,
+#page-content-view a.link:active,
+#page-content-view a.link:visited {
   color: inherit;
   text-decoration: underline;
 }
 
-#page-content-view a:hover {
+#page-content-view a.link:hover {
   color: inherit;
   text-decoration: none;
 }

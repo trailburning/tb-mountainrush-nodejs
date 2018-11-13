@@ -60,9 +60,6 @@
 
       <div class="player" data-id="{{= player.id }}">
         <div class="player-stats">
-<!--        
-          <div class="fundraising-donation-summary-view"></div>
--->
           <div class="photo">
             <a href="https://www.strava.com/athletes/{{= player.playerProviderID }}" target="_blank"><div class="avatar"><img src="{{= player.avatar }}"></div></a>
             <div class="photo-icon {{ if (player.mediaCaptured) { }}show{{ } }}"><i class="fa fa-camera"></i></div>
@@ -97,13 +94,18 @@
             <div class="fundraising-story clearfix">
               <div class="story">{{= player.fundraising_msg_formatted }}</div>
               <div class="donate-info">
-                <div class="donate-btn">
                 <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
+                  <div class="fundraising-provider-btn">
+                  <a href="<%= Campaign.CampaignFundraisingPage %>{{= player.fundraising_page }}" target="_blank"class="btn mr-btn btn-large">JustGiving Page</a>
+                  </div>
+                  <div class="donate-btn">
                   <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary btn-large"><div>Donate</div></a>
+                  </div>
                 <% } else { %>
+                  <div class="donate-btn">
                   <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/donate?amount=1000" class="btn mr-btn btn-primary btn-large"><div>Donate</div></a>
+                  </div>
                 <% } %>
-                </div>
                 <div class="fundraising-donation-summary-view"></div>
               </div>
             </div>
