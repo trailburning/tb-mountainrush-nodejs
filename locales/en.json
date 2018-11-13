@@ -4,7 +4,8 @@
 		"example": "Example Game",
 		"signup": "Sign up",
 		"signout": "Sign out",
-		"privacy": "Privacy",
+		"faq": "FAQ",
+    "privacy": "Privacy",
 		"greeting": "Hi"
 	},
 	"intro": {
