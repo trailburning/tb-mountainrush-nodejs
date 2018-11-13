@@ -9,8 +9,10 @@ i18n.configure({
   directory: __dirname + '/locales',
   cookie: 'mountainrush_lang',
   objectNotation: true,
-  autoReload: true, // while translating
-  updateFiles: true // while translating
+//  autoReload: true, // while translating
+//  updateFiles: true // while translating
+  autoReload: false,
+  updateFiles: false
 });
 
 // use .env for dev use
