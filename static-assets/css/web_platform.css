@@ -249,7 +249,7 @@ video::-webkit-media-controls-start-playback-button {
 }
 
 .btn-toggle {
-  margin: 0 4rem;
+  margin: 0;
   padding: 0;
   position: relative;
   border: none;
@@ -424,7 +424,7 @@ video::-webkit-media-controls-start-playback-button {
   display: none;
 }
 .btn-toggle.btn-sm {
-  margin: 0 2rem 1rem 2rem;
+  margin: 0;
   padding: 0;
   position: relative;
   border: none;
@@ -1195,10 +1195,6 @@ img.scale {
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  .btn-toggle.btn-sm {
-    margin: 0 2rem;
-  }
-
   #header-view {
     z-index: 4;
     height: 72px;

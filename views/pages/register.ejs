@@ -274,11 +274,19 @@ var TEST = '<%= Defs.Test %>';
 <script type="text/template" id="registerWelcomePreferencesViewTemplate">
   <h1><%= __('register.preferences.title') %></h1>
   <form>
-  <div class="form-check">
+
+  <div class="form-group">
+    <div class="form-label"><label>Your Email Address</label></div><input class="field form-control required" id="email-address" value="{{= player.email }}" readonly>
+    <div class="help-block">Please fill in your email address</div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label"><label><%= __('register.preferences.game_notifications') %></label></div>
+    <div class="field">
     <button type="button" id="preferences-game-email" class="btn btn-sm btn-toggle {{ if (player.game_notifications == '1') { }}active{{ }; }}" data-toggle="button" aria-pressed="false" autocomplete="off">
       <div class="handle"></div>
     </button>
-    <label><%= __('register.preferences.game_notifications') %></label>
+    </div>
   </div>
 
   <div class="btns">

@@ -183,6 +183,10 @@ ul.pills li {
   vertical-align: top;  
 }
 
+.register-view .field {
+  margin: 4px 0;
+}
+
 .register-view label {
   margin: 0;
   text-transform: uppercase;
@@ -193,9 +197,8 @@ ul.pills li {
 }
 
 .register-view .form-label label {
-  padding: 0 22px 0 0;
+  padding: 0;
   font-family: 'radikalbold', sans-serif;
-  font-size: 0.8em;
 }
 
 .register-view input[type='checkbox'],
@@ -360,7 +363,6 @@ a:hover, .link:hover {
   .register-view .form-label {
     display: inline-block;
     width: 180px;
-    font-size: 1.2em;
     text-align: right;
   }
 
@@ -370,13 +372,19 @@ a:hover, .link:hover {
     text-align: left;
   }
 
-  .register-view label {
+  .register-view .form-label label {
+    padding: 0 22px 0 0;
     text-align: right;
   }
 
   .register-view .field {
     display: inline-block;
     width: 240px;
+    text-align: left;
+  }
+
+  .register-view input {
+    vertical-align: top;
   }
 
   .register-view input[type='checkbox'] {
