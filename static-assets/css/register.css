@@ -364,6 +364,7 @@ a:hover, .link:hover {
     display: inline-block;
     width: 180px;
     text-align: right;
+    vertical-align: middle;
   }
 
   .register-view .form-check-label {
@@ -381,10 +382,7 @@ a:hover, .link:hover {
     display: inline-block;
     width: 240px;
     text-align: left;
-  }
-
-  .register-view input {
-    vertical-align: top;
+    vertical-align: middle;
   }
 
   .register-view input[type='checkbox'] {
