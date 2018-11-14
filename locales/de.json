@@ -100,6 +100,11 @@
 			"privacy": "Datenschutz",
 			"privacy_agree": "Auf 'Connect with Strava' klicken bedeutet zustimmen zu unserem %s."
 		},
+    "welcome_verify": {
+      "title": "Danke für's Anmelden",
+      "greeting": "Hi %s, we need a valid email address to keep you updated on your challenge progress.",
+      "update": "Complete signup"
+    },
 		"welcome_connected": {
 			"title": "Danke für's Anmelden",
 			"game_current": {

@@ -59,6 +59,7 @@ var TEST = '<%= Defs.Test %>';
       <div class="register-views">
         <div class="register-view" id="register-invitation-view"></div>
         <div class="register-view" id="register-welcome-view"></div>
+        <div class="register-view" id="register-welcome-verify-view"></div>
         <div class="register-view" id="register-welcome-connected-view"></div>
         <div class="register-view" id="register-welcome-preferences-view"></div>
         <div class="register-view" id="register-game-create-view"></div>
@@ -153,6 +154,31 @@ var TEST = '<%= Defs.Test %>';
   <p><%- __('register.welcome.privacy_agree', '<a href="' + Defs.BaseHTTPURL + '/campaign/' + Campaign.CampaignID + '/privacy" class="link">' + __('register.welcome.privacy') + '</a>') %></p>
   <p>
   <div class="connect"><a href="<%= Defs.StravaOauthConnectURL %>"><img src="/static-assets/images/btn_strava_connectwith_orange.png"></a></div>
+</script>
+
+<script type="text/template" id="registerWelcomeVerifyViewTemplate">
+  {{ var firstname = player.firstname }}
+
+  {{ if (!firstname) { }}
+    {{ firstname = 'unknown' }}
+  {{ } }}
+
+  <h1><%= __('register.welcome_connected.title') %></h1>
+
+  <div class="intro-text centre-text">
+  {{= '<%= __('register.welcome_verify.greeting') %>'.replace('%s', player.firstname) }}
+  </div>
+
+  <form>
+  <div class="form-group">
+    <div class="form-label"><label>Your Email Address</label></div><input class="field form-control required" id="email-address" value="{{= player.email }}">
+    <div class="help-block">Please fill in your email address</div>
+  </div>
+
+  <div class="btns">
+  <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('register.welcome_verify.update') %></button>
+  </div>
+  </form>
 </script>
 
 <script type="text/template" id="registerWelcomeConnectedViewTemplate">
@@ -273,8 +299,8 @@ var TEST = '<%= Defs.Test %>';
 
 <script type="text/template" id="registerWelcomePreferencesViewTemplate">
   <h1><%= __('register.preferences.title') %></h1>
-  <form>
 
+  <form>
   <div class="form-group">
     <div class="form-label"><label>Your Email Address</label></div><input class="field form-control required" id="email-address" value="{{= player.email }}" readonly>
     <div class="help-block">Please fill in your email address</div>

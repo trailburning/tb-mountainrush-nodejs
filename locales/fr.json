@@ -97,6 +97,11 @@
       "privacy": "privacy policy",
       "privacy_agree": "Clicking 'Connect with Strava' means that you agree to our %s."
     },
+    "welcome_verify": {
+      "title": "Thanks for signing up",
+      "greeting": "Hi %s, we need a valid email address to keep you updated on your challenge progress.",
+      "update": "Complete signup"
+    },
     "welcome_connected": {
       "title": "Thanks for signing up",
       "game_current": {
