@@ -4,15 +4,14 @@ define([
   'bootstrap'
 ], function(_, Backbone, bootstrap){
 
-  var RegisterWelcomePreferencesView = Backbone.View.extend({
+  var RegisterWelcomeVerifyView = Backbone.View.extend({
     initialize: function(options){
-      this.template = _.template($('#registerWelcomePreferencesViewTemplate').text());
+      this.template = _.template($('#registerWelcomeVerifyViewTemplate').text());
 
       this.options = options;
       this.jsonPlayer = null;
       this.jsonFields = {clientID: 0,
-                         playerID: 0,
-                         games: {}}
+                         playerID: 0}
     },
 
     getFields: function() {
@@ -23,7 +22,6 @@ define([
       this.jsonFields.clientID = clientID;
       this.jsonPlayer = jsonPlayer;
       this.jsonFields.playerID = jsonPlayer.id;
-      this.jsonFields.games = jsonPlayer.games;
     },
 
     updatePreferences: function(bGameEmail, strEmail) {
@@ -50,35 +48,31 @@ define([
         },
         success: function(data) {
           $('.update-btn', $(self.el)).button('reset');
-          self.jsonPlayer.game_notifications = jsonData.receiveEmail;
 
 //          console.log('success');
 //          console.log(data);
           // fire event
-          app.dispatcher.trigger("RegisterWelcomePreferencesView:prefsUpdated");
+          app.dispatcher.trigger("RegisterWelcomeVerifyView:userUpdated");
         }
       });
     },
 
-    render: function(){
+    render: function(options){
       var self = this;
 
-      $(this.el).html(this.template({ player: this.jsonPlayer }));
-
-      $('.link-back', $(this.el)).click(function(evt){
-        // fire event
-        app.dispatcher.trigger("RegisterWelcomePreferencesView:backClick");
-      });
+      $(this.el).html(this.template({ campaign: options.jsonCampaign, player: this.jsonPlayer }));
 
       var elForm = $('form', $(this.el));
       elForm.submit(function(evt){
         evt.preventDefault();
 
-        $('.update-btn', $(self.el)).button('loading');
+        var bValid = validateForm($(this));
+        if (bValid) {
+          $('.update-btn', $(self.el)).button('loading');
 
-        var bGameEmail = $('#preferences-game-email').hasClass('active') ? 1 : 0;
-        var strEmail = $('#email-address', elForm).val();
-        self.updatePreferences(bGameEmail, strEmail);
+          var strEmail = $('#email-address', elForm).val();
+          self.updatePreferences(self.jsonPlayer.game_notifications, strEmail);
+        }
       });
 
       return this;
@@ -86,5 +80,5 @@ define([
 
   });
 
-  return RegisterWelcomePreferencesView;
+  return RegisterWelcomeVerifyView;
 });
