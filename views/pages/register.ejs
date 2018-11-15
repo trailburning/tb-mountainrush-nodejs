@@ -178,6 +178,13 @@ var TEST = '<%= Defs.Test %>';
   <div class="btns">
   <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('register.welcome_verify.update') %></button>
   </div>
+
+  <div class="err">
+    <div class="msg" data-msg="already-exists">
+    <p>The email address is already registered</p>
+    </div>
+  </div>
+  
   </form>
 </script>
 
@@ -302,7 +309,7 @@ var TEST = '<%= Defs.Test %>';
 
   <form>
   <div class="form-group">
-    <div class="form-label"><label>Your Email Address</label></div><input class="field form-control required" id="email-address" value="{{= player.email }}" readonly>
+    <div class="form-label"><label>Your Email Address</label></div><input class="field form-control required" id="email-address" value="{{= player.email }}">
     <div class="help-block">Please fill in your email address</div>
   </div>
 
@@ -318,6 +325,13 @@ var TEST = '<%= Defs.Test %>';
   <div class="btns">
   <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('register.preferences.update') %></button>
   </div>
+
+  <div class="err">
+    <div class="msg" data-msg="already-exists">
+    <p>The email address is already registered</p>
+    </div>
+  </div>
+
   </form>
 
   <% if (Defs.PageRegisterState != 'prefs') { %>

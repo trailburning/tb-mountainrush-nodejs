@@ -49,13 +49,27 @@ define([
           console.log(data);  
         },
         success: function(data) {
-          $('.update-btn', $(self.el)).button('reset');
-          self.jsonPlayer.game_notifications = jsonData.receiveEmail;
-
 //          console.log('success');
 //          console.log(data);
-          // fire event
-          app.dispatcher.trigger("RegisterWelcomePreferencesView:prefsUpdated");
+          $('.update-btn', $(self.el)).button('reset');
+
+          if (data) {
+            if (data.error) {
+              switch (data.error.id) {
+                case 'UserEmailAlreadyExists':
+                  $('.msg[data-msg=already-exists]', $(self.el)).show();
+                  $('.err', $(self.el)).show();
+                  break;
+              }
+            }
+          }
+          else {
+            self.jsonPlayer.game_notifications = jsonData.receiveEmail;
+            self.jsonPlayer.email = jsonData.email;
+
+            // fire event
+            app.dispatcher.trigger("RegisterWelcomePreferencesView:prefsUpdated");
+          }
         }
       });
     },
@@ -74,11 +88,14 @@ define([
       elForm.submit(function(evt){
         evt.preventDefault();
 
-        $('.update-btn', $(self.el)).button('loading');
+        var bValid = validateForm($(this));
+        if (bValid) {
+          $('.update-btn', $(self.el)).button('loading');
 
-        var bGameEmail = $('#preferences-game-email').hasClass('active') ? 1 : 0;
-        var strEmail = $('#email-address', elForm).val();
-        self.updatePreferences(bGameEmail, strEmail);
+          var bGameEmail = $('#preferences-game-email').hasClass('active') ? 1 : 0;
+          var strEmail = $('#email-address', elForm).val();
+          self.updatePreferences(bGameEmail, strEmail);
+        }
       });
 
       return this;
