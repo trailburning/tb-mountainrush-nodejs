@@ -47,12 +47,25 @@ define([
           console.log(data);  
         },
         success: function(data) {
-          $('.update-btn', $(self.el)).button('reset');
-
 //          console.log('success');
 //          console.log(data);
-          // fire event
-          app.dispatcher.trigger("RegisterWelcomeVerifyView:userUpdated");
+
+          $('.update-btn', $(self.el)).button('reset');
+
+          if (data) {
+            if (data.error) {
+              switch (data.error.id) {
+                case 'UserEmailAlreadyExists':
+                  $('.msg[data-msg=already-exists]', $(self.el)).show();
+                  $('.err', $(self.el)).show();
+                  break;
+              }
+            }
+          }
+          else {
+            // fire event
+            app.dispatcher.trigger("RegisterWelcomeVerifyView:userUpdated");
+          }
         }
       });
     },
