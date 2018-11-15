@@ -227,6 +227,7 @@
 	},
 	"defs": {
 		"donate": "Donate",
+    "prefs": "Preferences",
 		"social": {
 			"share_facebook": "Share on Facebook",
 			"share_twitter": "Share on Twitter"

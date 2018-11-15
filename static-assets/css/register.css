@@ -23,7 +23,8 @@ ul.pills {
 ul.pills li {
   display: inline-block;
   line-height: 35px;
-  margin-right: 16px;
+  margin-left: 8px;
+  margin-right: 8px;
   margin-bottom: 18px;
 }
 
