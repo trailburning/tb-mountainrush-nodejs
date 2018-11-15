@@ -17,7 +17,6 @@ i18n.configure({
 
 // use .env for dev use
 if (process.env.NODE_ENV != "staging" && process.env.NODE_ENV != "production") {
-  console.log('dotenv');
   require('dotenv').config();
 }
 
