@@ -49,8 +49,9 @@ define([
   'views/RegisterFundraisingSignupView',
   'views/RegisterFundraisingPageCreateView',
   'views/RegisterFundraisingPageCreatedView',
+  'views/ChallengeCancelModalView',
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, cookie, truncate, modernizr, dateFormat, datepicker, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, RegisterInvitationView, RegisterWelcomeView, RegisterWelcomeVerifyView, RegisterWelcomeConnectedView, RegisterWelcomePreferencesView, RegisterGameCreateView, RegisterGameCreatedView, RegisterGameInviteView, RegisterGamesView, RegisterFundraisingCreateView, RegisterFundraisingCreatedView, RegisterFundraisingSigninView, RegisterFundraisingSignupView, RegisterFundraisingPageCreateView, RegisterFundraisingPageCreatedView, DemoVideoView){
+], function(_, Backbone, bootstrap, cookie, truncate, modernizr, dateFormat, datepicker, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, RegisterInvitationView, RegisterWelcomeView, RegisterWelcomeVerifyView, RegisterWelcomeConnectedView, RegisterWelcomePreferencesView, RegisterGameCreateView, RegisterGameCreatedView, RegisterGameInviteView, RegisterGamesView, RegisterFundraisingCreateView, RegisterFundraisingCreatedView, RegisterFundraisingSigninView, RegisterFundraisingSignupView, RegisterFundraisingPageCreateView, RegisterFundraisingPageCreatedView, ChallengeCancelModalView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -67,6 +68,7 @@ define([
     app.dispatcher.on("RegisterWelcomeConnectedView:createGameClick", onCreateGameClick);
     app.dispatcher.on("RegisterWelcomeConnectedView:fundraiseClick", onRegisterFundraiseClick);
     app.dispatcher.on("RegisterWelcomeConnectedView:inviteClick", onInviteClick);
+    app.dispatcher.on("RegisterWelcomeConnectedView:cancelGameClick", onCancelGameClick);
     app.dispatcher.on("RegisterWelcomeConnectedView:prefsClick", onPrefsClick);
     app.dispatcher.on("RegisterWelcomePreferencesView:prefsUpdated", onRegisterPreferencesPrefsUpdated);
     app.dispatcher.on("RegisterWelcomePreferencesView:backClick", onRegisterBackClick);
@@ -89,6 +91,8 @@ define([
     var languageSelectorView = new LanguageSelectorView({ el: '#language-selector-view' });
     languageSelectorView.render();
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
+
+    var challengeCancelModalView = new ChallengeCancelModalView({ el: '#challenge-cancel-modal-view' });
 
     var registerInvitationView = new RegisterInvitationView({ el: '#register-invitation-view', code: CAMPAIGN_INVITATION_CODE });
     var registerWelcomeView = new RegisterWelcomeView({ el: '#register-welcome-view' });
@@ -123,7 +127,7 @@ define([
 //        PLAYER_TOKEN = 'b8a1bc6ca786c95f1e639c42615320782d8a9d22'; // MR - Trailburning
 //          PLAYER_TOKEN = '3c107313f14fd3fee78e75ee2cfa5e5429155595'; // CFYW - Amelia
 //        } 
-//        changeState(STATE_PLAYER_SIGNUP_VERIFY);
+//        changeState(STATE_GAME_CREATED);
 //        return;
 
         if (PLAYER_TOKEN != '') { // do we have a passed player?
@@ -331,6 +335,8 @@ define([
           getPlayer(jsonCampaign.clientID, token, function(jsonPlayer) {
             jsonCurrPlayer = jsonPlayer;
 
+            challengeCancelModalView.setPlayer(jsonCurrPlayer);
+
             // do we have an email address?
             if (jsonCurrPlayer.email != '') {
               registerWelcomeConnectedView.setPlayer(jsonCampaign.clientID, jsonCurrPlayer);
@@ -532,6 +538,11 @@ define([
 
     function onInvitationSuccess() {
       changeState(STATE_PLAYER_SIGNUP);
+    }
+
+    function onCancelGameClick() {
+      challengeCancelModalView.render();
+      challengeCancelModalView.show();
     }
 
     function onVerifySuccess() {

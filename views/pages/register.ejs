@@ -115,8 +115,30 @@ var TEST = '<%= Defs.Test %>';
   <% } %>
 </div>
 
+<div id="challenge-cancel-modal-view"></div>
+
 <div id="mobileTest" class="visible-xs"></div>
 <div id="demo-video-view"></div>
+
+<script type="text/template" id="challengeCancelModalViewTemplate">
+  <div class="modal msg-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="details">
+            <div class="title"><%= __('overlay.challenge_cancel.title') %></div>
+            <div class="description">{{= '<%- __('overlay.challenge_cancel.description') %>'.replace('%s', '<strong>' + currGame.name + '</strong>').replace('%s', '<span class="lowercase">' + currGame.type + '</span>') }}</div>
+          </div>
+          <div class="action-fields">
+            <div class="action-field"><span class="btn mr-btn btn-primary cancel-challenge-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('overlay.challenge_cancel.yes') %></span>
+            </div>
+            <div class="action-field"><span class="btn mr-btn" data-dismiss="modal"><%= __('overlay.challenge_cancel.no') %></span></div>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</script>
 
 <script type="text/template" id="registerInvitationViewTemplate">
   <h1>Welcome to {{= campaign.name }}</h1>
@@ -210,7 +232,7 @@ var TEST = '<%= Defs.Test %>';
   {{ if (currGame) { }}
     <div class="challenge">
       <div class="intro-text centre-text">
-      {{= '<%- __('register.welcome_connected.game_current.description') %>'.replace('%s', '<span class="lowercase">' + currGame.type + '</span>') }}
+      {{= '<%- __('register.welcome_connected.game_current.description') %>'.replace('%s', currGame.name).replace('%s', '<span class="lowercase">' + currGame.type + '</span>') }}
       </div>  
       <div class="btns">
       {{ if (currGame.game_state == 'active') { }}
@@ -224,7 +246,11 @@ var TEST = '<%= Defs.Test %>';
     </div>
 
     {{ if (currGame.multiplayer && (currGame.ownerPlayerID == player.id)) { }}
-      <%- __('register.welcome_connected.msg_invite', '<span class="link link-invite">' + __('register.welcome_connected.invite') + '</span>') %>
+      <p><%- __('register.welcome_connected.msg_invite', '<span class="link link-invite">' + __('register.welcome_connected.invite') + '</span>') %></p>
+    {{ }; }}
+
+    {{ if (currGame.ownerPlayerID == player.id) { }}
+      <p><%- __('register.welcome_connected.game_cancel.msg', '<span class="link link-cancel">' + __('register.welcome_connected.game_cancel.cancel') + '</span>') %></p>
     {{ }; }}
     
     <% if (Campaign.CampaignFundraisingProvider) { %>

@@ -278,7 +278,7 @@ body {
   padding: 10px 14px 8px 14px;
 }
 
-.mr-btn.double div:last-child {
+.mr-btn.btn-primary.double div:last-child {
   background-color: #f16d49;
 }
 

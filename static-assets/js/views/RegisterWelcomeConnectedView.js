@@ -125,6 +125,11 @@ define([
         app.dispatcher.trigger("RegisterWelcomeConnectedView:inviteClick");
       });
 
+      $('.link-cancel', $(this.el)).click(function(evt){
+        // fire event
+        app.dispatcher.trigger("RegisterWelcomeConnectedView:cancelGameClick");
+      });
+
       $('.btn-prefs', $(this.el)).click(function(evt){
         // fire event
         app.dispatcher.trigger("RegisterWelcomeConnectedView:prefsClick");

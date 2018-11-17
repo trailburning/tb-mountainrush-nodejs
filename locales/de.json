@@ -82,7 +82,13 @@
 		"challenge_complete": {
 			"title": "Geschafft",
 			"description": "Teile es noch, um andere Leute inspirieren, wie sie auch %s virtuell besteigen könnten!"
-		}
+		},
+    "challenge_cancel": {
+      "yes": "Yes please",
+      "no": "No thanks",
+      "title": "Cancel Challenge",
+      "description": "Are you sure you want to cancel your %s %s challenge?"
+    }    
 	},
 	"register": {
 		"help": {
@@ -108,7 +114,7 @@
 		"welcome_connected": {
 			"title": "Danke für's Anmelden",
 			"game_current": {
-				"description": "Du hast ein %s Spiel."
+				"description": "Du hast ein %s %s Spiel."
 			},
 			"game_active": "Aktuelles Spiel anschauen",
 			"game_upcoming": "Nächstes Spiel anschauen",
@@ -123,6 +129,10 @@
 			"game_accepted": "You now have a %s %s challenge!",
 			"game_rejected": "Challenge rejected! You can now create your own challenge.",
 			"game_create": "Create Challenge",
+      "game_cancel": {
+        "cancel": "cancel",
+        "msg": "Don't like your challenge?  You can %s it." 
+      },
 			"previous_challenges": "Previous",
 			"greeting": "Hi %s,",
 			"preferences": {
