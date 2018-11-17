@@ -205,6 +205,9 @@ video::-webkit-media-controls-start-playback-button {
 
 .mr-btn.double {
   padding: 0;
+}
+
+.mr-btn.btn-primary.double {
   border: none;
   border-color: transparent;
 }
@@ -215,7 +218,7 @@ video::-webkit-media-controls-start-playback-button {
   padding: 6px 16px;
 }
 
-.mr-btn.double div:last-child {
+.mr-btn.btn-primary.double div:last-child {
   background-color: #ff8665;
 }
 
