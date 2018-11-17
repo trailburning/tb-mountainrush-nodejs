@@ -84,7 +84,7 @@
       "yes": "Yes please",
       "no": "No thanks",
       "title": "Cancel Challenge",
-      "description": "Are you sure you want to cancel your challenge?"
+      "description": "Are you sure you want to cancel your %s %s challenge?"
     }    
   },
   "register": {
@@ -111,7 +111,7 @@
     "welcome_connected": {
       "title": "Thanks for signing up",
       "game_current": {
-        "description": "You have a %s challenge."
+        "description": "You have a %s %s challenge."
       },
       "game_active": "View Active Challenge",
       "game_upcoming": "View Pending Challenge",

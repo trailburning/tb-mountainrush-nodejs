@@ -9,17 +9,51 @@ define([
       this.template = _.template($('#challengeCancelModalViewTemplate').text());
 
       this.options = options;
+      this.jsonPlayer = null;
+      this.jsonFields = {currGame: 0}
     },
 
-    render: function(jsonCurrGame){      
+    setPlayer: function(jsonPlayer) {
+      this.jsonPlayer = jsonPlayer;
+
+      // see if there's an active game
+      this.jsonFields.currGame = _.where(jsonPlayer.games, {game_state:'active'})[0];
+      if (!this.jsonFields.currGame) {
+        this.jsonFields.currGame = _.where(jsonPlayer.games, {game_state:'pending'})[0];
+      }
+    },
+
+    cancelChallenge: function(gameID) {
       var self = this;
 
-      $(this.el).html(this.template());
+      $('.cancel-challenge-btn', $(self.el)).button('loading');
 
-      $('.btn-cancel-challenge', $(this.el)).click(function(evt){
-        $('.modal', $(self.el)).modal('hide');
+      var url = GAME_API_URL + 'game/' + this.jsonFields.currGame.game;
+//      console.log(url);
+      $.ajax({
+        type: 'delete',
+        url: url,
+        error: function(data) {
+          console.log('error');
+          console.log(data);
+        },
+        success: function(data) {
+//          console.log('success');
+//          console.log(data);
 
-        location.reload();
+          $('.modal', $(self.el)).modal('hide');
+          location.reload();
+        }
+      });
+    },
+
+    render: function(gameID){      
+      var self = this;
+
+      $(this.el).html(this.template({ currGame: self.jsonFields.currGame }));
+
+      $('.cancel-challenge-btn', $(this.el)).click(function(evt){
+        self.cancelChallenge(gameID);
       });
 
       return this;

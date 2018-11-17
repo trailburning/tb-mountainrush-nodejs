@@ -127,7 +127,7 @@ define([
 //        PLAYER_TOKEN = 'b8a1bc6ca786c95f1e639c42615320782d8a9d22'; // MR - Trailburning
 //          PLAYER_TOKEN = '3c107313f14fd3fee78e75ee2cfa5e5429155595'; // CFYW - Amelia
 //        } 
-//        changeState(STATE_PLAYER_SIGNUP_VERIFY);
+//        changeState(STATE_GAME_CREATED);
 //        return;
 
         if (PLAYER_TOKEN != '') { // do we have a passed player?
@@ -334,6 +334,8 @@ define([
 
           getPlayer(jsonCampaign.clientID, token, function(jsonPlayer) {
             jsonCurrPlayer = jsonPlayer;
+
+            challengeCancelModalView.setPlayer(jsonCurrPlayer);
 
             // do we have an email address?
             if (jsonCurrPlayer.email != '') {

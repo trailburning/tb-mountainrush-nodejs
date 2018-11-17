@@ -127,15 +127,13 @@ var TEST = '<%= Defs.Test %>';
         <div class="modal-body">
           <div class="details">
             <div class="title"><%= __('overlay.challenge_cancel.title') %></div>
-            <div class="description"><%= __('overlay.challenge_cancel.description') %></div>
+            <div class="description">{{= '<%- __('overlay.challenge_cancel.description') %>'.replace('%s', '<strong>' + currGame.name + '</strong>').replace('%s', '<span class="lowercase">' + currGame.type + '</span>') }}</div>
           </div>
-
           <div class="action-fields">
-            <div class="action-field"><span class="btn mr-btn btn-primary btn-cancel-challenge"><%= __('overlay.challenge_cancel.yes') %></span></div>
+            <div class="action-field"><span class="btn mr-btn btn-primary cancel-challenge-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('overlay.challenge_cancel.yes') %></span>
+            </div>
             <div class="action-field"><span class="btn mr-btn" data-dismiss="modal"><%= __('overlay.challenge_cancel.no') %></span></div>
           </div>
-
-
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -234,7 +232,7 @@ var TEST = '<%= Defs.Test %>';
   {{ if (currGame) { }}
     <div class="challenge">
       <div class="intro-text centre-text">
-      {{= '<%- __('register.welcome_connected.game_current.description') %>'.replace('%s', '<span class="lowercase">' + currGame.type + '</span>') }}
+      {{= '<%- __('register.welcome_connected.game_current.description') %>'.replace('%s', currGame.name).replace('%s', '<span class="lowercase">' + currGame.type + '</span>') }}
       </div>  
       <div class="btns">
       {{ if (currGame.game_state == 'active') { }}
