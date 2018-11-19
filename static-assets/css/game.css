@@ -73,6 +73,44 @@
   position: relative;
 }
 
+/* SPONSOR VIEW */
+/******************************************/
+#sponsor-view {
+  display: none;
+}
+
+body.sponsored #sponsor-view {
+  display: block;
+  padding: 32px 15px 26px 15px;
+  background: rgb(23,53,69);
+  background: linear-gradient(0deg, rgba(23,53,69,1) 0%, rgba(42,72,90,1) 50%, rgba(59,90,109,1) 100%);
+}
+
+body.sponsored #sponsor-view .logo img {
+  width: 80px;
+}
+
+body.sponsored #sponsor-view .title {
+  color: #fff;
+}
+
+body.sponsored #sponsor-view .title h1 {
+  padding-top: 24px;
+  padding-bottom: 16px;
+  font-family: 'radikalbold', sans-serif;
+  font-size: 2.5em;
+  line-height: 1.2em;
+}
+
+body.sponsored #sponsor-view .title h2 {
+  font-family: 'radikalregular';
+  font-size: 1.2em;
+}
+
+body.sponsored #sponsor-view .title strong {
+  font-family: 'radikalbold', sans-serif;
+}
+
 /* MAP VIEW */
 /******************************************/
 #map-view {
@@ -137,34 +175,40 @@
   text-align: center;
 }
 
-#map-view .countdown-container {
+.countdown-container {
   display: none;
 }
 
 #map-view .countdown {
   display: inline-block;
   width: 260px;
+}
+
+.countdown {
   line-height: 1em;
   color: #fff;
   text-transform: uppercase;
   text-align: left;
 }
 
-#map-view .countdown .days {
+.countdown .days {
   padding-left: 8px;
   font-size: 2.4em;
 }
 
-#map-view .countdown .days .time {
+.countdown .days .time {
   font-family: 'radikalbold', sans-serif;
 }
 
-#map-view .countdown .hours {
+.countdown .hours {
+  display: inline-block;
+  text-align: right;
+  width: 90px;
   padding-left: 12px;
   font-size: 1.4em;
 }
 
-#map-view .countdown .hours .time {
+.countdown .hours .time {
   font-family: 'radikallight', sans-serif;
 }
 
@@ -624,7 +668,7 @@ body.fundraising #player-view .detail .player .latest-activity {
 #player-view .detail .player .latest-activity .ago {
   display: block;
 }
-/* mla */
+
 #player-view .detail .player .latest-activity .external-view {
   display: block;
   padding-top: 6px;
@@ -994,6 +1038,38 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     top: 72px;
   }
 
+  body.sponsored #sponsor-view .logo {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  body.sponsored #sponsor-view .title {
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 38px;
+  }
+
+  body.sponsored #sponsor-view .detail {
+    display: inline-block;
+    padding-top: 4px;
+    vertical-align: top;
+    float: right;
+  }
+
+  body.sponsored #sponsor-view .sponsor-detail-view h1 {
+    padding-top: 0;
+  }
+
+  body.sponsored #sponsor-view .sponsor-detail-view h1 {
+    font-size: 3em;
+    line-height: 1.05em;
+  }
+
+  body.sponsored #sponsor-view .detail .donate-btn {
+    padding-top: 18px;
+    text-align: right;
+  }
+
   #game-view {
     overflow: initial;
   }
@@ -1002,6 +1078,17 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     -webkit-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
     -moz-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
     box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
+  }
+
+  body.sponsored #map-view {
+    border-top: #fff solid 4px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+  body.sponsored #map-view .game-details-container {
+    display: none;
   }
 
   #map-view .map {
@@ -1264,6 +1351,17 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
 
 /* Small devices (tablets, 992px and up) */
 @media (min-width: 992px) {
+  body.sponsored #sponsor-view {
+    height: 388px;
+    padding: 56px 0 0 0;
+  }
+
+  body.sponsored #sponsor-view .sponsor-detail-view {
+    margin-left: auto;
+    margin-right: auto;
+    width: 942px;
+  }
+
   .modal.story-overlay .big-close-btn {
     right: 33px;
   }
@@ -1340,6 +1438,11 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     width: 942px;
   }
 
+  body.sponsored #map-view {
+    margin-top: -164px;
+    border: #fff solid 4px;
+  }
+
   #map-view .embelish {
     display: block;
   }
@@ -1367,7 +1470,7 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   }
 
   #player-view .list ul {
-    padding-left: 26px;
+    padding-left: 25px;
   }
 
   #player-view .detail {
