@@ -73,14 +73,19 @@
   position: relative;
 }
 
-/* SPONSOR VIEW */
+/* SPONSOR CONTAINER VIEW */
 /******************************************/
-#sponsor-view {
+#sponsor-container-view {
   display: none;
 }
 
-body.sponsored #sponsor-view {
+body.sponsored #sponsor-container-view {
   display: block;
+}
+
+/* SPONSOR VIEW */
+/******************************************/
+body.sponsored #sponsor-view {
   padding: 32px 15px 26px 15px;
   background: rgb(23,53,69);
   background: linear-gradient(0deg, rgba(23,53,69,1) 0%, rgba(42,72,90,1) 50%, rgba(59,90,109,1) 100%);

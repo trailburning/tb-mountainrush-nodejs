@@ -602,7 +602,6 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         mountain3DView.focusLocation(coords[0], coords[1]);
         timeoutStoryID = window.setTimeout(function(){
           var nMarkerPos = mountainEventsCollection.indexOf(mountainStoryModel);
-          console.log('p:'+nMarkerPos);
           // is the player fundraising, or is the first 'free' marker?
           var fFundRaisingGoal = this.currPlayerModel.get('fundraising_goal');
           if ((fFundRaisingGoal && fFundRaisingGoal > 0) || (nMarkerPos == 0))  {
