@@ -40,27 +40,29 @@ var Demo = <%= Defs.Demo %>;
       <% } %>
 
       <div id="game-view">
-        <div id="sponsor-view" class="hidden-xs">
-          <div class="sponsor-detail-view">
-            <div class="logo"><img src="/static-assets/images/logos/logo_unicef.png"></div>
-            <div class="title">
-              <h1>Challenge 31<br/>December</h1>
-              <h2>Climb Mont Blanc with <strong>Ashmei</strong></h2>
-            </div>
-
-            <div class="detail">
-              <div class="countdown-container" data-value-day="<%= __n('game.day', 1) %>" data-value-days="<%= __n('game.day', 2) %>">
-                <div class="countdown">
-                  <span class="clock"></span>
-                  <span class="end">
-                    <span class="days"><span class="time">0</span><span class="days-marker"> <%= __n('game.day', 2) %></span></span>
-                    <span class="hours"><span class="time"><span>00</span><span class="marker">:</span><span>00</span><span class="marker">:</span><span>00</span></span></span>
-                  </span>
-                </div>
+        <div id="sponsor-container-view">
+          <div id="sponsor-view" class="hidden-xs">
+            <div class="sponsor-detail-view">
+              <div class="logo"><img src="/static-assets/images/logos/logo_unicef.png"></div>
+              <div class="title">
+                <h1>Challenge 31<br/>December</h1>
+                <h2>Climb Mont Blanc with <strong>Ashmei</strong></h2>
               </div>
 
-              <div class="donate-btn">
-              <a href="" class="btn mr-btn btn-primary btn-large"><div>Donate</div></a>
+              <div class="detail">
+                <div class="countdown-container" data-value-day="<%= __n('game.day', 1) %>" data-value-days="<%= __n('game.day', 2) %>">
+                  <div class="countdown">
+                    <span class="clock"></span>
+                    <span class="end">
+                      <span class="days"><span class="time">0</span><span class="days-marker"> <%= __n('game.day', 2) %></span></span>
+                      <span class="hours"><span class="time"><span>00</span><span class="marker">:</span><span>00</span><span class="marker">:</span><span>00</span></span></span>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="donate-btn">
+                <a href="" class="btn mr-btn btn-primary btn-large"><div>Donate</div></a>
+                </div>
               </div>
             </div>
           </div>
