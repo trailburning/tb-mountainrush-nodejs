@@ -175,34 +175,44 @@ body.sponsored #sponsor-view .title strong {
   text-align: center;
 }
 
-#map-view .countdown-container {
+body.sponsored #map-view .game-details-container {
+  display: none;
+}
+
+.countdown-container {
   display: none;
 }
 
 #map-view .countdown {
   display: inline-block;
   width: 260px;
+}
+
+.countdown {
   line-height: 1em;
   color: #fff;
   text-transform: uppercase;
   text-align: left;
 }
 
-#map-view .countdown .days {
+.countdown .days {
   padding-left: 8px;
   font-size: 2.4em;
 }
 
-#map-view .countdown .days .time {
+.countdown .days .time {
   font-family: 'radikalbold', sans-serif;
 }
 
-#map-view .countdown .hours {
+.countdown .hours {
+  display: inline-block;
+  text-align: right;
+  width: 90px;
   padding-left: 12px;
   font-size: 1.4em;
 }
 
-#map-view .countdown .hours .time {
+.countdown .hours .time {
   font-family: 'radikallight', sans-serif;
 }
 
@@ -1043,8 +1053,9 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     padding-left: 38px;
   }
 
-  body.sponsored #sponsor-view .fundraise {
+  body.sponsored #sponsor-view .detail {
     display: inline-block;
+    padding-top: 4px;
     vertical-align: top;
     float: right;
   }
@@ -1056,6 +1067,11 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   body.sponsored #sponsor-view .sponsor-detail-view h1 {
     font-size: 3em;
     line-height: 1.05em;
+  }
+
+  body.sponsored #sponsor-view .detail .donate-btn {
+    padding-top: 18px;
+    text-align: right;
   }
 
   #game-view {

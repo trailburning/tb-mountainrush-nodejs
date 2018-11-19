@@ -807,7 +807,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           dLocalGameEnd.setDate(dLocalGameEnd.getDate() + 5);
         }
 
-        var elCountdownContainer = $('#map-view .countdown-container');
+        var elCountdownContainer = $('.countdown-container');
         var strDay = elCountdownContainer.attr('data-value-day');
         var strDays = elCountdownContainer.attr('data-value-days');
 
