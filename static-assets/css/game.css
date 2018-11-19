@@ -175,10 +175,6 @@ body.sponsored #sponsor-view .title strong {
   text-align: center;
 }
 
-body.sponsored #map-view .game-details-container {
-  display: none;
-}
-
 .countdown-container {
   display: none;
 }
@@ -1089,6 +1085,10 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+  }
+
+  body.sponsored #map-view .game-details-container {
+    display: none;
   }
 
   #map-view .map {
