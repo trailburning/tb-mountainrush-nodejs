@@ -786,11 +786,17 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
     function onGameLoaded(jsonGame) {
       jsonCurrGame = jsonGame;
+
       playerCollection = new Backbone.Collection(jsonGame.players);
 
       // are we a single player game?
       if (jsonGame.players.length == 1) {
         $('body').addClass('single-player');
+      }
+
+      // are we a sponsored game?
+      if (jsonGame.sponsored) {
+        $('body').addClass('sponsored'); // mla test
       }
 
       // convert UTC dates to local
@@ -806,11 +812,15 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           dLocalGameEnd.setDate(dLocalGameEnd.getDate() + 5);
         }
 
-        var elCountdownContainer = $('#map-view .countdown-container');
+        var elCountdownContainer = $('.countdown-container');
         var strDay = elCountdownContainer.attr('data-value-day');
         var strDays = elCountdownContainer.attr('data-value-days');
 
-        elCountdownContainer.show();
+        // finished?
+        if (dLocalGameEnd < dLocalGameNow) {
+          elCountdownContainer.show();
+        }
+
         $('.countdown .end').countdown(dLocalGameEnd).on('update.countdown', function(event) {
           var $this = $(this).html(event.strftime(''
             + '<span class="days">'
@@ -820,6 +830,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
             + '<span class="hours">'
               + '<span class="time"><span>%H</span><span class="marker">:</span><span>%M</span><span class="marker">:</span><span>%S</span></span>'
             + '</span>'));
+          elCountdownContainer.show();
         });
       }
       getJourney(jsonGame.journeyID, jsonGame.mountain3DName);
