@@ -87,6 +87,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     if (GAME_FUNDRAISING) {
       $('body').addClass('fundraising');
     }
+    $('body').addClass('sponsored'); // mla test
 
     $('#loader-view').show();
 

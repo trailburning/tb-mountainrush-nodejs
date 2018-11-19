@@ -73,6 +73,44 @@
   position: relative;
 }
 
+/* SPONSOR VIEW */
+/******************************************/
+#sponsor-view {
+  display: none;
+}
+
+body.sponsored #sponsor-view {
+  display: block;
+  padding: 32px 16px 26px 16px;
+  background: rgb(23,53,69);
+  background: linear-gradient(0deg, rgba(23,53,69,1) 0%, rgba(42,72,90,1) 50%, rgba(59,90,109,1) 100%);
+}
+
+body.sponsored #sponsor-view .logo img {
+  width: 80px;
+}
+
+body.sponsored #sponsor-view .title {
+  color: #fff;
+}
+
+body.sponsored #sponsor-view .title h1 {
+  padding-top: 24px;
+  padding-bottom: 16px;
+  font-family: 'radikalbold', sans-serif;
+  font-size: 2.5em;
+  line-height: 1.2em;
+}
+
+body.sponsored #sponsor-view .title h2 {
+  font-family: 'radikalregular';
+  font-size: 1.2em;
+}
+
+body.sponsored #sponsor-view .title strong {
+  font-family: 'radikalbold', sans-serif;
+}
+
 /* MAP VIEW */
 /******************************************/
 #map-view {
@@ -624,7 +662,7 @@ body.fundraising #player-view .detail .player .latest-activity {
 #player-view .detail .player .latest-activity .ago {
   display: block;
 }
-/* mla */
+
 #player-view .detail .player .latest-activity .external-view {
   display: block;
   padding-top: 6px;
@@ -994,6 +1032,26 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     top: 72px;
   }
 
+  body.sponsored #sponsor-view .title {
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 38px;
+  }
+
+  body.sponsored #sponsor-view .logo {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  body.sponsored #sponsor-view .sponsor-detail-view h1 {
+    padding-top: 0;
+  }
+
+  body.sponsored #sponsor-view .sponsor-detail-view h1 {
+    font-size: 3em;
+    line-height: 1.05em;
+  }
+
   #game-view {
     overflow: initial;
   }
@@ -1264,6 +1322,17 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
 
 /* Small devices (tablets, 992px and up) */
 @media (min-width: 992px) {
+  body.sponsored #sponsor-view {
+    height: 388px;
+    padding: 56px 0 0 0;
+  }
+
+  body.sponsored #sponsor-view .sponsor-detail-view {
+    margin-left: auto;
+    margin-right: auto;
+    width: 942px;
+  }
+
   .modal.story-overlay .big-close-btn {
     right: 33px;
   }
@@ -1338,6 +1407,10 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   #map-view {
     margin: 0 auto 0 auto;
     width: 942px;
+  }
+
+  body.sponsored #map-view {
+    margin-top: -164px;
   }
 
   #map-view .embelish {
