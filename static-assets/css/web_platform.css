@@ -251,6 +251,11 @@ video::-webkit-media-controls-start-playback-button {
   outline: none;
 }
 
+.mr-btn.btn-primary.btn-invert-hover:hover {
+  color: #f75f36;
+  background-color: #fff;
+}
+
 .btn-toggle {
   margin: 0;
   padding: 0;
