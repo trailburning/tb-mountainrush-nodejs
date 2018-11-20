@@ -251,6 +251,11 @@ video::-webkit-media-controls-start-playback-button {
   outline: none;
 }
 
+.mr-btn.btn-primary.btn-invert-hover:hover {
+  color: #f75f36;
+  background-color: #fff;
+}
+
 .btn-toggle {
   margin: 0;
   padding: 0;
@@ -1132,6 +1137,12 @@ img.scale {
 .shopping-list .shopping-list-item .donate-item {
   padding: 12px 0 0 0;
   text-align: left;
+}
+
+/* DONATE BTN */
+/******************************************/
+.donate-btn {
+  display: none;
 }
 
 /* LOADER */

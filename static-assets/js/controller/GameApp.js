@@ -232,6 +232,8 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     }
 
     function focusPlayer(nPlayer) {
+      var self = this;
+
       // now allow player to click map
       $('#loader-view').hide();
       $('#map-view .overlay-loader-view').hide();
@@ -270,12 +272,26 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         // get donations
         this.currPlayerModel.get('playerObj').getDonations();
 
-        // show if player has a fundraising goal, not already signed in, not already shown and a donation id is not present (passed when a donation has been made)
-        if (Number(this.currPlayerModel.get('fundraising_goal')) && !FundraisingShoppingModelShown && getUserCookie(CLIENT_ID) == undefined && (FUNDRAISING_DONATION_ID == '')) {
-          FundraisingShoppingModelShown = true;
-          fundraisingShoppingModalView.render(this.currPlayerModel);
-          // delay before showing
-          startShopTimer();
+        $('.donate-btn').hide();
+        // does player have a fundraising goal?
+        if (Number(this.currPlayerModel.get('fundraising_goal'))) {
+          // look for url attr
+          $('.donate-btn .mr-btn').each(function(index) {
+            // use to build real url
+            if ($(this).attr('data-href')) {
+              var strHREF = $(this).attr('data-href').replace('[PLAYER_ID]', self.currPlayerModel.get('id'));
+              $(this).attr('href', strHREF);
+            }
+          });
+
+          $('.donate-btn').show();
+          // show if player not already signed in, not already shown and a donation id is not present (passed when a donation has been made)
+          if (!FundraisingShoppingModelShown && getUserCookie(CLIENT_ID) == undefined && (FUNDRAISING_DONATION_ID == '')) {
+            FundraisingShoppingModelShown = true;
+            fundraisingShoppingModalView.render(this.currPlayerModel);
+            // delay before showing
+            startShopTimer();
+          }
         }
       }
       // get comments

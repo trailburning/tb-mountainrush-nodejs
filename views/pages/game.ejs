@@ -41,7 +41,7 @@ var Demo = <%= Defs.Demo %>;
 
       <div id="game-view">
         <div id="sponsor-container-view">
-          <div id="sponsor-view" class="hidden-xs">
+          <div class="sponsor-view hidden-xs">
             <div class="sponsor-detail-view">
               <div class="logo"><img src="/static-assets/images/logos/logo_unicef.png"></div>
               <div class="title">
@@ -60,9 +60,7 @@ var Demo = <%= Defs.Demo %>;
                   </div>
                 </div>
 
-                <div class="donate-btn">
-                <a href="" class="btn mr-btn btn-primary btn-large"><div>Donate</div></a>
-                </div>
+                <div class="donate-btn"><a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>" data-href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/[PLAYER_ID]/donate?amount=1000" class="btn mr-btn btn-primary btn-large btn-invert-hover"><%= __('defs.donate') %></a></div>
               </div>
             </div>
           </div>
