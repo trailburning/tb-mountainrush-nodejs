@@ -8,7 +8,8 @@ var FLAG_ID = 4000;
 var STATE_INIT = 0;
 var STATE_READY = 1;
 var STATE_SELECT_PLAYER = 2;
-var STATE_SELECT_PLAYER_AND_ORBIT = 3;
+var STATE_SELECT_PLAYER_NO_SELECT = 3;
+var STATE_SELECT_PLAYER_AND_ORBIT = 4;
 
 var MOUNTAIN_TYPE_GULLYS = 0;
 var MOUNTAIN_TYPE_SMOOTH = 1;
@@ -73,7 +74,10 @@ define([
           }
 
           var coords = this.playerCollection.get(this.currPlayerID).get('jsonPlayer').features[0].geometry.coordinates;
-          Procedural.focusOnLocation( {latitude: coords[1], longitude: coords[0], distance: 500, angle: fAngle} );
+          Procedural.focusOnLocation( {latitude: coords[1], longitude: coords[0], distance: 2000, angle: fAngle} );
+          break;
+
+        case STATE_SELECT_PLAYER_NO_SELECT:
           break;
 
         case STATE_SELECT_PLAYER_AND_ORBIT:
@@ -158,8 +162,29 @@ define([
 
       this.currPlayerID = id;
 
-      player = this.playerCollection.get(id);
-      Procedural.addOverlay( player.get('jsonPlayer') );
+      this.showPlayer(this.currPlayerID);
+    },
+
+    selectPlayerNoSelect: function(id){
+      var player = null;
+
+      if (this.timeoutID) {
+        window.clearTimeout(this.timeoutID);
+      }
+
+      this.nState = STATE_SELECT_PLAYER_NO_SELECT;
+
+      this.showFlag();
+
+      // remove current player
+      if (this.currPlayerID) {
+        player = this.playerCollection.get(this.currPlayerID);
+        Procedural.removeOverlay( String(player.get('jsonPlayer').features[0].id) );
+      }
+
+      this.currPlayerID = id;
+
+      this.showPlayer(this.currPlayerID);
     },
 
     showPlayer: function(id){
@@ -571,7 +596,7 @@ define([
     },
 
     focusLocation: function(fLat, fLong){
-      Procedural.focusOnLocation( {latitude: fLat, longitude: fLong, distance: 1000, angle: 10} );
+      Procedural.focusOnLocation( {latitude: fLat, longitude: fLong, distance: 2000, angle: 10} );
     },
 
     focusLocationWithOptions: function(fLat, fLong, fDistance, fAngle){

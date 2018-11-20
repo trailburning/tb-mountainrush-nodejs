@@ -125,7 +125,7 @@ define([
 //          removeUserCookie(CLIENT_ID);
 //          PLAYER_TOKEN = '9b69f66ee9a7d20702a5b9771322388df8cb886a'; // MR - Matt
 //        PLAYER_TOKEN = 'b8a1bc6ca786c95f1e639c42615320782d8a9d22'; // MR - Trailburning
-//          PLAYER_TOKEN = '3c107313f14fd3fee78e75ee2cfa5e5429155595'; // CFYW - Amelia
+//          PLAYER_TOKEN = '3e43a998394b56e0616e3ccd4085ba762f83e861'; // CFYW - Amelia
 //        } 
 //        changeState(STATE_GAME_CREATED);
 //        return;
