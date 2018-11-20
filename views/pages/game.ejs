@@ -60,7 +60,7 @@ var Demo = <%= Defs.Demo %>;
                   </div>
                 </div>
 
-                <div class="donate-btn"><a href="" class="btn mr-btn btn-primary btn-large btn-invert-hover"><%= __('defs.donate') %></a></div>
+                <div class="donate-btn"><a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>" data-href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/[PLAYER_ID]/donate?amount=1000" class="btn mr-btn btn-primary btn-large btn-invert-hover"><%= __('defs.donate') %></a></div>
               </div>
             </div>
           </div>

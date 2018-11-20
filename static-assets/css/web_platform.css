@@ -1139,6 +1139,12 @@ img.scale {
   text-align: left;
 }
 
+/* DONATE BTN */
+/******************************************/
+.donate-btn {
+  display: none;
+}
+
 /* LOADER */
 /******************************************/
 #loader-view {
