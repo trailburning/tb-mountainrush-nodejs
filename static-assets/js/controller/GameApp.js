@@ -254,7 +254,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       if (mountain3DView) {
         // do we have a marker to show?
         if (showLatestEnabledMarkerID) {          
-          mountain3DView.selectPlayer(this.currPlayerModel.get('playerObj').model.get('id'), false);
+          mountain3DView.selectPlayerNoSelect(this.currPlayerModel.get('playerObj').model.get('id'));
           focusStory(showLatestEnabledMarkerID);  
 
           showLatestEnabledMarkerID = null;
@@ -606,7 +606,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       return latestMarker;
     }
 
-    function focusStory(id) {
+    function focusStory(id) {      
       var mountainStoryModel = mountainEventsCollection.get(id);
       if (mountainStoryModel != undefined) {
         if (timeoutStoryID) {
