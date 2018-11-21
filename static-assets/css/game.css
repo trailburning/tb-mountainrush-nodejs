@@ -85,6 +85,13 @@ body.sponsored #sponsor-container-view {
 
 /* SPONSOR VIEW */
 /******************************************/
+body.sponsored .sponsor-view .link, 
+body.sponsored .sponsor-view .link:active, 
+body.sponsored .sponsor-view .link:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
 body.sponsored .sponsor-view {
   padding: 32px 15px 26px 15px;
   background: rgb(23,53,69);
@@ -496,10 +503,6 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
   height: 100%;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
-}
-
-#player-view .detail .scroll img {
-  width: 100%;
 }
 
 #player-view .detail .player {
