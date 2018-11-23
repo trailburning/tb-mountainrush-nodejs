@@ -53,7 +53,7 @@ function getCampaignDataByCampaign(req, campaignID, callback) {
   var request = require('request');
 
   var url = process.env.MR_API_URL + 'campaign/' + campaignID;
-//  console.log(url);
+  console.log(url);
   request.get({
       url: url,
       json: true,
@@ -76,7 +76,7 @@ function getCampaignDataByGame(req, gameID, callback) {
   var request = require('request');
 
   var url = process.env.MR_API_URL + 'game/' + gameID + '/campaign';
-//  console.log(url);
+  console.log(url);
   request.get({
       url: url,
       json: true,
