@@ -7,43 +7,44 @@ function fillCampaignData(req, data) {
 
   if (data) {
     campaignData = data[0];
-
-    var campaignFundraising = 0;
-    if (campaignData.fundraising_provider) {
-      campaignFundraising = 1;
-    }
-
-    var campaign = new Object();
-    campaign.ClientID = campaignData.clientID;
-    campaign.ClientShortName = campaignData.client_shortname;
-    campaign.CampaignID = campaignData.id;
-    campaign.CampaignName = campaignData.name;
-    campaign.CampaignTemplate = campaignData.template;
-    campaign.CampaignShortName = campaignData.shortname;
-    campaign.CampaignDescription = campaignData.description;
-    campaign.CampaignTemplate = campaignData.template;
-    campaign.CampaignJuicerFeed = campaignData.juicer_feed;
-    campaign.CampaignInvitationCode = campaignData.invitation_code;
-    campaign.CampaignFundraisingCurrency = campaignData.fundraising_currency;
-    campaign.CampaignFundraisingMinimum = campaignData.fundraising_minimum;
-    campaign.CampaignFundraisingProvider = campaignData.fundraising_provider;
-    campaign.CampaignFundraisingPage = campaignData.fundraising_page;
-    campaign.CampaignFundraisingDonation = campaignData.fundraising_donation;
-    campaign.CampaignFundraising = campaignFundraising;    
-    campaign.CampaignLanguages = campaignData.languages;
-
-    // only accept selected locale if it's available
-    var selLang = campaign.CampaignLanguages[0]; // def to 1st lang
-
-    for (var i = 0; i < campaign.CampaignLanguages.length; i++){
-      var obj = campaign.CampaignLanguages[i];
-      // selected locale is available
-      if (obj['name'] == req.getLocale()) {
-        selLang = obj;
+    if (campaignData) {
+      var campaignFundraising = 0;
+      if (campaignData.fundraising_provider) {
+        campaignFundraising = 1;
       }
+
+      var campaign = new Object();
+      campaign.ClientID = campaignData.clientID;
+      campaign.ClientShortName = campaignData.client_shortname;
+      campaign.CampaignID = campaignData.id;
+      campaign.CampaignName = campaignData.name;
+      campaign.CampaignTemplate = campaignData.template;
+      campaign.CampaignShortName = campaignData.shortname;
+      campaign.CampaignDescription = campaignData.description;
+      campaign.CampaignTemplate = campaignData.template;
+      campaign.CampaignJuicerFeed = campaignData.juicer_feed;
+      campaign.CampaignInvitationCode = campaignData.invitation_code;
+      campaign.CampaignFundraisingCurrency = campaignData.fundraising_currency;
+      campaign.CampaignFundraisingMinimum = campaignData.fundraising_minimum;
+      campaign.CampaignFundraisingProvider = campaignData.fundraising_provider;
+      campaign.CampaignFundraisingPage = campaignData.fundraising_page;
+      campaign.CampaignFundraisingDonation = campaignData.fundraising_donation;
+      campaign.CampaignFundraising = campaignFundraising;    
+      campaign.CampaignLanguages = campaignData.languages;
+
+      // only accept selected locale if it's available
+      var selLang = campaign.CampaignLanguages[0]; // def to 1st lang
+
+      for (var i = 0; i < campaign.CampaignLanguages.length; i++){
+        var obj = campaign.CampaignLanguages[i];
+        // selected locale is available
+        if (obj['name'] == req.getLocale()) {
+          selLang = obj;
+        }
+      }
+      req.setLocale(selLang['name']);
+      campaign.SelLanguage = selLang;
     }
-    req.setLocale(selLang['name']);
-    campaign.SelLanguage = selLang;
   }
 
   return campaign;
