@@ -214,7 +214,7 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
             </div>
 
             <div class="action-fields">
-              <div class="action-field"><a href="<%= Defs.BaseHTTPURL %>/game/{{= game.game }}" class="btn mr-btn btn-primary"><%= __('overlay.challenge.yes') %></a></div>
+              <div class="action-field"><a href="<%= Defs.BaseHTTPSURL %>/game/{{= game.game }}" class="btn mr-btn btn-primary"><%= __('overlay.challenge.yes') %></a></div>
               <div class="action-field"><span class="btn mr-btn" data-dismiss="modal"><%= __('overlay.challenge.no') %></span></div>
             </div>
           {{ } else if (pendingGames.length) { }}
@@ -228,7 +228,7 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
             </div>
 
             <div class="action-fields">
-              <div class="action-field"><a href="<%= Defs.BaseHTTPURL %>/game/{{= game.game }}" class="btn mr-btn btn-primary">Yes please</a></div>
+              <div class="action-field"><a href="<%= Defs.BaseHTTPSURL %>/game/{{= game.game }}" class="btn mr-btn btn-primary">Yes please</a></div>
               <div class="action-field"><span class="btn mr-btn" data-dismiss="modal">Maybe later</span></div>
             </div>
           {{ } }}

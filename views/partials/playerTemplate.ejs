@@ -99,7 +99,7 @@
                   <a href="<%= Campaign.CampaignFundraisingPage %>{{= player.fundraising_page }}" target="_blank"class="btn mr-btn btn-large">JustGiving Page</a>
                   </div>
                   <div class="donate-btn">
-                  <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary btn-large"><div>Donate</div></a>
+                  <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary btn-large"><div>Donate</div></a>
                   </div>
                 <% } else { %>
                   <div class="donate-btn">
@@ -157,7 +157,7 @@
               </div>
               <div class="donate-item">
               <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
-                <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary btn-large double"><div>Donate</div><div>£10</div></a>
+                <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary btn-large double"><div>Donate</div><div>£10</div></a>
               <% } else { %>
                 <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/donate?amount=1000" class="btn mr-btn btn-primary btn-large double"><div>Donate</div><div>
                 {{ if (player.fundraising_currency_symbol > 1) { }}
@@ -204,7 +204,7 @@
               </div>
               <div class="donate-item">
               <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
-                <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary btn-large double"><div>Donate</div><div>£10</div></a>
+                <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary btn-large double"><div>Donate</div><div>£10</div></a>
               <% } else { %>
                 <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/donate?amount=1000" class="btn mr-btn btn-primary btn-large double"><div>Donate</div><div>
                 {{ if (player.fundraising_currency_symbol > 1) { }}
@@ -279,7 +279,7 @@
     <div class="fundraise-sticker">
       {{ if (page.fundraisingTarget && page.fundraisingTarget > 0) { }}
         <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
-          <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= page.fundraisingPageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPURL %>/game/<%= Defs.GameID %>/player/" + page.playerID + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}">
+          <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= page.fundraisingPageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/" + page.playerID + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}">
         <% } else { %>
           <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= page.playerID }}/donate?amount=1000">
         <% } %>

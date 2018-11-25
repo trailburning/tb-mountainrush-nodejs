@@ -19,7 +19,7 @@
 var APP = 'CampaignApp';
 var GAME_API_URL = '<%= Defs.MRAPIURL %>';
 var GAME_FUNDRAISING = <%= Campaign.CampaignFundraising %>;
-var HOST_URL = '<%= Defs.BaseHTTPURL %>';
+var HOST_URL = '<%= Defs.BaseHTTPSURL %>';
 var CLIENT_ID = '<%= Campaign.ClientID %>';
 var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
 var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
@@ -214,9 +214,9 @@ var CAMPAIGN_JUICER_FEED = '<%= Campaign.CampaignJuicerFeed %>';
     <div class="leader">
       <div class="content">
         <div class="marker">
-          {{ var strURL = '<%= Defs.BaseHTTPURL %>/campaign/<%= Campaign.CampaignID %>' }}
+          {{ var strURL = '<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>' }}
           {{ if (player.gameID) { }}
-            {{ strURL = '<%= Defs.BaseHTTPURL %>/game/' + player.gameID + '/player/' + player.id }}
+            {{ strURL = '<%= Defs.BaseHTTPSURL %>/game/' + player.gameID + '/player/' + player.id }}
           {{ } }}
           <a href="{{= strURL }}"><div class="avatar">
           <% if (Campaign.CampaignTemplate == 'default') { %>
@@ -277,7 +277,7 @@ var CAMPAIGN_JUICER_FEED = '<%= Campaign.CampaignJuicerFeed %>';
             </div>
 
             <div class="action-fields">
-              <div class="action-field"><a href="<%= Defs.BaseHTTPURL %>/game/{{= game.game }}" class="btn mr-btn btn-primary">Yes please</a></div>
+              <div class="action-field"><a href="<%= Defs.BaseHTTPSURL %>/game/{{= game.game }}" class="btn mr-btn btn-primary">Yes please</a></div>
               <div class="action-field"><span class="btn mr-btn" data-dismiss="modal">Maybe later</span></div>
             </div>
           {{ } else if (pendingGames.length) { }}
@@ -291,7 +291,7 @@ var CAMPAIGN_JUICER_FEED = '<%= Campaign.CampaignJuicerFeed %>';
             </div>
 
             <div class="action-fields">
-              <div class="action-field"><a href="<%= Defs.BaseHTTPURL %>/game/{{= game.game }}" class="btn mr-btn btn-primary">Yes please</a></div>
+              <div class="action-field"><a href="<%= Defs.BaseHTTPSURL %>/game/{{= game.game }}" class="btn mr-btn btn-primary">Yes please</a></div>
               <div class="action-field"><span class="btn mr-btn" data-dismiss="modal">Maybe later</span></div>
             </div>
           {{ } }}
