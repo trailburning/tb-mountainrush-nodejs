@@ -16,9 +16,10 @@ define([
   'views/PlayerGameView',
   'views/PromoMountainPlayerView',
   'views/DeviceCapableModalView',
+  'views/PromotionModalView',
   'views/DemoVideoView',
   'views/SocialPhotosView'
-], function(_, Backbone, jqueryUI, cookie, truncate, animateNumber, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, PromoMountainPlayerView, DeviceCapableModalView, DemoVideoView, SocialPhotosView){
+], function(_, Backbone, jqueryUI, cookie, truncate, animateNumber, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, PromoMountainPlayerView, DeviceCapableModalView, PromotionModalView, DemoVideoView, SocialPhotosView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -40,6 +41,7 @@ define([
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
 
     var deviceCapableModalView = new DeviceCapableModalView({ el: '#device-capable-modal-view' });
+    var promotionModalView = new PromotionModalView({ el: '#promotion-modal-view' });
 
     function checkReady() {
       if (bLoaderComplete && bMapReady) {
@@ -105,8 +107,17 @@ define([
         activePlayerView.render();
       });
 
+      // fire up promotion
+      promotionModalView.render(jsonUser);
+      promotionModalView.show();      
+
       var playerGameView = new PlayerGameView({ el: '#player-game-view', playerToken: jsonUser.token });
       playerGameView.getPlayerGame(DEF_CLIENT_ID);
+    }
+    else {
+      // fire up promotion
+      promotionModalView.render(null);
+      promotionModalView.show();      
     }
 
     $('.signout').click(function(evt){
