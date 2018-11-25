@@ -74,7 +74,7 @@ var TEST = '<%= Defs.Test %>';
         <div class="register-view" id="register-fundraising-page-created-view"></div>
         <div class="support">          
         <% if (Campaign.CampaignTemplate != 'default') { %>
-          <%= Campaign.ClientShortName %>'s <%= Campaign.CampaignName %> campaign is brought to you by <a href="http://mountainrush.co.uk/" class="link" target="_blank">Mountain Rush</a>.<br/>
+          <%= Campaign.ClientShortName %>'s <%= Campaign.CampaignName %> campaign is brought to you by <a href="https://mountainrush.co.uk/" class="link" target="_blank">Mountain Rush</a>.<br/>
         <% } %>
 
         <% if (Campaign.CampaignTemplate != 'default') { %>
@@ -375,7 +375,7 @@ var TEST = '<%= Defs.Test %>';
     <strong>{{= game.campaign_name }}</strong> - <a href="<%= Defs.BaseHTTPURL %>/game/{{= game.game }}" target="_blank">{{= game.name }}, {{= game.region }}</a> ({{= game.game_state }})
     {{ if (game.fundraising_pageID) { }}
       <p><a href="{{= game.campaign_fundraising_page }}{{= game.fundraising_page }}" target="_blank">Your Fundraising Page</a></p>
-      <p><a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= game.fundraising_pageID }}?amount=10.00&currency=GBP&reference=testref&exitUrl=http%3A%2F%2Fmountainrush.co.uk%3FjgDonationId%3DJUSTGIVING-DONATION-ID" target="_blank">Donate 10</a></p>
+      <p><a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= game.fundraising_pageID }}?amount=10.00&currency=GBP&reference=testref&exitUrl=https%3A%2F%2Fmountainrush.co.uk%3FjgDonationId%3DJUSTGIVING-DONATION-ID" target="_blank">Donate 10</a></p>
     {{ }; }}
     </div>
   {{ }); }}
@@ -482,7 +482,7 @@ var TEST = '<%= Defs.Test %>';
     </div>
 
     <div class="btns">
-    <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn double" target="_blank"><div><%= __('defs.social.share_facebook') %></div><div><i class="fa fa-facebook"></i></div></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20Mountain%20Rush%20challenge%20-%20http://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn double" target="_blank"><div><%= __('defs.social.share_twitter') %></div><div><i class="fa fa-twitter"></i></div></a>
+    <a href="https://www.facebook.com/share.php?u=https://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn double" target="_blank"><div><%= __('defs.social.share_facebook') %></div><div><i class="fa fa-facebook"></i></div></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20Mountain%20Rush%20challenge%20-%20https://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn double" target="_blank"><div><%= __('defs.social.share_twitter') %></div><div><i class="fa fa-twitter"></i></div></a>
     </div>
   <% } %>
 </script>
@@ -570,7 +570,7 @@ var TEST = '<%= Defs.Test %>';
   </div>
 
   <div class="btns">
-  <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/{{= fields.gameID }}/player/{{= fields.playerID}}/goal/{{= fields.targetAmount}}" class="btn mr-btn btn-primary double" target="_blank"><div>Share on facebook</div><div><i class="fa fa-facebook"></i></div></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20Mountain%20Rush%20challenge%20-%20http://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn btn-primary double" target="_blank"><div>Share on Twitter</div><div><i class="fa fa-twitter"></i></div></a>
+  <a href="https://www.facebook.com/share.php?u=https://mountainrush.co.uk/game/{{= fields.gameID }}/player/{{= fields.playerID}}/goal/{{= fields.targetAmount}}" class="btn mr-btn btn-primary double" target="_blank"><div>Share on facebook</div><div><i class="fa fa-facebook"></i></div></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20Mountain%20Rush%20challenge%20-%20https://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn btn-primary double" target="_blank"><div>Share on Twitter</div><div><i class="fa fa-twitter"></i></div></a>
   </div>
 </script>
 
@@ -763,7 +763,7 @@ var TEST = '<%= Defs.Test %>';
   </div>
 
   <div class="btns">
-  <a href="http://www.facebook.com/share.php?u=http://mountainrush.co.uk/game/{{= fields.gameID }}/player/{{= fields.playerID}}/goal/{{= fields.targetAmount}}" class="btn mr-btn btn-primary double" target="_blank"><div>Share on facebook</div><div><i class="fa fa-facebook"></i></div></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20Mountain%20Rush%20challenge%20-%20http://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn btn-primary double" target="_blank"><div>Share on Twitter</div><div><i class="fa fa-twitter"></i></div></a>
+  <a href="https://www.facebook.com/share.php?u=https://mountainrush.co.uk/game/{{= fields.gameID }}/player/{{= fields.playerID}}/goal/{{= fields.targetAmount}}" class="btn mr-btn btn-primary double" target="_blank"><div>Share on facebook</div><div><i class="fa fa-facebook"></i></div></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20Mountain%20Rush%20challenge%20-%20https://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn btn-primary double" target="_blank"><div>Share on Twitter</div><div><i class="fa fa-twitter"></i></div></a>
   </div>
 </script>
 
