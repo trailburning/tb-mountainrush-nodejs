@@ -1007,6 +1007,14 @@ img.scale {
   line-height: 1.4em;
 }
 
+.modal .description .logo {
+  margin: 16px;
+}
+
+.modal .description img {
+  width: 100%;
+}
+
 .modal strong {
   color: #44b6f7;
 }
