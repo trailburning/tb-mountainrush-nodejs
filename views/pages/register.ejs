@@ -18,7 +18,7 @@
 <script>
 var APP = 'RegisterApp';
 var GAME_API_URL = '<%= Defs.MRAPIURL %>';
-var HOST_URL = '<%= Defs.BaseHTTPURL %>';
+var HOST_URL = '<%= Defs.BaseHTTPSURL %>';
 var CLIENT_ID = '<%= Campaign.ClientID %>';
 var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
 var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
@@ -173,7 +173,7 @@ var TEST = '<%= Defs.Test %>';
   <% } %>
   </p>
   </div>
-  <p><%- __('register.welcome.privacy_agree', '<a href="' + Defs.BaseHTTPURL + '/campaign/' + Campaign.CampaignID + '/privacy" class="link">' + __('register.welcome.privacy') + '</a>') %></p>
+  <p><%- __('register.welcome.privacy_agree', '<a href="' + Defs.BaseHTTPSURL + '/campaign/' + Campaign.CampaignID + '/privacy" class="link">' + __('register.welcome.privacy') + '</a>') %></p>
   <p>
   <div class="connect"><a href="<%= Defs.StravaOauthConnectURL %>"><img src="/static-assets/images/btn_strava_connectwith_orange.png"></a></div>
 </script>
@@ -236,11 +236,11 @@ var TEST = '<%= Defs.Test %>';
       </div>  
       <div class="btns">
       {{ if (currGame.game_state == 'active') { }}
-        <a href="<%= Defs.BaseHTTPURL %>/game/{{= currGame.game }}" class="btn mr-btn"><%= __('register.welcome_connected.game_active') %></a>
+        <a href="<%= Defs.BaseHTTPSURL %>/game/{{= currGame.game }}" class="btn mr-btn"><%= __('register.welcome_connected.game_active') %></a>
       {{ } else if (currGame.game_state == 'pending') { }}
-        <a href="<%= Defs.BaseHTTPURL %>/game/{{= currGame.game }}" class="btn mr-btn"><%= __('register.welcome_connected.game_upcoming') %></a>
+        <a href="<%= Defs.BaseHTTPSURL %>/game/{{= currGame.game }}" class="btn mr-btn"><%= __('register.welcome_connected.game_upcoming') %></a>
       {{ } else { }}
-        <a href="<%= Defs.BaseHTTPURL %>/game/{{= currGame.game }}" class="btn mr-btn"><%= __('register.welcome_connected.game') %></a>
+        <a href="<%= Defs.BaseHTTPSURL %>/game/{{= currGame.game }}" class="btn mr-btn"><%= __('register.welcome_connected.game') %></a>
       {{ }; }}
       </div>
     </div>
@@ -287,11 +287,11 @@ var TEST = '<%= Defs.Test %>';
           <div class="intro-text centre-text">{{= '<%= __('register.welcome_connected.game_accepted') %>'.replace('%s', '<strong>' + invitation.name + '</strong>').replace('%s', '<strong><span class="lowercase">' + invitation.type + '</span></strong>') }}</div>  
           <div class="btns">
           {{ if (invitation.game_state == 'active') { }}
-            <a href="<%= Defs.BaseHTTPURL %>/game/{{= invitation.gameID }}" class="btn mr-btn"><%= __('register.welcome_connected.game_active') %></a>
+            <a href="<%= Defs.BaseHTTPSURL %>/game/{{= invitation.gameID }}" class="btn mr-btn"><%= __('register.welcome_connected.game_active') %></a>
           {{ } else if (invitation.game_state == 'pending') { }}
-            <a href="<%= Defs.BaseHTTPURL %>/game/{{= invitation.gameID }}" class="btn mr-btn"><%= __('register.welcome_connected.game_upcoming') %></a>
+            <a href="<%= Defs.BaseHTTPSURL %>/game/{{= invitation.gameID }}" class="btn mr-btn"><%= __('register.welcome_connected.game_upcoming') %></a>
           {{ } else { }}
-            <a href="<%= Defs.BaseHTTPURL %>/game/{{= invitation.gameID }}" class="btn mr-btn"><%= __('register.welcome_connected.game') %></a>
+            <a href="<%= Defs.BaseHTTPSURL %>/game/{{= invitation.gameID }}" class="btn mr-btn"><%= __('register.welcome_connected.game') %></a>
           {{ }; }}
           </div>
         </div>
@@ -322,7 +322,7 @@ var TEST = '<%= Defs.Test %>';
       <h2><%= __('register.welcome_connected.previous_challenges') %> {{ if (completeGames.length > 1) { }}<%= __n('register.challenge', 2) %>{{ } else { }}<%= __n('register.challenge', 1) %>{{ } }}</h2>
       <ul class="form-field pills">
       {{ _.each(completeGames, function(completeGame, index) { }}
-        <li><a href="<%= Defs.BaseHTTPURL %>/game/{{= completeGame.game }}" class="pill">{{= completeGame.name }} {{= completeGame.type }}</a></li>
+        <li><a href="<%= Defs.BaseHTTPSURL %>/game/{{= completeGame.game }}" class="pill">{{= completeGame.name }} {{= completeGame.type }}</a></li>
       {{ }); }}
       </ul>
       </div>
@@ -372,7 +372,7 @@ var TEST = '<%= Defs.Test %>';
   <p>Games</p>
   {{ _.each(games, function(game, index) { }}
     <div class="game">
-    <strong>{{= game.campaign_name }}</strong> - <a href="<%= Defs.BaseHTTPURL %>/game/{{= game.game }}" target="_blank">{{= game.name }}, {{= game.region }}</a> ({{= game.game_state }})
+    <strong>{{= game.campaign_name }}</strong> - <a href="<%= Defs.BaseHTTPSURL %>/game/{{= game.game }}" target="_blank">{{= game.name }}, {{= game.region }}</a> ({{= game.game_state }})
     {{ if (game.fundraising_pageID) { }}
       <p><a href="{{= game.campaign_fundraising_page }}{{= game.fundraising_page }}" target="_blank">Your Fundraising Page</a></p>
       <p><a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= game.fundraising_pageID }}?amount=10.00&currency=GBP&reference=testref&exitUrl=https%3A%2F%2Fmountainrush.co.uk%3FjgDonationId%3DJUSTGIVING-DONATION-ID" target="_blank">Donate 10</a></p>
@@ -466,7 +466,7 @@ var TEST = '<%= Defs.Test %>';
   </div>
 
   <div class="btns">
-    <a href="<%= Defs.BaseHTTPURL %>/game/{{= fields.gameID }}" class="btn mr-btn"><%= __('register.game_created.view_challenge') %></a>
+    <a href="<%= Defs.BaseHTTPSURL %>/game/{{= fields.gameID }}" class="btn mr-btn"><%= __('register.game_created.view_challenge') %></a>
   </div>
 
   {{ if (fields.multiplayer) { }}
@@ -559,7 +559,7 @@ var TEST = '<%= Defs.Test %>';
   <div class="intro-text centre-text">Thank you, you've successfully added fundraising to your challenge, now it's time to {{= campaign.name }}!</div>
 
   <div class="btns">
-    <a href="<%= Defs.BaseHTTPURL %>/game/{{= fields.gameID }}" class="btn mr-btn">View Challenge</a>
+    <a href="<%= Defs.BaseHTTPSURL %>/game/{{= fields.gameID }}" class="btn mr-btn">View Challenge</a>
   </div>
 
   <div class="social">
@@ -752,7 +752,7 @@ var TEST = '<%= Defs.Test %>';
   <div class="intro-text centre-text">Thank you, you've created your <a href="{{= campaign.fundraising_page }}{{= fields.fundraising_page }}" class="link" target="_blank">fundraising page</a> with <a class="link" href="https://www.justgiving.com/" target="_blank">JustGiving</a>. It's time to {{= campaign.name }}!</div>
 
   <div class="btns">
-    <a href="<%= Defs.BaseHTTPURL %>/game/{{= fields.gameID }}" class="btn mr-btn">View Challenge</a>
+    <a href="<%= Defs.BaseHTTPSURL %>/game/{{= fields.gameID }}" class="btn mr-btn">View Challenge</a>
   </div>
 
   <div class="social">

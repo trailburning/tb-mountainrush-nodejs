@@ -3,7 +3,7 @@
     <div class="mini-menu">
       <a href="#mainmenu" role="button" data-toggle="collapse"><div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div></a>
       <div class="logo-view">
-        <div class="logo"><a href="<%= Defs.BaseHTTPURL %>"><div></div></a></div>
+        <div class="logo"><a href="<%= Defs.BaseHTTPSURL %>"><div></div></a></div>
       </div>
       <div class="user-action action-signup"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('menu.signup') %></a></div>
       <div class="user-action action-profile"><span class="active-player-view"></span></div>
@@ -12,10 +12,10 @@
       <div class="bar"></div>
       <div class="menu-container">
         <div class="logo">
-        <a href="<%= Defs.BaseHTTPURL %>"><div></div></a></div>
+        <a href="<%= Defs.BaseHTTPSURL %>"><div></div></a></div>
         <ul class="menus">
           <li><span class="link demo-video"><%= __('menu.demo') %></span></li>
-          <li><a class="link" href="<%= Defs.BaseHTTPURL %>/demo"><%= __('menu.example') %></a></li>
+          <li><a class="link" href="<%= Defs.BaseHTTPSURL %>/demo"><%= __('menu.example') %></a></li>
           <li><a class="link" href="https://www.instagram.com/explore/tags/playmountainrush/" target="_blank">#playmountainrush</a></li>
           <li class="user-action action-signup"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('menu.signup') %></a></li>
           <li class="user-action action-profile"><span class="active-player-view"></span></li>
@@ -28,7 +28,7 @@
 <div class="collapse" id="mainmenu" aria-expanded="false">
   <ul class="menus">
     <li><span class="link demo-video"><%= __('menu.demo') %></span></li>
-    <li><a href="<%= Defs.BaseHTTPURL %>/demo"><%= __('menu.example') %></a></li>
+    <li><a href="<%= Defs.BaseHTTPSURL %>/demo"><%= __('menu.example') %></a></li>
     <li><a href="https://www.instagram.com/explore/tags/playmountainrush/" target="_blank">#playmountainrush</a></li>
   </ul>
 </div>
