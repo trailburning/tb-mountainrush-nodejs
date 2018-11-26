@@ -302,6 +302,10 @@ ul.pills li {
   margin: 0 4px 14px 4px;
 }
 
+.register-view .prefs {
+  margin-top: 12px;
+}
+
 .help-block {
   display: none;
   font-family: 'radikalbold', sans-serif;
