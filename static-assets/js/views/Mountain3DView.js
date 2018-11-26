@@ -74,7 +74,7 @@ define([
           }
 
           var coords = this.playerCollection.get(this.currPlayerID).get('jsonPlayer').features[0].geometry.coordinates;
-          Procedural.focusOnLocation( {latitude: coords[1], longitude: coords[0], distance: 2000, angle: fAngle} );
+          Procedural.focusOnLocation( {latitude: coords[1], longitude: coords[0], distance: 6000, angle: fAngle} );
           break;
 
         case STATE_SELECT_PLAYER_NO_SELECT:
@@ -604,7 +604,7 @@ define([
     },
 
     playRoute: function(){
-      Procedural.animateAlongFeature( ROUTE_ID, { distance: 1500, speed: 500 } );
+      Procedural.animateAlongFeature( ROUTE_ID, { distance: 2000, speed: 500 } );
     },
 
     campaignAttractor: function(){
