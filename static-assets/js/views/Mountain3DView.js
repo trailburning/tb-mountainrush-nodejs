@@ -74,7 +74,9 @@ define([
           }
 
           var coords = this.playerCollection.get(this.currPlayerID).get('jsonPlayer').features[0].geometry.coordinates;
-          Procedural.focusOnLocation( {latitude: coords[1], longitude: coords[0], distance: 6000, angle: fAngle} );
+//          Procedural.focusOnLocation( {latitude: coords[1], longitude: coords[0], distance: 6000, angle: fAngle} );
+          // try using default focus
+          Procedural.focusOnLocation( {latitude: coords[1], longitude: coords[0]} );
           break;
 
         case STATE_SELECT_PLAYER_NO_SELECT:
