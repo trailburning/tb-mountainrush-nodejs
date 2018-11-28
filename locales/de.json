@@ -147,11 +147,16 @@
 		},
 		"here": "here",
 		"go_back": "go back",
-		"preferences": {
-			"title": "Your Preferences",
-			"game_notifications": "Activity emails",
-			"update": "Update Preferences"
-		},
+    "preferences": {
+      "title": "Your Preferences",
+      "game_email": "Your email address",
+      "game_email_help": "Please fill in your email address",
+      "game_notifications": "Activity emails",
+      "update": "Update Preferences",
+      "errors": {
+        "game_email_used": "The email address is already registered"
+      }
+    },
 		"please_wait": "Please Wait",
 		"game_create": {
 			"title": "Create Challenge",
