@@ -193,8 +193,8 @@ var TEST = '<%= Defs.Test %>';
 
   <form>
   <div class="form-group">
-    <div class="form-label"><label>Your Email Address</label></div><input class="field form-control required" id="email-address" value="{{= player.email }}">
-    <div class="help-block">Please fill in your email address</div>
+    <div class="form-label"><label><%= __('register.preferences.game_email') %></label></div><input class="field form-control required" id="email-address" value="{{= player.email }}" type="email">
+    <div class="help-block"><%= __('register.preferences.game_email_help') %></div>
   </div>
 
   <div class="btns">
@@ -203,10 +203,9 @@ var TEST = '<%= Defs.Test %>';
 
   <div class="err">
     <div class="msg" data-msg="already-exists">
-    <p>The email address is already registered</p>
+    <p><%= __('register.preferences.errors.game_email_used') %></p>
     </div>
-  </div>
-  
+  </div>  
   </form>
 </script>
 
@@ -339,8 +338,8 @@ var TEST = '<%= Defs.Test %>';
 
   <form>
   <div class="form-group">
-    <div class="form-label"><label>Your Email Address</label></div><input class="field form-control required" id="email-address" value="{{= player.email }}">
-    <div class="help-block">Please fill in your email address</div>
+    <div class="form-label"><label><%= __('register.preferences.game_email') %></label></div><input class="field form-control required" id="email-address" value="{{= player.email }}" type="email">
+    <div class="help-block"><%= __('register.preferences.game_email_help') %></div>
   </div>
 
   <div class="form-group">
@@ -358,7 +357,7 @@ var TEST = '<%= Defs.Test %>';
 
   <div class="err">
     <div class="msg" data-msg="already-exists">
-    <p>The email address is already registered</p>
+    <p><%= __('register.preferences.errors.game_email_used') %></p>
     </div>
   </div>
 
