@@ -46,10 +46,6 @@ ul.pills li {
   color: #ea6f5f
 }
 
-.sponsor {
-  font-size: 0.8em;
-}
-
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #2e3c51;
 }
