@@ -296,7 +296,13 @@ var Demo = <%= Defs.Demo %>;
             </div>
 
             <div class="share-detail hidden-xs hidden-sm">
-              <div class="share-text">Share your journey to help your fundraising soar.</div>
+              <div class="share-text">
+              {{ if (player.fundraising_goal > 0) { }}
+                Share your journey to help your fundraising soar
+              {{ } else { }}
+                Share your journey and inspire others
+              {{ } }}
+              </div>
               <div class="btns">
               <a href="http://www.facebook.com/share.php?u=<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/{{= socialShareURL }}" class="btn mr-btn btn-primary double" target="_blank"><div><%= __('defs.social.share_facebook') %></div><div><i class="fa fa-facebook"></i></div></a>
               <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20<%= Campaign.CampaignName %>%20challenge%20-%20<%= Defs.BaseHTTPSURL %>game/<%= Defs.GameID %>" class="btn mr-btn btn-primary double" target="_blank"><div><%= __('defs.social.share_twitter') %></div><div><i class="fa fa-twitter"></i></div></a>
