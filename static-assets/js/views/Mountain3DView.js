@@ -229,7 +229,13 @@ define([
       var nOverlapYAdjust = 0, nOverlapCaretYAdjust = 0, nOverlapPosYAdjust = 0;
 
       $.each(this.arrMarkers, function(index, jsonMarker){
-        if (jsonMarker.features[0].geometry.coordinates[1] == fLat && jsonMarker.features[0].geometry.coordinates[0] == fLong) {
+        var nFixedPlaces = 3;
+        var fMarkerLatFixed = +jsonMarker.features[0].geometry.coordinates[1].toFixed(nFixedPlaces);
+        var fMarkerLongFixed = +jsonMarker.features[0].geometry.coordinates[0].toFixed(nFixedPlaces);
+        var fLatFixed = +fLat.toFixed(nFixedPlaces);
+        var fLongFixed = +fLong.toFixed(nFixedPlaces);
+
+        if (fMarkerLatFixed == fLatFixed && fMarkerLongFixed == fLongFixed) {
           nOverlapYAdjust = 3;
           nOverlapCaretYAdjust = 16.9;
           nOverlapPosYAdjust = 8.4;
