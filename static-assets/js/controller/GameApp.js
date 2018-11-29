@@ -491,7 +491,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       var jsonData = {markerID: markerID};
 
       var url = GAME_API_URL + 'game/' + GAME_ID + '/player/' + activePlayer.id + '/marker';
-      console.log(url);
+//      console.log(url);
       $.ajax({
         type: 'post',
         dataType: 'json',
@@ -618,11 +618,13 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         mountain3DView.focusLocation(coords[0], coords[1]);
         timeoutStoryID = window.setTimeout(function(){
           var nMarkerPos = mountainEventsCollection.indexOf(mountainStoryModel);
+
           // is the player fundraising, or is the first 'free' marker?
+          // or is the player not in a fundraising game?
           var fFundRaisingGoal = this.currPlayerModel.get('fundraising_goal');
-          if ((fFundRaisingGoal && fFundRaisingGoal > 0) || (nMarkerPos == 0))  {
+          if (((fFundRaisingGoal && fFundRaisingGoal > 0) || (nMarkerPos == 0)) || (!GAME_FUNDRAISING))  {
             // bring up feature overlay
-            mountainStoryModalView.render(this.currPlayerModel, mountainStoryModel);
+            mountainStoryModalView.render(jsonCurrGame, this.currPlayerModel, mountainStoryModel);
             mountainStoryModalView.show();
           }
           else {
@@ -721,8 +723,9 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           if (latestEnabledMarkerID != activePlayer.get('latestMarkerID')) {
             var nMarkerPos = mountainEventsCollection.indexOf(latestEnabledMarker);
             // it is, but is the player fundraising, or is the first 'free' marker?
+            // or is this not a fundraiaing game?
             var fFundRaisingGoal = activePlayer.get('fundraising_goal');
-            if ((fFundRaisingGoal && fFundRaisingGoal > 0) || (nMarkerPos == 0)) {
+            if (((fFundRaisingGoal && fFundRaisingGoal > 0) || (nMarkerPos == 0)) || (!GAME_FUNDRAISING))  {
               // yes so update marker
               setLatestEnabledMarker(latestEnabledMarkerID);
             }
