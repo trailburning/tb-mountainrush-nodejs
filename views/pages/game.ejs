@@ -272,8 +272,14 @@ var Demo = <%= Defs.Demo %>;
             <div class="content-container">
               <div class="media-container">
               {{ if (_.where(asset.media, {mime_type:'video/mp4'}).length) { }}
+                {{ var mediaVideo = _.where(asset.media, {mime_type:'video/mp4'})[0] }}
+
+                {{ if (_.where(asset.media, {credit: game.type.toLowerCase()})[0]) { }}
+                  {{ mediaVideo = _.where(asset.media, {credit: game.type.toLowerCase()})[0] }}
+                {{ } }}
+
                 <div class="video">
-                  <video id="media" url="{{= _.where(asset.media, {mime_type:'video/mp4'})[0].path }}" class="media-player video-js vjs-default-skin" controls preload="auto" width="auto" height="auto" poster="{{= _.where(asset.media, {mime_type:'image/jpeg'})[0].path }}?fm=jpg&w=420&h=236&fit=crop&q=80">
+                  <video id="media" url="{{= mediaVideo.path }}" class="media-player video-js vjs-default-skin" controls preload="auto" width="auto" height="auto" poster="{{= _.where(asset.media, {mime_type:'image/jpeg'})[0].path }}?fm=jpg&w=420&h=236&fit=crop&q=80">
                    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
                   </video>
                 </div>

@@ -12,10 +12,10 @@ define([
       this.objVideo = null;
     },
 
-    render: function(playerModel, storyModel){
+    render: function(jsonCurrGame, playerModel, storyModel){
       var self = this;
       
-      $(this.el).html(this.template({player: playerModel.toJSON(), story: storyModel.toJSON()}));
+      $(this.el).html(this.template({game: jsonCurrGame, player: playerModel.toJSON(), story: storyModel.toJSON()}));
 
       $('.big-close-btn', $(this.el)).click(function(evt){
         $('.modal', $(self.el)).modal('hide');

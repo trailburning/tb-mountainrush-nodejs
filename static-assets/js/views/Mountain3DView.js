@@ -14,6 +14,8 @@ var STATE_SELECT_PLAYER_AND_ORBIT = 4;
 var MOUNTAIN_TYPE_GULLYS = 0;
 var MOUNTAIN_TYPE_SMOOTH = 1;
 
+var MARKER_FADE_DISTANCE = 10000;
+
 define([
   'underscore', 
   'backbone',
@@ -208,13 +210,11 @@ define([
         bMultiPlayer = true;
       }
 
-      var nFadeDistance = 7000;
-
       this.playerCollection = playerCollection;
 
       this.playerCollection.each(function(model, index){
         var bAllowPlayerSelect = true;
-        jsonPlayer = self.buildPlayerJSON(model.get('id'), model.get('progress'), model.get('imagePath'), index+1, bMultiPlayer, bAllowPlayerSelect, nFadeDistance);
+        jsonPlayer = self.buildPlayerJSON(model.get('id'), model.get('progress'), model.get('imagePath'), index+1, bMultiPlayer, bAllowPlayerSelect, MARKER_FADE_DISTANCE);
 
         model.set('jsonPlayer', jsonPlayer);
       });
@@ -225,17 +225,13 @@ define([
       var fLat = along.geometry.coordinates[1];
       var fLong = along.geometry.coordinates[0];
 
+//      console.log(fLat+' : '+fLong);
+
       // see if the  player overlaps a marker
-      var nOverlapYAdjust = 0, nOverlapCaretYAdjust = 0, nOverlapPosYAdjust = 0;
+      var nOverlapYAdjust = 0, nOverlapCaretYAdjust = 0, nOverlapPosYAdjust = 0, nDecimalPlaces = 3;
 
       $.each(this.arrMarkers, function(index, jsonMarker){
-        var nFixedPlaces = 3;
-        var fMarkerLatFixed = +jsonMarker.features[0].geometry.coordinates[1].toFixed(nFixedPlaces);
-        var fMarkerLongFixed = +jsonMarker.features[0].geometry.coordinates[0].toFixed(nFixedPlaces);
-        var fLatFixed = +fLat.toFixed(nFixedPlaces);
-        var fLongFixed = +fLong.toFixed(nFixedPlaces);
-
-        if (fMarkerLatFixed == fLatFixed && fMarkerLongFixed == fLongFixed) {
+        if (+jsonMarker.features[0].geometry.coordinates[1].toFixed(nDecimalPlaces) == +fLat.toFixed(nDecimalPlaces) && +jsonMarker.features[0].geometry.coordinates[0].toFixed(nDecimalPlaces) == +fLong.toFixed(nDecimalPlaces)) {
           nOverlapYAdjust = 3;
           nOverlapCaretYAdjust = 16.9;
           nOverlapPosYAdjust = 8.4;
@@ -493,16 +489,15 @@ define([
           "coordinates": []
         }
       }
-      var nFadeDistance = 7000;
 
       // look for point on line
       pt.geometry.coordinates[1] = coord[0];
       pt.geometry.coordinates[0] = coord[1];
 
       var snapped = turf.pointOnLine(this.jsonRoute, pt);
-      
-      fLat = snapped.geometry.coordinates[1];
-      fLong = snapped.geometry.coordinates[0];
+
+      fLat = +snapped.geometry.coordinates[1].toFixed(3);
+      fLong = +snapped.geometry.coordinates[0].toFixed(3);
 
       // slice route at point
       var ptStart = turf.point([this.jsonRoute.geometry.coordinates[0][0], this.jsonRoute.geometry.coordinates[0][1]]);
@@ -511,15 +506,16 @@ define([
 
       var fMarkerKM = turf.length(sliced, {units: 'kilometers'});
       var bEnable = false;
+
       if (Number(fProgressKM) >= Number(fMarkerKM)) {
         bEnable = true;
       }
 
       if (bEnable) {
-        jsonMarker = this.buildMarkerOn(id, fLat, fLong, strMarkerImage, strMarkerImageOn, nFadeDistance);
+        jsonMarker = this.buildMarkerOn(id, fLat, fLong, strMarkerImage, strMarkerImageOn, MARKER_FADE_DISTANCE);
       }
       else {
-        jsonMarker = this.buildMarkerOff(id, fLat, fLong, strMarkerImageOff, nFadeDistance);
+        jsonMarker = this.buildMarkerOff(id, fLat, fLong, strMarkerImageOff, MARKER_FADE_DISTANCE);
       }
       this.arrMarkers.push(jsonMarker);
 
