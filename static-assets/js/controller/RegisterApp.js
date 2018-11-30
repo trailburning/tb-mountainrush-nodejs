@@ -50,8 +50,9 @@ define([
   'views/RegisterFundraisingPageCreateView',
   'views/RegisterFundraisingPageCreatedView',
   'views/ChallengeCancelModalView',
+  'views/PromotionModalView',
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, cookie, truncate, modernizr, dateFormat, datepicker, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, RegisterInvitationView, RegisterWelcomeView, RegisterWelcomeVerifyView, RegisterWelcomeConnectedView, RegisterWelcomePreferencesView, RegisterGameCreateView, RegisterGameCreatedView, RegisterGameInviteView, RegisterGamesView, RegisterFundraisingCreateView, RegisterFundraisingCreatedView, RegisterFundraisingSigninView, RegisterFundraisingSignupView, RegisterFundraisingPageCreateView, RegisterFundraisingPageCreatedView, ChallengeCancelModalView, DemoVideoView){
+], function(_, Backbone, bootstrap, cookie, truncate, modernizr, dateFormat, datepicker, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, RegisterInvitationView, RegisterWelcomeView, RegisterWelcomeVerifyView, RegisterWelcomeConnectedView, RegisterWelcomePreferencesView, RegisterGameCreateView, RegisterGameCreatedView, RegisterGameInviteView, RegisterGamesView, RegisterFundraisingCreateView, RegisterFundraisingCreatedView, RegisterFundraisingSigninView, RegisterFundraisingSignupView, RegisterFundraisingPageCreateView, RegisterFundraisingPageCreatedView, ChallengeCancelModalView, PromotionModalView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -72,6 +73,7 @@ define([
     app.dispatcher.on("RegisterWelcomeConnectedView:prefsClick", onPrefsClick);
     app.dispatcher.on("RegisterWelcomePreferencesView:prefsUpdated", onRegisterPreferencesPrefsUpdated);
     app.dispatcher.on("RegisterWelcomePreferencesView:backClick", onRegisterBackClick);
+    app.dispatcher.on("RegisterGameCreateView:sponsoredGameSelected", onSponsoredGameSelected);
     app.dispatcher.on("RegisterGameCreateView:gameCreated", onRegisterGameCreated);
     app.dispatcher.on("RegisterGameCreatedView:inviteClick", onInviteClick);
     app.dispatcher.on("RegisterGameCreatedView:fundraiseClick", onRegisterFundraiseClick);
@@ -93,6 +95,7 @@ define([
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
 
     var challengeCancelModalView = new ChallengeCancelModalView({ el: '#challenge-cancel-modal-view' });
+    var promotionModalView = new PromotionModalView({ el: '#promotion-modal-view' });
 
     var registerInvitationView = new RegisterInvitationView({ el: '#register-invitation-view', code: CAMPAIGN_INVITATION_CODE });
     var registerWelcomeView = new RegisterWelcomeView({ el: '#register-welcome-view' });
@@ -563,6 +566,11 @@ define([
 
     function onPrefsClick() {
       changeState(STATE_PLAYER_PREFERENCES);
+    }
+
+    function onSponsoredGameSelected() {
+      promotionModalView.render();
+      promotionModalView.show();      
     }
 
     function onRegisterGameCreated() {

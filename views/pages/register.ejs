@@ -116,9 +116,31 @@ var TEST = '<%= Defs.Test %>';
 </div>
 
 <div id="challenge-cancel-modal-view"></div>
+<div id="promotion-modal-view"></div>
 
 <div id="mobileTest" class="visible-xs"></div>
 <div id="demo-video-view"></div>
+
+<script type="text/template" id="promotionModalViewTemplate">
+  <div class="modal msg-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="details">
+            <div class="title">Climb with ashmei</div>
+            <div class="description">
+              <div class="logo"><img src="/static-assets/images/logos/logo_ashmei_challenge31.png"></div>
+              Summit during December and enter the <a href="https://ashmei.com/" class="link" target="_blank">ashmei</a> prize draw!  Greatest ascent wins a pair of <a href="https://sungod.to/cpAI7xPO" class="link" target="_blank">SunGod</a> Classics2!
+            </div>
+          </div>
+          <div class="action-fields">
+            <div class="action-field"><span class="btn mr-btn" data-dismiss="modal">Sounds great</span></div>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</script>
 
 <script type="text/template" id="challengeCancelModalViewTemplate">
   <div class="modal msg-overlay" tabindex="-1" role="dialog">
@@ -393,7 +415,7 @@ var TEST = '<%= Defs.Test %>';
         <h2><%= __('register.game_create.choose_ascent') %></h2>
         <ul class="form-field pills" data-id="level">
         {{ _.each(gameLevels, function(gameLevel, index) { }}
-          <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameLevel.id }}" data-season-id="{{= gameLevel.seasonDefault }}">{{= gameLevel.name }} {{= gameLevel.ascent }}m</span>
+          <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameLevel.id }}" data-season-id="{{= gameLevel.seasonDefault }}" data-sponsored="{{= gameLevel.sponsored }}">{{= gameLevel.name }} {{= gameLevel.ascent }}m</span>
           </li>
         {{ }); }}
         </ul>

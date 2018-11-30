@@ -288,7 +288,12 @@ var Demo = <%= Defs.Demo %>;
               {{ } }}
               </div><div class="content">
                 <div class="text">
-                  Did you know?
+                  {{ if (game.sponsored) { }}
+                    Challenge31
+                  {{ } else { }}
+                    Did you know?
+                  {{ } }}
+
                   <div class="text-title big">{{= asset.name }}</div>
                   <div class="text-title about">{{= asset.about }}</div>
                 </div>
