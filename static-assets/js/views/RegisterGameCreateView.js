@@ -9,6 +9,7 @@ define([
       this.template = _.template($('#registerGameCreateViewTemplate').text());
 
       this.options = options;
+      this.bSponsoredDialogShown = false;
 
       this.jsonFields = {campaignID: 0,
                          ownerPlayerID: 0,
@@ -111,6 +112,14 @@ define([
         if (!elPill.hasClass('active')) {
           $('.pill', elParent).removeClass('active');
           elPill.addClass('active');
+
+          // is this is a sponsored item?
+          if (elPill.attr('data-sponsored') && !self.bSponsoredDialogShown) {
+            self.bSponsoredDialogShown = true;
+
+            // fire event
+            app.dispatcher.trigger("RegisterGameCreateView:sponsoredGameSelected");
+          }
         }
 
         switch (elParent.attr('data-id')) {
