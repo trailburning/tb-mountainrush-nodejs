@@ -1,6 +1,13 @@
 module.exports = function(grunt) {  
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    sass: {
+      dist: {
+        files: {
+          'static-assets/css/page.css' : 'static-assets/sass/page.scss'
+        }
+      }
+    },
     cssmin: {
       target: {
         files: {
@@ -9,13 +16,21 @@ module.exports = function(grunt) {
       }
     },
     watch: {
+      source: {
+        files: ['**/*.scss'],
+        tasks: ['sass'],
+        options: {
+          livereload: true, // needed to run LiveReload
+        }
+      },
       files: ['**/*.css'],
       tasks: ['cssmin']
     }
   });
 
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-  grunt.registerTask('default', ['cssmin', 'watch']);
+  grunt.registerTask('default', ['sass', 'cssmin', 'watch']);
 };

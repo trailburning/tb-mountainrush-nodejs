@@ -72,16 +72,8 @@ var TEST = '<%= Defs.Test %>';
         <div class="register-view" id="register-fundraising-signup-view"></div>
         <div class="register-view" id="register-fundraising-page-create-view"></div>
         <div class="register-view" id="register-fundraising-page-created-view"></div>
-        <div class="support">          
-        <% if (Campaign.CampaignTemplate != 'default') { %>
-          <%= Campaign.ClientShortName %>'s <%= Campaign.CampaignName %> campaign is brought to you by <a href="https://mountainrush.co.uk/" class="link" target="_blank">Mountain Rush</a>.<br/>
-        <% } %>
-
-        <% if (Campaign.CampaignTemplate != 'default') { %>
-          <%- __('register.help.mr_contact', '<a class="link" href="mailto:support@mountainrush.co.uk">' + __('error.device.support') + '</a>') %>
-        <% } else { %>
-          <%- __('register.help.contact', '<a class="link" href="mailto:support@mountainrush.co.uk">' + __('register.help.support') + '</a>') %>
-        <% } %>
+        <div class="support">  
+        <% include ../partials/support.ejs %>
         </div>
       </div>
 
