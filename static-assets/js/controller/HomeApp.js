@@ -107,10 +107,6 @@ define([
         activePlayerView.render();
       });
 
-      // fire up promotion
-      promotionModalView.render(jsonUser);
-      promotionModalView.show();      
-
       var playerGameView = new PlayerGameView({ el: '#player-game-view', playerToken: jsonUser.token });
       playerGameView.getPlayerGame(DEF_CLIENT_ID);
     }
@@ -282,6 +278,11 @@ define([
       if (playerGameView.getActiveGame()) {
         playerGameView.render();
         playerGameView.show();
+      }
+      else {
+        // no active game so fire up promotion
+        promotionModalView.render(jsonUser);
+        promotionModalView.show();      
       }
     }
 

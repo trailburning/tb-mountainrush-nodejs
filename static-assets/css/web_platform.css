@@ -1002,7 +1002,7 @@ img.scale {
 }
 
 .modal .description {
-  padding: 12px 30px;
+  padding: 12px 40px;
   font-size: 1.2em;
   line-height: 1.4em;
 }
@@ -1323,6 +1323,10 @@ img.scale {
 
   .fundraise-sticker .details .target:before {
     padding-top: 8px;
+  }
+
+  .modal .description {
+    padding: 12px 60px;
   }
 }
 
