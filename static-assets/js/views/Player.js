@@ -106,15 +106,6 @@ define([
 
         self.model.set('mediaCaptured', self.jsonProgress.bMediaCaptured == '1' ? true : false);
         // calc progress
-/*
-mla
-        console.log(fElevationGain);
-        if (fElevationGain == 318) {
-          fElevationGain = 1300;
-
-          console.log(fElevationGain);
-        }
-*/
         var fAscentPercent = (fElevationGain / self.options.journeyAscent) * 100;
         self.model.set('elevationGainPercent', fAscentPercent);
 
