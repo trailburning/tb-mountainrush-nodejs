@@ -36,19 +36,18 @@
 /* PAGE VIEW */
 /******************************************/
 #page-view {
-}
+  a.link,
+  a.link:hover, 
+  a.link:active,
+  a.link:visited {
+    color: inherit;
+    text-decoration: underline;
+  }
 
-#page-view a.link,
-#page-view a.link:hover, 
-#page-view a.link:active,
-#page-view a.link:visited {
-  color: inherit;
-  text-decoration: underline;
-}
-
-#page-view .fundraising-partner img {
-  width: 80px;
-  padding: 0 0 4px 4px;
+  .fundraising-partner img {
+    width: 80px;
+    padding: 0 0 4px 4px;
+  }
 }
 
 /* VIDEO VIEW */
@@ -144,13 +143,17 @@
   display: none;
 }
 
+@mixin box-shadow($rgba) {
+  -webkit-box-shadow: 0px 5px 10px 1px $rgba;
+  -moz-box-shadow: 0px 5px 10px 1px $rgba;
+  box-shadow: 0px 5px 10px 1px $rgba;
+}
+
 #player-view #piste-view {
   position: relative;
   z-index: 2;
   height: 100%;
-  -webkit-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
-  -moz-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
-  box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
+  @include box-shadow(rgba(25,56,72,0.2));
 }
 
 /* GAME VIEW */

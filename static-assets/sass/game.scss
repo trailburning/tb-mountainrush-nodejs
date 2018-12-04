@@ -1,8 +1,9 @@
-.touchevents #wrapper {
+.touchevents #wrapper{
   height: 100%;
   width: 100%;
   position: fixed;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 .ranking {
   width: 20px;
@@ -13,7 +14,8 @@
   line-height: 20px;
   text-align: center;
   color: #FFF;
-  background: #a5b4bd; }
+  background: #a5b4bd;
+}
 
 .photo-icon {
   display: none;
@@ -21,10 +23,11 @@
   height: 20px;
   background: #f75f36;
   border-radius: 50%;
-  overflow: hidden; }
-
+  overflow: hidden;
+}
 .photo-icon.show {
-  display: block; }
+  display: block;
+}
 
 .photo-icon i {
   vertical-align: top;
@@ -32,7 +35,8 @@
   width: 100%;
   line-height: 20px;
   text-align: center;
-  color: #fff; }
+  color: #fff;
+}
 
 /* FOOTER VIEW */
 /******************************************/
@@ -40,15 +44,18 @@
   display: none;
   position: absolute;
   top: -80px;
-  width: 100%; }
+  width: 100%;
+}
 
 #footer-view .mr-logo {
   margin: 0 auto;
   width: 160px;
-  text-align: center; }
+  text-align: center;
+}
 
 #footer-view .mr-logo img {
-  width: 100%; }
+  width: 100%;
+}
 
 /* PAGE VIEW */
 /******************************************/
@@ -56,139 +63,166 @@
   position: relative;
   height: 100%;
   overflow: hidden;
-  font-family: 'radikalregular', sans-serif; }
+  font-family: 'radikalregular', sans-serif;
+}
 
 /* GAME VIEW */
 /******************************************/
 #game-view {
   z-index: 2;
-  position: relative; }
+  position: relative;
+}
 
 /* SPONSOR CONTAINER VIEW */
 /******************************************/
 #sponsor-container-view {
-  display: none; }
+  display: none;
+}
 
 body.sponsored #sponsor-container-view {
-  display: block; }
+  display: block;
+}
 
 /* SPONSOR VIEW */
 /******************************************/
-body.sponsored .sponsor-view .link,
-body.sponsored .sponsor-view .link:active,
+body.sponsored .sponsor-view .link, 
+body.sponsored .sponsor-view .link:active, 
 body.sponsored .sponsor-view .link:visited {
   text-decoration: none;
-  color: inherit; }
+  color: inherit;
+}
 
 body.sponsored .sponsor-view {
   padding: 32px 15px 26px 15px;
-  background: #173545;
-  background: linear-gradient(0deg, #173545 0%, #2a485a 50%, #3b5a6d 100%); }
+  background: rgb(23,53,69);
+  background: linear-gradient(0deg, rgba(23,53,69,1) 0%, rgba(42,72,90,1) 50%, rgba(59,90,109,1) 100%);
+}
 
 body.sponsored .sponsor-view .logo img {
-  width: 80px; }
+  width: 80px;
+}
 
 body.sponsored .sponsor-view .title {
-  color: #fff; }
+  color: #fff;
+}
 
 body.sponsored .sponsor-view .title h1 {
   padding-top: 24px;
   padding-bottom: 16px;
   font-family: 'radikalbold', sans-serif;
   font-size: 2.5em;
-  line-height: 1.2em; }
+  line-height: 1.2em;
+}
 
 body.sponsored .sponsor-view .title h2 {
   font-family: 'radikalregular';
-  font-size: 1.2em; }
+  font-size: 1.2em;
+}
 
 body.sponsored .sponsor-view .title strong {
-  font-family: 'radikalbold', sans-serif; }
+  font-family: 'radikalbold', sans-serif;
+}
 
 /* MAP VIEW */
 /******************************************/
 #map-view {
   position: relative;
   width: 100%;
-  background: #f3f3f3; }
+  background: #f3f3f3;
+}
 
 #map-view .embelish {
   display: none;
   position: absolute;
-  pointer-events: none; }
+  pointer-events: none;
+}
 
 #map-view .map-overlay {
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2); }
+  background: rgba(0, 0, 0, 0.2);
+}
 
 #map-view .overlay-loader-view {
   position: absolute;
   top: 0;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+}
 
 #map-view .overlay-loader {
   position: relative;
   top: 50%;
   margin: -30px auto 0 auto;
   width: 60px;
-  height: 60px; }
+  height: 60px;
+}
 
-#map-view .overlay-loader .double-bounce1,
+#map-view .overlay-loader .double-bounce1, 
 #map-view .overlay-loader .double-bounce2 {
-  background-color: #FFF; }
+  background-color: #FFF;
+}
 
 #map-view .map {
-  width: 100%; }
+  width: 100%;
+}
 
 #map-view #piste-view #loading-splash,
 #map-view #piste-view .compass {
-  display: none; }
-
+  display: none;
+}
 #map-view #piste-view .powered-by,
 #map-view #piste-view .credits {
   display: none;
-  bottom: 80px !important; }
+  bottom: 80px !important;
+}
 
 #map-view .game-details-container {
   position: absolute;
   pointer-events: none;
   top: 26px;
   width: 100%;
-  text-align: center; }
+  text-align: center;
+}
 
 .countdown-container {
-  display: none; }
+  display: none;
+}
 
 #map-view .countdown {
   display: inline-block;
-  width: 260px; }
+  width: 260px;
+}
 
 .countdown {
   line-height: 1em;
   color: #fff;
   text-transform: uppercase;
-  text-align: left; }
+  text-align: left;
+}
 
 .countdown .days {
   padding-left: 8px;
-  font-size: 2.4em; }
+  font-size: 2.4em;
+}
 
 .countdown .days .time {
-  font-family: 'radikalbold', sans-serif; }
+  font-family: 'radikalbold', sans-serif;
+}
 
 .countdown .hours {
   display: inline-block;
   text-align: right;
   width: 90px;
   padding-left: 12px;
-  font-size: 1.4em; }
+  font-size: 1.4em;
+}
 
 .countdown .hours .time {
-  font-family: 'radikallight', sans-serif; }
+  font-family: 'radikallight', sans-serif;
+}
 
 /* PLAYER VIEW */
 /******************************************/
@@ -199,34 +233,41 @@ body.sponsored .sponsor-view .title strong {
   width: 100%;
   height: 100%;
   background: #e6e6e6;
-  pointer-events: none; }
+  pointer-events: none;
+}
 
 #players-summary-view,
 #players-list-view,
 #players-detail-view {
-  pointer-events: auto; }
+  pointer-events: auto;
+}
 
 #player-view.transition {
   -webkit-transition: top 0.3s;
-  transition: top 0.3s; }
+  transition: top 0.3s;
+}
 
 #player-view .summary {
   position: relative;
   height: 80px;
   background: #001825;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 body.fundraising #player-view .summary {
   height: 72px;
-  overflow: initial; }
+  overflow: initial;
+}
 
 #player-view .summary.min,
 body.fundraising #player-view .summary.min {
-  height: 50px; }
+  height: 50px;
+}
 
 #player-view .summary .arrow {
   font-size: 0.8em;
-  color: #44b6f7; }
+  color: #44b6f7;
+}
 
 #player-view .summary .nav-arrow {
   position: absolute;
@@ -234,25 +275,29 @@ body.fundraising #player-view .summary.min {
   margin-top: -0.4em;
   line-height: 0.8em;
   -webkit-transition: all 0.3s;
-  transition: all 0.3s; }
-
+  transition: all 0.3s;
+}
 body.single-player #player-view .summary .nav-arrow {
-  display: none; }
+  display: none;
+}
 
 #player-view .summary .nav-arrow img {
-  vertical-align: inherit; }
+  vertical-align: inherit;
+}
 
 #player-view .summary .arrow-left {
-  left: -20px; }
-
+  left: -20px;
+}
 #player-view .summary .arrow-left.active {
-  left: 12px; }
+  left: 12px;
+}
 
 #player-view .summary .arrow-right {
-  right: -20px; }
-
+  right: -20px;
+}
 #player-view .summary .arrow-right.active {
-  right: 12px; }
+  right: 12px;
+}
 
 #player-view .summary .summary-max {
   position: absolute;
@@ -260,28 +305,35 @@ body.single-player #player-view .summary .nav-arrow {
   width: 100%;
   text-align: center;
   -webkit-transition: top 0.3s;
-  transition: top 0.3s; }
+  transition: top 0.3s;
+}
 
 #player-view .summary .summary-max.expanded {
-  top: -20px; }
+  top: -20px;
+}
 
 body.fundraising #player-view .summary .summary-max {
-  top: 44px; }
+  top: 44px;  
+}
 
 body.fundraising #player-view .summary .summary-max.expanded {
-  top: -20px; }
+  top: -20px;
+}
 
 body.fundraising #player-view .summary .summary-max .arrow-down {
-  color: #fff; }
+  color: #fff;
+}
 
 #player-view .summary .summary-max .arrow-up {
-  padding-top: 10px; }
+  padding-top: 10px;
+}
 
 #player-view .summary .players-summary {
   position: relative;
   width: 100%;
   height: 100%;
-  background: #fff; }
+  background: #fff;
+}
 
 #player-view .summary .player-summary {
   display: none;
@@ -291,57 +343,67 @@ body.fundraising #player-view .summary .summary-max .arrow-down {
   top: 0;
   left: 0;
   text-align: center;
-  width: 340px; }
-
+  width: 340px;
+}
 #player-view .summary .player-summary.transition {
   -webkit-transition: top 0.5s, left 0.5s, opacity 0.3s;
-  transition: top 0.5s, left 0.5s, opacity 0.3s; }
+  transition: top 0.5s, left 0.5s, opacity 0.3s;
+}
 
 #player-view .summary .player-summary .photo {
   display: inline-block;
   position: relative;
-  width: 64px; }
+  width: 64px;
+}
 
 body.fundraising #player-view .summary .player-summary .photo {
   display: block;
-  margin-left: -14px; }
+  margin-left: -14px;
+}
 
 body.fundraising #player-view .summary .player-summary .avatar {
-  display: none; }
+  display: none;
+}
 
 #player-view .summary .player-summary .photo-icon {
   position: absolute;
   top: -6px;
-  left: 36px; }
+  left: 36px;
+}
 
 #player-view .summary .player-summary .avatar {
   width: 52px;
   height: 52px;
-  border: 2px solid #d7d7d7; }
+  border: 2px solid #d7d7d7;
+}
 
 #player-view .summary .player-summary .overview {
   display: inline-block;
   vertical-align: top;
   margin-top: 8px;
-  color: #3c5b6e; }
+  color: #3c5b6e;
+}
 
 #player-view .summary .player-summary .overview h1 {
   font-family: 'radikalbold', sans-serif;
   padding-bottom: 2px;
   font-size: 1.6em;
-  color: #44b6f7; }
+  color: #44b6f7;
+}
 
 #player-view .summary .player-summary .overview .name {
   display: inline-block;
   vertical-align: top;
   padding-right: 6px;
   font-size: 0.85em;
-  text-align: left; }
+  text-align: left;
+}
 
 body.fundraising #player-view .summary .player-summary .overview .name {
   text-align: right;
   width: 110px;
-  padding-right: 2px; }
+  padding-right: 2px;
+}
 
 #player-view .summary .player-summary .overview .summit {
   display: inline-block;
@@ -349,143 +411,170 @@ body.fundraising #player-view .summary .player-summary .overview .name {
   padding-left: 6px;
   font-size: 0.85em;
   text-align: left;
-  border-left: 1px solid #daf0fd; }
+  border-left: 1px solid #daf0fd;
+}
 
 body.fundraising #player-view .summary .player-summary .overview .summit {
   border-left: none;
   width: 110px;
-  padding-left: 2px; }
+  padding-left: 2px;
+}
 
 #player-view .summary .player-summary .fundraising-donation-summary-view {
-  display: none; }
+  display: none;
+}
 
 body.fundraising #player-view .summary .player-summary .fundraising-donation-summary-view {
   display: inline-block;
-  margin-top: -60px; }
+  margin-top: -60px;
+}
 
 #player-view .list {
-  display: none; }
+  display: none;
+}
 
 #player-view .list .player-ranking {
   height: 75px;
   padding-top: 16px;
   text-align: left;
-  color: #a5b4bd; }
+  color: #a5b4bd;
+}
 
 #player-view .list .player-ranking .pos {
   float: left;
   width: 70px;
   padding-top: 14px;
-  padding-left: 30px; }
+  padding-left: 30px;
+}
 
 #player-view .list .player-ranking .photo {
   float: left;
   position: relative;
   width: 58px;
   padding-top: 0;
-  padding-left: 0; }
+  padding-left: 0;
+}
 
 #player-view .list .player-ranking .photo-icon {
   position: absolute;
   top: -5px;
-  left: 28px; }
+  left: 28px;
+}
 
 #player-view .list .player-ranking .overview {
   float: left;
   padding-top: 2px;
   padding-left: 10px;
-  border-left: 1px solid #a5b4bd; }
+  border-left: 1px solid #a5b4bd;
+}
 
 #player-view .list .player-ranking .overview h1 {
   font-family: 'radikalbold', sans-serif;
   padding-bottom: 2px;
-  font-size: 1.4em; }
+  font-size: 1.4em;
+}
 
 #player-view .list .player-ranking.active,
 #player-view .list .player-ranking:hover {
   color: #44b6f7;
-  background: #fff; }
+  background: #fff;
+}
 
 #player-view .list .player-ranking.active .ranking,
 #player-view .list .player-ranking:hover .ranking {
-  background: #44b6f7; }
+  background: #44b6f7;
+}
 
 #player-view .list .player-ranking.active .overview,
 #player-view .list .player-ranking:hover .overview {
-  border-left: 1px solid #44b6f7; }
+  border-left: 1px solid #44b6f7;
+}
 
 #player-view .list .player-ranking:hover {
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 #player-view .detail {
   overflow: hidden;
-  background: #fff; }
+  background: #fff;
+}
 
 #player-view .detail .scroll {
   height: 100%;
   overflow: scroll;
-  -webkit-overflow-scrolling: touch; }
+  -webkit-overflow-scrolling: touch;
+}
 
 #player-view .detail .player {
   min-height: 460px;
   display: none;
   position: relative;
   padding: 0;
-  text-align: center; }
+  text-align: center;
+}
 
 #player-view .detail .player .fundraising-donation-summary-view,
 #player-view .detail .player .fundraising-donation-view,
 #player-view .detail .player .fundraising-donations-view {
-  display: none; }
+  display: none;
+}
 
 #player-view .detail .player .photo {
   display: inline-block;
   text-align: center;
   position: relative;
-  width: 100px; }
+  width: 100px;
+}
 
 #player-view .detail .player .photo-icon {
   position: absolute;
   top: 10px;
-  left: 86px; }
+  left: 86px;
+}
 
 #player-view .detail .player .avatar {
   width: 100px;
   height: 100px;
-  border: 2px solid #d7d7d7; }
+  border: 2px solid #d7d7d7;
+}
 
 #player-view .detail .player .overview {
   padding-top: 14px;
   font-size: 1.2em;
-  color: #3c5b6e; }
+  color: #3c5b6e;
+}
 
 #player-view .detail .player .overview h1 {
   font-family: 'radikalbold', sans-serif;
   padding-bottom: 2px;
   font-size: 1.8em;
-  color: #44b6f7; }
+  color: #44b6f7;
+}
 
 #player-view .detail .player .overview .name {
-  padding-bottom: 18px; }
-
+  padding-bottom: 18px; 
+}
 #player-view .detail .player .overview .name .player-name:hover {
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 #player-view .detail .player .overview .summit-container {
   width: 100%;
-  padding-top: 16px;
+  padding-top: 16px; 
   border-top: 1px solid #d7d7d7;
-  padding-bottom: 18px;
-  border-bottom: 1px solid #d7d7d7; }
+  padding-bottom: 18px; 
+  border-bottom: 1px solid #d7d7d7;
+}
 
 #player-view .detail .player .overview .summit {
   display: inline-block;
   padding-right: 18px;
-  text-align: right; }
-
+  text-align: right;
+}
 .single-player #player-view .detail .player .overview .summit {
   padding-right: 0;
-  text-align: center; }
+  text-align: center;
+}
 
 #player-view .detail .player .overview .pos {
   display: inline-block;
@@ -493,53 +582,64 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
   vertical-align: top;
   padding-top: 5px;
   padding-left: 22px;
-  border-left: 1px solid #daf0fd; }
-
+  border-left: 1px solid #daf0fd;
+}
 .single-player #player-view .detail .player .overview .pos {
-  display: none; }
+  display: none;
+}
 
 #player-view .detail .player .overview .pos .ranking {
   margin-bottom: 7px;
   width: 23px;
   height: 23px;
   line-height: 23px;
-  background-color: #44b6f7; }
+  background-color: #44b6f7;
+}
 
 #player-view .detail .player .fundraising-story {
   display: none;
-  padding: 20px 32px 32px 32px; }
+  padding: 20px 32px 32px 32px;
+}
 
 body.fundraising #player-view .detail .player .fundraising-story {
-  display: block; }
+  display: block;
+}
 
 #player-view .detail .player .donate-info {
-  position: relative; }
+  position: relative;
+}
 
 #player-view .detail .player .donate-info .donate-btn,
 #player-view .detail .player .donate-info .fundraising-provider-btn {
-  padding-top: 14px; }
+  padding-top: 14px;
+}
 
 #player-view .detail .player .latest-activity {
   padding-top: 12px;
   padding-bottom: 10px;
   text-align: center;
-  border-bottom: 1px solid #d7d7d7; }
+  border-bottom: 1px solid #d7d7d7;
+}
 
 #player-view .detail .player .latest-activity-blank {
-  height: 60px; }
+  height: 60px;
+}
 
 body.fundraising #player-view .detail .player .latest-activity {
-  border-bottom: none; }
+  border-bottom: none;
+}
 
 body.fundraising #player-view .detail .player .latest-activity {
-  padding-bottom: 80px; }
+  padding-bottom: 80px;
+}
 
 #player-view .detail .player .latest-activity a,
-#player-view .detail .player .latest-activity a:hover,
+#player-view .detail .player .latest-activity a:hover, 
 #player-view .detail .player .latest-activity a:active,
 #player-view .detail .player .latest-activity a:visited {
   color: inherit;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 #player-view .detail .player .latest-activity .icon {
   display: inline-block;
@@ -549,109 +649,134 @@ body.fundraising #player-view .detail .player .latest-activity {
   height: 8px;
   border-radius: 50%;
   overflow: hidden;
-  background-color: #f75f36; }
+  background-color: #f75f36;
+}
 
 #player-view .detail .player .latest-activity .title {
-  padding-left: 8px; }
+  padding-left: 8px;
+}
 
 #player-view .detail .player .latest-activity strong {
-  font-family: 'radikalbold', sans-serif; }
+  font-family: 'radikalbold', sans-serif;
+}
 
 #player-view .detail .player .latest-activity .latest {
   display: block;
   font-size: 1em;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
 
 #player-view .detail .player .latest-activity .stats {
   display: block;
   padding: 6px 0;
   font-size: 1.2em;
-  line-height: 1em; }
+  line-height: 1em;
+}
 
 #player-view .detail .player .latest-activity .ago {
-  display: block; }
+  display: block;
+}
 
 #player-view .detail .player .latest-activity .external-view {
   display: block;
-  padding-top: 6px; }
+  padding-top: 6px;
+}
 
 #player-view .detail .player .latest-activity .external-view .provider {
-  color: #FC4C02; }
+  color: #FC4C02;
+}
 
 #player-view .detail .shopping-list,
 #player-view .detail .fundraising-donations-view {
-  background: #efefef; }
+  background: #efefef;
+}
 
 #player-view .detail .shopping-list {
-  padding-top: 34px; }
+  padding-top: 34px;
+}
 
 #player-view .detail .photo-posts-view {
-  padding: 0 0 26px 0; }
+  padding: 0 0 26px 0;
+}
 
 #player-view .detail .player .posts {
   margin: 22px auto 0 auto;
-  width: 244px; }
+  width: 244px;
+}
 
 #player-view .detail .player .welcome {
   display: none;
   color: #a5b4bd;
-  text-align: center; }
+  text-align: center;
+}
 
 #player-view .detail .player .welcome.without-photos,
 #player-view .detail .player .welcome.without-donations {
-  display: block; }
+  display: block;
+}
 
 #player-view .detail .player .more-posts {
   padding: 20px 0 8px 0;
-  width: 100%; }
+  width: 100%;
+}
 
 #player-view .detail .player .post {
   vertical-align: top;
   width: 100%;
   padding: 22px 0 0 0;
   font-size: 0.9em;
-  text-align: left; }
-
+  text-align: left;
+}
 #player-view .detail .player .post.no-show {
-  display: none; }
+  display: none;
+}
 
 #player-view .detail .player .post .photo {
   position: relative;
   width: 100%;
   height: 260px;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 #player-view .detail .player .post .media {
-  position: relative; }
+  position: relative;
+}
 
 #player-view .detail .player .post .media:hover {
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 #player-view .detail .player .post .image {
   width: 244px;
   height: 244px;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover; }
+  background-size: cover;
+}
 
 #player-view .detail .player .post .details {
-  padding-top: 8px; }
+  padding-top: 8px;
+}
 
 #player-view .detail .player .post .credit {
-  line-height: 1.4em; }
+  line-height: 1.4em;
+}
 
 #player-view .detail .player .post .ago {
-  color: #a5b4bd; }
+  color: #a5b4bd;
+}
 
 #player-view .detail .player .post .media-icon {
   position: absolute;
   top: 2px;
   right: 6px;
   font-size: 1.4em;
-  color: #fff; }
+  color: #fff;
+}
 
 body.fundraising #player-view .detail .player .fundraising-donation-view.above-photos {
-  display: block; }
+  display: block;
+}
 
 #player-view .detail .player .fundraising-donation-view .shopping-list-sticker-container {
   position: absolute;
@@ -659,59 +784,71 @@ body.fundraising #player-view .detail .player .fundraising-donation-view.above-p
   margin: 0;
   width: 100%;
   height: 92px;
-  top: -44px; }
+  top: -44px;
+}
 
 #player-view .detail .player .fundraising-donation-view .shopping-list-sticker {
-  margin: 0 auto; }
+  margin: 0 auto;
+}
 
 body.fundraising #player-view .detail .player .fundraising-donations-view {
   display: block;
-  padding: 42px 12px 0 12px; }
+  padding: 42px 12px 0 12px;
+}
 
 #player-view .detail .player .fundraising-donations-view .title {
   padding-bottom: 8px;
   font-size: 1.8em;
   text-transform: uppercase;
-  text-align: center; }
+  text-align: center;
+}
 
 #player-view .detail .player .fundraising-donations-view .fundraisers {
-  padding: 30px 0 0 0; }
+  padding: 30px 0 0 0;
+}
 
 #player-view .detail .player .fundraising-donations-view .donator {
   padding: 26px 0 22px 0;
-  border-top: 1px solid #e9e9e6; }
+  border-top: 1px solid #e9e9e6;
+}
 
 #player-view .detail .player .fundraising-donations-view .donator .content {
   margin: 0 auto;
   width: 198px;
   font-size: 0.95em;
-  text-align: left; }
+  text-align: left;
+}
 
 #player-view .detail .player .fundraising-donations-view .avatar {
   display: inline-block;
   width: 42px;
   height: 42px;
-  border: 2px solid #fff; }
+  border: 2px solid #fff;
+}
 
 #player-view .detail .player .fundraising-donations-view .donation-detail {
   display: inline-block;
   width: 156px;
   padding-left: 12px;
-  vertical-align: top; }
+  vertical-align: top;
+}
 
 #player-view .detail .player .fundraising-donations-view .donation-detail .amount-detail {
   padding-top: 2px;
-  font-size: 0.9em; }
+  font-size: 0.9em;
+}
 
 #player-view .detail .player .fundraising-donations-view .donation-detail .amount {
   margin-left: 5px;
   padding: 4px;
   color: #fff;
-  background-color: #f75f36; }
+  background-color: #f75f36;
+}
 
 #player-view .detail .player .fundraising-donations-view .donation-msg {
   padding-top: 4px;
-  color: #9b9b9b; }
+  color: #9b9b9b;
+}
 
 #player-view .detail .player .fundraising-donations-view .donation-msg .quote {
   display: inline-block;
@@ -719,13 +856,15 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   padding-right: 4px;
   text-align: right;
   font-size: 1.3em;
-  line-height: 1.8em; }
+  line-height: 1.8em;
+}
 
 #player-view .detail .player .fundraising-donations-view .donation-msg .msg {
   display: inline-block;
   width: 140px;
   line-height: 1.3em;
-  vertical-align: top; }
+  vertical-align: top;
+}
 
 #player-view .detail .back-to-mountain {
   display: block;
@@ -734,416 +873,628 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   text-align: center;
   color: #fff;
   background-color: #474747;
-  text-transform: uppercase; }
-
+  text-transform: uppercase;
+}
 #player-view .detail .back-to-mountain:hover {
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 #player-view .detail .back-to-mountain .arrow {
-  padding-left: 16px; }
+  padding-left: 16px;
+}
 
 #player-view .shopping-list-sticker-container {
   position: absolute;
   bottom: -62px;
-  width: 100%; }
+  width: 100%;
+}
 
 #player-view .shopping-list-sticker-container .shopping-list-sticker {
-  margin: 0 auto; }
+  margin: 0 auto;
+}
 
 /* STORY OVERLAY */
 /******************************************/
 .modal.story-overlay.in,
 .modal.locked-story-overlay.in {
-  display: flex !important; }
+  display: flex !important;
+}
 
 .modal.story-overlay .modal-dialog {
   margin: auto;
   width: 248px;
-  padding: 0; }
+  padding: 0;
+}
 
 .modal.locked-story-overlay .modal-dialog {
   margin: auto;
   width: 296px;
-  padding: 0; }
+  padding: 0;
+}
 
 .modal.story-overlay .detail-title,
 .modal.locked-story-overlay .detail-title {
   font-size: 1.5em;
   line-height: 1.2em;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
 
 .modal.story-overlay .modal-body .info-detail {
   padding: 0 96px 34px 96px;
-  font-size: 1.2em; }
+  font-size: 1.2em;
+}
 
 .modal.locked-story-overlay .modal-body .info-detail {
   padding: 0 12px 0 12px;
-  font-size: 1.2em; }
+  font-size: 1.2em;
+}
 
 .modal.story-overlay .modal-content {
   box-shadow: none;
-  background-color: transparent; }
+  background-color: transparent;
+}
 
 .modal.locked-story-overlay .modal-content {
-  box-shadow: none; }
+  box-shadow: none;
+}
 
 .modal.story-overlay .modal-body,
 .modal.locked-story-overlay .modal-body {
   padding: 0;
   color: #9b9b9b;
-  text-align: center; }
+  text-align: center;
+}
 
 .modal.locked-story-overlay .modal-body {
-  background-color: #eeeeeb; }
+  background-color: #eeeeeb;
+}
 
 .modal.locked-story-overlay .modal-body {
-  padding: 58px 0 40px 0; }
+  padding: 58px 0 40px 0;
+}
 
 .modal.story-overlay .modal-body .content-container {
   text-align: left;
-  background-color: #fff; }
+  background-color: #fff;
+}
 
 .modal.story-overlay .modal-body .btns,
 .modal.locked-story-overlay .modal-body .btns {
   padding-top: 8px;
-  text-align: left; }
+  text-align: left;
+}
 
 .modal.story-overlay .modal-body .btns .btn,
 .modal.locked-story-overlay .modal-body .btns .btn {
-  margin-right: 6px; }
+  margin-right: 6px;
+}
 
 .modal.story-overlay .image img {
-  width: 100%; }
+  width: 100%;
+}
 
 .modal.story-overlay .content {
-  padding: 20px 12px 30px 12px; }
+  padding: 20px 12px 30px 12px;
+}
 
 .modal.story-overlay .content .text {
   color: #c2c2c2;
   font-size: 1em;
-  line-height: 1.2em; }
+  line-height: 1.2em;
+}
 
 .modal.story-overlay .text-title {
   font-family: 'radikalbold';
   text-transform: uppercase;
   font-size: 1.2em;
-  line-height: 1.3em; }
-
+  line-height: 1.3em;
+}
 .modal.story-overlay .text-title.big {
   padding-top: 2px;
-  font-size: 1.7em; }
+  font-size: 1.7em;
+}
 
 .modal.story-overlay .modal-body .share-detail {
-  position: absolute; }
+  position: absolute;
+}
 
 /* MODAL */
 /******************************************/
 .modal .social {
   padding: 10px 0;
-  font-size: 3em; }
+  font-size: 3em;
+}
 
 .modal .social .social-btn {
-  padding: 0 8px; }
+  padding: 0 8px;
+}
 
 .modal .type,
 .modal .date,
 .modal .time {
-  color: #f75f36; }
+  color: #f75f36;
+}
 
 .modal .social a,
 .modal .social a:active,
 .modal .social a:visited {
-  color: #44b6f7; }
+  color: #44b6f7;
+}
 
 .modal .social a:hover {
-  color: #3c5b6e; }
+  color: #3c5b6e;
+}
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  .touchevents #wrapper {
+  .touchevents #wrapper{
     height: auto;
     width: auto;
     position: relative;
-    overflow: auto; }
+    overflow: auto;
+  }
+
   #page-view .stripe {
     z-index: 1;
     position: absolute;
     width: 100%;
     height: 88px;
-    background: #fff; }
+    background: #fff;
+  }
+
   #page-view .stripe.top {
-    top: 72px; }
+    top: 72px;
+  }
+
   body.sponsored .sponsor-view .logo {
     display: inline-block;
-    vertical-align: top; }
+    vertical-align: top;
+  }
+
   body.sponsored .sponsor-view .title {
     display: inline-block;
     vertical-align: top;
-    padding-left: 38px; }
+    padding-left: 38px;
+  }
+
   body.sponsored .sponsor-view .detail {
     display: inline-block;
     padding-top: 4px;
     vertical-align: top;
-    float: right; }
+    float: right;
+  }
+
   body.sponsored .sponsor-view .sponsor-detail-view h1 {
-    padding-top: 0; }
+    padding-top: 0;
+  }
+
   body.sponsored .sponsor-view .sponsor-detail-view h1 {
     font-size: 3em;
-    line-height: 1.05em; }
+    line-height: 1.05em;
+  }
+
   body.sponsored .sponsor-view .detail .donate-btn {
     padding-top: 18px;
-    text-align: right; }
+    text-align: right;
+  }
+
   #game-view {
-    overflow: initial; }
+    overflow: initial;
+  }
+
   #map-view {
-    -webkit-box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2);
-    -moz-box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2);
-    box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2); }
+    -webkit-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
+    -moz-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
+    box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
+  }
+
   body.sponsored #map-view {
     border-top: #fff solid 4px;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
-    box-shadow: none; }
+    box-shadow: none;
+  }
+
   body.sponsored #map-view .game-details-container {
-    display: none; }
+    display: none;
+  }
+
   #map-view .map {
-    height: 490px !important; }
+    height: 490px !important;
+  }
+
   #map-view #piste-view .powered-by,
   #map-view #piste-view .credits {
-    bottom: 0px !important; }
+    bottom: 0px !important;
+  }
+
   #map-view .countdown {
-    top: 24px; }
+    top: 24px;
+  }
+
   #player-view {
     position: relative;
-    background: none; }
+    background: none;
+  }
+
   #player-view .list {
-    display: block; }
+    display: block;
+  }
   body.single-player #player-view .list {
-    display: none; }
+    display: none;
+  }
+
   #player-view .summary {
-    display: none; }
+    display: none;
+  }
+
   #player-view .detail {
     position: relative;
-    overflow: initial; }
+    overflow: initial;
+  }
+
   #player-view .detail .scroll {
     height: auto;
     overflow: initial;
-    -webkit-overflow-scrolling: none; }
+    -webkit-overflow-scrolling: none;
+  }
+
   #player-view .detail .player {
-    padding: 26px 19px 26px 19px; }
+    padding: 26px 19px 26px 19px;
+  }
+
   #player-view .detail .player .overview h1 {
-    font-size: 2em; }
+    font-size: 2em;
+  }
+
   #player-view .detail .shopping-list,
   #player-view .detail .photo-posts-view,
   #player-view .detail .fundraising-donations-view {
-    background: #FFF; }
+    background: #FFF;
+  }
+
   body.fundraising #player-view .detail .player .overview h1 {
-    font-size: 1.6em; }
+    font-size: 1.6em;
+  }
+
   body.fundraising #player-view .detail .player .fundraising-story {
     padding: 20px 0 100px 0;
     margin-left: 132px;
-    text-align: left; }
+    text-align: left;
+  }
+
   body.fundraising #player-view .detail .player .latest-activity {
-    border-bottom: 1px solid #d7d7d7; }
+    border-bottom: 1px solid #d7d7d7;
+  }
+
   body.fundraising #player-view .detail .player .fundraising-donation-summary-view {
     display: inline-block;
     position: absolute;
     top: 14px;
-    right: 0; }
+    right: 0;
+  }
+
   body.fundraising #player-view .detail .player .fundraising-donation-view.above-photos {
-    display: none; }
+    display: none;
+  }
+
   body.fundraising #player-view .detail .player .fundraising-donation-view.below-photos {
-    display: block; }
+    display: block;
+  }
+
   body.fundraising #player-view .detail .player .fundraise-sticker .details .raised {
-    margin-top: 20px; }
+    margin-top: 20px;
+  }
+
   body.fundraising #player-view .detail .player .fundraise-sticker {
     width: 128px;
-    height: 128px; }
+    height: 128px;
+  }
+
   body.fundraising #player-view .detail .player .fundraise-sticker .details .raised {
-    font-size: 1.8em; }
+    font-size: 1.8em;
+  }
+
   body.fundraising #player-view .detail .player .fundraise-sticker .details .target {
-    font-size: 0.85em; }
+    font-size: 0.85em;
+  }
+
   #player-view .detail .player .photo {
     float: left;
     display: block;
     padding-left: 7px;
-    text-align: left; }
+    text-align: left;
+  }
+
   body.fundraising #player-view .detail .player .fundraise-sticker-continer {
     float: left;
     display: block;
     padding-left: 7px;
-    text-align: left; }
+    text-align: left;
+  }
+
   #player-view .detail .player .overview {
     min-height: 112px;
-    text-align: left; }
+    text-align: left;
+  }
+
   body.fundraising #player-view .detail .player .overview {
-    padding-top: 26px; }
+    padding-top: 26px;
+  }
+
   #player-view .detail .player .overview .name {
     float: left;
     padding: 0 32px 0 32px;
-    width: 300px; }
+    width: 300px;
+  }
+
   #player-view .detail .player .overview .summit-container {
-    padding-top: 0px;
+    padding-top: 0px; 
     border-top: none;
-    border-bottom: none; }
+    border-bottom: none;
+  }
+
   #player-view .detail .player .overview .summit {
     float: left;
     padding-left: 22px;
     text-align: left;
-    border-left: 1px solid #daf0fd; }
+    border-left: 1px solid #daf0fd;
+  }
+
   .single-player #player-view .detail .player .overview .summit {
-    text-align: left; }
+    text-align: left;
+  }
+
   #player-view .detail .player .overview .pos {
-    display: none; }
+    display: none;
+  }
+
   #player-view .detail .player .latest-activity {
     margin-left: 7px;
     margin-right: 7px;
     margin-top: 14px;
     border-top: 1px solid #d7d7d7;
-    text-align: left; }
+    text-align: left;
+  }
+
   body.fundraising #player-view .detail .player .latest-activity {
-    padding-bottom: 10px; }
+    padding-bottom: 10px;
+  }
+
   #player-view .detail .player .latest-activity .latest {
-    display: inline-block; }
+    display: inline-block;
+  }
+
   #player-view .detail .player .latest-activity .stats {
     display: inline-block;
-    padding: 0 18px; }
+    padding: 0 18px;
+  }
+
   #player-view .detail .player .latest-activity .ago {
-    display: inline-block; }
+    display: inline-block;
+  }
+
   #player-view .detail .player .latest-activity .external-view {
     display: inline-block;
     padding: 0;
-    float: right; }
+    float: right;
+  }
+
   #player-view .detail .player .photo-icon {
-    display: none; }
+    display: none;
+  }
+
   #player-view .detail .player .latest-activity-blank {
-    display: none; }
+    display: none;
+  }
+  
   #player-view .detail .player .posts {
     margin: 16px 0 0 0;
-    width: 100%; }
+    width: 100%;
+  }
+
   #player-view .detail .player .posts .welcome {
     padding-left: 7px;
-    text-align: left; }
+    text-align: left;
+  }
+
   #player-view .detail .player .post {
     display: inline-block;
     padding: 22px 7px 0 7px;
-    width: 210px; }
+    width: 210px;
+  }
+
   #player-view .detail .player .post .image {
     width: 196px;
-    height: 196px; }
+    height: 196px;
+  }
+
   #player-view .detail .player .post .details {
     height: 64px;
-    overflow: hidden; }
+    overflow: hidden;
+  }
+
   #player-view .detail .player .fundraising-donation-view {
-    border-top: 1px solid #d7d7d7; }
+    border-top: 1px solid #d7d7d7;
+  }
+
   #player-view .detail .player .fundraising-donation-view .shopping-list {
-    padding-top: 42px; }
+    padding-top: 42px;
+  }
+
   #player-view .detail .player .fundraising-donations-view {
     padding-top: 38px;
-    border-top: 1px solid #d7d7d7; }
+    border-top: 1px solid #d7d7d7;
+  }
+
   #player-view .detail .player .fundraising-donations-view .donator {
     display: inline-block;
     vertical-align: top;
     padding: 0 4px 32px 4px;
-    border: none; }
+    border: none;
+  }
+
   #player-view .detail .back-to-mountain {
-    display: none; }
+    display: none;
+  }
+
   body.fundraising #player-view .detail {
-    margin-bottom: 62px; }
+    margin-bottom: 62px;
+  }
+
   #footer-view {
     margin-top: 200px;
-    height: 200px; }
+    height: 200px;
+  }
+
   #footer-view .logo-container {
     display: block;
-    top: -100px; }
+    top: -100px;
+  }
+
   #footer-view .mr-logo {
-    width: 200px; } }
+    width: 200px;
+  }
+}
 
 /* Small devices (tablets, 992px and up) */
 @media (min-width: 992px) {
   body.sponsored .sponsor-view {
     height: 388px;
-    padding: 56px 0 0 0; }
+    padding: 56px 0 0 0;
+  }
+
   body.sponsored .sponsor-view .sponsor-detail-view {
     margin-left: auto;
     margin-right: auto;
-    width: 942px; }
+    width: 942px;
+  }
+
   .modal.story-overlay .big-close-btn {
-    right: 33px; }
+    right: 33px;
+  }
+
   .modal.story-overlay .modal-dialog {
-    width: 782px; }
+    width: 782px;
+  }
+
   .modal.locked-story-overlay .modal-dialog {
-    width: 670px; }
+    width: 670px;
+  }
+
   .modal.story-overlay .modal-body .details {
     width: 670px;
     margin: 0 56px;
     padding: 58px 0 40px 0;
-    background-color: #eeeeeb; }
+    background-color: #eeeeeb;
+  }
+
   .modal.locked-story-overlay .modal-body .details {
-    padding: 0 96px 0 96px; }
+    padding: 0 96px 0 96px;
+  }
+
   .modal.story-overlay .modal-body .share-detail {
     position: relative;
     padding: 28px 0 0 0;
     color: #a3a3a3;
-    text-align: center; }
+    text-align: center;
+  }
+
   .modal.story-overlay .modal-body .share-detail .share-text {
     font-size: 0.9em;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+  }
+
   .modal.story-overlay .modal-body .content-container {
     width: 782px;
     height: 236px;
     margin-left: -56px;
     color: #9b9b9b;
     overflow: hidden;
-    box-shadow: 0px 5px 10px rgba(25, 56, 72, 0.2); }
+    box-shadow: 0px 5px 10px rgba(25, 56, 72, 0.2);
+  }
+
   .modal.story-overlay .media-container {
     display: inline-block;
     width: 420px;
-    height: 236px; }
+    height: 236px;
+  }
+
   .modal.story-overlay .modal-body .content {
     display: inline-block;
     width: 362px;
     padding: 48px 42px 0 42px;
-    vertical-align: top; }
+    vertical-align: top;
+  }
+
   .modal.story-overlay .modal-body .content .text-title.about {
-    padding-right: 12px; }
+    padding-right: 12px;
+  }
+
+
   .modal.story-overlay .modal-body .btns {
     padding-top: 16px;
-    text-align: center; }
+    text-align: center;
+  }
+
   .modal.story-overlay .modal-body .btns .btn {
-    margin: 0 13px; }
+    margin: 0 13px;
+  }
+
   #map-view {
     margin: 0 auto 0 auto;
-    width: 942px; }
+    width: 942px;
+  }
+
   body.sponsored #map-view {
     margin-top: -164px;
-    border: #fff solid 4px; }
+    border: #fff solid 4px;
+  }
+
   #map-view .embelish {
-    display: block; }
+    display: block;
+  }
+
   #map-view #piste-view .credits {
-    bottom: 60px !important; }
+    bottom: 60px !important;
+  }
   body.single-player #map-view #piste-view .credits {
     bottom: 0px !important;
-    width: 110px !important; }
+    width: 110px !important;
+  }
   body.single-player #map-view #piste-view .credits p {
-    line-height: 8pt !important; }
+    line-height: 8pt !important;
+  }
+
   #player-view {
     margin-left: auto;
     margin-right: auto;
-    width: 992px; }
+    width: 992px;
+  }
+
   #player-view .list {
     float: left;
-    width: 322px; }
+    width: 322px;
+  }
+
   #player-view .list ul {
-    padding-left: 25px; }
+    padding-left: 25px;
+  }
+
   #player-view .detail {
     float: left;
     margin-top: -55px;
     width: 670px;
-    min-height: 686px; }
+    min-height: 686px;
+  }
+
   body.single-player #player-view .detail-container {
-    width: 100%; }
+    width: 100%;
+  }
+
   body.single-player #player-view .detail {
     float: none;
     margin-left: auto;
-    margin-right: auto; } }
+    margin-right: auto;
+  }
+}

@@ -37,6 +37,7 @@ define([
       this.bFlagVisible = false;
       this.currPlayerID = null;
       this.arrRouteCoords = null;
+      this.bPlayerOverlapsMarker = false;
     },
 
     hide: function(){
@@ -225,18 +226,14 @@ define([
       var fLat = along.geometry.coordinates[1];
       var fLong = along.geometry.coordinates[0];
 
-//      console.log(fLat+' : '+fLong);
-
       // see if the  player overlaps a marker
       var nOverlapYAdjust = 0, nOverlapCaretYAdjust = 0, nOverlapPosYAdjust = 0, nDecimalPlaces = 3;
+      if (this.bPlayerOverlapsMarker) {
+        nOverlapYAdjust = 3;
+        nOverlapCaretYAdjust = 16.9;
+        nOverlapPosYAdjust = 8.4;        
+      }
 
-      $.each(this.arrMarkers, function(index, jsonMarker){
-        if (+jsonMarker.features[0].geometry.coordinates[1].toFixed(nDecimalPlaces) == +fLat.toFixed(nDecimalPlaces) && +jsonMarker.features[0].geometry.coordinates[0].toFixed(nDecimalPlaces) == +fLong.toFixed(nDecimalPlaces)) {
-          nOverlapYAdjust = 3;
-          nOverlapCaretYAdjust = 16.9;
-          nOverlapPosYAdjust = 8.4;
-        }
-      });
 
       var fIconY = 2;
       var fCaretY = 5.55;
@@ -496,8 +493,8 @@ define([
 
       var snapped = turf.pointOnLine(this.jsonRoute, pt);
 
-      fLat = +snapped.geometry.coordinates[1].toFixed(3);
-      fLong = +snapped.geometry.coordinates[0].toFixed(3);
+      fLat = snapped.geometry.coordinates[1];
+      fLong = snapped.geometry.coordinates[0];
 
       // slice route at point
       var ptStart = turf.point([this.jsonRoute.geometry.coordinates[0][0], this.jsonRoute.geometry.coordinates[0][1]]);
@@ -509,6 +506,11 @@ define([
 
       if (Number(fProgressKM) >= Number(fMarkerKM)) {
         bEnable = true;
+      }
+
+      // do we have an overlap?
+      if (fProgressKM == fMarkerKM) {
+        this.bPlayerOverlapsMarker = true;
       }
 
       if (bEnable) {
