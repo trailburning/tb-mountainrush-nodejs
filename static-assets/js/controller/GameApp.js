@@ -814,7 +814,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
       // are we a sponsored game?
       if (jsonGame.sponsored) {
-        $('body').addClass('sponsored'); // mla test
+        $('body').addClass('sponsored');
       }
 
       // convert UTC dates to local
