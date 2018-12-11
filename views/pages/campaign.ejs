@@ -26,6 +26,8 @@ var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
 var CAMPAIGN_JUICER_FEED = '<%= Campaign.CampaignJuicerFeed %>';
 </script>
 
+<div id="root"></div>
+
 <div class="container-fluid nopadding">
   <div id="page-view">
     <% if (Campaign.CampaignTemplate == 'default') { %>
@@ -304,6 +306,7 @@ var CAMPAIGN_JUICER_FEED = '<%= Campaign.CampaignJuicerFeed %>';
 </body>
 
 <% include ../partials/analytics.ejs %>
+<script type="text/javascript" src="/static-assets/js/build.js"></script></body>
 <script data-main="/static-assets/js/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
 
 <!-- Example of how to use Piste API -->
