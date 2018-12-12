@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { store } from "./store";
-import { loadLiterals } from "./store/literals";
+import { loadLiterals } from "./reducers/literals";
 import loadLang from "./locales";
 import HowToGuide from './HowToGuide';
 

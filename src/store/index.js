@@ -1,12 +1,8 @@
-import reducer from "../reducers";
 import { createStore, combineReducers } from "redux";
-import literals from "./literals.js";
+import literals from "../reducers/literals.js";
 
 const rootReducer = combineReducers({
-  literals,
-  reducer
+  literals
 });
 
-const initialState = { tech: "React" };
-//export const store = createStore(reducer, initialState);
 export const store = createStore(rootReducer);
