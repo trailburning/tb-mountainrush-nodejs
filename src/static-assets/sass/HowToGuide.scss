@@ -1,5 +1,20 @@
 #howToGuide {
-  padding: 44px 16px 46px 16px;
+  position: relative;
+  font-size: 1.2em;
+
+  .howToStep {
+    &:nth-child(odd) {
+      background: #fff;
+    }
+
+    &:nth-child(even) {
+      background: #eeeeeb;
+    }
+
+    .content {
+      padding: 44px 16px 46px 16px;
+    }
+  }
 
   .animated {
     position: relative;
@@ -26,8 +41,22 @@
 
 @media (min-width: 768px) {
   #howToGuide {
-    margin: 0 auto;
-    width: 670px;
+    .howToStep {
+      .content {
+        margin: 0 auto;
+        width: 670px;
+
+        .text {
+          display: inline-block;
+          width: 50%;
+        }
+
+        .image {
+          display: inline-block;
+          width: 50%;
+        }
+      }
+    }
 
     .animated img {
       height: 380px;

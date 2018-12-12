@@ -1,5 +1,12 @@
 #howToGuide {
-  padding: 44px 16px 46px 16px; }
+  position: relative;
+  font-size: 1.2em; }
+  #howToGuide .howToStep:nth-child(odd) {
+    background: #fff; }
+  #howToGuide .howToStep:nth-child(even) {
+    background: #eeeeeb; }
+  #howToGuide .howToStep .content {
+    padding: 44px 16px 46px 16px; }
   #howToGuide .animated {
     position: relative;
     left: 100px;
@@ -16,8 +23,14 @@
     opacity: 0; }
 
 @media (min-width: 768px) {
-  #howToGuide {
+  #howToGuide .howToStep .content {
     margin: 0 auto;
     width: 670px; }
-    #howToGuide .animated img {
-      height: 380px; } }
+    #howToGuide .howToStep .content .text {
+      display: inline-block;
+      width: 50%; }
+    #howToGuide .howToStep .content .image {
+      display: inline-block;
+      width: 50%; }
+  #howToGuide .animated img {
+    height: 380px; } }
