@@ -28,13 +28,28 @@ module.exports = function(grunt) {
         }
       },
       files: ['**/*.css'],
-      tasks: ['cssmin']
+      tasks: ['cssmin'],
+      locales: {
+        files: ['**/*.json'],
+        tasks: ['copy:locales']
+      }
+    },
+    copy: {
+      locales: {
+        expand: true,
+        cwd: 'src/locales/',
+        src: '*.json',
+        dest: 'locales/',
+        flatten: true,
+        filter: 'isFile'
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
-  grunt.registerTask('default', ['sass', 'cssmin', 'watch']);
+  grunt.registerTask('default', ['sass', 'cssmin', 'copy', 'watch']);
 };
