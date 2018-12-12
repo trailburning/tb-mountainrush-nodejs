@@ -9,7 +9,7 @@ const HowToStep = (props) => {
 
       <ScrollAnimation key={props.step} animateIn="fadeIn" animateOut="fadeOut">
 
-      <img height="380" src="https://www.mountainrush.co.uk/static-assets/images/wwf-uk/mobile_big.png" />
+      <img src="https://www.mountainrush.co.uk/static-assets/images/wwf-uk/mobile_big.png" />
 
       </ScrollAnimation>
 

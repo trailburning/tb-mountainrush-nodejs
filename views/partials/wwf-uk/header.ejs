@@ -41,5 +41,5 @@
     {{ firstname = 'unknown' }}
   {{ } }}
 
-  <div class="name"><a class="link" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/profile">Hi {{= firstname }}!</a></div>
+  <div class="name"><a class="link" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/profile"><%= __('menu.greeting') %> {{= firstname }}!</a></div>
 </script>

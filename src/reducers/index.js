@@ -1,4 +1,6 @@
-export default (state, action) => {
+const defaultState = {};
+
+export default (state = defaultState, action) => {
   switch (action.type) {
     case "SET_TECHNOLOGY":
       return {
