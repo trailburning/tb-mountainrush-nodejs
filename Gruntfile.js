@@ -5,9 +5,9 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: 'static-assets/sass/',
+          cwd: 'src/static-assets/sass/',
           src: ['**/*.scss'],
-          dest: 'static-assets/css/',
+          dest: 'src/static-assets/css/',
           ext: '.css'
         }]
       }
@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     cssmin: {
       target: {
         files: {
-          'static-assets/css/dist.min.css': ['static-assets/css/fonts_radikal.css', 'static-assets/css/fonts_din.css', 'static-assets/css/web_platform.css']
+          'src/static-assets/css/dist.min.css': ['src/static-assets/css/fonts_radikal.css', 'src/static-assets/css/fonts_din.css', 'src/static-assets/css/web_platform.css']
         }
       }
     },
@@ -29,12 +29,22 @@ module.exports = function(grunt) {
       },
       files: ['**/*.css'],
       tasks: ['cssmin'],
+      staticassets: {
+        files: ['**'],
+        tasks: ['copy:staticassets']
+      },
       locales: {
         files: ['**/*.json'],
         tasks: ['copy:locales']
       }
     },
     copy: {
+      staticassets: {
+        expand: true,
+        cwd: 'src/static-assets/',
+        src: '**',
+        dest: 'static-assets/'
+      },
       locales: {
         expand: true,
         cwd: 'src/locales/',

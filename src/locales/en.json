@@ -21,6 +21,20 @@
 		"scene5_1": "Reach The Summit With",
 		"scene5_2": "Mountain Rush"
 	},
+  "how_to_guide": {
+    "step1": {
+      "title": "Your Challenge",
+      "description": "To virtually climb Mount Sabyinyo and raise funds for mountain gorillas. Cycle, run, hike, you decide. Flat city or surrounded by hills?  Pick a timeframe that suits you. Ready to start now or need a little more time?  Choose your start date. Set your fundraising goal and raise funds for mountain gorillas"
+    },
+    "step2": {
+      "title": "Get Active",
+      "description": "Download the Strava app and track your activity. Receive email updates and view your challenge progress on Mountain Sabyinyo in 3D. Follow the mountain gorillas by unlocking exclusive WWF videos as you progress."
+    },
+    "step3": {
+      "title": "Fundraise",
+      "description": "Let everyone know how you’re going and reach your fundraising goal."
+    }
+  },
 	"welcome": {
 		"title": "A challenging game",
 		"description": "To virtually ascend real mountains",

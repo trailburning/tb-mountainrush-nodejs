@@ -1,0 +1,194 @@
+body {
+  color: #9b9b9b;
+}
+
+h1,
+h2 {
+  font-family: 'PFDINTextPro-Black', sans-serif;
+}
+
+/* HEADER VIEW */
+/******************************************/
+#header-view {
+  .link, a.link, 
+  .link:visited, a.link:visited, 
+  .link:active, a.link:active {
+    color: #fff;
+  }
+
+  .link:hover, a.link:hover, 
+  ul li.active .link, ul li.active a.link {
+    color: #fff;
+  }
+
+  .menus li:hover strong {
+    border-bottom: 2px solid #fff;
+  }
+}
+
+/* HERO VIEW */
+/******************************************/
+#hero-view {
+  .campaign-title .campaign-tagline {
+    font-family: 'wwfregular', sans-serif;
+  }
+
+  .campaign-title .campaign-tagline .bigger {
+  }
+
+  .campaign-title .campaign-tagline2 {
+    font-family: 'PFDINTextPro-Black', sans-serif;
+  }
+
+  .campaign-sticker {
+    width: 105px;
+    height: 105px;
+    background: url(../../images/wwf-uk/wwf_sabyinyo.svg) no-repeat top center;
+  }
+}
+
+/* GAME VIEW */
+/******************************************/
+#game-view {
+  .embelish {
+    position: absolute;
+    top: 0;
+  }
+
+  .embelish.left {
+    top: 48px;
+    left: -234px;
+    width: 210px;
+    height: 160px;
+    background: url(../../images/wwf-uk/left-leaves2.png) no-repeat top left;
+  }
+
+  .embelish.right {
+    top: 107px;
+    right: -160px;
+    width: 160px;
+    height: 200px;
+    background: url(../../images/wwf-uk/right-leaves2.png) no-repeat top left;
+  }
+}
+
+/* INTRO VIEW */
+/******************************************/
+#intro-view .decoration {
+  position: absolute;
+  bottom: -104px;
+  left: -118px;
+  width: 232px;
+  height: 176px;
+  background: url('../../images/wwf-uk/bottom-big-blurry-leaf.png') no-repeat;
+  background-size: 100% 100%;
+}
+
+/* SUMMARY VIEW */
+/******************************************/
+#summary-view .summary-total-raised .total,
+#summary-view .summary-total-raised .title,
+#summary-view .summary-total-climbed .title {
+  font-family: 'PFDINTextPro-Black', sans-serif;
+}
+
+/* LEADER VIEW */
+/******************************************/
+#leader-view {
+  color: #474747;
+  background: #d3d1c8 url(../../images/wwf-uk/leaderboard.jpg) no-repeat bottom center;
+
+  .fundraise-detail .name,
+  .fundraise-detail .amount {
+    font-family: 'PFDINTextPro-Black', sans-serif;
+  }
+
+  .fundraise-detail .name {
+    color: #474747;
+  }
+
+  .leader .marker:after {
+    background-color: #f16d49;
+  }
+}
+
+/* SUPPORTER SEARCH VIEW */
+/******************************************/
+#supporter-search-view .search-panel input {
+  font-family: 'PFDINTextPro-Black', sans-serif;
+}
+
+/* COMMUNITY VIEW */
+/******************************************/
+#community-view {
+  .post {
+    .name {
+      a, 
+      a:hover, 
+      a:active, 
+      a:visited {
+        color: #474747;
+      }
+    }
+  }
+}
+
+/* AUTOCOMPLETE */
+/******************************************/
+.suggest .ui-autocomplete li .match-name {
+  font-family: 'PFDINTextPro-Black', sans-serif;
+}
+
+/* FOOTER VIEW */
+/******************************************/
+#footer-view {
+  background-color: #fff;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #header-view {
+    position: absolute;
+    top: 0;
+  }
+
+  #hero-view {
+    margin-top: 26px;
+
+    .campaign-sticker {
+      width: 108px;
+      height: 108px;
+    }
+  }
+
+  #intro-view .decoration {
+    bottom: -300px;
+    left: -290px;
+    width: 581px;
+    height: 440px;
+  }
+
+  #supporter-search-view .supporter-search-container {
+    background-position: bottom left;
+  }
+}
+
+/* Small devices (tablets, 992px and up) */
+@media (min-width: 992px) {
+  #header-view {
+    height: 178px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #hero-view {
+    .hero-container {
+      margin: 0 auto;
+      width: 992px;  
+    }
+
+    .campaign-sticker {
+      right: 0;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+h1,
+h2 {
+  font-family: 'PFDINTextPro-Black', sans-serif;
+}
+
+h1,
+h2 {
+  color: #474747;
+}
+
+/* HEADER VIEW */
+/******************************************/
+#header-view .link, #header-view a.link, 
+#header-view .link:visited, #header-view a.link:visited, 
+#header-view .link:active, #header-view a.link:active {
+  color: #fff;
+}
+
+#header-view .link:hover, #header-view a.link:hover, 
+#header-view ul li.active .link, #header-view ul li.active a.link, 
+#mainmenu ul li.active a, #mainmenu ul li:hover .link, #mainmenu ul li:hover a {
+  color: #fff;
+}
+
+#header-view .menus li:hover strong {
+  border-bottom: 2px solid #fff;
+}
+
+/* REGISTER PROCESS VIEWS */
+/******************************************/
+#page-content-view .content-view {
+  padding-bottom: 72px;
+}
+
+#page-content-view .campaign-sticker {
+  width: 92px;
+  height: 92px;
+  background: url(../../images/wwf-uk/wwf_sabyinyo.svg) no-repeat top center;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #header-view {
+    position: absolute;
+    top: 0;
+  }
+
+  #hero-view {
+    margin-top: 26px;
+  }
+}
+
+/* Small devices (tablets, 992px and up) */
+@media (min-width: 992px) {
+}
