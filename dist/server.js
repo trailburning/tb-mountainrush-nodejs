@@ -28,6 +28,7 @@ app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/static-assets', express.static(__dirname + '/static-assets'));
 
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/views'));
 
 const PORT = process.env.PORT || 8000;
 

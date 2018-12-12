@@ -21,38 +21,42 @@ module.exports = function(grunt) {
     },
     watch: {
       source: {
-        files: ['**/*.scss'],
-        tasks: ['sass'],
+        files: ['src/static-assets/sass/**/*.scss'],
+        tasks: ['sass', 'copy:staticassets_css'],
         options: {
           livereload: true, // needed to run LiveReload
         }
       },
-      files: ['**/*.css'],
-      tasks: ['cssmin'],
-      staticassets: {
-        files: ['**'],
-        tasks: ['copy:staticassets']
+      staticassets_js: {
+        files: ['src/static-assets/js/**/*.js'],
+        tasks: ['copy:staticassets_js']
       },
       locales: {
-        files: ['**/*.json'],
+        files: ['src/static-assets/locales/**/*.json'],
         tasks: ['copy:locales']
-      }
+      }      
     },
     copy: {
-      staticassets: {
+      staticassets_css: {
         expand: true,
-        cwd: 'src/static-assets/',
+        cwd: 'src/static-assets/css/',
         src: '**',
-        dest: 'static-assets/'
+        dest: 'dist/static-assets/css/'
+      },
+      staticassets_js: {
+        expand: true,
+        cwd: 'src/static-assets/js/',
+        src: '**',
+        dest: 'dist/static-assets/js/'
       },
       locales: {
         expand: true,
         cwd: 'src/locales/',
         src: '*.json',
-        dest: 'locales/',
+        dest: 'dist/locales/',
         flatten: true,
         filter: 'isFile'
-      }
+      }      
     }
   });
 
