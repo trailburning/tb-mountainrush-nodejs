@@ -1,0 +1,32 @@
+
+#howToGuide {
+  padding: 44px 16px 46px 16px;
+}
+
+.animated {
+  position: relative;
+  left: 100px;
+  transition: left 0.4s linear;
+}
+.animated img {
+  transition: opacity 0.3s linear;
+  opacity: 0.2;
+}
+
+.animated.fadeIn {
+  left: 0px;
+}
+.animated.fadeIn img {
+  opacity: 1;
+}
+
+.animated.fadeOut img {
+  opacity: 0;
+}
+
+@media (min-width: 768px) {
+  #howToGuide {
+    margin: 0 auto;
+    width: 670px;
+  }
+}
