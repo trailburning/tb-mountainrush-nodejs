@@ -1,0 +1,61 @@
+h1,
+h2 {
+  font-family: 'PFDINTextPro-Black', sans-serif; }
+
+h1,
+h2 {
+  color: #474747; }
+
+.pill.active,
+.pill:hover {
+  border-color: #f16d49;
+  color: #f16d49; }
+
+/* DATEPICKER */
+/******************************************/
+.datepicker td span.active.active, .datepicker td span.active.disabled, .datepicker td span.active:active, .datepicker td span.active:focus, .datepicker td span.active:hover, .datepicker td span.active[disabled], .datepicker td.active.active, .datepicker td.active.disabled, .datepicker td.active:active, .datepicker td.active:focus, .datepicker td.active:hover, .datepicker td.active:hover.active, .datepicker td.active:hover.disabled, .datepicker td.active:hover:active, .datepicker td.active:hover:focus, .datepicker td.active:hover:hover, .datepicker td.active:hover[disabled], .datepicker td.active[disabled] {
+  background-color: #f16d49; }
+
+/* HEADER VIEW */
+/******************************************/
+#header-view .link, #header-view a.link,
+#header-view .link:visited, #header-view a.link:visited,
+#header-view .link:active, #header-view a.link:active {
+  color: #fff; }
+
+#header-view .link:hover, #header-view a.link:hover,
+#header-view ul li.active .link, #header-view ul li.active a.link {
+  color: #fff; }
+
+#header-view .menus li:hover strong {
+  border-bottom: 2px solid #fff; }
+
+/* REGISTER PROCESS VIEWS */
+/******************************************/
+#register-process-view .register-views {
+  padding-bottom: 72px; }
+
+#register-process-view .campaign-sticker {
+  width: 92px;
+  height: 92px;
+  background: url(../../images/wwf-uk/wwf_sabyinyo.svg) no-repeat top center; }
+
+#register-process-view .calendar {
+  font-family: 'PFDINTextPro-Black', sans-serif; }
+
+/* REGISTER VIEW */
+/******************************************/
+.register-view .form-label label,
+.register-view .msg,
+.register-view .help-block {
+  font-family: 'PFDINTextPro-Black', sans-serif; }
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #header-view {
+    position: absolute;
+    top: 0; }
+  #hero-view {
+    margin-top: 26px; } }
+
+/* Small devices (tablets, 992px and up) */
