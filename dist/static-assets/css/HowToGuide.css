@@ -2,9 +2,9 @@
   position: relative;
   font-size: 1.2em; }
   #howToGuide .howToStep:nth-child(odd) {
-    background: #fff; }
-  #howToGuide .howToStep:nth-child(even) {
     background: #eeeeeb; }
+  #howToGuide .howToStep:nth-child(even) {
+    background: #fff; }
   #howToGuide .howToStep .content {
     padding: 44px 16px 46px 16px; }
   #howToGuide .animated {

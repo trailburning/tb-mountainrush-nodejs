@@ -4,11 +4,11 @@
 
   .howToStep {
     &:nth-child(odd) {
-      background: #fff;
+      background: #eeeeeb;
     }
 
     &:nth-child(even) {
-      background: #eeeeeb;
+      background: #fff;
     }
 
     .content {
