@@ -1,7 +1,7 @@
 import React from "react";
 import ScrollAnimation from 'react-animate-on-scroll';
 
-const HowToStep = (props) => {
+const HowToStep2 = (props) => {
   return (
     <div className="howToStep">
       <div className="content">
@@ -19,5 +19,4 @@ const HowToStep = (props) => {
     </div>
   );
 };
-
-export default HowToStep;
+export default HowToStep2;
