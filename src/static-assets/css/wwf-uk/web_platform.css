@@ -1,0 +1,316 @@
+@font-face {
+  font-family: 'wwfregular';
+  src: url("wwf-webfont.woff2") format("woff2"), url("wwf-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+body {
+  font-family: 'PFDinTextPro-Regular', sans-serif;
+  font-size: 15px;
+  color: #474747;
+  background: #eeeeeb; }
+
+/* VIDEO */
+/******************************************/
+.vjs-default-skin .vjs-play-progress,
+.vjs-default-skin .vjs-volume-level {
+  background-color: #f16d49; }
+
+/* MODAL */
+/******************************************/
+.modal .title {
+  color: #f16d49; }
+
+.modal .title, .modal .modal strong {
+  color: #f16d49; }
+
+/* LOADER VIEW */
+/******************************************/
+.double-bounce1, .double-bounce2 {
+  background-color: #f16d49; }
+
+/* HEADER VIEW */
+/******************************************/
+#header-view {
+  background: #000; }
+
+#header-view .mini-menu .hamburger {
+  color: #f16d49; }
+
+#header-view .mini-menu .logo-view {
+  width: 40px;
+  background-color: #FFF; }
+
+#header-view .mini-menu .logo {
+  padding-top: 4px;
+  padding-left: 0px; }
+
+#header-view .mini-menu .logo div {
+  width: 25px;
+  height: 36px;
+  background: url(../../images/wwf-uk/wwf_logo.png) no-repeat top center;
+  background-size: 25px 36px; }
+
+#header-view .mini-menu .signup {
+  margin-top: 0; }
+
+#header-view .full-menu .logo {
+  width: 74px;
+  height: 114px;
+  margin-top: -26px;
+  background-color: #fff;
+  box-shadow: 0px 5px 10px rgba(25, 56, 72, 0.2); }
+
+#header-view .full-menu .logo div {
+  margin: 26px 0 0 13px;
+  width: 48px;
+  height: 70px;
+  background: url(../../images/wwf-uk/wwf_logo.png) no-repeat top center;
+  background-size: 48px 70px; }
+
+#header-view .full-menu .menus {
+  float: none;
+  padding: 30px 0 0 0;
+  font-family: 'PFDinTextPro-Regular', sans-serif;
+  color: #474747; }
+
+#header-view .full-menu .menus .right {
+  float: right; }
+
+#header-view .full-menu .menus .right li:first-child {
+  text-align: right; }
+
+#header-view .menus,
+#mainmenu .menus {
+  font-family: 'PFDinTextPro-Regular', sans-serif;
+  font-size: 0.95em;
+  line-height: 1em;
+  color: #474747; }
+
+#header-view .menus strong,
+#mainmenu .menus strong {
+  font-family: 'PFDINTextPro-Black', sans-serif; }
+
+#header-view .menus li,
+#mainmenu .menus li {
+  line-height: 1.3em; }
+
+#header-view .menus li:hover a.link,
+#mainmenu .menus li:hover a.link {
+  text-decoration: none;
+  border: none; }
+
+#header-view .menus li:hover strong,
+#mainmenu .menus li:hover strong {
+  text-decoration: none;
+  border-bottom: 2px solid #4F6578; }
+
+#header-view .name {
+  text-transform: uppercase; }
+
+/* FOOTER */
+/******************************************/
+#footer-view {
+  height: auto; }
+
+#footer-view .footer-credits-container {
+  padding: 24px;
+  padding-bottom: 34px; }
+
+#footer-view .footer-credits-container div {
+  float: left; }
+
+#footer-view .footer-credits-container div.right {
+  float: right; }
+
+#footer-view .footer-credits-container img {
+  height: 42px; }
+
+#footer-view .footer-menus-container {
+  padding: 0 24px;
+  width: 100%;
+  background-color: #000; }
+
+#footer-view .footer-menus {
+  font-family: 'PFDinTextPro-Regular', sans-serif;
+  font-size: 0.95em;
+  letter-spacing: 0.02em;
+  line-height: 1em;
+  color: #fff;
+  text-transform: uppercase; }
+
+#footer-view .footer-menus .menus {
+  padding-top: 17px;
+  float: right; }
+
+#footer-view .logo {
+  float: left;
+  width: 74px;
+  height: 120px;
+  margin-top: -22px;
+  background-color: #fff; }
+
+#footer-view .logo div {
+  margin: 31px 0 0 13px;
+  width: 48px;
+  height: 70px;
+  background: url(../../images/wwf-uk/wwf_logo.png) no-repeat top center;
+  background-size: 48px 70px; }
+
+#footer-view .menus strong {
+  font-family: 'PFDINTextPro-Black', sans-serif;
+  letter-spacing: 0.02em;
+  font-weight: normal; }
+
+#footer-view .menus li {
+  float: none;
+  margin-bottom: 14px;
+  line-height: 1.3em; }
+
+#footer-view .legal {
+  padding: 32px 0 40px 0; }
+
+#footer-view .registered {
+  font-size: 0.7em;
+  color: #d7d7d7;
+  text-transform: uppercase; }
+
+#footer-view .copyright {
+  padding-top: 4px;
+  font-size: 0.75em;
+  color: #9b9b9b; }
+
+#footer-view ul li:hover strong {
+  border-bottom: 2px solid #fff; }
+
+#footer-view ul li a,
+#footer-view ul li a:active,
+#footer-view ul li a:visited,
+#footer-view ul li a:active {
+  text-decoration: none;
+  color: inherit; }
+
+/* BUTTONS */
+/******************************************/
+.mr-btn {
+  font-family: 'PFDINTextPro-Black', sans-serif;
+  font-size: 1em;
+  padding: 8px 11px 5px 11px;
+  color: #FFF;
+  border-radius: 0;
+  border: none;
+  background-color: #28a79d; }
+
+.mr-btn.btn-primary {
+  background-color: #f69741; }
+
+.mr-btn.btn-large {
+  padding: 12px 14px 8px 14px;
+  font-size: 1.3em;
+  line-height: 1em; }
+
+.mr-btn.with-sub {
+  text-align: left; }
+
+.mr-btn .sub {
+  font-family: 'PFDinTextPro-Regular', sans-serif; }
+
+.mr-btn:hover,
+.mr-btn.btn-primary:hover {
+  color: #fff;
+  background-color: #f16d49; }
+
+.mr-btn.double {
+  padding: 0; }
+
+.mr-btn.double div {
+  padding: 12px 14px 8px 14px; }
+
+.mr-btn.btn-large.double div {
+  padding: 10px 14px 8px 14px; }
+
+.mr-btn.btn-primary.double div:last-child {
+  background-color: #f16d49; }
+
+.mr-btn.double:hover div,
+.mr-btn.double.btn-primary:hover div {
+  color: #fff;
+  background-color: #f16d49; }
+
+.mr-btn.double:hover div:last-child,
+.mr-btn.double.btn-primary:hover div:last-child {
+  background-color: #f69741; }
+
+.fundraise-sticker .details .raised {
+  margin-top: 20px; }
+
+.fundraise-sticker .details .target:before {
+  margin-bottom: 8px;
+  padding-top: 4px;
+  width: 76px; }
+
+/* STEP */
+/******************************************/
+.step-container .step {
+  background: #f69741; }
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #header-view {
+    background: #fff; }
+  #header-view {
+    height: 138px;
+    background: transparent; }
+  #header-view .full-menu {
+    padding: 0; }
+  #header-view .full-menu .bar {
+    width: 100%;
+    height: 26px;
+    background: #000; }
+  #header-view .full-menu .menu-container {
+    padding: 0 15px 0 0; }
+  #footer-view {
+    height: auto;
+    background-color: #eeeeeb; }
+  #footer-view .footer-credits-container {
+    padding: 92px 15px 52px 15px; }
+  #footer-view .footer-menus .menus {
+    float: none;
+    padding-top: 32px; }
+  #footer-view .menus li {
+    float: left;
+    margin: 0 0 0 24px; }
+  #footer-view .menus li:first-child {
+    margin-left: 32px; }
+  #footer-view .menus .right {
+    float: right;
+    padding-top: 4px; }
+  #footer-view .menus .right li:first-child {
+    text-align: right; }
+  #footer-view .legal {
+    padding: 0 0 20px 0;
+    width: 280px; } }
+
+/* Small devices (tablets, 992px and up) */
+@media (min-width: 992px) {
+  #header-view .header-container {
+    margin: 0;
+    width: auto; }
+  #header-view .full-menu .menu-container {
+    padding: 0 15px; }
+  #footer-view .legal {
+    width: 450px; } }
+
+@media (min-width: 1024px) {
+  #header-view .full-menu .menu-container {
+    margin: 0 auto;
+    padding: 0;
+    width: 992px; }
+  #footer-view .footer-credits-container {
+    margin: 0 auto;
+    width: 992px;
+    padding: 132px 0 52px 0; }
+  #footer-view .footer-menus {
+    margin: 0 auto;
+    padding: 0;
+    width: 992px; } }

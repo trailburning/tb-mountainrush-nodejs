@@ -1,0 +1,269 @@
+{
+  "menu": {
+    "demo": "Demo Video",
+    "example": "Example Game",
+    "signup": "Sign up",
+    "signout": "Sign out",
+    "faq": "FAQ",
+    "privacy": "Privacy",
+    "support": "Support",
+    "greeting": "Bonjour"
+  },
+  "intro": {
+    "scene1_1": "Virtually Climb",
+    "scene1_2": "real mountains",
+    "scene2_1": "Hike, Run or Cycle",
+    "scene2_2": "with Strava",
+    "scene3_1": "Against Yourself",
+    "scene3_2": "Beat the Clock",
+    "scene4_1": "Invite Your Mates",
+    "scene4_2": "Make It Social",
+    "scene5_1": "Reach The Summit With",
+    "scene5_2": "Mountain Rush"
+  },
+  "how_to_guide": {
+    "step1": {
+      "title": "Challenge Yourself",
+      "subtitle": "To virtually climb Mount Sabyinyo",
+      "description": "Pick your timeframe, choose a start date and get active! Alone or with friends, unlock exclusive WWF videos as you progress."
+    },
+    "step2": {
+      "title": "Get Active",
+      "subtitle": "Cycle, Run or Hike",
+      "description": "Simply download the Strava App and start tracking your activity.  Receive email updates and view your progress up Mount Sabyinyo in stunning 3D!"
+    },
+    "step3": {
+      "title": "Fundraise",
+      "subtitle": "And help mountain gorillas",
+      "description": "Let everyone know how you’re going on social media and reach your fundraising goal!"
+    }
+  },
+  "welcome": {
+    "title": "A challenging game",
+    "description": "To virtually ascend real mountains",
+    "text": "Hike, run or cycle with %s to virtually climb beautifully rendered 3D mountains, against yourself, or your friends. Mountain Rush promotes physical activity and local exploration in a fun package.",
+    "text_fundraise": "Oh and you can %s too!",
+    "fundraise": "fundraise",
+    "signup": "Sign up",
+    "demo": "Demo Video",
+    "fundraising_provider": "Fundraising by %s"
+  },
+  "community": {
+    "title": "Journey to the Summit",
+    "description": "Follow our Mountain Rush climbers"
+  },
+  "error": {
+    "device": {
+      "title": "Sorry, we're having trouble presenting the 3D mountain",
+      "description": "This appears to be because your device is not be capable of showing 3D.",
+      "resolve": "Reloading may fix the issue but if not then please contact %s.",
+      "support": "support",
+      "mr_resolve": "Reloading may fix the issue but if not then please contact Mountain Rush %s."
+    },
+    "challenge": {
+      "device": {
+        "title": "Sorry, we're having trouble presenting the challenge",
+        "description": "This appears to be because your device is not be capable of showing 3D.",
+        "resolve": "Reloading may fix the issue but if not then please contact %s.",
+        "support": "support",
+        "mr_resolve": "Reloading may fix the issue but if not then please contact Mountain Rush %s.",
+        "fundraise": {
+          "title": "Don't worry, you can still make a donation!"
+        }
+      }
+    }
+  },
+  "overlay": {
+    "challenge": {
+      "yes": "Yes please",
+      "no": "Maybe later",
+      "latest": {
+        "title": "Latest Challenge",
+        "description": "Hi %s, would you like to check out your %s challenge?"
+      },
+      "upcoming": {
+        "title": "Upcoming Challenge",
+        "description": "Hi %s, would you like to check out your upcoming %s challenge?"
+      }
+    },
+    "challenge_upcoming": {
+      "title": "Challenge",
+      "social": {
+        "description": "Share so that everyone can follow progress to the summit!"
+      },
+      "description": "This %s challenge starts on %s at %s local time."
+    },
+    "okay": "Okay",
+    "challenge_complete": {
+      "title": "Challenge Over",
+      "description": "You can still share this challenge and inspire others to take on a %s virtual ascent!"
+    },
+    "challenge_cancel": {
+      "yes": "Yes please",
+      "no": "No thanks",
+      "title": "Cancel Challenge",
+      "description": "Are you sure you want to cancel your %s %s challenge?"
+    }    
+  },
+  "register": {
+    "help": {
+      "support": "support",
+      "mr_contact": "Please contact Mountain Rush %s if you have any questions.",
+      "contact": "Please contact %s if you have any questions."
+    },
+    "welcome": {
+      "title": "Connect to Strava",
+      "strava_app": "Strava App",
+      "description": "Track your hiking, cycling or running activities recorded by the %s challenges.",
+      "start": "Connect below to get started!",
+      "invite": "invite",
+      "start_invite": "Connect below to view your %s and get started!",
+      "privacy": "privacy policy",
+      "privacy_agree": "Clicking 'Connect with Strava' means that you agree to our %s."
+    },
+    "welcome_verify": {
+      "title": "Thanks for signing up",
+      "greeting": "Hi %s, we need a valid email address to keep you updated on your challenge progress.",
+      "update": "Complete signup"
+    },
+    "welcome_connected": {
+      "title": "Thanks for signing up",
+      "game_current": {
+        "description": "You have a %s %s challenge."
+      },
+      "game_active": "View Active Challenge",
+      "game_upcoming": "View Pending Challenge",
+      "game": "View Challenge",
+      "invite": "Invite friends",
+      "msg_invite": "%s to your challenge!",
+      "msg_invitation": "You have a %s %s challenge invitation from %s!",
+      "yes": "Accept",
+      "no": "Reject",
+      "game_accepted": "You now have a %s %s challenge!",
+      "game_rejected": "Challenge rejected! You can now create your own challenge.",
+      "game_create": "Create Challenge",
+      "game_cancel": {
+        "cancel": "cancel",
+        "msg": "Don't like your challenge?  You can %s it." 
+      },
+      "previous_challenges": "Previous",
+      "greeting": "Hi %s,",
+      "preferences": {
+        "game_notifications_on": "during your climb you'll receive activity emails with your progress up the mountain, click %s if you'd rather not get them.",
+        "game_notifications_off": "during your climb you won't receive any activity emails with your progress up the mountain, click %s if you'd like to get them.",
+        "here": "here"
+      }
+    },
+    "challenge": {
+      "one": "Challenge",
+      "other": "Challenges"
+    },
+    "here": "here",
+    "go_back": "go back",
+    "preferences": {
+      "title": "Your Preferences",
+      "game_email": "Your email address",
+      "game_email_help": "Please fill in your email address",
+      "game_notifications": "Activity emails",
+      "update": "Update Preferences",
+      "errors": {
+        "game_email_used": "The email address is already registered"
+      }
+    },
+    "please_wait": "Please Wait",
+    "game_create": {
+      "title": "Create Challenge",
+      "description": "Choose your challenge preferences",
+      "choose_ascent": "How much ascent are you up for?",
+      "fixed_ascent": "You will be ascending:",
+      "choose_activity": "What's your activity of choice?",
+      "fixed_activity": "Your activity will be:",
+      "choose_duration": "How long would you like to reach the summit?",
+      "choose_start": "When will you start your challenge?",
+      "create_challenge": "Create Challenge"
+    },
+    "game_created": {
+      "fundraising": {
+        "title": "You're nearly ready!",
+        "description": "Your challenge has been set up and will start on:"
+      },
+      "title": "Challenge ready!",
+      "description": "Your challenge is now ready and will start on:",
+      "view_challenge": "View Challenge",
+      "invite_friends": "Invite friends",
+      "invite_friends_challenge": "%s to your challenge!",
+      "social": {
+        "title": "Get social",
+        "description": "Let everyone know what you're doing and share!"
+      }
+    },
+    "invite_friends": {
+      "title": "Invite Friends",
+      "description": "Invite friends to join your challenge!",
+      "invitation_sent": "Invitation sent!",
+      "friend_name": "Friend's Name",
+      "friend_name_help": "Please fill in your friend's name",
+      "friend_email": "Friend's Email",
+      "friend_email_help": "Please fill in your friend's email",
+      "invite_friend": "Invite Friend"
+    }
+  },
+  "game": {
+    "to_summit": "to summit",
+    "climbed": "climbed",
+    "summited": "Summit!",
+    "summited_long": "summit reached",
+    "unknown_location": "Where am I?",
+    "climbed_on": "climbed on",
+    "player_position": {
+      "position": {
+        "first": "st",
+        "second": "nd",
+        "third": "rd",
+        "def": "th"
+      },
+      "place": "place"
+    },
+    "latest_activity": {
+      "title": "Latest Activity:",
+      "climbed": "Climbed",
+      "over": "over"
+    },
+    "view_strava": "View on Strava",
+    "photos": {
+      "waiting": {
+        "description": "Waiting for photos of %s's journey to the summit..."
+      },
+      "description": "Check out %s's journey to the summit!",
+      "show_more": "Show more photos"
+    },
+    "fundraising": {
+      "donations": {
+        "waiting": {
+          "description": "Waiting for donations to help %s to the summit..."
+        },
+        "description": "Check out who's helping %s to the summit!",
+        "title": "donations",
+        "anonymous": "Anonymous",
+        "donated": "Donated"
+      },
+      "summary": {
+        "waiting": "Waiting for donations..",
+        "raised": "Raised of",
+        "target": "target"
+      }
+    },
+    "day": {
+      "one": "day",
+      "other": "days"
+    }
+  },
+  "defs": {
+    "donate": "Donate",
+    "prefs": "Preferences",
+    "social": {
+      "share_facebook": "Share on Facebook",
+      "share_twitter": "Share on Twitter"
+    }
+  }
+}

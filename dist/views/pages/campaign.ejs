@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include ../partials/includes.ejs %>
+<link href='/static-assets/css/photoswipe.css' rel='stylesheet' />
+<link href='/static-assets/css/default-skin/default-skin-with-ig.css' rel='stylesheet' />
+<% if (Campaign.CampaignTemplate != 'default') { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/web_platform.css' rel='stylesheet' />
+<% } %>
+<link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<link href='/static-assets/css/campaign.css' rel='stylesheet' />
+<% if (Campaign.CampaignTemplate != 'default') { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/campaign.css' rel='stylesheet' />
+<% } %>
+<% include ../partials/analyticsFBPixel.ejs %>
+</head>
+<body>
+<script>
+var APP = 'CampaignApp';
+var GAME_API_URL = '<%= Defs.MRAPIURL %>';
+var GAME_FUNDRAISING = <%= Campaign.CampaignFundraising %>;
+var HOST_URL = '<%= Defs.BaseHTTPSURL %>';
+var CLIENT_ID = '<%= Campaign.ClientID %>';
+var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
+var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
+var CAMPAIGN_JUICER_FEED = '<%= Campaign.CampaignJuicerFeed %>';
+var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
+</script>
+
+<div class="container-fluid nopadding">
+  <div id="page-view">
+    <% if (Campaign.CampaignTemplate == 'default') { %>
+      <% include ../partials/header.ejs %>
+    <% } else { %>
+      <%- include('../partials/' + Campaign.CampaignTemplate + '/header.ejs') %>
+    <% } %>
+
+    <div id="hero-view">
+      <div class="image fade_on_ready">
+      <% if (Campaign.CampaignTemplate == 'default') { %>
+        <img class="scale" src="https://tbassets2.imgix.net/images/brands/mountainrush/pages/olivier-miche-102259-unsplash.jpg?fm=jpg&q=80&w=1280">
+      <% } else { %>
+        <img class="scale" src="https://tbassets2.imgix.net/images/brands/mountainrush/clients/<%= Campaign.CampaignTemplate %>/pages/WW22016_even_darker.jpg?fm=jpg&q=80&w=1280">
+      <% } %>
+      </div>
+
+      <div class="hero-container">
+        <div class="campaign-title">
+          <div class="campaign-tagline">
+          Climb<br/>For Your<br/><span class="bigger">World</span>
+          </div>
+          <div class="campaign-tagline2 visible-xs">
+          Just 1000<br/>mountain gorillas<br/>are left in the wild
+          </div>
+          <div class="campaign-tagline2 hidden-xs">
+          Just 1000 mountain gorillas are left in the wild
+          </div>
+          <div class="campaign-tagline3 visible-xs">
+          The time to protect<br/>them is now. Their<br/>future is fragile.
+          </div>
+          <div class="campaign-tagline3 hidden-xs">
+          The time to protect them is now. Their future is fragile.
+          </div>
+        </div>
+        <div class="campaign-sticker"></div>
+      </div>
+    </div>
+
+    <div id="game-view">
+      <div class="game-container">
+        <div class="game-grab">
+          <div class="grab-container"><img src="/static-assets/images/wwf-uk/mobile_big.png"></div>
+        </div>
+
+        <div class="details-container">
+          <div class="break"></div>
+
+          <div class="game-details">
+            <h1 class="visible-xs">Make a choice</h1>
+            <h1 class="hidden-xs">Make a choice</h1>
+            <h2>Hike, run or cycle<br/>to the summit</h2>
+            <div class="text">Fundraise to support WWF’s<br/>vital mountain gorilla<br/>conservation work.</div>
+          </div>
+
+          <div class="btns hidden-xs">
+            <a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div>Sign up</div><div><i class="fa fa-arrow-right"></i></div></a>
+          </div>        
+        </div>
+
+        <div class="btns-repeat">
+          <div class="btns visible-xs">
+            <a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div>Sign up</div><div><i class="fa fa-arrow-right"></i></div></a>
+          </div>        
+        </div>
+
+        <div class="embelish left"></div>
+        <div class="embelish right"></div>
+      </div>
+    </div>
+
+    <div id="howToGuide"></div>
+
+    <div id="intro-view">
+      <div class="intro-container-view">
+        <h1>Climb For Your World</h1>
+        <h2>Join WWF’s virtual fundraising event</h2>
+        <div class="text">Get active and get outdoors. Discover the hills, peaks and mountains in your local area and help us protect iconic species and their habitats.</div>
+
+        <div class="video-container">
+          <div class="video">
+            <video id="media_intro" url="https://tbassets2.imgix.net/images/brands/mountainrush/clients/wwf-uk/assets/WWF_1080_youtube.m4v" class="media-player video-js vjs-default-skin" controls preload="none" width="auto" height="auto" poster="https://tbassets2.imgix.net/images/brands/mountainrush/clients/wwf-uk/assets/MR_strava_wwf_img_0000_girl.png?fm=jpg&w=420&h=236&fit=crop&q=80">
+             <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+            </video>
+          </div>
+        </div>
+
+        <div class="btns">
+          <a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div>Sign up</div><div><i class="fa fa-arrow-right"></i></div></a>
+        </div>
+      </div>
+
+      <div class="decoration"></div>
+    </div>
+
+    <div id="summary-view">
+      <div class="summary-container">
+        <div id="summary-loader-view" class="loader-view">
+          <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+          </div>
+        </div>
+        <div id="campaign-summary-view"></div>
+      </div>
+    </div>
+
+    <div id="leader-view">
+      <h1>Leaderboard</h1>
+      <div class="text">High five to our top fundraisers. You're awesome!</div>
+
+      <div id="leader-loader-view" class="loader-view">
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+        </div>
+      </div>
+
+      <div id="leaderboard-view" class="leaders"></div>
+    </div>
+
+    <div id="supporter-search-view">
+      <div class="supporter-search-container">
+        <div class="supporter-search-content">
+          <h1>Find a <span class="show-when-signed-in">fellow </span>climber</h1>
+          <div class="search-panel search suggest ui-front">
+            <div class="search-location">
+              <input name="search-text" id="search-text" class="search-field" type="text" placeholder="Climber" spellcheck="false">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="community-view">
+      <h1>Climb Mt. Sabyinyo</h1>
+      <h2>from wherever you are</h2>
+      <div class="text">Check out where our fundraisers are climbing with the hashtag #ClimbForYourWorld</div>
+
+      <div id="community-photos-loader-view" class="loader-view">
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+        </div>
+      </div>
+
+      <div id="community-photos-view" class="photos"></div>
+
+      <div class="btns">
+        <a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div>Sign up</div><div><i class="fa fa-arrow-right"></i></div></a>
+      </div>
+    </div>
+
+    <% if (Campaign.CampaignTemplate == 'default') { %>
+      <% include ../partials/footer.ejs %>
+    <% } else { %>
+      <%- include('../partials/' + Campaign.CampaignTemplate + '/footer.ejs') %>
+    <% } %>
+  </div>
+</div>
+
+<div id="player-game-view"></div>
+<div id="demo-video-view"></div>
+
+<div id="mobileTest" class="visible-xs"></div>
+
+<script type="text/template" id="campaignSummaryViewTemplate">
+  <div class="summary-total-raised">
+    <div class="total-raised-sticker">
+      <div class="total">{{ if (fundraising_currency_symbol.length > 1) { }}<span class="fat-currency-symbol">{{= fundraising_currency_symbol }}</span>{{ } else { }}{{= fundraising_currency_symbol }}{{ } }} {{= Math.round(total_fundraising_raised) }}</div>
+      <div class="break"></div>
+      <div class="title">Total Raised</div>
+      <div class="title-sub">by climb for your world</div>
+    </div>
+  </div>
+
+  <div class="break"></div>
+
+  <div class="summary-total-climbed">
+    <div class="total">{{= Math.round(total_ascent) }}</div>
+    <div class="title">Metres Climbed</div>
+    <div class="title-sub">The height of {{= Math.round(total_ascent / 1.65) }} gorillas!</div>
+  </div>
+</script>
+
+<script type="text/template" id="leaderboardViewTemplate">
+  {{ _.each(players, function(player, index) { }}
+    <div class="leader">
+      <div class="content">
+        <div class="marker">
+          {{ var strURL = '<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>' }}
+          {{ if (player.gameID) { }}
+            {{ strURL = '<%= Defs.BaseHTTPSURL %>/game/' + player.gameID + '/player/' + player.id }}
+          {{ } }}
+          <a href="{{= strURL }}"><div class="avatar">
+          <% if (Campaign.CampaignTemplate == 'default') { %>
+            <img src="<%= Defs.MRAPIURL %>imageproxy.php?url={{= player.avatar }}">
+          <% } else { %>
+            <img src="<%= Defs.MRAPIURL %>imageproxy.php?url={{= player.avatar }}&urlfallback=https://mountainrush.co.uk/static-assets/images/<%= Campaign.CampaignTemplate %>/avatar_unknown.jpg">
+          <% } %>
+          </div></a>
+        </div>
+        <div class="fundraise-detail">
+          <div class="name">{{= player.firstname }} {{= player.lastname }}</div>
+          <div class="climbed">Climbed {{= Math.round(player.ascent) }} m</div>
+          <div class="amount-detail">Raised<span class="amount">
+          {{ if (player.fundraising_currency_symbol) { }}{{ if (player.fundraising_currency_symbol.length > 1) { }}<span class="fat-currency-symbol">{{= player.fundraising_currency_symbol }}</span>{{ } else { }}{{= player.fundraising_currency_symbol }}{{ } }}{{ } else { }}${{ } }}{{= Math.round(player.fundraising_raised) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{ }); }}
+</script>
+
+<script type="text/template" id="communityPhotosViewTemplate">
+  {{ _.each(juicer.posts.items, function(post, index) { }}<div class="post">
+    <div class="media">
+      <a href="{{= post.full_url }}" target="_blank"><div class="image" style="background-image: url('{{= post.image }}')"></div>
+      <div class="likes ago">
+      {{ if (post.likes >= 1) { }}
+        <i class="icon fa fa-heart"></i> {{= post.likes }}
+      {{ } }}
+      </div>
+      </a>
+    </div>
+    <div class="details">
+      <div class="text">
+        <div class="name"><a href="{{= post.full_url }}" target="_blank">{{= post.poster_name }}</a></div>
+        <div class="credit truncate"  data-truncate="62"> {{= post.message }}</div>
+      </div>
+    </div>
+  </div>{{ }); }}
+</script>
+
+<script type="text/template" id="playerGameViewTemplate">
+  <div class="modal msg-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          {{ var activeGames = _.where(player.games, {game_state:'active'}) }}
+          {{ var pendingGames = _.where(player.games, {game_state:'pending'}) }}
+
+          {{ if (activeGames.length) { }}
+            {{ var game = activeGames[0] }}
+
+            <div class="details">
+              <div class="title">Latest Challenge</div>
+              <div class="description">
+              Hi {{= player.firstname }}, would you like to check out your <strong>{{= game.name }}</strong> <span class="lowercase">{{= game.type }}</span> challenge?
+              </div>
+            </div>
+
+            <div class="action-fields">
+              <div class="action-field"><a href="<%= Defs.BaseHTTPSURL %>/game/{{= game.game }}" class="btn mr-btn btn-primary">Yes please</a></div>
+              <div class="action-field"><span class="btn mr-btn" data-dismiss="modal">Maybe later</span></div>
+            </div>
+          {{ } else if (pendingGames.length) { }}
+            {{ var game = pendingGames[0] }}
+
+            <div class="details">
+              <div class="title">Upcoming Challenge</div>
+              <div class="description">
+              Hi {{= player.firstname }}, would you like to check out your upcoming <strong>{{= game.name }}</strong> <span class="lowercase">{{= game.type }}</span> challenge?
+              </div>
+            </div>
+
+            <div class="action-fields">
+              <div class="action-field"><a href="<%= Defs.BaseHTTPSURL %>/game/{{= game.game }}" class="btn mr-btn btn-primary">Yes please</a></div>
+              <div class="action-field"><span class="btn mr-btn" data-dismiss="modal">Maybe later</span></div>
+            </div>
+          {{ } }}
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</script>
+
+</body>
+
+<% include ../partials/analytics.ejs %>
+<script type="text/javascript" src="/static-assets/js/bundle.js"></script></body>
+<script data-main="/static-assets/js/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+
+<!-- Example of how to use Piste API -->
+<script type="text/javascript">
+if ( typeof Procedural === 'undefined' ) { Procedural = {}; }
+</script>
+</html>
