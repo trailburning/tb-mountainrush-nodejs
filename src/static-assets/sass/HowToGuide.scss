@@ -1,8 +1,34 @@
+@mixin step-transition($opacity_time, $move_time) {
+  transition-property: opacity, left, right;
+  transition-duration: $opacity_time, $move_time, $move_time;
+}
+
 #howToGuide {
   position: relative;
   font-size: 1.2em;
+  line-height: 1.3em;
 
   .howToStep {
+    .animated {
+      position: relative;
+
+      transition-property: opacity;
+      transition-duration: 0.5s;
+
+      &.fadeIn .animate {
+        opacity: 1;
+      }
+
+      .animate {
+        @include step-transition(0.3s, 0.4s);
+        opacity: 0;        
+      }
+
+      img {
+        height: 220px;
+      }
+    }
+
     &:nth-child(odd) {
       background: #eeeeeb;
     }
@@ -12,54 +38,229 @@
     }
 
     .content {
-      padding: 44px 16px 46px 16px;
-    }
-  }
+      position: relative;
+      padding: 0px 16px 0px 16px;
 
-  .animated {
-    position: relative;
-    left: 100px;
-    transition: left 0.4s linear;
-  }
-  .animated img {
-    height: 220px;
-    transition: opacity 0.3s linear;
-    opacity: 0.2;
-  }
+      .image, .text {
+        position: relative;
+      }
 
-  .animated.fadeIn {
-    left: 0px;
-  }
-  .animated.fadeIn img {
-    opacity: 1;
-  }
-
-  .animated.fadeOut img {
-    opacity: 0;
+      .btn-cta {
+        padding-top: 28px;
+      }
+    }    
   }
 }
 
 @media (min-width: 768px) {
   #howToGuide {
     .howToStep {
+      .animated .animate {
+        position: relative;
+      }
+
+      .animated img.animate {
+        position: absolute;
+      }
+
+      .embelish {
+        position: absolute;
+      }
+
       .content {
         margin: 0 auto;
+        padding: 0px;
         width: 670px;
 
-        .text {
+        .col {
           display: inline-block;
-          width: 50%;
-        }
-
-        .image {
-          display: inline-block;
-          width: 50%;
+          vertical-align: top;
         }
       }
-    }
 
-    .animated img {
-      height: 380px;
+      &.stepChallenge {
+        padding-top: 142px;
+        padding-bottom: 175px;
+
+        .embelish {
+          &.left-background {
+            top: -20px;
+            left: -148px;
+            width: 110px;
+            height: 150px;
+            background: url(/static-assets/images/temp/step1_background.png) no-repeat top left;
+          }
+        }
+
+        .embelish {
+          &.left-foreground {
+            bottom: -254px;
+            left: -196px;
+            width: 210px;
+            height: 160px;
+            background: url(/static-assets/images/wwf-uk/left-leaves2.png) no-repeat top left;
+          }
+        }
+
+        .col-left {
+          width: 368px;
+        }
+
+        .col-right {
+          width: 380px;
+        }
+
+        .content {
+          width: 748px;
+
+          .text {
+            padding-left: 12px;
+          }
+        }
+
+        .animated {
+          &.fadeIn {
+            .animate-left {
+              left: 0px;
+            }
+
+            .animate-right {
+              left: 0px;
+            }
+          }
+
+          .animate-left {
+            top: -76px;
+            left: -100px;
+          }
+
+          .animate-right {
+            left: 100px;
+          }
+
+          img {
+            height: 304px;
+          }
+        }
+      }
+
+      &.stepActive {      
+        padding-top: 42px;
+        padding-bottom: 46px;
+
+        .embelish {
+          &.left-background {
+            top: 0px;
+            right: -165px;
+            width: 127px;
+            height: 159px;
+            background: url(/static-assets/images/temp/step2_background.png) no-repeat top left;
+          }
+        }
+
+        .col-left {
+          width: 320px;
+        }
+
+        .col-right {
+          width: 350px;
+        }
+
+        .content {
+          .text {
+            padding-right: 24px;
+          }
+        }
+
+        .animated {
+          &.fadeIn {
+            .animate-left {
+              left: 0px;              
+            }
+
+            .animate-right {
+              right: 0px;              
+            }
+          }
+
+          .animate-left {
+            left: -100px;
+          }
+
+          .animate-right {
+            top: -118px;
+            right: -100px;
+          }
+
+          img {
+            height: 417px;
+          }
+        }
+      }
+
+      &.stepFundraise {      
+        padding-top: 146px;
+        padding-bottom: 68px;
+ 
+         .embelish {
+          &.left-background {
+            top: -50px;
+            left: -60px;
+            width: 115px;
+            height: 148px;
+            background: url(/static-assets/images/temp/step3_background.png) no-repeat top left;
+          }
+        }
+
+        .embelish {
+          &.right-foreground {
+            bottom: 30px;
+            right: -130px;
+            width: 160px;
+            height: 200px;
+            background: url(/static-assets/images/wwf-uk/right-leaves2.png) no-repeat top left;
+          }
+        }
+
+         .content {
+          .text {
+            padding-right: 90px;
+          }
+        }
+
+        .col-left {
+          width: 284px;
+        }
+
+        .col-right {
+          width: 386px;
+        }
+
+        .animated {
+          &.fadeIn {
+            .animate-left {
+              right: 38px;              
+            }
+
+            .animate-right {
+              left: 0px;              
+            }
+          }
+
+          .animate-left {
+            top: -24px;
+            right: 100px;
+          }
+
+          .animate-right {
+            left: 100px;
+          }
+
+          img {
+            height: 165px;
+          }
+        }
+     }
     }
   }
 }
