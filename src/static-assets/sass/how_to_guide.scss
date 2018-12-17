@@ -4,12 +4,15 @@
 }
 
 #howToGuide {
-  position: relative;
-  font-size: 1.2em;
   line-height: 1.3em;
+  position: relative;
 
   .howToStep {
     padding: 24px 0;
+
+    .embelish {
+      position: absolute;
+    }
 
     .animated {
       position: relative;
@@ -41,14 +44,13 @@
 
     .content {
       position: relative;
-      padding: 16px;
+      padding: 16px 24px;
 
-      .text {
-        text-align: center;
+      .col {
+        position: relative;
       }
 
       .image {
-        text-align: center;
         padding: 16px 0;
 
         img {
@@ -60,21 +62,67 @@
         padding-top: 28px;
       }
     }    
+
+    &.stepChallenge {
+      padding-bottom: 70px;
+
+      .embelish {
+        &.left-background {
+          top: 52px;
+          right: 22px;
+          width: 83px;
+          height: 102px;
+          background: url(/static-assets/images/temp/step1_background.png) no-repeat top left;
+        }
+      }
+
+      .embelish {
+        &.left-foreground {
+          bottom: -150px;
+          left: 0px;
+          width: 210px;
+          height: 160px;
+          background: url(/static-assets/images/wwf-uk/left-leaves2.png) no-repeat top left;
+        }
+      }
+
+      .animated {
+        img {
+          height: 156px;
+        }
+      }
+    }
+
+    &.stepActive {
+      .animated {
+        img {
+          height: 238px;
+        }
+      }
+    }
+
+    &.stepFundraise {      
+      .text {
+        text-align: center;
+      }
+
+      .image {
+        text-align: center;
+      }
+    }
   }
 }
 
 @media (min-width: 768px) {
   #howToGuide {
+    font-size: 1.2em;
+
     .howToStep {
       .animated .animate {
         position: relative;
       }
 
       .animated img.animate {
-        position: absolute;
-      }
-
-      .embelish {
         position: absolute;
       }
 
@@ -90,7 +138,6 @@
 
         .text, .image {
           position: relative;
-          text-align: left;
         }
 
         .image {
@@ -108,7 +155,7 @@
             left: -148px;
             width: 110px;
             height: 150px;
-            background: url(/static-assets/images/temp/step1_background.png) no-repeat top left;
+            background: url(/static-assets/images/temp/step1_invert_background.png) no-repeat top left;
           }
         }
 
