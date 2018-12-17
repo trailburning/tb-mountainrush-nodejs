@@ -135,13 +135,23 @@ var TEST = '<%= Defs.Test %>';
 </script>
 
 <script type="text/template" id="challengeCancelModalViewTemplate">
+  {{ activityDescription = '' }}
+
+  {{ if (currGame.type == 'Run') { }}
+    {{ activityDescription = '<%= __('defs.activities.run') %>' }}
+  {{ } else if (currGame.type == 'Ride') { }}
+    {{ activityDescription = '<%= __('defs.activities.ride') %>' }}
+  {{ } else if (currGame.type == 'Hike') { }}
+    {{ activityDescription = '<%= __('defs.activities.hike') %>' }}
+  {{ } }}
+
   <div class="modal msg-overlay" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
           <div class="details">
             <div class="title"><%= __('overlay.challenge_cancel.title') %></div>
-            <div class="description">{{= '<%- __('overlay.challenge_cancel.description') %>'.replace('%s', '<strong>' + currGame.name + '</strong>').replace('%s', '<span class="lowercase">' + currGame.type + '</span>') }}</div>
+            <div class="description">{{= '<%- __('overlay.challenge_cancel.description') %>'.replace('%s', '<strong>' + currGame.name + '</strong>').replace('%s', '<span class="lowercase">' + activityDescription + '</span>') }}</div>
           </div>
           <div class="action-fields">
             <div class="action-field"><span class="btn mr-btn btn-primary cancel-challenge-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('overlay.challenge_cancel.yes') %></span>
@@ -243,9 +253,20 @@ var TEST = '<%= Defs.Test %>';
   </div>
 
   {{ if (currGame) { }}
+
+    {{ activityDescription = '' }}
+
+    {{ if (currGame.type == 'Run') { }}
+      {{ activityDescription = '<%= __('defs.activities.run') %>' }}
+    {{ } else if (currGame.type == 'Ride') { }}
+      {{ activityDescription = '<%= __('defs.activities.ride') %>' }}
+    {{ } else if (currGame.type == 'Hike') { }}
+      {{ activityDescription = '<%= __('defs.activities.hike') %>' }}
+    {{ } }}
+
     <div class="challenge">
       <div class="intro-text centre-text">
-      {{= '<%- __('register.welcome_connected.game_current.description') %>'.replace('%s', currGame.name).replace('%s', '<span class="lowercase">' + currGame.type + '</span>') }}
+      {{= '<%- __('register.welcome_connected.game_current.description') %>'.replace('%s', currGame.name).replace('%s', '<span class="lowercase">' + activityDescription + '</span>') }}
       </div>  
       <div class="btns">
       {{ if (currGame.game_state == 'active') { }}
@@ -318,7 +339,7 @@ var TEST = '<%= Defs.Test %>';
       </div>
     {{ } else { }}
       <div class="intro-text centre-text">
-      You're now ready to create your climb challenge!
+      You're now ready to create your challenge!
       </div>
       <div class="btns">
         <span class="btn mr-btn btn-primary btn-create"><%= __('register.welcome_connected.game_create') %></span>

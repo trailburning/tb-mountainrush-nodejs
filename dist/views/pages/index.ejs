@@ -204,31 +204,51 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
           {{ var pendingGames = _.where(player.games, {game_state:'pending'}) }}
 
           {{ if (activeGames.length) { }}
-            {{ var game = activeGames[0] }}
+            {{ var currGame = activeGames[0] }}
+
+            {{ activityDescription = '' }}
+
+            {{ if (currGame.type == 'Run') { }}
+              {{ activityDescription = '<%= __('defs.activities.run') %>' }}
+            {{ } else if (currGame.type == 'Ride') { }}
+              {{ activityDescription = '<%= __('defs.activities.ride') %>' }}
+            {{ } else if (currGame.type == 'Hike') { }}
+              {{ activityDescription = '<%= __('defs.activities.hike') %>' }}
+            {{ } }}
 
             <div class="details">
               <div class="title"><%= __('overlay.challenge.latest.title') %></div>
               <div class="description">
-              {{= '<%= __('overlay.challenge.latest.description') %>'.replace('%s', player.firstname).replace('%s', '<strong>' + game.name + '</strong> <span class="lowercase">' + game.type + '</span>') }}
+              {{= '<%= __('overlay.challenge.latest.description') %>'.replace('%s', player.firstname).replace('%s', '<strong>' + currGame.name + '</strong> <span class="lowercase">' + activityDescription + '</span>') }}
               </div>
             </div>
 
             <div class="action-fields">
-              <div class="action-field"><a href="<%= Defs.BaseHTTPSURL %>/game/{{= game.game }}" class="btn mr-btn btn-primary"><%= __('overlay.challenge.yes') %></a></div>
+              <div class="action-field"><a href="<%= Defs.BaseHTTPSURL %>/game/{{= currGame.game }}" class="btn mr-btn btn-primary"><%= __('overlay.challenge.yes') %></a></div>
               <div class="action-field"><span class="btn mr-btn" data-dismiss="modal"><%= __('overlay.challenge.no') %></span></div>
             </div>
           {{ } else if (pendingGames.length) { }}
-            {{ var game = pendingGames[0] }}
+            {{ var currGame = pendingGames[0] }}
+
+            {{ activityDescription = '' }}
+
+            {{ if (currGame.type == 'Run') { }}
+              {{ activityDescription = '<%= __('defs.activities.run') %>' }}
+            {{ } else if (currGame.type == 'Ride') { }}
+              {{ activityDescription = '<%= __('defs.activities.ride') %>' }}
+            {{ } else if (currGame.type == 'Hike') { }}
+              {{ activityDescription = '<%= __('defs.activities.hike') %>' }}
+            {{ } }}
 
             <div class="details">
               <div class="title"><%= __('overlay.challenge.upcoming.title') %></div>
               <div class="description">
-              {{= '<%= __('overlay.challenge.upcoming.description') %>'.replace('%s', player.firstname).replace('%s', '<strong>' + game.name + '</strong> <span class="lowercase">' + game.type + '</span>') }}
+              {{= '<%= __('overlay.challenge.upcoming.description') %>'.replace('%s', player.firstname).replace('%s', '<strong>' + currGame.name + '</strong> <span class="lowercase">' + activityDescription + '</span>') }}
               </div>
             </div>
 
             <div class="action-fields">
-              <div class="action-field"><a href="<%= Defs.BaseHTTPSURL %>/game/{{= game.game }}" class="btn mr-btn btn-primary">Yes please</a></div>
+              <div class="action-field"><a href="<%= Defs.BaseHTTPSURL %>/game/{{= currGame.game }}" class="btn mr-btn btn-primary">Yes please</a></div>
               <div class="action-field"><span class="btn mr-btn" data-dismiss="modal">Maybe later</span></div>
             </div>
           {{ } }}
