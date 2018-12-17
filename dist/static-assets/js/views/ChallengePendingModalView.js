@@ -13,7 +13,7 @@ define([
     },
 
     render: function(jsonCurrGame){      
-      $(this.el).html(this.template());
+      $(this.el).html(this.template({ currGame: jsonCurrGame }));
 
       var dLocalGameStart = new Date(jsonCurrGame.game_start);
 
@@ -23,7 +23,7 @@ define([
       var strTime = moment(dLocalGameStart).format('h:mm a');
       $('.time', $(this.el)).html(strTime);
 
-      $('.type', $(this.el)).html(jsonCurrGame.type);
+//      $('.type', $(this.el)).html(jsonCurrGame.type);
 
       return this;
     },
