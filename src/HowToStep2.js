@@ -12,7 +12,7 @@ const HowToStep2 = (props) => {
 
         <div className="col col-left">
           <div className="text">
-            <div className="animate animate-left">
+            <div className="animate">
             <h1>{props.title}</h1>
             <h2>{props.subtitle}</h2>
             {props.description}
@@ -20,7 +20,7 @@ const HowToStep2 = (props) => {
           </div>
         </div>
         <div className="col col-right">
-          <div className="image"><img className="animate animate-right" src="http://localhost:8000/static-assets/images/temp/step2.png" /></div>
+          <div className="image"><img className="animate" src="http://localhost:8000/static-assets/images/temp/step2.png" /></div>
         </div>
       </div>
 

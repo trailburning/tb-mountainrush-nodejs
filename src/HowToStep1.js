@@ -11,11 +11,11 @@ const HowToStep1 = (props) => {
         <div className="embelish left-background"></div>
 
         <div className="col col-left">
-          <div className="image"><img className="animate animate-left" src="http://localhost:8000/static-assets/images/temp/step1.png" /></div>
+          <div className="image"><img className="animate" src="http://localhost:8000/static-assets/images/temp/step1.png" /></div>
         </div>
         <div className="col col-right">
           <div className="text">
-            <div className="animate animate-right">
+            <div className="animate">
             <h1>{props.title}</h1>
             <h2>{props.subtitle}</h2>
             {props.description}

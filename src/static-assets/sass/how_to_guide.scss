@@ -139,23 +139,31 @@
         }
 
         .animated {
+          .col-left {
+            .animate {
+              top: -76px;
+              left: -100px;
+            }
+          }
+
+          .col-right {
+            .animate {
+              left: 100px;
+            }
+          }
+
           &.fadeIn {
-            .animate-left {
-              left: 0px;
+            .col-left {
+              .animate {
+                left: 0px;
+              }
             }
 
-            .animate-right {
-              left: 0px;
+            .col-right {
+              .animate {
+                left: 0px;
+              }
             }
-          }
-
-          .animate-left {
-            top: -76px;
-            left: -100px;
-          }
-
-          .animate-right {
-            left: 100px;
           }
 
           img {
@@ -193,28 +201,36 @@
         }
 
         .animated {
+          .col-left {
+            .animate {
+              left: -100px;
+            }
+          }
+
+          .col-right {
+            .animate {
+              top: -118px;
+              right: -100px;
+            }
+          }
+
           &.fadeIn {
-            .animate-left {
-              left: 0px;              
+            .col-left {
+              .animate {
+                left: 0px;              
+              }
             }
 
-            .animate-right {
-              right: 0px;              
+            .col-right {
+              .animate {
+                right: 0px;              
+              }
             }
-          }
-
-          .animate-left {
-            left: -100px;
-          }
-
-          .animate-right {
-            top: -118px;
-            right: -100px;
           }
 
           img {
             height: 417px;
-          }
+          }          
         }
       }
 
@@ -256,31 +272,44 @@
           width: 386px;
         }
 
+        .content {
+          .text {
+          }
+        }
+
         .animated {
+          .col-left {
+            .animate {
+              top: -24px;
+              right: 100px;
+            }
+          }
+
+          .col-right {
+            .animate {
+              left: 100px;
+            }
+          }
+
           &.fadeIn {
-            .animate-left {
-              right: 38px;              
+            .col-left {
+              .animate {
+                right: 38px;              
+              }
             }
 
-            .animate-right {
-              left: 0px;              
+            .col-right {
+              .animate {
+                left: 0px;              
+              }
             }
-          }
-
-          .animate-left {
-            top: -24px;
-            right: 100px;
-          }
-
-          .animate-right {
-            left: 100px;
           }
 
           img {
             height: 165px;
-          }
+          }          
         }
-     }
+      }
     }
   }
 }
