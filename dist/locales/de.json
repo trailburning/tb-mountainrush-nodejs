@@ -269,6 +269,12 @@
 		"social": {
 			"share_facebook": "Share on Facebook",
 			"share_twitter": "Share on Twitter"
-		}
+		},
+    "activities": {
+      "run": "Running",
+      "ride": "Cycling",
+      "hike": "Hiking",
+      "all": "Everything oh yeah!"
+    }
 	}
 }
