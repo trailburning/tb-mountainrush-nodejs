@@ -21,8 +21,8 @@ export default class HowToStep3 extends React.Component {
           <div className="col col-right">            
             <div className="text">
               <div className="animate">
-                <h1>{this.props.title}</h1>
-                <h2>{this.props.subtitle}</h2>
+                <h1>{this.props.stepContent.title}</h1>
+                <h2>{this.props.stepContent.subtitle}</h2>
                 {this.props.description}
                 <div className="btn-cta">
                 <button className="btn mr-btn btn-primary double" onClick={this.dispatchBtnAction.bind(this)}>

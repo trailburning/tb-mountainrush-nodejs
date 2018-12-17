@@ -13,9 +13,9 @@ const HowToStep2 = (props) => {
         <div className="col col-left">
           <div className="text">
             <div className="animate">
-            <h1>{props.title}</h1>
-            <h2>{props.subtitle}</h2>
-            {props.description}
+            <h1>{props.stepContent.title}</h1>
+            <h2>{props.stepContent.subtitle}</h2>
+            {props.stepContent.description.replace('%s', props.defContent.strava_app)}
             </div>
           </div>
         </div>

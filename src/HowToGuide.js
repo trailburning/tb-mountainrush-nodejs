@@ -11,9 +11,9 @@ import loadLang from "./locales";
 class HowToGuide extends Component {
   render() {
     return [
-      <HowToStep1 key={1} step={1} title={store.getState().literals.how_to_guide.step1.title} subtitle={store.getState().literals.how_to_guide.step1.subtitle} description={store.getState().literals.how_to_guide.step1.description} />,
-      <HowToStep2 key={2} step={2} title={store.getState().literals.how_to_guide.step2.title} subtitle={store.getState().literals.how_to_guide.step2.subtitle} description={store.getState().literals.how_to_guide.step2.description} />,
-      <HowToStep3 key={3} step={3} callbackBtnClicked={this.props.callbackSignupBtnClicked} hostURL={this.props.hostURL} title={store.getState().literals.how_to_guide.step3.title} subtitle={store.getState().literals.how_to_guide.step3.subtitle} description={store.getState().literals.how_to_guide.step3.description} />
+      <HowToStep1 key={1} step={1} defContent={store.getState().literals.defs} stepContent={store.getState().literals.how_to_guide.step1} />,
+      <HowToStep2 key={2} step={2} defContent={store.getState().literals.defs} stepContent={store.getState().literals.how_to_guide.step2} />,
+      <HowToStep3 key={3} step={3} callbackBtnClicked={this.props.callbackSignupBtnClicked} hostURL={this.props.hostURL} defContent={store.getState().literals.defs} stepContent={store.getState().literals.how_to_guide.step3} />
     ];
   }
 }

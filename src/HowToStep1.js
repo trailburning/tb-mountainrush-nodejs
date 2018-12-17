@@ -16,9 +16,9 @@ const HowToStep1 = (props) => {
         <div className="col col-right">
           <div className="text">
             <div className="animate">
-            <h1>{props.title}</h1>
-            <h2>{props.subtitle}</h2>
-            {props.description}
+            <h1>{props.stepContent.title}</h1>
+            <h2>{props.stepContent.subtitle}</h2>
+            {props.stepContent.description}
             </div>
           </div>
         </div>
