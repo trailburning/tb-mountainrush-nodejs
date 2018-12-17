@@ -496,7 +496,8 @@ input.ui-autocomplete-loading {
   #hero-view .campaign-sticker {
     bottom: -48px; }
   #intro-view {
-    padding-top: 98px; }
+    padding-top: 72px;
+    padding-bottom: 82px; }
   #intro-view .intro-container-view {
     margin: 0 auto;
     width: 670px; }
