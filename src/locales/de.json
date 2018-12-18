@@ -23,7 +23,7 @@
 	},
   "how_to_guide": {
     "step1": {
-      "title": "Challenge Yourself Deutsch",
+      "title": "auf Deutsch!",
       "subtitle": "To virtually climb Mount Sabyinyo",
       "description": "Pick your timeframe, choose a start date and get active! Alone or with friends, unlock exclusive WWF videos as you progress."
     },
@@ -264,6 +264,7 @@
 		}
 	},
 	"defs": {
+    "signup": "Sign up",
 		"donate": "Donate",
     "prefs": "Preferences",
     "strava_app": "Strava App",

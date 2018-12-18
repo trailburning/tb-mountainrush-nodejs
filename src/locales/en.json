@@ -259,6 +259,7 @@
 		}
 	},
 	"defs": {
+    "signup": "Sign up",
 		"donate": "Donate",
     "prefs": "Preferences",
     "strava_app": "Strava App",

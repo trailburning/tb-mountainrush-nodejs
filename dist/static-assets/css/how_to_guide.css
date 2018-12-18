@@ -50,9 +50,7 @@
         height: 156px; }
     #howToGuide .howToStep.stepActive .animated img {
       height: 238px; }
-    #howToGuide .howToStep.stepFundraise .text {
-      text-align: center; }
-    #howToGuide .howToStep.stepFundraise .image {
+    #howToGuide .howToStep.stepFundraise .text, #howToGuide .howToStep.stepFundraise .image {
       text-align: center; }
 
 @media (min-width: 768px) {
@@ -148,6 +146,8 @@
         width: 160px;
         height: 200px;
         background: url(/static-assets/images/wwf-uk/right-leaves2.png) no-repeat top left; }
+      #howToGuide .howToStep.stepFundraise .content .text, #howToGuide .howToStep.stepFundraise .content .image {
+        text-align: left; }
       #howToGuide .howToStep.stepFundraise .content .text {
         padding-right: 90px; }
       #howToGuide .howToStep.stepFundraise .col-left {

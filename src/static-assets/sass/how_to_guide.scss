@@ -102,11 +102,7 @@
     }
 
     &.stepFundraise {      
-      .text {
-        text-align: center;
-      }
-
-      .image {
+      .text, .image {
         text-align: center;
       }
     }
@@ -305,7 +301,11 @@
           }
         }
 
-         .content {
+        .content {
+          .text, .image {
+            text-align: left;
+          }
+
           .text {
             padding-right: 90px;
           }
@@ -317,11 +317,6 @@
 
         .col-right {
           width: 386px;
-        }
-
-        .content {
-          .text {
-          }
         }
 
         .animated {

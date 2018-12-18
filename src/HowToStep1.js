@@ -11,14 +11,14 @@ const HowToStep1 = (props) => {
         <div className="embelish left-background"></div>
 
         <div className="col col-left">
-          <div className="image"><img className="animate" src="http://staging.mountainrush.co.uk/static-assets/images/temp/step1.png" /></div>
+          <div className="image"><img className="animate" src="/static-assets/images/temp/step1.png" /></div>
         </div>
         <div className="col col-right">
           <div className="text">
             <div className="animate">
-            <h1>{props.stepContent.title}</h1>
-            <h2>{props.stepContent.subtitle}</h2>
-            {props.stepContent.description}
+            <h1>{props.content.how_to_guide.step1.title}</h1>
+            <h2>{props.content.how_to_guide.step1.subtitle}</h2>
+            {props.content.how_to_guide.step1.description}
             </div>
           </div>
         </div>
