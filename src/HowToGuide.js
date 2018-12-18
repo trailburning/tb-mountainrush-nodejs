@@ -13,7 +13,7 @@ class HowToGuide extends Component {
     return [
       <HowToStep1 key={1} step={1} content={store.getState().literals} />,
       <HowToStep2 key={2} step={2} content={store.getState().literals} />,
-      <HowToStep3 key={3} step={3} callbackBtnClicked={this.props.callbackSignupBtnClicked} hostURL={this.props.hostURL} content={store.getState().literals} />
+      <HowToStep3 key={3} step={3} content={store.getState().literals} callbackBtnClicked={this.props.callbackSignupBtnClicked} />
     ];
   }
 }

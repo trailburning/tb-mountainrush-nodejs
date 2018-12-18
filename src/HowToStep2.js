@@ -1,49 +1,50 @@
 import React from "react";
 import ScrollAnimation from 'react-animate-on-scroll';
 
-const HowToStep2 = (props) => {
-  return (
-    <div className={"howToStep stepActive"}>
+export default class HowToStep2 extends React.Component {
+  render() {  
+    return (
+      <div className={"howToStep stepActive"}>
 
-      <ScrollAnimation key={props.step} animateIn="fadeIn" animateOut="fadeOut" animateOnce={true} offset={50}>
+        <ScrollAnimation key={this.props.step} animateIn="fadeIn" animateOut="fadeOut" animateOnce={true} offset={50}>
 
-      <div className="content">
-        <div className="embelish left-background"></div>
+        <div className="content">
+          <div className="embelish left-background"></div>
 
-        <div className="visible-xs">
-          <div className="col col-left">
-            <div className="image"><img className="animate" src="/static-assets/images/temp/step2.png" /></div>
-          </div>
-          <div className="col col-right">
-            <div className="text">
-              <div className="animate">
-              <h1>{props.content.how_to_guide.step2.title}</h1>
-              <h2>{props.content.how_to_guide.step2.subtitle}</h2>
-              {props.content.how_to_guide.step2.description.replace('%s', props.content.defs.strava_app)}
+          <div className="visible-xs">
+            <div className="col col-left">
+              <div className="image"><img className="animate" src="/static-assets/images/temp/step2.png" /></div>
+            </div>
+            <div className="col col-right">
+              <div className="text">
+                <div className="animate">
+                <h1>{this.props.content.how_to_guide.step2.title}</h1>
+                <h2>{this.props.content.how_to_guide.step2.subtitle}</h2>
+                {this.props.content.how_to_guide.step2.description.replace('%s', this.props.content.defs.strava_app)}
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="hidden-xs">
-          <div className="col col-left">
-            <div className="text">
-              <div className="animate">
-              <h1>{props.content.how_to_guide.step2.title}</h1>
-              <h2>{props.content.how_to_guide.step2.subtitle}</h2>
-              {props.content.how_to_guide.step2.description.replace('%s', props.content.defs.strava_app)}
+          <div className="hidden-xs">
+            <div className="col col-left">
+              <div className="text">
+                <div className="animate">
+                <h1>{this.props.content.how_to_guide.step2.title}</h1>
+                <h2>{this.props.content.how_to_guide.step2.subtitle}</h2>
+                {this.props.content.how_to_guide.step2.description.replace('%s', this.props.content.defs.strava_app)}
+                </div>
               </div>
             </div>
+            <div className="col col-right">
+              <div className="image"><img className="animate" src="http://staging.mountainrush.co.uk/static-assets/images/temp/step2.png" /></div>
+            </div>
           </div>
-          <div className="col col-right">
-            <div className="image"><img className="animate" src="http://staging.mountainrush.co.uk/static-assets/images/temp/step2.png" /></div>
-          </div>
+
         </div>
 
+        </ScrollAnimation>
       </div>
-
-      </ScrollAnimation>
-    </div>
-  );
+    )
+  }
 };
-export default HowToStep2;

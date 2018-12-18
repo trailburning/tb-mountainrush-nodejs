@@ -215,6 +215,11 @@ body {
 .mr-btn .sub {
   font-family: 'PFDinTextPro-Regular', sans-serif; }
 
+.mr-btn:focus,
+.mr-btn.btn-primary:focus {
+  color: #fff;
+  background-color: #28a79d; }
+
 .mr-btn:hover,
 .mr-btn.btn-primary:hover {
   color: #fff;
