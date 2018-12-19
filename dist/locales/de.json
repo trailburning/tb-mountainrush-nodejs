@@ -23,14 +23,14 @@
 	},
   "how_to_guide": {
     "step1": {
-      "title": "Challenge Yourself Deutsch",
+      "title": "Challenge Yourself",
       "subtitle": "To virtually climb Mount Sabyinyo",
       "description": "Pick your timeframe, choose a start date and get active! Alone or with friends, unlock exclusive WWF videos as you progress."
     },
     "step2": {
       "title": "Get Active",
       "subtitle": "Cycle, Run or Hike",
-      "description": "Simply download the Strava App and start tracking your activity.  Receive email updates and view your progress up Mount Sabyinyo in stunning 3D!"
+      "description": "Simply download the %s and start tracking your activity.  Receive email updates and view your progress up Mount Sabyinyo in stunning 3D!"
     },
     "step3": {
       "title": "Fundraise",
@@ -264,8 +264,10 @@
 		}
 	},
 	"defs": {
+    "signup": "Sign up",
 		"donate": "Donate",
     "prefs": "Preferences",
+    "strava_app": "Strava App",
 		"social": {
 			"share_facebook": "Share on Facebook",
 			"share_twitter": "Share on Twitter"

@@ -12,7 +12,7 @@ export default class HowToStep1 extends React.Component {
           <div className="embelish left-background"></div>
 
           <div className="col col-left">
-            <div className="image"><img className="animate" src="/static-assets/images/temp/step1.png" /></div>
+            <div className="image"><img className="animate" src="/static-assets/images/wwf-uk/how-to-guide/step1.png" /></div>
           </div>
           <div className="col col-right">
             <div className="text">

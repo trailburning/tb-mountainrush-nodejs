@@ -13,7 +13,7 @@ export default class HowToStep2 extends React.Component {
 
           <div className="visible-xs">
             <div className="col col-left">
-              <div className="image"><img className="animate" src="/static-assets/images/temp/step2.png" /></div>
+              <div className="image"><img className="animate" src="/static-assets/images/wwf-uk/how-to-guide/step2.png" /></div>
             </div>
             <div className="col col-right">
               <div className="text">
@@ -37,7 +37,7 @@ export default class HowToStep2 extends React.Component {
               </div>
             </div>
             <div className="col col-right">
-              <div className="image"><img className="animate" src="http://staging.mountainrush.co.uk/static-assets/images/temp/step2.png" /></div>
+              <div className="image"><img className="animate" src="/static-assets/images/wwf-uk/how-to-guide/step2.png" /></div>
             </div>
           </div>
 
