@@ -55,10 +55,7 @@ export default class HowToStep3 extends React.Component {
                 <div>{this.props.content.defs.signup}</div><div><i className="fa fa-arrow-right"></i></div>
                 </button>
                 </div>
-
-                <div className="btn-cta">
-                <button className="btn mr-btn" onClick={this.dispatchReduxBtnAction.bind(this)}>Redux Baby!</button>
-                </div>
+{/*                <div className="btn-cta"><button className="btn mr-btn" onClick={this.dispatchReduxBtnAction.bind(this)}>Redux Baby!</button></div> */}
               </div>
             </div>
           </div>
