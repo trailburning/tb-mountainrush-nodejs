@@ -134,6 +134,7 @@
 			"game_current": {
 				"description": "Du hast ein %s %s Spiel."
 			},
+      "game_create_ready": "Make sure you've downloaded the %s, you're now ready to create your challenge!",
 			"game_active": "Aktuelles Spiel anschauen",
 			"game_upcoming": "Nächstes Spiel anschauen",
 			"game": "Spiel anschauen",
@@ -264,11 +265,18 @@
 		}
 	},
 	"defs": {
+    "strava_app": "Strava App",
 		"donate": "Donate",
     "prefs": "Preferences",
 		"social": {
 			"share_facebook": "Share on Facebook",
 			"share_twitter": "Share on Twitter"
-		}
+		},
+    "activities": {
+      "run": "Running",
+      "ride": "Cycling",
+      "hike": "Hiking",
+      "all": "Everything"
+    }
 	}
 }

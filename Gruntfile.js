@@ -31,8 +31,12 @@ module.exports = function(grunt) {
         files: ['src/static-assets/js/**/*.js'],
         tasks: ['copy:staticassets_js']
       },
+      staticassets_img: {
+        files: ['src/static-assets/images/**'],
+        tasks: ['copy:staticassets_img']
+      },
       locales: {
-        files: ['src/static-assets/locales/**/*.json'],
+        files: ['src/locales/**'],
         tasks: ['copy:locales']
       }      
     },
@@ -48,6 +52,12 @@ module.exports = function(grunt) {
         cwd: 'src/static-assets/js/',
         src: '**',
         dest: 'dist/static-assets/js/'
+      },
+      staticassets_img: {
+        expand: true,
+        cwd: 'src/static-assets/images/',
+        src: '**',
+        dest: 'dist/static-assets/images/'
       },
       locales: {
         expand: true,
