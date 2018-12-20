@@ -338,9 +338,7 @@ var TEST = '<%= Defs.Test %>';
         </div>
       </div>
     {{ } else { }}
-      <div class="intro-text centre-text">
-      You're now ready to create your challenge!
-      </div>
+      <div class="intro-text centre-text"><%- __('register.welcome_connected.game_create_ready', '<a class="link" href="https://www.strava.com/mobile" target="_blank">' +  __('defs.strava_app') + '</a>') %></div>
       <div class="btns">
         <span class="btn mr-btn btn-primary btn-create"><%= __('register.welcome_connected.game_create') %></span>
       </div>
