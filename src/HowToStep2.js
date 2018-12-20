@@ -1,5 +1,6 @@
 import React from "react";
 import ScrollAnimation from 'react-animate-on-scroll';
+const reactStringReplace = require('react-string-replace');
 
 export default class HowToStep2 extends React.Component {
   render() {  
@@ -32,7 +33,9 @@ export default class HowToStep2 extends React.Component {
                 <div className="animate">
                 <h1>{this.props.content.how_to_guide.step2.title}</h1>
                 <h2>{this.props.content.how_to_guide.step2.subtitle}</h2>
-                {this.props.content.how_to_guide.step2.description.replace('%s', this.props.content.defs.strava_app)}
+                {reactStringReplace(this.props.content.how_to_guide.step2.description, '%s', (match, i) => (
+                  <a key={i} href="https://www.strava.com/mobile" className="link" target="_blank">{this.props.content.defs.strava_app}</a>
+                ))}
                 </div>
               </div>
             </div>
