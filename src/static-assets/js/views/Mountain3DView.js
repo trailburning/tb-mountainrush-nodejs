@@ -424,11 +424,11 @@ define([
               "fadeDistance": nFadeDistance,
               "borderRadius": 27,
               "image": strMarkerImage,
-              "height": 54,
-              "width": 54,
+              "height": 48,
+              "width": 48,
               "borderWidth": 2,
               "anchor": {
-                "y": 2.35,
+                "y": 2.5,
                 "x": 0
               }
             }
