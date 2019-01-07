@@ -37,7 +37,6 @@ define([
       this.bFlagVisible = false;
       this.currPlayerID = null;
       this.arrRouteCoords = null;
-      this.bPlayerOverlapsMarker = false;
     },
 
     hide: function(){
@@ -225,15 +224,21 @@ define([
       var along = turf.along(this.jsonRoute, fProgressKM, {units: 'kilometers'});
       var fLat = along.geometry.coordinates[1];
       var fLong = along.geometry.coordinates[0];
+      var bPlayerOverlapsMarker = false;
 
       // see if the  player overlaps a marker
       var nOverlapYAdjust = 0, nOverlapCaretYAdjust = 0, nOverlapPosYAdjust = 0, nDecimalPlaces = 3;
-      if (this.bPlayerOverlapsMarker) {
+      $.each(this.arrMarkers, function(index, jsonMarker){
+        if (fLat == jsonMarker.features[0].geometry.coordinates[1] && (fLong = jsonMarker.features[0].geometry.coordinates[0])) {
+          bPlayerOverlapsMarker = true;
+        }
+      });
+
+      if (bPlayerOverlapsMarker) {
         nOverlapYAdjust = 3;
         nOverlapCaretYAdjust = 16.9;
         nOverlapPosYAdjust = 8.4;        
       }
-
 
       var fIconY = 2;
       var fCaretY = 5.55;
@@ -424,11 +429,11 @@ define([
               "fadeDistance": nFadeDistance,
               "borderRadius": 27,
               "image": strMarkerImage,
-              "height": 54,
-              "width": 54,
+              "height": 48,
+              "width": 48,
               "borderWidth": 2,
               "anchor": {
-                "y": 2.35,
+                "y": 2.5,
                 "x": 0
               }
             }
@@ -506,11 +511,6 @@ define([
 
       if (Number(fProgressKM) >= Number(fMarkerKM)) {
         bEnable = true;
-      }
-
-      // do we have an overlap?
-      if (fProgressKM == fMarkerKM) {
-        this.bPlayerOverlapsMarker = true;
       }
 
       if (bEnable) {

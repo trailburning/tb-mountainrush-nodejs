@@ -131,6 +131,7 @@
       "game_current": {
         "description": "You have a %s %s challenge."
       },
+      "game_create_ready": "Make sure you've downloaded the %s, you're now ready to create your challenge!",
       "game_active": "View Active Challenge",
       "game_upcoming": "View Pending Challenge",
       "game": "View Challenge",
@@ -260,6 +261,7 @@
   },
   "defs": {
     "signup": "Sign up",
+    "strava_app": "Strava App",
     "donate": "Donate",
     "prefs": "Preferences",
     "strava_app": "Strava App",
@@ -271,7 +273,7 @@
       "run": "Running",
       "ride": "Cycling",
       "hike": "Hiking",
-      "all": "Everything oh yeah!"
+      "all": "Everything"
     }
   }
 }

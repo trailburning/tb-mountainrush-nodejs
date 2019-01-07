@@ -131,6 +131,7 @@
 			"game_current": {
 				"description": "You have a %s %s challenge."
 			},
+      "game_create_ready": "Make sure you've downloaded the %s, you're now ready to create your challenge!",
 			"game_active": "View Active Challenge",
 			"game_upcoming": "View Pending Challenge",
 			"game": "View Challenge",
@@ -259,19 +260,20 @@
 		}
 	},
 	"defs": {
-    "signup": "Sign up",
+	    "signup": "Sign up",
+    	"strava_app": "Strava App",
 		"donate": "Donate",
-    "prefs": "Preferences",
-    "strava_app": "Strava App",
+    	"prefs": "Preferences",
+		"strava_app": "Strava App",
 		"social": {
 			"share_facebook": "Share on Facebook",
 			"share_twitter": "Share on Twitter"
 		},
-    "activities": {
-      "run": "Running",
-      "ride": "Cycling",
-      "hike": "Hiking",
-      "all": "Everything oh yeah!"
-    }
+		"activities": {
+		  "run": "Running",
+		  "ride": "Cycling",
+		  "hike": "Hiking",
+		  "all": "Everything"
+	    }
 	}
 }
