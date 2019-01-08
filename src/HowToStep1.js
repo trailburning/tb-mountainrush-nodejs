@@ -6,7 +6,7 @@ export default class HowToStep1 extends React.Component {
     return (
       <div className={"howToStep stepChallenge"}>
 
-        <ScrollAnimation key={this.props.step} animateIn="fadeIn" animateOut="fadeOut" animateOnce={true} delay={500} offset={0}>
+        <ScrollAnimation key={this.props.step} animateIn="fadeIn" animateOut="fadeOut" animateOnce={true} delay={1000} offset={0}>
 
         <div className="content">
           <div className="embelish left-background"></div>
