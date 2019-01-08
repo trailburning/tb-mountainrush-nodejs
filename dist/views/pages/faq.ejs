@@ -46,18 +46,20 @@ var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
       <div class="content-view">
         <h1>FAQs</h1>
         <div class="intro-text centre-text">
+        <h2>What activities will count in my challenge?</h2>
+        <p>You can select one of the supported activities - running, hiking or cycling.  Alternatively, if you'd like to use more than one type of activity then you can choose 'any' and use all of Strava's <a href="https://support.strava.com/hc/en-us/articles/216919407-Supported-Activity-Types-on-Strava" target="_blank" class="link">supported activites</a>!</p>
         <h2>I forgot to turn on Strava for my run/hike/cycle. Can I add the metres manually?</h2>
         <p>Although Strava does let you log an activity manually it does not allow you to add metres climbed manually. &nbsp;This is because Strava uses your recorded route data to determine your metres climbed.</p>
         <p>So you'll need to head out again to make those metres count!</p>
         <h2>What if I can't complete my challenge in the time I selected?</h2>
         <p>You have until your countdown reaches 0 to get to the summit. &nbsp;If you do not reach the summit in time then the challenge will end without you having reached the summit.</p>
-        <p>The good news is that once a challenge ends you can select another one, giving yourself more time, or changing the activity!</p>
+        <p>The good news is that you can cancel a challenge at any time and select a new one giving yourself more time. Simply go to your <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/profile" class="link">profile page</a> to cancel your current challenge.</p>
         <h2>I recorded an activity with Strava but it doesn't appear in my challenge</h2>
         <p>This is usually because the recorded activity in Strava doesn't match the activity type chosen for your challenge. &nbsp;For example if you choose a 'hike' challenge but record a 'walk' in Strava then it won't appear.</p>
         <p>You can resolve this but changing the activity type in Strava and then contacting Mountain Rush&nbsp;<a href="mailto:support@mountainrush.co.uk" class="link">support</a>&nbsp;to update your challenge.</p>
         <p>This could also be because your Strava privacy settings.  You will need to change your <a href="https://support.strava.com/hc/en-us/articles/216919377-Private-Activities-and-Private-Uploads?mobile_site=true" target="_blank" class="link">privacy settings</a> to that everyone can see your activities.</p>
         <h2>What if I need to postpone my challenge?</h2>
-        <p>If your challenge has not ended then it should be possible to change the end date, just contact Mountain Rush&nbsp;<a href="mailto:support@mountainrush.co.uk" class="link">support</a>.</p>
+        <p>If your challenge has not ended then you can cancel it and create a new one.  Simply go to your <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/profile" class="link">profile page</a> to cancel your current challenge.</p>
         <h2>Why can't I see unlocked video content in my challenge?</h2>
         <p>If your challenge contains content to unlock as you climb, then you need to be 'signed in' on the device where you're viewing the content.</p>
         <p>For example if you 'sign up' to a challenge on a desktop and then view your activity on your smartphone then you'll also need to 'sign up' on your smartphone.</p>
