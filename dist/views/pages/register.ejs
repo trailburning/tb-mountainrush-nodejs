@@ -354,7 +354,8 @@ var TEST = '<%= Defs.Test %>';
       <h2><%= __('register.welcome_connected.previous_challenges') %> {{ if (completeGames.length > 1) { }}<%= __n('register.challenge', 2) %>{{ } else { }}<%= __n('register.challenge', 1) %>{{ } }}</h2>
       <ul class="form-field pills">
       {{ _.each(completeGames, function(completeGame, index) { }}
-        <li><a href="<%= Defs.BaseHTTPSURL %>/game/{{= completeGame.game }}" class="pill">{{= completeGame.name }} {{= completeGame.type }}</a></li>
+        <li><a href="<%= Defs.BaseHTTPSURL %>/game/{{= completeGame.game }}" class="pill">
+        {{= completeGame.name }} {{ if (completeGame.type != 'All') { }}{{= completeGame.type }}{{ }; }}</a></li>
       {{ }); }}
       </ul>
       </div>
