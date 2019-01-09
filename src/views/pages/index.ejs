@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include ../partials/includes.ejs %>
+<link href='/static-assets/css/home.css' rel='stylesheet' />
+<% include ../partials/analyticsFBPixel.ejs %>
+</head>
+<body>
+<script>
+var APP = 'HomeApp';
+var GAME_API_URL = '<%= Defs.MRAPIURL %>';
+var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
+var TB_JOURNEY_ID = '59a0091680d4a677217766';
+</script>
+
+<div class="container-fluid nopadding">
+  <% include ../partials/header.ejs %>
+
+  <div id="page-view">
+    <div id="player-view">
+      <div id="hero-view">
+        <div id="piste-view">
+          <div id="container">
+            <div id="engine-container"></div>
+          </div>
+        </div>
+        <div id="titles-view" class="overlay">
+          <div class="titles">
+            <div id="loader-view">
+              <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+                <div class="loader-text"><span class="percent">0</span></div>
+              </div>
+            </div>
+            <div class="play-btn">
+            <i class="fa fa-play-circle"></i>
+            </div>
+            <span class="scene">
+            <h1><%= __('intro.scene1_1') %></h1>
+            <h2><%= __('intro.scene1_2') %></h2>
+            </span>
+            <span class="scene">
+            <h1><%= __('intro.scene2_1') %></h1>
+            <h2><%= __('intro.scene2_2') %></h2>
+            </span>
+            <span class="scene">
+            <h1><%= __('intro.scene3_1') %></h1>
+            <h2><%= __('intro.scene3_2') %></h2>
+            </span>
+            <span class="scene">
+            <h1><%= __('intro.scene4_1') %></h1>
+            <h2><%= __('intro.scene4_2') %></h2>
+            </span>
+            <span class="scene">
+            <h1><%= __('intro.scene5_1') %></h1>
+            <h2><%= __('intro.scene5_2') %></h2>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-view clearfix">
+      <div class="game-container-view clearfix">
+        <div class="grab hidden-sm hidden-xs"><img src="/static-assets/images/phones.png"></div>
+        <div class="synopsis pull-right">
+          <div class="text">
+            <h1><%= __('welcome.title') %></h1>
+            <h2><%= __('welcome.description') %></h2>
+            <div class="overview">
+            <p>
+            <%- __('welcome.text', '<a href="https://www.strava.com" target="_blank" class="link">Strava</a>') %>
+            </p>
+            <p>
+            <%- __('welcome.text_fundraise', '<a href="https://www.raisenow.com" target="_blank" class="link">' + __('welcome.fundraise') + '</a>') %>
+            </p>
+            </div>
+          </div>
+          <div class="btns">
+          <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('welcome.signup') %></a> 
+          <span class="btn mr-btn demo-video"><%= __('welcome.demo') %></span>
+          </div>
+        </div>
+        <div class="grab hidden-md hidden-lg"><img src="/static-assets/images/phones.png"></div>
+      </div>
+
+      <div class="fundraising-partner">
+      <%- __('welcome.fundraising_provider', '<a href="https://www.raisenow.com" target="_blank"><img src="/static-assets/images/logos/RaiseNow_logo_techpartner_no_margin.png"></a>') %>
+      </div>
+
+      <div class="stripe"></div>
+    </div>
+  </div>
+
+  <div id="community-view">
+    <h1><%= __('community.title') %></h1>
+    <h2><%= __('community.description') %></h2>
+    <h3>#playmountainrush</h3>
+
+    <div class="icons"><a href="https://www.instagram.com/trailburning/" target="_blank"><i class="fa fa-instagram"></i></a></div>
+
+    <div id="community-photos-loader-view" class="loader-view">
+      <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </div>
+
+    <div id="community-photos-view" class="photos"></div>
+  </div>
+
+  <div class="stripe"></div>
+
+  <% include ../partials/footer.ejs %>
+</div>
+
+<div id="device-capable-modal-view"></div>
+<div id="promotion-modal-view"></div>
+<div id="player-game-view"></div>
+<div id="player-connected-view"></div>
+<div id="demo-video-view"></div>
+
+<div id="mobileTest" class="visible-xs"></div>
+
+<script type="text/template" id="deviceCapableModalViewTemplate">
+  <div class="modal msg-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="details">
+            <div class="title"><%= __('error.device.title') %></div>
+            <div class="description">
+            <%= __('error.device.description') %>
+            <br/><br/>
+            <% if (Campaign.CampaignTemplate != 'default') { %>
+              <%- __('error.device.resolve', '<a class="link" href="mailto:support@mountainrush.co.uk">' + __('error.device.support') + '</a>') %>
+            <% } else { %>
+              <%- __('error.device.mr_resolve', '<a class="link" href="mailto:support@mountainrush.co.uk">' + __('error.device.support') + '</a>') %>
+            <% } %>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</script>
+
+<script type="text/template" id="promotionModalViewTemplate">
+  <div class="modal msg-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="details">
+            <div class="title">Mont Blanc</div>
+            <div class="description">
+              <div class="logo"><img src="/static-assets/images/logos/logo_ashmei_challenge31.png"></div>
+              Join ashmei <a href="https://ashmei.com/challengethirtyone" class="link" target="_blank">Challenge31</a> in December and take it to the max by 
+              {{ if (player) { }}
+                choosing our ashmei Mont Blanc challenge!
+              {{ } else { }}
+                signing up and choosing our ashmei Mont Blanc challenge!
+              {{ } }}
+            </div>
+          </div>
+          <div class="action-fields">
+            <div class="action-field">
+            <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('overlay.challenge.yes') %></a>
+            </div>
+            <div class="action-field"><span class="btn mr-btn" data-dismiss="modal">Maybe later</span></div>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</script>
+
+<script type="text/template" id="communityPhotosViewTemplate">
+  {{ _.each(juicer.posts.items, function(post, index) { }}<div class="post">
+    <div class="media">
+      <a href="{{= post.full_url }}" target="_blank"><div class="image" style="background-image: url('{{= post.image }}')"></div>
+      <div class="likes ago">
+      {{ if (post.likes >= 1) { }}
+        <i class="icon fa fa-heart"></i> {{= post.likes }}
+      {{ } }}
+      </div>
+      </a>
+    </div>
+    <div class="details">
+      <div class="text">
+        <div class="name"><a href="{{= post.full_url }}" target="_blank">{{= post.poster_name }}</a></div>
+        <div class="credit truncate" data-truncate="64"> {{= post.message }}</div>
+      </div>
+    </div>
+  </div>{{ }); }}
+</script>
+
+<script type="text/template" id="playerGameViewTemplate">
+  <div class="modal msg-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          {{ var activeGames = _.where(player.games, {game_state:'active'}) }}
+          {{ var pendingGames = _.where(player.games, {game_state:'pending'}) }}
+
+          {{ if (activeGames.length) { }}
+            {{ var currGame = activeGames[0] }}
+
+            {{ activityDescription = '' }}
+
+            {{ if (currGame.type == 'Run') { }}
+              {{ activityDescription = '<%= __('defs.activities.run') %>' }}
+            {{ } else if (currGame.type == 'Ride') { }}
+              {{ activityDescription = '<%= __('defs.activities.ride') %>' }}
+            {{ } else if (currGame.type == 'Hike') { }}
+              {{ activityDescription = '<%= __('defs.activities.hike') %>' }}
+            {{ } }}
+
+            <div class="details">
+              <div class="title"><%= __('overlay.challenge.latest.title') %></div>
+              <div class="description">
+              {{= '<%= __('overlay.challenge.latest.description') %>'.replace('%s', player.firstname).replace('%s', '<strong>' + currGame.name + '</strong> <span class="lowercase">' + activityDescription + '</span>') }}
+              </div>
+            </div>
+
+            <div class="action-fields">
+              <div class="action-field"><a href="<%= Defs.BaseHTTPSURL %>/game/{{= currGame.game }}" class="btn mr-btn btn-primary"><%= __('overlay.challenge.yes') %></a></div>
+              <div class="action-field"><span class="btn mr-btn" data-dismiss="modal"><%= __('overlay.challenge.no') %></span></div>
+            </div>
+          {{ } else if (pendingGames.length) { }}
+            {{ var currGame = pendingGames[0] }}
+
+            {{ activityDescription = '' }}
+
+            {{ if (currGame.type == 'Run') { }}
+              {{ activityDescription = '<%= __('defs.activities.run') %>' }}
+            {{ } else if (currGame.type == 'Ride') { }}
+              {{ activityDescription = '<%= __('defs.activities.ride') %>' }}
+            {{ } else if (currGame.type == 'Hike') { }}
+              {{ activityDescription = '<%= __('defs.activities.hike') %>' }}
+            {{ } }}
+
+            <div class="details">
+              <div class="title"><%= __('overlay.challenge.upcoming.title') %></div>
+              <div class="description">
+              {{= '<%= __('overlay.challenge.upcoming.description') %>'.replace('%s', player.firstname).replace('%s', '<strong>' + currGame.name + '</strong> <span class="lowercase">' + activityDescription + '</span>') }}
+              </div>
+            </div>
+
+            <div class="action-fields">
+              <div class="action-field"><a href="<%= Defs.BaseHTTPSURL %>/game/{{= currGame.game }}" class="btn mr-btn btn-primary">Yes please</a></div>
+              <div class="action-field"><span class="btn mr-btn" data-dismiss="modal">Maybe later</span></div>
+            </div>
+          {{ } }}
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</script>
+
+<% include ../partials/demoVideoTemplate.ejs %>
+<% include ../partials/analytics.ejs %>
+</body>
+<script data-main="/static-assets/js/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+
+<!-- Example of how to use Piste API -->
+<script type="text/javascript">
+if ( typeof Procedural === 'undefined' ) { Procedural = {}; }
+</script>
+</html>

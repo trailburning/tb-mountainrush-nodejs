@@ -1,0 +1,11 @@
+<% if (Campaign.CampaignTemplate != 'default') { %>
+  <p><%= Campaign.ClientShortName %>'s <%= Campaign.CampaignName %> campaign is brought to you by <a href="https://mountainrush.co.uk/" class="link" target="_blank">Mountain Rush</a>.</p>
+<% } %>
+
+<p>
+<% if (Campaign.CampaignTemplate != 'default') { %>
+  <%- __('register.help.mr_contact', '<a class="link" href="mailto:support@mountainrush.co.uk">' + __('error.device.support') + '</a>') %>
+<% } else { %>
+  <%- __('register.help.contact', '<a class="link" href="mailto:support@mountainrush.co.uk">' + __('register.help.support') + '</a>') %>
+<% } %>
+</p>

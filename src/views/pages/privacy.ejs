@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include ../partials/includes.ejs %>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<% if (Campaign.CampaignTemplate != 'default') { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/web_platform.css' rel='stylesheet' />
+<% } %>
+<link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<link href='/static-assets/css/datepicker.css' rel='stylesheet' />
+<link href='/static-assets/css/page.css' rel='stylesheet' />
+<% if (Campaign.CampaignTemplate != 'default') { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/page.css' rel='stylesheet' />
+<% } %>
+<% include ../partials/analyticsFBPixel.ejs %>
+</head>
+<body>
+<script>
+var APP = 'DefApp';
+var GAME_API_URL = '<%= Defs.MRAPIURL %>';
+var HOST_URL = '<%= Defs.BaseHTTPSURL %>';
+var CLIENT_ID = '<%= Campaign.ClientID %>';
+var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
+var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
+</script>
+
+<div class="container-fluid nopadding">
+  <% if (Campaign.CampaignTemplate == 'default') { %>
+    <% include ../partials/header.ejs %>
+  <% } else { %>
+    <%- include('../partials/' + Campaign.CampaignTemplate + '/header.ejs') %>
+  <% } %>
+
+  <div id="page-view">
+    <div id="hero-view">
+      <div class="image fade_on_ready">        
+      <% if (Campaign.CampaignTemplate == 'default') { %>
+        <img class="scale" src="https://tbassets2.imgix.net/images/brands/mountainrush/pages/olivier-miche-102259-unsplash.jpg?fm=jpg&q=80&w=1280">
+      <% } else { %>
+        <img class="scale" src="https://tbassets2.imgix.net/images/brands/mountainrush/clients/<%= Campaign.CampaignTemplate %>/pages/WW267199.jpg?fm=jpg&q=80&w=1280">
+      <% } %>
+      </div>
+    </div>
+
+    <div id="page-content-view">
+      <div class="content-view">
+        <h1>Privacy Policy</h1>
+        <div class="intro-text centre-text">
+        <p>This privacy notice discloses the privacy practices for <a href="https://mountainrush.co.uk/" target="_blank" class="link">mountainrush.co.uk</a>.</p>
+        <h2>What personal data do we collect?</h2>
+        <p>We request your email address to communicate challenge activity to you.  We also use external providers to provide the Mountain Rush experience, namely <a href="https://www.strava.com/" target="_blank" class="link">Strava</a> for activity tracking, and <a href="https://www.justgiving.com/" target="_blank" class="link">JustGiving</a> and <a href="https://www.raisenow.com" target="_blank" class="link">RaiseNow</a> for fundraising, all of which may require personal data.</p><p>Please see the <a href="https://www.strava.com/legal/privacy" target="_blank" class="link">Strava</a>, <a href="https://www.justgiving.com/info/privacy-policy-versions/privacy-policy-v20" target="_blank" class="link">JustGiving</a> and <a href="https://www.raisenow.com/en/datenschutz" target="_blank" class="link">RaiseNow</a> privacy policies for more details.</p>
+        <h2>How do we use your personal data?</h2>
+        <p>We use your Strava personal public data when you signup to Mountain Rush and grant access for us to do so. We cache a copy of your Strava personal public data to provide you with a usable experience.</p>
+        <p>If at anytime you elect to revoke Mountain Rush access to your Strava account then we remove all your Strava personal public data from Mountain Rush.</p>
+        <h2>Who is the controller of your personal data?</h2>
+        <p>Augmented Media Projects Ltd, 2-7 Clerkenwell Green, London, United Kingdom is the controller of your personal data.</p>
+        <p>In matters concerning Augmented Media Projects Ltd's (trading as Trailburning) privacy practices please contact our support: <a href="mailto:support@trailburning.com" class="link">support@trailburning.com</a></p><p>Effective June 14, 2018</p>
+        </div>
+      </div>
+
+      <div class="campaign-sticker-container">
+        <div class="campaign-sticker">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if (Campaign.CampaignTemplate == 'default') { %>
+    <% include ../partials/footer.ejs %>
+  <% } else { %>
+    <%- include('../partials/' + Campaign.CampaignTemplate + '/footer.ejs') %>
+  <% } %>
+</div>
+
+<div id="mobileTest" class="visible-xs"></div>
+<div id="demo-video-view"></div>
+
+<% include ../partials/demoVideoTemplate.ejs %>
+<% include ../partials/analytics.ejs %>
+<script data-main="/static-assets/js/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+</html>

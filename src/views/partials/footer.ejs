@@ -1,0 +1,32 @@
+<div id="footer-view">
+  <div class="footer-container">
+    <div class="left"><a href="https://www.strava.com/mobile" target="_blank"><img src="/static-assets/images/logos/api_logo_pwrdBy_strava_stack_gray.png"></a></div>
+    <div class="right">
+      <div class="block">      
+        <div id="language-selector-view"></div>
+        <div class="icons">      
+          <a href="https://www.instagram.com/trailburning/" target="_blank" class="icon"><i class="fa fa-instagram"></i></a>
+          <a href="https://www.facebook.com/TrailburningMountainRush/" target="_blank" class="icon"><i class="fa fa-facebook"></i></a>
+        </div>
+      </div>
+      <div class="credit"><span class="user-action action-signout"><a href="<%= Defs.BaseHTTPSURL %>" class="signout"><%= __('menu.signout') %></a> | </span><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/faq"><%= __('menu.faq') %></a> | <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/privacy"><%= __('menu.privacy') %></a> | <a href="mailto:support@mountainrush.co.uk"><%= __('menu.support') %></a> | <a href="http://trailburning.com" target="_blank">Trailburning</a>&reg;&nbsp;-&nbsp;2019</div>
+    </div>
+  </div>
+  <div class="logo-container">
+    <div class="mr-logo"><img src="/static-assets/images/logos/mr_logo.png"></div>
+  </div>
+</div>
+
+<script type="text/template" id="languageSelectorViewTemplate">
+  <% if (Campaign.CampaignLanguages.length > 1) { %>
+    <div class="dropdown dropup mr-dropdown">
+    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= Campaign.SelLanguage.description %> <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dLabel">
+    <% for (var i=0; i < Campaign.CampaignLanguages.length; i++) { %>
+      <li><a href="#" class="change-lang" data-id="<%= Campaign.CampaignLanguages[i]['name'] %>"><%= Campaign.CampaignLanguages[i]['description'] %></a></li>
+    <% } %>  
+    </ul>
+    </div>      
+  <% } %>
+</script>
