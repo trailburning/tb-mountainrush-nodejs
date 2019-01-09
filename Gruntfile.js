@@ -35,6 +35,10 @@ module.exports = function(grunt) {
         files: ['src/static-assets/images/**'],
         tasks: ['copy:staticassets_img']
       },
+      views: {
+        files: ['src/views/**'],
+        tasks: ['copy:views']
+      },
       locales: {
         files: ['src/locales/**'],
         tasks: ['copy:locales']
@@ -58,6 +62,12 @@ module.exports = function(grunt) {
         cwd: 'src/static-assets/images/',
         src: '**',
         dest: 'dist/static-assets/images/'
+      },
+      views: {
+        expand: true,
+        cwd: 'src/views/',
+        src: '**',
+        dest: 'dist/views/'
       },
       locales: {
         expand: true,
