@@ -61,24 +61,8 @@ define([
         case STATE_SELECT_PLAYER:
           this.nState = STATE_READY;
 
-          var fAngle = 0;
-          // what sort of mountain do we have?
-          switch (this.options.mountainType) {
-            case MOUNTAIN_TYPE_SMOOTH:
-              fAngle = 10;
-              break;
-
-            default:
-              // use progress to calc camera angle
-              var model = this.playerCollection.get(this.currPlayerID);
-              fAngle = Math.round(model.get('elevationGainPercent') / 2) + 8;
-              break;
-          }
-
           var coords = this.playerCollection.get(this.currPlayerID).get('jsonPlayer').features[0].geometry.coordinates;
-//          Procedural.focusOnLocation( {latitude: coords[1], longitude: coords[0], distance: 6000, angle: fAngle} );
-          // try using default focus
-          Procedural.focusOnLocation( {latitude: coords[1], longitude: coords[0]} );
+          Procedural.focusOnLocation( {latitude: coords[1], longitude: coords[0], distance: 6000} );
           break;
 
         case STATE_SELECT_PLAYER_NO_SELECT:
@@ -141,7 +125,7 @@ define([
       });
     },
 
-    selectPlayer: function(id, bOrbitPlayer){
+    selectPlayer: function(id, bOrbitPlayer){      
       var player = null;
 
       if (this.timeoutID) {
