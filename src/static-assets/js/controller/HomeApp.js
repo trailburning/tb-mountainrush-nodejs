@@ -112,8 +112,10 @@ define([
     }
     else {
       // fire up promotion
-      promotionModalView.render(null);
-      promotionModalView.show();      
+
+        // 190114 MLA removed until it can be automatic
+//      promotionModalView.render(null);
+//      promotionModalView.show();      
     }
 
     $('.signout').click(function(evt){
@@ -281,8 +283,10 @@ define([
       }
       else {
         // no active game so fire up promotion
-        promotionModalView.render(jsonUser);
-        promotionModalView.show();      
+
+        // 190114 MLA removed until it can be automatic
+//        promotionModalView.render(jsonUser);
+//        promotionModalView.show();      
       }
     }
 
