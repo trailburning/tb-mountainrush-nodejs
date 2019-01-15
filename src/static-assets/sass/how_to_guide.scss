@@ -142,6 +142,36 @@
   }
 }
 
+@media (min-width: 400px) {
+  #howToGuide {
+    .howToStep {
+      &.stepChallenge {
+        .animated {
+          .image {
+            text-align: center;
+          }
+
+          img {
+            height: 304px;
+          }
+        }
+      }
+
+      &.stepActive {
+        .animated {
+          .image {
+            text-align: center;
+          }
+
+          img {
+            height: 409px;
+          }          
+        }
+      }
+    }
+  }
+}
+
 @media (min-width: 768px) {
   #howToGuide {
     font-size: 1.2em;
@@ -208,6 +238,10 @@
         }
 
         .animated {
+          .image {
+            text-align: left;
+          }
+
           .col-left {
             .animate {
               top: -76px;
@@ -233,10 +267,6 @@
                 left: 0px;
               }
             }
-          }
-
-          img {
-            height: 304px;
           }
         }
       }
@@ -271,6 +301,10 @@
         }
 
         .animated {
+          .image {
+            text-align: right;
+          }
+
           .col-left {
             .animate {
               left: -100px;
@@ -297,10 +331,6 @@
               }
             }
           }
-
-          img {
-            height: 409px;
-          }          
         }
       }
 

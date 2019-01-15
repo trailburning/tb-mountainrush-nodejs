@@ -76,6 +76,16 @@
     #howToGuide .howToStep.stepFundraise .text, #howToGuide .howToStep.stepFundraise .image {
       text-align: center; }
 
+@media (min-width: 400px) {
+  #howToGuide .howToStep.stepChallenge .animated .image {
+    text-align: center; }
+  #howToGuide .howToStep.stepChallenge .animated img {
+    height: 304px; }
+  #howToGuide .howToStep.stepActive .animated .image {
+    text-align: center; }
+  #howToGuide .howToStep.stepActive .animated img {
+    height: 409px; } }
+
 @media (min-width: 768px) {
   #howToGuide {
     font-size: 1.2em; }
@@ -114,6 +124,8 @@
         width: 380px; }
       #howToGuide .howToStep.stepChallenge .content {
         width: 748px; }
+      #howToGuide .howToStep.stepChallenge .animated .image {
+        text-align: left; }
       #howToGuide .howToStep.stepChallenge .animated .col-left .animate {
         top: -76px;
         left: -100px; }
@@ -123,8 +135,6 @@
         left: 0px; }
       #howToGuide .howToStep.stepChallenge .animated.fadeIn .col-right .animate {
         left: 0px; }
-      #howToGuide .howToStep.stepChallenge .animated img {
-        height: 304px; }
     #howToGuide .howToStep.stepActive {
       padding-top: 42px;
       padding-bottom: 46px; }
@@ -141,6 +151,8 @@
         width: 350px; }
       #howToGuide .howToStep.stepActive .content .text {
         padding-right: 24px; }
+      #howToGuide .howToStep.stepActive .animated .image {
+        text-align: right; }
       #howToGuide .howToStep.stepActive .animated .col-left .animate {
         left: -100px; }
       #howToGuide .howToStep.stepActive .animated .col-right .animate {
@@ -150,8 +162,6 @@
         left: 0px; }
       #howToGuide .howToStep.stepActive .animated.fadeIn .col-right .animate {
         right: 0px; }
-      #howToGuide .howToStep.stepActive .animated img {
-        height: 409px; }
     #howToGuide .howToStep.stepFundraise {
       padding-top: 146px;
       padding-bottom: 68px; }
