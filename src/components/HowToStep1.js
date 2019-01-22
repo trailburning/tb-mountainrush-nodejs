@@ -1,12 +1,12 @@
 import React from "react";
-import ScrollAnimation from 'react-animate-on-scroll';
+import ScrollAnimationCustom from './ScrollAnimationCustom';
 
 export default class HowToStep1 extends React.Component {
   render() {  
     return (
       <div className={"howToStep stepChallenge"}>
 
-        <ScrollAnimation key={this.props.step} animateIn="fadeIn" animateOut="fadeOut" animateOnce={true} delay={1000} offset={0}>
+        <ScrollAnimationCustom key={this.props.step} animateIn="fadeIn" animateOut="fadeOut" animateOnce={false} delay={1000} offset={0}>
 
         <div className="content">
           <div className="embelish left-background"></div>
@@ -27,7 +27,7 @@ export default class HowToStep1 extends React.Component {
           <div className="embelish left-foreground"></div>
         </div>
 
-        </ScrollAnimation>
+        </ScrollAnimationCustom>
 
       </div>
     )

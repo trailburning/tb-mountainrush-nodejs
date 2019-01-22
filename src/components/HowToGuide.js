@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { store } from "./store";
-import './static-assets/css/how_to_guide.css';
+import { store } from "../store";
+import '../static-assets/css/how_to_guide.css';
 import HowToStep1 from "./HowToStep1";
 import HowToStep2 from "./HowToStep2";
 import HowToStep3 from "./HowToStep3";

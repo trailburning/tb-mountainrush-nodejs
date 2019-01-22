@@ -1,5 +1,5 @@
 import React from "react";
-import ScrollAnimation from 'react-animate-on-scroll';
+import ScrollAnimationCustom from './ScrollAnimationCustom';
 const reactStringReplace = require('react-string-replace');
 
 export default class HowToStep2 extends React.Component {
@@ -7,7 +7,7 @@ export default class HowToStep2 extends React.Component {
     return (
       <div className={"howToStep stepActive"}>
 
-        <ScrollAnimation key={this.props.step} animateIn="fadeIn" animateOut="fadeOut" animateOnce={true} offset={50}>
+        <ScrollAnimationCustom key={this.props.step} animateIn="fadeIn" animateOut="fadeOut" animateOnce={false} offset={50}>
 
         <div className="content">
           <div className="embelish left-background"></div>
@@ -46,7 +46,7 @@ export default class HowToStep2 extends React.Component {
 
         </div>
 
-        </ScrollAnimation>
+        </ScrollAnimationCustom>
       </div>
     )
   }

@@ -1,9 +1,9 @@
 import React from "react";
-import ScrollAnimation from 'react-animate-on-scroll';
+import ScrollAnimationCustom from './ScrollAnimationCustom';
 
-import { store } from "./store";
-import { loadLiterals } from "./reducers/literals";
-import loadLang from "./locales";
+import { store } from "../store";
+import { loadLiterals } from "../reducers/literals";
+import loadLang from "../locales";
 
 export default class HowToStep3 extends React.Component {
   constructor(props) {
@@ -36,7 +36,7 @@ export default class HowToStep3 extends React.Component {
     return (
       <div className={"howToStep stepFundraise"}>
 
-        <ScrollAnimation key={this.props.step} animateIn="fadeIn" animateOut="fadeOut" animateOnce={true} offset={50}>
+        <ScrollAnimationCustom key={this.props.step} animateIn="fadeIn" animateOut="fadeOut" animateOnce={false} offset={50}>
 
         <div className="content">
           <div className="embelish left-background"></div>
@@ -63,7 +63,7 @@ export default class HowToStep3 extends React.Component {
           <div className="embelish right-foreground"></div>
         </div>
 
-        </ScrollAnimation>
+        </ScrollAnimationCustom>
 
       </div>
     );
