@@ -5,10 +5,8 @@ import HowToStep1 from "./HowToStep1";
 import HowToStep2 from "./HowToStep2";
 import HowToStep3 from "./HowToStep3";
 
-/*
-import { loadLiterals } from "./reducers/literals";
-import loadLang from "./locales";
-*/
+import { loadLiterals } from "../reducers/literals";
+import loadLang from "../locales";
 
 class HowToGuide extends Component {
   render() {
