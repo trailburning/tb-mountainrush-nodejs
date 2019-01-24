@@ -22,18 +22,18 @@
 		"scene5_2": "Mountain Rush"
 	},
   "how_to_guide": {
-    "step1": {
-      "title": "Challenge Yourself",
+    "challenge": {
+      "title": "Challenge Yourself Deutsch",
       "subtitle": "To virtually climb Mount Sabyinyo",
       "description": "Pick your timeframe, choose a start date and get active! Alone or with friends, unlock exclusive WWF videos as you progress."
     },
-    "step2": {
-      "title": "Get Active",
+    "active": {
+      "title": "Get Active Deutsch",
       "subtitle": "Cycle, Run or Hike",
       "description": "Simply download the %s and start tracking your activity.  Receive email updates and view your progress up Mount Sabyinyo in stunning 3D!"
     },
-    "step3": {
-      "title": "Fundraise",
+    "fundraise": {
+      "title": "Fundraise Deutsch",
       "subtitle": "And help mountain gorillas",
       "description": "Let everyone know how you’re going on social media and reach your fundraising goal!"
     }

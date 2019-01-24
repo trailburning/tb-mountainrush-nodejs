@@ -29,7 +29,7 @@ function onSignupBtnClicked() {
 
 const render = function() {
   ReactDOM.render(
-    <HowToGuide className="howToGuide" callbackSignupBtnClicked={onSignupBtnClicked} tech={store.getState().tech} />, 
+    <HowToGuide className="howToGuide" callbackSignupBtnClicked={onSignupBtnClicked} />, 
     document.getElementById('howToGuide')
   );  
 }
