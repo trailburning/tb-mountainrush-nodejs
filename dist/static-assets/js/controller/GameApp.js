@@ -231,8 +231,6 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       mountain3DView = new Mountain3DView({ el: '#piste-view', arrMapPoint: arrMapPoint, mountainType: Number(jsonCurrGame.mountainType), geography: Number(jsonCurrGame.season) });
       mountain3DView.show();
       mountain3DView.render();
-
-      sponsorView.render(jsonCurrGame);
     }
 
     function focusPlayer(nPlayer) {
@@ -820,6 +818,8 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       if (jsonGame.sponsored) {
         $('body').addClass('sponsored');
       }
+
+      sponsorView.render(jsonCurrGame);
 
       // convert UTC dates to local
       var dLocalGameNow = new Date(jsonGame.game_now);
