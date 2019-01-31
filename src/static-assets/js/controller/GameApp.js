@@ -28,6 +28,7 @@ define([
   'views/PlayerActivityPhotosView',
   'views/PlayerActivityPhotoView',
 /* player.js */
+  'views/SponsorView',
   'views/LanguageSelectorView',
   'views/ActivePlayerView',
   'views/Player',
@@ -48,7 +49,7 @@ define([
 /* player.js */
 FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentView, PlayerActivityMorePhotosView, PlayerActivityPhotosView, PlayerActivityPhotoView,
 /* player.js */
-  LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, ChallengePendingModalView, ChallengeCompleteModalView, MountainLockedStoryModalView, MountainStoryModalView, FundraisingShoppingModalView, DemoVideoView){
+  SponsorView, LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, ChallengePendingModalView, ChallengeCompleteModalView, MountainLockedStoryModalView, MountainStoryModalView, FundraisingShoppingModalView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -111,6 +112,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     var fundraisingShoppingModalView = new FundraisingShoppingModalView({ el: '#fundraising-shopping-modal-view', jsonFundraising: jsonFundraising });
     var mountainLockedStoryModalView = new MountainLockedStoryModalView({ el: '#mountain-locked-story-modal-view' });
     var mountainStoryModalView = new MountainStoryModalView({ el: '#mountain-story-modal-view' });
+    var sponsorView = new SponsorView({ el: '#sponsor-big-container-view' });
 
     $('.signout').click(function(evt){
       removeUserCookie(CLIENT_ID);
@@ -229,6 +231,8 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       mountain3DView = new Mountain3DView({ el: '#piste-view', arrMapPoint: arrMapPoint, mountainType: Number(jsonCurrGame.mountainType), geography: Number(jsonCurrGame.season) });
       mountain3DView.show();
       mountain3DView.render();
+
+      sponsorView.render(jsonCurrGame);
     }
 
     function focusPlayer(nPlayer) {

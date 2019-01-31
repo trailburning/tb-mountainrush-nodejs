@@ -75,11 +75,13 @@
 
 /* SPONSOR CONTAINER VIEW */
 /******************************************/
-#sponsor-container-view {
+#sponsor-big-container-view,
+#sponsor-small-container-view {
   display: none;
 }
 
-body.sponsored #sponsor-container-view {
+body.sponsored #sponsor-big-container-view,
+body.sponsored #sponsor-small-container-view {
   display: block;
 }
 
