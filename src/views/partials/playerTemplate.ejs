@@ -58,6 +58,12 @@
     {{ _.each(players, function(player, index) { }}
       {{ var fundraising_item = fundraising.items[fundraising.random_item_pos] }}
 
+      {{ if (activePlayer) { }}
+        {{ if (game.multiplayer && (game.ownerPlayerID == activePlayer.id)) { }}
+          <!-- 190219 mla - friend invite to go here -->
+        {{ } }}
+      {{ } }}
+
       <div class="player" data-id="{{= player.id }}">
         <div class="player-stats">
           <div class="photo">

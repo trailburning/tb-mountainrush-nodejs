@@ -648,13 +648,13 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           break;
       }
 
-      playersSummaryView = new PlayersSummaryView({ el: '#players-summary-view', playerCollection: playerCollection });
+      playersSummaryView = new PlayersSummaryView({ el: '#players-summary-view', playerCollection: playerCollection, activePlayer: activePlayer });
       playersSummaryView.render();
 
-      playersListView = new PlayersListView({ el: '#players-list-view', playerCollection: playerCollection });
+      playersListView = new PlayersListView({ el: '#players-list-view', playerCollection: playerCollection, activePlayer: activePlayer });
       playersListView.render();
 
-      playersDetailView = new PlayersDetailView({ el: '#players-detail-view', jsonGame: jsonCurrGame, playerCollection: playerCollection, jsonFundraising: jsonFundraising });
+      playersDetailView = new PlayersDetailView({ el: '#players-detail-view', jsonGame: jsonCurrGame, playerCollection: playerCollection, jsonFundraising: jsonFundraising, activePlayer: activePlayer });
       playersDetailView.render();
 
       // modify images to use image proxy
