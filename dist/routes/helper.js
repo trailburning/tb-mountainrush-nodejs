@@ -36,6 +36,7 @@ module.exports = {
     defs.MRAPIURL = process.env.MR_API_URL;
     defs.BaseHTTPURL = this.BaseHTTPURL(req);
     defs.BaseHTTPSURL = this.BaseHTTPSURL(req);
+    defs.CurrentYear = new Date().getFullYear();
 
     return defs;
   }
