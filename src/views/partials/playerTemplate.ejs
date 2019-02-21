@@ -58,12 +58,6 @@
     {{ _.each(players, function(player, index) { }}
       {{ var fundraising_item = fundraising.items[fundraising.random_item_pos] }}
 
-      {{ if (activePlayer) { }}
-        {{ if (game.multiplayer && (game.ownerPlayerID == activePlayer.id)) { }}
-          <!-- 190219 mla - friend invite to go here -->
-        {{ } }}
-      {{ } }}
-
       <div class="player" data-id="{{= player.id }}">
         <div class="player-stats">
           <div class="photo">
@@ -244,6 +238,15 @@
         {{ } }}
       </div>
     {{ }); }}
+
+    {{ if (activePlayer) { }}
+      {{ if (game.multiplayer && (game.ownerPlayerID == activePlayer.id)) { }}
+        <div class="invite-friend">
+        <p><%- __('register.welcome_connected.msg_invite', '<span class="link link-invite">' + __('register.welcome_connected.invite') + '</span>') %></p>
+        </div>
+      {{ } }}
+    {{ } }}
+    
     <div class="back-to-mountain">Back to mountain<i class="fa fa-arrow-up arrow"></i></div>
   </div>
 
