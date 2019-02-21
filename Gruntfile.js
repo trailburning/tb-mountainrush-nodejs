@@ -22,7 +22,7 @@ module.exports = function(grunt) {
     watch: {
       source: {
         files: ['src/static-assets/sass/**/*.scss'],
-        tasks: ['sass', 'copy:staticassets_css'],
+        tasks: ['sass', 'cssmin', 'copy:staticassets_css'],
         options: {
           livereload: true, // needed to run LiveReload
         }
@@ -80,10 +80,10 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
 
-  grunt.registerTask('default', ['sass', 'cssmin', 'copy', 'watch']);
+  grunt.registerTask('default', ['watch', 'sass', 'cssmin', 'copy']);
 };

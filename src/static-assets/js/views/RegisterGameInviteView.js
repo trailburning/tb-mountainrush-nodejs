@@ -61,7 +61,7 @@ define([
     render: function(options){
       var self = this;
       
-      $(this.el).html(this.template({ campaign: options.jsonCampaign }));
+      $(this.el).html(this.template());
 
       $('.link-back', $(this.el)).click(function(evt){
         // fire event
