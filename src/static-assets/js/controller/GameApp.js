@@ -28,6 +28,7 @@ define([
   'views/PlayerActivityPhotosView',
   'views/PlayerActivityPhotoView',
 /* player.js */
+  'views/SponsorView',
   'views/LanguageSelectorView',
   'views/ActivePlayerView',
   'views/Player',
@@ -48,7 +49,7 @@ define([
 /* player.js */
 FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentView, PlayerActivityMorePhotosView, PlayerActivityPhotosView, PlayerActivityPhotoView,
 /* player.js */
-  LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, ChallengePendingModalView, ChallengeCompleteModalView, MountainLockedStoryModalView, MountainStoryModalView, FundraisingShoppingModalView, DemoVideoView){
+  SponsorView, LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, ChallengePendingModalView, ChallengeCompleteModalView, MountainLockedStoryModalView, MountainStoryModalView, FundraisingShoppingModalView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -111,6 +112,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     var fundraisingShoppingModalView = new FundraisingShoppingModalView({ el: '#fundraising-shopping-modal-view', jsonFundraising: jsonFundraising });
     var mountainLockedStoryModalView = new MountainLockedStoryModalView({ el: '#mountain-locked-story-modal-view' });
     var mountainStoryModalView = new MountainStoryModalView({ el: '#mountain-story-modal-view' });
+    var sponsorView = new SponsorView({ el: '#sponsor-big-container-view' });
 
     $('.signout').click(function(evt){
       removeUserCookie(CLIENT_ID);
@@ -646,13 +648,13 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           break;
       }
 
-      playersSummaryView = new PlayersSummaryView({ el: '#players-summary-view', playerCollection: playerCollection });
+      playersSummaryView = new PlayersSummaryView({ el: '#players-summary-view', playerCollection: playerCollection, activePlayer: activePlayer });
       playersSummaryView.render();
 
-      playersListView = new PlayersListView({ el: '#players-list-view', playerCollection: playerCollection });
+      playersListView = new PlayersListView({ el: '#players-list-view', playerCollection: playerCollection, activePlayer: activePlayer });
       playersListView.render();
 
-      playersDetailView = new PlayersDetailView({ el: '#players-detail-view', jsonGame: jsonCurrGame, playerCollection: playerCollection, jsonFundraising: jsonFundraising });
+      playersDetailView = new PlayersDetailView({ el: '#players-detail-view', jsonGame: jsonCurrGame, playerCollection: playerCollection, jsonFundraising: jsonFundraising, activePlayer: activePlayer });
       playersDetailView.render();
 
       // modify images to use image proxy
@@ -816,6 +818,8 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       if (jsonGame.sponsored) {
         $('body').addClass('sponsored');
       }
+
+      sponsorView.render(jsonCurrGame);
 
       // convert UTC dates to local
       var dLocalGameNow = new Date(jsonGame.game_now);

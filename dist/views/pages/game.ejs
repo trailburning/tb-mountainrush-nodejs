@@ -40,31 +40,7 @@ var Demo = <%= Defs.Demo %>;
       <% } %>
 
       <div id="game-view">
-        <div id="sponsor-container-view">
-          <div class="sponsor-view hidden-xs">
-            <div class="sponsor-detail-view">
-              <div class="logo"><a href="https://ashmei.com/challengethirtyone" target="_blank"><img src="/static-assets/images/logos/logo_ashmei.png"></a></div>
-              <div class="title">
-                <h1>Challenge 31<br/>December</h1>
-                <h2>Climb Mont Blanc with <a href="https://ashmei.com/challengethirtyone" target="_blank" class="link"><strong>ashmei</strong></a></h2>
-              </div>
-
-              <div class="detail">
-                <div class="countdown-container" data-value-day="<%= __n('game.day', 1) %>" data-value-days="<%= __n('game.day', 2) %>">
-                  <div class="countdown">
-                    <span class="clock"></span>
-                    <span class="end">
-                      <span class="days"><span class="time">0</span><span class="days-marker"> <%= __n('game.day', 2) %></span></span>
-                      <span class="hours"><span class="time"><span>00</span><span class="marker">:</span><span>00</span><span class="marker">:</span><span>00</span></span></span>
-                    </span>
-                  </div>
-                </div>
-
-                <div class="donate-btn"><a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>" data-href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/[PLAYER_ID]/donate?amount=1000" class="btn mr-btn btn-primary btn-large btn-invert-hover"><%= __('defs.donate') %></a></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div id="sponsor-big-container-view"></div>
 
         <div id="map-view">
           <div id="piste-view" class="map"></div>
@@ -373,6 +349,42 @@ var Demo = <%= Defs.Demo %>;
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+</script>
+
+<script type="text/template" id="sponsorBigViewTemplate">
+  <div class="sponsor-view hidden-xs">
+    <div class="sponsor-detail-view">
+      {{ if (game.name == 'ashmei Mont Blanc') { }}
+        <div class="logo">
+          <a href="https://ashmei.com/challengethirtyone" target="_blank"><img src="/static-assets/images/logos/logo_ashmei.png"></a></div>
+        <div class="title">
+          <h1>Challenge 31<br/>December</h1>
+          <h2>Climb Mont Blanc with <a href="https://ashmei.com/challengethirtyone" target="_blank" class="link"><strong>ashmei</strong></a></h2>
+        </div>
+      {{ } else { }}
+        <div class="logo">
+          <a href="https://www.wwf.org.uk/" target="_blank"><img src="/static-assets/images/logos/logo_wwf_demo.png"></a></div>
+        <div class="title">
+          <h1>{{= game.name }}<br/>Challenge</h1>
+          <h2>Fundraising for <strong>WWF-UK</strong></h2>          
+        </div>
+      {{ } }}      
+
+      <div class="detail">
+        <div class="countdown-container" data-value-day="<%= __n('game.day', 1) %>" data-value-days="<%= __n('game.day', 2) %>">
+          <div class="countdown">
+            <span class="clock"></span>
+            <span class="end">
+              <span class="days"><span class="time">0</span><span class="days-marker"> <%= __n('game.day', 2) %></span></span>
+              <span class="hours"><span class="time"><span>00</span><span class="marker">:</span><span>00</span><span class="marker">:</span><span>00</span></span></span>
+            </span>
+          </div>
+        </div>
+
+        <div class="donate-btn"><a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>" data-href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/[PLAYER_ID]/donate?amount=1000" class="btn mr-btn btn-primary btn-large btn-invert-hover"><%= __('defs.donate') %></a></div>
+      </div>
+    </div>
+  </div>
 </script>
 
 <% include ../partials/demoVideoTemplate.ejs %>
