@@ -515,6 +515,11 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
   text-align: center;
 }
 
+#player-view .detail .invite-friend {
+  padding: 12px;
+  text-align: center;
+}
+
 #player-view .detail .player .fundraising-donation-summary-view,
 #player-view .detail .player .fundraising-donation-view,
 #player-view .detail .player .fundraising-donations-view {
@@ -1487,7 +1492,6 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     float: left;
     margin-top: -55px;
     width: 670px;
-    min-height: 686px;
   }
 
   body.single-player #player-view .detail-container {

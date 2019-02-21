@@ -43,13 +43,14 @@ define([
   'views/ChallengeCompleteModalView',
   'views/MountainLockedStoryModalView',
   'views/MountainStoryModalView',
+  'views/RegisterGameInviteView',
   'views/FundraisingShoppingModalView',
   'views/DemoVideoView'
 ], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, PhotoSwipe, PhotoSwipeUI_Default, animateNumber, moment, countdown, touchswipe, turf, imagesLoaded, videojs, 
 /* player.js */
 FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentView, PlayerActivityMorePhotosView, PlayerActivityPhotosView, PlayerActivityPhotoView,
 /* player.js */
-  SponsorView, LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, ChallengePendingModalView, ChallengeCompleteModalView, MountainLockedStoryModalView, MountainStoryModalView, FundraisingShoppingModalView, DemoVideoView){
+  SponsorView, LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, ChallengePendingModalView, ChallengeCompleteModalView, MountainLockedStoryModalView, MountainStoryModalView, RegisterGameInviteView, FundraisingShoppingModalView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -67,6 +68,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     app.dispatcher.on("Mountain3DView:onMarkersReady", onMarkersReady);
     app.dispatcher.on("Mountain3DView:onFeatureClicked", onFeatureClicked);
     app.dispatcher.on("PlayerActivityPhotoView:click", onPlayerActivityPhotoClicked);
+    app.dispatcher.on("PlayersDetailView:inviteClick", onPlayerInviteClick);
 
     var challengeView = null;
     var mountainModel = new Backbone.Model();
@@ -112,6 +114,9 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     var fundraisingShoppingModalView = new FundraisingShoppingModalView({ el: '#fundraising-shopping-modal-view', jsonFundraising: jsonFundraising });
     var mountainLockedStoryModalView = new MountainLockedStoryModalView({ el: '#mountain-locked-story-modal-view' });
     var mountainStoryModalView = new MountainStoryModalView({ el: '#mountain-story-modal-view' });
+
+    var registerGameInviteView = new RegisterGameInviteView({ el: '#register-game-invite-view' });
+
     var sponsorView = new SponsorView({ el: '#sponsor-big-container-view' });
 
     $('.signout').click(function(evt){
@@ -802,6 +807,16 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
     function onPlayerActivityPhotoClicked() {
       stopShopTimer();
+    }
+
+    function onPlayerInviteClick() {
+      var jsonCreateFields = registerGameInviteView.getFields();
+      jsonCreateFields.gameID = GAME_ID;
+      registerGameInviteView.setFields(jsonCreateFields);
+
+      registerGameInviteView.render();
+
+      $('#invite-friend-modal-view .modal').modal();
     }
 
     function onGameLoaded(jsonGame) {

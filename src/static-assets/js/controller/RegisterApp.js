@@ -409,7 +409,7 @@ define([
           jsonCreateFields.gameID = gameID;
           registerGameInviteView.setFields(jsonCreateFields);
 
-          registerGameInviteView.render({ jsonCampaign: jsonCampaign });
+          registerGameInviteView.render();
           showView('#register-game-invite-view');
           break;
 

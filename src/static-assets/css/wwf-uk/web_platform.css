@@ -16,6 +16,11 @@ body {
 .vjs-default-skin .vjs-volume-level {
   background-color: #f16d49; }
 
+/* FORM */
+/******************************************/
+form .help-block {
+  font-family: 'PFDINTextPro-Black', sans-serif; }
+
 /* MODAL */
 /******************************************/
 .modal .title {

@@ -435,6 +435,10 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
   padding: 0;
   text-align: center; }
 
+#player-view .detail .invite-friend {
+  padding: 12px;
+  text-align: center; }
+
 #player-view .detail .player .fundraising-donation-summary-view,
 #player-view .detail .player .fundraising-donation-view,
 #player-view .detail .player .fundraising-donations-view {
@@ -1141,8 +1145,7 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   #player-view .detail {
     float: left;
     margin-top: -55px;
-    width: 670px;
-    min-height: 686px; }
+    width: 670px; }
   body.single-player #player-view .detail-container {
     width: 100%; }
   body.single-player #player-view .detail {
