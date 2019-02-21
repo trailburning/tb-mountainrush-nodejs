@@ -43,14 +43,14 @@ define([
   'views/ChallengeCompleteModalView',
   'views/MountainLockedStoryModalView',
   'views/MountainStoryModalView',
-  'views/RegisterGameInviteView',
+  'views/GameInviteView',
   'views/FundraisingShoppingModalView',
   'views/DemoVideoView'
 ], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, PhotoSwipe, PhotoSwipeUI_Default, animateNumber, moment, countdown, touchswipe, turf, imagesLoaded, videojs, 
 /* player.js */
 FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentView, PlayerActivityMorePhotosView, PlayerActivityPhotosView, PlayerActivityPhotoView,
 /* player.js */
-  SponsorView, LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, ChallengePendingModalView, ChallengeCompleteModalView, MountainLockedStoryModalView, MountainStoryModalView, RegisterGameInviteView, FundraisingShoppingModalView, DemoVideoView){
+  SponsorView, LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, ChallengePendingModalView, ChallengeCompleteModalView, MountainLockedStoryModalView, MountainStoryModalView, GameInviteView, FundraisingShoppingModalView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -114,9 +114,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     var fundraisingShoppingModalView = new FundraisingShoppingModalView({ el: '#fundraising-shopping-modal-view', jsonFundraising: jsonFundraising });
     var mountainLockedStoryModalView = new MountainLockedStoryModalView({ el: '#mountain-locked-story-modal-view' });
     var mountainStoryModalView = new MountainStoryModalView({ el: '#mountain-story-modal-view' });
-
-    var registerGameInviteView = new RegisterGameInviteView({ el: '#register-game-invite-view' });
-
+    var gameInviteView = new GameInviteView({ el: '#game-invite-view' });
     var sponsorView = new SponsorView({ el: '#sponsor-big-container-view' });
 
     $('.signout').click(function(evt){
@@ -810,11 +808,10 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     }
 
     function onPlayerInviteClick() {
-      var jsonCreateFields = registerGameInviteView.getFields();
+      var jsonCreateFields = gameInviteView.getFields();
       jsonCreateFields.gameID = GAME_ID;
-      registerGameInviteView.setFields(jsonCreateFields);
-
-      registerGameInviteView.render();
+      gameInviteView.setFields(jsonCreateFields);
+      gameInviteView.render();
 
       $('#invite-friend-modal-view .modal').modal();
     }
