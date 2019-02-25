@@ -240,7 +240,7 @@
     {{ }); }}
 
     {{ if (activePlayer) { }}
-      {{ if (game.multiplayer && (game.ownerPlayerID == activePlayer.id)) { }}
+      {{ if (game.multiplayer && (game.stateDetail != 'complete') && (game.ownerPlayerID == activePlayer.id)) { }}
         <div class="invite-friend">
         <span class="btn mr-btn btn-primary link-invite"><%- __('register.welcome_connected.invite') %></span>
         <p><%- __('register.welcome_connected.msg_invite', '<span class="link link-invite">' + __('register.welcome_connected.invite') + '</span>') %></p>
