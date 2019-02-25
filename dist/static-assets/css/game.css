@@ -435,10 +435,10 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
   padding: 0;
   text-align: center; }
 
-#player-view .detail .invite-friend {
+#player-view .detail .game-funcs {
   padding: 12px;
   text-align: center; }
-  #player-view .detail .invite-friend .btn {
+  #player-view .detail .game-funcs .btn {
     margin: 0 14px 14px 14px; }
 
 #player-view .detail .player .fundraising-donation-summary-view,

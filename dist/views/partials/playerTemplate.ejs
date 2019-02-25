@@ -240,12 +240,16 @@
     {{ }); }}
 
     {{ if (activePlayer) { }}
-      {{ if (game.multiplayer && (game.stateDetail != 'complete') && (game.ownerPlayerID == activePlayer.id)) { }}
-        <div class="invite-friend">
-        <span class="btn mr-btn btn-primary link-invite"><%- __('register.welcome_connected.invite') %></span>
-        <p><%- __('register.welcome_connected.msg_invite', '<span class="link link-invite">' + __('register.welcome_connected.invite') + '</span>') %></p>
+      {{ if (game.ownerPlayerID == activePlayer.id) { }}
+        <div class="game-funcs">
+        {{ if (game.multiplayer && (game.stateDetail != 'complete')) { }}
+          <span class="btn mr-btn btn-primary link-invite"><%- __('game.invite_friends.msg_title') %></span>
+          <p><%- __('game.invite_friends.msg_invite', '<span class="link link-invite">' + __('game.invite_friends.msg_title') + '</span>') %></p>
+        {{ } }}
+
+        <p><%- __('game.game_cancel.msg', '<span class="link link-cancel">' + __('game.game_cancel.cancel') + '</span>') %></p>
         </div>
-      {{ } }}
+      {{ }; }}
     {{ } }}
     
     <div class="back-to-mountain">Back to mountain<i class="fa fa-arrow-up arrow"></i></div>

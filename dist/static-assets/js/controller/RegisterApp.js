@@ -77,7 +77,6 @@ define([
     app.dispatcher.on("RegisterGameCreateView:gameCreated", onRegisterGameCreated);
     app.dispatcher.on("RegisterGameCreatedView:inviteClick", onInviteClick);
     app.dispatcher.on("RegisterGameCreatedView:fundraiseClick", onRegisterFundraiseClick);
-    app.dispatcher.on("RegisterGameInviteView:backClick", onRegisterBackClick);
     app.dispatcher.on("RegisterFundraisingCreateView:fundraisingCreated", onRegisterFundraisingCreated);
     app.dispatcher.on("RegisterFundraisingSigninView:validUser", onRegisterFundraisingSigninValidUser);
     app.dispatcher.on("RegisterFundraisingSigninView:invalidUser", onRegisterFundraisingSigninInvalidUser);
@@ -85,6 +84,8 @@ define([
     app.dispatcher.on("RegisterFundraisingSignupView:userCreated", onRegisterFundraisingSignupUserCreated);
     app.dispatcher.on("RegisterFundraisingSignupView:signinClick", onRegisterFundraisingSignupSigninClick);
     app.dispatcher.on("RegisterFundraisingPageCreateView:pageCreated", onRegisterFundraisingPageCreated);
+    app.dispatcher.on("ChallengeCancelModalView:challengeCancelled", onChallengeCancelled);
+    app.dispatcher.on("GameInviteView:backClick", onRegisterBackClick);
 
     var jsonCampaign = null;
     var jsonCurrPlayer = null;
@@ -338,7 +339,15 @@ define([
           getPlayer(jsonCampaign.clientID, token, function(jsonPlayer) {
             jsonCurrPlayer = jsonPlayer;
 
-            challengeCancelModalView.setPlayer(jsonCurrPlayer);
+            // see if there's an active game
+            var currGame = _.where(jsonPlayer.games, {game_state:'active'})[0];
+            if (!currGame) {
+              currGame = _.where(jsonPlayer.games, {game_state:'pending'})[0];
+            }
+
+            if (currGame) {
+              challengeCancelModalView.setGame(currGame);
+            }
 
             // do we have an email address?
             if (jsonCurrPlayer.email != '') {
@@ -558,6 +567,10 @@ define([
 
     function onRegisterBackClick() {
       changeState(nPrevState);
+    }
+
+    function onChallengeCancelled() {
+      location.reload();
     }
 
     function onInviteClick() {
