@@ -438,6 +438,8 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
 #player-view .detail .invite-friend {
   padding: 12px;
   text-align: center; }
+  #player-view .detail .invite-friend .btn {
+    margin: 0 14px 14px 14px; }
 
 #player-view .detail .player .fundraising-donation-summary-view,
 #player-view .detail .player .fundraising-donation-view,
