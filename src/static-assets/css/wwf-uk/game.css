@@ -146,6 +146,9 @@ body {
 #player-view .detail .player .latest-activity {
   color: #474747; }
 
+#player-view .detail .player .latest-activity-blank {
+  height: 60px; }
+
 #player-view .detail .player .latest-activity .icon {
   background-color: #f69741; }
 

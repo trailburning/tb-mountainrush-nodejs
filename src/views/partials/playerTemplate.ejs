@@ -236,21 +236,59 @@
             </div>
           </div>
         {{ } }}
-      </div>
-    {{ }); }}
 
-    {{ if (activePlayer) { }}
-      {{ if (game.ownerPlayerID == activePlayer.id) { }}
-        <div class="game-funcs">
-        {{ if (game.multiplayer && (game.stateDetail != 'complete')) { }}
-          <span class="btn mr-btn btn-primary link-invite"><%- __('game.invite_friends.msg_title') %></span>
-          <p><%- __('game.invite_friends.msg_invite', '<span class="link link-invite">' + __('game.invite_friends.msg_title') + '</span>') %></p>
+        {{ var socialShareURL = '' }}
+
+        {{ if (player.fundraising_goal > 0) { }}
+          {{ socialShareURL = 'goal/' + Math.round(player.fundraising_goal) }}
         {{ } }}
 
-        <p><%- __('game.game_cancel.msg', '<span class="link link-cancel">' + __('game.game_cancel.cancel') + '</span>') %></p>
-        </div>
-      {{ }; }}
-    {{ } }}
+        {{ if (player.fundraising_raised > 0) { }}
+          {{ socialShareURL = 'progress/' + Math.round(player.fundraising_raised) }}
+        {{ } }}
+
+        {{ if (activePlayer) { }}
+          {{ if (player.id == activePlayer.id) { }}
+            <div class="share-detail visible-xs visible-sm">
+              <div class="share-text">
+              {{ if (player.fundraising_goal > 0) { }}
+                <%= __('defs.social.share_fundraising_msg') %>
+              {{ } else { }}
+                <%= __('defs.social.share_msg') %>
+              {{ } }}
+              </div>
+              <div class="btns">
+              <a href="http://www.facebook.com/share.php?u=<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/{{= socialShareURL }}" class="btn mr-btn btn-primary" target="_blank"><i class="fa fa-facebook"></i></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20<%= Campaign.CampaignName %>%20challenge%20-%20<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>" class="btn mr-btn btn-primary" target="_blank"><i class="fa fa-twitter"></i></a>
+              </div>
+            </div>
+
+            <div class="share-detail hidden-xs hidden-sm">
+              <div class="share-text">
+              {{ if (player.fundraising_goal > 0) { }}
+                <%= __('defs.social.share_fundraising_msg') %>
+              {{ } else { }}
+                <%= __('defs.social.share_msg') %>
+              {{ } }}
+              </div>
+              <div class="btns">
+              <a href="http://www.facebook.com/share.php?u=<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/{{= socialShareURL }}" class="btn mr-btn btn-primary double" target="_blank"><div><%= __('defs.social.share_facebook') %></div><div><i class="fa fa-facebook"></i></div></a>
+              <a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20<%= Campaign.CampaignName %>%20challenge%20-%20<%= Defs.BaseHTTPSURL %>game/<%= Defs.GameID %>" class="btn mr-btn btn-primary double" target="_blank"><div><%= __('defs.social.share_twitter') %></div><div><i class="fa fa-twitter"></i></div></a>
+              </div>
+            </div>
+          {{ }; }}
+
+          {{ if (game.ownerPlayerID == activePlayer.id) { }}
+            <div class="game-funcs">
+            {{ if (game.multiplayer && (game.stateDetail != 'complete')) { }}
+              <p><%- __('game.invite_friends.msg_invite', '<span class="link link-invite">' + __('game.invite_friends.msg_title') + '</span>') %></p>
+            {{ } }}
+
+            <p><%- __('game.game_cancel.msg', '<span class="link link-cancel">' + __('game.game_cancel.cancel') + '</span>') %></p>
+            </div>
+          {{ }; }}
+        {{ } }}
+      </div>
+    {{ }); }}
     
     <div class="back-to-mountain">Back to mountain<i class="fa fa-arrow-up arrow"></i></div>
   </div>
