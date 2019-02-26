@@ -134,36 +134,6 @@ var TEST = '<%= Defs.Test %>';
   </div><!-- /.modal -->
 </script>
 
-<script type="text/template" id="challengeCancelModalViewTemplate">
-  {{ activityDescription = '' }}
-
-  {{ if (currGame.type == 'Run') { }}
-    {{ activityDescription = '<%= __('defs.activities.run') %>' }}
-  {{ } else if (currGame.type == 'Ride') { }}
-    {{ activityDescription = '<%= __('defs.activities.ride') %>' }}
-  {{ } else if (currGame.type == 'Hike') { }}
-    {{ activityDescription = '<%= __('defs.activities.hike') %>' }}
-  {{ } }}
-
-  <div class="modal msg-overlay" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="details">
-            <div class="title"><%= __('overlay.challenge_cancel.title') %></div>
-            <div class="description">{{= '<%- __('overlay.challenge_cancel.description') %>'.replace('%s', '<strong>' + currGame.name + '</strong>').replace('%s', '<span class="lowercase">' + activityDescription + '</span>') }}</div>
-          </div>
-          <div class="action-fields">
-            <div class="action-field"><span class="btn mr-btn btn-primary cancel-challenge-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('overlay.challenge_cancel.yes') %></span>
-            </div>
-            <div class="action-field"><span class="btn mr-btn" data-dismiss="modal"><%= __('overlay.challenge_cancel.no') %></span></div>
-          </div>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-</script>
-
 <script type="text/template" id="registerInvitationViewTemplate">
   <h1>Welcome to {{= campaign.name }}</h1>
   <div class="intro-text centre-text">
@@ -280,11 +250,11 @@ var TEST = '<%= Defs.Test %>';
     </div>
 
     {{ if (currGame.multiplayer && (currGame.ownerPlayerID == player.id)) { }}
-      <p><%- __('register.welcome_connected.msg_invite', '<span class="link link-invite">' + __('register.welcome_connected.invite') + '</span>') %></p>
+      <p><%- __('game.invite_friends.msg_invite', '<span class="link link-invite">' + __('game.invite_friends.msg_title') + '</span>') %></p>
     {{ }; }}
 
     {{ if (currGame.ownerPlayerID == player.id) { }}
-      <p><%- __('register.welcome_connected.game_cancel.msg', '<span class="link link-cancel">' + __('register.welcome_connected.game_cancel.cancel') + '</span>') %></p>
+      <p><%- __('game.game_cancel.msg', '<span class="link link-cancel">' + __('game.game_cancel.cancel') + '</span>') %></p>
     {{ }; }}
     
     <% if (Campaign.CampaignFundraisingProvider) { %>
@@ -516,31 +486,6 @@ var TEST = '<%= Defs.Test %>';
     <a href="https://www.facebook.com/share.php?u=https://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn double" target="_blank"><div><%= __('defs.social.share_facebook') %></div><div><i class="fa fa-facebook"></i></div></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20my%20Mountain%20Rush%20challenge%20-%20https://mountainrush.co.uk/game/{{= fields.gameID }}" class="btn mr-btn double" target="_blank"><div><%= __('defs.social.share_twitter') %></div><div><i class="fa fa-twitter"></i></div></a>
     </div>
   <% } %>
-</script>
-
-<script type="text/template" id="registerGameInviteViewTemplate">
-  <h1><%= __('register.invite_friends.title') %></h1>
-  <div class="intro-text centre-text"><%= __('register.invite_friends.description') %></div>
-
-  <form>
-  <div class="info">
-    <div class="msg" data-msg="invite-sent">
-    <p><%= __('register.invite_friends.invitation_sent') %></p>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-label"><label><%= __('register.invite_friends.friend_name') %></label></div><input class="field form-control required" id="invite-name">
-    <div class="help-block"><%= __('register.invite_friends.friend_name_help') %></div>
-  </div>
-  <div class="form-group">
-    <div class="form-label"><label><%= __('register.invite_friends.friend_email') %></label></div><input class="field form-control required" id="invite-email">
-    <div class="help-block"><%= __('register.invite_friends.friend_email_help') %></div>
-  </div>
-  <div class="form-button">
-  <button type="submit" class="btn mr-btn btn-primary invite-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('register.invite_friends.invite_friend') %></button>
-  </div>
-  </form>
-  &lt; <span class="link link-back"><%= __('register.go_back') %></span>
 </script>
 
 <script type="text/template" id="registerFundraisingCreateViewTemplate">
@@ -798,6 +743,8 @@ var TEST = '<%= Defs.Test %>';
   </div>
 </script>
 
+<% include ../partials/challengeCancelTemplate.ejs %>
+<% include ../partials/inviteFriendTemplate.ejs %>
 <% include ../partials/demoVideoTemplate.ejs %>
 <% include ../partials/analytics.ejs %>
 <script data-main="/static-assets/js/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>

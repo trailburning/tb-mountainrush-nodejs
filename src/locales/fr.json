@@ -136,17 +136,12 @@
       "game_upcoming": "View Pending Challenge",
       "game": "View Challenge",
       "invite": "Invite friends",
-      "msg_invite": "%s to your challenge!",
       "msg_invitation": "You have a %s %s challenge invitation from %s!",
       "yes": "Accept",
       "no": "Reject",
       "game_accepted": "You now have a %s %s challenge!",
       "game_rejected": "Challenge rejected! You can now create your own challenge.",
       "game_create": "Create Challenge",
-      "game_cancel": {
-        "cancel": "cancel",
-        "msg": "Don't like your challenge?  You can %s it." 
-      },
       "previous_challenges": "Previous",
       "greeting": "Hi %s,",
       "preferences": {
@@ -254,6 +249,22 @@
         "target": "target"
       }
     },
+    "game_cancel": {
+      "cancel": "cancel",
+      "msg": "Don't like your challenge?  You can %s it." 
+    },        
+    "invite_friends": {
+      "title": "Invite Friends",
+      "description": "Invite friends to join your challenge!",
+      "invitation_sent": "Invitation sent!",
+      "friend_name": "Friend's Name",
+      "friend_name_help": "Please fill in your friend's name",
+      "friend_email": "Friend's Email",
+      "friend_email_help": "Please fill in your friend's email",
+      "invite_friend": "Invite Friend",
+      "msg_title": "Invite friends",
+      "msg_invite": "%s to join your challenge!"
+    },    
     "day": {
       "one": "day",
       "other": "days"

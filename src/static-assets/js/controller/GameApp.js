@@ -43,13 +43,15 @@ define([
   'views/ChallengeCompleteModalView',
   'views/MountainLockedStoryModalView',
   'views/MountainStoryModalView',
+  'views/ChallengeCancelModalView',
+  'views/GameInviteView',
   'views/FundraisingShoppingModalView',
   'views/DemoVideoView'
 ], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, PhotoSwipe, PhotoSwipeUI_Default, animateNumber, moment, countdown, touchswipe, turf, imagesLoaded, videojs, 
 /* player.js */
 FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentView, PlayerActivityMorePhotosView, PlayerActivityPhotosView, PlayerActivityPhotoView,
 /* player.js */
-  SponsorView, LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, ChallengePendingModalView, ChallengeCompleteModalView, MountainLockedStoryModalView, MountainStoryModalView, FundraisingShoppingModalView, DemoVideoView){
+  SponsorView, LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, ChallengePendingModalView, ChallengeCompleteModalView, MountainLockedStoryModalView, MountainStoryModalView, ChallengeCancelModalView, GameInviteView, FundraisingShoppingModalView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -67,6 +69,9 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     app.dispatcher.on("Mountain3DView:onMarkersReady", onMarkersReady);
     app.dispatcher.on("Mountain3DView:onFeatureClicked", onFeatureClicked);
     app.dispatcher.on("PlayerActivityPhotoView:click", onPlayerActivityPhotoClicked);
+    app.dispatcher.on("PlayersDetailView:inviteClick", onPlayerInviteClick);
+    app.dispatcher.on("PlayersDetailView:cancelGameClick", onCancelGameClick);
+    app.dispatcher.on("ChallengeCancelModalView:challengeCancelled", onChallengeCancelled);
 
     var challengeView = null;
     var mountainModel = new Backbone.Model();
@@ -106,12 +111,14 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
 
+    var challengeCancelModalView = new ChallengeCancelModalView({ el: '#challenge-cancel-modal-view' });
     var deviceCapableModalView = new DeviceCapableModalView({ el: '#device-capable-modal-view' });
     var challengePendingModalView = new ChallengePendingModalView({ el: '#challenge-pending-modal-view' });
     var challengeCompleteModalView = new ChallengeCompleteModalView({ el: '#challenge-complete-modal-view' });
     var fundraisingShoppingModalView = new FundraisingShoppingModalView({ el: '#fundraising-shopping-modal-view', jsonFundraising: jsonFundraising });
     var mountainLockedStoryModalView = new MountainLockedStoryModalView({ el: '#mountain-locked-story-modal-view' });
     var mountainStoryModalView = new MountainStoryModalView({ el: '#mountain-story-modal-view' });
+    var gameInviteView = new GameInviteView({ el: '#game-invite-view' });
     var sponsorView = new SponsorView({ el: '#sponsor-big-container-view' });
 
     $('.signout').click(function(evt){
@@ -804,6 +811,15 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       stopShopTimer();
     }
 
+    function onPlayerInviteClick() {
+      var jsonCreateFields = gameInviteView.getFields();
+      jsonCreateFields.gameID = GAME_ID;
+      gameInviteView.setFields(jsonCreateFields);
+      gameInviteView.render();
+
+      $('#invite-friend-modal-view .modal').modal();
+    }
+
     function onGameLoaded(jsonGame) {
       jsonCurrGame = jsonGame;
 
@@ -818,6 +834,8 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       if (jsonGame.sponsored) {
         $('body').addClass('sponsored');
       }
+
+      challengeCancelModalView.setGame(jsonCurrGame);
 
       sponsorView.render(jsonCurrGame);
 
@@ -923,6 +941,16 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       else {
         buildGame();
       }
+    }
+
+    function onCancelGameClick() {
+      challengeCancelModalView.render();
+      challengeCancelModalView.show();
+    }
+
+    function onChallengeCancelled() {
+      // visit profile
+      window.location.href = HOST_URL+'/campaign/' + CAMPAIGN_ID + '/profile';
     }
 
     function setupKeyHandler() {

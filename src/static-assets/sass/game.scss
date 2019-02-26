@@ -515,6 +515,15 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
   text-align: center;
 }
 
+#player-view .detail .game-funcs {
+  padding: 12px;
+  text-align: center;
+
+  .btn {
+    margin: 0 14px 14px 14px;
+  }
+}
+
 #player-view .detail .player .fundraising-donation-summary-view,
 #player-view .detail .player .fundraising-donation-view,
 #player-view .detail .player .fundraising-donations-view {
@@ -601,6 +610,7 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
 #player-view .detail .player .fundraising-story {
   display: none;
   padding: 20px 32px 32px 32px;
+  word-break: break-word;
 }
 
 body.fundraising #player-view .detail .player .fundraising-story {
@@ -1487,7 +1497,6 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     float: left;
     margin-top: -55px;
     width: 670px;
-    min-height: 686px;
   }
 
   body.single-player #player-view .detail-container {

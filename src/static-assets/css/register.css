@@ -125,21 +125,11 @@ ul.pills li {
   padding-top: 4px;
   font-size: 1.2em; }
 
+.register-view .form-back {
+  display: block; }
+
 .register-view form {
   padding-top: 32px; }
-
-.register-view .form-note {
-  color: #b0b0b0; }
-
-.register-view .form-control {
-  padding: 8px;
-  font-size: inherit;
-  background: #f7f7f7;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  -webkit-appearance: none;
-  resize: none; }
 
 .register-view textarea {
   height: 150px; }
@@ -157,13 +147,6 @@ ul.pills li {
 
 .register-view .form-label.top {
   vertical-align: top; }
-
-.register-view .field {
-  margin: 4px 0; }
-
-.register-view label {
-  margin: 0;
-  text-transform: uppercase; }
 
 .register-view .preferences label {
   text-transform: none; }
@@ -252,35 +235,6 @@ ul.pills li {
 
 .register-view .prefs {
   margin-top: 12px; }
-
-.help-block {
-  display: none;
-  font-family: 'radikalbold', sans-serif;
-  font-size: 0.9em;
-  text-transform: uppercase; }
-
-.has-error .help-block {
-  color: #ff705f; }
-
-.terms {
-  font-size: 0.95em; }
-
-.msg {
-  font-family: 'radikalbold', sans-serif;
-  font-size: 0.9em;
-  text-transform: uppercase; }
-
-.err {
-  display: none;
-  color: #ff705f; }
-
-.warning {
-  display: none;
-  color: #856404; }
-
-.info {
-  display: none;
-  color: #155724; }
 
 a .link,
 a:active, .link:active,

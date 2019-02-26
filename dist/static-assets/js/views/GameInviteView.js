@@ -4,9 +4,9 @@ define([
   'bootstrap'
 ], function(_, Backbone, bootstrap){
 
-  var RegisterGameInviteView = Backbone.View.extend({
+  var GameInviteView = Backbone.View.extend({
     initialize: function(options){
-      this.template = _.template($('#registerGameInviteViewTemplate').text());
+      this.template = _.template($('#gameInviteViewTemplate').text());
 
       this.options = options;
 
@@ -61,11 +61,11 @@ define([
     render: function(options){
       var self = this;
       
-      $(this.el).html(this.template({ campaign: options.jsonCampaign }));
+      $(this.el).html(this.template());
 
       $('.link-back', $(this.el)).click(function(evt){
         // fire event
-        app.dispatcher.trigger("RegisterGameInviteView:backClick");
+        app.dispatcher.trigger("GameInviteView:backClick");
       });
 
       var elForm = $('form', $(this.el));
@@ -88,5 +88,5 @@ define([
 
   });
 
-  return RegisterGameInviteView;
+  return GameInviteView;
 });

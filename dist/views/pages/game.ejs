@@ -18,6 +18,7 @@
 <script>
 var APP = 'GameApp';
 var GAME_API_URL = '<%= Defs.MRAPIURL %>';
+var HOST_URL = '<%= Defs.BaseHTTPSURL %>';
 var GAME_FUNDRAISING = <%= Campaign.CampaignFundraising %>;
 var CLIENT_ID = '<%= Campaign.ClientID %>';
 var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
@@ -106,6 +107,21 @@ var Demo = <%= Defs.Demo %>;
 <div id="challenge-complete-modal-view"></div>
 <div id="mountain-story-modal-view"></div>
 <div id="mountain-locked-story-modal-view"></div>
+<div id="challenge-cancel-modal-view"></div>
+<div id="invite-friend-modal-view">
+  <div class="modal msg-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="details">
+            <div id="game-invite-view"></div>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
+
 <div id="fundraising-shopping-modal-view"></div>
 <div id="player-connect-view"></div>
 <div id="demo-video-view"></div>
@@ -387,6 +403,8 @@ var Demo = <%= Defs.Demo %>;
   </div>
 </script>
 
+<% include ../partials/challengeCancelTemplate.ejs %>
+<% include ../partials/inviteFriendTemplate.ejs %>
 <% include ../partials/demoVideoTemplate.ejs %>
 <% include ../partials/challengeSuccessTemplate.ejs %>
 <% include ../partials/playerTemplate.ejs %>

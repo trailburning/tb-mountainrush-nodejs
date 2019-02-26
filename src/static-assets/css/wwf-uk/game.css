@@ -115,6 +115,9 @@ body {
 #player-view .list .player-ranking:hover .overview {
   border-left: 1px solid #d7d7d7; }
 
+#player-view .detail .game-funcs {
+  padding-bottom: 32px; }
+
 #player-view .detail .player .overview h1 {
   font-family: 'PFDINTextPro-Black', sans-serif;
   text-transform: uppercase; }

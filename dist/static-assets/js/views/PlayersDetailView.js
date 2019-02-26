@@ -32,6 +32,16 @@ define([
         $(this).html($.truncate($(this).html(), {length: $(this).attr('data-truncate')}));
       });
 
+      $('.link-cancel', $(this.el)).click(function(evt){        
+        // fire event
+        app.dispatcher.trigger("PlayersDetailView:cancelGameClick");
+      });
+
+      $('.link-invite', $(this.el)).click(function(evt){        
+        // fire event
+        app.dispatcher.trigger("PlayersDetailView:inviteClick");
+      });
+
       $('img', $(this.el)).imagesLoaded().progress( function( instance, image ) {
         if ($(image.img).hasClass('fade_on_load')) {
           $(image.img).css('opacity', 1);
