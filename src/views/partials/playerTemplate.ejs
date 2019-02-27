@@ -293,9 +293,11 @@
     </div>
   </div>
 
-  <div class="hidden-xs hidden-sm">
-  <% include ../partials/gameFuncsTemplate.ejs %>
-  </div>
+  {{ if (activePlayer) { }}
+    <div class="hidden-xs hidden-sm">
+    <% include ../partials/gameFuncsTemplate.ejs %>
+    </div>
+  {{ } }}
 </script>
 
 <script type="text/template" id="commentViewTemplate">
