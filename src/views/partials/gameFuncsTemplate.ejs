@@ -1,0 +1,9 @@
+{{ if (game.ownerPlayerID == activePlayer.id) { }}
+  <div class="game-funcs">
+  {{ if (game.multiplayer && (game.stateDetail != 'complete')) { }}
+    <p><%- __('game.invite_friends.msg_invite', '<span class="link link-invite">' + __('game.invite_friends.msg_title') + '</span>') %></p>
+  {{ } }}
+
+  <p><%- __('game.game_cancel.msg', '<span class="link link-cancel">' + __('game.game_cancel.cancel') + '</span>') %></p>
+  </div>
+{{ }; }}
