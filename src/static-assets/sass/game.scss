@@ -498,13 +498,17 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
 
 #player-view .detail {
   overflow: hidden;
-  background: #fff;
 }
 
-#player-view .detail .scroll {
+#player-view .detail .scroll-container {
+  position: relative;
   height: 100%;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
+}
+
+#player-view .detail .scroll {
+  background: #fff;
 }
 
 #player-view .detail .player {
@@ -1169,6 +1173,7 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
 
   #player-view .detail .scroll {
     height: auto;
+    min-height: 540px;
     overflow: initial;
     -webkit-overflow-scrolling: none;
   }
@@ -1189,6 +1194,10 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
 
   #player-view .detail .photo-posts-view {
     min-height: 180px;
+  }
+
+  #player-view .detail .scroll-container {
+    overflow: initial;
   }
 
   body.fundraising #player-view .detail .player .overview h1 {
@@ -1370,6 +1379,10 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     vertical-align: top;
     padding: 0 4px 32px 4px;
     border: none;
+  }
+
+  #player-view .detail .game-funcs {
+    padding-top: 32px;
   }
 
   #player-view .detail .back-to-mountain {
