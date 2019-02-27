@@ -432,7 +432,6 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
   background: #fff; }
 
 #player-view .detail .player {
-  min-height: 460px;
   display: none;
   position: relative;
   padding: 0;
@@ -950,7 +949,6 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     overflow: initial; }
   #player-view .detail .scroll {
     height: auto;
-    min-height: 540px;
     overflow: initial;
     -webkit-overflow-scrolling: none; }
   #player-view .detail .player {
@@ -962,7 +960,7 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   #player-view .detail .fundraising-donations-view {
     background: #FFF; }
   #player-view .detail .photo-posts-view {
-    min-height: 180px; }
+    min-height: 320px; }
   #player-view .detail .scroll-container {
     overflow: initial; }
   body.fundraising #player-view .detail .player .overview h1 {

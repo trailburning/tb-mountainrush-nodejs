@@ -512,7 +512,6 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
 }
 
 #player-view .detail .player {
-  min-height: 460px;
   display: none;
   position: relative;
   padding: 0;
@@ -1173,7 +1172,6 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
 
   #player-view .detail .scroll {
     height: auto;
-    min-height: 540px;
     overflow: initial;
     -webkit-overflow-scrolling: none;
   }
@@ -1193,7 +1191,7 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   }
 
   #player-view .detail .photo-posts-view {
-    min-height: 180px;
+    min-height: 320px;
   }
 
   #player-view .detail .scroll-container {
