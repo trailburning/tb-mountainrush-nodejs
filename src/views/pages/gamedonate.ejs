@@ -99,9 +99,36 @@ window.rnwWidget = window.rnwWidget || {};
 window.rnwWidget.configureWidget = [];
 
 window.rnwWidget.configureWidget.push(function(options) {
-  options.widget.on(window.rnwWidget.constants.events.WIDGET_LOADED, function(event) {
-    console.log("The widget is loaded, good times!");
-    console.log(event);
+  options.widget.on(window.rnwWidget.constants.events.PAYMENT_COMPLETE, function(event) {
+    console.log(event.payment);
+
+    if (event.paymentStatus == 'success') {
+      console.log(event.payment.amount);
+      console.log(event.payment.currency);
+
+      console.log(event.payment.stored_anonymous_donation);
+      console.log(event.payment.stored_customer_nickname);
+      console.log(event.payment.stored_customer_additional_message);
+
+      var jsonData = {currency: event.payment.currency, amount: event.payment.amount, donor: event.payment.stored_customer_nickname};
+
+      var url = GAME_API_URL + 'fundraiser/campaign/ ' + CAMPAIGN_ID + '/game/' + GAME_ID + '/player/' + PLAYER_ID + '/donation';
+      console.log(url);
+      $.ajax({
+        type: 'post',
+        dataType: 'json',
+        url: url,
+        data: JSON.stringify(jsonData),
+        error: function(data) {
+          console.log('error');
+          console.log(data);
+        },
+        success: function(data) {
+          console.log('success');
+          console.log(data);
+        }
+      });
+    }
   });
 
   if (FUNDRAISING_DONATION_AMOUNT) {
