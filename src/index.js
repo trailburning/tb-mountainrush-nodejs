@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { store } from "./store";
 import { loadLiterals } from "./reducers/literals";
 import loadLang from "./locales";
-import HowToGuide from './HowToGuide';
+import HowToGuide from './components/HowToGuide';
 
 let hostURL = '';
 if (typeof HOST_URL !== 'undefined') {
@@ -29,7 +29,7 @@ function onSignupBtnClicked() {
 
 const render = function() {
   ReactDOM.render(
-    <HowToGuide className="howToGuide" callbackSignupBtnClicked={onSignupBtnClicked} tech={store.getState().tech} />, 
+    <HowToGuide className="howToGuide" callbackSignupBtnClicked={onSignupBtnClicked} />, 
     document.getElementById('howToGuide')
   );  
 }

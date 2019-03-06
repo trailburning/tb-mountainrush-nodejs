@@ -22,17 +22,17 @@
 		"scene5_2": "Mountain Rush"
 	},
   "how_to_guide": {
-    "step1": {
+    "challenge": {
       "title": "Challenge Yourself",
       "subtitle": "To virtually climb Mount Sabyinyo",
       "description": "Pick your timeframe, choose a start date and get active! Alone or with friends, unlock exclusive WWF videos as you progress."
     },
-    "step2": {
+    "active": {
       "title": "Get Active",
       "subtitle": "Cycle, Run or Hike",
-      "description": "Simply download the Strava App and start tracking your activity.  Receive email updates and view your progress up Mount Sabyinyo in stunning 3D!"
+      "description": "Simply download the %s and start tracking your activity.  Receive email updates and view your progress up Mount Sabyinyo in stunning 3D!"
     },
-    "step3": {
+    "fundraise": {
       "title": "Fundraise",
       "subtitle": "And help mountain gorillas",
       "description": "Let everyone know how you’re going on social media and reach your fundraising goal!"
@@ -261,7 +261,8 @@
 		}
 	},
 	"defs": {
-    "strava_app": "Strava App",
+    "signup": "Sign up",
+  	"strava_app": "Strava App",
 		"donate": "Donate",
     "prefs": "Preferences",
     "please_wait": "Please Wait",
@@ -271,11 +272,11 @@
 			"share_facebook": "Share on Facebook",
 			"share_twitter": "Share on Twitter"
 		},
-    "activities": {
-      "run": "Running",
-      "ride": "Cycling",
-      "hike": "Hiking",
-      "all": "Everything"
-    }
+		"activities": {
+		  "run": "Running",
+		  "ride": "Cycling",
+		  "hike": "Hiking",
+		  "all": "Everything"
+	    }
 	}
 }

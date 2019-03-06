@@ -12,7 +12,7 @@ h2 {
 }
 
 h1 {
-  font-size: 1.5em;
+  font-size: 1.2em;
   line-height: 1em;
 }
 
@@ -96,8 +96,9 @@ h2 {
 #intro-view {
   position: relative;
   padding: 44px 16px 46px 16px;
-  font-size: 1.2em;
   text-align: center;
+  font-size: 1.2em;
+  line-height: 1.3em;
   background-color: #fff;
   -webkit-box-shadow: 0px 10px 10px 0 rgba(25,56,72,0.2);
   -moz-box-shadow: 0px 10px 10px 0 rgba(25,56,72,0.2);
@@ -593,6 +594,14 @@ input.ui-autocomplete-loading {
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+
   #hero-view,
   #hero-view .image {
     height: 455px;
@@ -610,7 +619,9 @@ input.ui-autocomplete-loading {
   }
 
   #intro-view {
-    padding-top: 98px;
+    font-size: 1.2em;
+    padding-top: 72px;
+    padding-bottom: 82px;
   }
 
   #intro-view .intro-container-view {

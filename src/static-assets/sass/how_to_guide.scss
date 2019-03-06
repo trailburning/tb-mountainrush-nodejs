@@ -1,0 +1,413 @@
+@mixin step-transition($opacity_time, $move_time) {
+  transition-property: opacity, left, right;
+  transition-duration: $opacity_time, $move_time, $move_time;
+}
+
+#howToGuide {
+  font-size: 1.2em;
+  line-height: 1.3em;
+  position: relative;
+
+  .howToStep {
+    padding: 24px 0;
+
+    .embelish {
+      position: absolute;
+    }
+
+    .animated {
+      position: relative;
+
+      transition-property: opacity;
+      transition-duration: 0.5s;
+
+      &.fadeIn .animate {
+        opacity: 1;
+      }
+
+      .animate {
+        @include step-transition(0.3s, 0.4s);
+        opacity: 0;        
+      }
+
+      img {
+        height: 220px;
+      }
+    }
+
+    &:nth-child(odd) {
+      background: #eeeeeb;
+    }
+
+    &:nth-child(even) {
+      background: #fff;
+    }
+
+    .content {
+      position: relative;
+      padding: 16px 24px;
+
+      .col {
+        position: relative;
+      }
+
+      .image {
+        padding: 16px 0;
+
+        img {
+          height: 140px;
+        }
+      }
+
+      .btn-cta {
+        padding-top: 28px;
+      }
+    }    
+
+    &.challenge {
+      padding-bottom: 70px;
+
+      .embelish {
+        &.left-background {
+          top: 52px;
+          right: 22px;
+          width: 83px;
+          height: 102px;
+          background: url(/static-assets/images/wwf-uk/how-to-guide/challenge_background.png) no-repeat top left;
+        }
+
+        &.left-foreground {
+          bottom: -100px;
+          left: 0px;
+          width: 144px;
+          height: 110px;
+          background: url(/static-assets/images/wwf-uk/left-leaves2.png) no-repeat top left;
+          background-size: 100% 100%;
+        }
+      }
+
+      .animated {
+        img {
+          height: 156px;
+        }
+      }
+    }
+
+    &.active {
+      .embelish {
+        &.left-background {
+          top: 24px;
+          left: 22px;
+          width: 78px;
+          height: 100px;
+          background: url(/static-assets/images/wwf-uk/how-to-guide/active_background.png) no-repeat top left;
+        }
+      }
+
+      .animated {
+        .image {
+          text-align: right;
+        }        
+
+        img {
+          height: 232px;
+        }
+      }
+    }
+
+    &.fundraise {      
+      .embelish {
+        &.left-background {
+          top: 0px;
+          left: 28px;
+          width: 90px;
+          height: 92px;
+          background: url(/static-assets/images/wwf-uk/how-to-guide/fundraise_background.png) no-repeat top left;
+        }
+
+        &.right-foreground {
+          top: -76px;
+          right: 0px;
+          width: 110px;
+          height: 138px;
+          background: url(/static-assets/images/wwf-uk/right-leaves2.png) no-repeat top left;
+          background-size: 100% 100%;
+        }
+      }
+
+      .text, .image {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (min-width: 400px) {
+  #howToGuide {
+    .howToStep {
+      &.challenge {
+        .animated {
+          .image {
+            text-align: center;
+          }
+
+          img {
+            height: 304px;
+          }
+        }
+      }
+
+      &.active {
+        .animated {
+          .image {
+            text-align: center;
+          }
+
+          img {
+            height: 409px;
+          }          
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  #howToGuide {
+    font-size: 1.2em;
+
+    .howToStep {
+      .animated .animate {
+        position: relative;
+      }
+
+      .animated img.animate {
+        position: absolute;
+      }
+
+      .content {
+        margin: 0 auto;
+        padding: 0px;
+        width: 670px;
+
+        .col {
+          display: inline-block;
+          vertical-align: top;
+        }
+
+        .text, .image {
+          position: relative;
+        }
+
+        .image {
+          padding: 16px 0;
+        }
+      }
+
+      &.challenge {
+        padding-top: 142px;
+        padding-bottom: 175px;
+
+        .embelish {
+          &.left-background {
+            top: -20px;
+            left: -148px;
+            width: 110px;
+            height: 150px;
+            background: url(/static-assets/images/wwf-uk/how-to-guide/challenge_invert_background.png) no-repeat top left;
+          }
+
+          &.left-foreground {
+            bottom: -254px;
+            left: -196px;
+            width: 210px;
+            height: 160px;
+          }
+        }
+
+        .col-left {
+          width: 368px;
+        }
+
+        .col-right {
+          width: 380px;
+        }
+
+        .content {
+          width: 748px;
+        }
+
+        .animated {
+          .image {
+            text-align: left;
+          }
+
+          .col-left {
+            .animate {
+              top: -76px;
+              left: -100px;
+            }
+          }
+
+          .col-right {
+            .animate {
+              left: 100px;
+            }
+          }
+
+          &.fadeIn {
+            .col-left {
+              .animate {
+                left: 0px;
+              }
+            }
+
+            .col-right {
+              .animate {
+                left: 0px;
+              }
+            }
+          }
+        }
+      }
+
+      &.active {      
+        padding-top: 42px;
+        padding-bottom: 46px;
+
+        .embelish {
+          &.left-background {
+            top: 0px;
+            right: -165px;
+            left: auto;
+            width: 127px;
+            height: 159px;
+            background: url(/static-assets/images/wwf-uk/how-to-guide/active_invert_background.png) no-repeat top left;
+          }
+        }
+
+        .col-left {
+          width: 320px;
+        }
+
+        .col-right {
+          width: 350px;
+        }
+
+        .content {
+          .text {
+            padding-right: 24px;
+          }
+        }
+
+        .animated {
+          .image {
+            text-align: right;
+          }
+
+          .col-left {
+            .animate {
+              left: -100px;
+            }
+          }
+
+          .col-right {
+            .animate {
+              top: -122px;
+              right: -100px;
+            }
+          }
+
+          &.fadeIn {
+            .col-left {
+              .animate {
+                left: 0px;              
+              }
+            }
+
+            .col-right {
+              .animate {
+                right: 0px;              
+              }
+            }
+          }
+        }
+      }
+
+      &.fundraise {      
+        padding-top: 146px;
+        padding-bottom: 68px;
+ 
+        .embelish {
+          &.left-background {
+            top: -50px;
+            left: -60px;
+            width: 115px;
+            height: 148px;
+            background: url(/static-assets/images/wwf-uk/how-to-guide/fundraise_invert_background.png) no-repeat top left;
+          }
+
+          &.right-foreground {
+            top: auto;
+            bottom: 30px;
+            right: -130px;
+            width: 160px;
+            height: 200px;
+            background: url(/static-assets/images/wwf-uk/right-leaves2.png) no-repeat top left;
+          }
+        }
+
+        .content {
+          .text, .image {
+            text-align: left;
+          }
+
+          .text {
+            padding-right: 90px;
+          }
+        }
+
+        .col-left {
+          width: 284px;
+        }
+
+        .col-right {
+          width: 386px;
+        }
+
+        .animated {
+          .col-left {
+            .animate {
+              top: -24px;
+              right: 100px;
+            }
+          }
+
+          .col-right {
+            .animate {
+              left: 100px;
+            }
+          }
+
+          &.fadeIn {
+            .col-left {
+              .animate {
+                right: 38px;              
+              }
+            }
+
+            .col-right {
+              .animate {
+                left: 0px;              
+              }
+            }
+          }
+
+          img {
+            height: 165px;
+          }          
+        }
+      }
+    }
+  }
+}

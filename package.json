@@ -16,6 +16,7 @@
     "ejs": "^2.5.6",
     "express": "~4.14.0",
     "i18n": "0.8.3",
+    "react-string-replace": "^0.4.1",
     "request": "^2.88.0"
   },
   "devDependencies": {
