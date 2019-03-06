@@ -498,17 +498,20 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
 
 #player-view .detail {
   overflow: hidden;
-  background: #fff;
 }
 
-#player-view .detail .scroll {
+#player-view .detail .scroll-container {
+  position: relative;
   height: 100%;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
 }
 
+#player-view .detail .scroll {
+  background: #fff;
+}
+
 #player-view .detail .player {
-  min-height: 460px;
   display: none;
   position: relative;
   padding: 0;
@@ -634,7 +637,6 @@ body.fundraising #player-view .detail .player .fundraising-story {
 }
 
 #player-view .detail .player .latest-activity-blank {
-  height: 60px;
 }
 
 body.fundraising #player-view .detail .player .latest-activity {
@@ -805,7 +807,7 @@ body.fundraising #player-view .detail .player .fundraising-donation-view.above-p
 
 body.fundraising #player-view .detail .player .fundraising-donations-view {
   display: block;
-  padding: 42px 12px 0 12px;
+  padding: 42px 12px 32px 12px;
 }
 
 #player-view .detail .player .fundraising-donations-view .title {
@@ -876,6 +878,29 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   width: 140px;
   line-height: 1.3em;
   vertical-align: top;
+}
+
+#player-view .detail {
+  .share-detail {
+    padding: 38px 0 16px 0;
+    border-top: 1px solid #d7d7d7;
+    color: #a3a3a3;
+    text-align: center;
+
+    .share-text {
+      font-size: 0.9em;
+      text-transform: uppercase;
+    }
+
+    .btns {
+      padding-top: 16px;
+      text-align: center;
+
+      .btn {
+          margin: 0 13px;
+      }      
+    }    
+  }
 }
 
 #player-view .detail .back-to-mountain {
@@ -1165,6 +1190,14 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     background: #FFF;
   }
 
+  #player-view .detail .photo-posts-view {
+    min-height: 320px;
+  }
+
+  #player-view .detail .scroll-container {
+    overflow: initial;
+  }
+
   body.fundraising #player-view .detail .player .overview h1 {
     font-size: 1.6em;
   }
@@ -1344,6 +1377,10 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     vertical-align: top;
     padding: 0 4px 32px 4px;
     border: none;
+  }
+
+  #player-view .detail .game-funcs {
+    padding-top: 32px;
   }
 
   #player-view .detail .back-to-mountain {

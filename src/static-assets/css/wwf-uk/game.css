@@ -146,6 +146,9 @@ body {
 #player-view .detail .player .latest-activity {
   color: #474747; }
 
+#player-view .detail .player .latest-activity-blank {
+  height: 60px; }
+
 #player-view .detail .player .latest-activity .icon {
   background-color: #f69741; }
 
@@ -191,6 +194,8 @@ body {
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+  #player-view .detail .player {
+    padding-bottom: 56px; }
   #player-view .detail .shopping-list,
   #player-view .detail .photo-posts-view,
   #player-view .detail .fundraising-donations-view {
@@ -199,6 +204,8 @@ body {
     font-size: 1.1em; }
   body.fundraising #player-view .detail .player .fundraise-sticker .details .raised {
     margin-top: 24px; }
+  #player-view .detail .game-funcs {
+    padding-top: 94px; }
   #footer-view {
     margin-top: 0; } }
 

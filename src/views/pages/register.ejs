@@ -248,14 +248,6 @@ var TEST = '<%= Defs.Test %>';
       {{ }; }}
       </div>
     </div>
-
-    {{ if (currGame.multiplayer && (currGame.ownerPlayerID == player.id)) { }}
-      <p><%- __('game.invite_friends.msg_invite', '<span class="link link-invite">' + __('game.invite_friends.msg_title') + '</span>') %></p>
-    {{ }; }}
-
-    {{ if (currGame.ownerPlayerID == player.id) { }}
-      <p><%- __('game.game_cancel.msg', '<span class="link link-cancel">' + __('game.game_cancel.cancel') + '</span>') %></p>
-    {{ }; }}
     
     <% if (Campaign.CampaignFundraisingProvider) { %>
       {{ if (currGame.fundraising_goal && currGame.fundraising_goal > 0) { }}

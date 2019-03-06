@@ -261,12 +261,14 @@
 		}
 	},
 	"defs": {
-	    "signup": "Sign up",
-    	"strava_app": "Strava App",
+    "signup": "Sign up",
+  	"strava_app": "Strava App",
 		"donate": "Donate",
-    	"prefs": "Preferences",
-		"strava_app": "Strava App",
+    "prefs": "Preferences",
+    "please_wait": "Please Wait",
 		"social": {
+      "share_msg": "Share your journey and inspire others",
+      "share_fundraising_msg": "Share your journey to help your fundraising soar",
 			"share_facebook": "Share on Facebook",
 			"share_twitter": "Share on Twitter"
 		},
