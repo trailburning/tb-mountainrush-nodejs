@@ -408,12 +408,19 @@ module.exports = function(app) {
     }
 
     getCampaignDataByGame(req, defs.GameID, function(err, campaign){ 
-      // get social image
-      getSocialImage(defs.GameID, function(err, strImage){ 
-        defs.SocialImage = strImage;
+      if (campaign) {
+        // get social image
+        getSocialImage(defs.GameID, function(err, strImage){ 
+          defs.SocialImage = strImage;
 
-        res.render('pages/game', {Defs: defs, Campaign: campaign});
-      });
+          res.render('pages/game', {Defs: defs, Campaign: campaign});
+        });
+      }
+      else {
+        getCampaignDataByCampaign(req, process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+        });        
+      }
     });
   });
 
