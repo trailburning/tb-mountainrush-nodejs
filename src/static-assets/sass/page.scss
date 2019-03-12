@@ -53,6 +53,10 @@ h2 {
     text-decoration: none;
   }
 
+  #lema-container.lema-container {
+    margin: 0 auto;      
+  }
+
   .centre-text {
     text-align: left;
   }
@@ -102,8 +106,8 @@ h2 {
     }
 
     .centre-text {
-      padding-left: 120px;
-      padding-right: 120px;
+      padding-left: 32px;
+      padding-right: 32px;
     }
   }
 }
@@ -123,10 +127,5 @@ h2 {
   #page-content-view {
     margin: -236px auto 0 auto;
     width: 670px;
-
-    .centre-text {
-      padding-left: 80px;
-      padding-right: 80px;
-    }
   }
 }
