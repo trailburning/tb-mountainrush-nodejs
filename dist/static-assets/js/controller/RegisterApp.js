@@ -19,6 +19,9 @@ var STATE_FUNDRAISING_SIGNUP = 21;
 var STATE_FUNDRAISING_PAGE_CREATE = 22;
 var STATE_FUNDRAISING_PAGE_CREATED = 23;
 
+// Errors
+var STATE_PLAYER_TOKEN_ERROR = 100;
+
 define([
   'underscore',
   'backbone',
@@ -187,6 +190,9 @@ define([
       $.getJSON(url, function(result){
         storeUserCookies(clientID, playerToken, result[0]);
         callbackFunction(result[0]);
+      })
+      .fail(function() {
+        callbackFunction();
       });
     }
 
@@ -331,29 +337,34 @@ define([
           }
 
           getPlayer(jsonCampaign.clientID, token, function(jsonPlayer) {
-            jsonCurrPlayer = jsonPlayer;
+            if (jsonPlayer) {
+              jsonCurrPlayer = jsonPlayer;
 
-            // see if there's an active game
-            var currGame = _.where(jsonPlayer.games, {game_state:'active'})[0];
-            if (!currGame) {
-              currGame = _.where(jsonPlayer.games, {game_state:'pending'})[0];
-            }
+              // see if there's an active game
+              var currGame = _.where(jsonPlayer.games, {game_state:'active'})[0];
+              if (!currGame) {
+                currGame = _.where(jsonPlayer.games, {game_state:'pending'})[0];
+              }
 
-            if (currGame) {
-              challengeCancelModalView.setGame(currGame);
-            }
+              if (currGame) {
+                challengeCancelModalView.setGame(currGame);
+              }
 
-            // do we have an email address?
-            if (jsonCurrPlayer.email != '') {
-              registerWelcomeConnectedView.setPlayer(jsonCampaign.clientID, jsonCurrPlayer);
-              registerWelcomeConnectedView.render({ jsonCampaign: jsonCampaign });
+              // do we have an email address?
+              if (jsonCurrPlayer.email != '') {
+                registerWelcomeConnectedView.setPlayer(jsonCampaign.clientID, jsonCurrPlayer);
+                registerWelcomeConnectedView.render({ jsonCampaign: jsonCampaign });
 
-              showActivePlayer();
-              enableUserActions(CLIENT_ID);              
+                showActivePlayer();
+                enableUserActions(CLIENT_ID);              
+              }
+              else {
+                // no email so we need to verify
+                changeState(STATE_PLAYER_SIGNUP_VERIFY);
+              }
             }
             else {
-              // no email so we need to verify
-              changeState(STATE_PLAYER_SIGNUP_VERIFY);
+              changeState(STATE_PLAYER_TOKEN_ERROR);
             }
           });
 
@@ -515,6 +526,10 @@ define([
 
           registerFundraisingPageCreatedView.render({ jsonCampaign: jsonCampaign });
           showView('#register-fundraising-page-created-view');
+          break;
+
+        case STATE_PLAYER_TOKEN_ERROR:
+          showView('#register-token-error-view');
           break;
       }
       nPrevState = nState;
