@@ -118,7 +118,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     var fundraisingShoppingModalView = new FundraisingShoppingModalView({ el: '#fundraising-shopping-modal-view', jsonFundraising: jsonFundraising });
     var mountainLockedStoryModalView = new MountainLockedStoryModalView({ el: '#mountain-locked-story-modal-view' });
     var mountainStoryModalView = new MountainStoryModalView({ el: '#mountain-story-modal-view' });
-    var gameInviteView = new GameInviteView({ el: '#game-invite-view' });
+    var gameInviteView = new GameInviteView({ el: '#game-invite-view', clientID: CLIENT_ID });
     var sponsorView = new SponsorView({ el: '#sponsor-big-container-view' });
 
     $('.signout').click(function(evt){

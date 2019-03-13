@@ -105,7 +105,7 @@ define([
     var registerWelcomePreferencesView = new RegisterWelcomePreferencesView({ el: '#register-welcome-preferences-view' });
     var registerGameCreateView = new RegisterGameCreateView({ el: '#register-game-create-view' });
     var registerGameCreatedView = new RegisterGameCreatedView({ el: '#register-game-created-view', jsonFundraising: jsonFundraising });
-    var registerGameInviteView = new GameInviteView({ el: '#register-game-invite-view' });
+    var registerGameInviteView = new GameInviteView({ el: '#register-game-invite-view', clientID: CLIENT_ID });    
     var registerGamesView = new RegisterGamesView({ el: '#register-games-view' });
 
     var registerFundraisingCreateView = new RegisterFundraisingCreateView({ el: '#register-fundraising-create-view' });
