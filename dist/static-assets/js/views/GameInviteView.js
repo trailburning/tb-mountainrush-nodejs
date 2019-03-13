@@ -9,6 +9,7 @@ define([
       this.template = _.template($('#gameInviteViewTemplate').text());
 
       this.options = options;
+      this.strUnknownLocation = '';
 
       this.jsonFields = {gameID: 0,
                          name: '',
@@ -62,6 +63,55 @@ define([
       var self = this;
       
       $(this.el).html(this.template());
+
+      this.strUnknownLocation = $('.search-panel', this.el).attr('data-unknown-location');
+      console.log(this.strUnknownLocation);
+
+      // setup autosuggest
+      $('.search-field', $(this.el)).autocomplete({
+        minLength: 1,
+        delay: 0,
+        autoFocus: false,
+        source: function(request, response ) {
+          var term = request.term.toLowerCase();
+          var arrResults = new Array;
+
+          var url = GAME_API_URL + 'client/' + self.options.clientID + '/players/' + term;
+//          console.log(url);
+          $.getJSON(url, request, function( data, status, xhr ) {
+            if (data) {
+              var suggestions = data;
+
+              suggestions.forEach(function(item){
+                arrResults.push(item);
+              });
+              response(arrResults);
+            }
+          });
+        },
+        select: function(event, ui) {
+          $(this).val(ui.item.firstname + ' ' + ui.item.lastname);
+
+          return false;
+        }
+      });
+
+      $('.search-field', $(this.el)).data('ui-autocomplete')._renderItem = function(ul, item) {
+        var strLocation = self.strUnknownLocation;
+
+        if (item.city != '' && item.country != '') {
+          strLocation = item.city + ', ' + item.country;
+        }
+        else if (item.country != '') {
+          strLocation = item.country;
+        }
+
+        var strItem = '<span class="match-name">' + item.firstname + ' ' + item.lastname + '</span><span class="match-detail">' + strLocation + '</span>';
+
+        return $('<li>')
+          .append(strItem)
+          .appendTo(ul);
+      };
 
       $('.link-back', $(this.el)).click(function(evt){
         // fire event

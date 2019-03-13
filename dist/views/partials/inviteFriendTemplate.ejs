@@ -8,6 +8,13 @@
     <p><%= __('game.invite_friends.invitation_sent') %></p>
     </div>
   </div>
+
+  <div class="search-panel search suggest ui-front" data-unknown-location="<%= __('game.unknown_location') %>">
+    <div class="search-location">
+      <input name="search-text" id="search-text" class="search-field" type="text" placeholder="Climber" spellcheck="false">
+    </div>
+  </div>
+
   <div class="form-group">
     <div class="form-label"><label><%= __('game.invite_friends.friend_name') %></label></div><input class="field form-control required" id="invite-name">
     <div class="help-block"><%= __('game.invite_friends.friend_name_help') %></div>

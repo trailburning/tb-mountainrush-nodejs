@@ -919,6 +919,73 @@ img.scale {
 
 .modal {
   text-align: center; }
+  .modal .search-panel {
+    position: relative;
+    padding-top: 12px;
+    text-align: left;
+    border: none; }
+  .modal .search-panel input {
+    /*    
+mla
+    width: 100%;
+    height: 46px;
+    padding: 0 15px 0 15px;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #474747;
+    border-radius: 0;
+    border: none;
+    outline: none;
+    box-shadow:none;
+    -webkit-box-shadow:none; 
+*/
+    padding: 8px;
+    font-size: inherit;
+    background: #f7f7f7;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-appearance: none;
+    resize: none; }
+  .modal .suggest .ui-autocomplete {
+    z-index: 2;
+    text-align: left;
+    font-size: .9em;
+    width: 288px; }
+  .modal .suggest .ui-corner-all {
+    border-radius: 0px; }
+  .modal .suggest .ui-widget-content {
+    background: #FFF; }
+  .modal .suggest .ui-widget-content {
+    padding: 0px;
+    border: 1px solid #2e3c51; }
+  .modal .suggest .ui-autocomplete li {
+    border-top: 1px solid #000;
+    font-size: 1.1em;
+    padding: 12px 15px;
+    /*    
+    background: #545454;
+*/ }
+  .modal .suggest .ui-autocomplete li:hover {
+    cursor: pointer; }
+  .modal .suggest .ui-autocomplete li .match-name {
+    color: #fff;
+    text-transform: uppercase; }
+  .modal .suggest .ui-autocomplete li .match-detail {
+    padding-left: 12px;
+    color: #9b9b9b; }
+  .modal .suggest .ui-autocomplete {
+    left: 0px !important; }
+  .modal .suggest .ui-autocomplete li:last-child {
+    border-bottom: none; }
+  .modal .suggest .ui-autocomplete .ui-state-focus {
+    background: #6d6d6d;
+    outline: none;
+    border: none;
+    border-top: 1px solid #000; }
+  .modal input.ui-autocomplete-loading {
+    background: url(../images/ui/Spinner-1s-34px.gif) no-repeat 95% center; }
   .modal form {
     margin: 0 12px; }
   .modal strong {
