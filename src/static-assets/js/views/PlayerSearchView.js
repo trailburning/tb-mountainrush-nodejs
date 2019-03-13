@@ -21,7 +21,7 @@ define([
           var term = request.term.toLowerCase();
           var arrResults = new Array;
 
-          var url = GAME_API_URL + 'campaign/' + self.options.campaignID + '/players/' + term;
+          var url = GAME_API_URL + 'campaign/' + self.options.campaignID + '/playergames/' + term;
           $.getJSON(url, request, function( data, status, xhr ) {
             if (data) {
               var suggestions = data;

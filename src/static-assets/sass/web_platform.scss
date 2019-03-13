@@ -1053,6 +1053,92 @@ img.scale {
 .modal {
   text-align: center;
 
+  .view-auto-friend {    
+  }
+
+  .view-manual-friend {    
+    display: none;
+  }
+
+  .support {
+    padding-top: 30px;
+  }
+
+  .search-panel {
+    position: relative;
+    padding-top: 12px;
+    text-align: left;
+    border: none;
+
+    input {
+      text-transform: uppercase;
+    }
+  }
+
+  .suggest .ui-autocomplete {
+    z-index: 2;
+    text-align: left;
+    font-size: .9em;
+    width: 288px;
+  }
+
+  .suggest .ui-autocomplete strong {
+  }
+
+  .suggest .ui-corner-all {
+    border-radius: 0px;
+  }
+
+  .suggest .ui-widget-content {
+    background: #FFF;
+  }
+
+  .suggest .ui-widget-content {
+    padding: 0px;
+    border: 1px solid #2e3c51;
+  }
+
+  .suggest .ui-autocomplete {
+    li {
+      border-top: 1px solid #000;
+      font-size: 1.1em;
+      padding: 12px 15px;
+    }
+
+    li:hover {
+      cursor: pointer;
+    }
+
+    li .match-name {
+      color: #000;
+      text-transform: uppercase;
+    }
+
+    li .match-detail {
+      padding-left: 12px;
+      color: #9b9b9b;
+    }
+
+    li:first-child {
+      border-top: none;  
+    }
+
+    .ui-state-focus {
+      background: #6d6d6d;
+      outline: none;
+      border: none;
+      border-top: 1px solid #000;
+
+      .match-name {
+        color: #fff;
+      }
+    }
+  }
+
+  input.ui-autocomplete-loading { 
+    background:url(../images/ui/Spinner-1s-34px_light.gif) no-repeat 95% center; 
+  }
+
   form {
     margin: 0 12px;
   }
