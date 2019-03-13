@@ -71,6 +71,18 @@ var TEST = '<%= Defs.Test %>';
         <div class="register-view" id="register-fundraising-signup-view"></div>
         <div class="register-view" id="register-fundraising-page-create-view"></div>
         <div class="register-view" id="register-fundraising-page-created-view"></div>
+        <div class="register-view" id="register-token-error-view">
+          <h1><%= __('register.welcome_connected.title') %></h1>
+
+          <div class="intro-text centre-text">
+          <p>
+          There was a token error.
+          </p>
+          <p>
+          <%= Defs.StravaToken %>
+          </p>
+          </div>
+        </div>
         <div class="support">  
         <% include ../partials/support.ejs %>
         </div>
