@@ -8,7 +8,7 @@ export default class HowToStep extends React.Component {
   }
 
   ctaContent() {
-    // last steo renders cta
+    // last step renders cta
     if (this.props.last) {
       return (
         <div className="btn-cta">
@@ -88,12 +88,7 @@ export default class HowToStep extends React.Component {
 
   render() {
     let className = "howToStep " + this.props.step;
-    let delay = 0, offset = 50;
-    // first step animates in after delay
-    if (this.props.first) {
-      delay = 1000;
-      offset = 0;
-    }
+    let delay = 0, offset = 0;
 
     return (
       <div className={className}>
