@@ -8,7 +8,6 @@ var STATE_PLAYER_SIGNEDUP = 4;
 var STATE_PLAYER_PREFERENCES = 5;
 var STATE_GAME_CREATE = 6;
 var STATE_GAME_CREATED = 7;
-var STATE_GAME_INVITE = 8;
 
 // RaiseNow  doesn't require anything!
 var STATE_FUNDRAISING_CREATE = 10;
@@ -41,7 +40,6 @@ define([
   'views/RegisterWelcomePreferencesView',
   'views/RegisterGameCreateView',
   'views/RegisterGameCreatedView',
-  'views/GameInviteView',
   'views/RegisterGamesView',
   'views/RegisterFundraisingCreateView',
   'views/RegisterFundraisingCreatedView',
@@ -52,7 +50,7 @@ define([
   'views/ChallengeCancelModalView',
   'views/PromotionModalView',
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, cookie, truncate, modernizr, dateFormat, datepicker, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, RegisterInvitationView, RegisterWelcomeView, RegisterWelcomeVerifyView, RegisterWelcomeConnectedView, RegisterWelcomePreferencesView, RegisterGameCreateView, RegisterGameCreatedView, GameInviteView, RegisterGamesView, RegisterFundraisingCreateView, RegisterFundraisingCreatedView, RegisterFundraisingSigninView, RegisterFundraisingSignupView, RegisterFundraisingPageCreateView, RegisterFundraisingPageCreatedView, ChallengeCancelModalView, PromotionModalView, DemoVideoView){
+], function(_, Backbone, bootstrap, cookie, truncate, modernizr, dateFormat, datepicker, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, RegisterInvitationView, RegisterWelcomeView, RegisterWelcomeVerifyView, RegisterWelcomeConnectedView, RegisterWelcomePreferencesView, RegisterGameCreateView, RegisterGameCreatedView, RegisterGamesView, RegisterFundraisingCreateView, RegisterFundraisingCreatedView, RegisterFundraisingSigninView, RegisterFundraisingSignupView, RegisterFundraisingPageCreateView, RegisterFundraisingPageCreatedView, ChallengeCancelModalView, PromotionModalView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -68,14 +66,12 @@ define([
     app.dispatcher.on("RegisterWelcomeVerifyView:userUpdated", onVerifySuccess);
     app.dispatcher.on("RegisterWelcomeConnectedView:createGameClick", onCreateGameClick);
     app.dispatcher.on("RegisterWelcomeConnectedView:fundraiseClick", onRegisterFundraiseClick);
-    app.dispatcher.on("RegisterWelcomeConnectedView:inviteClick", onInviteClick);
     app.dispatcher.on("RegisterWelcomeConnectedView:cancelGameClick", onCancelGameClick);
     app.dispatcher.on("RegisterWelcomeConnectedView:prefsClick", onPrefsClick);
     app.dispatcher.on("RegisterWelcomePreferencesView:prefsUpdated", onRegisterPreferencesPrefsUpdated);
     app.dispatcher.on("RegisterWelcomePreferencesView:backClick", onRegisterBackClick);
     app.dispatcher.on("RegisterGameCreateView:sponsoredGameSelected", onSponsoredGameSelected);
     app.dispatcher.on("RegisterGameCreateView:gameCreated", onRegisterGameCreated);
-    app.dispatcher.on("RegisterGameCreatedView:inviteClick", onInviteClick);
     app.dispatcher.on("RegisterGameCreatedView:fundraiseClick", onRegisterFundraiseClick);
     app.dispatcher.on("RegisterFundraisingCreateView:fundraisingCreated", onRegisterFundraisingCreated);
     app.dispatcher.on("RegisterFundraisingSigninView:validUser", onRegisterFundraisingSigninValidUser);
@@ -85,7 +81,6 @@ define([
     app.dispatcher.on("RegisterFundraisingSignupView:signinClick", onRegisterFundraisingSignupSigninClick);
     app.dispatcher.on("RegisterFundraisingPageCreateView:pageCreated", onRegisterFundraisingPageCreated);
     app.dispatcher.on("ChallengeCancelModalView:challengeCancelled", onChallengeCancelled);
-    app.dispatcher.on("GameInviteView:backClick", onRegisterBackClick);
 
     var jsonCampaign = null;
     var jsonCurrPlayer = null;
@@ -105,7 +100,6 @@ define([
     var registerWelcomePreferencesView = new RegisterWelcomePreferencesView({ el: '#register-welcome-preferences-view' });
     var registerGameCreateView = new RegisterGameCreateView({ el: '#register-game-create-view' });
     var registerGameCreatedView = new RegisterGameCreatedView({ el: '#register-game-created-view', jsonFundraising: jsonFundraising });
-    var registerGameInviteView = new GameInviteView({ el: '#register-game-invite-view', clientID: CLIENT_ID });    
     var registerGamesView = new RegisterGamesView({ el: '#register-games-view' });
 
     var registerFundraisingCreateView = new RegisterFundraisingCreateView({ el: '#register-fundraising-create-view' });
@@ -220,7 +214,6 @@ define([
 
         case '#register-game-create-view':
         case '#register-game-created-view':
-        case '#register-game-invite-view':
           strStep = 'challenge';
           break;
 
@@ -405,23 +398,6 @@ define([
           showView('#register-game-created-view');
           break;
 
-        case STATE_GAME_INVITE:
-          var jsonWelcomeFields = registerWelcomeConnectedView.getFields();
-
-          var gameID = registerGameCreateView.getFields().gameID;
-          // if we have a current game then use that!
-          if (jsonWelcomeFields.currGame) {
-            gameID = jsonWelcomeFields.currGame.game;
-          }
-
-          var jsonCreateFields = registerGameInviteView.getFields();
-          jsonCreateFields.gameID = gameID;
-          registerGameInviteView.setFields(jsonCreateFields);
-
-          registerGameInviteView.render();
-          showView('#register-game-invite-view');
-          break;
-
         case STATE_FUNDRAISING_CREATE:
           var jsonWelcomeFields = registerWelcomeConnectedView.getFields();
 
@@ -571,10 +547,6 @@ define([
 
     function onChallengeCancelled() {
       location.reload();
-    }
-
-    function onInviteClick() {
-      changeState(STATE_GAME_INVITE);
     }
 
     function onPrefsClick() {
