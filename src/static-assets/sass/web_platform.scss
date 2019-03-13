@@ -1053,41 +1053,26 @@ img.scale {
 .modal {
   text-align: center;
 
+  .view-auto-friend {    
+  }
+
+  .view-manual-friend {    
+    display: none;
+  }
+
+  .support {
+    padding-top: 30px;
+  }
+
   .search-panel {
     position: relative;
     padding-top: 12px;
     text-align: left;
     border: none;
-  }
 
-  .search-panel input {
-/*    
-mla
-    width: 100%;
-    height: 46px;
-    padding: 0 15px 0 15px;
-    font-size: 1.2em;
-    text-transform: uppercase;
-    color: #fff;
-    background-color: #474747;
-    border-radius: 0;
-    border: none;
-    outline: none;
-    box-shadow:none;
-    -webkit-box-shadow:none; 
-*/    
-
-
-
-    padding: 8px;
-    font-size: inherit;
-    background: #f7f7f7;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    -webkit-appearance: none;
-    resize: none;
-
+    input {
+      text-transform: uppercase;
+    }
   }
 
   .suggest .ui-autocomplete {
@@ -1113,46 +1098,45 @@ mla
     border: 1px solid #2e3c51;
   }
 
-  .suggest .ui-autocomplete li {
-    border-top: 1px solid #000;
-    font-size: 1.1em;
-    padding: 12px 15px;
-/*    
-    background: #545454;
-*/    
-  }
-
-  .suggest .ui-autocomplete li:hover {
-    cursor: pointer;
-  }
-
-  .suggest .ui-autocomplete li .match-name {
-    color: #fff;
-    text-transform: uppercase;
-  }
-
-  .suggest .ui-autocomplete li .match-detail {
-    padding-left: 12px;
-    color: #9b9b9b;
-  }
-
   .suggest .ui-autocomplete {
-    left: 0px !important;
-  }
+    li {
+      border-top: 1px solid #000;
+      font-size: 1.1em;
+      padding: 12px 15px;
+    }
 
-  .suggest .ui-autocomplete li:last-child {
-    border-bottom: none;  
-  }
+    li:hover {
+      cursor: pointer;
+    }
 
-  .suggest .ui-autocomplete .ui-state-focus {
-    background: #6d6d6d;
-    outline: none;
-    border: none;
-    border-top: 1px solid #000;
+    li .match-name {
+      color: #000;
+      text-transform: uppercase;
+    }
+
+    li .match-detail {
+      padding-left: 12px;
+      color: #9b9b9b;
+    }
+
+    li:first-child {
+      border-top: none;  
+    }
+
+    .ui-state-focus {
+      background: #6d6d6d;
+      outline: none;
+      border: none;
+      border-top: 1px solid #000;
+
+      .match-name {
+        color: #fff;
+      }
+    }
   }
 
   input.ui-autocomplete-loading { 
-    background:url(../images/ui/Spinner-1s-34px.gif) no-repeat 95% center; 
+    background:url(../images/ui/Spinner-1s-34px_light.gif) no-repeat 95% center; 
   }
 
   form {

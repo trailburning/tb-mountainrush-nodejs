@@ -9,6 +9,7 @@ define([
       this.template = _.template($('#gameInviteViewTemplate').text());
 
       this.options = options;
+      this.bViewAutomatic = true;
       this.strUnknownLocation = '';
 
       this.jsonFields = {gameID: 0,
@@ -24,10 +25,10 @@ define([
       this.jsonFields.gameID = jsonFields.gameID;
     },
 
-    sendInvite: function() {
+    sendInvite: function(elForm) {
       var self = this;
 
-      $('.err, .err .msg, .warning, .warning .msg, .info, .info .msg', $(this.el)).hide();
+      $('.err, .err .msg, .warning, .warning .msg, .info, .info .msg', elForm).hide();
 
       var jsonData = {name: this.jsonFields.name,
                       email: this.jsonFields.email};
@@ -46,12 +47,10 @@ define([
           console.log(data);
         },
         success: function(data) {
-          $('.info .msg[data-msg=invite-sent]', $(self.el)).show();
-          $('.info', $(self.el)).show();
+          $('.info .msg[data-msg=invite-sent]', elForm).show();
+          $('.info', elForm).show();
 
-          $('.invite-btn', $(self.el)).button('reset');
-          $('#invite-name', $(self.el)).val('');
-          $('#invite-email', $(self.el)).val('');
+          $('.invite-btn', elForm).button('reset');
 
 //          console.log('success');
 //          console.log(data);
@@ -64,8 +63,19 @@ define([
       
       $(this.el).html(this.template());
 
+      $('.toggle-view', this.el).click(function(evt){
+        self.bViewAutomatic = !self.bViewAutomatic;
+        if (self.bViewAutomatic) {
+          $('.view-auto-friend', self.el).show();
+          $('.view-manual-friend', self.el).hide();
+        }
+        else {
+          $('.view-manual-friend', self.el).show();
+          $('.view-auto-friend', self.el).hide();
+        }
+      });
+
       this.strUnknownLocation = $('.search-panel', this.el).attr('data-unknown-location');
-      console.log(this.strUnknownLocation);
 
       // setup autosuggest
       $('.search-field', $(this.el)).autocomplete({
@@ -91,6 +101,9 @@ define([
         },
         select: function(event, ui) {
           $(this).val(ui.item.firstname + ' ' + ui.item.lastname);
+
+          self.jsonFields.name = ui.item.firstname;
+          self.jsonFields.email = ui.item.email;
 
           return false;
         }
@@ -124,12 +137,15 @@ define([
 
         var bValid = validateForm($(this));
         if (bValid) {
-          $('.invite-btn', $(self.el)).button('loading');
+          $('.invite-btn', $(this)).button('loading');
 
-          self.jsonFields.name = $('#invite-name', $(self.el)).val();
-          self.jsonFields.email = $('#invite-email', $(self.el)).val();
+          // do we have fields to use?
+          if ($('#invite-name', $(this)).length && $('#invite-email', $(this)).length) {
+            self.jsonFields.name = $('#invite-name', $(this)).val();
+            self.jsonFields.email = $('#invite-email', $(this)).val();
+          }
 
-          self.sendInvite();
+          self.sendInvite($(this));
         }
       });
 

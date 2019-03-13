@@ -247,6 +247,14 @@
       "title": "Invite Friends",
       "description": "Invite friends to join your challenge!",
       "invitation_sent": "Invitation sent!",
+      "automatic": {
+        "toggle": "Cannot find your friend?  You can invite them %s."
+      },
+      "manual": {
+        "toggle": "Don't know your friend's email?  Try finding them %s."
+      },
+      "friend_find": "Friend",
+      "friend_find_help": "Please choose a friend",
       "friend_name": "Friend's Name",
       "friend_name_help": "Please fill in your friend's name",
       "friend_email": "Friend's Email",
@@ -268,6 +276,7 @@
       "view": "View Challenge"
     },
     "prefs": "Preferences",
+    "here": "here",
     "please_wait": "Please Wait",
 		"social": {
       "share_msg": "Share your journey and inspire others",
