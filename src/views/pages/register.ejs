@@ -64,7 +64,6 @@ var TEST = '<%= Defs.Test %>';
         <div class="register-view" id="register-welcome-preferences-view"></div>
         <div class="register-view" id="register-game-create-view"></div>
         <div class="register-view" id="register-game-created-view"></div>
-        <div class="register-view" id="register-game-invite-view"></div>
         <div class="register-view" id="register-games-view"></div>
         <div class="register-view" id="register-fundraising-create-view"></div>
         <div class="register-view" id="register-fundraising-created-view"></div>
@@ -461,10 +460,6 @@ var TEST = '<%= Defs.Test %>';
   <div class="btns">
     <a href="<%= Defs.BaseHTTPSURL %>/game/{{= fields.gameID }}" class="btn mr-btn"><%= __('register.game_created.view_challenge') %></a>
   </div>
-
-  {{ if (fields.multiplayer) { }}
-    <%- __('register.game_created.invite_friends_challenge', '<span class="link link-invite">' + __('register.game_created.invite_friends') + '</span>') %>
-  {{ }; }}
 
   <% if (Campaign.CampaignFundraisingProvider) { %>
     <% include ../partials/registerAddFundraisingTemplate.ejs %>

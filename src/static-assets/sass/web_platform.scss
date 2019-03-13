@@ -1040,19 +1040,9 @@ img.scale {
   opacity: 0;
 }
 
-/* MODAL */
+/* GAME INVITE */
 /******************************************/
-.modal-backdrop.in {
-  opacity: 0.8;
-}
-
-.modal-body {
-  padding: 28px 0;
-}
-
-.modal {
-  text-align: center;
-
+.game-invite-view {
   .view-auto-friend {    
   }
 
@@ -1138,6 +1128,20 @@ img.scale {
   input.ui-autocomplete-loading { 
     background:url(../images/ui/Spinner-1s-34px_light.gif) no-repeat 95% center; 
   }
+}
+
+/* MODAL */
+/******************************************/
+.modal-backdrop.in {
+  opacity: 0.8;
+}
+
+.modal-body {
+  padding: 28px 0;
+}
+
+.modal {
+  text-align: center;
 
   form {
     margin: 0 12px;

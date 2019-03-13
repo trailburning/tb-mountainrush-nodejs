@@ -50,11 +50,6 @@ define([
         }
       });
 
-      $('.link-invite', $(this.el)).click(function(evt){
-        // fire event
-        app.dispatcher.trigger("RegisterGameCreatedView:inviteClick");
-      });
-
       $('.btn-fundraise', $(this.el)).click(function(evt){
         // fire event
         app.dispatcher.trigger("RegisterGameCreatedView:fundraiseClick");

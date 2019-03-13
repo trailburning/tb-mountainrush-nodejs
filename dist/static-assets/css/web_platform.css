@@ -909,6 +909,68 @@ form .warning {
 img.scale {
   opacity: 0; }
 
+/* GAME INVITE */
+/******************************************/
+.game-invite-view .view-manual-friend {
+  display: none; }
+
+.game-invite-view .support {
+  padding-top: 30px; }
+
+.game-invite-view .search-panel {
+  position: relative;
+  padding-top: 12px;
+  text-align: left;
+  border: none; }
+  .game-invite-view .search-panel input {
+    text-transform: uppercase; }
+
+.game-invite-view .suggest .ui-autocomplete {
+  z-index: 2;
+  text-align: left;
+  font-size: .9em;
+  width: 288px; }
+
+.game-invite-view .suggest .ui-corner-all {
+  border-radius: 0px; }
+
+.game-invite-view .suggest .ui-widget-content {
+  background: #FFF; }
+
+.game-invite-view .suggest .ui-widget-content {
+  padding: 0px;
+  border: 1px solid #2e3c51; }
+
+.game-invite-view .suggest .ui-autocomplete li {
+  border-top: 1px solid #000;
+  font-size: 1.1em;
+  padding: 12px 15px; }
+
+.game-invite-view .suggest .ui-autocomplete li:hover {
+  cursor: pointer; }
+
+.game-invite-view .suggest .ui-autocomplete li .match-name {
+  color: #000;
+  text-transform: uppercase; }
+
+.game-invite-view .suggest .ui-autocomplete li .match-detail {
+  padding-left: 12px;
+  color: #9b9b9b; }
+
+.game-invite-view .suggest .ui-autocomplete li:first-child {
+  border-top: none; }
+
+.game-invite-view .suggest .ui-autocomplete .ui-state-focus {
+  background: #6d6d6d;
+  outline: none;
+  border: none;
+  border-top: 1px solid #000; }
+  .game-invite-view .suggest .ui-autocomplete .ui-state-focus .match-name {
+    color: #fff; }
+
+.game-invite-view input.ui-autocomplete-loading {
+  background: url(../images/ui/Spinner-1s-34px_light.gif) no-repeat 95% center; }
+
 /* MODAL */
 /******************************************/
 .modal-backdrop.in {
@@ -919,52 +981,6 @@ img.scale {
 
 .modal {
   text-align: center; }
-  .modal .view-manual-friend {
-    display: none; }
-  .modal .support {
-    padding-top: 30px; }
-  .modal .search-panel {
-    position: relative;
-    padding-top: 12px;
-    text-align: left;
-    border: none; }
-    .modal .search-panel input {
-      text-transform: uppercase; }
-  .modal .suggest .ui-autocomplete {
-    z-index: 2;
-    text-align: left;
-    font-size: .9em;
-    width: 288px; }
-  .modal .suggest .ui-corner-all {
-    border-radius: 0px; }
-  .modal .suggest .ui-widget-content {
-    background: #FFF; }
-  .modal .suggest .ui-widget-content {
-    padding: 0px;
-    border: 1px solid #2e3c51; }
-  .modal .suggest .ui-autocomplete li {
-    border-top: 1px solid #000;
-    font-size: 1.1em;
-    padding: 12px 15px; }
-  .modal .suggest .ui-autocomplete li:hover {
-    cursor: pointer; }
-  .modal .suggest .ui-autocomplete li .match-name {
-    color: #000;
-    text-transform: uppercase; }
-  .modal .suggest .ui-autocomplete li .match-detail {
-    padding-left: 12px;
-    color: #9b9b9b; }
-  .modal .suggest .ui-autocomplete li:first-child {
-    border-top: none; }
-  .modal .suggest .ui-autocomplete .ui-state-focus {
-    background: #6d6d6d;
-    outline: none;
-    border: none;
-    border-top: 1px solid #000; }
-    .modal .suggest .ui-autocomplete .ui-state-focus .match-name {
-      color: #fff; }
-  .modal input.ui-autocomplete-loading {
-    background: url(../images/ui/Spinner-1s-34px_light.gif) no-repeat 95% center; }
   .modal form {
     margin: 0 12px; }
   .modal strong {
