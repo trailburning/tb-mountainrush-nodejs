@@ -95,10 +95,15 @@ define([
 
     enableUserActions(DEF_CLIENT_ID);
 
-    // check for player game
+    // check for player
     if (getUserCookie(DEF_CLIENT_ID) != undefined) {
       var jsonUser = getUserCookies(DEF_CLIENT_ID);
 //      console.log(jsonUser);
+
+      // send user info to Drift
+      if (drift) {
+        drift.identify(jsonUser.user, { player: jsonUser.user, firstname: jsonUser.firstname });
+      }
 
       app.dispatcher.on("PlayerGameView:loaded", onPlayerGameViewReady);
 
