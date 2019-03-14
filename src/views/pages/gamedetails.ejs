@@ -7,10 +7,11 @@
 <% if (Campaign.CampaignTemplate != 'default') { %>
   <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/web_platform.css' rel='stylesheet' />
 <% } %>
-<link href='/static-assets/css/game.css' rel='stylesheet' />
+<link href='/static-assets/css/gamedetails.css' rel='stylesheet' />
 <% if (Campaign.CampaignTemplate != 'default') { %>
-  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/game.css' rel='stylesheet' />
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/gamedetails.css' rel='stylesheet' />
 <% } %>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
 <% include ../partials/analyticsFBPixel.ejs %>
 </head>
 
@@ -33,6 +34,8 @@ var FUNDRAISING_PROVIDER = '<%= Campaign.CampaignFundraisingProvider %>';
   <% } else { %>
     <%- include('../partials/' + Campaign.CampaignTemplate + '/header.ejs') %>
   <% } %>
+
+  <div id='map'></div>
 
   <% if (Campaign.CampaignTemplate == 'default') { %>
     <% include ../partials/footer.ejs %>

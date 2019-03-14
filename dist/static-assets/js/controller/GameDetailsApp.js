@@ -9,12 +9,15 @@ define([
   'truncate',
   'modernizr',
   'imageScale',
+  'turf',
   'imagesLoaded',
   'videojs',
+  'mapboxgl',
   'views/LanguageSelectorView',
   'views/ActivePlayerView',
+  'views/ChallengeView',
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, DemoVideoView){
+], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, turf, imagesLoaded, videojs, mapboxgl, LanguageSelectorView, ActivePlayerView, ChallengeView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -25,6 +28,94 @@ define([
 
   var initialize = function() {
     var self = this;
+    var jsonCurrGame = null;
+    var playerCollection = null;
+
+    function setupMap(jsonRoute) {
+      var nMidPoint = Math.round(jsonRoute.source.data.geometry.coordinates.length / 2);
+      var point = jsonRoute.source.data.geometry.coordinates[nMidPoint];
+
+      mapboxgl.accessToken = 'pk.eyJ1IjoibWFsbGJldXJ5IiwiYSI6IjJfV1MzaE0ifQ.scrjDE31p7wBx7-GemqV3A';
+      var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/cjaudgl840gn32rnrepcb9b9g', // the outdoors-v10 style but without Hillshade layers
+      center: [point[0], point[1]],
+      zoom: 11
+      });
+       
+      map.on('load', function () {
+        map.addSource('dem', {
+        "type": "raster-dem",
+        "url": "mapbox://mapbox.terrain-rgb"
+        });
+        map.addLayer({
+        "id": "hillshading",
+        "source": "dem",
+        "type": "hillshade"
+        // insert below waterway-river-canal-shadow;
+        // where hillshading sits in the Mapbox Outdoors style
+        }, 'waterway-river-canal-shadow');
+
+        map.addLayer(jsonRoute);
+      });
+    }
+
+    function getGame() {
+      app.dispatcher.on("ChallengeView:ready", onGameLoaded);
+
+      challengeView = new ChallengeView({ gameID: GAME_ID });
+      challengeView.load();
+    }
+
+    function onGameLoaded(jsonGame) {
+      jsonCurrGame = jsonGame;
+
+      playerCollection = new Backbone.Collection(jsonGame.players);
+
+      getJourney(jsonGame.journeyID, jsonGame.mountain3DName);
+    }
+
+    function getJourney(journeyID, mountain3DName) {
+      var url = TB_API_URL + '/journeys/' + journeyID + TB_API_EXT;
+//      console.log(url);
+      $.getJSON(url, function(result){
+        var jsonJourney = result.body.journeys[0];
+        mountainModel = new Backbone.Model(jsonJourney);
+
+        jsonRoute = {
+          "id": "route",
+          "type": "line",
+          "source": {
+            "type": "geojson",
+            "data": {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": []
+              }
+            }
+          },
+          "layout": {
+          "line-join": "round",
+          "line-cap": "round"
+          },
+          "paint": {
+          "line-color": "#f75f36",
+          "line-width": 2
+          }
+        };
+
+        // build geoJSON route
+        $.each(mountainModel.get('route_points'), function(index) {
+          jsonRoute.source.data.geometry.coordinates.push(this.coords);
+        });
+        // set distance
+        mountainModel.set('distance', turf.length(jsonRoute.source.data, {units: 'kilometers'}));
+        console.log(mountainModel.get('distance'));
+        setupMap(jsonRoute);
+      });
+    }
 
     $('#loader-view').show();
 
@@ -68,6 +159,8 @@ define([
         }
       }
     });    
+
+    getGame();
   };
 
   return { 
