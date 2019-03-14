@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include ../partials/includes.ejs %>
+<link href='/static-assets/css/photoswipe.css' rel='stylesheet' />
+<link href='/static-assets/css/default-skin/default-skin-with-ig.css' rel='stylesheet' />
+<% if (Campaign.CampaignTemplate != 'default') { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/web_platform.css' rel='stylesheet' />
+<% } %>
+<link href='/static-assets/css/game.css' rel='stylesheet' />
+<% if (Campaign.CampaignTemplate != 'default') { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/game.css' rel='stylesheet' />
+<% } %>
+<% include ../partials/analyticsFBPixel.ejs %>
+</head>
+
+<body>
+<script>
+var APP = 'GameDetailsApp';
+var GAME_API_URL = '<%= Defs.MRAPIURL %>';
+var HOST_URL = '<%= Defs.BaseHTTPSURL %>';
+var GAME_FUNDRAISING = <%= Campaign.CampaignFundraising %>;
+var CLIENT_ID = '<%= Campaign.ClientID %>';
+var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
+var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
+var GAME_ID = '<%= Defs.GameID %>';
+var FUNDRAISING_PROVIDER = '<%= Campaign.CampaignFundraisingProvider %>';
+</script>
+
+<div class="container-fluid nopadding">
+  <% if (Campaign.CampaignTemplate == 'default') { %>
+    <% include ../partials/header.ejs %>
+  <% } else { %>
+    <%- include('../partials/' + Campaign.CampaignTemplate + '/header.ejs') %>
+  <% } %>
+
+  <% if (Campaign.CampaignTemplate == 'default') { %>
+    <% include ../partials/footer.ejs %>
+  <% } else { %>
+    <%- include('../partials/' + Campaign.CampaignTemplate + '/footer.ejs') %>
+  <% } %>
+</div>
+
+<div id="mobileTest" class="visible-xs"></div>
+<div id="demo-video-view"></div>
+
+<% include ../partials/demoVideoTemplate.ejs %>
+<% include ../partials/analytics.ejs %>
+</body>
+
+<script data-main="/static-assets/js/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+</html>
