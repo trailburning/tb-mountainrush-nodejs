@@ -114,7 +114,7 @@
     "welcome": {
       "title": "Connect to Strava",
       "strava_app": "Strava App",
-      "description": "Track your hiking, cycling or running activities recorded by the %s challenges.",
+      "description": "Track your hiking, cycling or running activities recorded by the %s in %s challenges.",
       "start": "Connect below to get started!",
       "invite": "invite",
       "start_invite": "Connect below to view your %s and get started!",
