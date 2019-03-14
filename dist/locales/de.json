@@ -117,7 +117,7 @@
 		"welcome": {
 			"title": "Verbindung zur Strava herstellen",
 			"strava_app": "Strava App",
-			"description": "Verfolge Deine Wandern-, Radfahren- oder Lauf-aktivitäten aufgezeichnet durch die %s Spiele.",
+			"description": "Verfolge Deine Wandern-, Radfahren- oder Lauf-aktivitäten mit dem %s aufgezeichnet durch die %s Spiele.",
 			"start": "Fang an, unten verbinden!",
 			"invite": "Einladung",
 			"start_invite": "Unten verbinden, um Dein %s anzuschauen and fang an!",

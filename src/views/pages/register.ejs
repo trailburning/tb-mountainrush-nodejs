@@ -170,7 +170,7 @@ var TEST = '<%= Defs.Test %>';
 <script type="text/template" id="registerWelcomeViewTemplate">
   <h1><%= __('register.welcome.title') %></h1>
   <div class="intro-text centre-text">
-  <p><%- __('register.welcome.description', '<a class="link" href="https://www.strava.com/mobile" target="_blank">' +  __('register.welcome.strava_app') + '</a>') %></p>
+  <p><%- __('register.welcome.description', '<a class="link" href="https://www.strava.com/mobile" target="_blank">' +  __('register.welcome.strava_app') + '</a>', '{{= campaign.name }}') %></p>
   <% if (Defs.PageRegisterState == 'invite') { %>
     <%- __('register.welcome.start_invite', '<strong>' + __('register.welcome.invite') + '</strong>') %>
   <% } else { %>
