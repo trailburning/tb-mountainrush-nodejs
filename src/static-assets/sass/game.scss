@@ -772,6 +772,13 @@ body.fundraising #player-view .detail .player .latest-activity {
   background: #f8f8f8;
 }
 
+#player-view .detail .player .no-photos .post .image .icon {
+  line-height: 244px;
+  text-align: center;
+  font-size: 3em;
+  color: #fff;
+}
+
 #player-view .detail .player .post .details {
   padding-top: 8px;
 }
@@ -1356,6 +1363,10 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   #player-view .detail .player .post .image {
     width: 196px;
     height: 196px;
+  }
+
+  #player-view .detail .player .no-photos .post .image .icon {
+    line-height: 196px;
   }
 
   #player-view .detail .player .post .details {
