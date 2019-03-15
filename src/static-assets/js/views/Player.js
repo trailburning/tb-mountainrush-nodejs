@@ -213,8 +213,8 @@ define([
             if (FUNDRAISING_PROVIDER == FUNDRAISING_PROVIDER_JUSTGIVING) {
               if (self.jsonDonations.donations) {
                 if (self.jsonDonations.donations.length) {
-                  $('.welcome.with-donations', this.elPlayerDetail).show();
-                  $('.welcome.without-donations', this.elPlayerDetail).hide();
+                  $('.with-donations', this.elPlayerDetail).show();
+                  $('.without-donations', this.elPlayerDetail).hide();
                   self.fundraisingDonationsView.render(self.jsonDonations.donations);
                 }
               }
@@ -222,8 +222,8 @@ define([
             else {
               if (self.jsonDonations.result.transactions) {
                 if (self.jsonDonations.result.transactions.length) {
-                  $('.welcome.with-donations', this.elPlayerDetail).show();
-                  $('.welcome.without-donations', this.elPlayerDetail).hide();
+                  $('.with-donations', this.elPlayerDetail).show();
+                  $('.without-donations', this.elPlayerDetail).hide();
                   self.fundraisingDonationsView.render(self.jsonDonations.result.transactions);
                 }
               }
@@ -316,8 +316,8 @@ define([
           $('.photo-icon', this.elPlayerList).addClass('show');
           $('.photo-icon', this.elPlayerDetail).addClass('show');
 
-          $('.welcome.with-photos', this.elPlayerDetail).show();
-          $('.welcome.without-photos', this.elPlayerDetail).hide();
+          $('.with-photos', this.elPlayerDetail).show();
+          $('.without-photos', this.elPlayerDetail).hide();
 
           // render
           playerActivityPhotosView.render().el;
