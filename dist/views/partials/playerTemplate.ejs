@@ -193,7 +193,17 @@
             <div class="posts">
               <div class="welcome without-photos">{{= '<%= __('game.photos.waiting.description') %>'.replace('%s', firstname) }}</div>
               <div class="welcome with-photos">{{= '<%= __('game.photos.description') %>'.replace('%s', firstname) }}</div>
-              <div class="photos"></div>
+              <div class="photos with-photos"></div>
+
+              <div class="no-photos without-photos">
+                <div class="post">
+                  <div class="image"></div>
+                </div><div class="post">
+                  <div class="image"></div>
+                </div><div class="post">
+                  <div class="image"></div>
+                </div>
+              </div>              
             </div>
           </div>
 

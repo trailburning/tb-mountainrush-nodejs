@@ -724,8 +724,8 @@ body.fundraising #player-view .detail .player .latest-activity {
   text-align: center;
 }
 
-#player-view .detail .player .welcome.without-photos,
-#player-view .detail .player .welcome.without-donations {
+#player-view .detail .player .without-photos,
+#player-view .detail .player .without-donations {
   display: block;
 }
 
@@ -766,6 +766,10 @@ body.fundraising #player-view .detail .player .latest-activity {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+#player-view .detail .player .no-photos .post .image {
+  background: #f8f8f8;
 }
 
 #player-view .detail .player .post .details {
