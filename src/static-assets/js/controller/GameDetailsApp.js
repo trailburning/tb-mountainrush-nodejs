@@ -32,6 +32,12 @@ define([
     var playerCollection = null;
 
     function setupMap(jsonRoute) {
+/*
+https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.38886,52.517037.json?&access_token=pk.eyJ1IjoibWFsbGJldXJ5IiwiYSI6IjJfV1MzaE0ifQ.scrjDE31p7wBx7-GemqV3A
+
+https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.432159,52.526385.json?&access_token=pk.eyJ1IjoibWFsbGJldXJ5IiwiYSI6IjJfV1MzaE0ifQ.scrjDE31p7wBx7-GemqV3A
+*/
+
       var nMidPoint = Math.round(jsonRoute.source.data.geometry.coordinates.length / 2);
       var point = jsonRoute.source.data.geometry.coordinates[nMidPoint];
 
