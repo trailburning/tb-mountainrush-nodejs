@@ -43,7 +43,13 @@ define([
       });
 
       $('.search-field', $(this.el)).data('ui-autocomplete')._renderItem = function(ul, item) {
-        var strItem = '<span class="match-name">' + item.firstname + ' ' + item.lastname + '</span><span class="match-game">' + item.level_name + ' ' + item.game_type + '</span>';
+        var strGameType = '';
+
+        if (item.game_type != 'All') {
+          strGameType = item.game_type;
+        }
+
+        var strItem = '<span class="match-name">' + item.firstname + ' ' + item.lastname + '</span><span class="match-game">' + item.level_name + ' ' + strGameType + '</span>';
 
         return $('<li>')
           .append(strItem)

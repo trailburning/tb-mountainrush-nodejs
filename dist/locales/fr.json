@@ -29,7 +29,7 @@
     },
     "active": {
       "title": "Get Active",
-      "subtitle": "Cycle, Run or Hike",
+      "subtitle": "Run,Cycle or Hike",
       "description": "Simply download the %s and start tracking your activity.  Receive email updates and view your progress up Mount Sabyinyo in stunning 3D!"
     },
     "fundraise": {
@@ -114,7 +114,7 @@
     "welcome": {
       "title": "Connect to Strava",
       "strava_app": "Strava App",
-      "description": "Track your hiking, cycling or running activities recorded by the %s challenges.",
+      "description": "Track your hiking, cycling or running activities recorded by the %s in %s challenges.",
       "start": "Connect below to get started!",
       "invite": "invite",
       "start_invite": "Connect below to view your %s and get started!",

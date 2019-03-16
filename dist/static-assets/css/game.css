@@ -605,8 +605,8 @@ body.fundraising #player-view .detail .player .latest-activity {
   color: #a5b4bd;
   text-align: center; }
 
-#player-view .detail .player .welcome.without-photos,
-#player-view .detail .player .welcome.without-donations {
+#player-view .detail .player .without-photos,
+#player-view .detail .player .without-donations {
   display: block; }
 
 #player-view .detail .player .more-posts {
@@ -641,6 +641,18 @@ body.fundraising #player-view .detail .player .latest-activity {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover; }
+
+#player-view .detail .player .no-photos .post {
+  display: none; }
+  #player-view .detail .player .no-photos .post:first-child {
+    display: inline-block; }
+  #player-view .detail .player .no-photos .post .image {
+    background: #f8f8f8; }
+    #player-view .detail .player .no-photos .post .image .icon {
+      line-height: 244px;
+      text-align: center;
+      font-size: 3em;
+      color: #fff; }
 
 #player-view .detail .player .post .details {
   padding-top: 8px; }
@@ -1057,6 +1069,10 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   #player-view .detail .player .post .image {
     width: 196px;
     height: 196px; }
+  #player-view .detail .player .no-photos .post {
+    display: inline-block; }
+    #player-view .detail .player .no-photos .post .image .icon {
+      line-height: 196px; }
   #player-view .detail .player .post .details {
     height: 64px;
     overflow: hidden; }
