@@ -1,8 +1,210 @@
-#map {
-  width: 800px;
-  height: 600px; }
-
 /* FOOTER VIEW */
 /******************************************/
 #footer-view .logo-container {
   display: none; }
+
+/* PAGE VIEW */
+/******************************************/
+#page-view {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'radikalregular', sans-serif; }
+
+/* GAME VIEW */
+/******************************************/
+#game-view {
+  z-index: 2;
+  position: relative; }
+
+/* SPONSOR CONTAINER VIEW */
+/******************************************/
+#sponsor-big-container-view,
+#sponsor-small-container-view {
+  display: none; }
+
+body.sponsored #sponsor-big-container-view,
+body.sponsored #sponsor-small-container-view {
+  display: block; }
+
+/* SPONSOR VIEW */
+/******************************************/
+body.sponsored .sponsor-view .link,
+body.sponsored .sponsor-view .link:active,
+body.sponsored .sponsor-view .link:visited {
+  text-decoration: none;
+  color: inherit; }
+
+body.sponsored .sponsor-view {
+  padding: 32px 15px 26px 15px;
+  background: #173545;
+  background: linear-gradient(0deg, #173545 0%, #2a485a 50%, #3b5a6d 100%); }
+
+body.sponsored .sponsor-view .logo img {
+  width: 80px; }
+
+body.sponsored .sponsor-view .title {
+  color: #fff; }
+
+body.sponsored .sponsor-view .title h1 {
+  padding-top: 24px;
+  padding-bottom: 16px;
+  font-family: 'radikalbold', sans-serif;
+  font-size: 2.5em;
+  line-height: 1.2em; }
+
+body.sponsored .sponsor-view .title h2 {
+  font-family: 'radikalregular';
+  font-size: 1.2em; }
+
+body.sponsored .sponsor-view .title strong {
+  font-family: 'radikalbold', sans-serif; }
+
+/* MAP VIEW */
+/******************************************/
+#map-view {
+  position: relative;
+  width: 100%;
+  background: #f3f3f3; }
+
+#map-view .map {
+  height: 320px !important; }
+
+#map-view .embelish {
+  display: none;
+  position: absolute;
+  pointer-events: none; }
+
+#map-view .map-overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2); }
+
+#map-view .overlay-loader-view {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%; }
+
+#map-view .overlay-loader {
+  position: relative;
+  top: 50%;
+  margin: -30px auto 0 auto;
+  width: 60px;
+  height: 60px; }
+
+#map-view .overlay-loader .double-bounce1,
+#map-view .overlay-loader .double-bounce2 {
+  background-color: #FFF; }
+
+#map-view .map {
+  width: 100%; }
+
+#map-view #piste-view #loading-splash,
+#map-view #piste-view .compass {
+  display: none; }
+
+#map-view .game-details-container {
+  position: absolute;
+  pointer-events: none;
+  top: 26px;
+  width: 100%;
+  text-align: center; }
+
+.countdown-container {
+  display: none; }
+
+#map-view .countdown {
+  display: inline-block;
+  width: 260px; }
+
+.countdown {
+  line-height: 1em;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: left; }
+
+.countdown .days {
+  padding-left: 8px;
+  font-size: 2.4em; }
+
+.countdown .days .time {
+  font-family: 'radikalbold', sans-serif; }
+
+.countdown .hours {
+  display: inline-block;
+  text-align: right;
+  width: 90px;
+  padding-left: 12px;
+  font-size: 1.4em; }
+
+.countdown .hours .time {
+  font-family: 'radikallight', sans-serif; }
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #page-view .stripe {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 88px;
+    background: #fff; }
+  #page-view .stripe.top {
+    top: 72px; }
+  body.sponsored .sponsor-view .logo {
+    display: inline-block;
+    vertical-align: top; }
+  body.sponsored .sponsor-view .title {
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 38px; }
+  body.sponsored .sponsor-view .detail {
+    display: inline-block;
+    padding-top: 4px;
+    vertical-align: top;
+    float: right; }
+  body.sponsored .sponsor-view .sponsor-detail-view h1 {
+    padding-top: 0; }
+  body.sponsored .sponsor-view .sponsor-detail-view h1 {
+    font-size: 3em;
+    line-height: 1.05em; }
+  body.sponsored .sponsor-view .detail .donate-btn {
+    padding-top: 18px;
+    text-align: right; }
+  #game-view {
+    overflow: initial; }
+  #map-view {
+    -webkit-box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2);
+    -moz-box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2);
+    box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2); }
+  body.sponsored #map-view {
+    border-top: #fff solid 4px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none; }
+  body.sponsored #map-view .game-details-container {
+    display: none; }
+  #map-view .map {
+    height: 490px !important; }
+  #map-view .countdown {
+    top: 24px; } }
+
+/* Small devices (tablets, 992px and up) */
+@media (min-width: 992px) {
+  body.sponsored .sponsor-view {
+    height: 388px;
+    padding: 56px 0 0 0; }
+  body.sponsored .sponsor-view .sponsor-detail-view {
+    margin-left: auto;
+    margin-right: auto;
+    width: 942px; }
+  #map-view {
+    margin: 0 auto 0 auto;
+    width: 942px; }
+  body.sponsored #map-view {
+    margin-top: -164px;
+    border: #fff solid 4px; }
+  #map-view .embelish {
+    display: block; } }
