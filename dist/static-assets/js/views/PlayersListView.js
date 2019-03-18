@@ -13,8 +13,13 @@ define([
     render: function(){
       var self = this;
 
+      var activePlayer = null;
+      if (this.options.activePlayer) {
+        activePlayer = this.options.activePlayer.toJSON();
+      }
+
       var attribs = this.options.playerCollection.toJSON();
-      $(this.el).html(this.template({players: attribs}));
+      $(this.el).html(this.template({game: this.options.jsonGame, players: attribs, activePlayer: activePlayer}));
 
       // truncate
       $('.truncate', $(this.el)).each(function(index){

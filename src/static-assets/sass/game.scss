@@ -1138,12 +1138,6 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     overflow: initial;
   }
 
-  #map-view {
-    -webkit-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
-    -moz-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
-    box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
-  }
-
   body.sponsored #map-view {
     border-top: #fff solid 4px;
     -webkit-box-shadow: none;
@@ -1522,6 +1516,9 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   #map-view {
     margin: 0 auto 0 auto;
     width: 942px;
+    -webkit-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
+    -moz-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
+    box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
   }
 
   body.sponsored #map-view {

@@ -143,6 +143,16 @@ body.sponsored .sponsor-view .title strong {
 .countdown .hours .time {
   font-family: 'radikallight', sans-serif; }
 
+/* PLAYER VIEW */
+/******************************************/
+#player-view {
+  display: none;
+  z-index: 2;
+  width: 100%;
+  height: 100%; }
+  #player-view .list {
+    background: #fff; }
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   #page-view .stripe {
@@ -175,10 +185,6 @@ body.sponsored .sponsor-view .title strong {
     text-align: right; }
   #game-view {
     overflow: initial; }
-  #map-view {
-    -webkit-box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2);
-    -moz-box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2);
-    box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2); }
   body.sponsored #map-view {
     border-top: #fff solid 4px;
     -webkit-box-shadow: none;
@@ -189,7 +195,13 @@ body.sponsored .sponsor-view .title strong {
   #map-view .map {
     height: 490px !important; }
   #map-view .countdown {
-    top: 24px; } }
+    top: 24px; }
+  #player-view {
+    position: relative;
+    background: none; }
+  #player-view .list {
+    position: relative;
+    padding: 26px 19px 26px 19px; } }
 
 /* Small devices (tablets, 992px and up) */
 @media (min-width: 992px) {
@@ -202,9 +214,21 @@ body.sponsored .sponsor-view .title strong {
     width: 942px; }
   #map-view {
     margin: 0 auto 0 auto;
-    width: 942px; }
+    width: 942px;
+    -webkit-box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2);
+    -moz-box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2);
+    box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2); }
   body.sponsored #map-view {
     margin-top: -164px;
     border: #fff solid 4px; }
   #map-view .embelish {
-    display: block; } }
+    display: block; }
+  #player-view {
+    margin-left: auto;
+    margin-right: auto;
+    width: 992px; }
+  #player-view .list {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -55px;
+    width: 670px; } }

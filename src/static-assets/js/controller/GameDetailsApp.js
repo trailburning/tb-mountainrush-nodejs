@@ -10,14 +10,21 @@ define([
   'modernizr',
   'imageScale',
   'turf',
+  'moment',
+  'countdown',  
   'imagesLoaded',
   'videojs',
   'mapbox',
+  'views/SponsorView',
   'views/LanguageSelectorView',
   'views/ActivePlayerView',
+  'views/Player',
   'views/ChallengeView',
+  'views/PlayersListView',
+  'views/ChallengeCancelModalView',
+  'views/GameInviteView',  
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, turf, imagesLoaded, videojs, mapbox, LanguageSelectorView, ActivePlayerView, ChallengeView, DemoVideoView){
+], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, turf, moment, countdown, imagesLoaded, videojs, mapbox, SponsorView, LanguageSelectorView, ActivePlayerView, Player, ChallengeView, PlayersListView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -27,9 +34,18 @@ define([
   };
 
   var initialize = function() {
-    var jsonCurrGame = null;
+    var self = this;
+
+    app.dispatcher.on("ChallengeCancelModalView:challengeCancelled", onChallengeCancelled);
+
+    var challengeView = null;
+    var mountainModel = new Backbone.Model();
+    var nPlayersLoaded = 0;
     var playerCollection = null;
+    var activePlayer = null;
+    var jsonCurrGame = null;
     var map = null;
+
     var geojsonFeature = {
       "type": "LineString",
       "coordinates": []
@@ -41,9 +57,15 @@ define([
       "opacity": 1
     };
 
-    function setupMap() {
-      var self = this;
+    function getActivePlayerByToken(playerToken) {
+      var url = GAME_API_URL + "client/" + CLIENT_ID + "/playertoken/" + playerToken;
+//      console.log(url);
+      $.getJSON(url, function(result){
+        onActivePlayerLoaded(result[0].id);
+      });
+    }
 
+    function setupMap() {
       L.mapbox.accessToken = 'pk.eyJ1IjoibWFsbGJldXJ5IiwiYSI6IjJfV1MzaE0ifQ.scrjDE31p7wBx7-GemqV3A';
 /*
 https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.38886,52.517037.json?&access_token=pk.eyJ1IjoibWFsbGJldXJ5IiwiYSI6IjJfV1MzaE0ifQ.scrjDE31p7wBx7-GemqV3A
@@ -60,6 +82,18 @@ https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.432159,52.526385
       $('#map-view .map-overlay').hide();
     }
 
+    function getPlayers() {
+      app.dispatcher.on("Player:loaded", onPlayerLoaded);
+
+      // get player activity data
+      playerCollection.each(function(model){
+        var player = new Player({ model: model, gameID: GAME_ID, journeyLength: mountainModel.get('distance'), journeyAscent: jsonCurrGame.ascent });
+
+        player.getProgress();
+        model.set('playerObj', player);
+      });
+    }
+
     function getGame() {
       app.dispatcher.on("ChallengeView:ready", onGameLoaded);
 
@@ -67,11 +101,62 @@ https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.432159,52.526385
       challengeView.load();
     }
 
+    function buildGame() {
+      playersListView = new PlayersListView({ el: '#players-list-view', jsonGame: jsonCurrGame, playerCollection: playerCollection, activePlayer: activePlayer });
+      playersListView.render();
+
+      $('#player-view').show();
+      // ready for action
+      $('body').addClass('ready');
+    }
+
     function onGameLoaded(jsonGame) {
       jsonCurrGame = jsonGame;
 
       playerCollection = new Backbone.Collection(jsonGame.players);
 
+      // are we a single player game?
+      if (jsonGame.players.length == 1) {
+        $('body').addClass('single-player');
+      }
+
+      // are we a sponsored game?
+      if (jsonGame.sponsored) {
+        $('body').addClass('sponsored');
+      }
+
+      challengeCancelModalView.setGame(jsonCurrGame);
+
+      sponsorView.render(jsonCurrGame);
+
+      // convert UTC dates to local
+      var dLocalGameNow = new Date(jsonGame.game_now);
+      var dLocalGameStart = new Date(jsonGame.game_start);
+      var dLocalGameEnd = new Date(jsonGame.game_end);
+
+      // is game active?
+      if ((dLocalGameStart < dLocalGameNow) || Demo) {
+        var elCountdownContainer = $('.countdown-container');
+        var strDay = elCountdownContainer.attr('data-value-day');
+        var strDays = elCountdownContainer.attr('data-value-days');
+
+        // finished?
+        if (dLocalGameEnd < dLocalGameNow) {
+          elCountdownContainer.show();
+        }
+
+        $('.countdown .end').countdown(dLocalGameEnd).on('update.countdown', function(event) {
+          var $this = $(this).html(event.strftime(''
+            + '<span class="days">'
+              + '<span class="time">%-D</span>'
+              + '<span class="days-marker"> ' + ((Number(event.strftime('%-D')) == 1) ? strDay : strDays) + '</span>'
+            + '</span>'
+            + '<span class="hours">'
+              + '<span class="time"><span>%H</span><span class="marker">:</span><span>%M</span><span class="marker">:</span><span>%S</span></span>'
+            + '</span>'));
+          elCountdownContainer.show();
+        });
+      }
       getJourney(jsonGame.journeyID, jsonGame.mountain3DName);
     }
 
@@ -90,10 +175,79 @@ https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.432159,52.526385
         });
 
         setupMap();
-
-        // ready for action
-        $('body').addClass('ready');        
+        getPlayers();
       });
+    }
+
+    function onActivePlayerLoaded(playerID) {
+      var player = playerCollection.get(playerID);
+      if (player) {
+        activePlayer = player;
+      }
+      buildGame();
+    }
+
+    function onPlayerLoaded(model) {
+      // default to complete
+      var fProgress = mountainModel.get('distance');
+      // if not complete then calc how far
+      if (model.get('elevationGainPercent') < 100) {
+        fProgress = (model.get('elevationGainPercent') * mountainModel.get('distance')) / 100;
+      }
+
+      model.set('progress', fProgress);
+      // modify avatar to use image proxy with campaign fallback
+      model.set('avatar', GAME_API_URL + 'imageproxy.php?url=' + model.get('avatar') + '&urlfallback=http://mountainrush.co.uk/static-assets/images/' + CAMPAIGN_TEMPLATE + '/avatar_unknown.jpg');
+
+      nPlayersLoaded++;
+
+      // we now have all player data!
+      if (nPlayersLoaded == playerCollection.length) {
+        onPlayersLoaded();
+      }
+    }
+
+    function onPlayersLoaded() {
+      // sort by progress
+      playerCollection.comparator = function(model) {
+        return -model.get('progress');
+      }
+      playerCollection.sort();
+
+      // sub sort by when ascent completed
+      playerCollection.comparator = function(model) {
+        if (model.get('ascentCompleted')) {
+          return Date.parse(model.get('ascentCompleted'));
+        }
+      }
+      playerCollection.sort();
+
+      // fill in extra player data
+      var nPos = 1;
+      playerCollection.each(function(model){
+        model.set('imagePath', model.get('avatar'));
+        model.set('step', nPos);
+
+        nPos++;
+      });
+
+      // check for active player
+      if (getUserCookie(CLIENT_ID) != undefined) {
+        getActivePlayerByToken(getUserCookie(CLIENT_ID));
+      }
+      else {
+        buildGame();
+      }
+    }
+
+    function onCancelGameClick() {
+      challengeCancelModalView.render();
+      challengeCancelModalView.show();
+    }
+
+    function onChallengeCancelled() {
+      // visit profile
+      window.location.href = HOST_URL+'/campaign/' + CAMPAIGN_ID + '/profile';
     }
 
     $('#loader-view').show();
@@ -123,6 +277,10 @@ https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.432159,52.526385
     enableUserActions(CLIENT_ID);
 
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
+
+    var challengeCancelModalView = new ChallengeCancelModalView({ el: '#challenge-cancel-modal-view' });
+    var gameInviteView = new GameInviteView({ el: '#game-invite-view', clientID: CLIENT_ID });
+    var sponsorView = new SponsorView({ el: '#sponsor-big-container-view' });
 
     $('img.scale').imageScale({
       'rescaleOnResize': true,

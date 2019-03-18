@@ -929,10 +929,6 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     text-align: right; }
   #game-view {
     overflow: initial; }
-  #map-view {
-    -webkit-box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2);
-    -moz-box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2);
-    box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2); }
   body.sponsored #map-view {
     border-top: #fff solid 4px;
     -webkit-box-shadow: none;
@@ -1158,7 +1154,10 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     margin: 0 13px; }
   #map-view {
     margin: 0 auto 0 auto;
-    width: 942px; }
+    width: 942px;
+    -webkit-box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2);
+    -moz-box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2);
+    box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2); }
   body.sponsored #map-view {
     margin-top: -164px;
     border: #fff solid 4px; }
