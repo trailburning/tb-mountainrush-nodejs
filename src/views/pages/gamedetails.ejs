@@ -145,14 +145,36 @@ var TEST_PROGRESS = '';
 </script>
 
 <script type="text/template" id="playersListTemplate">
+  <ul class="players-ranking">
   {{ _.each(players, function(player, index) { }}
-    
-    <div class="photo">
-      <div class="avatar"><img src="{{= player.avatar }}"></div>
-      <div class="photo-icon {{ if (player.mediaCaptured) { }}show{{ } }}"><i class="fa fa-camera"></i></div>
-    </div>
-    
+    <li class="player-ranking" data-id="{{= player.id }}" data-pos="{{= index }}">
+      <div class="pos">
+        <div class="ranking">{{= index+1 }}</div>
+      </div>
+      <div class="photo">
+        <div class="avatar"><img src="{{= player.avatar }}"></div>
+        <div class="photo-icon {{ if (player.mediaCaptured) { }}show{{ } }}"><i class="fa fa-camera"></i></div>
+      </div>
+      <div class="overview">
+      <h1 class="truncate" data-truncate="15">{{= player.firstname }}</h1>
+      {{ if (player.elevationToSummit) { }}
+        {{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m <%= __('game.to_summit') %>
+      {{ } else { }}
+      <%= __('game.summited_long') %>
+      {{ } }}
+      </div>
+      <div><a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}" class="btn mr-btn"><%= __('defs.challenge.view') %></a></div>
+
+      {{ if (player.fundraising_goal && player.fundraising_goal > 0) { }}
+        <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
+          <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary btn-large"><%= __('defs.donate') %></a>
+        <% } else { %>
+          <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/donate?amount=1000" class="btn mr-btn btn-primary"><%= __('defs.donate') %></a>
+        <% } %>        
+      {{ } }}
+    </li>
   {{ }); }}
+  </ul>
 
   {{ if (activePlayer) { }}
     <div class="hidden-xs hidden-sm">

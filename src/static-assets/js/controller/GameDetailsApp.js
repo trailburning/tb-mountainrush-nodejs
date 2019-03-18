@@ -73,7 +73,7 @@ https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.432159,52.526385
 */
       var point = geojsonFeature.coordinates[Math.round(geojsonFeature.coordinates.length / 2)];
       map = L.mapbox.map('mapbox-view', 'mallbeury.8d4ad8ec', {dragging: true, touchZoom: false, scrollWheelZoom: false, doubleClickZoom:false, boxZoom:false, tap:false, zoomControl:false, zoomAnimation:false, attributionControl:false})
-      .setView([point[1], point[0]], 14);
+      .setView([point[1], point[0]], 13);
       var polyline = L.geoJson(geojsonFeature, {style: myStyle}).addTo(map);
 
       // now allow player to click map

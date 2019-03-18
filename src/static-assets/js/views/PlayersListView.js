@@ -19,6 +19,7 @@ define([
       }
 
       var attribs = this.options.playerCollection.toJSON();
+//      console.log(attribs);
       $(this.el).html(this.template({game: this.options.jsonGame, players: attribs, activePlayer: activePlayer}));
 
       // truncate

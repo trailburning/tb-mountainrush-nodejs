@@ -1,3 +1,36 @@
+.ranking {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  font-size: 1em;
+  line-height: 20px;
+  text-align: center;
+  color: #FFF;
+  background: #a5b4bd;
+}
+
+.photo-icon {
+  display: none;
+  width: 20px;
+  height: 20px;
+  background: #f75f36;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.photo-icon.show {
+  display: block;
+}
+
+.photo-icon i {
+  vertical-align: top;
+  font-size: 0.8em;
+  width: 100%;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+}
+
 /* FOOTER VIEW */
 /******************************************/
 #footer-view .logo-container {
@@ -182,6 +215,47 @@ body.sponsored .sponsor-view .title strong {
 
   .list {
     background: #fff;
+
+    .player-ranking {
+      height: 75px;
+      padding-top: 16px;
+      text-align: left;
+      color: #a5b4bd;
+
+      .pos {
+        float: left;
+        width: 70px;
+        padding-top: 14px;
+        padding-left: 30px;
+      }
+
+      .photo {
+        float: left;
+        position: relative;
+        width: 58px;
+        padding-top: 0;
+        padding-left: 0;
+      }
+
+      .photo-icon {
+        position: absolute;
+        top: -5px;
+        left: 28px;
+      }
+
+      .overview {
+        float: left;
+        padding-top: 2px;
+        padding-left: 10px;
+        border-left: 1px solid #a5b4bd;
+
+        h1 {
+          font-family: 'radikalbold', sans-serif;
+          padding-bottom: 2px;
+          font-size: 1.4em;
+        }
+      }
+    }
   }
 }
 

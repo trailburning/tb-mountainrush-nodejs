@@ -1,0 +1,57 @@
+body {
+  font-family: 'PFDinTextPro-Regular', sans-serif; }
+  body.map-ready #page-view {
+    background: url("../../images/wwf-uk/bottom-big-blurry-leaf.png") no-repeat;
+    background-position: left -294px bottom 178px; }
+
+#page-view .embelish-left {
+  top: -128px;
+  left: -172px;
+  width: 200px;
+  height: 245px;
+  background: url("../../images/wwf-uk/left-leaves.png") no-repeat top center; }
+
+#page-view .embelish-right {
+  top: 3px;
+  right: -137px;
+  width: 175px;
+  height: 230px;
+  background: url("../../images/wwf-uk/right-leaves.png") no-repeat top center; }
+
+#page-view .stripe {
+  display: none; }
+
+/* FUNDRAISE STICKER */
+/******************************************/
+.fundraise-sticker {
+  background: #f16d49; }
+  .fundraise-sticker .percent {
+    background-color: #f69741; }
+  .fundraise-sticker .details .raised {
+    font-family: 'PFDinTextPro-Regular', sans-serif; }
+    .fundraise-sticker .details .raised .amount {
+      font-family: 'PFDINTextPro-Black', sans-serif;
+      padding-left: 6px; }
+
+/* MAP VIEW */
+/******************************************/
+#map-view .countdown .days {
+  font-size: 2em; }
+
+/* PLAYER VIEW */
+/******************************************/
+#player-view .list .player-ranking {
+  color: #a3a3a3; }
+  #player-view .list .player-ranking .ranking {
+    background: #a3a3a3; }
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .btn.btn-large {
+    font-size: 1.1em; }
+  #player-view .detail .game-funcs {
+    padding-top: 94px; }
+  #footer-view {
+    margin-top: 0; } }
+
+/* Small devices (tablets, 992px and up) */
