@@ -45,18 +45,27 @@ define([
     var activePlayer = null;
     var jsonCurrGame = null;
     var map = null;
+    var fundraisingTarget = 0, totalRaisedOnline = 0;
 
     var geojsonFeature = {
       "type": "LineString",
+      "properties": {
+        "fill": "#ed1c24",
+        "fill-opacity": 1,
+        "stroke": "#ed1c24",
+        "stroke-width": 4,
+        "stroke-opacity": 1        
+      },
       "coordinates": []
     };
   
-    var myStyle = {
-      "color": "#ed1c24",
-      "weight": 4,
-      "opacity": 1
-    };
+    // are we fundraising?
+    if (GAME_FUNDRAISING) {
+      $('body').addClass('fundraising');
+    }
 
+    $('#loader-view').show();
+  
     function getActivePlayerByToken(playerToken) {
       var url = GAME_API_URL + "client/" + CLIENT_ID + "/playertoken/" + playerToken;
 //      console.log(url);
@@ -66,6 +75,16 @@ define([
     }
 
     function setupMap() {
+      var strCampaignFolder = '';
+      switch (CAMPAIGN_TEMPLATE) {
+        case 'default':
+          break;
+
+        default:
+          strCampaignFolder = CAMPAIGN_TEMPLATE + '/';
+          break;
+      }
+
       L.mapbox.accessToken = 'pk.eyJ1IjoibWFsbGJldXJ5IiwiYSI6IjJfV1MzaE0ifQ.scrjDE31p7wBx7-GemqV3A';
 /*
 https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.38886,52.517037.json?&access_token=pk.eyJ1IjoibWFsbGJldXJ5IiwiYSI6IjJfV1MzaE0ifQ.scrjDE31p7wBx7-GemqV3A
@@ -74,7 +93,22 @@ https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.432159,52.526385
       var point = geojsonFeature.coordinates[Math.round(geojsonFeature.coordinates.length / 2)];
       map = L.mapbox.map('mapbox-view', 'mallbeury.8d4ad8ec', {dragging: true, touchZoom: false, scrollWheelZoom: false, doubleClickZoom:false, boxZoom:false, tap:false, zoomControl:false, zoomAnimation:false, attributionControl:false})
       .setView([point[1], point[0]], 13);
-      var polyline = L.geoJson(geojsonFeature, {style: myStyle}).addTo(map);
+
+      map.featureLayer.setGeoJSON(geojsonFeature);
+      map.fitBounds(map.featureLayer.getBounds(), {padding: [100, 100], reset: true});
+
+      // add flag
+      var point = geojsonFeature.coordinates[geojsonFeature.coordinates.length-1];
+      var latLng = new L.LatLng(point[1], point[0]);
+
+//      var strImage = 'http://assets.trailburning.com/images/brands/25zero/furniture/placeholder_waiting2.png';
+      var strImage = 'http://mountainrush.trailburning.com/static-assets/images/' + strCampaignFolder + 'markers/marker-location.png';
+
+
+      var flagMarker = L.marker(latLng);
+//      flagMarker.setIcon(L.divIcon({className: 'tb-map-media-marker', html: '<div><div class="avatar"><img src="'+strImage+'"></div></div>', iconSize: [100, 100], iconAnchor: [50, 120]}));
+      flagMarker.setIcon(L.divIcon({className: 'tb-map-flag-marker', html: '<img src="'+strImage+'">', iconSize: [32, 39], iconAnchor: [16, 39]}));
+      map.addLayer(flagMarker);
 
       // now allow player to click map
       $('#loader-view').hide();
@@ -103,7 +137,29 @@ https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.432159,52.526385
 
     function buildGame() {
       playersListView = new PlayersListView({ el: '#players-list-view', jsonGame: jsonCurrGame, playerCollection: playerCollection, activePlayer: activePlayer });
+      // set team fundraising
+      var jsonFields = playersListView.getFields();
+      jsonFields.currencySymbol = jsonCurrGame.fundraising_currency_symbol;
+      jsonFields.totalRaisedPercentageOfFundraisingTarget = Math.round(Number((totalRaisedOnline / fundraisingTarget) * 100));
+      jsonFields.totalRaisedOnline = Math.round(totalRaisedOnline);
+      jsonFields.fundraisingTarget = Math.round(fundraisingTarget);
+      playersListView.setFields(jsonFields);
+
       playersListView.render();
+
+      $('img.scale').imageScale({
+        'rescaleOnResize': true
+      });
+
+      var elImages = $('body');
+      var imgLoad = imagesLoaded(elImages);
+      imgLoad.on('always', function(instance) {
+        for ( var i = 0, len = imgLoad.images.length; i < len; i++ ) {
+          if ($(imgLoad.images[i].img).hasClass('scale')) {
+            $(imgLoad.images[i].img).parent().addClass('ready');
+          }
+        }
+      });    
 
       $('#player-view').show();
       // ready for action
@@ -188,6 +244,10 @@ https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.432159,52.526385
     }
 
     function onPlayerLoaded(model) {
+      // update fundraising
+      fundraisingTarget += Number(model.get('fundraising_goal'));
+      totalRaisedOnline = Number(model.get('fundraising_raised'));
+
       // default to complete
       var fProgress = mountainModel.get('distance');
       // if not complete then calc how far
@@ -281,21 +341,6 @@ https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.432159,52.526385
     var challengeCancelModalView = new ChallengeCancelModalView({ el: '#challenge-cancel-modal-view' });
     var gameInviteView = new GameInviteView({ el: '#game-invite-view', clientID: CLIENT_ID });
     var sponsorView = new SponsorView({ el: '#sponsor-big-container-view' });
-
-    $('img.scale').imageScale({
-      'rescaleOnResize': true,
-      'align': 'top'
-    });
-
-    var elImages = $('body');
-    var imgLoad = imagesLoaded(elImages);
-    imgLoad.on('always', function(instance) {
-      for ( var i = 0, len = imgLoad.images.length; i < len; i++ ) {
-        if ($(imgLoad.images[i].img).hasClass('scale')) {
-          $(imgLoad.images[i].img).parent().addClass('ready');
-        }
-      }
-    });    
 
     getGame();
   };

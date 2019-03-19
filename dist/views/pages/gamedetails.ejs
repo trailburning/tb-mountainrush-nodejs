@@ -145,36 +145,117 @@ var TEST_PROGRESS = '';
 </script>
 
 <script type="text/template" id="playersListTemplate">
-  <ul class="players-ranking">
-  {{ _.each(players, function(player, index) { }}
-    <li class="player-ranking" data-id="{{= player.id }}" data-pos="{{= index }}">
-      <div class="pos">
-        <div class="ranking">{{= index+1 }}</div>
+  <div class="detail">
+    <div class="team-details">
+      <div class="title-container">
+      <h1>Team Hatch</h1>for Wolrd Bicycle Relief
       </div>
-      <div class="photo">
-        <div class="avatar"><img src="{{= player.avatar }}"></div>
-        <div class="photo-icon {{ if (player.mediaCaptured) { }}show{{ } }}"><i class="fa fa-camera"></i></div>
+      <div class="summit-container">
+        <div class="pos">
+          <div class="ranking">{{= players.length }}</div>
+          <div class="desc">Participants</div>
+        </div>
+        <div class="summit">
+          <h1>5895m</h1>Kilimanjaro
+        </div>
       </div>
-      <div class="overview">
-      <h1 class="truncate" data-truncate="15">{{= player.firstname }}</h1>
-      {{ if (player.elevationToSummit) { }}
-        {{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m <%= __('game.to_summit') %>
-      {{ } else { }}
-      <%= __('game.summited_long') %>
-      {{ } }}
-      </div>
-      <div><a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}" class="btn mr-btn"><%= __('defs.challenge.view') %></a></div>
+    </div>
 
-      {{ if (player.fundraising_goal && player.fundraising_goal > 0) { }}
-        <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
-          <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary btn-large"><%= __('defs.donate') %></a>
-        <% } else { %>
-          <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/donate?amount=1000" class="btn mr-btn btn-primary"><%= __('defs.donate') %></a>
-        <% } %>        
-      {{ } }}
-    </li>
-  {{ }); }}
-  </ul>
+    <div class="fundraise-sticker-container">
+      <div class="fundraise-sticker">
+        <div class="details">
+          <div class="percent" style="top: {{= (100 - page.totalRaisedPercentageOfFundraisingTarget) }}%;height: {{= page.totalRaisedPercentageOfFundraisingTarget }}%;"></div>
+          <div class="raised">{{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}<span class="amount">{{= Math.round(page.totalRaisedOnline) }}</span></div>
+          <div class="target"><%= __('game.fundraising.summary.raised') %> {{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}{{= page.fundraisingTarget }}<br/><%= __('game.fundraising.summary.team_target') %></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-overview">
+      <div class="photo">
+        <div class="image fade_on_ready">
+        <img class="scale" src="https://tbassets2.imgix.net/images/brands/mountainrush/clients/wwf-uk/pages/WW22016_even_darker.jpg?fm=jpg&q=80&w=1280">
+        </div>
+      </div>
+      <div class="msg">
+      <p>
+      Thanks for visiting The Team Hatch fundraising page. We've joined together to raise money for Great Ormond Street Children's Charity in memory of Emma Rose Hatchley.  
+      </p>
+      <p>
+      We have nine people aiming to complete the Challenge Roth full distance triathlon in July 2018.  None of the nine have ever done a full distance triathlon before.  In addition, Team Hatch has an additional five team members competing in Challenge Lisbon 70.3, a half distance triathlon, in May 2018 (alongside all but one of the Challenge Roth team who are doing both races) and one amazing soul has already done  Challenge Wanaka in New Zealand – one of the toughest full distance triathlons in the world - in February 2018.
+      </p>
+      <p>
+      You'll see our ambitious team fundraising target on the right. Whilst we are collectively going to smash the race we are relying on our generous donors' kindness to help us smash our fundraising goal.  
+      </p>
+      <p>
+      We are going to be putting in between 8-15 hours training a week until our respective races.  Thank you for your support. Full details of our journey on Instagram @team_hatch and Facebook Team Hatch
+      </p>
+      <p>
+      Team Hatch is kindly being sponsored by some amazing brands: Trek Bikes, Challenge Tri Camp, Athlete Lab, Huub, and thatcameraman. 
+      </p>
+      <p>
+      Remember: Donating through JustGiving is simple, fast and totally secure. Your details are safe with JustGiving - they'll never share them with anyone or send you unwanted emails. Once you donate, they'll send your money directly to the charity. They'll make sure Gift Aid (an additional 25%) is reclaimed on every eligible donation by a UK taxpayer, too. That means more money goes to the charity, faster, with JustGiving.
+      </p>
+      </div>
+    </div>
+
+    <ul class="players-ranking">
+    {{ _.each(players, function(player, index) { }}
+      <li class="player-ranking" data-id="{{= player.id }}" data-pos="{{= index }}">
+        <div class="pos">
+          <div class="ranking">{{= index+1 }}</div>
+        </div>
+        <div class="photo">
+          <div class="avatar"><img src="{{= player.avatar }}"></div>
+          <div class="photo-icon {{ if (player.mediaCaptured) { }}show{{ } }}"><i class="fa fa-camera"></i></div>
+        </div>
+        <div class="overview">
+        <h1 class="truncate" data-truncate="15">{{= player.firstname }} {{= player.lastname }}</h1>
+        {{ if (player.elevationToSummit) { }}
+          {{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m <%= __('game.to_summit') %>
+        {{ } else { }}
+        <%= __('game.summited_long') %>
+        {{ } }}
+        </div>
+
+        <div class="right">
+          <div class="player-btn">
+          <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}" class="btn mr-btn"><%= __('defs.challenge.view_short') %></a>
+          </div><div class="player-btn">
+          {{ if (player.fundraising_goal && player.fundraising_goal > 0) { }}
+            <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
+              <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary btn-large"><%= __('defs.donate') %></a>
+            <% } else { %>
+              <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/donate?amount=1000" class="btn mr-btn btn-primary"><%= __('defs.donate') %></a>
+            <% } %>        
+          {{ } }}
+          </div>
+        </div>
+      </li>
+    {{ }); }}
+    </ul>
+
+    <div class="share-detail visible-xs visible-sm">
+      <div class="share-text"><%= __('defs.social.share_team_msg') %></div>
+      <div class="btns">
+      <a href="http://www.facebook.com/share.php?u=<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>" class="btn mr-btn btn-primary" target="_blank"><i class="fa fa-facebook"></i></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20the%20<%= Campaign.CampaignName %>%20challenge%20-%20<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>" class="btn mr-btn btn-primary" target="_blank"><i class="fa fa-twitter"></i></a>
+      </div>
+    </div>
+
+    <div class="share-detail hidden-xs hidden-sm">
+      <div class="share-text"><%= __('defs.social.share_team_msg') %></div>
+      <div class="btns">
+      <a href="http://www.facebook.com/share.php?u=<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>" class="btn mr-btn btn-primary double" target="_blank"><div><%= __('defs.social.share_facebook') %></div><div><i class="fa fa-facebook"></i></div></a>
+      <a href="https://twitter.com/intent/tweet?text=Check%20out%20the%20<%= Campaign.CampaignName %>%20challenge%20-%20<%= Defs.BaseHTTPSURL %>game/<%= Defs.GameID %>" class="btn mr-btn btn-primary double" target="_blank"><div><%= __('defs.social.share_twitter') %></div><div><i class="fa fa-twitter"></i></div></a>
+      </div>
+    </div>
+
+    {{ if (activePlayer) { }}
+      <div class="visible-xs visible-sm">
+      <% include ../partials/gameFuncsTemplate.ejs %>
+      </div>
+    {{ } }}  
+  </div>
 
   {{ if (activePlayer) { }}
     <div class="hidden-xs hidden-sm">

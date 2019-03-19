@@ -40,21 +40,23 @@
 
 /* FOOTER VIEW */
 /******************************************/
-#footer-view .logo-container {
-  display: none;
-  position: absolute;
-  top: -80px;
-  width: 100%;
-}
+#footer-view {
+  .logo-container {
+    display: none;
+    position: absolute;
+    top: -80px;
+    width: 100%;
+  }
 
-#footer-view .mr-logo {
-  margin: 0 auto;
-  width: 160px;
-  text-align: center;
-}
+  .mr-logo {
+    margin: 0 auto;
+    width: 160px;
+    text-align: center;
 
-#footer-view .mr-logo img {
-  width: 100%;
+    img {
+      width: 100%;
+    }
+  }
 }
 
 /* PAGE VIEW */
@@ -1264,7 +1266,7 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     text-align: left;
   }
 
-  body.fundraising #player-view .detail .player .fundraise-sticker-continer {
+  body.fundraising #player-view .detail .player .fundraise-sticker-container {
     float: left;
     display: block;
     padding-left: 7px;
@@ -1417,15 +1419,15 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   #footer-view {
     margin-top: 200px;
     height: 200px;
-  }
 
-  #footer-view .logo-container {
-    display: block;
-    top: -100px;
-  }
+    .logo-container {
+      display: block;
+      top: -100px;
+    }
 
-  #footer-view .mr-logo {
-    width: 200px;
+    .mr-logo {
+      width: 200px;
+    }
   }
 }
 

@@ -258,7 +258,8 @@
 			"summary": {
 				"waiting": "Waiting for donations..",
 				"raised": "Raised of",
-				"target": "target"
+				"target": "target",
+        "team_target": "team target"
 			}
 		},
     "game_cancel": {
@@ -289,12 +290,14 @@
     "strava_app": "Strava App",
     "donate": "Donate",
     "challenge": {
-      "view": "View Challenge"
+      "view": "View Challenge",
+      "view_short": "View"
     },
     "prefs": "Preferences",
     "please_wait": "Please Wait",
 		"social": {
       "share_msg": "Share your journey and inspire others",
+      "share_team_msg": "Share the journey and inspire others",
       "share_fundraising_msg": "Share your journey to help your fundraising soar",
 			"share_facebook": "Share on Facebook",
 			"share_twitter": "Share on Twitter"

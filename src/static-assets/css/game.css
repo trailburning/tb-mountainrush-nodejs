@@ -46,9 +46,8 @@
   margin: 0 auto;
   width: 160px;
   text-align: center; }
-
-#footer-view .mr-logo img {
-  width: 100%; }
+  #footer-view .mr-logo img {
+    width: 100%; }
 
 /* PAGE VIEW */
 /******************************************/
@@ -1002,7 +1001,7 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     display: block;
     padding-left: 7px;
     text-align: left; }
-  body.fundraising #player-view .detail .player .fundraise-sticker-continer {
+  body.fundraising #player-view .detail .player .fundraise-sticker-container {
     float: left;
     display: block;
     padding-left: 7px;
@@ -1093,11 +1092,11 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   #footer-view {
     margin-top: 200px;
     height: 200px; }
-  #footer-view .logo-container {
-    display: block;
-    top: -100px; }
-  #footer-view .mr-logo {
-    width: 200px; } }
+    #footer-view .logo-container {
+      display: block;
+      top: -100px; }
+    #footer-view .mr-logo {
+      width: 200px; } }
 
 /* Small devices (tablets, 992px and up) */
 @media (min-width: 992px) {

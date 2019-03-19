@@ -1,40 +1,22 @@
-.ranking {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  overflow: hidden;
-  font-size: 1em;
-  line-height: 20px;
-  text-align: center;
-  color: #FFF;
-  background: #a5b4bd;
-}
-
-.photo-icon {
-  display: none;
-  width: 20px;
-  height: 20px;
-  background: #f75f36;
-  border-radius: 50%;
-  overflow: hidden;
-}
-.photo-icon.show {
-  display: block;
-}
-
-.photo-icon i {
-  vertical-align: top;
-  font-size: 0.8em;
-  width: 100%;
-  line-height: 20px;
-  text-align: center;
-  color: #fff;
-}
-
 /* FOOTER VIEW */
 /******************************************/
-#footer-view .logo-container {
-  display: none;
+#footer-view {
+  .logo-container {
+    display: none;
+    position: absolute;
+    top: -80px;
+    width: 100%;
+  }
+
+  .mr-logo {
+    margin: 0 auto;
+    width: 160px;
+    text-align: center;
+
+    img {
+      width: 100%;
+    }
+  }
 }
 
 /* PAGE VIEW */
@@ -111,61 +93,53 @@ body.sponsored .sponsor-view .title strong {
   position: relative;
   width: 100%;
   background: #f3f3f3;
-}
 
-#map-view .map {
-  height: 320px !important;
-}
+  .map {
+    width: 100%;
+    height: 320px !important;
+  }
 
-#map-view .embelish {
-  display: none;
-  position: absolute;
-  pointer-events: none;
-}
+  .embelish {
+    display: none;
+    position: absolute;
+    pointer-events: none;
+  }
 
-#map-view .map-overlay {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.2);
-}
+  .map-overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+  }
 
-#map-view .overlay-loader-view {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
+  .overlay-loader-view {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
 
-#map-view .overlay-loader {
-  position: relative;
-  top: 50%;
-  margin: -30px auto 0 auto;
-  width: 60px;
-  height: 60px;
-}
+  .overlay-loader {
+    position: relative;
+    top: 50%;
+    margin: -30px auto 0 auto;
+    width: 60px;
+    height: 60px;
 
-#map-view .overlay-loader .double-bounce1, 
-#map-view .overlay-loader .double-bounce2 {
-  background-color: #FFF;
-}
+    .double-bounce1, 
+    .double-bounce2 {
+      background-color: #FFF;
+    }
+  }
 
-#map-view .map {
-  width: 100%;
-}
-
-#map-view #piste-view #loading-splash,
-#map-view #piste-view .compass {
-  display: none;
-}
-
-#map-view .game-details-container {
-  position: absolute;
-  pointer-events: none;
-  top: 26px;
-  width: 100%;
-  text-align: center;
+  .game-details-container {
+    position: absolute;
+    pointer-events: none;
+    top: 26px;
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .countdown-container {
@@ -205,6 +179,57 @@ body.sponsored .sponsor-view .title strong {
   font-family: 'radikallight', sans-serif;
 }
 
+/* MAPBOX VIEW */
+/******************************************/
+#mapbox-view {
+  .tb-map-flag-marker {
+    position: absolute;
+    width: 32px;
+    height: 39px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .tb-map-media-marker {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+
+    div {
+      background: #FFFFFF;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    &:before {
+      content: ' ';
+      position: absolute;
+      bottom: -4px;
+      left: 45px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 5px 5px 0 5px;
+      border-color: #FFF transparent transparent transparent;
+    }
+
+    .avatar {
+      margin: 4px;
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
 /* PLAYER VIEW */
 /******************************************/
 #player-view {
@@ -213,20 +238,107 @@ body.sponsored .sponsor-view .title strong {
   width: 100%;
   height: 100%;
 
+  .ranking {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    font-size: 1em;
+    line-height: 20px;
+    text-align: center;
+    color: #FFF;
+    background: #44b6f7;
+  }
+
   .list {
-    background: #fff;
+    .detail {
+      background: #fff;
+
+      .team-details {
+        width: 100%;
+        padding: 28px 16px;
+
+        .title-container {
+          display: inline-block;
+          height: 50px;
+        }
+
+        .summit-container {
+          display: inline-block;
+          float: right;
+        }
+
+        .pos {
+          display: inline-block;
+          text-align: left;
+          vertical-align: top;
+          padding: 5px 20px 0 22px;
+          border-right: 1px solid #a5b4bd;
+
+          .ranking {
+            float: right;
+            width: 23px;
+            height: 23px;
+            line-height: 23px;
+            background-color: #44b6f7;
+          }
+        }
+
+        .summit {
+          display: inline-block;
+          padding: 0 18px 0 12px;
+          text-align: right;
+        }
+
+        h1 {
+          font-family: 'radikalbold', sans-serif;
+          padding-bottom: 2px;
+          font-size: 1.8em;
+          color: #44b6f7;
+        }        
+      }
+
+      .team-overview {
+        display: none;
+
+        .image {
+          width: 100%;
+          height: 280px;
+        }
+      }
+
+      .share-detail {
+        padding: 38px 0 16px 0;
+        border-top: 1px solid #d7d7d7;
+        color: #a3a3a3;
+        text-align: center;
+
+        .share-text {
+          font-size: 0.9em;
+          text-transform: uppercase;
+        }
+
+        .btns {
+          padding-top: 16px;
+          text-align: center;
+
+          .btn {
+              margin: 0 13px;
+          }      
+        }    
+      }
+    }
 
     .player-ranking {
       height: 75px;
-      padding-top: 16px;
+      padding: 16px 8px 0 20px;
       text-align: left;
       color: #a5b4bd;
 
       .pos {
         float: left;
-        width: 70px;
+        width: 40px;
         padding-top: 14px;
-        padding-left: 30px;
       }
 
       .photo {
@@ -238,9 +350,28 @@ body.sponsored .sponsor-view .title strong {
       }
 
       .photo-icon {
+        display: none;
         position: absolute;
         top: -5px;
         left: 28px;
+        width: 20px;
+        height: 20px;
+        background: #f75f36;
+        border-radius: 50%;
+        overflow: hidden;
+
+        i {
+          vertical-align: top;
+          font-size: 0.8em;
+          width: 100%;
+          line-height: 20px;
+          text-align: center;
+          color: #fff;
+        }
+
+        .show {
+          display: block;
+        }
       }
 
       .overview {
@@ -250,17 +381,85 @@ body.sponsored .sponsor-view .title strong {
         border-left: 1px solid #a5b4bd;
 
         h1 {
+          color: #44b6f7;
           font-family: 'radikalbold', sans-serif;
           padding-bottom: 2px;
           font-size: 1.4em;
+        }
+      }
+
+      .right {
+        padding: 6px 0 0 0;
+        float: right;
+
+        .player-btn {
+          display: inline-block;
+          padding: 0 4px;
+        }
+      }
+    }
+
+    .game-funcs {
+      padding: 12px;
+      text-align: center;
+
+      .btn {
+        margin: 0 14px 14px 14px;
+      }
+    }
+  }
+
+  .fundraise-sticker-container {
+    .fundraise-sticker {
+      display: none;
+      margin: 0 auto;
+      text-align: center;
+      width: 128px;
+      height: 128px;
+
+      .details {
+        .raised {
+          font-size: 1.8em;
+        }
+
+        .target {
+          font-size: 0.85em;
         }
       }
     }
   }
 }
 
+body.fundraising #player-view {
+  .list {
+    .detail {
+      .team-overview {
+        display: block;
+      }
+    }
+  }
+
+  .fundraise-sticker {
+    display: block;
+  }
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+  #footer-view {
+    margin-top: 200px;
+    height: 200px;
+
+    .logo-container {
+      display: block;
+      top: -100px;
+    }
+
+    .mr-logo {
+      width: 200px;
+    }
+  }
+
   #page-view .stripe {
     z-index: 1;
     position: absolute;
@@ -320,22 +519,55 @@ body.sponsored .sponsor-view .title strong {
     display: none;
   }
 
-  #map-view .map {
-    height: 490px !important;
-  }
+  #map-view {
+    .map {
+      height: 400px !important;
+    }
 
-  #map-view .countdown {
-    top: 24px;
+    .countdown {
+      top: 24px;
+    }
   }
 
   #player-view {
     position: relative;
     background: none;
-  }
 
-  #player-view .list {
-    position: relative;
-    padding: 26px 19px 26px 19px;
+    .list {
+      .detail {
+        padding: 0 19px 26px 19px;
+
+        .team-overview {
+          padding: 26px 89px 0 89px;
+
+          .photo {
+            padding: 5px;
+            background-color: #fff;
+            box-shadow: 0px 5px 10px #eee;
+          }
+
+          .msg {
+            padding-top: 32px;
+          }
+        }
+      }
+
+      .game-funcs {
+        padding-top: 32px;
+      }
+    }
+
+    .fundraise-sticker-container {
+      position: absolute;
+      top: -64px;
+      left: 0;
+      width: 100%;
+
+      .fundraise-sticker {
+        position: relative;
+        margin: 0 auto;
+      }
+    }
   }
 }
 
