@@ -245,11 +245,34 @@ body.sponsored .sponsor-view .title strong {
         text-align: center; }
         #player-view .list .detail .share-detail .btns .btn {
           margin: 0 13px; }
+  #player-view .list .player-ranking-title {
+    height: 28px;
+    padding: 16px 8px 0 20px;
+    text-align: left;
+    color: #3c5b6e;
+    font-family: 'radikalbold', sans-serif;
+    font-size: 0.8em;
+    text-transform: uppercase; }
+    #player-view .list .player-ranking-title .pos-title {
+      float: left;
+      width: 98px; }
+    #player-view .list .player-ranking-title .player-title {
+      float: left;
+      width: 200px;
+      padding-left: 10px; }
+    #player-view .list .player-ranking-title .fundraising-title {
+      float: left;
+      padding-left: 10px; }
   #player-view .list .player-ranking {
     height: 75px;
     padding: 16px 8px 0 20px;
     text-align: left;
     color: #a5b4bd; }
+    #player-view .list .player-ranking h1 {
+      color: #44b6f7;
+      font-family: 'radikalbold', sans-serif;
+      padding-bottom: 2px;
+      font-size: 1.4em; }
     #player-view .list .player-ranking .pos {
       float: left;
       width: 40px;
@@ -281,20 +304,23 @@ body.sponsored .sponsor-view .title strong {
         display: block; }
     #player-view .list .player-ranking .overview {
       float: left;
+      width: 200px;
       padding-top: 2px;
       padding-left: 10px;
       border-left: 1px solid #a5b4bd; }
-      #player-view .list .player-ranking .overview h1 {
-        color: #44b6f7;
-        font-family: 'radikalbold', sans-serif;
-        padding-bottom: 2px;
-        font-size: 1.4em; }
+    #player-view .list .player-ranking .fundraising {
+      float: left;
+      padding-top: 2px;
+      padding-left: 10px;
+      border-left: 1px solid #a5b4bd; }
     #player-view .list .player-ranking .right {
-      padding: 6px 0 0 0;
       float: right; }
-      #player-view .list .player-ranking .right .player-btn {
-        display: inline-block;
-        padding: 0 4px; }
+      #player-view .list .player-ranking .right .player-btns {
+        float: left;
+        padding: 6px 0 0 0; }
+        #player-view .list .player-ranking .right .player-btns .player-btn {
+          display: inline-block;
+          padding: 0 4px; }
   #player-view .list .game-funcs {
     padding: 12px;
     text-align: center; }
@@ -304,8 +330,8 @@ body.sponsored .sponsor-view .title strong {
     display: none;
     margin: 0 auto;
     text-align: center;
-    width: 128px;
-    height: 128px; }
+    width: 140px;
+    height: 140px; }
     #player-view .fundraise-sticker-container .fundraise-sticker .details .raised {
       font-size: 1.8em; }
     #player-view .fundraise-sticker-container .fundraise-sticker .details .target {

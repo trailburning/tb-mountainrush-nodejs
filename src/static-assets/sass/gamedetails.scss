@@ -329,11 +329,44 @@ body.sponsored .sponsor-view .title strong {
       }
     }
 
+    .player-ranking-title {
+      height: 28px;
+      padding: 16px 8px 0 20px;
+      text-align: left;
+      color: #3c5b6e;
+      font-family: 'radikalbold', sans-serif;
+      font-size: 0.8em;
+      text-transform: uppercase;
+
+      .pos-title {
+        float: left;
+        width: 98px;
+      }
+
+      .player-title {
+        float: left;
+        width: 200px;
+        padding-left: 10px;
+      }
+
+      .fundraising-title {
+        float: left;
+        padding-left: 10px;
+      }
+    }
+
     .player-ranking {
       height: 75px;
       padding: 16px 8px 0 20px;
       text-align: left;
       color: #a5b4bd;
+
+      h1 {
+        color: #44b6f7;
+        font-family: 'radikalbold', sans-serif;
+        padding-bottom: 2px;
+        font-size: 1.4em;
+      }
 
       .pos {
         float: left;
@@ -376,25 +409,30 @@ body.sponsored .sponsor-view .title strong {
 
       .overview {
         float: left;
+        width: 200px;
         padding-top: 2px;
         padding-left: 10px;
         border-left: 1px solid #a5b4bd;
+      }
 
-        h1 {
-          color: #44b6f7;
-          font-family: 'radikalbold', sans-serif;
-          padding-bottom: 2px;
-          font-size: 1.4em;
-        }
+      .fundraising {
+        float: left;
+        padding-top: 2px;
+        padding-left: 10px;
+        border-left: 1px solid #a5b4bd;          
       }
 
       .right {
-        padding: 6px 0 0 0;
         float: right;
 
-        .player-btn {
-          display: inline-block;
-          padding: 0 4px;
+        .player-btns {
+          float: left;
+          padding: 6px 0 0 0;
+
+          .player-btn {
+            display: inline-block;
+            padding: 0 4px;
+          }
         }
       }
     }
@@ -414,8 +452,8 @@ body.sponsored .sponsor-view .title strong {
       display: none;
       margin: 0 auto;
       text-align: center;
-      width: 128px;
-      height: 128px;
+      width: 140px;
+      height: 140px;
 
       .details {
         .raised {

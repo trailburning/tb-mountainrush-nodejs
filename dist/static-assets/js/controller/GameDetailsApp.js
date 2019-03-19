@@ -104,7 +104,6 @@ https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.432159,52.526385
 //      var strImage = 'http://assets.trailburning.com/images/brands/25zero/furniture/placeholder_waiting2.png';
       var strImage = 'http://mountainrush.trailburning.com/static-assets/images/' + strCampaignFolder + 'markers/marker-location.png';
 
-
       var flagMarker = L.marker(latLng);
 //      flagMarker.setIcon(L.divIcon({className: 'tb-map-media-marker', html: '<div><div class="avatar"><img src="'+strImage+'"></div></div>', iconSize: [100, 100], iconAnchor: [50, 120]}));
       flagMarker.setIcon(L.divIcon({className: 'tb-map-flag-marker', html: '<img src="'+strImage+'">', iconSize: [32, 39], iconAnchor: [16, 39]}));
