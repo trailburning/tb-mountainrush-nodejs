@@ -350,6 +350,7 @@ body.sponsored .sponsor-view .title strong {
       }
 
       .fundraising-title {
+        display: none;
         float: left;
         padding-left: 10px;
       }
@@ -475,6 +476,10 @@ body.fundraising #player-view {
         display: block;
       }
     }
+
+    .fundraising-title {
+      display: block;
+    }    
   }
 
   .fundraise-sticker {

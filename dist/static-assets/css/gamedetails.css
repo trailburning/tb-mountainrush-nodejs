@@ -261,6 +261,7 @@ body.sponsored .sponsor-view .title strong {
       width: 200px;
       padding-left: 10px; }
     #player-view .list .player-ranking-title .fundraising-title {
+      display: none;
       float: left;
       padding-left: 10px; }
   #player-view .list .player-ranking {
@@ -338,6 +339,9 @@ body.sponsored .sponsor-view .title strong {
       font-size: 0.85em; }
 
 body.fundraising #player-view .list .detail .team-overview {
+  display: block; }
+
+body.fundraising #player-view .list .fundraising-title {
   display: block; }
 
 body.fundraising #player-view .fundraise-sticker {

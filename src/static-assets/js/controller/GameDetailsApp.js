@@ -91,8 +91,11 @@ https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.38886,52.517037.
 https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.432159,52.526385.json?&access_token=pk.eyJ1IjoibWFsbGJldXJ5IiwiYSI6IjJfV1MzaE0ifQ.scrjDE31p7wBx7-GemqV3A
 */
       var point = geojsonFeature.coordinates[Math.round(geojsonFeature.coordinates.length / 2)];
-      map = L.mapbox.map('mapbox-view', 'mallbeury.8d4ad8ec', {dragging: true, touchZoom: false, scrollWheelZoom: false, doubleClickZoom:false, boxZoom:false, tap:false, zoomControl:false, zoomAnimation:false, attributionControl:false})
+//      map = L.mapbox.map('mapbox-view', null, {dragging: true, touchZoom: false, scrollWheelZoom: false, doubleClickZoom:false, boxZoom:false, tap:false, zoomControl:false, zoomAnimation:false, attributionControl:false})
+      map = L.mapbox.map('mapbox-view', 'mapbox.streets', {dragging: true, touchZoom: false, scrollWheelZoom: false, doubleClickZoom:false, boxZoom:false, tap:false, zoomControl:false, zoomAnimation:false, attributionControl:false})      
       .setView([point[1], point[0]], 13);
+
+//      L.mapbox.styleLayer('mapbox://styles/mallbeury/cjetqdl9i34f52sl3hewjgkr0').addTo(map);
 
       map.featureLayer.setGeoJSON(geojsonFeature);
       map.fitBounds(map.featureLayer.getBounds(), {padding: [100, 100], reset: true});
