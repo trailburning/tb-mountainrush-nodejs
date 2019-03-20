@@ -307,6 +307,66 @@ body.fundraising #player-view .players-overview .detail .players-ranking .fundra
 body.fundraising #player-view .fundraise-sticker {
   display: block; }
 
+/* PHOTO POSTS VIEW */
+/******************************************/
+.photo-posts-view {
+  padding: 0 0 48px 0; }
+  .photo-posts-view .posts {
+    margin: 22px auto 0 auto;
+    width: 244px; }
+    .photo-posts-view .posts .welcome {
+      display: none;
+      color: #a5b4bd;
+      text-align: center; }
+    .photo-posts-view .posts .without-photos {
+      display: block; }
+    .photo-posts-view .posts .post {
+      vertical-align: top;
+      width: 100%;
+      padding: 22px 0 0 0;
+      font-size: 0.9em;
+      text-align: left; }
+    .photo-posts-view .posts .post.no-show {
+      display: none; }
+    .photo-posts-view .posts .post .photo {
+      position: relative;
+      width: 100%;
+      height: 260px;
+      overflow: hidden; }
+    .photo-posts-view .posts .post .media {
+      position: relative; }
+    .photo-posts-view .posts .post .media:hover {
+      cursor: pointer; }
+    .photo-posts-view .posts .post .image {
+      width: 244px;
+      height: 244px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover; }
+    .photo-posts-view .posts .no-photos .post {
+      display: none; }
+      .photo-posts-view .posts .no-photos .post:first-child {
+        display: inline-block; }
+      .photo-posts-view .posts .no-photos .post .image {
+        background: #f8f8f8; }
+        .photo-posts-view .posts .no-photos .post .image .icon {
+          line-height: 244px;
+          text-align: center;
+          font-size: 3em;
+          color: #fff; }
+    .photo-posts-view .posts .post .details {
+      padding-top: 8px; }
+    .photo-posts-view .posts .post .credit {
+      line-height: 1.4em; }
+    .photo-posts-view .posts .post .ago {
+      color: #a5b4bd; }
+    .photo-posts-view .posts .post .media-icon {
+      position: absolute;
+      top: 2px;
+      right: 6px;
+      font-size: 1.4em;
+      color: #fff; }
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   #footer-view {
@@ -407,7 +467,23 @@ body.fundraising #player-view .fundraise-sticker {
       width: 100%; }
       #player-view .fundraise-sticker-container .fundraise-sticker {
         position: relative;
-        margin: 0 auto; } }
+        margin: 0 auto; }
+  .photo-posts-view .posts {
+    margin: 16px 0 0 0;
+    width: 100%; }
+    .photo-posts-view .posts .welcome {
+      padding-left: 7px;
+      text-align: left; }
+    .photo-posts-view .posts .post {
+      padding: 22px 7px 0 7px;
+      width: 210px; }
+      .photo-posts-view .posts .post .image {
+        width: 196px;
+        height: 196px; }
+    .photo-posts-view .posts .no-photos .post {
+      display: inline-block; }
+      .photo-posts-view .posts .no-photos .post .image .icon {
+        line-height: 196px; } }
 
 /* Small devices (tablets, 992px and up) */
 @media (min-width: 992px) {

@@ -277,6 +277,30 @@ var TEST_PROGRESS = '';
       </ul>
     </div>
 
+    <div class="photo-posts-view clearfix">
+      <div class="posts">
+        <div class="welcome without-photos">{{= '<%= __('game.photos.waiting.description') %>'.replace('%s', 'the team') }}</div>
+        <div class="welcome with-photos">{{= '<%= __('game.photos.description') %>'.replace('%s', 'the team') }}</div>
+        <div class="photos with-photos"></div>
+
+        <div class="no-photos without-photos">
+          <div class="post">
+            <div class="image">
+              <div class="icon"><i class="fa fa-camera"></i></div>
+            </div>
+          </div><div class="post">
+            <div class="image">
+              <div class="icon"><i class="fa fa-camera"></i></div>
+            </div>
+          </div><div class="post">
+            <div class="image">
+              <div class="icon"><i class="fa fa-camera"></i></div>
+            </div>
+          </div>
+        </div>              
+      </div>
+    </div>
+
     <div class="share-detail visible-xs visible-sm">
       <div class="share-text"><%= __('defs.social.share_team_msg') %></div>
       <div class="btns">
