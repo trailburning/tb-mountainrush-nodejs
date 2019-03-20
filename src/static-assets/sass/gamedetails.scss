@@ -42,6 +42,10 @@
   display: none;
 }
 
+#sponsor-small-container-view {  
+  text-align: center;
+}
+
 body.sponsored #sponsor-big-container-view,
 body.sponsored #sponsor-small-container-view {
   display: block;
@@ -90,6 +94,7 @@ body.sponsored .sponsor-view .title strong {
 /* PHOTO VIEW */
 /******************************************/
 #photo-view {
+  display: none;
   position: relative;
   width: 100%;
   background: #f3f3f3;
@@ -163,20 +168,42 @@ body.sponsored .sponsor-view .title strong {
   .players-overview {
     .detail {
       background: #fff;
+      padding-bottom: 36px;
+
+      .team-overview {
+        display: none;
+        padding: 28px;
+
+        .photo {
+          padding: 5px;
+          background-color: #fff;
+          box-shadow: 0px 5px 10px #eee;
+
+          .image {
+            width: 100%;
+
+            img {
+              width: 100%;
+            }
+          }          
+        }
+
+        .msg {
+          padding-top: 34px;
+        }
+      }
 
       .team-details {
         width: 100%;
         padding: 28px 16px;
 
         .title-container {
-          display: inline-block;
-          height: 50px;
-          vertical-align: bottom;
+          text-align: center;
         }
 
         .summit-container {
-          display: inline-block;
-          float: right;
+          padding-top: 20px;
+          text-align: center;
         }
 
         .pos {
@@ -184,10 +211,9 @@ body.sponsored .sponsor-view .title strong {
           text-align: left;
           vertical-align: bottom;
           padding: 2px 20px 0 22px;
-          border-right: 1px solid #a5b4bd;
+          border-left: 1px solid #a5b4bd;
 
           .ranking {
-            float: right;
             font-family: 'radikalbold', sans-serif;
             margin-bottom: 2px;
             font-size: 1.2em;
@@ -213,15 +239,6 @@ body.sponsored .sponsor-view .title strong {
         }        
       }
 
-      .team-overview {
-        display: none;
-
-        .image {
-          width: 100%;
-          height: 280px;
-        }
-      }
-
       .share-detail {
         padding: 38px 0 16px 0;
         border-top: 1px solid #d7d7d7;
@@ -245,11 +262,11 @@ body.sponsored .sponsor-view .title strong {
     }
 
     .players-ranking {
-      padding-bottom: 40px;
+      padding: 0 16px 40px 16px;
 
       .player-ranking-title {
         padding: 16px 8px 12px 20px;
-        text-align: left;
+        text-align: center;
         color: #3c5b6e;
         font-family: 'radikalbold', sans-serif;
         font-size: 0.8em;
@@ -273,8 +290,7 @@ body.sponsored .sponsor-view .title strong {
       }
 
       .player-ranking {
-        height: 75px;
-        padding: 16px 8px 0 20px;
+        padding: 16px 8px 16px 10px;
         text-align: left;
         color: #a5b4bd;
 
@@ -287,10 +303,11 @@ body.sponsored .sponsor-view .title strong {
           color: #44b6f7;
           font-family: 'radikalbold', sans-serif;
           padding-bottom: 2px;
-          font-size: 1.4em;
+          font-size: 1.2em;
         }
 
         .pos {
+          display: none;
           float: left;
           width: 40px;
           padding-top: 14px;
@@ -299,7 +316,7 @@ body.sponsored .sponsor-view .title strong {
         .photo {
           float: left;
           position: relative;
-          width: 58px;
+          width: 48px;
           padding-top: 0;
           padding-left: 0;
         }
@@ -331,18 +348,24 @@ body.sponsored .sponsor-view .title strong {
 
         .overview {
           float: left;
-          width: 200px;
           padding-top: 2px;
           padding-left: 10px;
-          border-left: 1px solid #a5b4bd;
         }
 
         .fundraising {
           float: left;
           padding-top: 2px;
           padding-left: 10px;
-          border-left: 1px solid #a5b4bd;          
         }
+
+        .fundraising-mini {
+          clear: both;
+
+          .fundraising-details {
+            padding-top: 8px;
+            color: #3c5b6e;
+          }
+        }        
 
         .right {
           float: right;
@@ -371,12 +394,17 @@ body.sponsored .sponsor-view .title strong {
   }
 
   .fundraise-sticker-container {
+    padding-top: 20px;
+
     .fundraise-sticker {
       display: none;
       margin: 0 auto;
       text-align: center;
       width: 140px;
       height: 140px;
+      -webkit-box-shadow: 0px 5px 5px 0 rgba(25,56,72,0.2);
+      -moz-box-shadow: 0px 5px 5px 0 rgba(25,56,72,0.2);
+      box-shadow: 0px 5px 5px 0 rgba(25,56,72,0.2);
 
       .details {
         .raised {
@@ -384,7 +412,12 @@ body.sponsored .sponsor-view .title strong {
         }
 
         .target {
-          font-size: 0.85em;
+          font-size: 0.9em;
+          line-height: 1.6em;
+
+          &:before {
+            padding-top: 8px;
+          }
         }
       }
     }
@@ -473,6 +506,10 @@ body.fundraising #player-view {
 
   #game-view {
     overflow: initial;
+
+    #photo-view {
+      display: block;
+    }
   }
 
   body.sponsored #photo-view {
@@ -490,13 +527,71 @@ body.fundraising #player-view {
       .detail {
         padding: 0 19px 26px 19px;
 
+        .team-details {          
+          .title-container {
+            text-align: left;
+            display: inline-block;
+            height: 50px;
+            vertical-align: bottom;
+          }
+
+          .summit-container {
+            display: inline-block;
+            float: right;
+            padding: 0;
+          }
+
+          .pos {
+            border-left: none;
+            border-right: 1px solid #a5b4bd;
+
+            .ranking {
+              float: right;
+            }
+          }
+        }
+
         .team-overview {
           padding: 16px 89px 10px 89px;
 
           .photo {
-            padding: 5px;
-            background-color: #fff;
-            box-shadow: 0px 5px 10px #eee;
+            display: none;
+          }
+
+          .msg {
+            padding-top: 0;
+          }
+        }
+      }
+
+      .players-ranking {
+        padding-left: 0;
+        padding-right: 0;
+
+        .player-ranking-title {
+          text-align: left;
+        }
+
+        .player-ranking {
+          height: 75px;
+          padding-left: 20px;
+          padding-bottom: 0;
+
+          .pos {          
+            display: inline-block;
+          }          
+
+          .photo {
+            width: 58px;
+          }
+
+          .overview {
+            width: 200px;
+            border-left: 1px solid #a5b4bd;
+          }
+
+          .fundraising {
+            border-left: 1px solid #a5b4bd;          
           }
         }
       }
@@ -508,6 +603,7 @@ body.fundraising #player-view {
 
     .fundraise-sticker-container {
       position: absolute;
+      padding: 0;
       top: -64px;
       left: 0;
       width: 100%;

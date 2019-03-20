@@ -128,19 +128,21 @@ var TEST_PROGRESS = '';
 
 <script type="text/template" id="playersOverviewTemplate">
   <div class="detail">
-    <div class="team-details">
-      <div class="title-container">
-      <h1>Team Gorilla</h1>for WWF-UK
-      </div>
-      <div class="summit-container">
-        {{ if (players.length > 1) { }}
-          <div class="pos">
-            <div class="ranking">{{= players.length }}</div>
-            <div class="desc">Participants</div>
+    <div class="visible-sm visible-md visible-lg">
+      <div class="team-details">
+        <div class="title-container">
+        <h1>Team Gorilla</h1>for WWF-UK
+        </div>
+        <div class="summit-container">
+          {{ if (players.length > 1) { }}
+            <div class="pos">
+              <div class="ranking">{{= players.length }}</div>
+              <div class="desc">Participants</div>
+            </div>
+          {{ } }}
+          <div class="summit">
+            <h1>{{= game.ascent }}m</h1>{{= game.name }}
           </div>
-        {{ } }}
-        <div class="summit">
-          <h1>{{= game.ascent }}m</h1>{{= game.name }}
         </div>
       </div>
     </div>
@@ -155,10 +157,53 @@ var TEST_PROGRESS = '';
       </div>
     </div>
 
+    <div class="visible-xs">
+      <div class="team-details">
+        <div class="title-container">
+        <h1>Team Gorilla</h1>for WWF-UK
+        </div>
+        <div class="summit-container">
+          <div class="summit">
+            <h1>{{= game.ascent }}m</h1>{{= game.name }}
+          </div>
+          {{ if (players.length > 1) { }}
+            <div class="pos">
+              <div class="ranking">{{= players.length }}</div>
+              <div class="desc">Participants</div>
+            </div>
+          {{ } }}
+        </div>
+      </div>
+    </div>
+
+    <div id="sponsor-small-container-view">
+      <div class="sponsor-view visible-xs">
+        <div class="sponsor-detail-view">
+        {{ if (game.name == 'ashmei Mont Blanc') { }}
+          <div class="logo"><a href="https://ashmei.com/challengethirtyone" target="_blank"><img src="/static-assets/images/logos/logo_ashmei.png"></a></div>
+          <div class="title">
+            <h1>Challenge 31<br/>December</h1>
+            <h2>Climb Mont Blanc with <a href="https://ashmei.com/challengethirtyone" target="_blank" class="link"><strong>ashmei</strong></a></h2>
+          </div>
+        {{ } else { }}
+          <div class="logo"><a href="https://www.wwf.org.uk/" target="_blank"><img src="/static-assets/images/logos/logo_wwf_demo.png"></a></div>
+          <div class="title">
+            <h1>{{= game.name }}<br/>Challenge</h1>
+            <h2>Fundraising for <strong>WWF-UK</strong></h2>
+          </div>
+        {{ } }}
+        </div>
+      </div>
+    </div>
+
     <div class="team-overview">
+      <div class="photo">
+        <div class="image"><img  src="https://tbassets2.imgix.net/images/brands/mountainrush/clients/wwf-uk/assets/MR_strava_wwf_img_0000_girl.png?fm=jpg&w=1024&q=80"></div>
+      </div>
+
       <div class="msg">
       <p>
-      We're running virtually climbing Mount Sabyinyo, the home of mountain gorialls!
+      We're virtually climbing Mount Sabyinyo, the home of mountain gorialls!
       </p>
       <p>
       Please support us on our journey to protect the last remaining mountain gorillas, every donation will go directly to WWF mountain gorilla projects!
@@ -166,54 +211,71 @@ var TEST_PROGRESS = '';
       </div>
     </div>
 
-    <ul class="players-ranking">
-      <li class="player-ranking-title">
-        <div class="pos-title">
-        {{ if (players.length > 1) { }}Position{{ } }}
-        </div>
-        <div class="player-title">Player</div>
-        <div class="fundraising-title">Raised</div>
-      </li>
+    <div class="players-ranking">
+      <div class="player-ranking-title visible-xs">
+        <div class="player-title">Team Players</div>
+      </div>
+      <ul>
+        <li class="player-ranking-title hidden-xs">
+          <div class="pos-title">
+          {{ if (players.length > 1) { }}Position{{ } }}
+          </div>
+          <div class="player-title">Player</div>
+          <div class="fundraising-title">Raised</div>
+        </li>
 
-      {{ _.each(players, function(player, index) { }}
-        <li class="player-ranking" data-id="{{= player.id }}" data-pos="{{= index }}">
-          <div class="pos">
-            <div class="ranking">{{= index+1 }}</div>
-          </div>
-          <div class="photo">
-            <div class="avatar"><img src="{{= player.avatar }}"></div>
-            <div class="photo-icon {{ if (player.mediaCaptured) { }}show{{ } }}"><i class="fa fa-camera"></i></div>
-          </div>
-          <div class="overview">
-          <h1 class="truncate" data-truncate="15">{{= player.firstname }} {{= player.lastname }}</h1>
-          {{ if (player.elevationToSummit) { }}
-            {{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m <%= __('game.to_summit') %>
-          {{ } else { }}
-          <%= __('game.summited_long') %>
-          {{ } }}
-          </div>
-          <div class="fundraising">
-          {{ if (page.fundraisingTarget && page.fundraisingTarget > 0) { }}
-            <h1>{{= player.fundraisingCurrencySymbol }}{{= player.fundraising_raised }}</h1>
-            of {{= player.fundraisingCurrencySymbol }}{{= player.fundraising_goal }} target
-          {{ } }}
-          </div>
-          <div class="right">
-            <div class="player-btns">
-              <div class="player-btn">
-              {{ if (player.fundraising_goal && player.fundraising_goal > 0) { }}
-                <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
-                  <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary btn-large"><%= __('defs.donate') %></a>
-                <% } else { %>
-                  <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/donate?amount=1000" class="btn mr-btn btn-primary"><%= __('defs.donate') %></a>
-                <% } %>        
+        {{ _.each(players, function(player, index) { }}
+          <li class="player-ranking" data-id="{{= player.id }}" data-pos="{{= index }}">
+            <div class="pos">
+              <div class="ranking">{{= index+1 }}</div>
+            </div>
+            <div class="photo">
+              <div class="avatar"><img src="{{= player.avatar }}"></div>
+              <div class="photo-icon {{ if (player.mediaCaptured) { }}show{{ } }}"><i class="fa fa-camera"></i></div>
+            </div>
+            <div class="overview">
+            <h1 class="truncate" data-truncate="15">{{= player.firstname }} {{= player.lastname }}</h1>
+            {{ if (player.elevationToSummit) { }}
+              {{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m <%= __('game.to_summit') %>
+            {{ } else { }}
+            <%= __('game.summited_long') %>
+            {{ } }}
+            </div>
+            <div class="hidden-xs">
+              <div class="fundraising">
+              {{ if (page.fundraisingTarget && page.fundraisingTarget > 0) { }}
+                <h1>{{= player.fundraisingCurrencySymbol }}{{= player.fundraising_raised }}</h1>
+                of {{= player.fundraisingCurrencySymbol }}{{= player.fundraising_goal }} target
               {{ } }}
               </div>
             </div>
-          </div>
-        </li>
-      {{ }); }}
-    </ul>
+            <div class="right">
+              <div class="player-btns">
+                <div class="player-btn">
+                {{ if (player.fundraising_goal && player.fundraising_goal > 0) { }}
+                  <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
+                    <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary btn-large"><%= __('defs.donate') %></a>
+                  <% } else { %>
+                    <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/donate?amount=1000" class="btn mr-btn btn-primary"><%= __('defs.donate') %></a>
+                  <% } %>        
+                {{ } }}
+                </div>
+              </div>
+            </div>
+
+            <div class="visible-xs">
+              <div class="fundraising-mini">
+                <div class="fundraising-details">
+                {{ if (page.fundraisingTarget && page.fundraisingTarget > 0) { }}
+                  Raised <strong>{{= player.fundraisingCurrencySymbol }}{{= player.fundraising_raised }}</strong> of <strong>{{= player.fundraisingCurrencySymbol }}{{= player.fundraising_goal }}</strong> target
+                {{ } }}
+                </div>
+              </div>
+            </div>
+          </li>
+        {{ }); }}
+      </ul>
+    </div>
 
     <div class="share-detail visible-xs visible-sm">
       <div class="share-text"><%= __('defs.social.share_team_msg') %></div>
