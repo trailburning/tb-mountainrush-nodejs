@@ -56,7 +56,7 @@ var TEST_PROGRESS = '';
     </div>
 
     <div id="player-view">
-      <div class="list" id="players-list-view"></div>
+      <div class="players-overview" id="players-overview-view"></div>
     </div>
 
     <div class="stripe top"></div>
@@ -126,19 +126,21 @@ var TEST_PROGRESS = '';
   </div>
 </script>
 
-<script type="text/template" id="playersListTemplate">
+<script type="text/template" id="playersOverviewTemplate">
   <div class="detail">
     <div class="team-details">
       <div class="title-container">
       <h1>Team Gorilla</h1>for WWF-UK
       </div>
       <div class="summit-container">
-        <div class="pos">
-          <div class="ranking">{{= players.length }}</div>
-          <div class="desc">Participants</div>
-        </div>
+        {{ if (players.length > 1) { }}
+          <div class="pos">
+            <div class="ranking">{{= players.length }}</div>
+            <div class="desc">Participants</div>
+          </div>
+        {{ } }}
         <div class="summit">
-          <h1>5895m</h1>Kilimanjaro
+          <h1>{{= game.ascent }}m</h1>{{= game.name }}
         </div>
       </div>
     </div>
@@ -166,7 +168,9 @@ var TEST_PROGRESS = '';
 
     <ul class="players-ranking">
       <li class="player-ranking-title">
-        <div class="pos-title">Position</div>
+        <div class="pos-title">
+        {{ if (players.length > 1) { }}Position{{ } }}
+        </div>
         <div class="player-title">Player</div>
         <div class="fundraising-title">Raised</div>
       </li>
@@ -197,8 +201,6 @@ var TEST_PROGRESS = '';
           <div class="right">
             <div class="player-btns">
               <div class="player-btn">
-              <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}" class="btn mr-btn"><%= __('defs.challenge.view_short') %></a>
-              </div><div class="player-btn">
               {{ if (player.fundraising_goal && player.fundraising_goal > 0) { }}
                 <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
                   <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary btn-large"><%= __('defs.donate') %></a>

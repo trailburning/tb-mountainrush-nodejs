@@ -127,25 +127,25 @@ body.sponsored .sponsor-view .title strong {
     text-align: center;
     color: #FFF;
     background: #44b6f7; }
-  #player-view .list .detail {
+  #player-view .players-overview .detail {
     background: #fff; }
-    #player-view .list .detail .team-details {
+    #player-view .players-overview .detail .team-details {
       width: 100%;
       padding: 28px 16px; }
-      #player-view .list .detail .team-details .title-container {
+      #player-view .players-overview .detail .team-details .title-container {
         display: inline-block;
         height: 50px;
         vertical-align: bottom; }
-      #player-view .list .detail .team-details .summit-container {
+      #player-view .players-overview .detail .team-details .summit-container {
         display: inline-block;
         float: right; }
-      #player-view .list .detail .team-details .pos {
+      #player-view .players-overview .detail .team-details .pos {
         display: inline-block;
         text-align: left;
         vertical-align: bottom;
         padding: 2px 20px 0 22px;
         border-right: 1px solid #a5b4bd; }
-        #player-view .list .detail .team-details .pos .ranking {
+        #player-view .players-overview .detail .team-details .pos .ranking {
           float: right;
           font-family: 'radikalbold', sans-serif;
           margin-bottom: 2px;
@@ -154,116 +154,118 @@ body.sponsored .sponsor-view .title strong {
           height: 25px;
           line-height: 25px;
           background-color: #44b6f7; }
-      #player-view .list .detail .team-details .summit {
+      #player-view .players-overview .detail .team-details .summit {
         display: inline-block;
         padding: 0 18px 0 12px;
         text-align: right;
         vertical-align: bottom; }
-      #player-view .list .detail .team-details h1 {
+      #player-view .players-overview .detail .team-details h1 {
         font-family: 'radikalbold', sans-serif;
         padding-bottom: 2px;
         font-size: 1.8em;
         color: #44b6f7; }
-    #player-view .list .detail .team-overview {
+    #player-view .players-overview .detail .team-overview {
       display: none; }
-      #player-view .list .detail .team-overview .image {
+      #player-view .players-overview .detail .team-overview .image {
         width: 100%;
         height: 280px; }
-    #player-view .list .detail .share-detail {
+    #player-view .players-overview .detail .share-detail {
       padding: 38px 0 16px 0;
       border-top: 1px solid #d7d7d7;
       color: #a3a3a3;
       text-align: center; }
-      #player-view .list .detail .share-detail .share-text {
+      #player-view .players-overview .detail .share-detail .share-text {
         font-size: 0.9em;
         text-transform: uppercase; }
-      #player-view .list .detail .share-detail .btns {
+      #player-view .players-overview .detail .share-detail .btns {
         padding-top: 16px;
         text-align: center; }
-        #player-view .list .detail .share-detail .btns .btn {
+        #player-view .players-overview .detail .share-detail .btns .btn {
           margin: 0 13px; }
-  #player-view .list .player-ranking-title {
-    padding: 16px 8px 12px 20px;
-    text-align: left;
-    color: #3c5b6e;
-    font-family: 'radikalbold', sans-serif;
-    font-size: 0.8em;
-    text-transform: uppercase; }
-    #player-view .list .player-ranking-title .pos-title {
-      display: inline-block;
-      width: 98px; }
-    #player-view .list .player-ranking-title .player-title {
-      display: inline-block;
-      width: 200px;
-      padding-left: 10px; }
-    #player-view .list .player-ranking-title .fundraising-title {
-      display: none;
-      padding-left: 10px; }
-  #player-view .list .player-ranking {
-    height: 75px;
-    padding: 16px 8px 0 20px;
-    text-align: left;
-    color: #a5b4bd; }
-    #player-view .list .player-ranking:hover {
-      cursor: pointer;
-      background: #f8f8f8; }
-    #player-view .list .player-ranking h1 {
-      color: #44b6f7;
+  #player-view .players-overview .players-ranking {
+    padding-bottom: 40px; }
+    #player-view .players-overview .players-ranking .player-ranking-title {
+      padding: 16px 8px 12px 20px;
+      text-align: left;
+      color: #3c5b6e;
       font-family: 'radikalbold', sans-serif;
-      padding-bottom: 2px;
-      font-size: 1.4em; }
-    #player-view .list .player-ranking .pos {
-      float: left;
-      width: 40px;
-      padding-top: 14px; }
-    #player-view .list .player-ranking .photo {
-      float: left;
-      position: relative;
-      width: 58px;
-      padding-top: 0;
-      padding-left: 0; }
-    #player-view .list .player-ranking .photo-icon {
-      display: none;
-      position: absolute;
-      top: -5px;
-      left: 28px;
-      width: 20px;
-      height: 20px;
-      background: #f75f36;
-      border-radius: 50%;
-      overflow: hidden; }
-      #player-view .list .player-ranking .photo-icon i {
-        vertical-align: top;
-        font-size: 0.8em;
-        width: 100%;
-        line-height: 20px;
-        text-align: center;
-        color: #fff; }
-      #player-view .list .player-ranking .photo-icon .show {
-        display: block; }
-    #player-view .list .player-ranking .overview {
-      float: left;
-      width: 200px;
-      padding-top: 2px;
-      padding-left: 10px;
-      border-left: 1px solid #a5b4bd; }
-    #player-view .list .player-ranking .fundraising {
-      float: left;
-      padding-top: 2px;
-      padding-left: 10px;
-      border-left: 1px solid #a5b4bd; }
-    #player-view .list .player-ranking .right {
-      float: right; }
-      #player-view .list .player-ranking .right .player-btns {
+      font-size: 0.8em;
+      text-transform: uppercase; }
+      #player-view .players-overview .players-ranking .player-ranking-title .pos-title {
+        display: inline-block;
+        width: 98px; }
+      #player-view .players-overview .players-ranking .player-ranking-title .player-title {
+        display: inline-block;
+        width: 200px;
+        padding-left: 10px; }
+      #player-view .players-overview .players-ranking .player-ranking-title .fundraising-title {
+        display: none;
+        padding-left: 10px; }
+    #player-view .players-overview .players-ranking .player-ranking {
+      height: 75px;
+      padding: 16px 8px 0 20px;
+      text-align: left;
+      color: #a5b4bd; }
+      #player-view .players-overview .players-ranking .player-ranking:hover {
+        cursor: pointer;
+        background: #f8f8f8; }
+      #player-view .players-overview .players-ranking .player-ranking h1 {
+        color: #44b6f7;
+        font-family: 'radikalbold', sans-serif;
+        padding-bottom: 2px;
+        font-size: 1.4em; }
+      #player-view .players-overview .players-ranking .player-ranking .pos {
         float: left;
-        padding: 6px 0 0 0; }
-        #player-view .list .player-ranking .right .player-btns .player-btn {
-          display: inline-block;
-          padding: 0 4px; }
-  #player-view .list .game-funcs {
+        width: 40px;
+        padding-top: 14px; }
+      #player-view .players-overview .players-ranking .player-ranking .photo {
+        float: left;
+        position: relative;
+        width: 58px;
+        padding-top: 0;
+        padding-left: 0; }
+      #player-view .players-overview .players-ranking .player-ranking .photo-icon {
+        display: none;
+        position: absolute;
+        top: -5px;
+        left: 28px;
+        width: 20px;
+        height: 20px;
+        background: #f75f36;
+        border-radius: 50%;
+        overflow: hidden; }
+        #player-view .players-overview .players-ranking .player-ranking .photo-icon i {
+          vertical-align: top;
+          font-size: 0.8em;
+          width: 100%;
+          line-height: 20px;
+          text-align: center;
+          color: #fff; }
+        #player-view .players-overview .players-ranking .player-ranking .photo-icon .show {
+          display: block; }
+      #player-view .players-overview .players-ranking .player-ranking .overview {
+        float: left;
+        width: 200px;
+        padding-top: 2px;
+        padding-left: 10px;
+        border-left: 1px solid #a5b4bd; }
+      #player-view .players-overview .players-ranking .player-ranking .fundraising {
+        float: left;
+        padding-top: 2px;
+        padding-left: 10px;
+        border-left: 1px solid #a5b4bd; }
+      #player-view .players-overview .players-ranking .player-ranking .right {
+        float: right; }
+        #player-view .players-overview .players-ranking .player-ranking .right .player-btns {
+          float: left;
+          padding: 6px 0 0 0; }
+          #player-view .players-overview .players-ranking .player-ranking .right .player-btns .player-btn {
+            display: inline-block;
+            padding: 0 4px; }
+  #player-view .players-overview .game-funcs {
     padding: 12px;
     text-align: center; }
-    #player-view .list .game-funcs .btn {
+    #player-view .players-overview .game-funcs .btn {
       margin: 0 14px 14px 14px; }
   #player-view .fundraise-sticker-container .fundraise-sticker {
     display: none;
@@ -276,10 +278,10 @@ body.sponsored .sponsor-view .title strong {
     #player-view .fundraise-sticker-container .fundraise-sticker .details .target {
       font-size: 0.85em; }
 
-body.fundraising #player-view .list .detail .team-overview {
+body.fundraising #player-view .players-overview .detail .team-overview {
   display: block; }
 
-body.fundraising #player-view .list .fundraising-title {
+body.fundraising #player-view .players-overview .detail .players-ranking .fundraising-title {
   display: inline-block; }
 
 body.fundraising #player-view .fundraise-sticker {
@@ -333,15 +335,15 @@ body.fundraising #player-view .fundraise-sticker {
   #player-view {
     position: relative;
     background: none; }
-    #player-view .list .detail {
+    #player-view .players-overview .detail {
       padding: 0 19px 26px 19px; }
-      #player-view .list .detail .team-overview {
-        padding: 16px 89px 0 89px; }
-        #player-view .list .detail .team-overview .photo {
+      #player-view .players-overview .detail .team-overview {
+        padding: 16px 89px 10px 89px; }
+        #player-view .players-overview .detail .team-overview .photo {
           padding: 5px;
           background-color: #fff;
           box-shadow: 0px 5px 10px #eee; }
-    #player-view .list .game-funcs {
+    #player-view .players-overview .game-funcs {
       padding-top: 32px; }
     #player-view .fundraise-sticker-container {
       position: absolute;
@@ -376,7 +378,7 @@ body.fundraising #player-view .fundraise-sticker {
     margin-left: auto;
     margin-right: auto;
     width: 992px; }
-  #player-view .list {
+  #player-view .players-overview {
     margin-left: auto;
     margin-right: auto;
     margin-top: -55px;

@@ -8,23 +8,6 @@ define([
       this.template = _.template($('#playersListTemplate').text());
 
       this.options = options;
-
-      this.jsonFields = {totalRaisedPercentageOfFundraisingTarget: 0,
-                        currencySymbol: '£',
-                        totalRaisedOnline: 0,
-                        fundraisingTarget: 0
-                        }
-    },
-
-    getFields: function() {
-      return this.jsonFields;
-    },
-
-    setFields: function(jsonFields) {
-      this.jsonFields.totalRaisedPercentageOfFundraisingTarget = jsonFields.totalRaisedPercentageOfFundraisingTarget;
-      this.jsonFields.currencySymbol = jsonFields.currencySymbol;;
-      this.jsonFields.totalRaisedOnline = jsonFields.totalRaisedOnline;;
-      this.jsonFields.fundraisingTarget = jsonFields.fundraisingTarget;;
     },
 
     render: function(){
@@ -35,8 +18,7 @@ define([
         activePlayer = this.options.activePlayer.toJSON();
       }
 
-      var attribs = this.options.playerCollection.toJSON();
-      $(this.el).html(this.template({page: this.jsonFields, game: this.options.jsonGame, players: attribs, activePlayer: activePlayer}));
+      $(this.el).html(this.template({game: this.options.jsonGame, players: this.options.playerCollection.toJSON(), activePlayer: activePlayer}));
 
       // truncate
       $('.truncate', $(this.el)).each(function(index){

@@ -285,8 +285,7 @@
     "strava_app": "Strava App",
     "donate": "Donate",
     "challenge": {
-      "view": "View Challenge",
-      "view_short": "View"
+      "view": "View Challenge"
     },
     "prefs": "Preferences",
     "please_wait": "Please Wait",

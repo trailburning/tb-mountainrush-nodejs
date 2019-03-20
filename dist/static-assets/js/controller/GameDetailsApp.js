@@ -18,11 +18,11 @@ define([
   'views/ActivePlayerView',
   'views/Player',
   'views/ChallengeView',
-  'views/PlayersListView',
+  'views/PlayersOverviewView',
   'views/ChallengeCancelModalView',
   'views/GameInviteView',  
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, moment, countdown, imagesLoaded, videojs, SponsorView, LanguageSelectorView, ActivePlayerView, Player, ChallengeView, PlayersListView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
+], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, moment, countdown, imagesLoaded, videojs, SponsorView, LanguageSelectorView, ActivePlayerView, Player, ChallengeView, PlayersOverviewView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -35,6 +35,7 @@ define([
     var self = this;
 
     app.dispatcher.on("ChallengeCancelModalView:challengeCancelled", onChallengeCancelled);
+    app.dispatcher.on("PlayersOverviewView:playerClick", onPlayerClicked);
 
     var challengeView = null;
     var mountainModel = new Backbone.Model();
@@ -91,16 +92,15 @@ define([
     }
 
     function buildGame() {
-      playersListView = new PlayersListView({ el: '#players-list-view', jsonGame: jsonCurrGame, playerCollection: playerCollection, activePlayer: activePlayer });
+      playersOverviewView = new PlayersOverviewView({ el: '#players-overview-view', jsonGame: jsonCurrGame, playerCollection: playerCollection, activePlayer: activePlayer });
       // set team fundraising
-      var jsonFields = playersListView.getFields();
+      var jsonFields = playersOverviewView.getFields();
       jsonFields.currencySymbol = jsonCurrGame.fundraising_currency_symbol;
       jsonFields.totalRaisedPercentageOfFundraisingTarget = Math.round(Number((totalRaisedOnline / fundraisingTarget) * 100));
       jsonFields.totalRaisedOnline = Math.round(totalRaisedOnline);
       jsonFields.fundraisingTarget = Math.round(fundraisingTarget);
-      playersListView.setFields(jsonFields);
-
-      playersListView.render();
+      playersOverviewView.setFields(jsonFields);
+      playersOverviewView.render();
 
       $('img.scale').imageScale({
         'rescaleOnResize': true
@@ -262,6 +262,11 @@ define([
     function onChallengeCancelled() {
       // visit profile
       window.location.href = HOST_URL+'/campaign/' + CAMPAIGN_ID + '/profile';
+    }
+
+    function onPlayerClicked(playerID) {
+      // visit profile
+      window.location.href = HOST_URL+'/game/' + GAME_ID + '/player/' + playerID;
     }
 
     $('#loader-view').show();
