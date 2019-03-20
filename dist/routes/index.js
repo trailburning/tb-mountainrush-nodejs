@@ -366,6 +366,27 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/game/:gameID/details', function(req, res) {
+    var defs = helper.getDefs(req);
+    defs.GameID = req.params.gameID;
+
+    getCampaignDataByGame(req, defs.GameID, function(err, campaign){ 
+      if (campaign) {
+        // get social image
+        getSocialImage(defs.GameID, function(err, strImage){ 
+          defs.SocialImage = strImage;
+
+          res.render('pages/gamedetails', {Defs: defs, Campaign: campaign});
+        });        
+      }
+      else {
+        getCampaignDataByCampaign(req, process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+        });        
+      }
+    });
+  });
+
   app.get('/game/:gameID', function(req, res) {
     var defs = helper.getDefs(req);
     defs.Demo = 0;

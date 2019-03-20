@@ -1,0 +1,789 @@
+/* FOOTER VIEW */
+/******************************************/
+#footer-view {
+  .logo-container {
+    display: none;
+    position: absolute;
+    top: -80px;
+    width: 100%;
+  }
+
+  .mr-logo {
+    margin: 0 auto;
+    width: 160px;
+    text-align: center;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+/* PAGE VIEW */
+/******************************************/
+#page-view {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'radikalregular', sans-serif;
+}
+
+/* GAME VIEW */
+/******************************************/
+#game-view {
+  z-index: 2;
+  position: relative;
+}
+
+/* SPONSOR CONTAINER VIEW */
+/******************************************/
+#sponsor-big-container-view,
+#sponsor-small-container-view {
+  display: none;
+}
+
+#sponsor-small-container-view {  
+  text-align: center;
+}
+
+body.sponsored #sponsor-big-container-view,
+body.sponsored #sponsor-small-container-view {
+  display: block;
+}
+
+/* SPONSOR VIEW */
+/******************************************/
+body.sponsored .sponsor-view .link, 
+body.sponsored .sponsor-view .link:active, 
+body.sponsored .sponsor-view .link:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+body.sponsored .sponsor-view {
+  padding: 32px 15px 26px 15px;
+  background: rgb(23,53,69);
+  background: linear-gradient(0deg, rgba(23,53,69,1) 0%, rgba(42,72,90,1) 50%, rgba(59,90,109,1) 100%);
+}
+
+body.sponsored .sponsor-view .logo img {
+  width: 80px;
+}
+
+body.sponsored .sponsor-view .title {
+  color: #fff;
+}
+
+body.sponsored .sponsor-view .title h1 {
+  padding-top: 24px;
+  padding-bottom: 16px;
+  font-family: 'radikalbold', sans-serif;
+  font-size: 2.5em;
+  line-height: 1.2em;
+}
+
+body.sponsored .sponsor-view .title h2 {
+  font-family: 'radikalregular';
+  font-size: 1.2em;
+}
+
+body.sponsored .sponsor-view .title strong {
+  font-family: 'radikalbold', sans-serif;
+}
+
+/* PHOTO VIEW */
+/******************************************/
+#photo-view {
+  display: none;
+  position: relative;
+  width: 100%;
+  background: #f3f3f3;
+
+  .photo {
+    .image {
+      width: 100%;
+      height: 406px;
+    }
+  }
+
+  .embelish {
+    display: none;
+    position: absolute;
+    pointer-events: none;
+  }
+}
+
+.countdown-container {
+  display: none;
+}
+
+.countdown {
+  line-height: 1em;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.countdown .days {
+  padding-left: 8px;
+  font-size: 2.4em;
+}
+
+.countdown .days .time {
+  font-family: 'radikalbold', sans-serif;
+}
+
+.countdown .hours {
+  display: inline-block;
+  text-align: right;
+  width: 90px;
+  padding-left: 12px;
+  font-size: 1.4em;
+}
+
+.countdown .hours .time {
+  font-family: 'radikallight', sans-serif;
+}
+
+/* PLAYER VIEW */
+/******************************************/
+#player-view {
+  display: none;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+
+  .ranking {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    font-size: 1em;
+    line-height: 20px;
+    text-align: center;
+    color: #FFF;
+    background: #44b6f7;
+  }
+
+  .players-overview {
+    .detail {
+      background: #fff;
+      padding-bottom: 36px;
+
+      .team-overview {
+        display: none;
+        padding: 28px;
+
+        .photo {
+          padding: 5px;
+          background-color: #fff;
+          box-shadow: 0px 5px 10px #eee;
+
+          .image {
+            width: 100%;
+
+            img {
+              width: 100%;
+            }
+          }          
+        }
+
+        .msg {
+          padding-top: 34px;
+        }
+      }
+
+      .team-details {
+        width: 100%;
+        padding: 28px 16px;
+
+        .title-container {
+          text-align: center;
+        }
+
+        .summit-container {
+          padding-top: 20px;
+          text-align: center;
+        }
+
+        .pos {
+          display: inline-block;
+          text-align: left;
+          vertical-align: bottom;
+          padding: 2px 20px 0 22px;
+          border-left: 1px solid #a5b4bd;
+
+          .ranking {
+            font-family: 'radikalbold', sans-serif;
+            margin-bottom: 2px;
+            font-size: 1.2em;
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            background-color: #44b6f7;
+          }
+        }
+
+        .summit {
+          display: inline-block;
+          padding: 0 18px 0 12px;
+          text-align: right;
+          vertical-align: bottom;
+        }
+
+        h1 {
+          font-family: 'radikalbold', sans-serif;
+          padding-bottom: 2px;
+          font-size: 1.8em;
+          color: #44b6f7;
+        }        
+      }
+
+      .share-detail {
+        padding: 38px 0 16px 0;
+        border-top: 1px solid #d7d7d7;
+        color: #a3a3a3;
+        text-align: center;
+
+        .share-text {
+          font-size: 0.9em;
+          text-transform: uppercase;
+        }
+
+        .btns {
+          padding-top: 16px;
+          text-align: center;
+
+          .btn {
+              margin: 0 13px;
+          }      
+        }    
+      }
+    }
+
+    .players-ranking {
+      padding: 0 16px 40px 16px;
+
+      .player-ranking-title {
+        padding: 16px 8px 12px 20px;
+        text-align: center;
+        color: #3c5b6e;
+        font-family: 'radikalbold', sans-serif;
+        font-size: 0.8em;
+        text-transform: uppercase;
+
+        .pos-title {
+          display: inline-block;
+          width: 98px;
+        }
+
+        .player-title {
+          display: inline-block;
+          width: 200px;
+          padding-left: 10px;
+        }
+
+        .fundraising-title {
+          display: none;
+          padding-left: 10px;
+        }
+      }
+
+      .player-ranking {
+        padding: 16px 8px 16px 10px;
+        text-align: left;
+        color: #a5b4bd;
+
+        &:hover {
+          cursor: pointer;
+          background: #f8f8f8;
+        }
+
+        h1 {
+          color: #44b6f7;
+          font-family: 'radikalbold', sans-serif;
+          padding-bottom: 2px;
+          font-size: 1.2em;
+        }
+
+        .pos {
+          display: none;
+          float: left;
+          width: 40px;
+          padding-top: 14px;
+        }
+
+        .photo {
+          float: left;
+          position: relative;
+          width: 48px;
+          padding-top: 0;
+          padding-left: 0;
+        }
+
+        .photo-icon {
+          display: none;
+          position: absolute;
+          top: -5px;
+          left: 28px;
+          width: 20px;
+          height: 20px;
+          background: #f75f36;
+          border-radius: 50%;
+          overflow: hidden;
+
+          i {
+            vertical-align: top;
+            font-size: 0.8em;
+            width: 100%;
+            line-height: 20px;
+            text-align: center;
+            color: #fff;
+          }
+
+          .show {
+            display: block;
+          }
+        }
+
+        .overview {
+          float: left;
+          padding-top: 2px;
+          padding-left: 10px;
+        }
+
+        .fundraising {
+          float: left;
+          padding-top: 2px;
+          padding-left: 10px;
+        }
+
+        .fundraising-mini {
+          clear: both;
+
+          .fundraising-details {
+            padding-top: 8px;
+            color: #3c5b6e;
+          }
+        }        
+
+        .right {
+          float: right;
+
+          .player-btns {
+            float: left;
+            padding: 6px 0 0 0;
+
+            .player-btn {
+              display: inline-block;
+              padding: 0 4px;
+            }
+          }
+        }
+      }
+    }
+
+    .game-funcs {
+      padding: 12px;
+      text-align: center;
+
+      .btn {
+        margin: 0 14px 14px 14px;
+      }
+    }
+  }
+
+  .fundraise-sticker-container {
+    padding-top: 20px;
+
+    .fundraise-sticker {
+      display: none;
+      margin: 0 auto;
+      text-align: center;
+      width: 140px;
+      height: 140px;
+      -webkit-box-shadow: 0px 5px 5px 0 rgba(25,56,72,0.2);
+      -moz-box-shadow: 0px 5px 5px 0 rgba(25,56,72,0.2);
+      box-shadow: 0px 5px 5px 0 rgba(25,56,72,0.2);
+
+      .details {
+        .raised {
+          font-size: 1.8em;
+        }
+
+        .target {
+          font-size: 0.9em;
+          line-height: 1.6em;
+
+          &:before {
+            padding-top: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+body.fundraising #player-view {
+  .players-overview {
+    .detail {
+      .team-overview {
+        display: block;
+      }
+
+      .players-ranking {
+        .fundraising-title {
+          display: inline-block;
+        }    
+      }
+    }
+  }
+
+  .fundraise-sticker {
+    display: block;
+  }
+}
+
+/* PHOTO POSTS VIEW */
+/******************************************/
+.photo-posts-view {
+  padding: 0 0 48px 0;
+
+  .posts {
+    margin: 22px auto 0 auto;
+    width: 244px;
+
+    .welcome {
+      display: none;
+      color: #a5b4bd;
+      text-align: center;
+    }
+
+    .without-photos {
+      display: block;
+    }
+
+    .post {
+      vertical-align: top;
+      width: 100%;
+      padding: 22px 0 0 0;
+      font-size: 0.9em;
+      text-align: left;
+    }
+    .post.no-show {
+      display: none;
+    }
+
+    .post .photo {
+      position: relative;
+      width: 100%;
+      height: 260px;
+      overflow: hidden;
+    }
+
+    .post .media {
+      position: relative;
+    }
+
+    .post .media:hover {
+      cursor: pointer;
+    }
+
+    .post .image {
+      width: 244px;
+      height: 244px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .no-photos .post {
+      display: none;
+
+      &:first-child {
+        display: inline-block;
+      }
+
+      .image {
+        background: #f8f8f8;
+
+        .icon {
+          line-height: 244px;
+          text-align: center;
+          font-size: 3em;
+          color: #fff;
+        }
+      }
+    }
+
+    .post .details {
+      padding-top: 8px;
+    }
+
+    .post .credit {
+      line-height: 1.4em;
+    }
+
+    .post .ago {
+      color: #a5b4bd;
+    }
+
+    .post .media-icon {
+      position: absolute;
+      top: 2px;
+      right: 6px;
+      font-size: 1.4em;
+      color: #fff;
+    }
+  }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #footer-view {
+    margin-top: 200px;
+    height: 200px;
+
+    .logo-container {
+      display: block;
+      top: -100px;
+    }
+
+    .mr-logo {
+      width: 200px;
+    }
+  }
+
+  #page-view .stripe {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 88px;
+    background: #fff;
+  }
+
+  #page-view .stripe.top {
+    top: 72px;
+  }
+
+  body.sponsored .sponsor-view .logo {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  body.sponsored .sponsor-view .title {
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 38px;
+  }
+
+  body.sponsored .sponsor-view .detail {
+    display: inline-block;
+    padding-top: 4px;
+    vertical-align: top;
+    float: right;
+  }
+
+  body.sponsored .sponsor-view .sponsor-detail-view h1 {
+    padding-top: 0;
+  }
+
+  body.sponsored .sponsor-view .sponsor-detail-view h1 {
+    font-size: 3em;
+    line-height: 1.05em;
+  }
+
+  body.sponsored .sponsor-view .detail .donate-btn {
+    padding-top: 18px;
+    text-align: right;
+  }
+
+  #game-view {
+    overflow: initial;
+
+    #photo-view {
+      display: block;
+    }
+  }
+
+  body.sponsored #photo-view {
+    border-top: #fff solid 4px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+  #player-view {
+    position: relative;
+    background: none;
+
+    .players-overview {
+      .detail {
+        padding: 0 19px 26px 19px;
+
+        .team-details {          
+          .title-container {
+            text-align: left;
+            display: inline-block;
+            height: 50px;
+            vertical-align: bottom;
+          }
+
+          .summit-container {
+            display: inline-block;
+            float: right;
+            padding: 0;
+          }
+
+          .pos {
+            border-left: none;
+            border-right: 1px solid #a5b4bd;
+
+            .ranking {
+              float: right;
+            }
+          }
+        }
+
+        .team-overview {
+          padding: 16px 89px 10px 89px;
+
+          .photo {
+            display: none;
+          }
+
+          .msg {
+            padding-top: 0;
+          }
+        }
+      }
+
+      .players-ranking {
+        padding-left: 0;
+        padding-right: 0;
+
+        .player-ranking-title {
+          text-align: left;
+        }
+
+        .player-ranking {
+          height: 75px;
+          padding-left: 20px;
+          padding-bottom: 0;
+
+          .pos {          
+            display: inline-block;
+          }          
+
+          .photo {
+            width: 58px;
+          }
+
+          .overview {
+            width: 200px;
+            border-left: 1px solid #a5b4bd;
+          }
+
+          .fundraising {
+            border-left: 1px solid #a5b4bd;          
+          }
+        }
+      }
+
+      .game-funcs {
+        padding-top: 32px;
+      }
+    }
+
+    .fundraise-sticker-container {
+      position: absolute;
+      padding: 0;
+      top: -64px;
+      left: 0;
+      width: 100%;
+
+      .fundraise-sticker {
+        position: relative;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .photo-posts-view {
+    .posts {
+      margin: 16px 0 0 0;
+      width: 100%;
+
+      .welcome {
+        padding-left: 7px;
+        text-align: left;
+      }
+
+      .post {
+        padding: 22px 7px 0 7px;
+        width: 210px;
+
+        .image {
+          width: 196px;
+          height: 196px;
+        }
+      }
+
+      .no-photos {
+        .post {
+          display: inline-block;
+
+          .image {
+            .icon {
+              line-height: 196px;
+            }          
+          }
+        }
+      }      
+    }
+  }
+}
+
+/* Small devices (tablets, 992px and up) */
+@media (min-width: 992px) {
+  body.sponsored .sponsor-view {
+    height: 388px;
+    padding: 56px 0 0 0;
+  }
+
+  body.sponsored .sponsor-view .sponsor-detail-view {
+    margin-left: auto;
+    margin-right: auto;
+    width: 942px;
+  }
+
+  #photo-view {
+    margin: 0 auto 0 auto;
+    width: 942px;
+    -webkit-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
+    -moz-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
+    box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
+  }
+
+  body.sponsored #photo-view {
+    margin-top: -164px;
+    border: #fff solid 4px;
+  }
+
+  #photo-view .embelish {
+    display: block;
+  }
+
+  #player-view {
+    margin-left: auto;
+    margin-right: auto;
+    width: 992px;
+  }
+
+  #player-view .players-overview {
+    margin-left: auto;
+    margin-right: auto;    
+    margin-top: -55px;
+    width: 670px;
+  }
+}

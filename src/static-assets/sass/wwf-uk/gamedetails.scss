@@ -1,0 +1,95 @@
+$primary-color: #f16d49;
+
+body {
+  font-family: 'PFDinTextPro-Regular', sans-serif;
+}
+
+#page-view {
+  .embelish-left {
+    top: -128px;
+    left: -172px;
+    width: 200px;
+    height: 245px;
+    background: url('../../images/wwf-uk/left-leaves.png') no-repeat top center;
+  }
+
+  .embelish-right {
+    top: 3px;
+    right: -137px;
+    width: 175px;
+    height: 230px;
+    background: url('../../images/wwf-uk/right-leaves.png') no-repeat top center;
+  }
+
+  .stripe {
+    display: none;
+  }
+}
+
+/* FUNDRAISE STICKER */
+/******************************************/
+.fundraise-sticker {
+  background: $primary-color;
+
+  .percent {
+    background-color: #f69741;
+  }
+
+  .details .raised {
+    font-family: 'PFDinTextPro-Regular', sans-serif;
+
+    .amount {
+      font-family: 'PFDINTextPro-Black', sans-serif;
+      padding-left: 6px;
+    }
+  }
+}
+
+/* PLAYER VIEW */
+/******************************************/
+#player-view {
+  .player-ranking {
+    color: $primary-color;
+
+    .ranking {
+      background: $primary-color;
+    }
+  }
+
+  .players-overview {
+    .detail {
+      .team-details {
+        h1 {
+          color: $primary-color;
+        }
+
+        .pos .ranking {
+          background-color: $primary-color;
+        }
+      }
+    }
+
+    .players-ranking .player-ranking h1 {
+      color: $primary-color;
+    }
+  }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .btn.btn-large {
+    font-size: 1.1em;
+  }
+
+  #player-view .detail .game-funcs {
+    padding-top: 94px;
+  }
+
+  #footer-view {
+    margin-top: 0;
+  }
+}
+
+/* Small devices (tablets, 992px and up) */
+@media (min-width: 992px) {
+}

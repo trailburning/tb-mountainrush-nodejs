@@ -655,10 +655,10 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           break;
       }
 
-      playersSummaryView = new PlayersSummaryView({ el: '#players-summary-view', playerCollection: playerCollection, activePlayer: activePlayer });
+      playersSummaryView = new PlayersSummaryView({ el: '#players-summary-view', jsonGame: jsonCurrGame, playerCollection: playerCollection, activePlayer: activePlayer });
       playersSummaryView.render();
 
-      playersListView = new PlayersListView({ el: '#players-list-view', playerCollection: playerCollection, activePlayer: activePlayer });
+      playersListView = new PlayersListView({ el: '#players-list-view', jsonGame: jsonCurrGame, playerCollection: playerCollection, activePlayer: activePlayer });
       playersListView.render();
 
       playersDetailView = new PlayersDetailView({ el: '#players-detail-view', jsonGame: jsonCurrGame, playerCollection: playerCollection, jsonFundraising: jsonFundraising, activePlayer: activePlayer });

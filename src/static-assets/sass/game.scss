@@ -40,21 +40,23 @@
 
 /* FOOTER VIEW */
 /******************************************/
-#footer-view .logo-container {
-  display: none;
-  position: absolute;
-  top: -80px;
-  width: 100%;
-}
+#footer-view {
+  .logo-container {
+    display: none;
+    position: absolute;
+    top: -80px;
+    width: 100%;
+  }
 
-#footer-view .mr-logo {
-  margin: 0 auto;
-  width: 160px;
-  text-align: center;
-}
+  .mr-logo {
+    margin: 0 auto;
+    width: 160px;
+    text-align: center;
 
-#footer-view .mr-logo img {
-  width: 100%;
+    img {
+      width: 100%;
+    }
+  }
 }
 
 /* PAGE VIEW */
@@ -710,7 +712,7 @@ body.fundraising #player-view .detail .player .latest-activity {
 }
 
 #player-view .detail .photo-posts-view {
-  padding: 0 0 26px 0;
+  padding: 0 0 48px 0;
 }
 
 #player-view .detail .player .posts {
@@ -1138,12 +1140,6 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     overflow: initial;
   }
 
-  #map-view {
-    -webkit-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
-    -moz-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
-    box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
-  }
-
   body.sponsored #map-view {
     border-top: #fff solid 4px;
     -webkit-box-shadow: none;
@@ -1209,10 +1205,6 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     background: #FFF;
   }
 
-  #player-view .detail .photo-posts-view {
-    min-height: 320px;
-  }
-
   #player-view .detail .scroll-container {
     overflow: initial;
   }
@@ -1270,7 +1262,7 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     text-align: left;
   }
 
-  body.fundraising #player-view .detail .player .fundraise-sticker-continer {
+  body.fundraising #player-view .detail .player .fundraise-sticker-container {
     float: left;
     display: block;
     padding-left: 7px;
@@ -1423,15 +1415,15 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   #footer-view {
     margin-top: 200px;
     height: 200px;
-  }
 
-  #footer-view .logo-container {
-    display: block;
-    top: -100px;
-  }
+    .logo-container {
+      display: block;
+      top: -100px;
+    }
 
-  #footer-view .mr-logo {
-    width: 200px;
+    .mr-logo {
+      width: 200px;
+    }
   }
 }
 
@@ -1522,6 +1514,9 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   #map-view {
     margin: 0 auto 0 auto;
     width: 942px;
+    -webkit-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
+    -moz-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
+    box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
   }
 
   body.sponsored #map-view {

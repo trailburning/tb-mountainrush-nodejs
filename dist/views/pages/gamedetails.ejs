@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include ../partials/includes.ejs %>
+<link href='/static-assets/css/photoswipe.css' rel='stylesheet' />
+<link href='/static-assets/css/default-skin/default-skin-with-ig.css' rel='stylesheet' />
+<% if (Campaign.CampaignTemplate != 'default') { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/web_platform.css' rel='stylesheet' />
+<% } %>
+<link href='/static-assets/css/gamedetails.css' rel='stylesheet' />
+<% if (Campaign.CampaignTemplate != 'default') { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/gamedetails.css' rel='stylesheet' />
+<% } %>
+<link href="http://api.tiles.mapbox.com/mapbox.js/v3.2.0/mapbox.css" rel="stylesheet">
+<% include ../partials/analyticsFBPixel.ejs %>
+</head>
+
+<body>
+<script>
+var APP = 'GameDetailsApp';
+var GAME_API_URL = '<%= Defs.MRAPIURL %>';
+var HOST_URL = '<%= Defs.BaseHTTPSURL %>';
+var GAME_FUNDRAISING = <%= Campaign.CampaignFundraising %>;
+var CLIENT_ID = '<%= Campaign.ClientID %>';
+var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
+var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
+var GAME_ID = '<%= Defs.GameID %>';
+var FUNDRAISING_PROVIDER = '<%= Campaign.CampaignFundraisingProvider %>';
+var TEST_PROGRESS = '';
+</script>
+
+<div class="container-fluid nopadding">
+  <div id="page-view">
+    <% if (Campaign.CampaignTemplate == 'default') { %>
+      <% include ../partials/header.ejs %>
+    <% } else { %>
+      <%- include('../partials/' + Campaign.CampaignTemplate + '/header.ejs') %>
+    <% } %>
+
+    <div id="game-view">
+      <div id="sponsor-big-container-view"></div>
+
+      <div id="photo-view">
+        <div class="photo">
+          <div class="image fade_on_ready">
+          <img class="scale" src="https://tbassets2.imgix.net/images/brands/mountainrush/clients/wwf-uk/assets/MR_strava_wwf_img_0000_girl.png?fm=jpg&w=1024&q=80">
+          </div>
+        </div>
+
+        <div class="embelish embelish-left"></div>
+        <div class="embelish embelish-right"></div>
+      </div>
+    </div>
+
+    <div id="player-view">
+      <div class="players-overview" id="players-overview-view"></div>
+    </div>
+
+    <div class="stripe top"></div>
+  </div>
+
+  <div class="show-when-ready">
+    <% if (Campaign.CampaignTemplate == 'default') { %>
+      <% include ../partials/footer.ejs %>
+    <% } else { %>
+      <%- include('../partials/' + Campaign.CampaignTemplate + '/footer.ejs') %>
+    <% } %>
+  </div>
+</div>
+
+<div id="challenge-cancel-modal-view"></div>
+<div id="invite-friend-modal-view">
+  <div class="modal msg-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="details">
+            <div id="game-invite-view"></div>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
+
+<div id="demo-video-view"></div>
+
+<div id="mobileTest" class="visible-xs"></div>
+
+<script type="text/template" id="sponsorBigViewTemplate">
+  <div class="sponsor-view hidden-xs">
+    <div class="sponsor-detail-view">
+      {{ if (game.name == 'ashmei Mont Blanc') { }}
+        <div class="logo">
+          <a href="https://ashmei.com/challengethirtyone" target="_blank"><img src="/static-assets/images/logos/logo_ashmei.png"></a></div>
+        <div class="title">
+          <h1>Challenge 31<br/>December</h1>
+          <h2>Climb Mont Blanc with <a href="https://ashmei.com/challengethirtyone" target="_blank" class="link"><strong>ashmei</strong></a></h2>
+        </div>
+      {{ } else { }}
+        <div class="logo">
+          <a href="https://www.wwf.org.uk/" target="_blank"><img src="/static-assets/images/logos/logo_wwf_demo.png"></a></div>
+        <div class="title">
+          <h1>{{= game.name }}<br/>Challenge</h1>
+          <h2>Fundraising for <strong>WWF-UK</strong></h2>          
+        </div>
+      {{ } }}      
+
+      <div class="detail">
+        <div class="countdown-container" data-value-day="<%= __n('game.day', 1) %>" data-value-days="<%= __n('game.day', 2) %>">
+          <div class="countdown">
+            <span class="clock"></span>
+            <span class="end">
+              <span class="days"><span class="time">0</span><span class="days-marker"> <%= __n('game.day', 2) %></span></span>
+              <span class="hours"><span class="time"><span>00</span><span class="marker">:</span><span>00</span><span class="marker">:</span><span>00</span></span></span>
+            </span>
+          </div>
+        </div>
+
+        <div class="donate-btn"><a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>" data-href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/[PLAYER_ID]/donate?amount=1000" class="btn mr-btn btn-primary btn-large btn-invert-hover"><%= __('defs.donate') %></a></div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="playersOverviewTemplate">
+  <div class="detail">
+    <div class="visible-sm visible-md visible-lg">
+      <div class="team-details">
+        <div class="title-container">
+        <h1>Team Test</h1>for {{= game.campaign_name }}
+        </div>
+        <div class="summit-container">
+          {{ if (players.length > 1) { }}
+            <div class="pos">
+              <div class="ranking">{{= players.length }}</div>
+              <div class="desc">Participants</div>
+            </div>
+          {{ } }}
+          <div class="summit">
+            <h1>{{= game.ascent }}m</h1>{{= game.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fundraise-sticker-container">
+      <div class="fundraise-sticker">
+        <div class="details">
+          <div class="percent" style="top: {{= (100 - page.totalRaisedPercentageOfFundraisingTarget) }}%;height: {{= page.totalRaisedPercentageOfFundraisingTarget }}%;"></div>
+          <div class="raised">{{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}<span class="amount">{{= Math.round(page.totalRaisedOnline) }}</span></div>
+          <div class="target"><%= __('game.fundraising.summary.raised') %> {{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}{{= page.fundraisingTarget }}<br/><%= __('game.fundraising.summary.team_target') %></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="visible-xs">
+      <div class="team-details">
+        <div class="title-container">
+        <h1>Team Test</h1>for {{= game.campaign_name }}
+        </div>
+        <div class="summit-container">
+          <div class="summit">
+            <h1>{{= game.ascent }}m</h1>{{= game.name }}
+          </div>
+          {{ if (players.length > 1) { }}
+            <div class="pos">
+              <div class="ranking">{{= players.length }}</div>
+              <div class="desc">Participants</div>
+            </div>
+          {{ } }}
+        </div>
+      </div>
+    </div>
+
+    <div id="sponsor-small-container-view">
+      <div class="sponsor-view visible-xs">
+        <div class="sponsor-detail-view">
+        {{ if (game.name == 'ashmei Mont Blanc') { }}
+          <div class="logo"><a href="https://ashmei.com/challengethirtyone" target="_blank"><img src="/static-assets/images/logos/logo_ashmei.png"></a></div>
+          <div class="title">
+            <h1>Challenge 31<br/>December</h1>
+            <h2>Climb Mont Blanc with <a href="https://ashmei.com/challengethirtyone" target="_blank" class="link"><strong>ashmei</strong></a></h2>
+          </div>
+        {{ } else { }}
+          <div class="logo"><a href="https://www.wwf.org.uk/" target="_blank"><img src="/static-assets/images/logos/logo_wwf_demo.png"></a></div>
+          <div class="title">
+            <h1>{{= game.name }}<br/>Challenge</h1>
+            <h2>Fundraising for <strong>WWF-UK</strong></h2>
+          </div>
+        {{ } }}
+        </div>
+      </div>
+    </div>
+
+    <div class="team-overview">
+      <div class="photo">
+        <div class="image"><img  src="https://tbassets2.imgix.net/images/brands/mountainrush/clients/wwf-uk/assets/MR_strava_wwf_img_0000_girl.png?fm=jpg&w=1024&q=80"></div>
+      </div>
+
+      <div class="msg">
+      <p>
+      We're virtually climbing Mount Sabyinyo, the home of mountain gorialls!
+      </p>
+      <p>
+      Please support us on our journey to protect the last remaining mountain gorillas, every donation will go directly to WWF mountain gorilla projects!
+      </p>
+      </div>
+    </div>
+
+    <div class="players-ranking">
+      <div class="player-ranking-title visible-xs">
+        <div class="player-title">Team Players</div>
+      </div>
+      <ul>
+        <li class="player-ranking-title hidden-xs">
+          <div class="pos-title">
+          {{ if (players.length > 1) { }}Position{{ } }}
+          </div>
+          <div class="player-title">Player</div>
+          <div class="fundraising-title">Raised</div>
+        </li>
+
+        {{ _.each(players, function(player, index) { }}
+          <li class="player-ranking" data-id="{{= player.id }}" data-pos="{{= index }}">
+            <div class="pos">
+              <div class="ranking">{{= index+1 }}</div>
+            </div>
+            <div class="photo">
+              <div class="avatar"><img src="{{= player.avatar }}"></div>
+              <div class="photo-icon {{ if (player.mediaCaptured) { }}show{{ } }}"><i class="fa fa-camera"></i></div>
+            </div>
+            <div class="overview">
+            <h1 class="truncate" data-truncate="15">{{= player.firstname }} {{= player.lastname }}</h1>
+            {{ if (player.elevationToSummit) { }}
+              {{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m <%= __('game.to_summit') %>
+            {{ } else { }}
+            <%= __('game.summited_long') %>
+            {{ } }}
+            </div>
+            <div class="hidden-xs">
+              <div class="fundraising">
+              {{ if (page.fundraisingTarget && page.fundraisingTarget > 0) { }}
+                <h1>{{= player.fundraisingCurrencySymbol }}{{= player.fundraising_raised }}</h1>
+                of {{= player.fundraisingCurrencySymbol }}{{= player.fundraising_goal }} target
+              {{ } }}
+              </div>
+            </div>
+            <div class="right">
+              <div class="player-btns">
+                <div class="player-btn">
+                {{ if (player.fundraising_goal && player.fundraising_goal > 0) { }}
+                  <% if (Campaign.CampaignFundraisingProvider == 'JustGiving') { %>
+                    <a href="<%= Campaign.CampaignFundraisingDonation %>pageId/{{= player.fundraising_pageID }}?amount=10.00&currency=GBP&reference=<%= Campaign.CampaignShortName %>&exitUrl={{= encodeURI("<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/" + player.id + "/?jgDonationId=JUSTGIVING-DONATION-ID") }}" class="btn mr-btn btn-primary btn-large"><%= __('defs.donate') %></a>
+                  <% } else { %>
+                    <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/{{= player.id }}/donate?amount=1000" class="btn mr-btn btn-primary"><%= __('defs.donate') %></a>
+                  <% } %>        
+                {{ } }}
+                </div>
+              </div>
+            </div>
+
+            <div class="visible-xs">
+              <div class="fundraising-mini">
+                <div class="fundraising-details">
+                {{ if (page.fundraisingTarget && page.fundraisingTarget > 0) { }}
+                  Raised <strong>{{= player.fundraisingCurrencySymbol }}{{= player.fundraising_raised }}</strong> of <strong>{{= player.fundraisingCurrencySymbol }}{{= player.fundraising_goal }}</strong> target
+                {{ } }}
+                </div>
+              </div>
+            </div>
+          </li>
+        {{ }); }}
+      </ul>
+    </div>
+
+    <div class="photo-posts-view clearfix">
+      <div class="posts">
+        <div class="welcome without-photos">{{= '<%= __('game.photos.waiting.description') %>'.replace('%s', 'the team') }}</div>
+        <div class="welcome with-photos">{{= '<%= __('game.photos.description') %>'.replace('%s', 'the team') }}</div>
+        <div class="photos with-photos"></div>
+
+        <div class="no-photos without-photos">
+          <div class="post">
+            <div class="image">
+              <div class="icon"><i class="fa fa-camera"></i></div>
+            </div>
+          </div><div class="post">
+            <div class="image">
+              <div class="icon"><i class="fa fa-camera"></i></div>
+            </div>
+          </div><div class="post">
+            <div class="image">
+              <div class="icon"><i class="fa fa-camera"></i></div>
+            </div>
+          </div>
+        </div>              
+      </div>
+    </div>
+
+    <div class="share-detail visible-xs visible-sm">
+      <div class="share-text"><%= __('defs.social.share_team_msg') %></div>
+      <div class="btns">
+      <a href="http://www.facebook.com/share.php?u=<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>" class="btn mr-btn btn-primary" target="_blank"><i class="fa fa-facebook"></i></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20the%20<%= Campaign.CampaignName %>%20challenge%20-%20<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>" class="btn mr-btn btn-primary" target="_blank"><i class="fa fa-twitter"></i></a>
+      </div>
+    </div>
+
+    <div class="share-detail hidden-xs hidden-sm">
+      <div class="share-text"><%= __('defs.social.share_team_msg') %></div>
+      <div class="btns">
+      <a href="http://www.facebook.com/share.php?u=<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>" class="btn mr-btn btn-primary double" target="_blank"><div><%= __('defs.social.share_facebook') %></div><div><i class="fa fa-facebook"></i></div></a>
+      <a href="https://twitter.com/intent/tweet?text=Check%20out%20the%20<%= Campaign.CampaignName %>%20challenge%20-%20<%= Defs.BaseHTTPSURL %>game/<%= Defs.GameID %>" class="btn mr-btn btn-primary double" target="_blank"><div><%= __('defs.social.share_twitter') %></div><div><i class="fa fa-twitter"></i></div></a>
+      </div>
+    </div>
+
+    {{ if (activePlayer) { }}
+      <div class="visible-xs visible-sm">
+      <% include ../partials/gameFuncsTemplate.ejs %>
+      </div>
+    {{ } }}  
+  </div>
+
+  {{ if (activePlayer) { }}
+    <div class="hidden-xs hidden-sm">
+    <% include ../partials/gameFuncsTemplate.ejs %>
+    </div>
+  {{ } }}
+</script>
+
+<% include ../partials/challengeCancelTemplate.ejs %>
+<% include ../partials/inviteFriendTemplate.ejs %>
+<% include ../partials/demoVideoTemplate.ejs %>
+<% include ../partials/analytics.ejs %>
+</body>
+
+<script data-main="/static-assets/js/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+</html>

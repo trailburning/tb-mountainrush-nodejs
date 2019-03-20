@@ -31,7 +31,6 @@ body {
   }
 }
 
-/*
 /* STORY OVERLAY */
 /******************************************/
 .modal.story-overlay .detail-title,
@@ -137,7 +136,7 @@ body {
 
 #player-view .list .player-ranking.active, 
 #player-view .list .player-ranking:hover {
-  color: #474747;
+  color: $primary-color;
 }
 
 #player-view .list .player-ranking.active .ranking, 
