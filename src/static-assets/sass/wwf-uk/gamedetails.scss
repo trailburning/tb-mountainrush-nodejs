@@ -2,11 +2,6 @@ $primary-color: #f16d49;
 
 body {
   font-family: 'PFDinTextPro-Regular', sans-serif;
-
-  &.map-ready #page-view {
-    background: url('../../images/wwf-uk/bottom-big-blurry-leaf.png') no-repeat;
-    background-position: left -294px bottom 178px;
-  }
 }
 
 #page-view {
@@ -50,19 +45,33 @@ body {
   }
 }
 
-/* MAP VIEW */
-/******************************************/
-#map-view .countdown .days {
-  font-size: 2em;
-}
-
 /* PLAYER VIEW */
 /******************************************/
-#player-view .list .player-ranking {
-  color: #a3a3a3;
+#player-view {
+  .player-ranking {
+    color: $primary-color;
 
-  .ranking {
-    background: #a3a3a3;
+    .ranking {
+      background: $primary-color;
+    }
+  }
+
+  .players-overview {
+    .detail {
+      .team-details {
+        h1 {
+          color: $primary-color;
+        }
+
+        .pos .ranking {
+          background-color: $primary-color;
+        }
+      }
+    }
+
+    .players-ranking .player-ranking h1 {
+      color: $primary-color;
+    }
   }
 }
 
