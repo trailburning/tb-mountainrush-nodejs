@@ -9,12 +9,10 @@ define([
   'truncate',
   'modernizr',
   'imageScale',
-  'turf',
   'moment',
   'countdown',  
   'imagesLoaded',
   'videojs',
-  'mapbox',
   'views/SponsorView',
   'views/LanguageSelectorView',
   'views/ActivePlayerView',
@@ -24,7 +22,7 @@ define([
   'views/ChallengeCancelModalView',
   'views/GameInviteView',  
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, turf, moment, countdown, imagesLoaded, videojs, mapbox, SponsorView, LanguageSelectorView, ActivePlayerView, Player, ChallengeView, PlayersListView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
+], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, moment, countdown, imagesLoaded, videojs, SponsorView, LanguageSelectorView, ActivePlayerView, Player, ChallengeView, PlayersListView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -44,7 +42,6 @@ define([
     var playerCollection = null;
     var activePlayer = null;
     var jsonCurrGame = null;
-    var map = null;
     var fundraisingTarget = 0, totalRaisedOnline = 0;
 
     var geojsonFeature = {
@@ -72,50 +69,6 @@ define([
       $.getJSON(url, function(result){
         onActivePlayerLoaded(result[0].id);
       });
-    }
-
-    function setupMap() {
-      var strCampaignFolder = '';
-      switch (CAMPAIGN_TEMPLATE) {
-        case 'default':
-          break;
-
-        default:
-          strCampaignFolder = CAMPAIGN_TEMPLATE + '/';
-          break;
-      }
-
-      L.mapbox.accessToken = 'pk.eyJ1IjoibWFsbGJldXJ5IiwiYSI6IjJfV1MzaE0ifQ.scrjDE31p7wBx7-GemqV3A';
-/*
-https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.38886,52.517037.json?&access_token=pk.eyJ1IjoibWFsbGJldXJ5IiwiYSI6IjJfV1MzaE0ifQ.scrjDE31p7wBx7-GemqV3A
-https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.432159,52.526385.json?&access_token=pk.eyJ1IjoibWFsbGJldXJ5IiwiYSI6IjJfV1MzaE0ifQ.scrjDE31p7wBx7-GemqV3A
-*/
-      var point = geojsonFeature.coordinates[Math.round(geojsonFeature.coordinates.length / 2)];
-//      map = L.mapbox.map('mapbox-view', null, {dragging: true, touchZoom: false, scrollWheelZoom: false, doubleClickZoom:false, boxZoom:false, tap:false, zoomControl:false, zoomAnimation:false, attributionControl:false})
-      map = L.mapbox.map('mapbox-view', 'mapbox.streets', {dragging: true, touchZoom: false, scrollWheelZoom: false, doubleClickZoom:false, boxZoom:false, tap:false, zoomControl:false, zoomAnimation:false, attributionControl:false})      
-      .setView([point[1], point[0]], 13);
-
-//      L.mapbox.styleLayer('mapbox://styles/mallbeury/cjetqdl9i34f52sl3hewjgkr0').addTo(map);
-
-      map.featureLayer.setGeoJSON(geojsonFeature);
-      map.fitBounds(map.featureLayer.getBounds(), {padding: [100, 100], reset: true});
-
-      // add flag
-      var point = geojsonFeature.coordinates[geojsonFeature.coordinates.length-1];
-      var latLng = new L.LatLng(point[1], point[0]);
-
-//      var strImage = 'http://assets.trailburning.com/images/brands/25zero/furniture/placeholder_waiting2.png';
-      var strImage = 'http://mountainrush.trailburning.com/static-assets/images/' + strCampaignFolder + 'markers/marker-location.png';
-
-      var flagMarker = L.marker(latLng);
-//      flagMarker.setIcon(L.divIcon({className: 'tb-map-media-marker', html: '<div><div class="avatar"><img src="'+strImage+'"></div></div>', iconSize: [100, 100], iconAnchor: [50, 120]}));
-      flagMarker.setIcon(L.divIcon({className: 'tb-map-flag-marker', html: '<img src="'+strImage+'">', iconSize: [32, 39], iconAnchor: [16, 39]}));
-      map.addLayer(flagMarker);
-
-      // now allow player to click map
-      $('#loader-view').hide();
-      $('#map-view .overlay-loader-view').hide();
-      $('#map-view .map-overlay').hide();
     }
 
     function getPlayers() {
@@ -232,7 +185,6 @@ https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/13.432159,52.526385
           geojsonFeature.coordinates.push(this.coords);
         });
 
-        setupMap();
         getPlayers();
       });
     }

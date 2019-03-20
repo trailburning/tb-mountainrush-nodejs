@@ -70,52 +70,22 @@ body.sponsored .sponsor-view .title h2 {
 body.sponsored .sponsor-view .title strong {
   font-family: 'radikalbold', sans-serif; }
 
-/* MAP VIEW */
+/* PHOTO VIEW */
 /******************************************/
-#map-view {
+#photo-view {
   position: relative;
   width: 100%;
   background: #f3f3f3; }
-  #map-view .map {
+  #photo-view .photo .image {
     width: 100%;
-    height: 320px !important; }
-  #map-view .embelish {
+    height: 406px; }
+  #photo-view .embelish {
     display: none;
     position: absolute;
     pointer-events: none; }
-  #map-view .map-overlay {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.2); }
-  #map-view .overlay-loader-view {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%; }
-  #map-view .overlay-loader {
-    position: relative;
-    top: 50%;
-    margin: -30px auto 0 auto;
-    width: 60px;
-    height: 60px; }
-    #map-view .overlay-loader .double-bounce1,
-    #map-view .overlay-loader .double-bounce2 {
-      background-color: #FFF; }
-  #map-view .game-details-container {
-    position: absolute;
-    pointer-events: none;
-    top: 26px;
-    width: 100%;
-    text-align: center; }
 
 .countdown-container {
   display: none; }
-
-#map-view .countdown {
-  display: inline-block;
-  width: 260px; }
 
 .countdown {
   line-height: 1em;
@@ -139,44 +109,6 @@ body.sponsored .sponsor-view .title strong {
 
 .countdown .hours .time {
   font-family: 'radikallight', sans-serif; }
-
-/* MAPBOX VIEW */
-/******************************************/
-#mapbox-view .tb-map-flag-marker {
-  position: absolute;
-  width: 32px;
-  height: 39px; }
-  #mapbox-view .tb-map-flag-marker img {
-    width: 100%; }
-
-#mapbox-view .tb-map-media-marker {
-  position: absolute;
-  width: 100px;
-  height: 100px; }
-  #mapbox-view .tb-map-media-marker div {
-    background: #FFFFFF;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    overflow: hidden; }
-  #mapbox-view .tb-map-media-marker:before {
-    content: ' ';
-    position: absolute;
-    bottom: -4px;
-    left: 45px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 5px 5px 0 5px;
-    border-color: #FFF transparent transparent transparent; }
-  #mapbox-view .tb-map-media-marker .avatar {
-    margin: 4px;
-    width: 92px;
-    height: 92px;
-    border-radius: 50%;
-    overflow: hidden; }
-    #mapbox-view .tb-map-media-marker .avatar img {
-      width: 100%; }
 
 /* PLAYER VIEW */
 /******************************************/
@@ -202,26 +134,31 @@ body.sponsored .sponsor-view .title strong {
       padding: 28px 16px; }
       #player-view .list .detail .team-details .title-container {
         display: inline-block;
-        height: 50px; }
+        height: 50px;
+        vertical-align: bottom; }
       #player-view .list .detail .team-details .summit-container {
         display: inline-block;
         float: right; }
       #player-view .list .detail .team-details .pos {
         display: inline-block;
         text-align: left;
-        vertical-align: top;
-        padding: 5px 20px 0 22px;
+        vertical-align: bottom;
+        padding: 2px 20px 0 22px;
         border-right: 1px solid #a5b4bd; }
         #player-view .list .detail .team-details .pos .ranking {
           float: right;
-          width: 23px;
-          height: 23px;
-          line-height: 23px;
+          font-family: 'radikalbold', sans-serif;
+          margin-bottom: 2px;
+          font-size: 1.2em;
+          width: 25px;
+          height: 25px;
+          line-height: 25px;
           background-color: #44b6f7; }
       #player-view .list .detail .team-details .summit {
         display: inline-block;
         padding: 0 18px 0 12px;
-        text-align: right; }
+        text-align: right;
+        vertical-align: bottom; }
       #player-view .list .detail .team-details h1 {
         font-family: 'radikalbold', sans-serif;
         padding-bottom: 2px;
@@ -246,29 +183,30 @@ body.sponsored .sponsor-view .title strong {
         #player-view .list .detail .share-detail .btns .btn {
           margin: 0 13px; }
   #player-view .list .player-ranking-title {
-    height: 28px;
-    padding: 16px 8px 0 20px;
+    padding: 16px 8px 12px 20px;
     text-align: left;
     color: #3c5b6e;
     font-family: 'radikalbold', sans-serif;
     font-size: 0.8em;
     text-transform: uppercase; }
     #player-view .list .player-ranking-title .pos-title {
-      float: left;
+      display: inline-block;
       width: 98px; }
     #player-view .list .player-ranking-title .player-title {
-      float: left;
+      display: inline-block;
       width: 200px;
       padding-left: 10px; }
     #player-view .list .player-ranking-title .fundraising-title {
       display: none;
-      float: left;
       padding-left: 10px; }
   #player-view .list .player-ranking {
     height: 75px;
     padding: 16px 8px 0 20px;
     text-align: left;
     color: #a5b4bd; }
+    #player-view .list .player-ranking:hover {
+      cursor: pointer;
+      background: #f8f8f8; }
     #player-view .list .player-ranking h1 {
       color: #44b6f7;
       font-family: 'radikalbold', sans-serif;
@@ -342,7 +280,7 @@ body.fundraising #player-view .list .detail .team-overview {
   display: block; }
 
 body.fundraising #player-view .list .fundraising-title {
-  display: block; }
+  display: inline-block; }
 
 body.fundraising #player-view .fundraise-sticker {
   display: block; }
@@ -387,30 +325,22 @@ body.fundraising #player-view .fundraise-sticker {
     text-align: right; }
   #game-view {
     overflow: initial; }
-  body.sponsored #map-view {
+  body.sponsored #photo-view {
     border-top: #fff solid 4px;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none; }
-  body.sponsored #map-view .game-details-container {
-    display: none; }
-  #map-view .map {
-    height: 400px !important; }
-  #map-view .countdown {
-    top: 24px; }
   #player-view {
     position: relative;
     background: none; }
     #player-view .list .detail {
       padding: 0 19px 26px 19px; }
       #player-view .list .detail .team-overview {
-        padding: 26px 89px 0 89px; }
+        padding: 16px 89px 0 89px; }
         #player-view .list .detail .team-overview .photo {
           padding: 5px;
           background-color: #fff;
           box-shadow: 0px 5px 10px #eee; }
-        #player-view .list .detail .team-overview .msg {
-          padding-top: 32px; }
     #player-view .list .game-funcs {
       padding-top: 32px; }
     #player-view .fundraise-sticker-container {
@@ -431,16 +361,16 @@ body.fundraising #player-view .fundraise-sticker {
     margin-left: auto;
     margin-right: auto;
     width: 942px; }
-  #map-view {
+  #photo-view {
     margin: 0 auto 0 auto;
     width: 942px;
     -webkit-box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2);
     -moz-box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2);
     box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2); }
-  body.sponsored #map-view {
+  body.sponsored #photo-view {
     margin-top: -164px;
     border: #fff solid 4px; }
-  #map-view .embelish {
+  #photo-view .embelish {
     display: block; }
   #player-view {
     margin-left: auto;

@@ -87,16 +87,18 @@ body.sponsored .sponsor-view .title strong {
   font-family: 'radikalbold', sans-serif;
 }
 
-/* MAP VIEW */
+/* PHOTO VIEW */
 /******************************************/
-#map-view {
+#photo-view {
   position: relative;
   width: 100%;
   background: #f3f3f3;
 
-  .map {
-    width: 100%;
-    height: 320px !important;
+  .photo {
+    .image {
+      width: 100%;
+      height: 406px;
+    }
   }
 
   .embelish {
@@ -104,51 +106,10 @@ body.sponsored .sponsor-view .title strong {
     position: absolute;
     pointer-events: none;
   }
-
-  .map-overlay {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.2);
-  }
-
-  .overlay-loader-view {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .overlay-loader {
-    position: relative;
-    top: 50%;
-    margin: -30px auto 0 auto;
-    width: 60px;
-    height: 60px;
-
-    .double-bounce1, 
-    .double-bounce2 {
-      background-color: #FFF;
-    }
-  }
-
-  .game-details-container {
-    position: absolute;
-    pointer-events: none;
-    top: 26px;
-    width: 100%;
-    text-align: center;
-  }
 }
 
 .countdown-container {
   display: none;
-}
-
-#map-view .countdown {
-  display: inline-block;
-  width: 260px;
 }
 
 .countdown {
@@ -177,57 +138,6 @@ body.sponsored .sponsor-view .title strong {
 
 .countdown .hours .time {
   font-family: 'radikallight', sans-serif;
-}
-
-/* MAPBOX VIEW */
-/******************************************/
-#mapbox-view {
-  .tb-map-flag-marker {
-    position: absolute;
-    width: 32px;
-    height: 39px;
-
-    img {
-      width: 100%;
-    }
-  }
-
-  .tb-map-media-marker {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-
-    div {
-      background: #FFFFFF;
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      overflow: hidden;
-    }
-    &:before {
-      content: ' ';
-      position: absolute;
-      bottom: -4px;
-      left: 45px;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 5px 5px 0 5px;
-      border-color: #FFF transparent transparent transparent;
-    }
-
-    .avatar {
-      margin: 4px;
-      width: 92px;
-      height: 92px;
-      border-radius: 50%;
-      overflow: hidden;
-
-      img {
-        width: 100%;
-      }
-    }
-  }
 }
 
 /* PLAYER VIEW */
@@ -261,6 +171,7 @@ body.sponsored .sponsor-view .title strong {
         .title-container {
           display: inline-block;
           height: 50px;
+          vertical-align: bottom;
         }
 
         .summit-container {
@@ -271,15 +182,18 @@ body.sponsored .sponsor-view .title strong {
         .pos {
           display: inline-block;
           text-align: left;
-          vertical-align: top;
-          padding: 5px 20px 0 22px;
+          vertical-align: bottom;
+          padding: 2px 20px 0 22px;
           border-right: 1px solid #a5b4bd;
 
           .ranking {
             float: right;
-            width: 23px;
-            height: 23px;
-            line-height: 23px;
+            font-family: 'radikalbold', sans-serif;
+            margin-bottom: 2px;
+            font-size: 1.2em;
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
             background-color: #44b6f7;
           }
         }
@@ -288,6 +202,7 @@ body.sponsored .sponsor-view .title strong {
           display: inline-block;
           padding: 0 18px 0 12px;
           text-align: right;
+          vertical-align: bottom;
         }
 
         h1 {
@@ -330,8 +245,7 @@ body.sponsored .sponsor-view .title strong {
     }
 
     .player-ranking-title {
-      height: 28px;
-      padding: 16px 8px 0 20px;
+      padding: 16px 8px 12px 20px;
       text-align: left;
       color: #3c5b6e;
       font-family: 'radikalbold', sans-serif;
@@ -339,19 +253,18 @@ body.sponsored .sponsor-view .title strong {
       text-transform: uppercase;
 
       .pos-title {
-        float: left;
+        display: inline-block;
         width: 98px;
       }
 
       .player-title {
-        float: left;
+        display: inline-block;
         width: 200px;
         padding-left: 10px;
       }
 
       .fundraising-title {
         display: none;
-        float: left;
         padding-left: 10px;
       }
     }
@@ -361,6 +274,11 @@ body.sponsored .sponsor-view .title strong {
       padding: 16px 8px 0 20px;
       text-align: left;
       color: #a5b4bd;
+
+      &:hover {
+        cursor: pointer;
+        background: #f8f8f8;
+      }
 
       h1 {
         color: #44b6f7;
@@ -478,7 +396,7 @@ body.fundraising #player-view {
     }
 
     .fundraising-title {
-      display: block;
+      display: inline-block;
     }    
   }
 
@@ -551,25 +469,11 @@ body.fundraising #player-view {
     overflow: initial;
   }
 
-  body.sponsored #map-view {
+  body.sponsored #photo-view {
     border-top: #fff solid 4px;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-  }
-
-  body.sponsored #map-view .game-details-container {
-    display: none;
-  }
-
-  #map-view {
-    .map {
-      height: 400px !important;
-    }
-
-    .countdown {
-      top: 24px;
-    }
   }
 
   #player-view {
@@ -581,16 +485,12 @@ body.fundraising #player-view {
         padding: 0 19px 26px 19px;
 
         .team-overview {
-          padding: 26px 89px 0 89px;
+          padding: 16px 89px 0 89px;
 
           .photo {
             padding: 5px;
             background-color: #fff;
             box-shadow: 0px 5px 10px #eee;
-          }
-
-          .msg {
-            padding-top: 32px;
           }
         }
       }
@@ -627,7 +527,7 @@ body.fundraising #player-view {
     width: 942px;
   }
 
-  #map-view {
+  #photo-view {
     margin: 0 auto 0 auto;
     width: 942px;
     -webkit-box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
@@ -635,12 +535,12 @@ body.fundraising #player-view {
     box-shadow: 0px 5px 10px 1px rgba(25,56,72,0.2);
   }
 
-  body.sponsored #map-view {
+  body.sponsored #photo-view {
     margin-top: -164px;
     border: #fff solid 4px;
   }
 
-  #map-view .embelish {
+  #photo-view .embelish {
     display: block;
   }
 
