@@ -317,7 +317,7 @@ define([
           playerModel.set('activityPhotosRendered', nPhotoRendered+1);
           console.log('i:'+playerModel.get('id')+' : '+playerModel.get('activityPhotosRendered'));
           // render
-          playerActivityPhotosView.render().el;
+          playerActivityPhotosView.render(1).el;
         }
       }
     }
