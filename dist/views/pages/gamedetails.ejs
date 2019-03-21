@@ -94,6 +94,28 @@ var TEST_PROGRESS = '';
   <div class="embelish embelish-right"></div>
 </script>
 
+<script type="text/template" id="photoViewTemplate"><div class="post no-show">
+  {{ if (type == 'InstagramPhoto' || type == 'InstagramVideo') { }}
+    <div class="media">
+    <div class="image" style="background-image: url('{{= urls[640] }}')"></div>
+    {{ if (type == 'InstagramVideo') { }}
+      <div class="media-icon"><i class="fa fa-video-camera" aria-hidden="true"></i></div>
+    {{ } }}
+    </div>
+  {{ } else { }}
+    <div class="media viewer">
+    <div class="image" style="background-image: url('{{= urls[640] }}')"></div>
+    {{ if (type == 'InstagramVideo') { }}
+      <div class="media-icon"><i class="fa fa-video-camera" aria-hidden="true"></i></div>
+    {{ } }}
+    </div>
+  {{ } }}
+  <div class="details">
+    <div class="credit truncate" data-truncate="50">{{= caption }}</div>
+    <div class="ago">{{= uploaded_at_ago }}</div>
+  </div>
+</div></script>
+
 <script type="text/template" id="sponsorBigViewTemplate">
   <div class="sponsor-view hidden-xs">
     <div class="sponsor-detail-view">
