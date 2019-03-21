@@ -73,6 +73,7 @@ define([
 
       // where to position?
       var elFoundNextPost = null;
+      var elPhoto = $(this.template({photo: this.options.model.attributes, player: self.options.player}));
 
       $('.post', this.options.elParent).each(function(index){
         // is post older?
@@ -81,11 +82,13 @@ define([
         }
       });
 
+      console.log(self.options.player);
+
       if (elFoundNextPost) {
-        this.el = $(this.template({photo: this.options.model.attributes, player: self.options.player})).insertBefore(elFoundNextPost);
+        this.el = elPhoto.insertBefore(elFoundNextPost);
       }
       else {
-        this.el = $(this.template({photo: this.options.model.attributes, player: self.options.player})).appendTo(this.options.elParent);
+        this.el = elPhoto.appendTo(this.options.elParent);
       }
 
       // wait for image to load so we get dimensions
