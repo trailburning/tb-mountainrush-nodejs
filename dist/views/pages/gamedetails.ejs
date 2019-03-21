@@ -286,9 +286,15 @@ var TEST_PROGRESS = '';
     </div>
 
     <div class="photo-posts-view clearfix">
+      {{ var name = game.level_name }}
+
+      {{ if (game.name) { }}
+        {{ name = game.name }}
+      {{ } }}
+
       <div class="posts">
-        <div class="welcome without-photos">{{= '<%= __('game.photos.waiting.description') %>'.replace('%s', game.name) }}</div>
-        <div class="welcome with-photos">{{= '<%= __('game.photos.description') %>'.replace('%s', game.name) }}</div>
+        <div class="welcome without-photos">{{= '<%= __('game.photos.waiting.description') %>'.replace('%s', name) }}</div>
+        <div class="welcome with-photos">{{= '<%= __('game.photos.description') %>'.replace('%s', name) }}</div>
         <div class="photos with-photos"></div>
 
         <div class="no-photos without-photos">
