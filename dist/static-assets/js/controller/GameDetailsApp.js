@@ -234,7 +234,7 @@ define([
     function onPlayerLoaded(model) {
       // update fundraising
       fundraisingTarget += Number(model.get('fundraising_goal'));
-      totalRaisedOnline = Number(model.get('fundraising_raised'));
+      totalRaisedOnline += Number(model.get('fundraising_raised'));
 
       // default to complete
       var fProgress = mountainModel.get('distance');
