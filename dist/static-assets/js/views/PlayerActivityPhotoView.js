@@ -69,14 +69,17 @@ define([
 
       var dtUploadedDate = new Date(this.options.model.get('uploaded_at'));
       this.options.model.set('uploaded_at_ago', moment(dtUploadedDate).fromNow());
+      this.options.model.set('uploaded_at_time', dtUploadedDate.getTime());
 
       var attribs = this.options.model.attributes;
 
       // where to position?
-      console.log('uploaded:'+this.options.model.get('uploaded_at')+' : '+dtUploadedDate);
+      console.log('uploaded:'+this.options.model.get('uploaded_at')+' : '+this.options.model.get('uploaded_at_time'));
 
       $('.post', this.options.elParent).each(function(index){
-        console.log('check:'+$(this).attr('data-uploaded'));
+        console.log('check:'+$(this).attr('uploaded_at_time'));
+        // is post older?
+
       });
 
       this.el = $(this.template(attribs)).appendTo(this.options.elParent);
