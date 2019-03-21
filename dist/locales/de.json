@@ -264,12 +264,18 @@
 		},
     "game_cancel": {
       "cancel": "cancel",
-      "msg": "Don't like your challenge?  You can %s it." 
+      "msg": "Don't like your challenge?  You can %s it" 
     },        
     "invite_friends": {
       "title": "Invite Friends",
       "description": "Invite friends to join your challenge!",
       "invitation_sent": "Invitation sent!",
+      "automatic": {
+        "toggle": "Cannot find your friend?  You can invite them %s"
+      },
+      "manual": {
+        "toggle": "Don't know your friend's email?  Try finding them %s"
+      },      
       "friend_find": "Friend",
       "friend_find_help": "Please select a friend",      
       "friend_name": "Friend's Name",

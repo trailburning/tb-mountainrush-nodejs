@@ -1,9 +1,13 @@
+<div class="game-funcs">
+{{ if (players.length > 1) { }}
+  <p>View <a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/details" class="link">details</a> of this {{ if (<%= Campaign.CampaignFundraising %>) { }}team{{ } else { }}group{{ } }} challenge</p>
+{{ } }}
+
 {{ if (game.ownerPlayerID == activePlayer.id) { }}
-  <div class="game-funcs">
   {{ if (game.multiplayer && (game.stateDetail != 'complete')) { }}
     <p><%- __('game.invite_friends.msg_invite', '<span class="link link-invite">' + __('game.invite_friends.msg_title') + '</span>') %></p>
   {{ } }}
 
   <p><%- __('game.game_cancel.msg', '<span class="link link-cancel">' + __('game.game_cancel.cancel') + '</span>') %></p>
-  </div>
 {{ }; }}
+</div>
