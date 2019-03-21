@@ -81,7 +81,7 @@ define([
       $('.post', this.options.elParent).each(function(index){
         console.log('check:'+$(this).attr('data-uploaded-time'));
         // is post older?
-        if (!elFoundNextPost && (Number($(this).attr('data-uploaded-time')) > Number(self.options.model.get('uploaded_at_time')))) {
+        if (!elFoundNextPost && (Number(self.options.model.get('uploaded_at_time')) > Number($(this).attr('data-uploaded-time')))) {
           console.log('INSERT HERE');
           elFoundNextPost = $(this);
         }
