@@ -111,11 +111,10 @@ define([
       playersOverviewView.render();
 
       var elPhotos = $('#players-overview-view .posts .photos');
-//mla
+
       // get players
       playerCollection.each(function(model){
         model.set('activityPhotosRendered', 0);
-
         // get activities
         $.each(model.get('activities'), function(index, activity){
           var playerActivityPhotosView = new PlayerActivityPhotosView({ el: elPhotos, gameID: GAME_ID, playerID: model.get('id'), activityID: activity.activity, player: model });
@@ -305,7 +304,6 @@ define([
     }
 
     function onPlayerActivityPhotosLoaded(playerActivityPhotosView) {
-      // mla
       if (playerActivityPhotosView.jsonPhotos.length) {
         $('#players-overview-view .with-photos').show();
         $('#players-overview-view .without-photos').hide();
@@ -315,7 +313,6 @@ define([
         // have we reached the player render limit?
         if (nPhotoRendered < MAX_PLAYER_PHOTOS) {
           playerModel.set('activityPhotosRendered', nPhotoRendered+1);
-          console.log('i:'+playerModel.get('id')+' : '+playerModel.get('activityPhotosRendered'));
           // render
           playerActivityPhotosView.render(1).el;
         }
