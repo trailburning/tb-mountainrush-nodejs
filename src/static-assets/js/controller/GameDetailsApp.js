@@ -1,5 +1,7 @@
 var app = app || {};
 
+var MAX_PLAYER_PHOTOS = 3;
+
 define([
   'underscore',
   'backbone',
@@ -20,10 +22,11 @@ define([
   'views/Player',
   'views/ChallengeView',
   'views/PlayersOverviewView',
+  'views/PlayerActivityPhotosView',
   'views/ChallengeCancelModalView',
   'views/GameInviteView',  
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, moment, countdown, imagesLoaded, videojs, GamePhotoView, SponsorView, LanguageSelectorView, ActivePlayerView, Player, ChallengeView, PlayersOverviewView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
+], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, moment, countdown, imagesLoaded, videojs, GamePhotoView, SponsorView, LanguageSelectorView, ActivePlayerView, Player, ChallengeView, PlayersOverviewView, PlayerActivityPhotosView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -39,6 +42,8 @@ define([
     app.dispatcher.on("PlayersOverviewView:cancelGameClick", onCancelGameClick);
     app.dispatcher.on("ChallengeCancelModalView:challengeCancelled", onChallengeCancelled);
     app.dispatcher.on("PlayersOverviewView:playerClick", onPlayerClicked);
+    app.dispatcher.on("PlayerActivityPhotosView:loaded", onPlayerActivityPhotosLoaded);
+    app.dispatcher.on("PlayerActivityPhotosView:photoRendered", onPlayerActivityPhotosPhotoRendered);
 
     var challengeView = null;
     var mountainModel = new Backbone.Model();
@@ -104,6 +109,18 @@ define([
       jsonFields.fundraisingTarget = Math.round(fundraisingTarget);
       playersOverviewView.setFields(jsonFields);
       playersOverviewView.render();
+
+      var elPhotos = $('#players-overview-view .posts .photos');
+
+      // get players
+      playerCollection.each(function(model){
+        model.set('activityPhotosRendered', 0);
+        // get activities
+        $.each(model.get('activities'), function(index, activity){
+          var playerActivityPhotosView = new PlayerActivityPhotosView({ el: elPhotos, gameID: GAME_ID, playerID: model.get('id'), activityID: activity.activity, player: model });
+          playerActivityPhotosView.load();
+        });
+      });
 
       $('img.scale').imageScale({
         'rescaleOnResize': true
@@ -284,6 +301,25 @@ define([
     function onPlayerClicked(playerID) {
       // visit profile
       window.location.href = HOST_URL+'/game/' + GAME_ID + '/player/' + playerID;
+    }
+
+    function onPlayerActivityPhotosLoaded(playerActivityPhotosView) {
+      if (playerActivityPhotosView.jsonPhotos.length) {
+        $('#players-overview-view .with-photos').show();
+        $('#players-overview-view .without-photos').hide();
+
+        var playerModel = playerActivityPhotosView.getPlayer();
+        var nPhotoRendered = Number(playerModel.get('activityPhotosRendered'));
+        // have we reached the player render limit?
+        if (nPhotoRendered < MAX_PLAYER_PHOTOS) {
+          playerModel.set('activityPhotosRendered', nPhotoRendered+1);
+          // render
+          playerActivityPhotosView.render(1).el;
+        }
+      }
+    }
+
+    function onPlayerActivityPhotosPhotoRendered(params) {
     }
 
     $('#loader-view').show();

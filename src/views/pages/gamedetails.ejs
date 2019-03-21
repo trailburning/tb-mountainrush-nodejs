@@ -58,6 +58,8 @@ var TEST_PROGRESS = '';
   </div>
 </div>
 
+<% include ../partials/photoSwipe.ejs %>
+
 <div id="challenge-cancel-modal-view"></div>
 <div id="invite-friend-modal-view">
   <div class="modal msg-overlay" tabindex="-1" role="dialog">
@@ -91,6 +93,16 @@ var TEST_PROGRESS = '';
   <div class="embelish embelish-left"></div>
   <div class="embelish embelish-right"></div>
 </script>
+
+<script type="text/template" id="photoViewTemplate"><div class="post" data-uploaded-time="{{= photo.uploaded_at_time }}">
+  <div class="media viewer">
+    <div class="image" style="background-image: url('{{= photo.urls[640] }}')"></div>
+  </div>
+  <div class="details">
+    <div class="credit truncate" data-truncate="50">{{= photo.caption }}</div>
+    <div class="ago">{{= photo.uploaded_at_ago }} by {{= player.firstname }}</div>
+  </div>
+</div></script>
 
 <script type="text/template" id="sponsorBigViewTemplate">
   <div class="sponsor-view hidden-xs">
@@ -286,9 +298,15 @@ var TEST_PROGRESS = '';
     </div>
 
     <div class="photo-posts-view clearfix">
+      {{ var name = game.level_name }}
+
+      {{ if (game.name) { }}
+        {{ name = game.name }}
+      {{ } }}
+
       <div class="posts">
-        <div class="welcome without-photos">{{= '<%= __('game.photos.waiting.description') %>'.replace('%s', game.name) }}</div>
-        <div class="welcome with-photos">{{= '<%= __('game.photos.description') %>'.replace('%s', game.name) }}</div>
+        <div class="welcome without-photos">{{= '<%= __('game.photos.waiting.description') %>'.replace('%s', name) }}</div>
+        <div class="welcome with-photos">{{= '<%= __('game.photos.description') %>'.replace('%s', name) }}</div>
         <div class="photos with-photos"></div>
 
         <div class="no-photos without-photos">

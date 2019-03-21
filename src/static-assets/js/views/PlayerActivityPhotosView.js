@@ -11,6 +11,10 @@ define([
       this.jsonPhotos = null;
     },
 
+    getPlayer: function() {
+      return this.options.player;
+    },
+
     load: function(){
       var self = this;
 
@@ -25,15 +29,21 @@ define([
       });
     },
 
-    render: function(){
+    render: function(nMaxPhotos){
       var self = this;
+      var nPhotos = this.jsonPhotos.length;
+      if (nMaxPhotos) {
+        nPhotos = nMaxPhotos;
+      }
 
       $.each(this.jsonPhotos, function(index, photo){
-        var photoView = new PlayerActivityPhotoView({ elParent: self.el, model: new Backbone.Model(photo) });
-        photoView.render();
+        if (index < nPhotos) {        
+          var photoView = new PlayerActivityPhotoView({ elParent: self.el, model: new Backbone.Model(photo), player: self.options.player });
+          photoView.render();
 
-        // fire event
-        app.dispatcher.trigger("PlayerActivityPhotosView:photoRendered", {PlayerActivityPhotosView: self, PlayerActivityPhotoView: photoView});
+          // fire event
+          app.dispatcher.trigger("PlayerActivityPhotosView:photoRendered", {PlayerActivityPhotosView: self, PlayerActivityPhotoView: photoView});
+        }
       });
 
       // truncate
