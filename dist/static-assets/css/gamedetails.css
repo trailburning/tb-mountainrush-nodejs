@@ -472,6 +472,7 @@ body.fundraising #player-view .fundraise-sticker {
       padding-left: 7px;
       text-align: left; }
     .photo-posts-view .posts .post {
+      display: inline-block;
       padding: 22px 7px 0 7px;
       width: 210px; }
       .photo-posts-view .posts .post .image {

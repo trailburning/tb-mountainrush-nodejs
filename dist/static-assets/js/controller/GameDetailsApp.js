@@ -309,12 +309,8 @@ define([
     }
 
     function onPlayerActivityPhotosLoaded(playerActivityPhotosView) {
-      console.log('onPlayerActivityPhotosLoaded');
-
       // mla
       if (playerActivityPhotosView.jsonPhotos.length) {
-        console.log('PHOTO');
-        
         $('#players-overview-view .with-photos').show();
         $('#players-overview-view .without-photos').hide();
 
