@@ -80,9 +80,9 @@
               <div class="summit-container">
                 <div class="summit">
                 {{ if (player.elevationToSummit) { }}
-                  <h1>{{ if (player.elevationToSummit < 1) { }}1{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m</h1><%= __('game.to_summit') %><br/>{{= game.name }}
+                  <h1>{{ if (player.elevationToSummit < 1) { }}1{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m</h1><%= __('game.to_summit') %><br/>{{= game.level_name }}
                 {{ } else { }}
-                  <h1>Summit!</h1>{{= Math.round(player.elevationGain) }}m <%= __('game.climbed_on') %><br/>{{= game.name }}
+                  <h1>Summit!</h1>{{= Math.round(player.elevationGain) }}m <%= __('game.climbed_on') %><br/>{{= game.level_name }}
                 {{ } }}
                 </div>
                 <div class="pos">
@@ -115,7 +115,7 @@
             <div id="sponsor-small-container-view">
               <div class="sponsor-view visible-xs">
                 <div class="sponsor-detail-view">
-                {{ if (game.name == 'ashmei Mont Blanc') { }}
+                {{ if (game.level_name == 'ashmei Mont Blanc') { }}
                   <div class="logo"><a href="https://ashmei.com/challengethirtyone" target="_blank"><img src="/static-assets/images/logos/logo_ashmei.png"></a></div>
                   <div class="title">
                     <h1>Challenge 31<br/>December</h1>
@@ -124,7 +124,7 @@
                 {{ } else { }}
                   <div class="logo"><a href="https://www.wwf.org.uk/" target="_blank"><img src="/static-assets/images/logos/logo_wwf_demo.png"></a></div>
                   <div class="title">
-                    <h1>{{= game.name }}<br/>Challenge</h1>
+                    <h1>{{= game.level_name }}<br/>Challenge</h1>
                     <h2>Fundraising for <strong>WWF-UK</strong></h2>
                   </div>
                 {{ } }}

@@ -47,6 +47,16 @@ define([
         $(this).html($.truncate($(this).html(), {length: $(this).attr('data-truncate')}));
       });
 
+      $('.link-cancel', $(this.el)).click(function(evt){        
+        // fire event
+        app.dispatcher.trigger("PlayersOverviewView:cancelGameClick");
+      });
+
+      $('.link-invite', $(this.el)).click(function(evt){        
+        // fire event
+        app.dispatcher.trigger("PlayersOverviewView:inviteClick");
+      });
+
       return this;
     }
 
