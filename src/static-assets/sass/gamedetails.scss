@@ -171,7 +171,6 @@ body.sponsored .sponsor-view .title strong {
       padding-bottom: 36px;
 
       .team-overview {
-        display: none;
         padding: 28px;
 
         .photo {
@@ -427,10 +426,6 @@ body.sponsored .sponsor-view .title strong {
 body.fundraising #player-view {
   .players-overview {
     .detail {
-      .team-overview {
-        display: block;
-      }
-
       .players-ranking {
         .fundraising-title {
           display: inline-block;

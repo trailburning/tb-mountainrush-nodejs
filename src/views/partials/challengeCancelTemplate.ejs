@@ -15,7 +15,7 @@
         <div class="modal-body">
           <div class="details">
             <div class="title"><%= __('overlay.challenge_cancel.title') %></div>
-            <div class="description">{{= '<%- __('overlay.challenge_cancel.description') %>'.replace('%s', '<strong>' + currGame.name + '</strong>').replace('%s', '<span class="lowercase">' + activityDescription + '</span>') }}</div>
+            <div class="description">{{= '<%- __('overlay.challenge_cancel.description') %>'.replace('%s', '<strong>' + currGame.level_name + '</strong>').replace('%s', '<span class="lowercase">' + activityDescription + '</span>') }}</div>
           </div>
           <div class="action-fields">
             <div class="action-field"><span class="btn mr-btn btn-primary cancel-challenge-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('defs.please_wait') %>"><%= __('overlay.challenge_cancel.yes') %></span>

@@ -13,6 +13,7 @@ define([
   'countdown',  
   'imagesLoaded',
   'videojs',
+  'views/GamePhotoView',
   'views/SponsorView',
   'views/LanguageSelectorView',
   'views/ActivePlayerView',
@@ -22,7 +23,7 @@ define([
   'views/ChallengeCancelModalView',
   'views/GameInviteView',  
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, moment, countdown, imagesLoaded, videojs, SponsorView, LanguageSelectorView, ActivePlayerView, Player, ChallengeView, PlayersOverviewView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
+], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, moment, countdown, imagesLoaded, videojs, GamePhotoView, SponsorView, LanguageSelectorView, ActivePlayerView, Player, ChallengeView, PlayersOverviewView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -34,6 +35,8 @@ define([
   var initialize = function() {
     var self = this;
 
+    app.dispatcher.on("PlayersOverviewView:inviteClick", onPlayerInviteClick);
+    app.dispatcher.on("PlayersOverviewView:cancelGameClick", onCancelGameClick);
     app.dispatcher.on("ChallengeCancelModalView:challengeCancelled", onChallengeCancelled);
     app.dispatcher.on("PlayersOverviewView:playerClick", onPlayerClicked);
 
@@ -121,8 +124,21 @@ define([
       $('body').addClass('ready');
     }
 
+    function onPlayerInviteClick() {
+      var jsonCreateFields = gameInviteView.getFields();
+      jsonCreateFields.gameID = GAME_ID;
+      gameInviteView.setFields(jsonCreateFields);
+      gameInviteView.render();
+
+      $('#invite-friend-modal-view .modal').modal();
+    }
+
     function onGameLoaded(jsonGame) {
       jsonCurrGame = jsonGame;
+
+      if (jsonGame.description) {
+        jsonGame.description_formatted = formatText(jsonGame.description);
+      }
 
       playerCollection = new Backbone.Collection(jsonGame.players);
 
@@ -138,6 +154,7 @@ define([
 
       challengeCancelModalView.setGame(jsonCurrGame);
 
+      gamePhotoView.render(jsonCurrGame);
       sponsorView.render(jsonCurrGame);
 
       // convert UTC dates to local
@@ -297,6 +314,7 @@ define([
 
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
 
+    var gamePhotoView = new GamePhotoView({ el: '#photo-view' }); 
     var challengeCancelModalView = new ChallengeCancelModalView({ el: '#challenge-cancel-modal-view' });
     var gameInviteView = new GameInviteView({ el: '#game-invite-view', clientID: CLIENT_ID });
     var sponsorView = new SponsorView({ el: '#sponsor-big-container-view' });

@@ -135,7 +135,6 @@ body.sponsored .sponsor-view .title strong {
     background: #fff;
     padding-bottom: 36px; }
     #player-view .players-overview .detail .team-overview {
-      display: none;
       padding: 28px; }
       #player-view .players-overview .detail .team-overview .photo {
         padding: 5px;
@@ -297,9 +296,6 @@ body.sponsored .sponsor-view .title strong {
         line-height: 1.6em; }
         #player-view .fundraise-sticker-container .fundraise-sticker .details .target:before {
           padding-top: 8px; }
-
-body.fundraising #player-view .players-overview .detail .team-overview {
-  display: block; }
 
 body.fundraising #player-view .players-overview .detail .players-ranking .fundraising-title {
   display: inline-block; }

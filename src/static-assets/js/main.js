@@ -117,6 +117,10 @@ function getFundraisingShoppingList(){
   return jsonFundraising;
 }
 
+function formatText(strText){
+  return '<p>' + strText.replace(/(?:\r\n|\r|\n)/g, '<p></p>') + '</p>';
+}
+
 function validateForm(elForm){
   var bValidForm = true;
 
