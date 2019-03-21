@@ -312,10 +312,11 @@ define([
 
         var playerModel = playerActivityPhotosView.getPlayer();
         var nPhotoRendered = Number(playerModel.get('activityPhotosRendered'));
+        console.log('t:'+playerModel.get('id')+' : '+nPhotoRendered);
         // have we reached the player render limit?
         if (nPhotoRendered < MAX_PLAYER_PHOTOS) {
-          playerModel.set('activityPhotosRendered', nPhotoRendered++);
-          console.log(playerModel.get('id')+' : '+nPhotoRendered);
+          playerModel.set('activityPhotosRendered', nPhotoRendered+1);
+          console.log('i:'+playerModel.get('id')+' : '+nPhotoRendered);
 
           // render
           playerActivityPhotosView.render().el;
