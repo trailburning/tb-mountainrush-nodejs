@@ -306,7 +306,8 @@ body.fundraising #player-view .fundraise-sticker {
 /* PHOTO POSTS VIEW */
 /******************************************/
 .photo-posts-view {
-  padding: 0 0 48px 0; }
+  padding: 0 0 48px 0;
+  text-align: center; }
   .photo-posts-view .posts {
     margin: 22px auto 0 auto;
     width: 244px; }

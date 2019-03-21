@@ -118,6 +118,8 @@ define([
         $.each(model.get('activities'), function(index, activity){
           // limit number we load
           if (index < nMaxActivities) {
+            console.log(model.get('firstname')+' : '+index+' : '+nMaxActivities);
+
             var playerActivityPhotosView = new PlayerActivityPhotosView({ el: elPhotos, gameID: GAME_ID, playerID: model.get('id'), activityID: activity.activity, player: model });
             playerActivityPhotosView.load();
           }

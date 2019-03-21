@@ -82,8 +82,6 @@ define([
         }
       });
 
-      console.log(self.options.player);
-
       if (elFoundNextPost) {
         this.el = elPhoto.insertBefore(elFoundNextPost);
       }
