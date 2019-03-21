@@ -81,12 +81,10 @@ define([
       $('.post', this.options.elParent).each(function(index){
         console.log('check:'+$(this).attr('data-uploaded-time'));
         // is post older?
-        if (Number($(this).attr('uploaded_at_time')) > Number(self.options.model.get('uploaded_at_time'))) {
+        if (!elFoundNextPost && (Number($(this).attr('uploaded_at_time')) > Number(self.options.model.get('uploaded_at_time')))) {
           console.log('INSERT HERE');
           elFoundNextPost = $(this);
-          break;
         }
-
       });
 
       if (elFoundNextPost) {
