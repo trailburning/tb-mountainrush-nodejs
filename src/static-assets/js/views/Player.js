@@ -264,7 +264,7 @@ define([
       this.currPhotoActivityId = activity.activity;
 
       var elPlayerPhotos = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"] .posts .photos');
-      var playerActivityPhotosView = new PlayerActivityPhotosView({ el: elPlayerPhotos, gameID: this.options.gameID, playerID: this.model.get('id'), activityID: activity.activity });
+      var playerActivityPhotosView = new PlayerActivityPhotosView({ el: elPlayerPhotos, gameID: this.options.gameID, playerID: this.model.get('id'), activityID: activity.activity, player: this.model });
       playerActivityPhotosView.load();
     },
 

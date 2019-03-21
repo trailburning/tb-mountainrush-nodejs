@@ -6,7 +6,7 @@ define([
   'photoswipeui'
 ], function(_, Backbone, moment, PhotoSwipe, PhotoSwipeUI_Default){
 
-  var PlayerActivityPhotoView = Backbone.View.extend({
+  var GamePlayerActivityPhotoView = Backbone.View.extend({
     initialize: function(options){
       this.template = _.template($('#photoViewTemplate').text());
       
@@ -69,25 +69,9 @@ define([
 
       var dtUploadedDate = new Date(this.options.model.get('uploaded_at'));
       this.options.model.set('uploaded_at_ago', moment(dtUploadedDate).fromNow());
-      this.options.model.set('uploaded_at_time', dtUploadedDate.getTime());
 
-      // where to position?
-      var elFoundNextPost = null;
-      var elPhoto = $(this.template({photo: this.options.model.attributes, player: self.options.player.attributes}));
-
-      $('.post', this.options.elParent).each(function(index){
-        // is post older?
-        if (!elFoundNextPost && (Number(self.options.model.get('uploaded_at_time')) > Number($(this).attr('data-uploaded-time')))) {
-          elFoundNextPost = $(this);
-        }
-      });
-
-      if (elFoundNextPost) {
-        this.el = elPhoto.insertBefore(elFoundNextPost);
-      }
-      else {
-        this.el = elPhoto.appendTo(this.options.elParent);
-      }
+      var attribs = this.options.model.attributes;
+      this.el = $(this.template(attribs)).appendTo(this.options.elParent);
 
       // wait for image to load so we get dimensions
       $('.image', this.el).getBgImage(function (imgW, imgH) {
@@ -98,13 +82,9 @@ define([
       // handle media requesting viewer
       $('.media', this.el).click(function(evt){
         // fire event
-        app.dispatcher.trigger("PlayerActivityPhotoView:click");
+        app.dispatcher.trigger("GamePlayerActivityPhotoView:click");
 
-        switch (self.options.model.get('type')) {
-          default:
-            self.buildPlayerMediaGallery();
-            break;
-        }
+        self.buildPlayerMediaGallery();
       });
 
       return this;
@@ -112,5 +92,5 @@ define([
 
   });
 
-  return PlayerActivityPhotoView;
+  return GamePlayerActivityPhotoView;
 });

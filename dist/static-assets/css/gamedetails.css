@@ -306,7 +306,8 @@ body.fundraising #player-view .fundraise-sticker {
 /* PHOTO POSTS VIEW */
 /******************************************/
 .photo-posts-view {
-  padding: 0 0 48px 0; }
+  padding: 0 0 48px 0;
+  text-align: center; }
   .photo-posts-view .posts {
     margin: 22px auto 0 auto;
     width: 244px; }
@@ -315,7 +316,8 @@ body.fundraising #player-view .fundraise-sticker {
       color: #a5b4bd;
       text-align: center; }
     .photo-posts-view .posts .without-photos {
-      display: block; }
+      display: block;
+      text-align: center; }
     .photo-posts-view .posts .post {
       vertical-align: top;
       width: 100%;
@@ -471,6 +473,7 @@ body.fundraising #player-view .fundraise-sticker {
       padding-left: 7px;
       text-align: left; }
     .photo-posts-view .posts .post {
+      display: inline-block;
       padding: 22px 7px 0 7px;
       width: 210px; }
       .photo-posts-view .posts .post .image {

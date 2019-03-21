@@ -443,6 +443,7 @@ body.fundraising #player-view {
 /******************************************/
 .photo-posts-view {
   padding: 0 0 48px 0;
+  text-align: center;
 
   .posts {
     margin: 22px auto 0 auto;
@@ -456,6 +457,7 @@ body.fundraising #player-view {
 
     .without-photos {
       display: block;
+      text-align: center;
     }
 
     .post {
@@ -715,6 +717,7 @@ body.fundraising #player-view {
       }
 
       .post {
+        display: inline-block;
         padding: 22px 7px 0 7px;
         width: 210px;
 
