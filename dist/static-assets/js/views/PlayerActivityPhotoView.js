@@ -73,10 +73,10 @@ define([
       var attribs = this.options.model.attributes;
 
       // where to position?
-      console.log('uploaded:'+this.options.model.get('uploaded_at'));
+      console.log('uploaded:'+this.options.model.get('uploaded_at')+' : '+dtUploadedDate);
 
       $('.post', this.options.elParent).each(function(index){
-        console.log('check:'+$(this).addr('data-uploaded'));
+        console.log('check:'+$(this).attr('data-uploaded'));
       });
 
       this.el = $(this.template(attribs)).appendTo(this.options.elParent);
