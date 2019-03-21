@@ -315,7 +315,8 @@ body.fundraising #player-view .fundraise-sticker {
       color: #a5b4bd;
       text-align: center; }
     .photo-posts-view .posts .without-photos {
-      display: block; }
+      display: block;
+      text-align: center; }
     .photo-posts-view .posts .post {
       vertical-align: top;
       width: 100%;

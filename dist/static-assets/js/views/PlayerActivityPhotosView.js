@@ -29,7 +29,6 @@ define([
       var self = this;
 
       $.each(this.jsonPhotos, function(index, photo){
-        console.log(photo);
         var photoView = new PlayerActivityPhotoView({ elParent: self.el, model: new Backbone.Model(photo) });
         photoView.render();
 
