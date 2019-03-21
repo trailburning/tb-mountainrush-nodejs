@@ -89,12 +89,11 @@ define([
 
       if (elFoundNextPost) {
         console.log('FOUND PLACE');
-        this.el = $(this.template(attribs)).appendTo(this.options.elParent);
+        this.el = $(this.template(attribs)).insertBefore(elFoundNextPost);
       }
       else {
         this.el = $(this.template(attribs)).appendTo(this.options.elParent);
       }
-
 
       // wait for image to load so we get dimensions
       $('.image', this.el).getBgImage(function (imgW, imgH) {
