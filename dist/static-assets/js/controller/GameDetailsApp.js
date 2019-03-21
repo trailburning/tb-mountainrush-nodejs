@@ -110,14 +110,17 @@ define([
 
       var elPhotos = $('#players-overview-view .posts .photos');
 
+      var nMaxActivities = 3;
+
       // get players
       playerCollection.each(function(model){
         // get activities
         $.each(model.get('activities'), function(index, activity){
-//          console.log(activity);
-
-          var playerActivityPhotosView = new PlayerActivityPhotosView({ el: elPhotos, gameID: GAME_ID, playerID: model.get('id'), activityID: activity.activity, player: model });
-          playerActivityPhotosView.load();
+          // limit number we load
+          if (index < nMaxActivities) {
+            var playerActivityPhotosView = new PlayerActivityPhotosView({ el: elPhotos, gameID: GAME_ID, playerID: model.get('id'), activityID: activity.activity, player: model });
+            playerActivityPhotosView.load();
+          }
         });
       });
 

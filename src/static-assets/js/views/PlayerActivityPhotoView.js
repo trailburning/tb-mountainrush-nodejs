@@ -73,7 +73,7 @@ define([
 
       // where to position?
       var elFoundNextPost = null;
-      var elPhoto = $(this.template({photo: this.options.model.attributes, player: self.options.player}));
+      var elPhoto = $(this.template({photo: this.options.model.attributes, player: self.options.player.attributes}));
 
       $('.post', this.options.elParent).each(function(index){
         // is post older?
