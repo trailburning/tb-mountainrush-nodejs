@@ -74,15 +74,27 @@ define([
       var attribs = this.options.model.attributes;
 
       // where to position?
-      console.log('uploaded:'+this.options.model.get('uploaded_at')+' : '+this.options.model.get('uploaded_at_time'));
+      console.log('uploaded:'+this.options.model.get('uploaded_at_time'));
+
+      var bFoundPlace = false;
 
       $('.post', this.options.elParent).each(function(index){
-        console.log('check:'+$(this).attr('uploaded_at_time'));
+        console.log('check:'+$(this).attr('data-uploaded-time'));
         // is post older?
+        if (Number($(this).attr('uploaded_at_time')) > Number(this.options.model.get('uploaded_at_time'))) {
+          console.log('INSERT HERE');
+        }
 
       });
 
-      this.el = $(this.template(attribs)).appendTo(this.options.elParent);
+      if (bFoundPlace) {
+        console.log('FOUND PLACE');
+        this.el = $(this.template(attribs)).appendTo(this.options.elParent);
+      }
+      else {
+        this.el = $(this.template(attribs)).appendTo(this.options.elParent);
+      }
+
 
       // wait for image to load so we get dimensions
       $('.image', this.el).getBgImage(function (imgW, imgH) {
