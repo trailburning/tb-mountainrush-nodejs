@@ -29,7 +29,7 @@ define([
       var self = this;
 
       $.each(this.jsonPhotos, function(index, photo){
-        var photoView = new PlayerActivityPhotoView({ elParent: self.el, model: new Backbone.Model(photo) });
+        var photoView = new PlayerActivityPhotoView({ elParent: self.el, model: new Backbone.Model(photo), player: self.options.player });
         photoView.render();
 
         // fire event

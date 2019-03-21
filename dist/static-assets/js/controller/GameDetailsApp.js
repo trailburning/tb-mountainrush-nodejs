@@ -110,22 +110,16 @@ define([
 
       var elPhotos = $('#players-overview-view .posts .photos');
 
-      // get player
-      //mla
+      // get players
       playerCollection.each(function(model){
-//        console.log(model);
-
+        // get activities
         $.each(model.get('activities'), function(index, activity){
 //          console.log(activity);
 
-          var playerActivityPhotosView = new PlayerActivityPhotosView({ el: elPhotos, gameID: GAME_ID, playerID: model.get('id'), activityID: activity.activity });
+          var playerActivityPhotosView = new PlayerActivityPhotosView({ el: elPhotos, gameID: GAME_ID, playerID: model.get('id'), activityID: activity.activity, player: model });
           playerActivityPhotosView.load();
-
         });
-
-
       });
-
 
       $('img.scale').imageScale({
         'rescaleOnResize': true

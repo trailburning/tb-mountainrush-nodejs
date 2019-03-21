@@ -71,28 +71,21 @@ define([
       this.options.model.set('uploaded_at_ago', moment(dtUploadedDate).fromNow());
       this.options.model.set('uploaded_at_time', dtUploadedDate.getTime());
 
-      var attribs = this.options.model.attributes;
-
       // where to position?
-      console.log('uploaded:'+this.options.model.get('uploaded_at_time'));
-
       var elFoundNextPost = null;
 
       $('.post', this.options.elParent).each(function(index){
-        console.log('check:'+$(this).attr('data-uploaded-time'));
         // is post older?
         if (!elFoundNextPost && (Number(self.options.model.get('uploaded_at_time')) > Number($(this).attr('data-uploaded-time')))) {
-          console.log('INSERT HERE');
           elFoundNextPost = $(this);
         }
       });
 
       if (elFoundNextPost) {
-        console.log('FOUND PLACE');
-        this.el = $(this.template(attribs)).insertBefore(elFoundNextPost);
+        this.el = $(this.template({photo: this.options.model.attributes, player: self.options.player})).insertBefore(elFoundNextPost);
       }
       else {
-        this.el = $(this.template(attribs)).appendTo(this.options.elParent);
+        this.el = $(this.template({photo: this.options.model.attributes, player: self.options.player})).appendTo(this.options.elParent);
       }
 
       // wait for image to load so we get dimensions
