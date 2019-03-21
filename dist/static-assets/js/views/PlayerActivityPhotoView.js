@@ -71,6 +71,14 @@ define([
       this.options.model.set('uploaded_at_ago', moment(dtUploadedDate).fromNow());
 
       var attribs = this.options.model.attributes;
+
+      // where to position?
+      console.log('uploaded:'+this.options.model.get('uploaded_at'));
+
+      $('.post', this.options.elParent).each(function(index){
+        console.log('check:'+$(this).addr('data-uploaded'));
+      });
+
       this.el = $(this.template(attribs)).appendTo(this.options.elParent);
 
       // wait for image to load so we get dimensions
@@ -85,10 +93,6 @@ define([
         app.dispatcher.trigger("PlayerActivityPhotoView:click");
 
         switch (self.options.model.get('type')) {
-          case 'InstagramVideo':
-            window.open(self.options.model.get('ref'), '_blank');
-            break;
-
           default:
             self.buildPlayerMediaGallery();
             break;
