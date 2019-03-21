@@ -110,15 +110,15 @@ define([
 
       var elPhotos = $('#players-overview-view .posts .photos');
 
-      var nMaxActivities = 3;
+      var nMaxLatestActivities = 5;
 
       // get players
       playerCollection.each(function(model){
         // get activities
         $.each(model.get('activities'), function(index, activity){
           // limit number we load
-          if (index < nMaxActivities) {
-            console.log(model.get('firstname')+' : '+index+' : '+nMaxActivities);
+          if (index < nMaxLatestActivities) {
+            console.log(model.get('firstname')+' : '+index+' : '+nMaxLatestActivities);
 
             var playerActivityPhotosView = new PlayerActivityPhotosView({ el: elPhotos, gameID: GAME_ID, playerID: model.get('id'), activityID: activity.activity, player: model });
             playerActivityPhotosView.load();
