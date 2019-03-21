@@ -11,6 +11,10 @@ define([
       this.jsonPhotos = null;
     },
 
+    getPlayer: function() {
+      return this.options.player;
+    },
+
     load: function(){
       var self = this;
 

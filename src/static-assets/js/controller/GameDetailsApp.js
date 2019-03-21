@@ -1,5 +1,7 @@
 var app = app || {};
 
+var MAX_PLAYER_PHOTOS = 3;
+
 define([
   'underscore',
   'backbone',
@@ -109,20 +111,15 @@ define([
       playersOverviewView.render();
 
       var elPhotos = $('#players-overview-view .posts .photos');
-
-      var nMaxLatestActivities = 5;
-
+//mla
       // get players
       playerCollection.each(function(model){
+        model.set('activityPhotosRendered', 0);
+
         // get activities
         $.each(model.get('activities'), function(index, activity){
-          // limit number we load
-          if (index < nMaxLatestActivities) {
-            console.log(model.get('firstname')+' : '+index+' : '+nMaxLatestActivities);
-
-            var playerActivityPhotosView = new PlayerActivityPhotosView({ el: elPhotos, gameID: GAME_ID, playerID: model.get('id'), activityID: activity.activity, player: model });
-            playerActivityPhotosView.load();
-          }
+          var playerActivityPhotosView = new PlayerActivityPhotosView({ el: elPhotos, gameID: GAME_ID, playerID: model.get('id'), activityID: activity.activity, player: model });
+          playerActivityPhotosView.load();
         });
       });
 
@@ -313,8 +310,16 @@ define([
         $('#players-overview-view .with-photos').show();
         $('#players-overview-view .without-photos').hide();
 
-        // render
-        playerActivityPhotosView.render().el;
+        var playerModel = playerActivityPhotosView.getPlayer();
+        var nPhotoRendered = Number(playerModel.get('activityPhotosRendered'));
+        // have we reached the player render limit?
+        if (nPhotoRendered < MAX_PLAYER_PHOTOS) {
+          playerModel.set('activityPhotosRendered', nPhotoRendered++);
+          console.log(playerModel.get('id')+' : '+nPhotoRendered);
+
+          // render
+          playerActivityPhotosView.render().el;
+        }
       }
     }
 
