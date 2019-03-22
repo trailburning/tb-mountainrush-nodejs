@@ -110,6 +110,44 @@ define([
       playersOverviewView.setFields(jsonFields);
       playersOverviewView.render();
 
+      // set team fundraising
+      var jsonFields = sponsorView.getFields();
+      jsonFields.currencySymbol = jsonCurrGame.fundraising_currency_symbol;
+      jsonFields.totalRaisedPercentageOfFundraisingTarget = Math.round(Number((totalRaisedOnline / fundraisingTarget) * 100));
+      jsonFields.totalRaisedOnline = Math.round(totalRaisedOnline);
+      jsonFields.fundraisingTarget = Math.round(fundraisingTarget);
+      sponsorView.setFields(jsonFields);      
+      sponsorView.render(jsonCurrGame);
+
+      // convert UTC dates to local
+      var dLocalGameNow = new Date(jsonCurrGame.game_now);
+      var dLocalGameStart = new Date(jsonCurrGame.game_start);
+      var dLocalGameEnd = new Date(jsonCurrGame.game_end);
+
+      // is game active?
+      if ((dLocalGameStart < dLocalGameNow) || Demo) {
+        var elCountdownContainer = $('.countdown-container');
+        var strDay = elCountdownContainer.attr('data-value-day');
+        var strDays = elCountdownContainer.attr('data-value-days');
+
+        // finished?
+        if (dLocalGameEnd < dLocalGameNow) {
+          elCountdownContainer.show();
+        }
+
+        $('.countdown .end').countdown(dLocalGameEnd).on('update.countdown', function(event) {
+          var $this = $(this).html(event.strftime(''
+            + '<span class="days">'
+              + '<span class="time">%-D</span>'
+              + '<span class="days-marker"> ' + ((Number(event.strftime('%-D')) == 1) ? strDay : strDays) + '</span>'
+            + '</span>'
+            + '<span class="hours">'
+              + '<span class="time"><span>%H</span><span class="marker">:</span><span>%M</span><span class="marker">:</span><span>%S</span></span>'
+            + '</span>'));
+          elCountdownContainer.show();
+        });
+      }
+
       var elPhotos = $('#players-overview-view .posts .photos');
 
       // get players
@@ -172,36 +210,7 @@ define([
       challengeCancelModalView.setGame(jsonCurrGame);
 
       gamePhotoView.render(jsonCurrGame);
-      sponsorView.render(jsonCurrGame);
 
-      // convert UTC dates to local
-      var dLocalGameNow = new Date(jsonGame.game_now);
-      var dLocalGameStart = new Date(jsonGame.game_start);
-      var dLocalGameEnd = new Date(jsonGame.game_end);
-
-      // is game active?
-      if ((dLocalGameStart < dLocalGameNow) || Demo) {
-        var elCountdownContainer = $('.countdown-container');
-        var strDay = elCountdownContainer.attr('data-value-day');
-        var strDays = elCountdownContainer.attr('data-value-days');
-
-        // finished?
-        if (dLocalGameEnd < dLocalGameNow) {
-          elCountdownContainer.show();
-        }
-
-        $('.countdown .end').countdown(dLocalGameEnd).on('update.countdown', function(event) {
-          var $this = $(this).html(event.strftime(''
-            + '<span class="days">'
-              + '<span class="time">%-D</span>'
-              + '<span class="days-marker"> ' + ((Number(event.strftime('%-D')) == 1) ? strDay : strDays) + '</span>'
-            + '</span>'
-            + '<span class="hours">'
-              + '<span class="time"><span>%H</span><span class="marker">:</span><span>%M</span><span class="marker">:</span><span>%S</span></span>'
-            + '</span>'));
-          elCountdownContainer.show();
-        });
-      }
       getJourney(jsonGame.journeyID, jsonGame.mountain3DName);
     }
 

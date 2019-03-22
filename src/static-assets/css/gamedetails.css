@@ -73,6 +73,19 @@ body.sponsored .sponsor-view .title h2 {
 body.sponsored .sponsor-view .title strong {
   font-family: 'radikalbold', sans-serif; }
 
+body.sponsored .sponsor-view .fundraise {
+  padding-top: 20px;
+  color: #fff;
+  text-align: right; }
+  body.sponsored .sponsor-view .fundraise strong {
+    font-family: 'radikalbold', sans-serif; }
+  body.sponsored .sponsor-view .fundraise .raised {
+    font-size: 2.2em;
+    line-height: 1.4em; }
+  body.sponsored .sponsor-view .fundraise .target {
+    font-size: 1.2em;
+    line-height: 1.4em; }
+
 /* PHOTO VIEW */
 /******************************************/
 #photo-view {
