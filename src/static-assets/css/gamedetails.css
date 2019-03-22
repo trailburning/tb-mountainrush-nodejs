@@ -74,7 +74,7 @@ body.sponsored .sponsor-view .title strong {
   font-family: 'radikalbold', sans-serif; }
 
 body.sponsored .sponsor-view .fundraise {
-  padding-top: 20px;
+  padding-top: 16px;
   color: #fff;
   text-align: right; }
   body.sponsored .sponsor-view .fundraise strong {
@@ -407,7 +407,7 @@ body.fundraising #player-view .fundraise-sticker {
     padding-left: 38px; }
   body.sponsored .sponsor-view .detail {
     display: inline-block;
-    padding-top: 4px;
+    padding-top: 14px;
     vertical-align: top;
     float: right; }
   body.sponsored .sponsor-view .sponsor-detail-view h1 {
