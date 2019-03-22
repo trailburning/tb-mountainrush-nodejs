@@ -134,7 +134,15 @@ var TEST_PROGRESS = '';
           </div>
         </div>
 
-        <div class="donate-btn"><a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>" data-href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/player/[PLAYER_ID]/donate?amount=1000" class="btn mr-btn btn-primary btn-large btn-invert-hover"><%= __('defs.donate') %></a></div>
+        <div class="fundraise">
+          <div class="raised">
+          <strong>
+          {{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}{{= Math.round(page.totalRaisedOnline) }} raised</strong>
+          </div>
+          <div class="target">
+          of <strong>{{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}{{= page.fundraisingTarget }} <%= __('game.fundraising.summary.team_target') %></strong>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -180,7 +188,13 @@ var TEST_PROGRESS = '';
     <div class="visible-xs">
       <div class="team-details">
         <div class="title-container">
-        <h1>Team Test</h1>for {{= game.campaign_name }}
+        <h1>
+        {{ if (game.name) { }}
+          {{= game.name }}
+        {{ } else { }}
+          {{= game.level_name }}
+        {{ } }}
+        </h1>for {{= game.campaign_name }}
         </div>
         <div class="summit-container">
           <div class="summit">

@@ -91,6 +91,26 @@ body.sponsored .sponsor-view .title strong {
   font-family: 'radikalbold', sans-serif;
 }
 
+body.sponsored .sponsor-view .fundraise {
+  padding-top: 16px;
+  color: #fff;
+  text-align: right;
+
+  strong {
+    font-family: 'radikalbold', sans-serif;    
+  }
+
+  .raised {
+    font-size: 2.2em;
+    line-height: 1.4em;
+  }
+
+  .target {
+    font-size: 1.2em;
+    line-height: 1.4em;
+  }
+}
+
 /* PHOTO VIEW */
 /******************************************/
 #photo-view {
@@ -576,7 +596,7 @@ body.fundraising #player-view {
 
   body.sponsored .sponsor-view .detail {
     display: inline-block;
-    padding-top: 4px;
+    padding-top: 14px;
     vertical-align: top;
     float: right;
   }
