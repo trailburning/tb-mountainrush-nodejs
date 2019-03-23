@@ -13,8 +13,9 @@ define([
   'raisenow',
   'views/LanguageSelectorView',
   'views/ActivePlayerView',
-  'views/DemoVideoView'
-], function(_, Backbone, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, raisenow, LanguageSelectorView, ActivePlayerView, DemoVideoView){
+  'views/DemoVideoView',
+  'views/PlayerDetailView'
+], function(_, Backbone, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, raisenow, LanguageSelectorView, ActivePlayerView, DemoVideoView, PlayerDetailView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -34,11 +35,22 @@ define([
         activePlayerView.render();
       });
     }
-    
+
+    function getPlayerProgress() {
+      var url = GAME_API_URL + 'game/' + GAME_ID + '/player/' + PLAYER_ID + '/progress';
+//      console.log(url);
+      $.getJSON(url, function(result){
+        playerDetailView.render(result[0]);
+      });
+    }
+
     var languageSelectorView = new LanguageSelectorView({ el: '#language-selector-view' });
     languageSelectorView.render();
     
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
+    var playerDetailView = new PlayerDetailView({ el: '#player-detail-view' });
+
+    getPlayerProgress();
 
     // check for player
     if (getUserCookie(CLIENT_ID) != undefined) {
