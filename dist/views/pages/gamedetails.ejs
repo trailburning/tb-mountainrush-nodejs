@@ -28,7 +28,7 @@ var FUNDRAISING_PROVIDER = '<%= Campaign.CampaignFundraisingProvider %>';
 var TEST_PROGRESS = '';
 </script>
 
-<form action="<%= Defs.MRAPIURL %>upload.php" id="myForm" name="frmupload" method="post" enctype="multipart/form-data">
+<form action="<%= Defs.MRAPIURL %>upload" id="myForm" name="frmupload" method="post" enctype="multipart/form-data">
   <input type="file" id="upload_file" name="upload_file" />
   <input type="submit" name='submit_image' value="Submit Comment" onclick='upload_image();'/>
 </form>
@@ -36,7 +36,6 @@ var TEST_PROGRESS = '';
 <div class='bar' id='bar'></div>
 <div class='percent' id='percent'>0%</div>
 </div>
-<div id='output_image'>
 
 <div class="container-fluid nopadding">
   <div id="page-view">

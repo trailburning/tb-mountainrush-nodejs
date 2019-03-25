@@ -128,14 +128,13 @@ function upload_image() {
     },
 
     complete: function(xhr) {
-      if(xhr.responseText)
-      {
-        document.getElementById("output_image").innerHTML=xhr.responseText;
+      if (xhr.responseText) {
+        console.log(xhr.responseText);
       }
     }
   }); 
 }
-    
+
 function getFundraisingShoppingList(){
 /*  
   var jsonFundraising = {items: [
