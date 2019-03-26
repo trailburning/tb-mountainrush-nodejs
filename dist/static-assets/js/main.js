@@ -101,8 +101,6 @@ require.config({
 });
 
 function upload_image() {
-  console.log('upload_image');
-
   var bar = $('#bar');
   var percent = $('#percent');
   $('#myForm').ajaxForm({
