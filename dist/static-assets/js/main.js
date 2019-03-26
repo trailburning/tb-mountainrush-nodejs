@@ -16,6 +16,7 @@ require.config({
   paths: {
     jquery: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min',
     jqueryUI: 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min',
+    jqueryForm: 'https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min',
     underscore: 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min',
     backbone: 'https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min',
     bootstrap: 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min',
@@ -98,6 +99,39 @@ require.config({
     }
   }
 });
+
+function upload_image() {
+  var bar = $('#bar');
+  var percent = $('#percent');
+  $('#myForm').ajaxForm({
+    beforeSubmit: function() {
+      document.getElementById("progress_div").style.display="block";
+      var percentVal = '0%';
+      bar.width(percentVal)
+      percent.html(percentVal);
+    },
+
+    uploadProgress: function(event, position, total, percentComplete) {
+      console.log('uploadProgress');
+      var percentVal = percentComplete + '%';
+      bar.width(percentVal)
+      percent.html(percentVal);
+    },
+    
+    success: function() {
+      console.log('success');
+      var percentVal = '100%';
+      bar.width(percentVal)
+      percent.html(percentVal);
+    },
+
+    complete: function(xhr) {
+      if (xhr.responseText) {
+        console.log(xhr.responseText);
+      }
+    }
+  }); 
+}
 
 function getFundraisingShoppingList(){
 /*  

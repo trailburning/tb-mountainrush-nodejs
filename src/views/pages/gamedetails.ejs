@@ -58,6 +58,17 @@ var TEST_PROGRESS = '';
   </div>
 </div>
 
+<div id="asset-upload">
+  <form action="<%= Defs.MRAPIURL %>/campaign/<%= Campaign.CampaignID %>/game/<%= Defs.GameID %>/upload" id="myForm" name="frmupload" method="post" enctype="multipart/form-data">
+    <input type="file" id="upload_file" name="upload_file" />
+    <input type="submit" name='submit_image' value="Submit Comment" onclick='upload_image();'/>
+  </form>
+  <div class='progress' id="progress_div">
+  <div class='bar' id='bar'></div>
+  <div class='percent' id='percent'>0%</div>
+  </div>
+</div>
+
 <% include ../partials/photoSwipe.ejs %>
 
 <div id="challenge-cancel-modal-view"></div>
