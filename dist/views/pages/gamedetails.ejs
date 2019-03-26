@@ -28,15 +28,6 @@ var FUNDRAISING_PROVIDER = '<%= Campaign.CampaignFundraisingProvider %>';
 var TEST_PROGRESS = '';
 </script>
 
-<form action="<%= Defs.MRAPIURL %>/campaign/<%= Campaign.CampaignID %>/game/<%= Defs.GameID %>/upload" id="myForm" name="frmupload" method="post" enctype="multipart/form-data">
-  <input type="file" id="upload_file" name="upload_file" />
-  <input type="submit" name='submit_image' value="Submit Comment" onclick='upload_image();'/>
-</form>
-<div class='progress' id="progress_div">
-<div class='bar' id='bar'></div>
-<div class='percent' id='percent'>0%</div>
-</div>
-
 <div class="container-fluid nopadding">
   <div id="page-view">
     <% if (Campaign.CampaignTemplate == 'default') { %>
@@ -64,6 +55,17 @@ var TEST_PROGRESS = '';
     <% } else { %>
       <%- include('../partials/' + Campaign.CampaignTemplate + '/footer.ejs') %>
     <% } %>
+  </div>
+</div>
+
+<div id="asset-upload">
+  <form action="<%= Defs.MRAPIURL %>/campaign/<%= Campaign.CampaignID %>/game/<%= Defs.GameID %>/upload" id="myForm" name="frmupload" method="post" enctype="multipart/form-data">
+    <input type="file" id="upload_file" name="upload_file" />
+    <input type="submit" name='submit_image' value="Submit Comment" onclick='upload_image();'/>
+  </form>
+  <div class='progress' id="progress_div">
+  <div class='bar' id='bar'></div>
+  <div class='percent' id='percent'>0%</div>
   </div>
 </div>
 

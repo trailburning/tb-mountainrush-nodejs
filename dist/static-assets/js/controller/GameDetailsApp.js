@@ -239,6 +239,11 @@ define([
         activePlayer = player;
       }
       buildGame();
+
+      //190326 mla - temp show upload for testing
+      if (playerID == 'b31r7RZ7Xo') {
+        $('#asset-upload').show();
+      }
     }
 
     function onPlayerLoaded(model) {
