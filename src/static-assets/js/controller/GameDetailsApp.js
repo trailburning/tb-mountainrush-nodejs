@@ -7,6 +7,7 @@ define([
   'backbone',
   'bootstrap', 
   'jqueryUI',
+  'jqueryForm',
   'cookie',
   'truncate',
   'modernizr',
@@ -26,7 +27,7 @@ define([
   'views/ChallengeCancelModalView',
   'views/GameInviteView',  
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, moment, countdown, imagesLoaded, videojs, GamePhotoView, SponsorView, LanguageSelectorView, ActivePlayerView, Player, ChallengeView, PlayersOverviewView, PlayerActivityPhotosView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
+], function(_, Backbone, bootstrap, jqueryUI, jqueryForm, cookie, truncate, modernizr, imageScale, moment, countdown, imagesLoaded, videojs, GamePhotoView, SponsorView, LanguageSelectorView, ActivePlayerView, Player, ChallengeView, PlayersOverviewView, PlayerActivityPhotosView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -238,6 +239,11 @@ define([
         activePlayer = player;
       }
       buildGame();
+
+      //190326 mla - temp show upload for testing
+      if (playerID == 'b31r7RZ7Xo') {
+        $('#asset-upload').show();
+      }
     }
 
     function onPlayerLoaded(model) {
