@@ -21,13 +21,14 @@ define([
   'views/LanguageSelectorView',
   'views/ActivePlayerView',
   'views/Player',
+  'views/GameDetailsModalView',
   'views/ChallengeView',
   'views/PlayersOverviewView',
   'views/PlayerActivityPhotosView',
   'views/ChallengeCancelModalView',
   'views/GameInviteView',  
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, jqueryUI, jqueryForm, cookie, truncate, modernizr, imageScale, moment, countdown, imagesLoaded, videojs, GamePhotoView, SponsorView, LanguageSelectorView, ActivePlayerView, Player, ChallengeView, PlayersOverviewView, PlayerActivityPhotosView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
+], function(_, Backbone, bootstrap, jqueryUI, jqueryForm, cookie, truncate, modernizr, imageScale, moment, countdown, imagesLoaded, videojs, GamePhotoView, SponsorView, LanguageSelectorView, ActivePlayerView, Player, GameDetailsModalView, ChallengeView, PlayersOverviewView, PlayerActivityPhotosView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -46,7 +47,7 @@ define([
     app.dispatcher.on("PlayerActivityPhotosView:loaded", onPlayerActivityPhotosLoaded);
     app.dispatcher.on("PlayerActivityPhotosView:photoRendered", onPlayerActivityPhotosPhotoRendered);
 
-    var challengeView = null;
+    var challengeView = null, gameDetailsModalView = null;
     var mountainModel = new Backbone.Model();
     var nPlayersLoaded = 0;
     var playerCollection = null;
@@ -101,6 +102,8 @@ define([
     }
 
     function buildGame() {
+      gameDetailsModalView = new GameDetailsModalView({ el: '#game-details-modal-view', jsonGame: jsonCurrGame });
+
       playersOverviewView = new PlayersOverviewView({ el: '#players-overview-view', jsonGame: jsonCurrGame, playerCollection: playerCollection, activePlayer: activePlayer });
       // set team fundraising
       var jsonFields = playersOverviewView.getFields();
@@ -174,6 +177,11 @@ define([
           }
         }
       });    
+
+      $('.edit-btn').click(function(evt) {
+        gameDetailsModalView.render();
+        gameDetailsModalView.show();
+      });
 
       $('#player-view').show();
       // ready for action

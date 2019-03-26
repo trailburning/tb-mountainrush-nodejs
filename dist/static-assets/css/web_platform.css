@@ -1207,7 +1207,8 @@ img.scale {
     width: 486px; }
   .modal.shopping-list-overlay .shopping-list .shopping-list-item {
     width: auto; }
-  .modal form input {
+  .modal form input,
+  .modal form .progressbar {
     margin-left: auto;
     margin-right: auto;
     width: 320px; }
