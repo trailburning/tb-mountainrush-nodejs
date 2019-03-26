@@ -241,6 +241,7 @@ define([
       buildGame();
 
       //190326 mla - temp show upload for testing
+      console.log('id:'+playerID);
       if (playerID == 'b31r7RZ7Xo') {
         $('#asset-upload').show();
       }
