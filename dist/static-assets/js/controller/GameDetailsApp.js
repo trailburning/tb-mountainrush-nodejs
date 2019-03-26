@@ -240,9 +240,8 @@ define([
       }
       buildGame();
 
-      //190326 mla - temp show upload for testing
-      console.log('id:'+playerID);
-      if (playerID == 'b31r7RZ7Xo') {
+      //190326 mla - temp show upload for testing when mla signed in
+      if (activePlayer.get('playerProviderID') == '270394') {
         $('#asset-upload').show();
       }
     }
