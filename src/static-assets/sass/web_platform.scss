@@ -1450,7 +1450,8 @@ img.scale {
 
   .modal {
     form {
-      input {
+      input,
+      .progressbar {
         margin-left: auto;
         margin-right: auto;
         width: 320px; 

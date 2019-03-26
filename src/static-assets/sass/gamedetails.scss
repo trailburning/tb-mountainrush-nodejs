@@ -1,28 +1,39 @@
-#asset-upload {
-  display: none;
+.game-admin {
+  text-align: center;
+
+  .edit-btn {
+  }
 }
 
-.progress {
-  display:none; 
-  position:relative; 
-  width:400px; 
-  border: 1px solid #ddd; 
-  padding: 1px; 
-  border-radius: 3px; 
-}
+/* GAME DETAILS MODAL VIEW */
+/******************************************/
+#game-details-modal-view {
+  .progressbar {
+    height: 20px; 
 
-.bar { 
-  background-color: #B4F5B4; 
-  width:0%; 
-  height:20px; 
-  border-radius: 3px; 
-}
+    .progress {
+      display: none; 
+      position: relative; 
+      background: #f7f7f7;
+      border: 1px solid #ddd; 
+      padding: 1px; 
+    }
 
-.percent { 
-  position:absolute; 
-  display:inline-block; 
-  top:3px; 
-  left:48%; 
+    .bar { 
+      background-color: #f75f36; 
+      width: 0%; 
+      height: 20px; 
+    }
+
+    .percent { 
+      position: absolute; 
+      display: inline-block; 
+      line-height: 20px;
+      color: #3c5b6e;
+      top: 0px; 
+      left: 48%; 
+    }  
+  }
 }
 
 /* FOOTER VIEW */
