@@ -82,8 +82,8 @@ var TEST_PROGRESS = '';
 <script type="text/template" id="gamePhotoViewTemplate">
   <div class="photo">
     <div class="image fade_on_ready">
-    {{ if (game.photo) { }}    
-      <img class="scale" src="https://tbassets2.imgix.net{{= game.photo }}?fm=jpg&w=1024&q=80">
+    {{ if (game.media.length) { }} 
+      <img class="scale" src="https://mountainrush-media.imgix.net/<%= Campaign.CampaignID %>/<%= Defs.GameID %>/{{= game.media[0].id }}?fm=jpg&w=1024&q=80">
     {{ } else { }}
       <img class="scale" src="https://mountainrush-assets.imgix.net/pages/olivier-miche-102259-unsplash.jpg?fm=jpg&q=80&w=1280">
     {{ } }}
@@ -232,8 +232,8 @@ var TEST_PROGRESS = '';
 
     <div class="team-overview">
       <div class="photo">
-        {{ if (game.photo) { }}    
-          <div class="image" style="background-image: url('https://tbassets2.imgix.net{{= game.photo }}?fm=jpg&w=1024&q=80')"></div>
+        {{ if (game.media.length) { }} 
+          <div class="image" style="background-image: url('https://mountainrush-media.imgix.net/<%= Campaign.CampaignID %>/<%= Defs.GameID %>/{{= game.media[0].id }}?fm=jpg&w=1024&q=80')"></div>
         {{ } else { }}
           <div class="image" style="background-image: url('https://mountainrush-assets.imgix.net/pages/olivier-miche-102259-unsplash.jpg?fm=jpg&q=80&w=1280')"></div>
         {{ } }}
