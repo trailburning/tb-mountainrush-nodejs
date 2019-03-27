@@ -247,11 +247,6 @@ define([
         activePlayer = player;
       }
       buildGame();
-
-      //190326 mla - temp show upload for testing when mla signed in
-      if (activePlayer.get('playerProviderID') == '270394') {
-        $('#asset-upload').show();
-      }
     }
 
     function onPlayerLoaded(model) {
