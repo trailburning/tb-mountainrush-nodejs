@@ -3,12 +3,8 @@ import ScrollAnimationCustom from './ScrollAnimationCustom';
 const reactStringReplace = require('react-string-replace');
 
 export default class HowToStep extends React.Component {
-  dispatchSignupBtnAction(e) {
-    this.props.callbackSignupBtnClicked();
-  }
-
-  dispatchChallengeBtnAction(e) {
-    this.props.callbackChallengeBtnClicked();
+  dispatchBtnAction(param) {
+    this.props.callbackBtnClicked(param);
   }
 
   ctaContent() {
@@ -16,13 +12,13 @@ export default class HowToStep extends React.Component {
     if (this.props.last) {
       return (
         <div className="btn-ctas">
-          <div className="btn-cta action signup-action">
-          <button className="btn mr-btn btn-primary double" onClick={this.dispatchSignupBtnAction.bind(this)}>
+          <div className="btn-cta player-action player-inactive">
+          <button className="btn mr-btn btn-primary double" onClick={this.dispatchBtnAction.bind(this, 'signup')}>
           <div>{this.props.content.defs.signup}</div><div><i className="fa fa-arrow-right"></i></div>
           </button>
           </div>
-          <div className="btn-cta action challenge-action">
-          <button className="btn mr-btn btn-primary double" onClick={this.dispatchChallengeBtnAction.bind(this)}>
+          <div className="btn-cta player-action player-active">
+          <button className="btn mr-btn btn-primary double" onClick={this.dispatchBtnAction.bind(this, 'challenge')}>
           <div>{this.props.content.defs.challenge.create}</div><div><i className="fa fa-arrow-right"></i></div>
           </button>
           </div>
