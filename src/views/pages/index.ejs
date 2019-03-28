@@ -78,7 +78,8 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
             </div>
           </div>
           <div class="btns">
-          <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('welcome.signup') %></a> 
+          <span class="visible-player-active"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate" class="signup btn mr-btn btn-primary"><%= __('defs.challenge.create') %></a> </span>
+          <span class="visible-player-inactive"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('defs.signup') %></a> </span>
           <span class="btn mr-btn demo-video"><%= __('welcome.demo') %></span>
           </div>
         </div>

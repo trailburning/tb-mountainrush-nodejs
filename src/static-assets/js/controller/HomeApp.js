@@ -98,6 +98,8 @@ define([
     // check for player
     if (getUserCookie(DEF_CLIENT_ID) != undefined) {
       var jsonUser = getUserCookies(DEF_CLIENT_ID);
+
+      $('.visible-player-active').show();      
 //      console.log(jsonUser);
 
       // send user info to Drift
@@ -116,6 +118,8 @@ define([
       playerGameView.getPlayerGame(DEF_CLIENT_ID);
     }
     else {
+      $('.visible-player-inactive').show();
+
       // fire up promotion
 
         // 190114 MLA removed until it can be automatic
