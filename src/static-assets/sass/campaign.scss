@@ -20,6 +20,30 @@ h2 {
   font-size: 1em;
 }
 
+.action {
+  display: none;
+
+  &.signup-action {
+    display: block;
+  }
+
+  &.challenge-action {
+    display: none;
+  }
+}
+
+body.activeplayer {
+  .action {
+    &.signup-action {
+      display: none;
+    }
+
+    &.challenge-action {
+      display: block;
+    }
+  }
+}
+
 /* HEADER VIEW */
 /******************************************/
 #header-view {

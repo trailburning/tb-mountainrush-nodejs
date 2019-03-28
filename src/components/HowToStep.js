@@ -3,18 +3,29 @@ import ScrollAnimationCustom from './ScrollAnimationCustom';
 const reactStringReplace = require('react-string-replace');
 
 export default class HowToStep extends React.Component {
-  dispatchBtnAction(e) {
-    this.props.callbackBtnClicked();
+  dispatchSignupBtnAction(e) {
+    this.props.callbackSignupBtnClicked();
+  }
+
+  dispatchChallengeBtnAction(e) {
+    this.props.callbackChallengeBtnClicked();
   }
 
   ctaContent() {
     // last step renders cta
     if (this.props.last) {
       return (
-        <div className="btn-cta">
-        <button className="btn mr-btn btn-primary double" onClick={this.dispatchBtnAction.bind(this)}>
-        <div>{this.props.content.defs.signup}</div><div><i className="fa fa-arrow-right"></i></div>
-        </button>
+        <div className="btn-ctas">
+          <div className="btn-cta action signup-action">
+          <button className="btn mr-btn btn-primary double" onClick={this.dispatchSignupBtnAction.bind(this)}>
+          <div>{this.props.content.defs.signup}</div><div><i className="fa fa-arrow-right"></i></div>
+          </button>
+          </div>
+          <div className="btn-cta action challenge-action">
+          <button className="btn mr-btn btn-primary double" onClick={this.dispatchChallengeBtnAction.bind(this)}>
+          <div>{this.props.content.defs.challenge.create}</div><div><i className="fa fa-arrow-right"></i></div>
+          </button>
+          </div>
         </div>
       )
     }
