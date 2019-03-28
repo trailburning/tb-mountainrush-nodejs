@@ -31,13 +31,12 @@ class HowToGuide extends Component {
 
   render() {
     let guide = Object.keys(store.getState().literals.how_to_guide);
-    let callbackSignupBtnClicked = this.props.callbackSignupBtnClicked;
-    let callbackChallengeBtnClicked = this.props.callbackChallengeBtnClicked;
+    let callbackBtnClicked = this.props.callbackBtnClicked;
 
     return (
       <div>
       {guide.map(function(key, index){
-        return <HowToStep key={index} step={key} first={(index ? false : true)} last={index == guide.length-1 ? true : false} toggle={index % 2} stepContent={store.getState().literals.how_to_guide[key]} content={store.getState().literals} callbackSignupBtnClicked={callbackSignupBtnClicked} callbackChallengeBtnClicked={callbackChallengeBtnClicked} />;
+        return <HowToStep key={index} step={key} first={(index ? false : true)} last={index == guide.length-1 ? true : false} toggle={index % 2} stepContent={store.getState().literals.how_to_guide[key]} content={store.getState().literals} callbackBtnClicked={callbackBtnClicked} />;
       })}
       { /*<button onClick={this.dispatchReduxBtnAction.bind(this)}>Toggle Language</button> */}
       </div>

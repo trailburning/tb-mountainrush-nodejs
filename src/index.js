@@ -23,17 +23,22 @@ if (typeof CAMPAIGN_SEL_LANGUAGE !== 'undefined') {
 const lang = loadLang(selLag);
 store.dispatch(loadLiterals(lang));
 
-function onSignupBtnClicked() {
-  location = hostURL + '/campaign/' + campaignID + '/register';
-}
+function onBtnClicked(param) {
+  console.log(param);
+  switch (param) {
+    case 'signup':
+      location = hostURL + '/campaign/' + campaignID + '/register';
+      break;
 
-function onChallengeBtnClicked() {
-  location = hostURL + '/campaign/' + campaignID + '/gamecreate';
+    case 'challenge':
+      location = hostURL + '/campaign/' + campaignID + '/gamecreate';
+      break;
+  }
 }
 
 const render = function() {
   ReactDOM.render(
-    <HowToGuide className="howToGuide" callbackSignupBtnClicked={onSignupBtnClicked} callbackChallengeBtnClicked={onChallengeBtnClicked} />, 
+    <HowToGuide className="howToGuide" callbackBtnClicked={onBtnClicked} />, 
     document.getElementById('howToGuide')
   );  
 }

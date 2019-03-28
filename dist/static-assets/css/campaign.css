@@ -16,19 +16,6 @@ h1 {
 h2 {
   font-size: 1em; }
 
-.action {
-  display: none; }
-  .action.signup-action {
-    display: block; }
-  .action.challenge-action {
-    display: none; }
-
-body.activeplayer .action.signup-action {
-  display: none; }
-
-body.activeplayer .action.challenge-action {
-  display: block; }
-
 /* HEADER VIEW */
 /******************************************/
 #header-view {
@@ -626,6 +613,11 @@ input.ui-autocomplete-loading {
   #community-view .post .details {
     height: 60px;
     overflow: hidden; } }
+
+/* ACTIONS */
+/******************************************/
+.player-action {
+  display: none; }
 
 /* Small devices (tablets, 992px and up) */
 @media (min-width: 992px) {
