@@ -91,7 +91,6 @@ define([
     if (getUserCookie(CLIENT_ID) != undefined) {
       var jsonUser = getUserCookies(CLIENT_ID);
 
-      $('body').addClass('activeplayer');
       $('.visible-player-active').show();
 
       app.dispatcher.on("PlayerGameView:loaded", onPlayerGameViewReady);
