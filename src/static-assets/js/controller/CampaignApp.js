@@ -92,7 +92,7 @@ define([
       var jsonUser = getUserCookies(CLIENT_ID);
 
       $('body').addClass('activeplayer');
-      $('.player-active').show();
+      $('.visible-player-active').show();
 
       app.dispatcher.on("PlayerGameView:loaded", onPlayerGameViewReady);
 
@@ -105,7 +105,7 @@ define([
       playerGameView.getPlayerGame(CLIENT_ID);
     }
     else {
-      $('.player-inactive').show();
+      $('.visible-player-inactive').show();
     }
 
     $('.signout').click(function(evt){

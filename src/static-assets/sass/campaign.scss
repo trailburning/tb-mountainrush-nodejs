@@ -789,9 +789,9 @@ input.ui-autocomplete-loading {
   }
 }
 
-/* ACTIONS */
+/* VISIBLE PLAYER */
 /******************************************/
-.player-action {
+[class*="visible-player-"] {
   display: none;
 }
 
