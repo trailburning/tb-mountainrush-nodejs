@@ -10,6 +10,7 @@ define([
 
       this.options = options;
       this.bSponsoredDialogShown = false;
+      this.currGame = null;
 
       this.jsonFields = {campaignID: 0,
                          ownerPlayerID: 0,
@@ -21,7 +22,8 @@ define([
                          gameStart: '',
                          gameEnd: '',
                          duration: 0,
-                         multiplayer: 0}
+                         multiplayer: 0,
+                         games: null}
     },
 
     getFields: function() {
@@ -30,6 +32,12 @@ define([
 
     setFields: function(jsonFields) {
       this.jsonFields.campaignID = jsonFields.campaignID;
+
+      // see if there's an active game
+      this.currGame = _.where(this.jsonFields.games, {game_state:'active'})[0];
+      if (!this.currGame) {
+        this.currGame = _.where(this.jsonFields.games, {game_state:'pending'})[0];
+      }
     },
 
     createGamePlayer: function() {
@@ -138,7 +146,7 @@ define([
         }
       }
 
-      $(this.el).html(this.template({ gameLevels: options.gameLevels, gameOptions: options.gameOptions }));
+      $(this.el).html(this.template({ currGame: self.currGame, gameLevels: options.gameLevels, gameOptions: options.gameOptions }));
 
       // get defaults
       $('.pill.active').each(function(index){
@@ -157,9 +165,11 @@ define([
       }).data('datepicker');
 
       // def start today
-      var dtStart = now;
-      dtStart.setDate(dtStart.getDate());
-      this.startDate.setValue(dtStart);
+      if (this.startDate) {
+        var dtStart = now;
+        dtStart.setDate(dtStart.getDate());
+        this.startDate.setValue(dtStart);
+      }
 
       $('.pill', $(self.el)).click(function(evt){
         pillSelected($(this));

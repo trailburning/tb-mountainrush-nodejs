@@ -176,7 +176,13 @@
       "fixed_activity": "Your activity will be:",
       "choose_duration": "How long would you like to reach the summit?",
       "choose_start": "When will you start your challenge?",
-      "create_challenge": "Create Challenge"
+      "create_challenge": "Create Challenge",
+      "errors": {
+        "active_game": {
+          "title": "Active Challenge",
+          "description": "You already have an active challenge!"
+        }
+      }
     },
     "game_created": {
       "fundraising": {
@@ -285,6 +291,7 @@
     "strava_app": "Strava App",
     "donate": "Donate",
     "challenge": {
+      "create": "Challenge",
       "view": "View Challenge"
     },
     "prefs": "Preferences",

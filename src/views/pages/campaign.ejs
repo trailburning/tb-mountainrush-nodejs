@@ -115,7 +115,9 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
         </div>
 
         <div class="btns">
-          <a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div>Sign up</div><div><i class="fa fa-arrow-right"></i></div></a>
+          <span class="action challenge-action"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div>Challenge</div><div><i class="fa fa-arrow-right"></i></div></a></span>
+
+          <span class="action signup-action"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div>Sign up</div><div><i class="fa fa-arrow-right"></i></div></a></span>
         </div>
       </div>
 

@@ -393,67 +393,76 @@ var TEST = '<%= Defs.Test %>';
 </script>
 
 <script type="text/template" id="registerGameCreateViewTemplate">
-  <h1><%= __('register.game_create.title') %></h1>
-  <div class="intro-text centre-text"><%= __('register.game_create.description') %></div>
-
-  <form>
-    <div class="form-block">
-      {{ if (gameLevels.length > 1) { }}
-        <h2><%= __('register.game_create.choose_ascent') %></h2>
-        <ul class="form-field pills" data-id="level">
-        {{ _.each(gameLevels, function(gameLevel, index) { }}
-          <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameLevel.id }}" data-season-id="{{= gameLevel.seasonDefault }}" data-sponsored="{{= gameLevel.sponsored }}">{{= gameLevel.name }} {{= gameLevel.ascent }}m</span>
-          </li>
-        {{ }); }}
-        </ul>
-      {{ } else { }}
-        <h2><%= __('register.game_create.fixed_ascent') %></h2>
-        <ul class="form-field pills" data-id="level">
-        {{ _.each(gameLevels, function(gameLevel, index) { }}
-          <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameLevel.id }}" data-season-id="{{= gameLevel.seasonDefault }}">{{= gameLevel.name }} {{= gameLevel.ascent }}m</span></li>
-        {{ }); }}
-        </ul>
-      {{ } }}
+  {{ if (currGame) { }}
+    <h1><%= __('register.game_create.errors.active_game.title') %></h1>
+    <div class="intro-text centre-text"><%= __('register.game_create.errors.active_game.description') %></div>
+    
+    <div class="btns">
+    <a href="<%= Defs.BaseHTTPSURL %>/game/{{= currGame.game }}" class="btn mr-btn"><%= __('register.welcome_connected.game_active') %></a>
     </div>
+  {{ } else { }}
+    <h1><%= __('register.game_create.title') %></h1>
+    <div class="intro-text centre-text"><%= __('register.game_create.description') %></div>
 
-    <div class="form-block">
-      {{ if (gameOptions.types.length > 1) { }}
-        <h2><%= __('register.game_create.choose_activity') %></h2>
-        <ul class="form-field pills" data-id="type">
-        {{ _.each(gameOptions.types, function(gameActivityType, index) { }}
-          <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameActivityType.name }}">{{= gameActivityType.description }}</span></li>
-        {{ }); }}
-        </ul>
-      {{ } else { }}
-        <h2><%= __('register.game_create.fixed_activity') %></h2>
-        <ul class="form-field pills" data-id="type">
-        {{ _.each(gameOptions.types, function(gameActivityType, index) { }}
-          <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameActivityType.name }}">{{= gameActivityType.description }}</span></li>
-        {{ }); }}
-        </ul>
-      {{ } }}      
-    </div>
-
-    <div class="form-block">
-      <h2><%= __('register.game_create.choose_duration') %></h2>
-      <ul class="form-field pills" data-id="duration">
-        {{ _.each(gameOptions.durations, function(gameDuration, index) { }}
-          <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameDuration.days }}">{{= gameDuration.description }}</span></li>
-        {{ }); }}
-      </ul>
-    </div>
-
-    <div class="form-block">
-      <h2><%= __('register.game_create.choose_start') %></h2>
-      <div class="form-field">
-        <div class="search-date-field"><input class="field form-control date-field" type="text" id="dpd1"></div>
+    <form>
+      <div class="form-block">
+        {{ if (gameLevels.length > 1) { }}
+          <h2><%= __('register.game_create.choose_ascent') %></h2>
+          <ul class="form-field pills" data-id="level">
+          {{ _.each(gameLevels, function(gameLevel, index) { }}
+            <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameLevel.id }}" data-season-id="{{= gameLevel.seasonDefault }}" data-sponsored="{{= gameLevel.sponsored }}">{{= gameLevel.name }} {{= gameLevel.ascent }}m</span>
+            </li>
+          {{ }); }}
+          </ul>
+        {{ } else { }}
+          <h2><%= __('register.game_create.fixed_ascent') %></h2>
+          <ul class="form-field pills" data-id="level">
+          {{ _.each(gameLevels, function(gameLevel, index) { }}
+            <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameLevel.id }}" data-season-id="{{= gameLevel.seasonDefault }}">{{= gameLevel.name }} {{= gameLevel.ascent }}m</span></li>
+          {{ }); }}
+          </ul>
+        {{ } }}
       </div>
-    </div>
 
-    <div class="form-block">
-    <button type="submit" class="btn mr-btn btn-primary create-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('register.game_create.create_challenge') %></button>
-    </div>
-  </form>
+      <div class="form-block">
+        {{ if (gameOptions.types.length > 1) { }}
+          <h2><%= __('register.game_create.choose_activity') %></h2>
+          <ul class="form-field pills" data-id="type">
+          {{ _.each(gameOptions.types, function(gameActivityType, index) { }}
+            <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameActivityType.name }}">{{= gameActivityType.description }}</span></li>
+          {{ }); }}
+          </ul>
+        {{ } else { }}
+          <h2><%= __('register.game_create.fixed_activity') %></h2>
+          <ul class="form-field pills" data-id="type">
+          {{ _.each(gameOptions.types, function(gameActivityType, index) { }}
+            <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameActivityType.name }}">{{= gameActivityType.description }}</span></li>
+          {{ }); }}
+          </ul>
+        {{ } }}      
+      </div>
+
+      <div class="form-block">
+        <h2><%= __('register.game_create.choose_duration') %></h2>
+        <ul class="form-field pills" data-id="duration">
+          {{ _.each(gameOptions.durations, function(gameDuration, index) { }}
+            <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameDuration.days }}">{{= gameDuration.description }}</span></li>
+          {{ }); }}
+        </ul>
+      </div>
+
+      <div class="form-block">
+        <h2><%= __('register.game_create.choose_start') %></h2>
+        <div class="form-field">
+          <div class="search-date-field"><input class="field form-control date-field" type="text" id="dpd1"></div>
+        </div>
+      </div>
+
+      <div class="form-block">
+      <button type="submit" class="btn mr-btn btn-primary create-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('register.game_create.create_challenge') %></button>
+      </div>
+    </form>
+  {{ } }}
 </script>
 
 <script type="text/template" id="registerGameCreatedViewTemplate">

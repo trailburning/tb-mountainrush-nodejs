@@ -125,8 +125,7 @@ define([
 //        if (TEST) {
 //          removeUserCookie(CLIENT_ID);
 //          PLAYER_TOKEN = '9b69f66ee9a7d20702a5b9771322388df8cb886a'; // MR - Matt
-//        PLAYER_TOKEN = 'b8a1bc6ca786c95f1e639c42615320782d8a9d22'; // MR - Trailburning
-//          PLAYER_TOKEN = '3e43a998394b56e0616e3ccd4085ba762f83e861'; // CFYW - Amelia
+//          PLAYER_TOKEN = 'b8a1bc6ca786c95f1e639c42615320782d8a9d22'; // MR - Trailburning
 //          PLAYER_TOKEN = '3e43a998394b56e0616e3ccd4085ba762f83e861'; // CFYW - Amelia
 //        } 
 //        changeState(STATE_GAME_CREATE);
@@ -148,6 +147,23 @@ define([
               getPlayer(jsonCampaign.clientID, token, function(jsonPlayer) {
                 jsonCurrPlayer = jsonPlayer;
                 changeState(STATE_PLAYER_PREFERENCES);
+                showActivePlayer();
+                enableUserActions(CLIENT_ID);
+              });
+              break;
+
+            case 'gamecreate':
+//MLA            
+              // we want to show player prefs, first get player deats
+              var token = PLAYER_TOKEN;
+              if (getUserCookie(jsonCampaign.clientID) != undefined) {
+                var jsonPlayer = getUserCookies(jsonCampaign.clientID);
+                token = jsonPlayer.token;
+              }
+
+              getPlayer(jsonCampaign.clientID, token, function(jsonPlayer) {
+                jsonCurrPlayer = jsonPlayer;
+                changeState(STATE_GAME_CREATE);
                 showActivePlayer();
                 enableUserActions(CLIENT_ID);
               });
@@ -382,7 +398,8 @@ define([
 
           jsonFields = registerGameCreateView.getFields();
           jsonFields.campaignID = CAMPAIGN_ID;
-          jsonFields.playerID = jsonWelcomeFields.playerID;
+          jsonFields.playerID = jsonCurrPlayer.id;
+          jsonFields.games = jsonCurrPlayer.games; // we may have an active game already!
 
           // get campaign game levels
           var url = GAME_API_URL + 'campaign/' + jsonFields.campaignID + '/gamelevels';

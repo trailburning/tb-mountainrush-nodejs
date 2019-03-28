@@ -27,9 +27,13 @@ function onSignupBtnClicked() {
   location = hostURL + '/campaign/' + campaignID + '/register';
 }
 
+function onChallengeBtnClicked() {
+  location = hostURL + '/campaign/' + campaignID + '/gamecreate';
+}
+
 const render = function() {
   ReactDOM.render(
-    <HowToGuide className="howToGuide" callbackSignupBtnClicked={onSignupBtnClicked} />, 
+    <HowToGuide className="howToGuide" callbackSignupBtnClicked={onSignupBtnClicked} callbackChallengeBtnClicked={onChallengeBtnClicked} />, 
     document.getElementById('howToGuide')
   );  
 }

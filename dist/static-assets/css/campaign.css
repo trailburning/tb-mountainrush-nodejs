@@ -16,6 +16,19 @@ h1 {
 h2 {
   font-size: 1em; }
 
+.action {
+  display: none; }
+  .action.signup-action {
+    display: block; }
+  .action.challenge-action {
+    display: none; }
+
+body.activeplayer .action.signup-action {
+  display: none; }
+
+body.activeplayer .action.challenge-action {
+  display: block; }
+
 /* HEADER VIEW */
 /******************************************/
 #header-view {
