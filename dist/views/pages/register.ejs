@@ -178,9 +178,11 @@ var TEST = '<%= Defs.Test %>';
   <% } %>
   </p>
   </div>
-  <p><%- __('register.welcome.privacy_agree', '<a href="' + Defs.BaseHTTPSURL + '/campaign/' + Campaign.CampaignID + '/privacy" class="link">' + __('register.welcome.privacy') + '</a>') %></p>
-  <p>
-  <div class="connect"><a href="<%= Defs.StravaOauthConnectURL %>"><img src="/static-assets/images/btn_strava_connectwith_orange.png"></a></div>
+  <div class="connect">
+    <a href="<%= Defs.StravaOauthConnectURL %>"><img src="/static-assets/images/btn_strava_connectwith_orange.png"></a>
+  </div>
+
+  <%- __('register.welcome.privacy_agree', '<a href="' + Defs.BaseHTTPSURL + '/campaign/' + Campaign.CampaignID + '/privacy" class="link">' + __('register.welcome.privacy') + '</a>') %>
 </script>
 
 <script type="text/template" id="registerWelcomeVerifyViewTemplate">
