@@ -153,7 +153,6 @@ define([
               break;
 
             case 'gamecreate':
-//MLA            
               // we want to show player prefs, first get player deats
               var token = PLAYER_TOKEN;
               if (getUserCookie(jsonCampaign.clientID) != undefined) {
