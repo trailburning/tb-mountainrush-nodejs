@@ -614,9 +614,9 @@ input.ui-autocomplete-loading {
     height: 60px;
     overflow: hidden; } }
 
-/* ACTIONS */
+/* VISIBLE PLAYER */
 /******************************************/
-.player-action {
+[class*="visible-player-"] {
   display: none; }
 
 /* Small devices (tablets, 992px and up) */
