@@ -51,7 +51,7 @@ export default class HowToStep3 extends React.Component {
 
     return (
       <div className={className}>
-        <ScrollAnimationCustom key={this.props.step} animateIn="fadeIn" animateOut="fadeOut" animateOnce={false}>
+        <ScrollAnimationCustom key={this.props.step} animateIn="fadeIn" animateOut="fadeOut" animateOnce={false} delay={0} offset={0}>
         {this.stepContent()}
         </ScrollAnimationCustom>
       </div>
