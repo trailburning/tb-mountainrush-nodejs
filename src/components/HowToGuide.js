@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { store } from "../store";
 import '../static-assets/css/how_to_guide.css';
-import HowToStep from "./HowToStep";
+import HowToStep1 from "./HowToStep1";
+import HowToStep2 from "./HowToStep2";
+import HowToStep3 from "./HowToStep3";
 
 import { loadLiterals } from "../reducers/literals";
 import loadLang from "../locales";
@@ -35,9 +37,9 @@ class HowToGuide extends Component {
 
     return (
       <div>
-      {guide.map(function(key, index){
-        return <HowToStep key={index} step={key} first={(index ? false : true)} last={index == guide.length-1 ? true : false} toggle={index % 2} stepContent={store.getState().literals.how_to_guide[key]} content={store.getState().literals} callbackBtnClicked={callbackBtnClicked} />;
-      })}
+        <HowToStep1 key={0} step={'challenge'} toggle={0} stepContent={store.getState().literals.how_to_guide['challenge']} content={store.getState().literals} callbackBtnClicked={callbackBtnClicked} />
+        <HowToStep2 key={1} step={'active'} toggle={1} stepContent={store.getState().literals.how_to_guide['active']} content={store.getState().literals} callbackBtnClicked={callbackBtnClicked} />
+        <HowToStep3 key={2} step={'fundraise'} toggle={0} stepContent={store.getState().literals.how_to_guide['fundraise']} content={store.getState().literals} callbackBtnClicked={callbackBtnClicked} />
       { /*<button onClick={this.dispatchReduxBtnAction.bind(this)}>Toggle Language</button> */}
       </div>
     );
