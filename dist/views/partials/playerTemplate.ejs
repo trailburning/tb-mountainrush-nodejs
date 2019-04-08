@@ -51,6 +51,8 @@
     </li>
   {{ }); }}
   </ul>
+
+  <div class="team"><a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/details" class="btn mr-btn btn-secondary">About the team</a></div>
 </script>
 
 <script type="text/template" id="playersDetailTemplate">
@@ -253,6 +255,8 @@
               </div>
             </div>
           {{ } }}
+
+          <div class="visible-xs visible-sm team"><a href="<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/details" class="btn mr-btn btn-secondary btn-large">About the team</a></div>
 
           {{ var socialShareURL = '' }}
 

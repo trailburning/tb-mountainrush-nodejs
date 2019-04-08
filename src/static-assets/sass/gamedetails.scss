@@ -319,12 +319,13 @@ body.sponsored .sponsor-view .fundraise {
     }
 
     .players-ranking {
-      padding: 0 16px 40px 16px;
+      padding: 24px 16px 40px 16px;
 
       .player-ranking-title {
-        padding: 16px 8px 12px 20px;
+        padding: 10px 8px 8px 20px;
         text-align: center;
         color: #3c5b6e;
+        background: #f8f8f8;
         font-family: 'radikalbold', sans-serif;
         font-size: 0.8em;
         text-transform: uppercase;
@@ -353,7 +354,7 @@ body.sponsored .sponsor-view .fundraise {
 
         &:hover {
           cursor: pointer;
-          background: #f8f8f8;
+          background: #ebebeb;
         }
 
         h1 {

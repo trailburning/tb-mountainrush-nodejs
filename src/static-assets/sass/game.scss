@@ -435,71 +435,81 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
 
 #player-view .list {
   display: none;
-}
 
-#player-view .list .player-ranking {
-  height: 75px;
-  padding-top: 16px;
-  text-align: left;
-  color: #a5b4bd;
-}
+  .player-ranking {
+    height: 75px;
+    padding-top: 16px;
+    text-align: left;
+    color: #a5b4bd;
 
-#player-view .list .player-ranking .pos {
-  float: left;
-  width: 70px;
-  padding-top: 14px;
-  padding-left: 30px;
-}
+    .pos {
+      float: left;
+      width: 70px;
+      padding-top: 14px;
+      padding-left: 30px;
+    }
 
-#player-view .list .player-ranking .photo {
-  float: left;
-  position: relative;
-  width: 58px;
-  padding-top: 0;
-  padding-left: 0;
-}
+    .photo {
+      float: left;
+      position: relative;
+      width: 58px;
+      padding-top: 0;
+      padding-left: 0;
+    }
 
-#player-view .list .player-ranking .photo-icon {
-  position: absolute;
-  top: -5px;
-  left: 28px;
-}
+    .photo-icon {
+      position: absolute;
+      top: -5px;
+      left: 28px;
+    }
 
-#player-view .list .player-ranking .overview {
-  float: left;
-  padding-top: 2px;
-  padding-left: 10px;
-  border-left: 1px solid #a5b4bd;
-}
+    .overview {
+      float: left;
+      padding-top: 2px;
+      padding-left: 10px;
+      border-left: 1px solid #a5b4bd;
+    }
 
-#player-view .list .player-ranking .overview h1 {
-  font-family: 'radikalbold', sans-serif;
-  padding-bottom: 2px;
-  font-size: 1.4em;
-}
+    .overview h1 {
+      font-family: 'radikalbold', sans-serif;
+      padding-bottom: 2px;
+      font-size: 1.4em;
+    }
 
-#player-view .list .player-ranking.active,
-#player-view .list .player-ranking:hover {
-  color: #44b6f7;
-  background: #fff;
-}
+    &.active,
+    &:hover {
+      color: #44b6f7;
+      background: #fff;
+    }
 
-#player-view .list .player-ranking.active .ranking,
-#player-view .list .player-ranking:hover .ranking {
-  background: #44b6f7;
-}
+    &.active .ranking,
+    &:hover .ranking {
+      background: #44b6f7;
+    }
 
-#player-view .list .player-ranking.active .overview,
-#player-view .list .player-ranking:hover .overview {
-  border-left: 1px solid #44b6f7;
-}
+    &.active .overview,
+    &:hover .overview {
+      border-left: 1px solid #44b6f7;
+    }
 
-#player-view .list .player-ranking:hover {
-  cursor: pointer;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .team {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    text-align: center;
+  }
 }
 
 #player-view .detail {
   overflow: hidden;
+
+  .team {
+    padding-top: 26px;
+  }
 }
 
 #player-view .detail .scroll-container {
@@ -905,7 +915,10 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
 #player-view .detail {
   .share-detail {
     padding: 38px 0 16px 0;
+/*    
+mla
     border-top: 1px solid #d7d7d7;
+*/    
     color: #a3a3a3;
     text-align: center;
 
@@ -1184,6 +1197,10 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   #player-view .detail {
     position: relative;
     overflow: initial;
+
+    .share-detail {
+      border-top: 1px solid #d7d7d7;
+    }
   }
 
   #player-view .detail .scroll {
@@ -1433,12 +1450,12 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
   body.sponsored .sponsor-view {
     height: 388px;
     padding: 56px 0 0 0;
-  }
 
-  body.sponsored .sponsor-view .sponsor-detail-view {
-    margin-left: auto;
-    margin-right: auto;
-    width: 942px;
+    .sponsor-detail-view {
+      margin-left: auto;
+      margin-right: auto;
+      width: 942px;
+    }
   }
 
   .modal.story-overlay .big-close-btn {
@@ -1544,21 +1561,22 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
     margin-left: auto;
     margin-right: auto;
     width: 992px;
-  }
 
-  #player-view .list {
-    float: left;
-    width: 322px;
-  }
+    .list {
+      float: left;
+      width: 322px;
 
-  #player-view .list ul {
-    padding-left: 25px;
-  }
+      ul,
+      .team {
+        padding-left: 25px;
+      }
+    }
 
-  #player-view .detail {
-    float: left;
-    margin-top: -55px;
-    width: 670px;
+    .detail {
+      float: left;
+      margin-top: -55px;
+      width: 670px;
+    }
   }
 
   body.single-player #player-view .detail-container {
