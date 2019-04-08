@@ -217,6 +217,10 @@ form .warning {
     color: #fff;
     border-color: transparent;
     background-color: #f75f36; }
+  .mr-btn.btn-secondary {
+    color: #fff;
+    border-color: transparent;
+    background-color: #3c5b6e; }
   .mr-btn.btn-large {
     font-size: 1.2em; }
   .mr-btn.double {
@@ -248,6 +252,10 @@ form .warning {
   .mr-btn.btn-primary.btn-invert-hover:hover {
     color: #f75f36;
     background-color: #fff; }
+  .mr-btn.btn-secondary:hover {
+    color: #fff;
+    background-color: #f75f36;
+    outline: none; }
 
 .sub {
   font-size: 0.65em; }

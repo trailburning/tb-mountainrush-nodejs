@@ -232,11 +232,12 @@ body.sponsored .sponsor-view .fundraise {
         #player-view .players-overview .detail .share-detail .btns .btn {
           margin: 0 13px; }
   #player-view .players-overview .players-ranking {
-    padding: 0 16px 40px 16px; }
+    padding: 24px 16px 40px 16px; }
     #player-view .players-overview .players-ranking .player-ranking-title {
-      padding: 16px 8px 12px 20px;
+      padding: 10px 8px 8px 20px;
       text-align: center;
       color: #3c5b6e;
+      background: #f8f8f8;
       font-family: 'radikalbold', sans-serif;
       font-size: 0.8em;
       text-transform: uppercase; }
@@ -256,7 +257,7 @@ body.sponsored .sponsor-view .fundraise {
       color: #a5b4bd; }
       #player-view .players-overview .players-ranking .player-ranking:hover {
         cursor: pointer;
-        background: #f8f8f8; }
+        background: #ebebeb; }
       #player-view .players-overview .players-ranking .player-ranking h1 {
         color: #44b6f7;
         font-family: 'radikalbold', sans-serif;

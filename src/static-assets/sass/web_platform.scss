@@ -267,6 +267,12 @@ form {
     background-color: #f75f36;
   }
 
+  &.btn-secondary {
+    color: #fff;
+    border-color: transparent;
+    background-color: #3c5b6e;
+  }
+
   &.btn-large {
     font-size: 1.2em;
   }
@@ -318,6 +324,12 @@ form {
   &.btn-primary.btn-invert-hover:hover {
     color: #f75f36;
     background-color: #fff;
+  }
+
+  &.btn-secondary:hover {
+    color: #fff;
+    background-color: #f75f36;
+    outline: none;
   }
 }
 
