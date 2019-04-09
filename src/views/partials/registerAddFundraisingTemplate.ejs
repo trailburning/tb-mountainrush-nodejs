@@ -2,21 +2,11 @@
 
 <div class="fundraising">
   <h2>Want to see more during your climb?</h2>
-  <div class="intro-text centre-text">Support <%= Campaign.ClientShortName %> when you {{= campaign.name }} and unlock special content by adding fundraising to your campaign!</div>
+  <div class="intro-text centre-text">Support <%= Campaign.ClientShortName %> when you <%= Campaign.CampaignName %> and unlock special content by adding fundraising to your challenge!</div>
 </div>
 
 <div class="shopping-list">
-  <div class="shopping-list-item clearfix">
-    <div class="image"><img class="fade_on_load" src="{{= fundraising_item.image }}?fm=jpg&q=80&w=248"></div>
-    <div class="content">
-      <div class="text">
-        <div class="amount">£{{= fundraising_item.amount }}</div>
-        <div class="item-title">{{= fundraising_item.buy }}</div>
-        <div class="item-title big">{{= fundraising_item.title }}</div>
-        {{= fundraising_item.description }}
-      </div>
-    </div>
-  </div>
+  <% include ../partials/shoppingListItem.ejs %>
 </div>
 
 <div class="btns">

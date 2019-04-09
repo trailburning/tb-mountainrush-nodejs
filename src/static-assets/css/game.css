@@ -408,8 +408,8 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
       cursor: pointer; }
   #player-view .list .team {
     display: none;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center; }
 
 body.fundraising #player-view .list .team {
