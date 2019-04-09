@@ -407,85 +407,79 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
     #player-view .list .player-ranking:hover {
       cursor: pointer; }
   #player-view .list .team {
+    display: none;
     padding-top: 16px;
     padding-bottom: 16px;
     text-align: center; }
 
+body.fundraising #player-view .list .team {
+  display: block; }
+
 #player-view .detail {
   overflow: hidden; }
+  #player-view .detail .scroll-container {
+    position: relative;
+    height: 100%;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch; }
+  #player-view .detail .scroll {
+    background: #fff; }
+  #player-view .detail .player {
+    display: none;
+    position: relative;
+    padding: 0;
+    text-align: center; }
+  #player-view .detail .game-funcs {
+    padding: 12px;
+    text-align: center; }
+    #player-view .detail .game-funcs .btn {
+      margin: 0 14px 14px 14px; }
+  #player-view .detail .player .fundraising-donation-summary-view,
+  #player-view .detail .player .fundraising-donation-view,
+  #player-view .detail .player .fundraising-donations-view {
+    display: none; }
+  #player-view .detail .player .photo {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    width: 100px; }
+  #player-view .detail .player .photo-icon {
+    position: absolute;
+    top: 10px;
+    left: 86px; }
+  #player-view .detail .player .avatar {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #d7d7d7; }
+  #player-view .detail .player .overview {
+    padding-top: 14px;
+    font-size: 1.2em;
+    color: #3c5b6e; }
+  #player-view .detail .player .overview h1 {
+    font-family: 'radikalbold', sans-serif;
+    padding-bottom: 2px;
+    font-size: 1.8em;
+    color: #44b6f7; }
+  #player-view .detail .player .overview .name {
+    padding-bottom: 18px; }
+  #player-view .detail .player .overview .name .player-name:hover {
+    cursor: pointer; }
+  #player-view .detail .player .overview .summit-container {
+    width: 100%;
+    padding-top: 16px;
+    border-top: 1px solid #d7d7d7;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #d7d7d7; }
+  #player-view .detail .player .overview .summit {
+    display: inline-block;
+    padding-right: 18px;
+    text-align: right; }
   #player-view .detail .team {
+    display: none;
     padding-top: 26px; }
 
-#player-view .detail .scroll-container {
-  position: relative;
-  height: 100%;
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch; }
-
-#player-view .detail .scroll {
-  background: #fff; }
-
-#player-view .detail .player {
-  display: none;
-  position: relative;
-  padding: 0;
-  text-align: center; }
-
-#player-view .detail .game-funcs {
-  padding: 12px;
-  text-align: center; }
-  #player-view .detail .game-funcs .btn {
-    margin: 0 14px 14px 14px; }
-
-#player-view .detail .player .fundraising-donation-summary-view,
-#player-view .detail .player .fundraising-donation-view,
-#player-view .detail .player .fundraising-donations-view {
-  display: none; }
-
-#player-view .detail .player .photo {
-  display: inline-block;
-  text-align: center;
-  position: relative;
-  width: 100px; }
-
-#player-view .detail .player .photo-icon {
-  position: absolute;
-  top: 10px;
-  left: 86px; }
-
-#player-view .detail .player .avatar {
-  width: 100px;
-  height: 100px;
-  border: 2px solid #d7d7d7; }
-
-#player-view .detail .player .overview {
-  padding-top: 14px;
-  font-size: 1.2em;
-  color: #3c5b6e; }
-
-#player-view .detail .player .overview h1 {
-  font-family: 'radikalbold', sans-serif;
-  padding-bottom: 2px;
-  font-size: 1.8em;
-  color: #44b6f7; }
-
-#player-view .detail .player .overview .name {
-  padding-bottom: 18px; }
-
-#player-view .detail .player .overview .name .player-name:hover {
-  cursor: pointer; }
-
-#player-view .detail .player .overview .summit-container {
-  width: 100%;
-  padding-top: 16px;
-  border-top: 1px solid #d7d7d7;
-  padding-bottom: 18px;
-  border-bottom: 1px solid #d7d7d7; }
-
-#player-view .detail .player .overview .summit {
-  display: inline-block;
-  padding-right: 18px;
-  text-align: right; }
+body.fundraising #player-view .detail .team {
+  display: block; }
 
 .single-player #player-view .detail .player .overview .summit {
   padding-right: 0;
