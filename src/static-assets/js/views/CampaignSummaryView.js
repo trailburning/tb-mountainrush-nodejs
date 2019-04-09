@@ -1,7 +1,8 @@
 define([
   'underscore', 
-  'backbone'
-], function(_, Backbone){
+  'backbone',
+  'numeral'
+], function(_, Backbone, numeral){
 
   var CampaignSummaryView = Backbone.View.extend({
     initialize: function(options){
@@ -30,7 +31,10 @@ define([
         return;
       }
 
-      $(this.el).html(this.template(this.result[0]));
+      var jsonContent = this.result[0];
+      jsonContent.total_ascent_formatted = numeral(Math.round(jsonContent.total_ascent)).format('0,0');
+
+      $(this.el).html(this.template(jsonContent));
 
       return this;
     }

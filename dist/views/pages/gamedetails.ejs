@@ -314,8 +314,8 @@ var TEST_PROGRESS = '';
             <div class="hidden-xs">
               <div class="fundraising">
               {{ if (page.fundraisingTarget && page.fundraisingTarget > 0) { }}
-                <h1>{{= player.fundraisingCurrencySymbol }}{{= player.fundraising_raised }}</h1>
-                of {{= player.fundraisingCurrencySymbol }}{{= player.fundraising_goal }} target
+                <h1>{{= game.fundraising_currency_symbol }}{{= player.fundraising_raised }}</h1>
+                of {{= game.fundraising_currency_symbol }}{{= player.fundraising_goal }} target
               {{ } }}
               </div>
             </div>
