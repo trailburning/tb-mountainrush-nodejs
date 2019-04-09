@@ -177,15 +177,17 @@
                 </div>
               </div>
             {{ } else { }}
-              {{ if (game.ownerPlayerID == activePlayer.id) { }}
-                <div class="fundraising-donation-view above-photos">
-                  <div class="shopping-list">
-                    <% include ../partials/shoppingListItem.ejs %>
-                    <div class="donate-item">
-                    <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/game/<%= Defs.GameID %>/fundraise" class="btn mr-btn btn-primary btn-fundraise">Enable Fundraising</a>
-                    </div>
-                  </div>                
-                </div>
+              {{ if (activePlayer) { }}
+                {{ if (game.ownerPlayerID == activePlayer.id) { }}
+                  <div class="fundraising-donation-view above-photos">
+                    <div class="shopping-list">
+                      <% include ../partials/shoppingListItem.ejs %>
+                      <div class="donate-item">
+                      <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/game/<%= Defs.GameID %>/fundraise" class="btn mr-btn btn-primary btn-fundraise">Enable Fundraising</a>
+                      </div>
+                    </div>                
+                  </div>
+                {{ } }}
               {{ } }}
             {{ } }}
           <% } %>
@@ -240,15 +242,17 @@
                 </div>
               </div>
             {{ } else { }}
-              {{ if (game.ownerPlayerID == activePlayer.id) { }}
-                <div class="fundraising-donation-view below-photos">
-                  <div class="shopping-list">
-                    <% include ../partials/shoppingListItem.ejs %>
-                    <div class="donate-item">
-                    <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/game/<%= Defs.GameID %>/fundraise" class="btn mr-btn btn-primary btn-large double btn-fundraise"><div>Enable Fundraising</div><div>Now</div></a>
+              {{ if (activePlayer) { }}
+                {{ if (game.ownerPlayerID == activePlayer.id) { }}
+                  <div class="fundraising-donation-view below-photos">
+                    <div class="shopping-list">
+                      <% include ../partials/shoppingListItem.ejs %>
+                      <div class="donate-item">
+                      <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/game/<%= Defs.GameID %>/fundraise" class="btn mr-btn btn-primary btn-large double btn-fundraise"><div>Enable Fundraising</div><div>Now</div></a>
+                      </div>
                     </div>
                   </div>
-                </div>
+                {{ } }}              
               {{ } }}              
             {{ } }}
           <% } %>
