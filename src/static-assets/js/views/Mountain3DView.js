@@ -185,7 +185,8 @@ define([
       Procedural.removeOverlay( String(player.get('jsonPlayer').features[0].id) );
     },
 
-    addPlayers: function(playerCollection){
+    addPlayers: function(playerCollection, activePlayer){
+      this.activePlayer = activePlayer;
       var self = this;
       var jsonPlayer = null;
       var bMultiPlayer = false;
@@ -210,13 +211,17 @@ define([
       var fLong = along.geometry.coordinates[0];
       var bPlayerOverlapsMarker = false;
 
-      // see if the  player overlaps a marker
+      // see if the active player overlaps a marker
       var nOverlapYAdjust = 0, nOverlapCaretYAdjust = 0, nOverlapPosYAdjust = 0, nDecimalPlaces = 3;
-      $.each(this.arrMarkers, function(index, jsonMarker){
-        if (fLat == jsonMarker.features[0].geometry.coordinates[1] && (fLong = jsonMarker.features[0].geometry.coordinates[0])) {
-          bPlayerOverlapsMarker = true;
+      if (this.activePlayer) {
+        if (id == this.activePlayer.get('id')) {
+          $.each(this.arrMarkers, function(index, jsonMarker){
+            if (fLat == jsonMarker.features[0].geometry.coordinates[1] && (fLong = jsonMarker.features[0].geometry.coordinates[0])) {
+              bPlayerOverlapsMarker = true;
+            }
+          });
         }
-      });
+      }
 
       if (bPlayerOverlapsMarker) {
         nOverlapYAdjust = 3;
@@ -362,7 +367,7 @@ define([
       });
 
       // fire event
-      app.dispatcher.trigger("Mountain3DView:onMarkersReady");
+//      app.dispatcher.trigger("Mountain3DView:onMarkersReady");
     },
 
     buildMarkerOff: function(id, fLat, fLong, strMarkerImageOff, nFadeDistance){

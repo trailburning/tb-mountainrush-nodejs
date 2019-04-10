@@ -66,7 +66,6 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     app.dispatcher.on("Mountain3DView:deviceNotCapable", onDeviceNotCapable);
     app.dispatcher.on("Mountain3DView:onLocationLoaded", onLocationLoaded);
     app.dispatcher.on("Mountain3DView:onFeaturesLoaded", onFeaturesLoaded);
-    app.dispatcher.on("Mountain3DView:onMarkersReady", onMarkersReady);
     app.dispatcher.on("Mountain3DView:onFeatureClicked", onFeatureClicked);
     app.dispatcher.on("PlayerActivityPhotoView:click", onPlayerActivityPhotoClicked);
     app.dispatcher.on("PlayersDetailView:inviteClick", onPlayerInviteClick);
@@ -254,6 +253,14 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       $('#player-view .player:eq(' + nPlayer + ')').show();
 
       this.currPlayerModel = playerCollection.at(nPlayer);
+
+      if (activePlayer) {
+        if (activePlayer.get('id') == this.currPlayerModel.get('id')) {
+          mountain3DView.showMarkers();
+        } else {
+          mountain3DView.hideMarkers();
+        }
+      }
 
       // update url
       updateURLPlayer(this.currPlayerModel.get('id'));
@@ -741,18 +748,13 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
             showLatestEnabledMarkerID = latestEnabledMarkerID;
           }
         }
+      }
 
-        mountain3DView.addPlayers(playerCollection);
-        mountain3DView.showMarkers();
-      }
-      else {
-        mountain3DView.addPlayers(playerCollection);
-        // not in game
-        onMarkersReady();
-      }
+      mountain3DView.addPlayers(playerCollection, activePlayer);
+      mapReady();
     }
 
-    function onMarkersReady() {
+    function mapReady() {
       $('#player-view').show();
 
       // if we have a player id then use it
