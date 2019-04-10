@@ -798,21 +798,17 @@ body.fundraising #player-view .detail .player .latest-activity {
   background-size: cover;
 }
 
-#player-view .detail .player .no-photos .post {
-  display: none;
+#player-view .detail .player .photos .post {
+  &.blank {
+    .image {
+      background: #f8f8f8;
 
-  &:first-child {
-    display: inline-block;
-  }
-
-  .image {
-    background: #f8f8f8;
-
-    .icon {
-      line-height: 244px;
-      text-align: center;
-      font-size: 3em;
-      color: #fff;
+      .icon {
+        line-height: 244px;
+        text-align: center;
+        font-size: 3em;
+        color: #fff;
+      }
     }
   }
 }
@@ -1400,12 +1396,12 @@ mla
     height: 196px;
   }
 
-  #player-view .detail .player .no-photos .post {
-    display: inline-block;
-
-    .image {
-      .icon {
-        line-height: 196px;
+  #player-view .detail .player .photos .post {
+    &.blank {
+      .image {
+        .icon {
+          line-height: 196px;
+        }
       }
     }
   }

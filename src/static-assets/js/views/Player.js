@@ -272,6 +272,8 @@ define([
       if (this.bPhotosLoaded) {
         return;
       }
+      console.log('getActivityPhotos');
+
       this.bPhotosLoaded = true;
       
       this.nCurrPhotoActivity = 0;
@@ -279,7 +281,7 @@ define([
       var elPlayerPhotos = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"] .posts .photos');      
       this.playerActivityMorePhotosView = new PlayerActivityMorePhotosView({ playerID: this.model.get('id'), elParent: elPlayerPhotos });
 
-      $('.posts .photos', this.elPlayerDetail).html('');
+//      $('.posts .photos', this.elPlayerDetail).html('');
 
       // check for activities
       if (this.jsonProgress.activities) {
