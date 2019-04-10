@@ -338,7 +338,7 @@ define([
         var nPhotos = $('.post.active', params.PlayerActivityPhotosView.el).length;
 
         $('.post.inactive', elPlayer).each(function(index) {
-          console.log('INACTIVE:'+index);
+          console.log('INACTIVE POST:'+index);
         });
 
         if (elPlayerPhotos.hasClass('show-all')) {

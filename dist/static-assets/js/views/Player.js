@@ -331,13 +331,14 @@ define([
     },
 
     onPlayerActivityPhotosPhotoRendered: function (params) {
-      var elPlayerPhotos = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"] .posts .photos');      
+      var elPlayer = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"]');
+      var elPlayerPhotos = $('.posts .photos', elPlayer);
 
       if (this.currPhotoActivityId == params.PlayerActivityPhotosView.activityID) {
         var nPhotos = $('.post.active', params.PlayerActivityPhotosView.el).length;
 
-        $('.post.inactive').each(function(index) {
-          console.log('INACTIVE:'+index);
+        $('.post.inactive', elPlayer).each(function(index) {
+          console.log('INACTIVE POST:'+index);
         });
 
         if (elPlayerPhotos.hasClass('show-all')) {
