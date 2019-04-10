@@ -272,14 +272,13 @@ define([
       if (this.bPhotosLoaded) {
         return;
       }
+
       this.bPhotosLoaded = true;
       
       this.nCurrPhotoActivity = 0;
 
       var elPlayerPhotos = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"] .posts .photos');      
       this.playerActivityMorePhotosView = new PlayerActivityMorePhotosView({ playerID: this.model.get('id'), elParent: elPlayerPhotos });
-
-      $('.posts .photos', this.elPlayerDetail).html('');
 
       // check for activities
       if (this.jsonProgress.activities) {
@@ -331,10 +330,17 @@ define([
     },
 
     onPlayerActivityPhotosPhotoRendered: function (params) {
-      var elPlayerPhotos = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"] .posts .photos');      
+      var elPlayer = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"]');
+      var elPlayerPhotos = $('.posts .photos', elPlayer);
 
       if (this.currPhotoActivityId == params.PlayerActivityPhotosView.activityID) {
-        var nPhotos = $('.post', params.PlayerActivityPhotosView.el).length;
+        var nPhotos = $('.post.active', params.PlayerActivityPhotosView.el).length;
+        // as we get photos we can hide the blank placeholders
+        $('.post.inactive', elPlayer).each(function(index) {
+          if (index < nPhotos) {
+            $(this).hide();
+          }
+        });
 
         if (elPlayerPhotos.hasClass('show-all')) {
           params.PlayerActivityPhotoView.el.removeClass('no-show');

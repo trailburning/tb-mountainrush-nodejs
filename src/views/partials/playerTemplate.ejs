@@ -202,23 +202,21 @@
             <div class="posts">
               <div class="welcome without-photos">{{= '<%= __('game.photos.waiting.description') %>'.replace('%s', firstname) }}</div>
               <div class="welcome with-photos">{{= '<%= __('game.photos.description') %>'.replace('%s', firstname) }}</div>
-              <div class="photos with-photos"></div>
-
-              <div class="no-photos without-photos">
-                <div class="post">
+              <div class="photos">
+                <div class="post inactive" data-uploaded-time="0">
                   <div class="image">
                     <div class="icon"><i class="fa fa-camera"></i></div>
                   </div>
-                </div><div class="post">
+                </div><div class="post inactive" data-uploaded-time="0">
                   <div class="image">
                     <div class="icon"><i class="fa fa-camera"></i></div>
                   </div>
-                </div><div class="post">
+                </div><div class="post inactive" data-uploaded-time="0">
                   <div class="image">
                     <div class="icon"><i class="fa fa-camera"></i></div>
                   </div>
                 </div>
-              </div>              
+              </div>
             </div>
           </div>
 
@@ -340,7 +338,7 @@
   {{ } }}
 </script>
 
-<script type="text/template" id="photoViewTemplate"><div class="post no-show" data-uploaded-time="{{= photo.uploaded_at_time }}">
+<script type="text/template" id="photoViewTemplate"><div class="post active no-show" data-uploaded-time="{{= photo.uploaded_at_time }}">
   <div class="media viewer">
     <div class="image" style="background-image: url('{{= photo.urls[640] }}')"></div>
   </div>
