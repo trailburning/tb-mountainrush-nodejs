@@ -272,7 +272,6 @@ define([
       if (this.bPhotosLoaded) {
         return;
       }
-      console.log('getActivityPhotos');
 
       this.bPhotosLoaded = true;
       
@@ -336,11 +335,9 @@ define([
 
       if (this.currPhotoActivityId == params.PlayerActivityPhotosView.activityID) {
         var nPhotos = $('.post.active', params.PlayerActivityPhotosView.el).length;
-
+        // as we get photos we can hide the blank placeholders
         $('.post.inactive', elPlayer).each(function(index) {
-          console.log('INACTIVE POST:'+nPhotos+' : '+index);
           if (index < nPhotos) {
-            console.log('HIDE');
             $(this).hide();
           }
         });
