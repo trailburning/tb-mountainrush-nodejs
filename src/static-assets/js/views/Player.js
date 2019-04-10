@@ -336,6 +336,10 @@ define([
       if (this.currPhotoActivityId == params.PlayerActivityPhotosView.activityID) {
         var nPhotos = $('.post.active', params.PlayerActivityPhotosView.el).length;
 
+        $('.post.inactive').each(function(index) {
+          console.log('INACTIVE:'+index);
+        });
+
         if (elPlayerPhotos.hasClass('show-all')) {
           params.PlayerActivityPhotoView.el.removeClass('no-show');
         }
