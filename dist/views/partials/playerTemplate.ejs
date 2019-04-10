@@ -178,7 +178,7 @@
               </div>
             {{ } else { }}
               {{ if (activePlayer) { }}
-                {{ if (game.ownerPlayerID == activePlayer.id) { }}
+                {{ if (player.id == activePlayer.id) { }}
                   <div class="fundraising-donation-view above-photos">
                     <div class="shopping-list">
                       <% include ../partials/shoppingListItem.ejs %>
@@ -243,7 +243,7 @@
               </div>
             {{ } else { }}
               {{ if (activePlayer) { }}
-                {{ if (game.ownerPlayerID == activePlayer.id) { }}
+                {{ if (player.id == activePlayer.id) { }}
                   <div class="fundraising-donation-view below-photos">
                     <div class="shopping-list">
                       <% include ../partials/shoppingListItem.ejs %>
