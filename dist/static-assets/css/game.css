@@ -631,9 +631,9 @@ body.fundraising #player-view .detail .player .latest-activity {
   background-position: center;
   background-size: cover; }
 
-#player-view .detail .player .photos .post.blank .image {
+#player-view .detail .player .photos .post.inactive .image {
   background: #f8f8f8; }
-  #player-view .detail .player .photos .post.blank .image .icon {
+  #player-view .detail .player .photos .post.inactive .image .icon {
     line-height: 244px;
     text-align: center;
     font-size: 3em;
@@ -1053,7 +1053,7 @@ mla
   #player-view .detail .player .post .image {
     width: 196px;
     height: 196px; }
-  #player-view .detail .player .photos .post.blank .image .icon {
+  #player-view .detail .player .photos .post.inactive .image .icon {
     line-height: 196px; }
   #player-view .detail .player .post .details {
     height: 64px;

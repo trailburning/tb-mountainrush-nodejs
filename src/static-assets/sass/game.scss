@@ -799,7 +799,7 @@ body.fundraising #player-view .detail .player .latest-activity {
 }
 
 #player-view .detail .player .photos .post {
-  &.blank {
+  &.inactive {
     .image {
       background: #f8f8f8;
 
@@ -1397,7 +1397,7 @@ mla
   }
 
   #player-view .detail .player .photos .post {
-    &.blank {
+    &.inactive {
       .image {
         .icon {
           line-height: 196px;
