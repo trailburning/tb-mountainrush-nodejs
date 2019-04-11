@@ -22,6 +22,7 @@ define([
   'views/LanguageSelectorView',
   'views/ActivePlayerView',
   'views/Player',
+  'views/FundraisingDonationsView',
   'views/GameDetailsModalView',
   'views/ChallengeView',
   'views/PlayersOverviewView',
@@ -29,7 +30,7 @@ define([
   'views/ChallengeCancelModalView',
   'views/GameInviteView',  
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, jqueryUI, jqueryForm, cookie, truncate, modernizr, imageScale, moment, countdown, turf, imagesLoaded, videojs, GamePhotoView, SponsorView, LanguageSelectorView, ActivePlayerView, Player, GameDetailsModalView, ChallengeView, PlayersOverviewView, PlayerActivityPhotosView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
+], function(_, Backbone, bootstrap, jqueryUI, jqueryForm, cookie, truncate, modernizr, imageScale, moment, countdown, turf, imagesLoaded, videojs, GamePhotoView, SponsorView, LanguageSelectorView, ActivePlayerView, Player, FundraisingDonationsView, GameDetailsModalView, ChallengeView, PlayersOverviewView, PlayerActivityPhotosView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -92,6 +93,27 @@ define([
       challengeView.load();
     }
 
+    function getDonations() {
+      var self = this;
+
+      this.fundraisingDonationsView = new FundraisingDonationsView({ el: $('.fundraising-donations-view .fundraisers') });
+
+      var url = GAME_API_URL + 'game/' + GAME_ID + '/fundraiser/donations';
+//      console.log(url);
+      $.getJSON(url, function(result){
+        self.jsonDonations = result;
+        if (self.jsonDonations) {
+          if (self.jsonDonations.result.transactions) {
+            if (self.jsonDonations.result.transactions.length) {
+              $('.with-donations', this.elPlayerDetail).show();
+              $('.without-donations', this.elPlayerDetail).hide();
+              self.fundraisingDonationsView.render(self.jsonDonations.result.transactions);
+            }
+          }
+        }
+      });
+    }
+
     function buildGame() {
       gameDetailsModalView = new GameDetailsModalView({ el: '#game-details-modal-view', jsonGame: jsonCurrGame });
 
@@ -141,6 +163,8 @@ define([
             + '</span>'));
           elCountdownContainer.show();
         });
+
+        getDonations();
       }
 
       var elPhotos = $('#players-overview-view .posts .photos');
