@@ -376,6 +376,15 @@ var TEST_PROGRESS = '';
       </div>
     </div>
 
+    <div class="fundraising-donations-view">
+      <div class="donations">
+        <div class="title"><%= __('game.fundraising.donations.title') %></div>
+        <div class="welcome without-donations">{{= '<%= __('game.fundraising.donations.waiting.description') %>'.replace('%s', name) }}</div>
+        <div class="welcome with-donations">{{= '<%= __('game.fundraising.donations.description') %>'.replace('%s', name) }}</div>
+        <div class="fundraisers"></div>
+      </div>
+    </div>
+
     <div class="share-detail visible-xs visible-sm">
       <div class="share-text"><%= __('defs.social.share_team_msg') %></div>
       <div class="btns">
@@ -415,6 +424,59 @@ var TEST_PROGRESS = '';
       </div>
     {{ } }}      
   {{ } }}  
+</script>
+
+<script type="text/template" id="fundraisingDonationsViewTemplate">
+  {{ _.each(donations, function(donation, index) { }}
+    {{ if (donation.amount) { }}
+      <div class="donator">
+        <div class="content">
+          <div class="avatar">
+          {{ if (donation.image) { }}
+            <img src="{{= donation.image }}">
+          {{ } else { }}
+            <img src="<%= Defs.MRAPIURL %>imageproxy.php?url=http://mountainrush.co.uk/static-assets/images/<%= Campaign.CampaignTemplate %>/avatar_donor_unknown.jpg">
+          {{ } }}            
+          </div><div class="donation-detail">
+            <div class="name">
+            {{ if (donation.stored_anonymous_donation == 'true') { }}
+              <%= __('game.fundraising.donations.anonymous') %>
+            {{ } else { }}
+              {{ if (donation.donorDisplayName) { }}
+                {{= donation.donorDisplayName }}
+              {{ } else if (donation.stored_customer_nickname) { }}
+                {{= donation.stored_customer_nickname }}
+              {{ } else if (donation.stored_customer_firstname) { }}
+                {{= donation.stored_customer_firstname }} {{= donation.stored_customer_lastname }}
+              {{ } else { }}
+                <%= __('game.fundraising.donations.anonymous') %>
+              {{ } }}            
+            {{ } }}       
+            </div>
+            <div class="amount-detail">
+            {{ if (donation.donorLocalAmount) { }}
+              <%= __('game.fundraising.donations.donated') %><span class="amount">{{ if (donation.donorLocalCurrencyCode == 'GBP') { }}£{{ } else if (donation.donorLocalCurrencyCode == 'EUR') { }}€{{ } else { }}${{ } }}{{= Math.round(donation.donorLocalAmount) }}</span>
+            {{ } else { }}
+              Donated<span class="amount">{{= donation.currency_symbol }}{{= Math.round(donation.amount / 100) }}</span>
+            {{ } }}            
+            </div>
+          </div>
+          {{ if (donation.message || donation.stored_customer_additional_message) { }}
+            <div class="donation-msg">
+              <div class="quote">“</div>
+              <div class="msg">
+              {{ if (donation.message) { }}
+                {{= donation.message }}
+              {{ } else { }}
+                {{= donation.stored_customer_additional_message }}
+              {{ } }}            
+              </div>
+            </div>
+          {{ } }}
+        </div>
+      </div>
+    {{ } }}
+  {{ }); }}
 </script>
 
 <% include ../partials/challengeCancelTemplate.ejs %>

@@ -297,8 +297,7 @@ body.sponsored .sponsor-view .fundraise {
       }
 
       .share-detail {
-        padding: 38px 0 16px 0;
-        border-top: 1px solid #d7d7d7;
+        padding: 38px 0 16px 0;        
         color: #a3a3a3;
         text-align: center;
 
@@ -498,6 +497,95 @@ body.fundraising #player-view {
   }
 }
 
+/* DONATIONS */
+/******************************************/
+body.fundraising #player-view .fundraising-donations-view {
+  display: block;
+  padding: 42px 12px 32px 12px;
+  background: #efefef;
+
+  .welcome {
+    display: none;
+    color: #a5b4bd;
+    text-align: center;
+  }
+
+  .without-donations {
+    display: block;
+    text-align: center;
+  }
+
+  .title {
+    padding-bottom: 8px;
+    font-size: 1.8em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .fundraisers {
+    padding: 30px 0 0 0;
+  }
+
+  .donator {
+    padding: 26px 0 22px 0;
+    border-top: 1px solid #e9e9e6;
+
+    .content {
+      margin: 0 auto;
+      width: 198px;
+      font-size: 0.95em;
+      text-align: left;
+    }
+  }
+
+  .avatar {
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    border: 2px solid #fff;
+  }
+
+  .donation-detail {
+    display: inline-block;
+    width: 156px;
+    padding-left: 12px;
+    vertical-align: top;
+
+    .amount-detail {
+      padding-top: 2px;
+      font-size: 0.9em;
+    }
+
+    .amount {
+      margin-left: 5px;
+      padding: 4px;
+      color: #fff;
+      background-color: #f75f36;
+    }
+  }
+
+  .donation-msg {
+    padding-top: 4px;
+    color: #9b9b9b;
+
+    .quote {
+      display: inline-block;
+      width: 54px;
+      padding-right: 4px;
+      text-align: right;
+      font-size: 1.3em;
+      line-height: 1.8em;
+    }
+
+    .msg {
+      display: inline-block;
+      width: 140px;
+      line-height: 1.3em;
+      vertical-align: top;
+    }
+  }
+}
+
 /* PHOTO POSTS VIEW */
 /******************************************/
 .photo-posts-view {
@@ -670,6 +758,10 @@ body.fundraising #player-view {
     background: none;
 
     .players-overview {
+      .share-detail {
+        border-top: 1px solid #d7d7d7;
+      }
+
       .detail {
         padding: 0 19px 26px 19px;
 
@@ -789,6 +881,19 @@ body.fundraising #player-view {
           }
         }
       }
+    }
+  }
+
+  body.fundraising #player-view .fundraising-donations-view {
+    padding-top: 38px;
+    border-top: 1px solid #d7d7d7;
+    background: #FFF;
+
+    .donator {
+      display: inline-block;
+      vertical-align: top;
+      padding: 0 4px 32px 4px;
+      border: none;
     }
   }
 }
