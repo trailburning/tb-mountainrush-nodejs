@@ -338,6 +338,8 @@ define([
       console.log(elParent.length);
       var elPhotos = $('.posts .photos', elParent);
 
+      console.log(this.currPhotoActivityId+' : '+params.PlayerActivityPhotosView.activityID);
+
       if (this.currPhotoActivityId == params.PlayerActivityPhotosView.activityID) {
         var nPhotos = $('.post.active', params.PlayerActivityPhotosView.el).length;
         // as we get photos we can hide the blank placeholders
