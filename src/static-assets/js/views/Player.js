@@ -330,19 +330,20 @@ define([
     },
 
     onPlayerActivityPhotosPhotoRendered: function (params) {
-      var elPlayer = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"]');
-      var elPlayerPhotos = $('.posts .photos', elPlayer);
+      var elParent = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"]');
+      console.log(elParent.length);
+      var elPhotos = $('.posts .photos', elParent);
 
       if (this.currPhotoActivityId == params.PlayerActivityPhotosView.activityID) {
         var nPhotos = $('.post.active', params.PlayerActivityPhotosView.el).length;
         // as we get photos we can hide the blank placeholders
-        $('.post.inactive', elPlayer).each(function(index) {
+        $('.post.inactive', elParent).each(function(index) {
           if (index < nPhotos) {
             $(this).hide();
           }
         });
 
-        if (elPlayerPhotos.hasClass('show-all')) {
+        if (elPhotos.hasClass('show-all')) {
           params.PlayerActivityPhotoView.el.removeClass('no-show');
         }
         else {
@@ -357,7 +358,6 @@ define([
         }
       }
     }
-    
   });
 
   return Player;
