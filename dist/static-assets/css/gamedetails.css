@@ -382,17 +382,13 @@ body.fundraising #player-view .fundraise-sticker {
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover; }
-    .photo-posts-view .posts .no-photos .post {
-      display: none; }
-      .photo-posts-view .posts .no-photos .post:first-child {
-        display: inline-block; }
-      .photo-posts-view .posts .no-photos .post .image {
-        background: #f8f8f8; }
-        .photo-posts-view .posts .no-photos .post .image .icon {
-          line-height: 244px;
-          text-align: center;
-          font-size: 3em;
-          color: #fff; }
+    .photo-posts-view .posts .post.inactive .image {
+      background: #f8f8f8; }
+      .photo-posts-view .posts .post.inactive .image .icon {
+        line-height: 244px;
+        text-align: center;
+        font-size: 3em;
+        color: #fff; }
     .photo-posts-view .posts .post .details {
       padding-top: 8px; }
     .photo-posts-view .posts .post .credit {
@@ -520,9 +516,7 @@ body.fundraising #player-view .fundraise-sticker {
       .photo-posts-view .posts .post .image {
         width: 196px;
         height: 196px; }
-    .photo-posts-view .posts .no-photos .post {
-      display: inline-block; }
-      .photo-posts-view .posts .no-photos .post .image .icon {
+      .photo-posts-view .posts .post.inactive .image .icon {
         line-height: 196px; } }
 
 /* Small devices (tablets, 992px and up) */
