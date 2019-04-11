@@ -348,7 +348,8 @@ body.fundraising #player-view .fundraise-sticker {
 body.fundraising #player-view .fundraising-donations-view {
   display: block;
   padding: 42px 12px 32px 12px;
-  background: #efefef; }
+  background: #efefef;
+  text-align: center; }
   body.fundraising #player-view .fundraising-donations-view .welcome {
     display: none;
     color: #a5b4bd;

@@ -99,7 +99,7 @@ define([
       this.fundraisingDonationsView = new FundraisingDonationsView({ el: $('.fundraising-donations-view .fundraisers') });
 
       var url = GAME_API_URL + 'game/' + GAME_ID + '/fundraiser/donations';
-      console.log(url);
+//      console.log(url);
       $.getJSON(url, function(result){
         self.jsonDonations = result;
         if (self.jsonDonations) {
