@@ -341,7 +341,8 @@ define([
       console.log(this.currPhotoActivityId+' : '+params.PlayerActivityPhotosView.activityID);
 
       if (!this.currPhotoActivityId || (this.currPhotoActivityId == params.PlayerActivityPhotosView.activityID)) {
-        var nPhotos = $('.post.active', params.PlayerActivityPhotosView.el).length;
+//        var nPhotos = $('.post.active', params.PlayerActivityPhotosView.el).length;
+        var nPhotos = $('.post.active', elParent).length;
         console.log('photos:'+nPhotos);
         // as we get photos we can hide the blank placeholders
         $('.post.inactive', elParent).each(function(index) {
