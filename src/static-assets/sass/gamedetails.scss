@@ -553,21 +553,17 @@ body.fundraising #player-view {
       background-size: cover;
     }
 
-    .no-photos .post {
-      display: none;
+    .post {
+      &.inactive {
+        .image {
+          background: #f8f8f8;
 
-      &:first-child {
-        display: inline-block;
-      }
-
-      .image {
-        background: #f8f8f8;
-
-        .icon {
-          line-height: 244px;
-          text-align: center;
-          font-size: 3em;
-          color: #fff;
+          .icon {
+            line-height: 244px;
+            text-align: center;
+            font-size: 3em;
+            color: #fff;
+          }
         }
       }
     }
@@ -784,19 +780,15 @@ body.fundraising #player-view {
           width: 196px;
           height: 196px;
         }
-      }
 
-      .no-photos {
-        .post {
-          display: inline-block;
-
+        &.inactive {
           .image {
             .icon {
               line-height: 196px;
-            }          
+            }
           }
         }
-      }      
+      }
     }
   }
 }
