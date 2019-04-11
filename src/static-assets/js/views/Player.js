@@ -331,6 +331,10 @@ define([
 
     onPlayerActivityPhotosPhotoRendered: function (params) {
       var elParent = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"]');
+      // no player so use page
+      if (!elParent.length) {
+        elParent = $('#page-view');
+      }
       console.log(elParent.length);
       var elPhotos = $('.posts .photos', elParent);
 
