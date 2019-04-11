@@ -669,75 +669,62 @@ body.fundraising #player-view .detail .player .fundraising-donation-view.above-p
 #player-view .detail .player .fundraising-donation-view .shopping-list-sticker {
   margin: 0 auto; }
 
+/* DONATIONS */
+/******************************************/
 body.fundraising #player-view .detail .player .fundraising-donations-view {
   display: block;
   padding: 42px 12px 32px 12px; }
-
-#player-view .detail .player .fundraising-donations-view .title {
-  padding-bottom: 8px;
-  font-size: 1.8em;
-  text-transform: uppercase;
-  text-align: center; }
-
-#player-view .detail .player .fundraising-donations-view .fundraisers {
-  padding: 30px 0 0 0; }
-
-#player-view .detail .player .fundraising-donations-view .donator {
-  padding: 26px 0 22px 0;
-  border-top: 1px solid #e9e9e6; }
-
-#player-view .detail .player .fundraising-donations-view .donator .content {
-  margin: 0 auto;
-  width: 198px;
-  font-size: 0.95em;
-  text-align: left; }
-
-#player-view .detail .player .fundraising-donations-view .avatar {
-  display: inline-block;
-  width: 42px;
-  height: 42px;
-  border: 2px solid #fff; }
-
-#player-view .detail .player .fundraising-donations-view .donation-detail {
-  display: inline-block;
-  width: 156px;
-  padding-left: 12px;
-  vertical-align: top; }
-
-#player-view .detail .player .fundraising-donations-view .donation-detail .amount-detail {
-  padding-top: 2px;
-  font-size: 0.9em; }
-
-#player-view .detail .player .fundraising-donations-view .donation-detail .amount {
-  margin-left: 5px;
-  padding: 4px;
-  color: #fff;
-  background-color: #f75f36; }
-
-#player-view .detail .player .fundraising-donations-view .donation-msg {
-  padding-top: 4px;
-  color: #9b9b9b; }
-
-#player-view .detail .player .fundraising-donations-view .donation-msg .quote {
-  display: inline-block;
-  width: 54px;
-  padding-right: 4px;
-  text-align: right;
-  font-size: 1.3em;
-  line-height: 1.8em; }
-
-#player-view .detail .player .fundraising-donations-view .donation-msg .msg {
-  display: inline-block;
-  width: 140px;
-  line-height: 1.3em;
-  vertical-align: top; }
+  body.fundraising #player-view .detail .player .fundraising-donations-view .title {
+    padding-bottom: 8px;
+    font-size: 1.8em;
+    text-transform: uppercase;
+    text-align: center; }
+  body.fundraising #player-view .detail .player .fundraising-donations-view .fundraisers {
+    padding: 30px 0 0 0; }
+  body.fundraising #player-view .detail .player .fundraising-donations-view .donator {
+    padding: 26px 0 22px 0;
+    border-top: 1px solid #e9e9e6; }
+    body.fundraising #player-view .detail .player .fundraising-donations-view .donator .content {
+      margin: 0 auto;
+      width: 198px;
+      font-size: 0.95em;
+      text-align: left; }
+  body.fundraising #player-view .detail .player .fundraising-donations-view .avatar {
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    border: 2px solid #fff; }
+  body.fundraising #player-view .detail .player .fundraising-donations-view .donation-detail {
+    display: inline-block;
+    width: 156px;
+    padding-left: 12px;
+    vertical-align: top; }
+    body.fundraising #player-view .detail .player .fundraising-donations-view .donation-detail .amount-detail {
+      padding-top: 2px;
+      font-size: 0.9em; }
+    body.fundraising #player-view .detail .player .fundraising-donations-view .donation-detail .amount {
+      margin-left: 5px;
+      padding: 4px;
+      color: #fff;
+      background-color: #f75f36; }
+  body.fundraising #player-view .detail .player .fundraising-donations-view .donation-msg {
+    padding-top: 4px;
+    color: #9b9b9b; }
+    body.fundraising #player-view .detail .player .fundraising-donations-view .donation-msg .quote {
+      display: inline-block;
+      width: 54px;
+      padding-right: 4px;
+      text-align: right;
+      font-size: 1.3em;
+      line-height: 1.8em; }
+    body.fundraising #player-view .detail .player .fundraising-donations-view .donation-msg .msg {
+      display: inline-block;
+      width: 140px;
+      line-height: 1.3em;
+      vertical-align: top; }
 
 #player-view .detail .share-detail {
   padding: 38px 0 16px 0;
-  /*    
-mla
-    border-top: 1px solid #d7d7d7;
-*/
   color: #a3a3a3;
   text-align: center; }
   #player-view .detail .share-detail .share-text {
@@ -1065,11 +1052,11 @@ mla
   #player-view .detail .player .fundraising-donations-view {
     padding-top: 38px;
     border-top: 1px solid #d7d7d7; }
-  #player-view .detail .player .fundraising-donations-view .donator {
-    display: inline-block;
-    vertical-align: top;
-    padding: 0 4px 32px 4px;
-    border: none; }
+    #player-view .detail .player .fundraising-donations-view .donator {
+      display: inline-block;
+      vertical-align: top;
+      padding: 0 4px 32px 4px;
+      border: none; }
   #player-view .detail .game-funcs {
     padding-top: 32px; }
   #player-view .detail .back-to-mountain {

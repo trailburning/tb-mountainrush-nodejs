@@ -203,10 +203,10 @@ body {
 #player-view .detail .shopping-list,
 #player-view .detail .fundraising-donations-view {
   background: #eeeeeb;
-}
 
-#player-view .detail .fundraising-donations-view .title {
-  color: #474747;
+  .title {
+    color: #474747;
+  }
 }
 
 #player-view .detail .shopping-list {
@@ -218,30 +218,28 @@ body {
   text-transform: uppercase;
 }
 
-#player-view .detail .player .fundraising-donation-view .title {
-  font-family: 'PFDINTextPro-Black', sans-serif;
-}
+#player-view .detail .player .fundraising-donation-view {
+  .title {
+    font-family: 'PFDINTextPro-Black', sans-serif;
+  }
 
-#player-view .detail .player .fundraising-donations-view .donation-detail {
-  color: #9b9b9b;
-  text-transform: uppercase;
-}
+  .donation-detail {
+    color: #9b9b9b;
+    text-transform: uppercase;
+  }
 
-#player-view .detail .player .fundraising-donations-view .title {
-  font-family: 'PFDINTextPro-Black', sans-serif;
-}
+  .donation-detail .name {
+    font-family: 'PFDINTextPro-Black', sans-serif;
+    color: #474747;
 
-#player-view .detail .player .fundraising-donations-view .donation-detail .name {
-  font-family: 'PFDINTextPro-Black', sans-serif;
-  color: #474747;
-}
+    .amount {
+      background-color: $primary-color;
+    }
+  }
 
-#player-view .detail .player .fundraising-donations-view .donation-detail .amount {
-  background-color: $primary-color;
-}
-
-#player-view .detail .player .fundraising-donations-view .donation-msg .quote {
-  font-family: 'PFDINTextPro-Black', sans-serif;
+  .donation-msg .quote {
+    font-family: 'PFDINTextPro-Black', sans-serif;
+  }
 }
 
 #player-view .detail .back-to-mountain {
