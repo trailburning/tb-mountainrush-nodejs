@@ -14,6 +14,7 @@ define([
   'imageScale',
   'moment',
   'countdown',  
+  'turf',
   'imagesLoaded',
   'videojs',
   'views/GamePhotoView',
@@ -28,7 +29,7 @@ define([
   'views/ChallengeCancelModalView',
   'views/GameInviteView',  
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, jqueryUI, jqueryForm, cookie, truncate, modernizr, imageScale, moment, countdown, imagesLoaded, videojs, GamePhotoView, SponsorView, LanguageSelectorView, ActivePlayerView, Player, GameDetailsModalView, ChallengeView, PlayersOverviewView, PlayerActivityPhotosView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
+], function(_, Backbone, bootstrap, jqueryUI, jqueryForm, cookie, truncate, modernizr, imageScale, moment, countdown, turf, imagesLoaded, videojs, GamePhotoView, SponsorView, LanguageSelectorView, ActivePlayerView, Player, GameDetailsModalView, ChallengeView, PlayersOverviewView, PlayerActivityPhotosView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -55,17 +56,7 @@ define([
     var jsonCurrGame = null;
     var fundraisingTarget = 0, totalRaisedOnline = 0;
 
-    var geojsonFeature = {
-      "type": "LineString",
-      "properties": {
-        "fill": "#ed1c24",
-        "fill-opacity": 1,
-        "stroke": "#ed1c24",
-        "stroke-width": 4,
-        "stroke-opacity": 1        
-      },
-      "coordinates": []
-    };
+    var jsonRoute = null;
   
     // are we fundraising?
     if (GAME_FUNDRAISING) {
@@ -232,10 +223,24 @@ define([
         var jsonJourney = result.body.journeys[0];
         mountainModel = new Backbone.Model(jsonJourney);
 
+        jsonRoute = {
+          "type": "Feature",
+          "properties": {
+          "name": mountainModel.get('name'),
+          "color": "#000000",
+          },
+          "geometry": {
+            "type": "LineString",
+            "coordinates": []
+          }
+        };
+
         // build geoJSON route
         $.each(mountainModel.get('route_points'), function(index) {
-          geojsonFeature.coordinates.push(this.coords);
+          jsonRoute.geometry.coordinates.push(this.coords);
         });
+        // set distance
+        mountainModel.set('distance', turf.length(jsonRoute, {units: 'kilometers'}));
 
         getPlayers();
       });
@@ -256,6 +261,7 @@ define([
 
       // default to complete
       var fProgress = mountainModel.get('distance');
+
       // if not complete then calc how far
       if (model.get('elevationGainPercent') < 100) {
         fProgress = (model.get('elevationGainPercent') * mountainModel.get('distance')) / 100;
