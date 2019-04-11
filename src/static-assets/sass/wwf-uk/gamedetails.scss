@@ -75,6 +75,24 @@ body {
   }
 }
 
+#player-view .fundraising-donations-view {
+  background: #eeeeeb;
+
+  .title {
+    color: #474747;
+  }
+}
+
+#player-view .welcome {
+  color: #a3a3a3;
+  text-transform: uppercase;
+}
+
+body.fundraising #player-view .fundraising-donations-view .welcome {
+  color: #a3a3a3;
+  text-transform: uppercase;
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   .btn.btn-large {
@@ -87,6 +105,10 @@ body {
 
   #footer-view {
     margin-top: 0;
+  }
+
+  #player-view .detail .fundraising-donations-view {
+    background: #FFF;
   }
 }
 
