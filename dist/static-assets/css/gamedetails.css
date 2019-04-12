@@ -532,6 +532,8 @@ body.fundraising #player-view .fundraising-donations-view {
         border-right: 1px solid #a5b4bd; }
         #player-view .players-overview .detail .team-details .pos .ranking {
           float: right; }
+      #player-view .players-overview .detail .team-details .summit {
+        padding-right: 0px; }
       #player-view .players-overview .detail .team-overview {
         padding: 16px 89px 10px 89px; }
         #player-view .players-overview .detail .team-overview .photo {
