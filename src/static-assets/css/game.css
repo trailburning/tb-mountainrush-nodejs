@@ -86,15 +86,12 @@ body.sponsored .sponsor-view {
   background: #173545;
   background: linear-gradient(0deg, #173545 0%, #2a485a 50%, #3b5a6d 100%); }
 
-body.sponsored .sponsor-view .logo img {
-  width: 80px; }
-
 body.sponsored .sponsor-view .title {
   color: #fff; }
 
 body.sponsored .sponsor-view .title h1 {
   padding-top: 24px;
-  padding-bottom: 16px;
+  padding-bottom: 12px;
   font-family: 'radikalbold', sans-serif;
   font-size: 2.5em;
   line-height: 1.2em; }
@@ -145,6 +142,14 @@ body.sponsored .sponsor-view .title strong {
 #map-view .map {
   width: 100%; }
 
+#map-view .map-view {
+  display: none; }
+
+#map-view .map #piste-view,
+#map-view .map #mapbox-view {
+  width: 100%;
+  height: 100%; }
+
 #map-view #piste-view #loading-splash,
 #map-view #piste-view .compass {
   display: none; }
@@ -153,6 +158,68 @@ body.sponsored .sponsor-view .title strong {
 #map-view #piste-view .credits {
   display: none;
   bottom: 80px !important; }
+
+#map-view #mapbox-view .marker-flag {
+  width: 32px;
+  height: 39px; }
+
+#map-view #mapbox-view .marker-flag img {
+  width: 100%; }
+
+#map-view #mapbox-view .marker {
+  width: 24px;
+  height: 24px; }
+
+#map-view #mapbox-view .marker img {
+  width: 100%; }
+
+#map-view #mapbox-view .marker-story:before {
+  content: ' ';
+  position: absolute;
+  bottom: -4px;
+  left: 19px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: #FFF transparent transparent transparent; }
+
+#map-view #mapbox-view .marker-story .avatar {
+  border: 2px solid #fff;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #fff; }
+
+#map-view #mapbox-view .marker-story .avatar img {
+  width: 100%;
+  height: 100%;
+  vertical-align: top; }
+
+#map-view #mapbox-view .marker-player:before {
+  content: ' ';
+  position: absolute;
+  bottom: -4px;
+  left: 25px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: #FFF transparent transparent transparent; }
+
+#map-view #mapbox-view .marker-player .avatar {
+  border: 2px solid #fff;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #fff; }
+
+#map-view #mapbox-view .marker-player .avatar img {
+  width: 100%;
+  height: 100%;
+  vertical-align: top; }
 
 #map-view .game-details-container {
   position: absolute;

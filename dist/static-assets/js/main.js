@@ -39,7 +39,7 @@ require.config({
     cookie: 'libs/js.cookie',
     videojs: '//vjs.zencdn.net/4.12/video',
     modernizr: 'libs/modernizr-custom',
-    mapbox: 'https://api.mapbox.com/mapbox.js/v2.4.0/mapbox',
+    mapboxgl: 'https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl',
     raisenow: 'https://widget.raisenow.com/widgets/lema/amp-test/js/dds-init-widget-en'
   },
   shim: {
@@ -109,7 +109,8 @@ function getFundraisingShoppingList(){
     ]};
 */
   var jsonFundraising = {items: [
-    {amount: 5, buy: 'Could pay for one', title: 'first aid kit', description: 'for an anti-poaching ranger', image: 'https://tbassets2.imgix.net/images/brands/mountainrush/clients/wwf-uk/shopping-list/WW1113632.jpg'}
+//    {amount: 5, buy: 'Could pay for one', title: 'first aid kit', description: 'for an anti-poaching ranger', image: 'https://tbassets2.imgix.net/images/brands/mountainrush/clients/wwf-uk/shopping-list/WW1113632.jpg'}
+    {amount: 100, buy: 'will buy one', title: 'Buffalo bike', description: 'so kids can ride to school', image: 'http://malawi.worldbicyclerelief.org/images/sheila.jpg'}
     ]};
 
   var nRndItem = Math.floor(Math.random() * Math.floor(jsonFundraising.items.length));

@@ -36,13 +36,15 @@ define([
     render: function(options){
       var self = this;
       
+      var jsonFundraising = getFundraisingShoppingList();
+
       var dLocalGameStart = new Date(this.jsonFields.gameStart);
       // format date
       this.jsonFields.gameStartFormatted.day = moment(dLocalGameStart).format('dddd');
       this.jsonFields.gameStartFormatted.date = moment(dLocalGameStart).format('DD');
       this.jsonFields.gameStartFormatted.month = moment(dLocalGameStart).format('MMMM');
 
-      $(this.el).html(this.template({ campaign: options.jsonCampaign, fields: this.jsonFields, fundraising: this.options.jsonFundraising }));
+      $(this.el).html(this.template({ campaign: options.jsonCampaign, fields: this.jsonFields, fundraising: jsonFundraising }));
 
       $('img', $(this.el)).imagesLoaded().progress( function( instance, image ) {
         if ($(image.img).hasClass('fade_on_load')) {

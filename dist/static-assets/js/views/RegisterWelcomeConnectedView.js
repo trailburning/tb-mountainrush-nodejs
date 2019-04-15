@@ -82,7 +82,9 @@ define([
     render: function(options){
       var self = this;
 
-      $(this.el).html(this.template({ campaign: options.jsonCampaign, player: this.jsonPlayer, currGame: self.jsonFields.currGame, fundraising: this.options.jsonFundraising }));
+      var jsonFundraising = getFundraisingShoppingList();
+
+      $(this.el).html(this.template({ campaign: options.jsonCampaign, player: this.jsonPlayer, currGame: self.jsonFields.currGame, fundraising: jsonFundraising }));
 
       $('img', $(this.el)).imagesLoaded().progress( function( instance, image ) {
         if ($(image.img).hasClass('fade_on_load')) {
