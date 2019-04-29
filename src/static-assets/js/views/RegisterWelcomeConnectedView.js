@@ -79,61 +79,77 @@ define([
       });
     },
 
-    render: function(options){
-      var self = this;
-
-      $(this.el).html(this.template({ campaign: options.jsonCampaign, player: this.jsonPlayer, currGame: self.jsonFields.currGame, fundraising: this.options.jsonFundraising }));
-
-      $('img', $(this.el)).imagesLoaded().progress( function( instance, image ) {
+    postrender: function(self){
+      $('img', $(self.el)).imagesLoaded().progress( function( instance, image ) {
         if ($(image.img).hasClass('fade_on_load')) {
           $(image.img).css('opacity', 1);
         }
       });
 
-      $('.btn-create', $(this.el)).click(function(evt){
+      $('.btn-create', $(self.el)).click(function(evt){
         // fire event
         app.dispatcher.trigger("RegisterWelcomeConnectedView:createGameClick");
       });
 
-      $('.btn-accept-invite', $(this.el)).click(function(evt){
+      $('.btn-accept-invite', $(self.el)).click(function(evt){
         var elParent = $(this).closest('.invitation');
         if (elParent.length) {
           $('.invite', elParent).hide();
           $('.invitation-accepted', elParent).show();
         }
 
-        self.acceptGameInvite($(this).attr('data-game-id'), $(this).attr('data-id'));
+        self.acceptGameInvite($(self).attr('data-game-id'), $(self).attr('data-id'));
       });
 
-      $('.btn-reject-invite', $(this.el)).click(function(evt){
-        var elParent = $(this).closest('.invitation');
+      $('.btn-reject-invite', $(self.el)).click(function(evt){
+        var elParent = $(self).closest('.invitation');
         if (elParent.length) {
           $('.invite', elParent).hide();
           $('.invitation-rejected', elParent).show();
         }
 
-        self.rejectGameInvite($(this).attr('data-game-id'), $(this).attr('data-id'));
+        self.rejectGameInvite($(self).attr('data-game-id'), $(self).attr('data-id'));
       });
 
-      $('.btn-fundraise', $(this.el)).click(function(evt){
+      $('.btn-fundraise', $(self.el)).click(function(evt){
         // fire event
         app.dispatcher.trigger("RegisterWelcomeConnectedView:fundraiseClick");
       });
 
-      $('.link-invite', $(this.el)).click(function(evt){
+      $('.link-invite', $(self.el)).click(function(evt){
         // fire event
         app.dispatcher.trigger("RegisterWelcomeConnectedView:inviteClick");
       });
 
-      $('.link-cancel', $(this.el)).click(function(evt){
+      $('.link-cancel', $(self.el)).click(function(evt){
         // fire event
         app.dispatcher.trigger("RegisterWelcomeConnectedView:cancelGameClick");
       });
 
-      $('.btn-prefs', $(this.el)).click(function(evt){
+      $('.btn-prefs', $(self.el)).click(function(evt){
         // fire event
         app.dispatcher.trigger("RegisterWelcomeConnectedView:prefsClick");
       });
+    },
+
+    render: function(options){
+      var self = this;
+
+      if (self.jsonFields.currGame) {
+        var url = GAME_API_URL + 'game/' + self.jsonFields.currGame.gameID + '/fundraising/shoppinglist';
+//        console.log(url);
+        $.getJSON(url, function(result){
+          var nRndItem = Math.floor(Math.random() * Math.floor(result.items.length));
+          result.random_item_pos = nRndItem;
+
+          $(self.el).html(self.template({ campaign: options.jsonCampaign, player: self.jsonPlayer, currGame: self.jsonFields.currGame, fundraising: result }));
+          self.postrender(self);
+        });
+      }
+      else {
+        $(self.el).html(self.template({ campaign: options.jsonCampaign, player: self.jsonPlayer, currGame: self.jsonFields.currGame, fundraising: null }));
+        self.postrender(self);        
+      }
 
       return this;
     }

@@ -86,7 +86,6 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     var jsonCurrGame = null;
     var timeoutShopID = null, timeoutStoryID = null;
     var FundraisingShoppingModelShown = false;
-    var jsonFundraising = getFundraisingShoppingList();
 
     // are we fundraising?
     if (GAME_FUNDRAISING) {
@@ -114,7 +113,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     var deviceCapableModalView = new DeviceCapableModalView({ el: '#device-capable-modal-view' });
     var challengePendingModalView = new ChallengePendingModalView({ el: '#challenge-pending-modal-view' });
     var challengeCompleteModalView = new ChallengeCompleteModalView({ el: '#challenge-complete-modal-view' });
-    var fundraisingShoppingModalView = new FundraisingShoppingModalView({ el: '#fundraising-shopping-modal-view', jsonFundraising: jsonFundraising });
+    var fundraisingShoppingModalView = new FundraisingShoppingModalView({ el: '#fundraising-shopping-modal-view' });
     var mountainLockedStoryModalView = new MountainLockedStoryModalView({ el: '#mountain-locked-story-modal-view' });
     var mountainStoryModalView = new MountainStoryModalView({ el: '#mountain-story-modal-view' });
     var gameInviteView = new GameInviteView({ el: '#game-invite-view', clientID: CLIENT_ID });
@@ -304,7 +303,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           // show if player not already signed in, not already shown and a donation id is not present (passed when a donation has been made)
           if (!FundraisingShoppingModelShown && getUserCookie(CLIENT_ID) == undefined && (FUNDRAISING_DONATION_ID == '')) {
             FundraisingShoppingModelShown = true;
-            fundraisingShoppingModalView.render(this.currPlayerModel);
+            fundraisingShoppingModalView.render(this.currPlayerModel, jsonCurrGame);
             // delay before showing
             startShopTimer();
           }
@@ -668,7 +667,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       playersListView = new PlayersListView({ el: '#players-list-view', jsonGame: jsonCurrGame, playerCollection: playerCollection, activePlayer: activePlayer });
       playersListView.render();
 
-      playersDetailView = new PlayersDetailView({ el: '#players-detail-view', jsonGame: jsonCurrGame, playerCollection: playerCollection, jsonFundraising: jsonFundraising, activePlayer: activePlayer });
+      playersDetailView = new PlayersDetailView({ el: '#players-detail-view', jsonGame: jsonCurrGame, playerCollection: playerCollection, activePlayer: activePlayer });
       playersDetailView.render();
 
       // modify images to use image proxy
