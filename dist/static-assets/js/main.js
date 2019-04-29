@@ -4,10 +4,6 @@ var DEF_CLIENT_ID = 'djJrblYlXV'; // Mountain Rush
 var TB_API_EXT = '';
 var TB_API_URL = 'https://api.trailburning.com/v2';
 
-//var TB_API_EXT = '.json';
-//var TB_API_URL = 'http://localhost:8000/projects/Trailburning/tb-game-api/offline';
-//var TB_API_URL = 'http://mountainrush.co.uk/tb-game-api/offline';
-
 var FUNDRAISING_PROVIDER_RAISENOW = 'RaiseNow';
 var FUNDRAISING_PROVIDER_JUSTGIVING = 'JustGiving';
 
@@ -109,7 +105,7 @@ function getFundraisingShoppingList(){
     ]};
 */
   var jsonFundraising = {items: [
-    {amount: 5, buy: 'Could pay for one', title: 'first aid kit', description: 'for an anti-poaching ranger', image: 'https://tbassets2.imgix.net/images/brands/mountainrush/clients/wwf-uk/shopping-list/WW1113632.jpg'}
+    {amount: 5, buy: 'Could pay for one', title: 'first aid kit', description: 'for an anti-poaching ranger', image: 'https://mountainrush-assets.imgix.net/clients/wwf-uk/shopping-list/WW1113632.jpg'}
     ]};
 
   var nRndItem = Math.floor(Math.random() * Math.floor(jsonFundraising.items.length));
