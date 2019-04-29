@@ -11,10 +11,10 @@ define([
       this.options = options;
     },
 
-    render: function(playerModel){
+    render: function(playerModel, jsonGame){
       var self = this;
       
-      $(this.el).html(this.template({player: playerModel.toJSON(), fundraising: this.options.jsonFundraising}));
+      $(this.el).html(this.template({player: playerModel.toJSON(), fundraising: jsonGame.jsonFundraising}));
 
       $('.big-close-btn', $(this.el)).click(function(evt){
         $('.modal', $(self.el)).modal('hide');
@@ -32,7 +32,6 @@ define([
     show: function(){
       $('.modal', $(this.el)).modal();
     }
-
   });
 
   return FundraisingShoppingModalView;

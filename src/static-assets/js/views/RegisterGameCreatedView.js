@@ -33,6 +33,19 @@ define([
       this.jsonFields.gameStart = jsonFields.gameStart;
     },
 
+    postrender: function(self){
+      $('img', $(self.el)).imagesLoaded().progress( function( instance, image ) {
+        if ($(image.img).hasClass('fade_on_load')) {
+          $(image.img).css('opacity', 1);
+        }
+      });
+
+      $('.btn-fundraise', $(self.el)).click(function(evt){
+        // fire event
+        app.dispatcher.trigger("RegisterGameCreatedView:fundraiseClick");
+      });
+    },
+
     render: function(options){
       var self = this;
       
@@ -42,17 +55,16 @@ define([
       this.jsonFields.gameStartFormatted.date = moment(dLocalGameStart).format('DD');
       this.jsonFields.gameStartFormatted.month = moment(dLocalGameStart).format('MMMM');
 
-      $(this.el).html(this.template({ campaign: options.jsonCampaign, fields: this.jsonFields, fundraising: this.options.jsonFundraising }));
+      var self = this;
 
-      $('img', $(this.el)).imagesLoaded().progress( function( instance, image ) {
-        if ($(image.img).hasClass('fade_on_load')) {
-          $(image.img).css('opacity', 1);
-        }
-      });
+      var url = GAME_API_URL + 'game/' + self.jsonFields.gameID + '/fundraising/shoppinglist';
+//      console.log(url);
+      $.getJSON(url, function(result){
+        var nRndItem = Math.floor(Math.random() * Math.floor(result.items.length));
+        result.random_item_pos = nRndItem;
 
-      $('.btn-fundraise', $(this.el)).click(function(evt){
-        // fire event
-        app.dispatcher.trigger("RegisterGameCreatedView:fundraiseClick");
+        $(self.el).html(self.template({ campaign: options.jsonCampaign, fields: self.jsonFields, fundraising: result }));
+        self.postrender(self);
       });
 
       return this;

@@ -87,8 +87,7 @@ define([
 
     var jsonCampaign = null;
     var jsonCurrPlayer = null;
-    var jsonFundraising = getFundraisingShoppingList();
-
+    
     var languageSelectorView = new LanguageSelectorView({ el: '#language-selector-view' });
     languageSelectorView.render();
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
@@ -99,10 +98,10 @@ define([
     var registerInvitationView = new RegisterInvitationView({ el: '#register-invitation-view', code: CAMPAIGN_INVITATION_CODE });
     var registerWelcomeView = new RegisterWelcomeView({ el: '#register-welcome-view' });
     var registerWelcomeVerifyView = new RegisterWelcomeVerifyView({ el: '#register-welcome-verify-view' });
-    var registerWelcomeConnectedView = new RegisterWelcomeConnectedView({ el: '#register-welcome-connected-view', jsonFundraising: jsonFundraising });
+    var registerWelcomeConnectedView = new RegisterWelcomeConnectedView({ el: '#register-welcome-connected-view' });
     var registerWelcomePreferencesView = new RegisterWelcomePreferencesView({ el: '#register-welcome-preferences-view' });
     var registerGameCreateView = new RegisterGameCreateView({ el: '#register-game-create-view' });
-    var registerGameCreatedView = new RegisterGameCreatedView({ el: '#register-game-created-view', jsonFundraising: jsonFundraising });
+    var registerGameCreatedView = new RegisterGameCreatedView({ el: '#register-game-created-view' });
     var registerGamesView = new RegisterGamesView({ el: '#register-games-view' });
 
     var registerFundraisingCreateView = new RegisterFundraisingCreateView({ el: '#register-fundraising-create-view' });

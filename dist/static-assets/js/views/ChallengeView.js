@@ -45,6 +45,16 @@ define([
 //      console.log(url);
       $.getJSON(url, function(result){
         self.jsonGame = result[0]; 
+
+        var url = GAME_API_URL + 'game/' + self.options.gameID + '/fundraising/shoppinglist';
+//        console.log(url);
+        $.getJSON(url, function(result){
+          self.jsonGame.jsonFundraising = result; 
+
+          var nRndItem = Math.floor(Math.random() * Math.floor(result.items.length));
+          self.jsonGame.jsonFundraising.random_item_pos = nRndItem;
+        });
+
         // fire event
         app.dispatcher.trigger("ChallengeView:ready", self.jsonGame);
       });

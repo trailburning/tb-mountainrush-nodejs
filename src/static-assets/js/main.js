@@ -96,24 +96,6 @@ require.config({
   }
 });
 
-function getFundraisingShoppingList(){
-/*  
-  var jsonFundraising = {items: [
-    {amount: 4, buy: 'Could pay one day of', title: 'Ranger Rations', description: 'for an anti-poaching patrol', image: 'https://tbassets2.imgix.net/images/brands/mountainrush/clients/wwf-uk/shopping-list/WW11469.jpg'},
-    {amount: 20, buy: 'Could pay for 5-day', title: 'Ranger Rations', description: 'for an anti-poaching patrol', image: 'https://tbassets2.imgix.net/images/brands/mountainrush/clients/wwf-uk/shopping-list/WW11469.jpg'},
-    {amount: 120, buy: 'Could pay for one', title: 'GPS device', description: 'to help monitor mountain gorillas', image: 'https://tbassets2.imgix.net/images/brands/mountainrush/clients/wwf-uk/shopping-list/WW11469.jpg'}
-    ]};
-*/
-  var jsonFundraising = {items: [
-    {amount: 5, buy: 'Could pay for one', title: 'first aid kit', description: 'for an anti-poaching ranger', image: 'https://mountainrush-assets.imgix.net/clients/wwf-uk/shopping-list/WW1113632.jpg'}
-    ]};
-
-  var nRndItem = Math.floor(Math.random() * Math.floor(jsonFundraising.items.length));
-  jsonFundraising.random_item_pos = nRndItem;
-
-  return jsonFundraising;
-}
-
 function formatText(strText){
   return '<p>' + strText.replace(/(?:\r\n|\r|\n)/g, '<p></p>') + '</p>';
 }
