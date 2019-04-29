@@ -511,6 +511,12 @@ body.fundraising #player-view .list {
   }
 }
 
+body.fundraising.single-player #player-view .list {
+  .team {
+    display: none;
+  }
+}
+
 #player-view .detail {
   overflow: hidden;
 
@@ -611,6 +617,12 @@ body.fundraising #player-view .list {
 body.fundraising #player-view .detail {
   .team {
     display: block;
+  }
+}
+
+body.fundraising.single-player #player-view .detail {
+  .team {
+    display: none;
   }
 }
 

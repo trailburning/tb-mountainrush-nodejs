@@ -415,6 +415,9 @@ body.fundraising #player-view .summary .player-summary .fundraising-donation-sum
 body.fundraising #player-view .list .team {
   display: block; }
 
+body.fundraising.single-player #player-view .list .team {
+  display: none; }
+
 #player-view .detail {
   overflow: hidden; }
   #player-view .detail .scroll-container {
@@ -480,6 +483,9 @@ body.fundraising #player-view .list .team {
 
 body.fundraising #player-view .detail .team {
   display: block; }
+
+body.fundraising.single-player #player-view .detail .team {
+  display: none; }
 
 .single-player #player-view .detail .player .overview .summit {
   padding-right: 0;
