@@ -97,18 +97,17 @@ define([
           $('.invite', elParent).hide();
           $('.invitation-accepted', elParent).show();
         }
-
-        self.acceptGameInvite($(self).attr('data-game-id'), $(self).attr('data-id'));
+        self.acceptGameInvite($(this).attr('data-game-id'), $(this).attr('data-id'));
       });
 
       $('.btn-reject-invite', $(self.el)).click(function(evt){
-        var elParent = $(self).closest('.invitation');
+        var elParent = $(this).closest('.invitation');
         if (elParent.length) {
           $('.invite', elParent).hide();
           $('.invitation-rejected', elParent).show();
         }
 
-        self.rejectGameInvite($(self).attr('data-game-id'), $(self).attr('data-id'));
+        self.rejectGameInvite($(this).attr('data-game-id'), $(this).attr('data-id'));
       });
 
       $('.btn-fundraise', $(self.el)).click(function(evt){
