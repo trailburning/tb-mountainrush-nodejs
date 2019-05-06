@@ -20,6 +20,12 @@ h2 {
   font-size: 1em;
 }
 
+.strong {
+  font-family: 'radikalbold', sans-serif;
+  color: #474747;
+  text-transform: uppercase;
+}
+
 /* HEADER VIEW */
 /******************************************/
 #header-view {
@@ -36,7 +42,6 @@ h2 {
 /* HERO VIEW */
 /******************************************/
 #hero-view {
-  z-index: 3;
   position: relative;
   width: 100%;
   height: 330px;
@@ -91,6 +96,41 @@ h2 {
   bottom: -53px;
 }
 
+/* CAMPAIGNS VIEW */
+/******************************************/
+#challenges-view {
+  position: relative;
+  padding-bottom: 12px;
+
+  .challenges-container-view {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -22px;
+    font-size: 1.2em;
+    line-height: 1.3em;
+  }
+
+  .challenge-view {
+    flex: 1 1;
+    margin: 0 22px;
+    padding: 14px;  
+    background: #FFF;
+    box-shadow: 0px 5px 10px rgba(25, 56, 72, 0.2);
+
+    .image {
+      width: 100%;
+      height: 256px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+
+  input[type='radio'] {
+    margin-right: 8px;
+  }  
+}
+
 /* INTRO VIEW */
 /******************************************/
 #intro-view {
@@ -116,53 +156,6 @@ h2 {
 
 #intro-view .intro-container-view .btns {
   padding: 28px 0 0 0;
-}
-
-/* GAME VIEW */
-/******************************************/
-#game-view {
-  z-index: 2;
-  position: relative;
-  font-size: 1.2em;
-  background-color: #eeeeeb;
-}
-
-#game-view .game-container {
-  margin: 0 auto;
-  text-align: center;
-}
-
-#game-view .game-container .game-grab {
-  display: inline-block;
-  margin: 0;
-  padding: 64px 0 0 0;
-  vertical-align: top;  
-  width: 70px;
-}
-
-#game-view .game-container .game-grab img {
-  width: 100%;
-}
-
-#game-view .details-container {
-  display: inline-block;
-  margin: 0;
-  padding: 70px 0 0 0;
-}
-
-#game-view .game-container .game-details {
-  display: inline-block;
-  margin: 0 0 0 14px;
-  text-align: left;
-  vertical-align: top;
-}
-
-#game-view .game-container .btns-repeat {
-  padding-bottom: 38px;
-}
-
-#game-view .game-container .btns {
-  margin-top: 24px;
 }
 
 /* SUMMARY VIEW */
@@ -633,57 +626,6 @@ input.ui-autocomplete-loading {
     padding: 0 40px;
   }
 
-  #game-view .game-container {
-    position: relative;
-    width: 634px;
-  }
-
-  #game-view .game-container .game-grab {
-    position: relative;
-    display: inline-block;
-    padding: 66px 0 0 0;
-    padding: 0;
-    margin: 0 0 0 30px;
-    width: 180px;
-    vertical-align: top;
-  }
-
-  #game-view .game-container .grab-container {
-    position: absolute;
-    top: 44px;
-  }
-
-  #game-view .details-container {
-    margin: 0 0 0 66px;
-    padding: 106px 0 42px 0;
-  }
-
-  #game-view .break {
-    display: inline-block;
-    width: 2px;
-    height: 132px;
-    border-bottom: none;
-    border-right: 2px solid #474747;
-    vertical-align: top;
-  }
-
-  #game-view .game-container .game-details {
-    display: inline-block;
-    width: 300px;
-    margin: 0 0 0 34px;
-    text-align: left;
-    vertical-align: top;
-  }
-
-  #game-view .game-container .btns-repeat {
-    padding-bottom: 4px;
-  }
-
-  #game-view .game-container .btns {
-    margin-top: 32px;
-    text-align: left;
-  }
-
   #summary-view .summary-container {
     padding: 78px 0 68px 0;
     margin: 0 auto;
@@ -798,6 +740,11 @@ input.ui-autocomplete-loading {
 
   #hero-view .campaign-title {
     bottom: 66px;
+  }
+
+  #challenges-view {
+    margin: -125px auto 0 auto;
+    width: 940px;
   }
 
   #leader-view .leaders {

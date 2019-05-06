@@ -65,39 +65,46 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
         <div class="campaign-sticker"></div>
       </div>
     </div>
-<!--
-    <div id="game-view">
-      <div class="game-container">
-        <div class="game-grab">
-          <div class="grab-container"><img src="/static-assets/images/wwf-uk/mobile_big.png"></div>
+
+    <div id="challenges-view">
+      <div class="challenges-container-view">
+        <div class="challenge-view">        
+          <div class="image" style="background-image: url('https://tbassets2.imgix.net/images/brands/mountainrush/clients/<%= Campaign.CampaignTemplate %>/pages/WW22016_even_darker.jpg?fm=jpg&q=80&w=1280')"></div>
+
+          <h2>Challenge</h2>
+          <h1>Protect Mountain Gorillas</h1>
+          Just 1000 mountain gorillas are left in the wild. The time to protect them is now. Their future is fragile.
+
+          <a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a>
         </div>
 
-        <div class="details-container">
-          <div class="break"></div>
+        <div class="challenge-view">
+        Which icon species would you like to see here?
 
-          <div class="game-details">
-            <h1 class="visible-xs">Make a choice</h1>
-            <h1 class="hidden-xs">Make a choice</h1>
-            <h2>Hike, run or cycle<br/>to the summit</h2>
-            <div class="text">Fundraise to support WWF’s<br/>vital mountain gorilla<br/>conservation work.</div>
+        <div class="form-container">
+          <div class="form-check">
+            <label class="form-check-label">
+            <input class="form-check-input required" type="radio" name="vote-species" value="0">
+            <span class="terms strong">Snow Leopards</span></label>
           </div>
-
-          <div class="btns hidden-xs">
-            <a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div>Sign up</div><div><i class="fa fa-arrow-right"></i></div></a>
-          </div>        
+          <div class="form-check">
+            <label class="form-check-label">
+            <input class="form-check-input required" type="radio" name="vote-species" value="1">
+            <span class="terms strong">African Elephants</span></label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+            <input class="form-check-input required" type="radio" name="vote-species" value="2">
+            <span class="terms strong">Orang-utans</span></label>
+          </div>
+          <div class="help-block">Please select a species</div>
         </div>
 
-        <div class="btns-repeat">
-          <div class="btns visible-xs">
-            <a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div>Sign up</div><div><i class="fa fa-arrow-right"></i></div></a>
-          </div>        
+        <span class="btn mr-btn btn-primary">Vote</span>
         </div>
-
-        <div class="embelish left"></div>
-        <div class="embelish right"></div>
       </div>
     </div>
--->
+
     <div id="howToGuide"></div>
 
     <div id="intro-view">

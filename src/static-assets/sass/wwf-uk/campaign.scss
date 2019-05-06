@@ -7,6 +7,10 @@ h2 {
   font-family: 'PFDINTextPro-Black', sans-serif;
 }
 
+.strong {
+  font-family: 'PFDINTextPro-Black', sans-serif;
+}
+
 /* HEADER VIEW */
 /******************************************/
 #header-view {
@@ -44,31 +48,6 @@ h2 {
     width: 105px;
     height: 105px;
     background: url(../../images/wwf-uk/wwf_sabyinyo.svg) no-repeat top center;
-  }
-}
-
-/* GAME VIEW */
-/******************************************/
-#game-view {
-  .embelish {
-    position: absolute;
-    top: 0;
-  }
-
-  .embelish.left {
-    top: 48px;
-    left: -234px;
-    width: 210px;
-    height: 160px;
-    background: url(../../images/wwf-uk/left-leaves2.png) no-repeat top left;
-  }
-
-  .embelish.right {
-    top: 107px;
-    right: -160px;
-    width: 160px;
-    height: 200px;
-    background: url(../../images/wwf-uk/right-leaves2.png) no-repeat top left;
   }
 }
 
