@@ -43,11 +43,17 @@ h2 {
   .campaign-title .campaign-tagline2 {
     font-family: 'PFDINTextPro-Black', sans-serif;
   }
+}
 
-  .campaign-sticker {
-    width: 105px;
-    height: 105px;
-    background: url(../../images/wwf-uk/wwf_sabyinyo.svg) no-repeat top center;
+/* CHALLENGES VIEW */
+/******************************************/
+#challenges-view {
+  .challenge-view {
+    .campaign-sticker {
+      width: 105px;
+      height: 105px;
+      background: url(../../images/wwf-uk/wwf_sabyinyo.svg) no-repeat top center;
+    }
   }
 }
 
@@ -65,9 +71,9 @@ h2 {
 
 /* SUMMARY VIEW */
 /******************************************/
-#summary-view .summary-total-raised .total,
-#summary-view .summary-total-raised .title,
-#summary-view .summary-total-climbed .title {
+.summary-total-raised .total,
+.summary-total-raised .title,
+.summary-total-climbed .title {
   font-family: 'PFDINTextPro-Black', sans-serif;
 }
 

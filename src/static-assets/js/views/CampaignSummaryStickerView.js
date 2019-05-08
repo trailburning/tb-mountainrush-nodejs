@@ -4,9 +4,9 @@ define([
   'numeral'
 ], function(_, Backbone, numeral){
 
-  var CampaignSummaryView = Backbone.View.extend({
+  var CampaignSummaryStickerView = Backbone.View.extend({
     initialize: function(options){
-      this.template = _.template($('#campaignSummaryViewTemplate').text());
+      this.template = _.template($('#campaignSummaryStickerViewTemplate').text());
 
       this.options = options;
       this.result = null;
@@ -21,7 +21,7 @@ define([
         self.result = result;
 
         // fire event
-        app.dispatcher.trigger("CampaignSummaryView:feedready", self);
+        app.dispatcher.trigger("CampaignSummaryStickerView:feedready", self);
       });
     },
     
@@ -40,5 +40,5 @@ define([
 
   });
 
-  return CampaignSummaryView;
+  return CampaignSummaryStickerView;
 });

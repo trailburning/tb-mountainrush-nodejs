@@ -14,12 +14,13 @@ define([
   'views/LanguageSelectorView',
   'views/ActivePlayerView',
   'views/PlayerGameView',
+  'views/CampaignSummaryStickerView',
   'views/CampaignSummaryView',
   'views/PlayerLeaderboardView',
   'views/PlayerSearchView',
   'views/DemoVideoView',
   'views/SocialPhotosView'
-], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, CampaignSummaryView, PlayerLeaderboardView, PlayerSearchView, DemoVideoView, SocialPhotosView){
+], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, CampaignSummaryStickerView, CampaignSummaryView, PlayerLeaderboardView, PlayerSearchView, DemoVideoView, SocialPhotosView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -31,6 +32,7 @@ define([
   var initialize = function() {
     var self = this;
 
+    app.dispatcher.on("CampaignSummaryStickerView:feedready", onCampaignSummaryStickerFeedReady);
     app.dispatcher.on("CampaignSummaryView:feedready", onCampaignSummaryFeedReady);
     app.dispatcher.on("PlayerLeaderboardView:feedready", onPlayerLeaderboardFeedReady);
     app.dispatcher.on("SocialPhotosView:feedready", onSocialPhotosFeedReady);
@@ -60,6 +62,10 @@ define([
           self.objVideo.exitFullscreen();
         });
       }
+    }
+
+    function onCampaignSummaryStickerFeedReady() {
+      campaignSummaryStickerView.render();
     }
 
     function onCampaignSummaryFeedReady() {
@@ -124,6 +130,9 @@ define([
     setupVideo();
 
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
+
+    var campaignSummaryStickerView = new CampaignSummaryStickerView({ el: '#campaign-summary-sticker-view', campaignID: CAMPAIGN_ID });
+    campaignSummaryStickerView.loadFeed();
 
     var campaignSummaryView = new CampaignSummaryView({ el: '#campaign-summary-view', campaignID: CAMPAIGN_ID });
     campaignSummaryView.loadFeed();

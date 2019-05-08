@@ -62,45 +62,61 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
           The time to protect them is now. Their future is fragile.
           </div>
         </div>
-        <div class="campaign-sticker"></div>
+
+        <div id="campaign-summary-sticker-view"></div>
       </div>
     </div>
 
     <div id="challenges-view">
       <div class="challenges-container-view">
-        <div class="challenge-view">        
-          <div class="image" style="background-image: url('https://tbassets2.imgix.net/images/brands/mountainrush/clients/<%= Campaign.CampaignTemplate %>/pages/WW22016_even_darker.jpg?fm=jpg&q=80&w=1280')"></div>
-
-          <h2>Challenge</h2>
-          <h1>Protect Mountain Gorillas</h1>
-          Just 1000 mountain gorillas are left in the wild. The time to protect them is now. Their future is fragile.
-
-          <a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a>
+        <div class="challenge-view">  
+          <div class="content">      
+            <div class="image-container">        
+              <div class="image" style="background-image: url('https://tbassets2.imgix.net/images/brands/mountainrush/clients/<%= Campaign.CampaignTemplate %>/pages/WW22016_even_darker.jpg?fm=jpg&q=80&w=1280')"></div>
+              <div class="campaign-sticker"></div>
+            </div>
+            <div class="text-container">
+            <h2>Challenge</h2>
+            <h1>Protect Mountain Gorillas</h1>
+            Just 1000 mountain gorillas are left in the wild. The time to protect them is now. Their future is fragile.
+            </div>
+            <div class="butty">
+            <a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a>
+            </div>
+          </div>
         </div>
 
         <div class="challenge-view">
-        Which icon species would you like to see here?
+          <div class="content">
+            <div class="image-container">
+              <div class="blank"></div>
+            </div>
+            <div class="text-container">
+              Which icon species would you like to see here?
 
-        <div class="form-container">
-          <div class="form-check">
-            <label class="form-check-label">
-            <input class="form-check-input required" type="radio" name="vote-species" value="0">
-            <span class="terms strong">Snow Leopards</span></label>
+              <div class="form-container">
+                <div class="form-check">
+                  <label class="form-check-label">
+                  <input class="form-check-input required" type="radio" name="vote-species" value="0">
+                  <span class="terms strong">Snow Leopards</span></label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                  <input class="form-check-input required" type="radio" name="vote-species" value="1">
+                  <span class="terms strong">African Elephants</span></label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                  <input class="form-check-input required" type="radio" name="vote-species" value="2">
+                  <span class="terms strong">Orang-utans</span></label>
+                </div>
+                <div class="help-block">Please select a species</div>
+              </div>
+            </div>
+            <div class="butty">
+              <span class="btn mr-btn btn-primary">Vote</span>
+            </div>
           </div>
-          <div class="form-check">
-            <label class="form-check-label">
-            <input class="form-check-input required" type="radio" name="vote-species" value="1">
-            <span class="terms strong">African Elephants</span></label>
-          </div>
-          <div class="form-check">
-            <label class="form-check-label">
-            <input class="form-check-input required" type="radio" name="vote-species" value="2">
-            <span class="terms strong">Orang-utans</span></label>
-          </div>
-          <div class="help-block">Please select a species</div>
-        </div>
-
-        <span class="btn mr-btn btn-primary">Vote</span>
         </div>
       </div>
     </div>
@@ -204,6 +220,17 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
 
 <div id="mobileTest" class="visible-xs"></div>
 
+<script type="text/template" id="campaignSummaryStickerViewTemplate">
+  <div class="summary-total-raised">
+    <div class="total-raised-sticker sm">
+      <div class="total">{{ if (fundraising_currency_symbol.length > 1) { }}<span class="fat-currency-symbol">{{= fundraising_currency_symbol }}</span>{{ } else { }}{{= fundraising_currency_symbol }}{{ } }} {{= Math.round(total_fundraising_raised) }}</div>
+      <div class="break"></div>
+      <div class="title">Total Raised</div>
+      <div class="title-sub">by climb for your world</div>
+    </div>
+  </div>
+</script>
+
 <script type="text/template" id="campaignSummaryViewTemplate">
   <div class="summary-total-raised">
     <div class="total-raised-sticker">
@@ -214,12 +241,11 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
     </div>
   </div>
 
-  <div class="break"></div>
+  <div class="summary-break"></div>
 
   <div class="summary-total-climbed">
     <div class="total">{{= total_ascent_formatted }}</div>
     <div class="title">Metres Climbed</div>
-    <div class="title-sub">The height of {{= Math.round(total_ascent / 1.65) }} gorillas!</div>
   </div>
 </script>
 

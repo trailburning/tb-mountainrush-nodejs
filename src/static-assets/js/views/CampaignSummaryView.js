@@ -12,7 +12,6 @@ define([
       this.result = null;
     },
 
-
     loadFeed: function(){
       var self = this;
 
