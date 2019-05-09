@@ -43,7 +43,7 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
 <!--      
         <img class="scale" src="https://mountainrush-assets.imgix.net/clients/<%= Campaign.CampaignTemplate %>/pages/TB_CFYW_landing_page_header_image_0001_img 2.jpg?fm=jpg&q=80&w=1280">
 -->
-        <img class="scale" src="/static-assets/images/temp/20110122-England-Lake-District-122311_edited.jpg">        
+        <img class="scale" src="/static-assets/images/temp/20110122-England-Lake-District-122311_edited2.jpg">        
       <% } %>
       </div>
 
@@ -269,10 +269,12 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
 <script type="text/template" id="socialFeatureViewTemplate">
   <div class="community-feature-container-view">
     <h1>#ClimbForYourWorld</h1>
-    {{ _.each(juicer.posts.items, function(post, index) { }}<div class="post">
+    {{ _.each(juicer.posts.items, function(post, index) { }}
       <div class="content">
-        <a href="{{= post.full_url }}" target="_blank"><div class="image"><img src="{{= post.image }}"></div></a>
+        <div class="image"><a href="{{= post.full_url }}" target="_blank"><img src="{{= post.image }}"></a></div>
         <div class="text">
+          <div class="avatar"><img src="{{= post.poster_image }}"></div><div class="poster strong">{{= post.poster_name }}</div>
+
           {{= post.message }}
           <div class="engagement">
           {{ if (post.likes >= 1) { }}

@@ -168,11 +168,21 @@ h2 {
       #community-climber-feature-view .content .image img {
         width: 100%; }
     #community-climber-feature-view .content .text {
-      display: inline-block;
+      padding-top: 20px;
       vertical-align: top;
-      width: 464px;
-      padding-left: 50px;
       text-align: left; }
+      #community-climber-feature-view .content .text .avatar {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border: 2px solid #fff; }
+      #community-climber-feature-view .content .text .poster {
+        display: inline-block;
+        padding: 0 0 0 16px;
+        vertical-align: top;
+        font-size: 0.8em;
+        line-height: 40px;
+        text-transform: uppercase; }
       #community-climber-feature-view .content .text .engagement {
         color: #474747;
         font-size: 0.8em; }
@@ -675,6 +685,10 @@ input.ui-autocomplete-loading {
   #community-feature-view .community-feature-container-view {
     margin: 0 auto;
     width: 860px; }
+    #community-feature-view .community-feature-container-view .content .text {
+      display: inline-block;
+      width: 464px;
+      padding-left: 50px; }
   #leader-view .leaders {
     margin: 0 auto;
     width: 940px; }
