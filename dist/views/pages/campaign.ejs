@@ -43,7 +43,7 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
 <!--      
         <img class="scale" src="https://mountainrush-assets.imgix.net/clients/<%= Campaign.CampaignTemplate %>/pages/TB_CFYW_landing_page_header_image_0001_img 2.jpg?fm=jpg&q=80&w=1280">
 -->
-        <img class="scale" src="/static-assets/images/test3.jpg">        
+        <img class="scale" src="/static-assets/images/temp/20110122-England-Lake-District-122311_edited.jpg">        
       <% } %>
       </div>
 
@@ -175,7 +175,9 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
         </div>
 
         <div class="btns">
-          <a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a>
+          <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
+
+          <span class="visible-player-inactive"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
         </div>
       </div>
     </div>
@@ -190,8 +192,6 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
 
       <div id="community-feature-view"></div>
     </div>
-
-    <div id="howToGuide"></div>
 
     <div id="summary-view">
       <div class="summary-container">
@@ -434,7 +434,6 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
 
 <% include ../partials/analytics.ejs %>
 
-<script type="text/javascript" src="/static-assets/js/bundle.js"></script></body>
 <script data-main="/static-assets/js/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
 
 <!-- Example of how to use Piste API -->
