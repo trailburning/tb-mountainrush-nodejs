@@ -132,6 +132,24 @@ h2 {
   #challenges-view input[type='radio'] {
     margin-right: 12px; }
 
+/* HOW TO GUIDE VIEW */
+/******************************************/
+#howtoguide-view {
+  padding: 70px 16px 60px 16px;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 1.3em; }
+  #howtoguide-view .howtoguide-container-view .step-view {
+    text-align: center; }
+    #howtoguide-view .howtoguide-container-view .step-view .image {
+      margin: 0 auto;
+      width: 250px;
+      height: 250px;
+      background-repeat: no-repeat;
+      background-size: cover; }
+  #howtoguide-view .howtoguide-container-view .btns {
+    padding: 28px 0 0 0; }
+
 /* INTRO VIEW */
 /******************************************/
 #intro-view {
@@ -505,7 +523,7 @@ input.ui-autocomplete-loading {
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   h1 {
-    font-size: 1.5em; }
+    font-size: 1.55em; }
   h2 {
     font-size: 1em; }
   #hero-view,
@@ -608,7 +626,7 @@ input.ui-autocomplete-loading {
     left: 105px;
     bottom: 166px; }
   #challenges-view {
-    margin: -138px auto 0 auto;
+    margin: -138px auto 44px auto;
     width: 940px; }
     #challenges-view .challenges-container-view {
       display: flex;
@@ -619,6 +637,12 @@ input.ui-autocomplete-loading {
           height: 256px; }
       #challenges-view .challenges-container-view .challenge-view:first-child {
         width: 620px; }
+  #howtoguide-view .howtoguide-container-view .steps-container-view {
+    display: flex;
+    margin: 0 -28px;
+    justify-content: center; }
+    #howtoguide-view .howtoguide-container-view .steps-container-view .step-view {
+      margin: 0 28px; }
   #leader-view .leaders {
     margin: 0 auto;
     width: 940px; }
