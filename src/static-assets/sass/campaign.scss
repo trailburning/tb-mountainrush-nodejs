@@ -92,25 +92,21 @@ h2 {
 
 #campaign-summary-sticker-view {
   position: absolute;
-  bottom: 186px;
-  right: 0;
+  bottom: 164px;
+  right: 62px;
 }
 
 /* CAMPAIGNS VIEW */
 /******************************************/
 #challenges-view {
   position: relative;
-  padding-bottom: 12px;
 
   .challenges-container-view {
-    display: flex;
-    margin: 0 -12px;
     font-size: 1.2em;
     line-height: 1.3em;
 
     .challenge-view {
-      width: 300px;
-      margin: 0 12px;
+      margin: 12px;
       padding: 14px;  
       background: #FFF;
       box-shadow: 0px 5px 10px rgba(25, 56, 72, 0.2);
@@ -131,9 +127,22 @@ h2 {
           }
 
           .blank {
+            position: relative;
             width: 100%;
             height: 200px;
             background: #eeeeec;
+
+            .text {
+              position: absolute;
+              top: 50%;
+              left: 0;
+              width: 100%;
+              margin-top: -62px;
+              text-align: center;
+              font-size: 3.2em;
+              line-height: 1em;
+              text-transform: uppercase;
+            }
           }
 
           .campaign-sticker {
@@ -144,7 +153,19 @@ h2 {
         }
 
         .text-container {
-          padding: 20px;
+          padding: 30px 20px 0 20px;
+
+          p {
+            padding: 6px 0;
+          }
+
+          .form-container {
+            padding: 8px 0;
+
+            .form-check {
+              margin: 11px 0;
+            }
+          }
         }
 
         .butty {
@@ -153,14 +174,10 @@ h2 {
         }
       }
     }
-
-    .challenge-view:first-child {
-      width: 620px;
-    }
   }
 
   input[type='radio'] {
-    margin-right: 8px;
+    margin-right: 12px;
   }  
 }
 
@@ -202,7 +219,7 @@ h2 {
   text-transform: uppercase;
   overflow: hidden;
   border-radius: 50%;
-  border: 10px solid #fff;
+  border: 6px solid #fff;
   background: rgb(241,109,73);
   background: linear-gradient(0deg, rgba(241,109,73,1) 0%, rgba(246,151,65,1) 85%, rgba(246,151,65,1) 100%);
   -webkit-box-shadow: 0px 10px 10px 0 rgba(25,56,72,0.2);
@@ -210,9 +227,9 @@ h2 {
   box-shadow: 0px 10px 10px 0 rgba(25,56,72,0.2);
 
   &.sm {
-    padding-top: 48px;
-    width: 196px;
-    height: 196px;
+    padding-top: 44px;
+    width: 182px;
+    height: 182px;
   }
 
   .break {
@@ -650,6 +667,20 @@ input.ui-autocomplete-loading {
     bottom: -48px;
   }
 
+  #challenges-view {
+    .challenges-container-view {
+      .challenge-view {
+        .content {
+          .image-container {
+            .image {
+              height: 320px;
+            }
+          }
+        }
+      }
+    }
+  }
+
   #intro-view {
     font-size: 1.2em;
     padding-top: 72px;
@@ -774,16 +805,38 @@ input.ui-autocomplete-loading {
 @media (min-width: 992px) {  
   #hero-view,
   #hero-view .image {
-    height: 498px;
+    height: 620px;
   }
 
   #hero-view .campaign-title {
-    bottom: 66px;
+    left: 105px;
+    bottom: 166px;
   }
 
   #challenges-view {
-    margin: -125px auto 0 auto;
+    margin: -138px auto 0 auto;
     width: 940px;
+
+    .challenges-container-view {
+      display: flex;
+      margin: 0 -12px;
+
+      .challenge-view {
+        width: 300px;
+
+        .content {
+          .image-container {
+            .image {
+              height: 256px;
+            }
+          }
+        }
+      }
+
+      .challenge-view:first-child {
+        width: 620px;
+      }
+    }
   }
 
   #leader-view .leaders {
@@ -802,15 +855,6 @@ input.ui-autocomplete-loading {
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-  #hero-view,
-  #hero-view .image {
-    height: 620px;
-  }
-
-  #hero-view .campaign-title {
-    bottom: 68px;
-  }
-
   #leader-view .leaders {
     width: 1140px;
   }

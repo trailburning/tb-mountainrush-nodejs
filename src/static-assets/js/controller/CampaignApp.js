@@ -148,7 +148,6 @@ define([
 
     $('img.scale').imageScale({
       'rescaleOnResize': true,
-      'align': 'top'
     });
 
     var elImages = $('body');

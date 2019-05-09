@@ -40,7 +40,10 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
       <% if (Campaign.CampaignTemplate == 'default') { %>
         <img class="scale" src="https://mountainrush-assets.imgix.net/pages/olivier-miche-102259-unsplash.jpg?fm=jpg&q=80&w=1280">
       <% } else { %>
+<!--      
         <img class="scale" src="https://mountainrush-assets.imgix.net/clients/<%= Campaign.CampaignTemplate %>/pages/TB_CFYW_landing_page_header_image_0001_img 2.jpg?fm=jpg&q=80&w=1280">
+-->
+        <img class="scale" src="/static-assets/images/test3.jpg">        
       <% } %>
       </div>
 
@@ -50,16 +53,16 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
           Climb<br/>For Your<br/><span class="bigger">World</span>
           </div>
           <div class="campaign-tagline2 visible-xs">
-          Just 1000<br/>mountain gorillas<br/>are left in the wild
+          Join WWF's<br/>fundraising event
           </div>
           <div class="campaign-tagline2 hidden-xs">
-          Just 1000 mountain gorillas are left in the wild
+          Join WWF's fundraising event
           </div>
           <div class="campaign-tagline3 visible-xs">
-          The time to protect<br/>them is now. Their<br/>future is fragile.
+          Get active and help us protect<br/>iconic species and their habitats
           </div>
           <div class="campaign-tagline3 hidden-xs">
-          The time to protect them is now. Their future is fragile.
+          Get active and help us protect iconic<br/>species and their habitats
           </div>
         </div>
 
@@ -78,10 +81,10 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
             <div class="text-container">
             <h2>Challenge</h2>
             <h1>Protect Mountain Gorillas</h1>
-            Just 1000 mountain gorillas are left in the wild. The time to protect them is now. Their future is fragile.
+            <p>Just 1000 mountain gorillas are left in the wild. The time to protect them is now. Their future is fragile.</p>
             </div>
             <div class="butty">
-            <a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a>
+            <a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.select') %></div><div><i class="fa fa-arrow-right"></i></div></a>
             </div>
           </div>
         </div>
@@ -89,12 +92,18 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
         <div class="challenge-view">
           <div class="content">
             <div class="image-container">
-              <div class="blank"></div>
+              <div class="blank">
+                <div class="text">
+                Next<br/>
+                Challenge
+                </div>
+              </div>
             </div>
+
             <div class="text-container">
               Which icon species would you like to see here?
-
               <div class="form-container">
+                <form>
                 <div class="form-check">
                   <label class="form-check-label">
                   <input class="form-check-input required" type="radio" name="vote-species" value="0">
@@ -112,10 +121,12 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
                 </div>
                 <div class="help-block">Please select a species</div>
               </div>
+              </form>
             </div>
             <div class="butty">
               <span class="btn mr-btn btn-primary">Vote</span>
             </div>
+
           </div>
         </div>
       </div>
@@ -126,8 +137,8 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
     <div id="intro-view">
       <div class="intro-container-view">
         <h1>Climb For Your World</h1>
-        <h2>Join WWF’s virtual fundraising event</h2>
-        <div class="text">Get active and get outdoors. Discover the hills, peaks and mountains in your local area and help us protect iconic species and their habitats.</div>
+        <h2>Get active and get outdoors</h2>
+        <div class="text">Hike, run or cycle your local hills, peaks and mountains to help us protect iconic species and their habitats.</div>
 
         <div class="video-container">
           <div class="video">
@@ -143,8 +154,6 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
           <span class="visible-player-inactive"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
         </div>
       </div>
-
-      <div class="decoration"></div>
     </div>
 
     <div id="summary-view">
@@ -189,7 +198,7 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
     <div id="community-view">
       <h1>Climb Mt. Sabyinyo</h1>
       <h2>from wherever you are</h2>
-      <div class="text">Check out where our fundraisers are climbing with the hashtag #ClimbForYourWorld</div>
+      <div class="text">Check out where our fundraisers are climbing by searching #climbforyourworld</div>
 
       <div id="community-photos-loader-view" class="loader-view">
         <div class="spinner">

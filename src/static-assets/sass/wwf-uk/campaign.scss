@@ -54,19 +54,23 @@ h2 {
       height: 105px;
       background: url(../../images/wwf-uk/wwf_sabyinyo.svg) no-repeat top center;
     }
-  }
-}
 
-/* INTRO VIEW */
-/******************************************/
-#intro-view .decoration {
-  position: absolute;
-  bottom: -104px;
-  left: -118px;
-  width: 232px;
-  height: 176px;
-  background: url('../../images/wwf-uk/bottom-big-blurry-leaf.png') no-repeat;
-  background-size: 100% 100%;
+    .content {
+      .image-container {
+        .blank {
+          .text {
+            font-family: 'wwfregular', sans-serif;
+            background-color: #d6d3ca;
+            color: transparent;
+            text-shadow: 2px 2px 3px rgba(255,255,255,0.3);
+            -webkit-background-clip: text;
+               -moz-background-clip: text;
+                    background-clip: text;
+          }
+        }
+      }
+    }
+  }
 }
 
 /* SUMMARY VIEW */

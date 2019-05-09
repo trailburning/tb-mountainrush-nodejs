@@ -303,6 +303,7 @@
     "donate": "Donate",
     "challenge": {
       "create": "Create Challenge",
+      "select": "Select Challenge",
       "view": "View Challenge"
     },
     "prefs": "Preferences",
