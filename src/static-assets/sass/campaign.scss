@@ -208,6 +208,48 @@ h2 {
   }
 }
 
+/* COMMUNITY CLIMBER FEATURE VIEW */
+/******************************************/
+#community-climber-feature-view {
+  padding: 52px 16px;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 1.3em;
+  background: #fff;
+  border-bottom: solid #ebebe9 2px;
+
+  .content {
+    padding-top: 50px;
+
+    .image {
+      display: inline-block;
+      vertical-align: top;
+      width: 298px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .text {
+      display: inline-block;
+      vertical-align: top;
+      width: 464px;
+      padding-left: 50px;
+      text-align: left;
+
+      .engagement {
+        color: #474747;
+        font-size: 0.8em;
+
+        .likes {
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+}
+
 /* INTRO VIEW */
 /******************************************/
 #intro-view {
@@ -549,9 +591,6 @@ input.ui-autocomplete-loading {
   background-color: #fff;
 }
 
-#community-view .shadow-break {
-}
-
 #community-view .loader-view {
   margin-top: 40px;
 }
@@ -877,6 +916,13 @@ input.ui-autocomplete-loading {
           margin: 0 28px;
         }
       }
+    }
+  }
+
+  #community-feature-view {
+    .community-feature-container-view {
+      margin: 0 auto;
+      width: 860px;
     }
   }
 

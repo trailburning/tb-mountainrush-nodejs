@@ -150,6 +150,35 @@ h2 {
   #howtoguide-view .howtoguide-container-view .btns {
     padding: 28px 0 0 0; }
 
+/* COMMUNITY CLIMBER FEATURE VIEW */
+/******************************************/
+#community-climber-feature-view {
+  padding: 52px 16px;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 1.3em;
+  background: #fff;
+  border-bottom: solid #ebebe9 2px; }
+  #community-climber-feature-view .content {
+    padding-top: 50px; }
+    #community-climber-feature-view .content .image {
+      display: inline-block;
+      vertical-align: top;
+      width: 298px; }
+      #community-climber-feature-view .content .image img {
+        width: 100%; }
+    #community-climber-feature-view .content .text {
+      display: inline-block;
+      vertical-align: top;
+      width: 464px;
+      padding-left: 50px;
+      text-align: left; }
+      #community-climber-feature-view .content .text .engagement {
+        color: #474747;
+        font-size: 0.8em; }
+        #community-climber-feature-view .content .text .engagement .likes {
+          padding-right: 10px; }
+
 /* INTRO VIEW */
 /******************************************/
 #intro-view {
@@ -643,6 +672,9 @@ input.ui-autocomplete-loading {
     justify-content: center; }
     #howtoguide-view .howtoguide-container-view .steps-container-view .step-view {
       margin: 0 28px; }
+  #community-feature-view .community-feature-container-view {
+    margin: 0 auto;
+    width: 860px; }
   #leader-view .leaders {
     margin: 0 auto;
     width: 940px; }

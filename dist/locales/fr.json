@@ -24,15 +24,15 @@
   "how_to_guide": {
     "challenge": {
       "title": " 1. Pick your challenge",
-      "description": "Set the time frame and choose if you’re hiking, running, cycling or all 3!"
+      "description": "Set the time frame and choose\nif you’re hiking, running,\ncycling or all 3!"
     },
     "active": {
       "title": "2. Get Active",
-      "description": "Download the %s and start tracking your climbing."
+      "description": "Download the %s and start\ntracking your climbing."
     },
     "fundraise": {
       "title": "3. Start fundraising",
-      "description": "Aim high and share your progress with friends and family. Your donations go directly to WWF’s vital conservation work."
+      "description": "Aim high and share your progress\nwith friends and family. Your\ndonations go directly to WWF’s\nvital conservation work."
     }
   },
   "welcome": {

@@ -180,6 +180,17 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
       </div>
     </div>
 
+    <div id="community-climber-feature-view">
+      <div id="community-feature-loader-view" class="loader-view">
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+        </div>
+      </div>
+
+      <div id="community-feature-view"></div>
+    </div>
+
     <div id="howToGuide"></div>
 
     <div id="summary-view">
@@ -254,6 +265,29 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
 <div id="demo-video-view"></div>
 
 <div id="mobileTest" class="visible-xs"></div>
+
+<script type="text/template" id="socialFeatureViewTemplate">
+  <div class="community-feature-container-view">
+    <h1>#ClimbForYourWorld</h1>
+    {{ _.each(juicer.posts.items, function(post, index) { }}<div class="post">
+      <div class="content">
+        <a href="{{= post.full_url }}" target="_blank"><div class="image"><img src="{{= post.image }}"></div></a>
+        <div class="text">
+          {{= post.message }}
+          <div class="engagement">
+          {{ if (post.likes >= 1) { }}
+            <span class="likes"><i class="icon fa fa-heart"></i> {{= post.likes }}</span>
+          {{ } }}
+
+          {{ if (post.comments >= 1) { }}
+            <i class="icon fa fa-comment"></i> {{= post.comments }}
+          {{ } }}          
+          </div>
+        </div>
+      </div>
+    {{ }); }}
+  </div>
+</script>
 
 <script type="text/template" id="campaignSummaryStickerViewTemplate">
   <div class="summary-total-raised">
