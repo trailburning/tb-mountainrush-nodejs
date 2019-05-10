@@ -14,6 +14,7 @@ define([
   'views/LanguageSelectorView',
   'views/ActivePlayerView',
   'views/PlayerGameView',
+  'views/ChallengeVoteModalView',
   'views/CampaignSummaryStickerView',
   'views/CampaignSummaryView',
   'views/PlayerLeaderboardView',
@@ -21,7 +22,7 @@ define([
   'views/DemoVideoView',
   'views/SocialFeatureView',
   'views/SocialPhotosView'
-], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, CampaignSummaryStickerView, CampaignSummaryView, PlayerLeaderboardView, PlayerSearchView, DemoVideoView, SocialFeatureView, SocialPhotosView){
+], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, ChallengeVoteModalView, CampaignSummaryStickerView, CampaignSummaryView, PlayerLeaderboardView, PlayerSearchView, DemoVideoView, SocialFeatureView, SocialPhotosView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -127,6 +128,13 @@ define([
       $('.visible-player-inactive').show();
     }
 
+    $('.vote-btn').click(function(evt){
+      console.log('show');
+//mla      
+      challengeVoteModalView.render();
+      challengeVoteModalView.show();
+    });
+
     $('.signout').click(function(evt){
       removeUserCookie(CLIENT_ID);
     });
@@ -142,6 +150,8 @@ define([
     enableUserActions(CLIENT_ID);
 
     setupVideo();
+
+    var challengeVoteModalView = new ChallengeVoteModalView({ el: '#challenge-vote-modal-view' });
 
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
 

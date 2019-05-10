@@ -43,7 +43,7 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
 <!--      
         <img class="scale" src="https://mountainrush-assets.imgix.net/clients/<%= Campaign.CampaignTemplate %>/pages/TB_CFYW_landing_page_header_image_0001_img 2.jpg?fm=jpg&q=80&w=1280">
 -->
-        <img class="scale" src="/static-assets/images/temp/20110122-England-Lake-District-122311_edited2.jpg">        
+        <img class="scale" src="/static-assets/images/temp/20110122-England-Lake-District-122311_edited.jpg">        
       <% } %>
       </div>
 
@@ -101,7 +101,7 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
             </div>
 
             <div class="text-container">
-              Which icon species would you like to see here?
+              Which iconic species would you like to see here?
               <div class="form-container">
                 <form>
                 <div class="form-check">
@@ -124,7 +124,7 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
               </form>
             </div>
             <div class="butty">
-              <span class="btn mr-btn btn-primary">Vote</span>
+              <span class="btn mr-btn btn-primary vote-btn">Vote</span>
             </div>
 
             <div class="coming-soon"><img src="/static-assets/images/ui/badge_coming_soon.png"></div>
@@ -262,10 +262,30 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
   </div>
 </div>
 
+
 <div id="player-game-view"></div>
 <div id="demo-video-view"></div>
+<div id="challenge-vote-modal-view"></div>
 
 <div id="mobileTest" class="visible-xs"></div>
+
+<script type="text/template" id="challengeVoteModalViewTemplate">
+  <div class="modal msg-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="details">
+            <div class="title">Thanks for voting!</div>
+            <div class="description">
+            Make sure you follow <strong>#climbforyourworld</strong> on social media to find out the next challenge!
+            </div>
+          </div>
+        </div>
+        <div class="big-close-btn"><i class="fa fa-times"></i></div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->  
+</script>
 
 <script type="text/template" id="socialFeatureViewTemplate">
   <div class="community-feature-container-view">
