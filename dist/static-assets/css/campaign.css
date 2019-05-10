@@ -84,10 +84,15 @@ h2 {
     font-size: 1.2em;
     line-height: 1.3em; }
     #challenges-view .challenges-container-view .challenge-view {
+      position: relative;
       margin: 12px;
       padding: 14px;
       background: #FFF;
       box-shadow: 0px 5px 10px rgba(25, 56, 72, 0.2); }
+      #challenges-view .challenges-container-view .challenge-view .coming-soon {
+        position: absolute;
+        top: 0;
+        right: 0; }
       #challenges-view .challenges-container-view .challenge-view .content {
         display: flex;
         flex-direction: column;
@@ -103,7 +108,15 @@ h2 {
             position: relative;
             width: 100%;
             height: 200px;
-            background: #eeeeec; }
+            background: #eeeeeb;
+            /*
+  -webkit-box-shadow: 0px 10px 10px 0 rgba(25,56,72,0.2);
+  -moz-box-shadow: 0px 10px 10px 0 rgba(25,56,72,0.2);
+  box-shadow: 0px 10px 10px 0 rgba(25,56,72,0.2);
+
+box-shadow: inset 2px 2px 2px 0px rgba(235,235,230,1);
+*/
+            box-shadow: inset 4px 4px 0px 0px #ebebe6; }
             #challenges-view .challenges-container-view .challenge-view .content .image-container .blank .text {
               position: absolute;
               top: 50%;

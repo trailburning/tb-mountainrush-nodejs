@@ -106,10 +106,17 @@ h2 {
     line-height: 1.3em;
 
     .challenge-view {
+      position: relative;
       margin: 12px;
       padding: 14px;  
       background: #FFF;
       box-shadow: 0px 5px 10px rgba(25, 56, 72, 0.2);
+
+      .coming-soon {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
 
       .content {
         display: flex;
@@ -130,7 +137,15 @@ h2 {
             position: relative;
             width: 100%;
             height: 200px;
-            background: #eeeeec;
+            background: #eeeeeb;
+/*
+  -webkit-box-shadow: 0px 10px 10px 0 rgba(25,56,72,0.2);
+  -moz-box-shadow: 0px 10px 10px 0 rgba(25,56,72,0.2);
+  box-shadow: 0px 10px 10px 0 rgba(25,56,72,0.2);
+
+box-shadow: inset 2px 2px 2px 0px rgba(235,235,230,1);
+*/
+box-shadow: inset 4px 4px 0px 0px rgba(235,235,230,1);
 
             .text {
               position: absolute;
