@@ -129,10 +129,31 @@ define([
     }
 
     $('.vote-btn').click(function(evt){
-      console.log('show');
-//mla      
-      challengeVoteModalView.render();
-      challengeVoteModalView.show();
+      var radioValue = $("input[name='vote-species']:checked").val();
+      if(radioValue){
+        var jsonData = {name: $(this).attr('data-id'),
+                        vote: radioValue};
+
+        var url = GAME_API_URL + 'vote';
+//        console.log(url);
+        $.ajax({
+          type: 'post',
+          dataType: 'json',
+          url: url,
+          data: JSON.stringify(jsonData),
+          error: function(data) {
+            console.log('error');
+            console.log(data);
+          },
+          success: function(data) {
+//            console.log('success');
+//            console.log(data);
+          }
+        });
+
+        challengeVoteModalView.render();
+        challengeVoteModalView.show();
+      }
     });
 
     $('.signout').click(function(evt){

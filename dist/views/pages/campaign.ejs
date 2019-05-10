@@ -103,7 +103,7 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
             <div class="text-container">
               Which iconic species would you like to see here?
               <div class="form-container">
-                <form>
+                <form name="vote-challenge-species">
                 <div class="form-check">
                   <label class="form-check-label">
                   <input class="form-check-input required" type="radio" name="vote-species" value="0">
@@ -124,7 +124,7 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
               </form>
             </div>
             <div class="butty">
-              <span class="btn mr-btn btn-primary vote-btn">Vote</span>
+              <span class="btn mr-btn btn-primary vote-btn" data-id="species">Vote</span>
             </div>
 
             <div class="coming-soon"><img src="/static-assets/images/ui/badge_coming_soon.png"></div>
