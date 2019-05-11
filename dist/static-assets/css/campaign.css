@@ -37,16 +37,20 @@ h2 {
 #hero-view {
   position: relative;
   width: 100%;
-  height: 330px; }
+  height: 400px; }
   #hero-view .image {
     width: 100%;
-    height: 330px; }
+    height: 400px; }
   #hero-view .hero-container {
-    position: relative; }
-  #hero-view .campaign-title {
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+  #hero-view .campaign-title {
+    position: relative;
     left: 18px;
-    bottom: 26px;
+    top: 26px;
     color: #fff; }
   #hero-view .campaign-title .campaign-tagline {
     font-family: 'radikalbold', sans-serif;
@@ -73,16 +77,23 @@ h2 {
 
 #campaign-summary-sticker-view {
   position: absolute;
-  bottom: 164px;
-  right: 62px; }
+  bottom: -92px;
+  width: 100%;
+  text-align: center; }
+  #campaign-summary-sticker-view .summary-total-raised {
+    display: inline-block;
+    margin: 0 auto; }
 
 /* CAMPAIGNS VIEW */
 /******************************************/
 #challenges-view {
-  position: relative; }
+  position: relative;
+  padding-top: 100px; }
   #challenges-view .challenges-container-view {
     font-size: 1.2em;
     line-height: 1.3em; }
+    #challenges-view .challenges-container-view .vote-view {
+      display: none; }
     #challenges-view .challenges-container-view .challenge-view {
       position: relative;
       margin: 12px;
@@ -238,9 +249,11 @@ h2 {
   -moz-box-shadow: 0px 10px 10px 0 rgba(25, 56, 72, 0.2);
   box-shadow: 0px 10px 10px 0 rgba(25, 56, 72, 0.2); }
   .summary-total-raised .total-raised-sticker.sm {
-    padding-top: 44px;
+    padding-top: 48px;
     width: 182px;
     height: 182px; }
+  .summary-total-raised .total-raised-sticker .currency_symbol {
+    padding-right: 4px; }
   .summary-total-raised .total-raised-sticker .break {
     padding: 12px 0 0 0;
     margin: 0 auto;
@@ -573,17 +586,32 @@ input.ui-autocomplete-loading {
     font-size: 1.55em; }
   h2 {
     font-size: 1em; }
-  #hero-view,
-  #hero-view .image {
-    height: 455px; }
-  #hero-view .campaign-title .campaign-tagline {
-    font-size: 5.8em; }
-  #hero-view .campaign-title .campaign-tagline .bigger {
-    font-size: 1.2em; }
+  #hero-view .hero-container {
+    position: relative;
+    width: initial;
+    height: initial; }
+  #hero-view .campaign-title {
+    position: absolute;
+    top: initial;
+    left: 18px;
+    bottom: 26px; }
+    #hero-view .campaign-title .campaign-tagline {
+      font-size: 5.8em; }
+      #hero-view .campaign-title .campaign-tagline .bigger {
+        font-size: 1.2em; }
   #hero-view .campaign-sticker {
     bottom: -48px; }
-  #challenges-view .challenges-container-view .challenge-view .content .image-container .image {
-    height: 320px; }
+  #challenges-view {
+    padding-top: 0; }
+    #challenges-view .challenges-container-view .vote-view {
+      display: block; }
+    #challenges-view .challenges-container-view .challenge-view .content .image-container .image {
+      height: 320px; }
+  #campaign-summary-sticker-view {
+    position: absolute;
+    bottom: 164px;
+    right: 62px;
+    width: initial; }
   #intro-view {
     font-size: 1.2em;
     padding-top: 72px;

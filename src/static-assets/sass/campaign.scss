@@ -44,21 +44,25 @@ h2 {
 #hero-view {
   position: relative;
   width: 100%;
-  height: 330px;
+  height: 400px;
 
   .image {
     width: 100%;
-    height: 330px;
+    height: 400px;
   }
 
   .hero-container {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 
   .campaign-title {
-    position: absolute;
+    position: relative;
     left: 18px;
-    bottom: 26px;
+    top: 26px;
     color: #fff;
   }
 
@@ -92,18 +96,29 @@ h2 {
 
 #campaign-summary-sticker-view {
   position: absolute;
-  bottom: 164px;
-  right: 62px;
+  bottom: -92px;
+  width: 100%;
+  text-align: center;
+
+  .summary-total-raised {
+    display: inline-block;
+    margin: 0 auto;
+  }
 }
 
 /* CAMPAIGNS VIEW */
 /******************************************/
 #challenges-view {
   position: relative;
+  padding-top: 100px;
 
   .challenges-container-view {
     font-size: 1.2em;
     line-height: 1.3em;
+
+    .vote-view {
+      display: none;
+    }
 
     .challenge-view {
       position: relative;
@@ -320,9 +335,13 @@ h2 {
   box-shadow: 0px 10px 10px 0 rgba(25,56,72,0.2);
 
   &.sm {
-    padding-top: 44px;
+    padding-top: 48px;
     width: 182px;
     height: 182px;
+  }
+
+  .currency_symbol {
+    padding-right: 4px;
   }
 
   .break {
@@ -741,16 +760,27 @@ input.ui-autocomplete-loading {
     font-size: 1em;
   }
 
-  #hero-view,
-  #hero-view .image {
-    height: 455px;
-  }
+  #hero-view {
+    .hero-container {
+      position: relative;
+      width: initial;
+      height: initial;
+    }
 
-  #hero-view .campaign-title .campaign-tagline {
-    font-size: 5.8em;
-  }
-  #hero-view .campaign-title .campaign-tagline .bigger {
-    font-size: 1.2em;
+    .campaign-title {
+      position: absolute;
+      top: initial;
+      left: 18px;
+      bottom: 26px;
+
+      .campaign-tagline {
+        font-size: 5.8em;
+
+        .bigger {
+          font-size: 1.2em;
+        }
+      }
+    }
   }
 
   #hero-view .campaign-sticker {
@@ -758,7 +788,13 @@ input.ui-autocomplete-loading {
   }
 
   #challenges-view {
+    padding-top: 0;
+
     .challenges-container-view {
+      .vote-view {
+        display: block;
+      }
+
       .challenge-view {
         .content {
           .image-container {
@@ -769,6 +805,13 @@ input.ui-autocomplete-loading {
         }
       }
     }
+  }
+
+  #campaign-summary-sticker-view {
+    position: absolute;
+    bottom: 164px;
+    right: 62px;
+    width: initial;
   }
 
   #intro-view {
