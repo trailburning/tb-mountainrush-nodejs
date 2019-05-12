@@ -143,9 +143,10 @@ h2 {
 
           .image {
             width: 100%;
-            height: 256px;
-            background-repeat: no-repeat;
-            background-size: cover;
+
+            img {
+              width: 100%;
+            }
           }
 
           .blank {
@@ -798,8 +799,14 @@ input.ui-autocomplete-loading {
       .challenge-view {
         .content {
           .image-container {
-            .image {
+            .image {              
               height: 320px;
+              background-repeat: no-repeat;
+              background-size: cover;              
+
+              img {
+                display: none;
+              }
             }
           }
         }

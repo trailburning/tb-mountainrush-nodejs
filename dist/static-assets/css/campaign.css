@@ -111,10 +111,9 @@ h2 {
         #challenges-view .challenges-container-view .challenge-view .content .image-container {
           position: relative; }
           #challenges-view .challenges-container-view .challenge-view .content .image-container .image {
-            width: 100%;
-            height: 256px;
-            background-repeat: no-repeat;
-            background-size: cover; }
+            width: 100%; }
+            #challenges-view .challenges-container-view .challenge-view .content .image-container .image img {
+              width: 100%; }
           #challenges-view .challenges-container-view .challenge-view .content .image-container .blank {
             position: relative;
             width: 100%;
@@ -606,7 +605,11 @@ input.ui-autocomplete-loading {
     #challenges-view .challenges-container-view .vote-view {
       display: block; }
     #challenges-view .challenges-container-view .challenge-view .content .image-container .image {
-      height: 320px; }
+      height: 320px;
+      background-repeat: no-repeat;
+      background-size: cover; }
+      #challenges-view .challenges-container-view .challenge-view .content .image-container .image img {
+        display: none; }
   #campaign-summary-sticker-view {
     position: absolute;
     bottom: 164px;

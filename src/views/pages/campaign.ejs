@@ -75,7 +75,11 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
         <div class="challenge-view">  
           <div class="content">      
             <div class="image-container">        
-              <div class="image" style="background-image: url('https://tbassets2.imgix.net/images/brands/mountainrush/clients/<%= Campaign.CampaignTemplate %>/pages/WW22016_even_darker.jpg?fm=jpg&q=80&w=1280')"></div>
+              <div class="image" style="background-image: url('https://tbassets2.imgix.net/images/brands/mountainrush/clients/<%= Campaign.CampaignTemplate %>/pages/WW22016_even_darker.jpg?fm=jpg&q=80&w=1280')">
+                
+                <img src="https://tbassets2.imgix.net/images/brands/mountainrush/clients/<%= Campaign.CampaignTemplate %>/pages/WW22016_even_darker.jpg?fm=jpg&q=80&w=1280">
+
+              </div>
               <div class="campaign-sticker"></div>
             </div>
             <div class="text-container">
@@ -84,7 +88,8 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
             <p>Just 1000 mountain gorillas are left in the wild. The time to protect them is now. Their future is fragile.</p>
             </div>
             <div class="butty">
-            <a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.select') %></div><div><i class="fa fa-arrow-right"></i></div></a>
+            <span class="visible-xs"><a class="btn mr-btn btn-primary" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><%= __('defs.challenge.select') %></a></span>
+            <span class="hidden-xs"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.select') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
             </div>
           </div>
         </div>
@@ -148,7 +153,8 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
         </div>
 
         <div class="btns">
-          <a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.countmein') %></div><div><i class="fa fa-arrow-right"></i></div></a>
+          <span class="visible-xs"><a class="btn mr-btn btn-primary" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><%= __('defs.countmein') %></a></span>
+          <span class="hidden-xs"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.countmein') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
         </div>
       </div>
     </div>
@@ -177,7 +183,6 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
 
         <div class="btns">
           <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
-
           <span class="visible-player-inactive"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
         </div>
       </div>
@@ -249,7 +254,6 @@ var CAMPAIGN_SEL_LANGUAGE = '<%= Campaign.SelLanguage["name"] %>';
 
       <div class="btns">
         <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
-
         <span class="visible-player-inactive"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
       </div>
     </div>
