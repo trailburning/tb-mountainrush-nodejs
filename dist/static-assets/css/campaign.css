@@ -585,6 +585,9 @@ input.ui-autocomplete-loading {
     font-size: 1.55em; }
   h2 {
     font-size: 1em; }
+  #hero-view,
+  #hero-view .image {
+    height: 486px; }
   #hero-view .hero-container {
     position: relative;
     width: initial;
@@ -612,8 +615,8 @@ input.ui-autocomplete-loading {
         display: none; }
   #campaign-summary-sticker-view {
     position: absolute;
-    bottom: 164px;
-    right: 62px;
+    bottom: 26px;
+    right: 18px;
     width: initial; }
   #intro-view {
     font-size: 1.2em;
@@ -703,6 +706,9 @@ input.ui-autocomplete-loading {
   #hero-view .campaign-title {
     left: 105px;
     bottom: 166px; }
+  #campaign-summary-sticker-view {
+    bottom: 164px;
+    right: 62px; }
   #challenges-view {
     margin: -138px auto 44px auto;
     width: 940px; }

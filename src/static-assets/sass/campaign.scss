@@ -761,6 +761,11 @@ input.ui-autocomplete-loading {
     font-size: 1em;
   }
 
+  #hero-view,
+  #hero-view .image {
+    height: 486px;
+  }
+
   #hero-view {
     .hero-container {
       position: relative;
@@ -816,8 +821,8 @@ input.ui-autocomplete-loading {
 
   #campaign-summary-sticker-view {
     position: absolute;
-    bottom: 164px;
-    right: 62px;
+    bottom: 26px;
+    right: 18px;
     width: initial;
   }
 
@@ -951,6 +956,11 @@ input.ui-autocomplete-loading {
   #hero-view .campaign-title {
     left: 105px;
     bottom: 166px;
+  }
+
+  #campaign-summary-sticker-view {
+    bottom: 164px;
+    right: 62px;
   }
 
   #challenges-view {
