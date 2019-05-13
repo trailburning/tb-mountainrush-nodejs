@@ -110,7 +110,7 @@ h2 {
 /******************************************/
 #challenges-view {
   position: relative;
-  padding-top: 100px;
+  padding: 100px 0 12px 0;
 
   .challenges-container-view {
     font-size: 1.2em;
@@ -794,7 +794,7 @@ input.ui-autocomplete-loading {
   }
 
   #challenges-view {
-    padding-top: 0;
+    padding: 0;
 
     .challenges-container-view {
       .vote-view {

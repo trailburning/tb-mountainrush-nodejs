@@ -88,7 +88,7 @@ h2 {
 /******************************************/
 #challenges-view {
   position: relative;
-  padding-top: 100px; }
+  padding: 100px 0 12px 0; }
   #challenges-view .challenges-container-view {
     font-size: 1.2em;
     line-height: 1.3em; }
@@ -604,7 +604,7 @@ input.ui-autocomplete-loading {
   #hero-view .campaign-sticker {
     bottom: -48px; }
   #challenges-view {
-    padding-top: 0; }
+    padding: 0; }
     #challenges-view .challenges-container-view .vote-view {
       display: block; }
     #challenges-view .challenges-container-view .challenge-view .content .image-container .image {
