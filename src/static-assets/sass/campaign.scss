@@ -13,7 +13,7 @@ h2 {
 
 h1 {
   font-size: 1.2em;
-  line-height: 1em;
+  line-height: 1.2em;
 }
 
 h2 {
@@ -173,13 +173,13 @@ h2 {
 
           .campaign-sticker {
             position: absolute;
-            bottom: 25px;
-            left: 30px;
+            bottom: 16px;
+            left: 12px;
           }
         }
 
         .text-container {
-          padding: 30px 20px 0 20px;
+          padding: 20px 0 0 0;
 
           p {
             padding: 6px 0;
@@ -196,7 +196,7 @@ h2 {
 
         .butty {
           margin-top: auto;
-          padding: 0 20px 20px 20px;
+          padding: 0 0 6px 0;
         }
       }
     }
@@ -210,7 +210,7 @@ h2 {
 /* HOW TO GUIDE VIEW */
 /******************************************/
 #howtoguide-view {
-  padding: 70px 16px 60px 16px;
+  padding: 70px 16px 30px 16px;
   text-align: center;
   font-size: 1.2em;
   line-height: 1.3em;
@@ -237,7 +237,7 @@ h2 {
 /* COMMUNITY CLIMBER FEATURE VIEW */
 /******************************************/
 #community-climber-feature-view {
-  padding: 52px 16px;
+  padding: 32px 16px;
   text-align: center;
   font-size: 1.2em;
   line-height: 1.3em;
@@ -245,7 +245,7 @@ h2 {
   border-bottom: solid #ebebe9 2px;
 
   .content {
-    padding-top: 50px;
+    padding-top: 32px;
 
     .image {
       display: inline-block;
@@ -258,7 +258,7 @@ h2 {
     }
 
     .text {
-      padding-top: 20px;
+      padding: 20px 6px 0 6px;
       vertical-align: top;
       text-align: left;
 
@@ -294,7 +294,7 @@ h2 {
 /******************************************/
 #intro-view {
   position: relative;
-  padding: 44px 16px 46px 16px;
+  padding: 44px 16px 36px 16px;
   text-align: center;
   font-size: 1.2em;
   line-height: 1.3em;
@@ -401,7 +401,7 @@ h2 {
 }
 
 #summary-view .summary-container {
-  padding: 58px 0 40px 0;
+  padding: 42px 0 42px 0;
 }
 
 #summary-view .summary-total-raised {
@@ -419,7 +419,7 @@ h2 {
 /* LEADER VIEW */
 /******************************************/
 #leader-view {
-  padding: 70px 16px 60px 16px;
+  padding: 56px 16px 60px 16px;
   font-size: 1.2em;
   text-align: center;
   background-size: 1600px 500px;
@@ -813,6 +813,19 @@ input.ui-autocomplete-loading {
                 display: none;
               }
             }
+
+            .campaign-sticker {
+              bottom: 25px;
+              left: 30px;
+            }
+          }
+
+          .text-container {
+            padding: 30px 20px 0 20px;
+          }
+
+          .butty {
+            padding: 0 20px 20px 20px;
           }
         }
       }
@@ -830,72 +843,90 @@ input.ui-autocomplete-loading {
     font-size: 1.2em;
     padding-top: 72px;
     padding-bottom: 82px;
+
+    .intro-container-view {
+      margin: 0 auto;
+      width: 670px;
+
+      .text {
+        padding: 0 40px;
+      }
+    } 
   }
 
-  #intro-view .intro-container-view {
-    margin: 0 auto;
-    width: 670px;
-  } 
-
-  #intro-view .intro-container-view .text {
-    padding: 0 40px;
+  #howtoguide-view {
+    padding: 70px 16px 60px 16px;
   }
 
-  #summary-view .summary-container {
-    padding: 78px 0 68px 0;
-    margin: 0 auto;
-    text-align: center;
+  #community-climber-feature-view {
+    padding: 52px 16px;
+
+    .content {
+      padding: 50px 0 0 0;
+    }
   }
 
-  #summary-view .summary-break {
-    display: inline-block;
-    margin: 46px 52px 0 50px;
-    width: 2px;
-    height: 136px;
-    border-bottom: none;
-    border-right: 2px solid #474747;
-    vertical-align: top;
+  #summary-view {
+    .summary-container {
+      padding: 78px 0 68px 0;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .summary-break {
+      display: inline-block;
+      margin: 46px 52px 0 50px;
+      width: 2px;
+      height: 136px;
+      border-bottom: none;
+      border-right: 2px solid #474747;
+      vertical-align: top;
+    }
+
+    .summary-total-raised {
+      display: inline-block;
+      margin: 0;
+      vertical-align: top;
+    }
+
+    .summary-total-climbed {
+      display: inline-block;
+      width: 218px;
+      margin: 66px 0 0 0;
+      text-align: left;
+      vertical-align: top;
+    }
   }
 
-  #summary-view .summary-total-raised {
-    display: inline-block;
-    margin: 0;
-    vertical-align: top;
-  }
+  #leader-view {
+    padding: 70px 16px 60px 16px;
 
-  #summary-view .summary-total-climbed {
-    display: inline-block;
-    width: 218px;
-    margin: 66px 0 0 0;
-    text-align: left;
-    vertical-align: top;
-  }
+    .leader {
+      vertical-align: top;
+      padding-left: 32px;
+      padding-right: 32px;
+      border: none;
 
-  #leader-view .leader {
-    vertical-align: top;
-    padding-left: 32px;
-    padding-right: 32px;
-    border: none;
-  }
-
-  #leader-view .leader:nth-child(4),
-  #leader-view .leader:nth-child(5),
-  #leader-view .leader:nth-child(6) {
-    display: inline-block;
+      &:nth-child(4),
+      &:nth-child(5),
+      &:nth-child(6) {
+        display: inline-block;
+      }
+    }
   }
 
   #supporter-search-view {
     height: 200px;
-  }
 
-  #supporter-search-view .supporter-search-container {
-    width: 620px;
-    margin: 0 auto;
-  }
+    .supporter-search-container {
+      width: 620px;
+      margin: 0 auto;
 
-  #supporter-search-view .supporter-search-container .supporter-search-content {
-    width: 358px;
-    margin: 0 auto;
+      .supporter-search-content {
+        width: 358px;
+        margin: 0 auto;
+      }
+    }
   }
 
   .suggest .ui-autocomplete {
@@ -905,44 +936,44 @@ input.ui-autocomplete-loading {
   #community-view {
     padding-top: 74px;
     padding-bottom: 0px;
-  }
 
-  #community-view .text {
-    width: 460px;
-    margin: 0 auto;
-  }
+    .text {
+      width: 460px;
+      margin: 0 auto;
+    }
 
-  #community-view .photos {
-    padding: 8px 0 58px 0;
-    width: 630px;
-    margin: 0 auto;
-  }
+    .photos {
+      padding: 8px 0 58px 0;
+      width: 630px;
+      margin: 0 auto;
+    }
 
-  #community-view .post {
-    width: 210px;
-    padding: 22px 7px 0 7px;
-  }
+    .post {
+      width: 210px;
+      padding: 22px 7px 0 7px;
 
-  #community-view .post:nth-child(1),
-  #community-view .post:nth-child(2),
-  #community-view .post:nth-child(3),
-  #community-view .post:nth-child(4),
-  #community-view .post:nth-child(5),
-  #community-view .post:nth-child(6),
-  #community-view .post:nth-child(7),
-  #community-view .post:nth-child(8),
-  #community-view .post:nth-child(9) {
-    display: inline-block;
-  }
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5),
+      &:nth-child(6),
+      &:nth-child(7),
+      &:nth-child(8),
+      &:nth-child(9) {
+        display: inline-block;
+      }
+    }
 
-  #community-view .post .image {
-    width: 196px;
-    height: 196px;
-  }
+    .image {
+      width: 196px;
+      height: 196px;
+    }
 
-  #community-view .post .details {
-    height: 60px;
-    overflow: hidden;
+    .details {
+      height: 60px;
+      overflow: hidden;
+    }
   }
 }
 
