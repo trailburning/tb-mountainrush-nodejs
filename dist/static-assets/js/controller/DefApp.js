@@ -37,6 +37,11 @@ define([
     // check for player
     if (getUserCookie(CLIENT_ID) != undefined) {
       showActivePlayer();
+
+      $('.visible-player-active').show();
+    }
+    else {
+      $('.visible-player-inactive').show();      
     }
 
     $('.signout').click(function(evt){
