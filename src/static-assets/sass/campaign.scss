@@ -633,47 +633,44 @@ input.ui-autocomplete-loading {
   font-size: 1.2em;
   text-align: center;
   background-color: #fff;
-}
 
-#community-view .loader-view {
-  margin-top: 40px;
-}
+  .loader-view {
+    margin-top: 40px;
+  }
 
-#community-view .text {
-}
+  .post {
+    display: none;
+    margin: 0 auto;
+    vertical-align: top;
+    width: 256px;
+    padding: 32px 0 0 0;
+    font-size: 0.7em;
+    text-align: left;
 
-#community-view .post p {
-  margin: 0;
-  padding: 0;
-}
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3),
+    &:nth-child(4) {
+      display: block;
+    }
 
-#community-view .post a,
-#community-view .post a:hover, 
-#community-view .post a:active,
-#community-view .post a:visited {
-  color: inherit;
-}
+    p {
+      margin: 0;
+      padding: 0;
+    }
 
-#community-view .photos {
-  padding: 0 0 34px 0;
-  text-align: center;
-}
+    a,
+    a:hover, 
+    a:active,
+    a:visited {
+      color: inherit;
+    }
+  }
 
-#community-view .post {
-  display: none;
-  margin: 0 auto;
-  vertical-align: top;
-  width: 256px;
-  padding: 32px 0 0 0;
-  font-size: 0.7em;
-  text-align: left;
-}
-
-#community-view .post:nth-child(1),
-#community-view .post:nth-child(2),
-#community-view .post:nth-child(3),
-#community-view .post:nth-child(4) {
-  display: block;
+  .photos {
+    padding: 0 0 34px 0;
+    text-align: center;
+  }
 }
 
 #community-view .post
@@ -963,11 +960,11 @@ input.ui-autocomplete-loading {
       &:nth-child(9) {
         display: inline-block;
       }
-    }
 
-    .image {
-      width: 196px;
-      height: 196px;
+      .image {
+        width: 196px;
+        height: 196px;
+      }
     }
 
     .details {

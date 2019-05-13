@@ -486,38 +486,29 @@ input.ui-autocomplete-loading {
   font-size: 1.2em;
   text-align: center;
   background-color: #fff; }
-
-#community-view .loader-view {
-  margin-top: 40px; }
-
-#community-view .post p {
-  margin: 0;
-  padding: 0; }
-
-#community-view .post a,
-#community-view .post a:hover,
-#community-view .post a:active,
-#community-view .post a:visited {
-  color: inherit; }
-
-#community-view .photos {
-  padding: 0 0 34px 0;
-  text-align: center; }
-
-#community-view .post {
-  display: none;
-  margin: 0 auto;
-  vertical-align: top;
-  width: 256px;
-  padding: 32px 0 0 0;
-  font-size: 0.7em;
-  text-align: left; }
-
-#community-view .post:nth-child(1),
-#community-view .post:nth-child(2),
-#community-view .post:nth-child(3),
-#community-view .post:nth-child(4) {
-  display: block; }
+  #community-view .loader-view {
+    margin-top: 40px; }
+  #community-view .post {
+    display: none;
+    margin: 0 auto;
+    vertical-align: top;
+    width: 256px;
+    padding: 32px 0 0 0;
+    font-size: 0.7em;
+    text-align: left; }
+    #community-view .post:nth-child(1), #community-view .post:nth-child(2), #community-view .post:nth-child(3), #community-view .post:nth-child(4) {
+      display: block; }
+    #community-view .post p {
+      margin: 0;
+      padding: 0; }
+    #community-view .post a,
+    #community-view .post a:hover,
+    #community-view .post a:active,
+    #community-view .post a:visited {
+      color: inherit; }
+  #community-view .photos {
+    padding: 0 0 34px 0;
+    text-align: center; }
 
 #community-view .post
 #community-view .post .photo {
@@ -696,9 +687,9 @@ input.ui-autocomplete-loading {
       padding: 22px 7px 0 7px; }
       #community-view .post:nth-child(1), #community-view .post:nth-child(2), #community-view .post:nth-child(3), #community-view .post:nth-child(4), #community-view .post:nth-child(5), #community-view .post:nth-child(6), #community-view .post:nth-child(7), #community-view .post:nth-child(8), #community-view .post:nth-child(9) {
         display: inline-block; }
-    #community-view .image {
-      width: 196px;
-      height: 196px; }
+      #community-view .post .image {
+        width: 196px;
+        height: 196px; }
     #community-view .details {
       height: 60px;
       overflow: hidden; } }
