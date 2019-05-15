@@ -14,12 +14,15 @@ define([
   'views/LanguageSelectorView',
   'views/ActivePlayerView',
   'views/PlayerGameView',
+  'views/ChallengeVoteModalView',
+  'views/CampaignSummaryStickerView',
   'views/CampaignSummaryView',
   'views/PlayerLeaderboardView',
   'views/PlayerSearchView',
   'views/DemoVideoView',
+  'views/SocialFeatureView',
   'views/SocialPhotosView'
-], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, CampaignSummaryView, PlayerLeaderboardView, PlayerSearchView, DemoVideoView, SocialPhotosView){
+], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, ChallengeVoteModalView, CampaignSummaryStickerView, CampaignSummaryView, PlayerLeaderboardView, PlayerSearchView, DemoVideoView, SocialFeatureView, SocialPhotosView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -31,8 +34,11 @@ define([
   var initialize = function() {
     var self = this;
 
+    app.dispatcher.on("CampaignSummaryStickerView:feedready", onCampaignSummaryStickerFeedReady);
     app.dispatcher.on("CampaignSummaryView:feedready", onCampaignSummaryFeedReady);
     app.dispatcher.on("PlayerLeaderboardView:feedready", onPlayerLeaderboardFeedReady);
+    app.dispatcher.on("SocialFeatureView:feedready", onSocialFeatureFeedReady);
+    app.dispatcher.on("SocialFeatureView:feednotavailable", onSocialFeatureFeedNotAvailable);
     app.dispatcher.on("SocialPhotosView:feedready", onSocialPhotosFeedReady);
 
     function setupVideo() {
@@ -62,6 +68,10 @@ define([
       }
     }
 
+    function onCampaignSummaryStickerFeedReady() {
+      campaignSummaryStickerView.render();
+    }
+
     function onCampaignSummaryFeedReady() {
       $('#summary-loader-view').hide();
       campaignSummaryView.render();
@@ -70,6 +80,17 @@ define([
     function onPlayerLeaderboardFeedReady() {
       $('#leader-loader-view').hide();
       playerLeaderboardView.render();
+    }
+
+    function onSocialFeatureFeedReady() {
+      $('#community-feature-loader-view').hide();
+      socialFeatureView.render();
+    }
+
+    function onSocialFeatureFeedNotAvailable() {
+      // no feature so hide
+      $('#community-feature-loader-view').hide();
+      $('#community-climber-feature-view').hide();
     }
 
     function onSocialPhotosFeedReady() {
@@ -107,6 +128,34 @@ define([
       $('.visible-player-inactive').show();
     }
 
+    $('.vote-btn').click(function(evt){
+      var radioValue = $("input[name='vote-species']:checked").val();
+      if(radioValue){
+        var jsonData = {name: $(this).attr('data-id'),
+                        vote: radioValue};
+
+        var url = GAME_API_URL + 'vote';
+//        console.log(url);
+        $.ajax({
+          type: 'post',
+          dataType: 'json',
+          url: url,
+          data: JSON.stringify(jsonData),
+          error: function(data) {
+            console.log('error');
+            console.log(data);
+          },
+          success: function(data) {
+//            console.log('success');
+//            console.log(data);
+          }
+        });
+
+        challengeVoteModalView.render();
+        challengeVoteModalView.show();
+      }
+    });
+
     $('.signout').click(function(evt){
       removeUserCookie(CLIENT_ID);
     });
@@ -123,7 +172,12 @@ define([
 
     setupVideo();
 
+    var challengeVoteModalView = new ChallengeVoteModalView({ el: '#challenge-vote-modal-view' });
+
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
+
+    var campaignSummaryStickerView = new CampaignSummaryStickerView({ el: '#campaign-summary-sticker-view', campaignID: CAMPAIGN_ID });
+    campaignSummaryStickerView.loadFeed();
 
     var campaignSummaryView = new CampaignSummaryView({ el: '#campaign-summary-view', campaignID: CAMPAIGN_ID });
     campaignSummaryView.loadFeed();
@@ -133,6 +187,9 @@ define([
 
     var playerSearchView = new PlayerSearchView({ el: '#supporter-search-view', campaignID: CAMPAIGN_ID, hostURL: HOST_URL });
     playerSearchView.render();
+
+    var socialFeatureView = new SocialFeatureView({ el: '#community-feature-view', feed: CAMPAIGN_JUICER_FEED });
+    socialFeatureView.loadFeed();
 
     var socialPhotosView = new SocialPhotosView({ el: '#community-photos-view', feed: CAMPAIGN_JUICER_FEED });
     socialPhotosView.loadFeed();

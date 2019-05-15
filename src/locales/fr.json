@@ -23,19 +23,16 @@
   },
   "how_to_guide": {
     "challenge": {
-      "title": "Challenge Yourself",
-      "subtitle": "To virtually climb Mount Sabyinyo",
-      "description": "Pick your timeframe, choose a start date and get active! Alone or with friends, unlock exclusive WWF videos as you progress."
+      "title": " 1. Pick your challenge",
+      "description": "Set the time frame and choose\nif you’re hiking, running,\ncycling or all 3!"
     },
     "active": {
-      "title": "Get Active",
-      "subtitle": "Run,Cycle or Hike",
-      "description": "Simply download the %s and start tracking your activity.  Receive email updates and view your progress up Mount Sabyinyo in stunning 3D!"
+      "title": "2. Get Active",
+      "description": "Download the %s and start\ntracking your climbing."
     },
     "fundraise": {
-      "title": "Fundraise",
-      "subtitle": "And help mountain gorillas",
-      "description": "Let everyone know how you’re going on social media and reach your fundraising goal!"
+      "title": "3. Start fundraising",
+      "description": "Aim high and share your progress\nwith friends and family. Your\ndonations go directly to WWF’s\nvital conservation work."
     }
   },
   "welcome": {
@@ -287,11 +284,14 @@
     }
   },
   "defs": {
+    "strava_app": "Strava App",
     "signup": "Sign up",
+    "countmein": "Count me in",
     "strava_app": "Strava App",
     "donate": "Donate",
     "challenge": {
       "create": "Create Challenge",
+      "select": "Select Challenge",
       "view": "View Challenge"
     },
     "prefs": "Preferences",

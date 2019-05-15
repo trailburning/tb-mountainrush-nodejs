@@ -271,7 +271,7 @@ module.exports = function(app) {
 
   app.get('/campaign/:campaignID', function(req, res) {
     var defs = helper.getDefs(req);
-    defs.ImageCopyright = '© naturepl.com / Andy Rouse / WWF';
+    defs.ImageCopyright = 'Photo by Galen Crout on Unsplash';
 
     getCampaignDataByCampaign(req, req.params.campaignID, function(err, campaign){ 
       if (campaign) {

@@ -5,6 +5,9 @@ h1,
 h2 {
   font-family: 'PFDINTextPro-Black', sans-serif; }
 
+.strong {
+  font-family: 'PFDINTextPro-Black', sans-serif; }
+
 /* HEADER VIEW */
 /******************************************/
 #header-view .link, #header-view a.link,
@@ -27,47 +30,27 @@ h2 {
 #hero-view .campaign-title .campaign-tagline2 {
   font-family: 'PFDINTextPro-Black', sans-serif; }
 
-#hero-view .campaign-sticker {
+/* CHALLENGES VIEW */
+/******************************************/
+#challenges-view .challenge-view .campaign-sticker {
   width: 105px;
   height: 105px;
   background: url(../../images/wwf-uk/wwf_sabyinyo.svg) no-repeat top center; }
 
-/* GAME VIEW */
-/******************************************/
-#game-view .embelish {
-  position: absolute;
-  top: 0; }
-
-#game-view .embelish.left {
-  top: 48px;
-  left: -234px;
-  width: 210px;
-  height: 160px;
-  background: url(../../images/wwf-uk/left-leaves2.png) no-repeat top left; }
-
-#game-view .embelish.right {
-  top: 107px;
-  right: -160px;
-  width: 160px;
-  height: 200px;
-  background: url(../../images/wwf-uk/right-leaves2.png) no-repeat top left; }
-
-/* INTRO VIEW */
-/******************************************/
-#intro-view .decoration {
-  position: absolute;
-  bottom: -104px;
-  left: -118px;
-  width: 232px;
-  height: 176px;
-  background: url("../../images/wwf-uk/bottom-big-blurry-leaf.png") no-repeat;
-  background-size: 100% 100%; }
+#challenges-view .challenge-view .content .image-container .blank .text {
+  font-family: 'wwfregular', sans-serif;
+  background-color: #d6d3ca;
+  color: transparent;
+  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.3);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text; }
 
 /* SUMMARY VIEW */
 /******************************************/
-#summary-view .summary-total-raised .total,
-#summary-view .summary-total-raised .title,
-#summary-view .summary-total-climbed .title {
+.summary-total-raised .total,
+.summary-total-raised .title,
+.summary-total-climbed .title {
   font-family: 'PFDINTextPro-Black', sans-serif; }
 
 /* LEADER VIEW */
