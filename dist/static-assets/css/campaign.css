@@ -11,10 +11,15 @@ h2 {
 
 h1 {
   font-size: 1.2em;
-  line-height: 1em; }
+  line-height: 1.2em; }
 
 h2 {
   font-size: 1em; }
+
+.strong {
+  font-family: 'radikalbold', sans-serif;
+  color: #474747;
+  text-transform: uppercase; }
 
 /* HEADER VIEW */
 /******************************************/
@@ -30,19 +35,22 @@ h2 {
 /* HERO VIEW */
 /******************************************/
 #hero-view {
-  z-index: 3;
   position: relative;
   width: 100%;
-  height: 330px; }
+  height: 400px; }
   #hero-view .image {
     width: 100%;
-    height: 330px; }
+    height: 400px; }
   #hero-view .hero-container {
-    position: relative; }
-  #hero-view .campaign-title {
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+  #hero-view .campaign-title {
+    position: relative;
     left: 18px;
-    bottom: 26px;
+    top: 26px;
     color: #fff; }
   #hero-view .campaign-title .campaign-tagline {
     font-family: 'radikalbold', sans-serif;
@@ -67,16 +75,143 @@ h2 {
   margin-top: 5px;
   font-size: 1.2em; }
 
-#hero-view .campaign-sticker {
+#campaign-summary-sticker-view {
   position: absolute;
-  right: 24px;
-  bottom: -53px; }
+  bottom: -92px;
+  width: 100%;
+  text-align: center; }
+  #campaign-summary-sticker-view .summary-total-raised {
+    display: inline-block;
+    margin: 0 auto; }
+
+/* CAMPAIGNS VIEW */
+/******************************************/
+#challenges-view {
+  position: relative;
+  padding: 100px 0 12px 0; }
+  #challenges-view .challenges-container-view {
+    font-size: 1.2em;
+    line-height: 1.3em; }
+    #challenges-view .challenges-container-view .vote-view {
+      display: none; }
+    #challenges-view .challenges-container-view .challenge-view {
+      position: relative;
+      margin: 12px;
+      padding: 14px;
+      background: #FFF;
+      box-shadow: 0px 5px 10px rgba(25, 56, 72, 0.2); }
+      #challenges-view .challenges-container-view .challenge-view .coming-soon {
+        position: absolute;
+        top: 0;
+        right: 0; }
+      #challenges-view .challenges-container-view .challenge-view .content {
+        display: flex;
+        flex-direction: column;
+        height: 100%; }
+        #challenges-view .challenges-container-view .challenge-view .content .image-container {
+          position: relative; }
+          #challenges-view .challenges-container-view .challenge-view .content .image-container .image {
+            width: 100%; }
+            #challenges-view .challenges-container-view .challenge-view .content .image-container .image img {
+              width: 100%; }
+          #challenges-view .challenges-container-view .challenge-view .content .image-container .blank {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: #eeeeeb;
+            -webkit-box-shadow: inset 4px 4px 0px 0px #ebebe6;
+            -moz-box-shadow: inset 4px 4px 0px 0px #ebebe6;
+            box-shadow: inset 4px 4px 0px 0px #ebebe6; }
+            #challenges-view .challenges-container-view .challenge-view .content .image-container .blank .text {
+              position: absolute;
+              top: 50%;
+              left: 0;
+              width: 100%;
+              margin-top: -62px;
+              text-align: center;
+              font-size: 3.2em;
+              line-height: 1em;
+              text-transform: uppercase; }
+          #challenges-view .challenges-container-view .challenge-view .content .image-container .campaign-sticker {
+            position: absolute;
+            bottom: 16px;
+            left: 12px; }
+        #challenges-view .challenges-container-view .challenge-view .content .text-container {
+          padding: 20px 0 0 0; }
+          #challenges-view .challenges-container-view .challenge-view .content .text-container p {
+            padding: 6px 0; }
+          #challenges-view .challenges-container-view .challenge-view .content .text-container .form-container {
+            padding: 8px 0; }
+            #challenges-view .challenges-container-view .challenge-view .content .text-container .form-container .form-check {
+              margin: 11px 0; }
+        #challenges-view .challenges-container-view .challenge-view .content .butty {
+          margin-top: auto;
+          padding: 0 0 6px 0; }
+  #challenges-view input[type='radio'] {
+    margin-right: 12px; }
+
+/* HOW TO GUIDE VIEW */
+/******************************************/
+#howtoguide-view {
+  padding: 70px 16px 30px 16px;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 1.3em; }
+  #howtoguide-view .howtoguide-container-view .step-view {
+    text-align: center; }
+    #howtoguide-view .howtoguide-container-view .step-view .image {
+      margin: 0 auto;
+      width: 250px;
+      height: 250px;
+      background-repeat: no-repeat;
+      background-size: cover; }
+  #howtoguide-view .howtoguide-container-view .btns {
+    padding: 28px 0 0 0; }
+
+/* COMMUNITY CLIMBER FEATURE VIEW */
+/******************************************/
+#community-climber-feature-view {
+  padding: 32px 16px;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 1.3em;
+  background: #fff;
+  border-bottom: solid #ebebe9 2px; }
+  #community-climber-feature-view .content {
+    padding-top: 32px; }
+    #community-climber-feature-view .content .image {
+      display: inline-block;
+      vertical-align: top;
+      width: 298px; }
+      #community-climber-feature-view .content .image img {
+        width: 100%; }
+    #community-climber-feature-view .content .text {
+      padding: 20px 6px 0 6px;
+      vertical-align: top;
+      text-align: left; }
+      #community-climber-feature-view .content .text .avatar {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border: 2px solid #fff; }
+      #community-climber-feature-view .content .text .poster {
+        display: inline-block;
+        padding: 0 0 0 16px;
+        vertical-align: top;
+        font-size: 0.8em;
+        line-height: 40px;
+        text-transform: uppercase; }
+      #community-climber-feature-view .content .text .engagement {
+        color: #474747;
+        font-size: 0.8em; }
+        #community-climber-feature-view .content .text .engagement .likes {
+          padding-right: 10px; }
 
 /* INTRO VIEW */
 /******************************************/
 #intro-view {
   position: relative;
-  padding: 44px 16px 46px 16px;
+  padding: 44px 16px 36px 16px;
   text-align: center;
   font-size: 1.2em;
   line-height: 1.3em;
@@ -95,59 +230,9 @@ h2 {
 #intro-view .intro-container-view .btns {
   padding: 28px 0 0 0; }
 
-/* GAME VIEW */
-/******************************************/
-#game-view {
-  z-index: 2;
-  position: relative;
-  font-size: 1.2em;
-  background-color: #eeeeeb; }
-
-#game-view .game-container {
-  margin: 0 auto;
-  text-align: center; }
-
-#game-view .game-container .game-grab {
-  display: inline-block;
-  margin: 0;
-  padding: 64px 0 0 0;
-  vertical-align: top;
-  width: 70px; }
-
-#game-view .game-container .game-grab img {
-  width: 100%; }
-
-#game-view .details-container {
-  display: inline-block;
-  margin: 0;
-  padding: 70px 0 0 0; }
-
-#game-view .game-container .game-details {
-  display: inline-block;
-  margin: 0 0 0 14px;
-  text-align: left;
-  vertical-align: top; }
-
-#game-view .game-container .btns-repeat {
-  padding-bottom: 38px; }
-
-#game-view .game-container .btns {
-  margin-top: 24px; }
-
 /* SUMMARY VIEW */
 /******************************************/
-#summary-view {
-  min-height: 362px;
-  background-color: #eeeeeb; }
-
-#summary-view .summary-container {
-  padding: 58px 0 40px 0; }
-
-#summary-view .summary-total-raised {
-  margin: 0 auto;
-  width: 218px; }
-
-#summary-view .summary-total-raised .total-raised-sticker {
+.summary-total-raised .total-raised-sticker {
   padding-top: 64px;
   width: 218px;
   height: 218px;
@@ -156,64 +241,74 @@ h2 {
   text-transform: uppercase;
   overflow: hidden;
   border-radius: 50%;
-  border: 10px solid #fff;
+  border: 6px solid #fff;
   background: #f16d49;
   background: linear-gradient(0deg, #f16d49 0%, #f69741 85%, #f69741 100%);
   -webkit-box-shadow: 0px 10px 10px 0 rgba(25, 56, 72, 0.2);
   -moz-box-shadow: 0px 10px 10px 0 rgba(25, 56, 72, 0.2);
   box-shadow: 0px 10px 10px 0 rgba(25, 56, 72, 0.2); }
+  .summary-total-raised .total-raised-sticker.sm {
+    padding-top: 48px;
+    width: 182px;
+    height: 182px; }
+  .summary-total-raised .total-raised-sticker .currency_symbol {
+    padding-right: 4px; }
+  .summary-total-raised .total-raised-sticker .break {
+    padding: 12px 0 0 0;
+    margin: 0 auto;
+    width: 108px;
+    height: 2px;
+    border-right: none;
+    border-bottom: 2px solid #fff; }
+  .summary-total-raised .total-raised-sticker .total {
+    font-size: 2.55em; }
+  .summary-total-raised .total-raised-sticker .title {
+    padding-top: 12px;
+    font-size: 1.2em;
+    line-height: 1em; }
+  .summary-total-raised .total-raised-sticker .title-sub {
+    padding: 6px 32px;
+    font-size: 0.8em;
+    line-height: 1.1em; }
 
-#summary-view .break {
+.summary-total-climbed {
+  text-align: center;
+  color: #9b9b9b;
+  text-transform: uppercase; }
+  .summary-total-climbed .total {
+    color: #474747;
+    font-size: 3.2em;
+    line-height: 1em; }
+  .summary-total-climbed .title {
+    padding-top: 8px;
+    font-size: 1.2em;
+    line-height: 1em; }
+  .summary-total-climbed .title-sub {
+    padding-top: 4px;
+    font-size: 0.8em;
+    line-height: 1em; }
+
+#summary-view {
+  min-height: 362px;
+  background-color: #eeeeeb; }
+
+#summary-view .summary-container {
+  padding: 42px 0 42px 0; }
+
+#summary-view .summary-total-raised {
+  margin: 0 auto;
+  width: 218px; }
+
+#summary-view .summary-break {
   margin: 32px auto 36px auto;
   width: 136px;
   height: 2px;
   border-bottom: 2px solid #474747; }
 
-#summary-view .summary-total-raised .break {
-  padding: 12px 0 0 0;
-  margin: 0 auto;
-  width: 108px;
-  height: 2px;
-  border-right: none;
-  border-bottom: 2px solid #fff; }
-
-#summary-view .summary-total-raised .total {
-  font-size: 2.55em; }
-
-#summary-view .summary-total-raised .title {
-  padding-top: 12px;
-  font-size: 1.2em;
-  line-height: 1em; }
-
-#summary-view .summary-total-raised .title-sub {
-  padding: 6px 40px;
-  font-size: 0.8em;
-  line-height: 1.1em; }
-
-#summary-view .summary-total-climbed {
-  text-align: center;
-  color: #9b9b9b;
-  text-transform: uppercase; }
-
-#summary-view .summary-total-climbed .total {
-  color: #474747;
-  font-size: 3.2em;
-  line-height: 1em; }
-
-#summary-view .summary-total-climbed .title {
-  padding-top: 8px;
-  font-size: 1.2em;
-  line-height: 1em; }
-
-#summary-view .summary-total-climbed .title-sub {
-  padding-top: 4px;
-  font-size: 0.8em;
-  line-height: 1em; }
-
 /* LEADER VIEW */
 /******************************************/
 #leader-view {
-  padding: 70px 16px 60px 16px;
+  padding: 56px 16px 60px 16px;
   font-size: 1.2em;
   text-align: center;
   background-size: 1600px 500px; }
@@ -391,38 +486,29 @@ input.ui-autocomplete-loading {
   font-size: 1.2em;
   text-align: center;
   background-color: #fff; }
-
-#community-view .loader-view {
-  margin-top: 40px; }
-
-#community-view .post p {
-  margin: 0;
-  padding: 0; }
-
-#community-view .post a,
-#community-view .post a:hover,
-#community-view .post a:active,
-#community-view .post a:visited {
-  color: inherit; }
-
-#community-view .photos {
-  padding: 0 0 34px 0;
-  text-align: center; }
-
-#community-view .post {
-  display: none;
-  margin: 0 auto;
-  vertical-align: top;
-  width: 256px;
-  padding: 32px 0 0 0;
-  font-size: 0.7em;
-  text-align: left; }
-
-#community-view .post:nth-child(1),
-#community-view .post:nth-child(2),
-#community-view .post:nth-child(3),
-#community-view .post:nth-child(4) {
-  display: block; }
+  #community-view .loader-view {
+    margin-top: 40px; }
+  #community-view .post {
+    display: none;
+    margin: 0 auto;
+    vertical-align: top;
+    width: 256px;
+    padding: 32px 0 0 0;
+    font-size: 0.7em;
+    text-align: left; }
+    #community-view .post:nth-child(1), #community-view .post:nth-child(2), #community-view .post:nth-child(3), #community-view .post:nth-child(4) {
+      display: block; }
+    #community-view .post p {
+      margin: 0;
+      padding: 0; }
+    #community-view .post a,
+    #community-view .post a:hover,
+    #community-view .post a:active,
+    #community-view .post a:visited {
+      color: inherit; }
+  #community-view .photos {
+    padding: 0 0 34px 0;
+    text-align: center; }
 
 #community-view .post
 #community-view .post .photo {
@@ -487,67 +573,69 @@ input.ui-autocomplete-loading {
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   h1 {
-    font-size: 1.5em; }
+    font-size: 1.55em; }
   h2 {
     font-size: 1em; }
   #hero-view,
   #hero-view .image {
-    height: 455px; }
-  #hero-view .campaign-title .campaign-tagline {
-    font-size: 5.8em; }
-  #hero-view .campaign-title .campaign-tagline .bigger {
-    font-size: 1.2em; }
+    height: 486px; }
+  #hero-view .hero-container {
+    position: relative;
+    width: initial;
+    height: initial; }
+  #hero-view .campaign-title {
+    position: absolute;
+    top: initial;
+    left: 18px;
+    bottom: 26px; }
+    #hero-view .campaign-title .campaign-tagline {
+      font-size: 5.8em; }
+      #hero-view .campaign-title .campaign-tagline .bigger {
+        font-size: 1.2em; }
   #hero-view .campaign-sticker {
     bottom: -48px; }
+  #challenges-view {
+    padding: 0; }
+    #challenges-view .challenges-container-view .vote-view {
+      display: block; }
+    #challenges-view .challenges-container-view .challenge-view .content .image-container .image {
+      height: 320px;
+      background-repeat: no-repeat;
+      background-size: cover; }
+      #challenges-view .challenges-container-view .challenge-view .content .image-container .image img {
+        display: none; }
+    #challenges-view .challenges-container-view .challenge-view .content .image-container .campaign-sticker {
+      bottom: 25px;
+      left: 30px; }
+    #challenges-view .challenges-container-view .challenge-view .content .text-container {
+      padding: 30px 20px 0 20px; }
+    #challenges-view .challenges-container-view .challenge-view .content .butty {
+      padding: 0 20px 20px 20px; }
+  #campaign-summary-sticker-view {
+    position: absolute;
+    bottom: 26px;
+    right: 18px;
+    width: initial; }
   #intro-view {
     font-size: 1.2em;
     padding-top: 72px;
     padding-bottom: 82px; }
-  #intro-view .intro-container-view {
-    margin: 0 auto;
-    width: 670px; }
-  #intro-view .intro-container-view .text {
-    padding: 0 40px; }
-  #game-view .game-container {
-    position: relative;
-    width: 634px; }
-  #game-view .game-container .game-grab {
-    position: relative;
-    display: inline-block;
-    padding: 66px 0 0 0;
-    padding: 0;
-    margin: 0 0 0 30px;
-    width: 180px;
-    vertical-align: top; }
-  #game-view .game-container .grab-container {
-    position: absolute;
-    top: 44px; }
-  #game-view .details-container {
-    margin: 0 0 0 66px;
-    padding: 106px 0 42px 0; }
-  #game-view .break {
-    display: inline-block;
-    width: 2px;
-    height: 132px;
-    border-bottom: none;
-    border-right: 2px solid #474747;
-    vertical-align: top; }
-  #game-view .game-container .game-details {
-    display: inline-block;
-    width: 300px;
-    margin: 0 0 0 34px;
-    text-align: left;
-    vertical-align: top; }
-  #game-view .game-container .btns-repeat {
-    padding-bottom: 4px; }
-  #game-view .game-container .btns {
-    margin-top: 32px;
-    text-align: left; }
+    #intro-view .intro-container-view {
+      margin: 0 auto;
+      width: 670px; }
+      #intro-view .intro-container-view .text {
+        padding: 0 40px; }
+  #howtoguide-view {
+    padding: 70px 16px 60px 16px; }
+  #community-climber-feature-view {
+    padding: 52px 16px; }
+    #community-climber-feature-view .content {
+      padding: 50px 0 0 0; }
   #summary-view .summary-container {
     padding: 78px 0 68px 0;
     margin: 0 auto;
     text-align: center; }
-  #summary-view .break {
+  #summary-view .summary-break {
     display: inline-block;
     margin: 46px 52px 0 50px;
     width: 2px;
@@ -565,62 +653,83 @@ input.ui-autocomplete-loading {
     margin: 66px 0 0 0;
     text-align: left;
     vertical-align: top; }
-  #leader-view .leader {
-    vertical-align: top;
-    padding-left: 32px;
-    padding-right: 32px;
-    border: none; }
-  #leader-view .leader:nth-child(4),
-  #leader-view .leader:nth-child(5),
-  #leader-view .leader:nth-child(6) {
-    display: inline-block; }
+  #leader-view {
+    padding: 70px 16px 60px 16px; }
+    #leader-view .leader {
+      vertical-align: top;
+      padding-left: 32px;
+      padding-right: 32px;
+      border: none; }
+      #leader-view .leader:nth-child(4), #leader-view .leader:nth-child(5), #leader-view .leader:nth-child(6) {
+        display: inline-block; }
   #supporter-search-view {
     height: 200px; }
-  #supporter-search-view .supporter-search-container {
-    width: 620px;
-    margin: 0 auto; }
-  #supporter-search-view .supporter-search-container .supporter-search-content {
-    width: 358px;
-    margin: 0 auto; }
+    #supporter-search-view .supporter-search-container {
+      width: 620px;
+      margin: 0 auto; }
+      #supporter-search-view .supporter-search-container .supporter-search-content {
+        width: 358px;
+        margin: 0 auto; }
   .suggest .ui-autocomplete {
     width: 358px; }
   #community-view {
     padding-top: 74px;
     padding-bottom: 0px; }
-  #community-view .text {
-    width: 460px;
-    margin: 0 auto; }
-  #community-view .photos {
-    padding: 8px 0 58px 0;
-    width: 630px;
-    margin: 0 auto; }
-  #community-view .post {
-    width: 210px;
-    padding: 22px 7px 0 7px; }
-  #community-view .post:nth-child(1),
-  #community-view .post:nth-child(2),
-  #community-view .post:nth-child(3),
-  #community-view .post:nth-child(4),
-  #community-view .post:nth-child(5),
-  #community-view .post:nth-child(6),
-  #community-view .post:nth-child(7),
-  #community-view .post:nth-child(8),
-  #community-view .post:nth-child(9) {
-    display: inline-block; }
-  #community-view .post .image {
-    width: 196px;
-    height: 196px; }
-  #community-view .post .details {
-    height: 60px;
-    overflow: hidden; } }
+    #community-view .text {
+      width: 460px;
+      margin: 0 auto; }
+    #community-view .photos {
+      padding: 8px 0 58px 0;
+      width: 630px;
+      margin: 0 auto; }
+    #community-view .post {
+      width: 210px;
+      padding: 22px 7px 0 7px; }
+      #community-view .post:nth-child(1), #community-view .post:nth-child(2), #community-view .post:nth-child(3), #community-view .post:nth-child(4), #community-view .post:nth-child(5), #community-view .post:nth-child(6), #community-view .post:nth-child(7), #community-view .post:nth-child(8), #community-view .post:nth-child(9) {
+        display: inline-block; }
+      #community-view .post .image {
+        width: 196px;
+        height: 196px; }
+    #community-view .details {
+      height: 60px;
+      overflow: hidden; } }
 
 /* Small devices (tablets, 992px and up) */
 @media (min-width: 992px) {
   #hero-view,
   #hero-view .image {
-    height: 498px; }
+    height: 620px; }
   #hero-view .campaign-title {
-    bottom: 66px; }
+    left: 105px;
+    bottom: 166px; }
+  #campaign-summary-sticker-view {
+    bottom: 164px;
+    right: 62px; }
+  #challenges-view {
+    margin: -138px auto 44px auto;
+    width: 940px; }
+    #challenges-view .challenges-container-view {
+      display: flex;
+      margin: 0 -12px; }
+      #challenges-view .challenges-container-view .challenge-view {
+        width: 300px; }
+        #challenges-view .challenges-container-view .challenge-view .content .image-container .image {
+          height: 256px; }
+      #challenges-view .challenges-container-view .challenge-view:first-child {
+        width: 620px; }
+  #howtoguide-view .howtoguide-container-view .steps-container-view {
+    display: flex;
+    margin: 0 -28px;
+    justify-content: center; }
+    #howtoguide-view .howtoguide-container-view .steps-container-view .step-view {
+      margin: 0 28px; }
+  #community-feature-view .community-feature-container-view {
+    margin: 0 auto;
+    width: 860px; }
+    #community-feature-view .community-feature-container-view .content .text {
+      display: inline-block;
+      width: 464px;
+      padding-left: 50px; }
   #leader-view .leaders {
     margin: 0 auto;
     width: 940px; }
@@ -631,11 +740,6 @@ input.ui-autocomplete-loading {
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-  #hero-view,
-  #hero-view .image {
-    height: 586px; }
-  #hero-view .campaign-title {
-    bottom: 68px; }
   #leader-view .leaders {
     width: 1140px; }
   #leader-view .leader {
