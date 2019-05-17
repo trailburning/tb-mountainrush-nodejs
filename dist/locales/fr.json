@@ -32,7 +32,8 @@
     },
     "fundraise": {
       "title": "3. Start fundraising",
-      "description": "Aim high and share your progress\nwith friends and family. Your\ndonations go directly to WWF’s\nvital conservation work."
+      "description": "Pick your favourite cause and set your goal!\nAim high and share your progress with\nfriends and family.",
+      "description_charity": "Aim high and share your progress\nwith friends and family. Your\ndonations go directly to WWF’s\nvital conservation work."
     }
   },
   "welcome": {
