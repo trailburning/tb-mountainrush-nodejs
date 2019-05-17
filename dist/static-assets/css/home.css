@@ -184,8 +184,10 @@
 #howtoguide-view {
   padding: 70px 16px 30px 16px;
   text-align: center;
+  /*  
   font-size: 1.2em;
   line-height: 1.3em;
+*/
   background: #efefef; }
   #howtoguide-view h1 {
     padding-bottom: 14px;
@@ -461,10 +463,9 @@
     display: inline-block; }
   #howtoguide-view .howtoguide-container-view .steps-container-view {
     display: flex;
-    margin: 0 -28px;
     justify-content: center; }
     #howtoguide-view .howtoguide-container-view .steps-container-view .step-view {
-      margin: 0 28px; }
+      width: 320px; }
   #community-view .photos {
     width: 840px; }
   #community-view .post {

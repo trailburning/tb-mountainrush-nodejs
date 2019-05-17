@@ -231,8 +231,10 @@
 #howtoguide-view {
   padding: 70px 16px 30px 16px;
   text-align: center;
+/*  
   font-size: 1.2em;
   line-height: 1.3em;
+*/  
   background: #efefef;
 
   h1 {
@@ -632,11 +634,10 @@
     .howtoguide-container-view {
       .steps-container-view {
         display: flex;
-        margin: 0 -28px;
         justify-content: center;
 
         .step-view {
-          margin: 0 28px;
+          width: 320px;
         }
       }
     }
