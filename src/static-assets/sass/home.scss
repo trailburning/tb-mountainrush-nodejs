@@ -274,7 +274,7 @@
 #campaigns-view {
   margin: 0 auto;
   text-align: center;
-  padding: 68px 0px 80px 0px;
+  padding: 44px 0px 44px 0px;
   color: #fff;
   background-color: #091e29;
 
@@ -292,11 +292,7 @@
   }
 
   .text {
-    display: inline-block;
-    vertical-align: top;
-    width: 326px;
-    padding: 86px 28px 0 0;
-    text-align: left;
+    text-align: center;
 
     .overview {
       padding: 10px 0 8px 0;
@@ -304,9 +300,7 @@
   }
 
   .image {
-    display: inline-block;
-    vertical-align: top;
-    width: 620px;
+    padding: 30px 20px 0 20px;
   }
 
   img {
@@ -640,6 +634,25 @@
           width: 320px;
         }
       }
+    }
+  }
+
+  #campaigns-view {
+    padding: 68px 0px 80px 0px;
+
+    .text {
+      display: inline-block;
+      vertical-align: top;
+      width: 320px;
+      padding: 86px 0 0 0;
+      text-align: left;
+    }
+
+    .image {
+      display: inline-block;
+      padding: 0;
+      vertical-align: top;
+      width: 620px;
     }
   }
 
