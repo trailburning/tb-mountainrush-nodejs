@@ -226,6 +226,47 @@
   margin-right: 0;
 }
 
+/* HOW TO GUIDE VIEW */
+/******************************************/
+#howtoguide-view {
+  padding: 70px 16px 30px 16px;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 1.3em;
+  background: #efefef;
+
+  h1 {
+    padding-bottom: 14px;
+    font-family: 'radikalbold', sans-serif;
+    font-size: 2em;
+  }
+
+  h2 {
+    padding-bottom: 10px;
+    font-family: 'radikalbold', sans-serif;
+    font-size: 1em;
+    text-transform: uppercase;
+  }
+
+  .howtoguide-container-view {
+    .step-view {
+      text-align: center;
+
+      .image {
+        margin: 0 auto;
+        width: 250px;
+        height: 250px;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+
+    .btns {
+      padding: 28px 0 0 0;
+    }
+  }
+}
+
 /* COMMUNITY VIEW */
 /******************************************/
 #community-view {
@@ -463,6 +504,18 @@
     height: 86px;
   }
 
+  #howtoguide-view {
+    padding: 70px 16px 60px 16px;
+
+    h1 {
+      font-size: 2.4em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+    }    
+  }
+
   #community-view h1 {
     font-size: 2.4em;
   }
@@ -516,11 +569,22 @@
     width: 942px;
   }
 
-  #player-view #piste-view {
-  }
-
   #player-view .flare1 {
     display: inline-block;
+  }
+
+  #howtoguide-view {
+    .howtoguide-container-view {
+      .steps-container-view {
+        display: flex;
+        margin: 0 -28px;
+        justify-content: center;
+
+        .step-view {
+          margin: 0 28px;
+        }
+      }
+    }
   }
 
   #community-view .photos {
