@@ -231,10 +231,6 @@
 #howtoguide-view {
   padding: 70px 16px 30px 16px;
   text-align: center;
-/*  
-  font-size: 1.2em;
-  line-height: 1.3em;
-*/  
   background: #efefef;
 
   h1 {
@@ -336,27 +332,12 @@
   }
 
   .cards-container {
-/*    
-    margin: 0 auto;
-    width: 940px;
-    padding: 22px 0 0 0;
-*/    
     text-align: center;
     padding: 0;
   }
 
   .cards {
-/*    
-    display: flex;
-    flex-direction: row;
-    margin: 0 -14px;
-*/
     .card {
-/*      
-      display: flex;
-      flex-direction: column;
-      margin: 0 14px;
-*/      
       margin: 30px auto 0 auto;
       width: 295px;
       background: #EFEFEF;
@@ -644,6 +625,18 @@
     h2 {
       font-size: 1.2em;
     }    
+
+    .howtoguide-container-view {
+      .steps-container-view {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .step-view {
+          width: 320px;
+        }
+      }
+    }
   }
 
   #campaigns-view {
@@ -663,6 +656,26 @@
 
     h2 {
       font-size: 1.2em;
+    }
+
+    .cards-container {
+      padding: 22px 0 0 0;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-direction: row;
+      margin-left: -14px;
+      margin-right: -14px;
+      
+      .card {
+        display: flex;
+        flex-direction: column;
+        margin-left: 14px;
+        margin-right: 14px;
+      }
     }
   }
 
@@ -723,19 +736,6 @@
     display: inline-block;
   }
 
-  #howtoguide-view {
-    .howtoguide-container-view {
-      .steps-container-view {
-        display: flex;
-        justify-content: center;
-
-        .step-view {
-          width: 320px;
-        }
-      }
-    }
-  }
-
   #campaigns-view {
     padding: 68px 0px 80px 0px;
 
@@ -752,26 +752,6 @@
       padding: 0;
       vertical-align: top;
       width: 620px;
-    }
-  }
-
-  #get-active-view {
-    .cards-container {
-      margin: 0 auto;
-      width: 940px;
-      padding: 22px 0 0 0;
-    }
-
-    .cards {
-      display: flex;
-      flex-direction: row;
-      margin: 0 -14px;
-      
-      .card {
-        display: flex;
-        flex-direction: column;
-        margin: 0 14px;
-      }
     }
   }
 

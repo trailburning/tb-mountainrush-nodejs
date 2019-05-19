@@ -184,10 +184,6 @@
 #howtoguide-view {
   padding: 70px 16px 30px 16px;
   text-align: center;
-  /*  
-  font-size: 1.2em;
-  line-height: 1.3em;
-*/
   background: #efefef; }
   #howtoguide-view h1 {
     padding-bottom: 14px;
@@ -256,52 +252,36 @@
     font-size: 1em;
     text-transform: uppercase; }
   #get-active-view .cards-container {
-    /*    
-    margin: 0 auto;
-    width: 940px;
-    padding: 22px 0 0 0;
-*/
     text-align: center;
     padding: 0; }
-  #get-active-view .cards {
-    /*    
-    display: flex;
-    flex-direction: row;
-    margin: 0 -14px;
-*/ }
-    #get-active-view .cards .card {
-      /*      
-      display: flex;
-      flex-direction: column;
-      margin: 0 14px;
-*/
-      margin: 30px auto 0 auto;
-      width: 295px;
-      background: #EFEFEF; }
-      #get-active-view .cards .card .image {
-        width: 100%;
-        height: 220px; }
-      #get-active-view .cards .card .content {
-        position: relative;
-        flex: 1;
-        padding: 18px 22px 22px 22px;
-        text-align: left;
-        color: #FFF;
-        background: #173545;
-        background: linear-gradient(0deg, #173545 0%, #2a485a 50%, #3b5a6d 100%); }
-        #get-active-view .cards .card .content .overview {
-          padding: 0 0 14px 0; }
-        #get-active-view .cards .card .content .avatar {
-          position: absolute;
-          right: 18px;
-          bottom: 16px;
-          width: 60px;
-          height: 60px; }
-        #get-active-view .cards .card .content h2 {
-          font-size: 1.8em;
-          text-transform: none; }
-        #get-active-view .cards .card .content strong {
-          font-family: 'radikalbold', sans-serif; }
+  #get-active-view .cards .card {
+    margin: 30px auto 0 auto;
+    width: 295px;
+    background: #EFEFEF; }
+    #get-active-view .cards .card .image {
+      width: 100%;
+      height: 220px; }
+    #get-active-view .cards .card .content {
+      position: relative;
+      flex: 1;
+      padding: 18px 22px 22px 22px;
+      text-align: left;
+      color: #FFF;
+      background: #173545;
+      background: linear-gradient(0deg, #173545 0%, #2a485a 50%, #3b5a6d 100%); }
+      #get-active-view .cards .card .content .overview {
+        padding: 0 0 14px 0; }
+      #get-active-view .cards .card .content .avatar {
+        position: absolute;
+        right: 18px;
+        bottom: 16px;
+        width: 60px;
+        height: 60px; }
+      #get-active-view .cards .card .content h2 {
+        font-size: 1.8em;
+        text-transform: none; }
+      #get-active-view .cards .card .content strong {
+        font-family: 'radikalbold', sans-serif; }
 
 /* COMMUNITY VIEW */
 /******************************************/
@@ -460,6 +440,12 @@
       font-size: 2.4em; }
     #howtoguide-view h2 {
       font-size: 1.2em; }
+    #howtoguide-view .howtoguide-container-view .steps-container-view {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; }
+      #howtoguide-view .howtoguide-container-view .steps-container-view .step-view {
+        width: 320px; }
   #campaigns-view h1 {
     font-size: 2.4em; }
   #campaigns-view h2 {
@@ -468,6 +454,20 @@
     font-size: 2.4em; }
   #get-active-view h2 {
     font-size: 1.2em; }
+  #get-active-view .cards-container {
+    padding: 22px 0 0 0; }
+  #get-active-view .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    margin-left: -14px;
+    margin-right: -14px; }
+    #get-active-view .cards .card {
+      display: flex;
+      flex-direction: column;
+      margin-left: 14px;
+      margin-right: 14px; }
   #community-view {
     padding-top: 74px; }
     #community-view h1 {
@@ -505,11 +505,6 @@
     width: 942px; }
   #player-view .flare1 {
     display: inline-block; }
-  #howtoguide-view .howtoguide-container-view .steps-container-view {
-    display: flex;
-    justify-content: center; }
-    #howtoguide-view .howtoguide-container-view .steps-container-view .step-view {
-      width: 320px; }
   #campaigns-view {
     padding: 68px 0px 80px 0px; }
     #campaigns-view .text {
@@ -523,18 +518,6 @@
       padding: 0;
       vertical-align: top;
       width: 620px; }
-  #get-active-view .cards-container {
-    margin: 0 auto;
-    width: 940px;
-    padding: 22px 0 0 0; }
-  #get-active-view .cards {
-    display: flex;
-    flex-direction: row;
-    margin: 0 -14px; }
-    #get-active-view .cards .card {
-      display: flex;
-      flex-direction: column;
-      margin: 0 14px; }
   #community-view .photos {
     width: 840px; }
   #community-view .post {
