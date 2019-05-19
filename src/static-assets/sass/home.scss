@@ -268,7 +268,7 @@
 /* CHALLENGES VIEW */
 /******************************************/
 #challenges-view {
-  padding: 64px 0 92px 0;
+  padding: 64px 0 78px 0;
   text-align: center;
   background: rgb(23,53,69);
   background: linear-gradient(0deg, rgba(23,53,69,1) 0%, rgba(42,72,90,1) 50%, rgba(59,90,109,1) 100%);
@@ -729,8 +729,6 @@
       flex-wrap: wrap;
       justify-content: center;
       flex-direction: row;
-      margin-left: -14px;
-      margin-right: -14px;
       
       .card {
         display: flex;
@@ -769,8 +767,6 @@
       flex-wrap: wrap;
       justify-content: center;
       flex-direction: row;
-      margin-left: -14px;
-      margin-right: -14px;
       
       .card {
         display: flex;

@@ -208,7 +208,7 @@
 /* CHALLENGES VIEW */
 /******************************************/
 #challenges-view {
-  padding: 64px 0 92px 0;
+  padding: 64px 0 78px 0;
   text-align: center;
   background: #173545;
   background: linear-gradient(0deg, #173545 0%, #2a485a 50%, #3b5a6d 100%); }
@@ -504,9 +504,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    flex-direction: row;
-    margin-left: -14px;
-    margin-right: -14px; }
+    flex-direction: row; }
     #challenges-view .cards .card {
       display: flex;
       flex-direction: column;
@@ -526,9 +524,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    flex-direction: row;
-    margin-left: -14px;
-    margin-right: -14px; }
+    flex-direction: row; }
     #get-active-view .cards .card {
       display: flex;
       flex-direction: column;
