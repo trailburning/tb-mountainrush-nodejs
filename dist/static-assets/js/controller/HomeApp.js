@@ -9,6 +9,7 @@ define([
   'jqueryUI',
   'cookie',
   'truncate',
+  'imageScale',
   'animateNumber',
   'videojs',
   'views/LanguageSelectorView',
@@ -19,7 +20,7 @@ define([
   'views/PromotionModalView',
   'views/DemoVideoView',
   'views/SocialPhotosView'
-], function(_, Backbone, jqueryUI, cookie, truncate, animateNumber, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, PromoMountainPlayerView, DeviceCapableModalView, PromotionModalView, DemoVideoView, SocialPhotosView){
+], function(_, Backbone, jqueryUI, cookie, truncate, imageScale, animateNumber, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, PromoMountainPlayerView, DeviceCapableModalView, PromotionModalView, DemoVideoView, SocialPhotosView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -42,6 +43,10 @@ define([
 
     var deviceCapableModalView = new DeviceCapableModalView({ el: '#device-capable-modal-view' });
     var promotionModalView = new PromotionModalView({ el: '#promotion-modal-view' });
+
+    $('img.scale').imageScale({
+      'rescaleOnResize': true
+    });
 
     function checkReady() {
       if (bLoaderComplete && bMapReady) {
