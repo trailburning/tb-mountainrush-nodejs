@@ -56,6 +56,8 @@
 /* PLAYER VIEW */
 /******************************************/
 #player-view {
+  /* mla*/
+  display: none;
   position: relative;
   width: 100%; }
 
@@ -127,6 +129,8 @@
 /* GAME VIEW */
 /******************************************/
 #page-view .game-view {
+  /* mla*/
+  display: none;
   position: relative;
   padding-bottom: 40px;
   text-align: center;
@@ -178,6 +182,70 @@
 
 #page-view .game-view .synopsis .btns .btn:last-child {
   margin-right: 0; }
+
+/* HERO VIEW */
+/******************************************/
+#hero-view {
+  position: relative; }
+  #hero-view .image {
+    height: 406px; }
+  #hero-view .titles-container {
+    position: absolute;
+    bottom: 92px;
+    left: 0;
+    width: 100%; }
+    #hero-view .titles-container .titles {
+      padding: 0 15px;
+      color: #FFF; }
+      #hero-view .titles-container .titles h1,
+      #hero-view .titles-container .titles h2 {
+        font-family: 'radikalbold', sans-serif;
+        text-shadow: 1px 5px 5px rgba(25, 56, 72, 0.4);
+        -webkit-transition: left 1s, right 1s, opacity 0.5s;
+        transition: left 1s, right 1s, opacity 0.5s; }
+      #hero-view .titles-container .titles h1 {
+        font-size: 5.5em;
+        line-height: 1em;
+        text-transform: uppercase; }
+      #hero-view .titles-container .titles h2 {
+        font-size: 3.5em;
+        line-height: 1em; }
+
+/* DETAILS VIEW */
+/******************************************/
+#details-view {
+  padding: 70px 15px 30px 15px;
+  background: #FFF; }
+  #details-view .content-container {
+    width: 100%; }
+    #details-view .content-container .content {
+      position: relative; }
+      #details-view .content-container .content .phone {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: -330px;
+        width: 250px; }
+        #details-view .content-container .content .phone img {
+          width: 100%; }
+  #details-view h1 {
+    padding-bottom: 14px;
+    font-family: 'radikalbold', sans-serif;
+    font-size: 2em; }
+  #details-view h2 {
+    padding-bottom: 10px;
+    font-family: 'radikalbold', sans-serif;
+    font-size: 1em;
+    text-transform: uppercase; }
+  #details-view .btns {
+    padding-top: 12px; }
+    #details-view .btns .btn {
+      margin: 0 4px 0 4px; }
+    #details-view .btns .btn:first-child {
+      margin-left: 0; }
+    #details-view .btns .btn:last-child {
+      margin-right: 0; }
 
 /* HOW TO GUIDE VIEW */
 /******************************************/
@@ -433,6 +501,8 @@
   .beta {
     width: 125px; }
   .stripe {
+    /* mla*/
+    display: none;
     z-index: 1;
     position: absolute;
     width: 100%;
@@ -482,6 +552,16 @@
   #page-view .game-view .stripe {
     top: -86px;
     height: 86px; }
+  #details-view {
+    padding: 38px 16px 38px 16px; }
+    #details-view h1 {
+      font-size: 2.4em; }
+    #details-view h2 {
+      font-size: 1.2em; }
+    #details-view .content-container .content .text {
+      width: 420px; }
+    #details-view .content-container .content .phone {
+      display: block; }
   #howtoguide-view {
     padding: 70px 16px 60px 16px; }
     #howtoguide-view h1 {
@@ -567,6 +647,13 @@
     width: 942px; }
   #player-view .flare1 {
     display: inline-block; }
+  #hero-view .titles-container .titles {
+    margin: 0 auto;
+    padding: 0;
+    width: 842px; }
+  #details-view .content-container .content {
+    margin: 0 auto;
+    width: 842px; }
   #campaigns-view {
     padding: 68px 0px 80px 0px; }
     #campaigns-view .text {

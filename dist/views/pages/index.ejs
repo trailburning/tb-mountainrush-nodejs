@@ -94,6 +94,44 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
     </div>
   </div>
 
+  <div id="hero-view">
+    <div class="image fade_on_ready">
+<!--      
+      <img class="scale" src="https://mountainrush-assets.imgix.net/pages/olivier-miche-102259-unsplash.jpg?fm=jpg&q=80&w=1280">
+-->
+      <img class="scale" src="/static-assets/images/temp/img_header.png">
+    </div>
+
+    <div class="titles-container">
+      <div class="titles">
+      <h1>Reaching<br/>
+      Summits</h1>
+      <h2>Raising Funds</h2>
+      </div>
+    </div>
+  </div>
+
+  <div id="details-view">
+    <div class="content-container">
+      <div class="content">
+        <div class="text">
+          <h1><%= __('welcome.title') %></h1>
+          <h2><%= __('welcome.description') %></h2>
+          <div class="overview">
+          <p><%= __('welcome.text') %></p>
+          </div>
+        </div>
+        <div class="btns">
+        <span class="visible-player-active"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate" class="signup btn mr-btn btn-primary"><%= __('defs.challenge.create') %></a> </span>
+        <span class="visible-player-inactive"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('defs.signup') %></a> </span>
+        <span class="btn mr-btn demo-video"><%= __('welcome.demo') %></span>
+        </div>
+
+        <div class="phone"><img src="/static-assets/images/phone.png"></div>
+      </div>
+    </div>
+  </div>
+
   <div id="howtoguide-view">
     <div class="howtoguide-container-view">
       <h1>How to get started</h1>
@@ -173,7 +211,7 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
       </div>
       <a href="https://wwf.org.uk/climbforyourworld" class="btn mr-btn btn-primary" target="_blank">View campaign</a>
     </div>
-    <div class="image"><a href="https://wwf.org.uk/climbforyourworld" target="_blank"><img src="https://www.mountainrush.co.uk/static-assets/images/wwf-uk/share_facebook.jpg"></a></div>
+    <div class="image"><a href="https://wwf.org.uk/climbforyourworld" target="_blank"><img src="/static-assets/images/wwf-uk/CFYW_facebook_share.png"></a></div>
   </div>
 
   <div id="get-active-view">

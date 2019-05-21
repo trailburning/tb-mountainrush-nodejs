@@ -73,6 +73,9 @@
 /* PLAYER VIEW */
 /******************************************/
 #player-view {
+/* mla*/
+  display: none;
+
   position: relative;
   width: 100%;
 }
@@ -159,6 +162,9 @@
 /* GAME VIEW */
 /******************************************/
 #page-view .game-view {
+/* mla*/
+  display: none;
+
   position: relative;
   padding-bottom: 40px;
   text-align: center;
@@ -224,6 +230,103 @@
 }
 #page-view .game-view .synopsis .btns .btn:last-child {
   margin-right: 0;
+}
+
+/* HERO VIEW */
+/******************************************/
+#hero-view {
+  position: relative;
+
+  .image {
+    height: 406px;
+  }
+
+  .titles-container {
+    position: absolute;
+    bottom: 92px;
+    left: 0;
+    width: 100%;
+
+    .titles {
+      padding: 0 15px;
+      color: #FFF;
+
+      h1,
+      h2 {
+        font-family: 'radikalbold', sans-serif;
+        text-shadow: 1px 5px 5px rgba(25, 56, 72, 0.4);
+        -webkit-transition: left 1s, right 1s, opacity 0.5s;
+        transition: left 1s, right 1s, opacity 0.5s;
+      }
+
+      h1 {
+        font-size: 5.5em;
+        line-height: 1em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        font-size: 3.5em;
+        line-height: 1em;
+      }
+    } 
+  }
+}
+
+/* DETAILS VIEW */
+/******************************************/
+#details-view {
+  padding: 70px 15px 30px 15px;
+  background: #FFF;
+
+  .content-container {
+    width: 100%;
+
+    .content {
+      position: relative;
+
+      .phone {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: -330px;
+        width: 250px;
+
+        img {
+          width: 100%;
+        }
+      }
+
+    }
+  }
+
+  h1 {
+    padding-bottom: 14px;
+    font-family: 'radikalbold', sans-serif;
+    font-size: 2em;
+  }
+
+  h2 {
+    padding-bottom: 10px;
+    font-family: 'radikalbold', sans-serif;
+    font-size: 1em;
+    text-transform: uppercase;
+  }
+
+  .btns {
+    padding-top: 12px;
+
+    .btn {
+      margin: 0 4px 0 4px;
+    }
+    .btn:first-child {
+      margin-left: 0;
+    }
+    .btn:last-child {
+      margin-right: 0;
+    }
+  }
 }
 
 /* HOW TO GUIDE VIEW */
@@ -602,6 +705,9 @@
   }
 
   .stripe {
+/* mla*/
+  display: none;
+
     z-index: 1;
     position: absolute;
     width: 100%;
@@ -685,6 +791,30 @@
   #page-view .game-view .stripe {
     top: -86px;
     height: 86px;
+  }
+
+  #details-view {
+    padding: 38px 16px 38px 16px;
+
+    h1 {
+      font-size: 2.4em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+    }    
+
+    .content-container {
+      .content {
+        .text {
+          width: 420px;
+        }
+
+        .phone {
+          display: block;
+        }
+      }
+    }
   }
 
   #howtoguide-view {
@@ -832,6 +962,25 @@
 
   #player-view .flare1 {
     display: inline-block;
+  }
+
+  #hero-view {
+    .titles-container {
+      .titles {
+        margin: 0 auto;
+        padding: 0;
+        width: 842px;
+      } 
+    }
+  }
+
+  #details-view {
+    .content-container {
+      .content {
+        margin: 0 auto;
+        width: 842px;
+      }
+    }
   }
 
   #campaigns-view {
