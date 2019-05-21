@@ -10,6 +10,7 @@ define([
   'cookie',
   'truncate',
   'imageScale',
+  'imagesLoaded',
   'animateNumber',
   'videojs',
   'views/LanguageSelectorView',
@@ -20,7 +21,7 @@ define([
   'views/PromotionModalView',
   'views/DemoVideoView',
   'views/SocialPhotosView'
-], function(_, Backbone, jqueryUI, cookie, truncate, imageScale, animateNumber, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, PromoMountainPlayerView, DeviceCapableModalView, PromotionModalView, DemoVideoView, SocialPhotosView){
+], function(_, Backbone, jqueryUI, cookie, truncate, imageScale, imagesLoaded, animateNumber, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, PromoMountainPlayerView, DeviceCapableModalView, PromotionModalView, DemoVideoView, SocialPhotosView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -47,6 +48,16 @@ define([
     $('img.scale').imageScale({
       'rescaleOnResize': true
     });
+
+    var elImages = $('body');
+    var imgLoad = imagesLoaded(elImages);
+    imgLoad.on('always', function(instance) {
+      for ( var i = 0, len = imgLoad.images.length; i < len; i++ ) {
+        if ($(imgLoad.images[i].img).hasClass('scale')) {
+          $(imgLoad.images[i].img).parent().addClass('ready');
+        }
+      }
+    });    
 
     function checkReady() {
       if (bLoaderComplete && bMapReady) {
