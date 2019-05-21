@@ -56,6 +56,8 @@
 /* PLAYER VIEW */
 /******************************************/
 #player-view {
+  /* mla*/
+  display: none;
   position: relative;
   width: 100%; }
 
@@ -127,6 +129,8 @@
 /* GAME VIEW */
 /******************************************/
 #page-view .game-view {
+  /* mla*/
+  display: none;
   position: relative;
   padding-bottom: 40px;
   text-align: center;
@@ -179,10 +183,75 @@
 #page-view .game-view .synopsis .btns .btn:last-child {
   margin-right: 0; }
 
+/* HERO VIEW */
+/******************************************/
+#hero-view {
+  position: relative; }
+  #hero-view .image {
+    height: 470px; }
+  #hero-view .titles-container {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 100%; }
+    #hero-view .titles-container .titles {
+      padding: 0 22px;
+      color: #FFF; }
+      #hero-view .titles-container .titles h1,
+      #hero-view .titles-container .titles h2 {
+        font-family: 'radikalbold', sans-serif;
+        text-shadow: 1px 5px 5px rgba(25, 56, 72, 0.4);
+        -webkit-transition: left 1s, right 1s, opacity 0.5s;
+        transition: left 1s, right 1s, opacity 0.5s; }
+      #hero-view .titles-container .titles h1 {
+        font-size: 3em;
+        line-height: 1em;
+        text-transform: uppercase; }
+      #hero-view .titles-container .titles h2 {
+        font-size: 1.9em;
+        line-height: 1em; }
+
+/* DETAILS VIEW */
+/******************************************/
+#details-view {
+  padding: 52px 22px 38px 22px;
+  background: #FFF; }
+  #details-view .content-container {
+    width: 100%; }
+    #details-view .content-container .content {
+      position: relative; }
+      #details-view .content-container .content .phone-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%; }
+        #details-view .content-container .content .phone-container .phone {
+          margin: -352px auto 0 auto;
+          width: 158px; }
+          #details-view .content-container .content .phone-container .phone img {
+            width: 100%; }
+  #details-view h1 {
+    padding-bottom: 14px;
+    font-family: 'radikalbold', sans-serif;
+    font-size: 2em; }
+  #details-view h2 {
+    padding-bottom: 10px;
+    font-family: 'radikalbold', sans-serif;
+    font-size: 1em;
+    text-transform: uppercase; }
+  #details-view .btns {
+    padding-top: 12px; }
+    #details-view .btns .btn {
+      margin: 0 4px 0 4px; }
+    #details-view .btns .btn:first-child {
+      margin-left: 0; }
+    #details-view .btns .btn:last-child {
+      margin-right: 0; }
+
 /* HOW TO GUIDE VIEW */
 /******************************************/
 #howtoguide-view {
-  padding: 70px 16px 30px 16px;
+  padding: 40px 16px 40px 16px;
   text-align: center;
   background: #efefef; }
   #howtoguide-view h1 {
@@ -208,7 +277,7 @@
 /* CHALLENGES VIEW */
 /******************************************/
 #challenges-view {
-  padding: 64px 0 78px 0;
+  padding: 40px 0 56px 0;
   text-align: center;
   background: #173545;
   background: linear-gradient(0deg, #173545 0%, #2a485a 50%, #3b5a6d 100%); }
@@ -256,9 +325,7 @@
 /* CAMPAIGNS VIEW */
 /******************************************/
 #campaigns-view {
-  margin: 0 auto;
-  text-align: center;
-  padding: 44px 0px 44px 0px;
+  padding: 44px 16px 56px 16px;
   color: #fff;
   background-color: #091e29; }
   #campaigns-view h1 {
@@ -270,19 +337,17 @@
     font-size: 1em;
     line-height: 1.4em;
     text-transform: uppercase; }
-  #campaigns-view .text {
-    text-align: center; }
-    #campaigns-view .text .overview {
-      padding: 10px 0 8px 0; }
+  #campaigns-view .text .overview {
+    padding: 10px 0 8px 0; }
   #campaigns-view .image {
-    padding: 30px 20px 0 20px; }
+    padding: 30px 0 0 0; }
   #campaigns-view img {
     width: 100%; }
 
 /* GET ACTIVE VIEW */
 /******************************************/
 #get-active-view {
-  padding: 64px 0 92px 0;
+  padding: 48px 16px 56px 16px;
   background-color: #FFF;
   text-align: center; }
   #get-active-view h1,
@@ -433,6 +498,8 @@
   .beta {
     width: 125px; }
   .stripe {
+    /* mla*/
+    display: none;
     z-index: 1;
     position: absolute;
     width: 100%;
@@ -482,6 +549,30 @@
   #page-view .game-view .stripe {
     top: -86px;
     height: 86px; }
+  #hero-view .image {
+    height: 406px; }
+  #hero-view .titles-container {
+    top: auto;
+    bottom: 92px; }
+    #hero-view .titles-container .titles h1 {
+      font-size: 5.5em; }
+    #hero-view .titles-container .titles h2 {
+      font-size: 3.5em; }
+  #details-view {
+    padding: 38px 16px 38px 16px; }
+    #details-view h1 {
+      font-size: 2.4em; }
+    #details-view h2 {
+      font-size: 1.2em; }
+    #details-view .content-container .content .text {
+      width: 420px; }
+    #details-view .content-container .content .phone-container {
+      left: auto;
+      right: 0;
+      width: auto; }
+      #details-view .content-container .content .phone-container .phone {
+        margin: -330px 0 0 0;
+        width: 250px; }
   #howtoguide-view {
     padding: 70px 16px 60px 16px; }
     #howtoguide-view h1 {
@@ -494,42 +585,52 @@
       justify-content: center; }
       #howtoguide-view .howtoguide-container-view .steps-container-view .step-view {
         width: 320px; }
-  #challenges-view h1 {
-    font-size: 2.4em; }
-  #challenges-view h2 {
-    font-size: 1.2em; }
-  #challenges-view .cards-container {
-    padding: 22px 0 0 0; }
-  #challenges-view .cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    flex-direction: row; }
-    #challenges-view .cards .card {
+  #challenges-view {
+    padding: 64px 0 78px 0; }
+    #challenges-view h1 {
+      font-size: 2.4em; }
+    #challenges-view h2 {
+      font-size: 1.2em; }
+    #challenges-view .cards-container {
+      padding: 22px 0 0 0; }
+    #challenges-view .cards {
       display: flex;
-      flex-direction: column;
-      margin-left: 14px;
-      margin-right: 14px; }
-  #campaigns-view h1 {
-    font-size: 2.4em; }
-  #campaigns-view h2 {
-    font-size: 1.2em; }
-  #get-active-view h1 {
-    font-size: 2.4em; }
-  #get-active-view h2 {
-    font-size: 1.2em; }
-  #get-active-view .cards-container {
-    padding: 22px 0 0 0; }
-  #get-active-view .cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    flex-direction: row; }
-    #get-active-view .cards .card {
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-direction: row; }
+      #challenges-view .cards .card {
+        display: flex;
+        flex-direction: column;
+        margin-left: 14px;
+        margin-right: 14px; }
+  #campaigns-view {
+    margin: 0 auto;
+    text-align: center;
+    padding: 44px 0px 44px 0px; }
+    #campaigns-view h1 {
+      font-size: 2.4em; }
+    #campaigns-view h2 {
+      font-size: 1.2em; }
+    #campaigns-view .image {
+      padding: 30px 20px 0 20px; }
+  #get-active-view {
+    padding: 64px 0 92px 0; }
+    #get-active-view h1 {
+      font-size: 2.4em; }
+    #get-active-view h2 {
+      font-size: 1.2em; }
+    #get-active-view .cards-container {
+      padding: 22px 0 0 0; }
+    #get-active-view .cards {
       display: flex;
-      flex-direction: column;
-      margin-left: 14px;
-      margin-right: 14px; }
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-direction: row; }
+      #get-active-view .cards .card {
+        display: flex;
+        flex-direction: column;
+        margin-left: 14px;
+        margin-right: 14px; }
   #community-view {
     padding-top: 74px; }
     #community-view h1 {
@@ -567,6 +668,13 @@
     width: 942px; }
   #player-view .flare1 {
     display: inline-block; }
+  #hero-view .titles-container .titles {
+    margin: 0 auto;
+    padding: 0;
+    width: 842px; }
+  #details-view .content-container .content {
+    margin: 0 auto;
+    width: 842px; }
   #campaigns-view {
     padding: 68px 0px 80px 0px; }
     #campaigns-view .text {

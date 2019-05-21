@@ -73,6 +73,9 @@
 /* PLAYER VIEW */
 /******************************************/
 #player-view {
+/* mla*/
+  display: none;
+
   position: relative;
   width: 100%;
 }
@@ -159,6 +162,9 @@
 /* GAME VIEW */
 /******************************************/
 #page-view .game-view {
+/* mla*/
+  display: none;
+
   position: relative;
   padding-bottom: 40px;
   text-align: center;
@@ -226,10 +232,109 @@
   margin-right: 0;
 }
 
+/* HERO VIEW */
+/******************************************/
+#hero-view {
+  position: relative;
+
+  .image {
+    height: 470px;
+  }
+
+  .titles-container {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 100%;
+
+    .titles {
+      padding: 0 22px;
+      color: #FFF;
+
+      h1,
+      h2 {
+        font-family: 'radikalbold', sans-serif;
+        text-shadow: 1px 5px 5px rgba(25, 56, 72, 0.4);
+        -webkit-transition: left 1s, right 1s, opacity 0.5s;
+        transition: left 1s, right 1s, opacity 0.5s;
+      }
+
+      h1 {
+        font-size: 3em;
+        line-height: 1em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        font-size: 1.9em;
+        line-height: 1em;
+      }
+    } 
+  }
+}
+
+/* DETAILS VIEW */
+/******************************************/
+#details-view {
+  padding: 52px 22px 38px 22px;
+  background: #FFF;
+
+  .content-container {
+    width: 100%;
+
+    .content {
+      position: relative;
+
+      .phone-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+
+        .phone {
+          margin: -352px auto 0 auto;
+          width: 158px;
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  h1 {
+    padding-bottom: 14px;
+    font-family: 'radikalbold', sans-serif;
+    font-size: 2em;
+  }
+
+  h2 {
+    padding-bottom: 10px;
+    font-family: 'radikalbold', sans-serif;
+    font-size: 1em;
+    text-transform: uppercase;
+  }
+
+  .btns {
+    padding-top: 12px;
+
+    .btn {
+      margin: 0 4px 0 4px;
+    }
+    .btn:first-child {
+      margin-left: 0;
+    }
+    .btn:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
 /* HOW TO GUIDE VIEW */
 /******************************************/
 #howtoguide-view {
-  padding: 70px 16px 30px 16px;
+  padding: 40px 16px 40px 16px;
   text-align: center;
   background: #efefef;
 
@@ -268,7 +373,7 @@
 /* CHALLENGES VIEW */
 /******************************************/
 #challenges-view {
-  padding: 64px 0 78px 0;
+  padding: 40px 0 56px 0;
   text-align: center;
   background: rgb(23,53,69);
   background: linear-gradient(0deg, rgba(23,53,69,1) 0%, rgba(42,72,90,1) 50%, rgba(59,90,109,1) 100%);
@@ -340,9 +445,7 @@
 /* CAMPAIGNS VIEW */
 /******************************************/
 #campaigns-view {
-  margin: 0 auto;
-  text-align: center;
-  padding: 44px 0px 44px 0px;
+  padding: 44px 16px 56px 16px;
   color: #fff;
   background-color: #091e29;
 
@@ -360,15 +463,13 @@
   }
 
   .text {
-    text-align: center;
-
     .overview {
       padding: 10px 0 8px 0;
     }
   }
 
   .image {
-    padding: 30px 20px 0 20px;
+    padding: 30px 0 0 0;
   }
 
   img {
@@ -379,7 +480,7 @@
 /* GET ACTIVE VIEW */
 /******************************************/
 #get-active-view {
-  padding: 64px 0 92px 0;
+  padding: 48px 16px 56px 16px;
   background-color: #FFF;
   text-align: center;
 
@@ -602,6 +703,9 @@
   }
 
   .stripe {
+/* mla*/
+  display: none;
+
     z-index: 1;
     position: absolute;
     width: 100%;
@@ -687,6 +791,59 @@
     height: 86px;
   }
 
+  #hero-view {
+    .image {
+      height: 406px;
+    }
+
+    .titles-container {
+      top: auto;
+      bottom: 92px;
+
+      .titles {
+        h1 {
+        font-size: 5.5em;
+        }
+
+        h2 {
+          font-size: 3.5em;
+        }
+      }
+    }
+  }
+
+  #details-view {
+    padding: 38px 16px 38px 16px;
+
+    h1 {
+      font-size: 2.4em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+    }    
+
+    .content-container {
+      .content {
+        .text {
+          width: 420px;
+        }
+
+        .phone-container {
+          left: auto;
+          right: 0;
+          width: auto;
+
+          .phone {
+            margin: -330px 0 0 0;
+            width: 250px;
+          }
+        }
+
+      }
+    }
+  }
+
   #howtoguide-view {
     padding: 70px 16px 60px 16px;
 
@@ -712,6 +869,8 @@
   }
 
   #challenges-view {
+    padding: 64px 0 78px 0;
+
     h1 {
       font-size: 2.4em;
     }
@@ -740,6 +899,10 @@
   }
 
   #campaigns-view {
+    margin: 0 auto;
+    text-align: center;
+    padding: 44px 0px 44px 0px;
+
     h1 {
       font-size: 2.4em;
     }
@@ -747,9 +910,15 @@
     h2 {
       font-size: 1.2em;
     }
+
+    .image {
+      padding: 30px 20px 0 20px;
+    }
   }
 
   #get-active-view {
+    padding: 64px 0 92px 0;
+
     h1 {
       font-size: 2.4em;
     }
@@ -832,6 +1001,25 @@
 
   #player-view .flare1 {
     display: inline-block;
+  }
+
+  #hero-view {
+    .titles-container {
+      .titles {
+        margin: 0 auto;
+        padding: 0;
+        width: 842px;
+      } 
+    }
+  }
+
+  #details-view {
+    .content-container {
+      .content {
+        margin: 0 auto;
+        width: 842px;
+      }
+    }
   }
 
   #campaigns-view {
