@@ -16,6 +16,84 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
 <div class="container-fluid nopadding">
   <% include ../partials/header.ejs %>
 
+  <div id="page-view">
+    <div id="player-view">
+      <div id="hero-view">
+        <div id="piste-view">
+          <div id="container">
+            <div id="engine-container"></div>
+          </div>
+        </div>
+        <div id="titles-view" class="overlay">
+          <div class="titles">
+            <div id="loader-view">
+              <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+                <div class="loader-text"><span class="percent">0</span></div>
+              </div>
+            </div>
+            <div class="play-btn">
+            <i class="fa fa-play-circle"></i>
+            </div>
+            <span class="scene">
+            <h1><%= __('intro.scene1_1') %></h1>
+            <h2><%= __('intro.scene1_2') %></h2>
+            </span>
+            <span class="scene">
+            <h1><%= __('intro.scene2_1') %></h1>
+            <h2><%= __('intro.scene2_2') %></h2>
+            </span>
+            <span class="scene">
+            <h1><%= __('intro.scene3_1') %></h1>
+            <h2><%= __('intro.scene3_2') %></h2>
+            </span>
+            <span class="scene">
+            <h1><%= __('intro.scene4_1') %></h1>
+            <h2><%= __('intro.scene4_2') %></h2>
+            </span>
+            <span class="scene">
+            <h1><%= __('intro.scene5_1') %></h1>
+            <h2><%= __('intro.scene5_2') %></h2>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-view clearfix">
+      <div class="game-container-view clearfix">
+        <div class="grab hidden-sm hidden-xs"><img src="/static-assets/images/phones.png"></div>
+        <div class="synopsis pull-right">
+          <div class="text">
+            <h1><%= __('welcome.title') %></h1>
+            <h2><%= __('welcome.description') %></h2>
+            <div class="overview">
+            <p>
+            <%- __('welcome.text', '<a href="https://www.strava.com" target="_blank" class="link">Strava</a>') %>
+            </p>
+            <p>
+            <%- __('welcome.text_fundraise', '<a href="https://www.raisenow.com" target="_blank" class="link">' + __('welcome.fundraise') + '</a>') %>
+            </p>
+            </div>
+          </div>
+          <div class="btns">
+          <span class="visible-player-active"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate" class="signup btn mr-btn btn-primary"><%= __('defs.challenge.create') %></a> </span>
+          <span class="visible-player-inactive"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('defs.signup') %></a> </span>
+          <span class="btn mr-btn demo-video"><%= __('welcome.demo') %></span>
+          </div>
+        </div>
+        <div class="grab hidden-md hidden-lg"><img src="/static-assets/images/phones.png"></div>
+      </div>
+
+      <div class="fundraising-partner">
+      <%- __('welcome.fundraising_provider', '<a href="https://www.raisenow.com" target="_blank"><img src="/static-assets/images/logos/RaiseNow_logo_techpartner_no_margin.png"></a>') %>
+      </div>
+
+      <div class="stripe"></div>
+    </div>
+  </div>
+
   <div id="hero-view">
     <div class="image fade_on_ready">
       <img class="scale" src="https://mountainrush-assets.imgix.net/pages/img_header.png?fm=jpg&q=80&w=1280">
