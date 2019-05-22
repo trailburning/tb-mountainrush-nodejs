@@ -53,136 +53,6 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4); }
 
-/* PLAYER VIEW */
-/******************************************/
-#player-view {
-  /* mla*/
-  display: none;
-  position: relative;
-  width: 100%; }
-
-#player-view #hero-view {
-  position: relative;
-  background-color: #f3f3f3;
-  height: 392px; }
-
-#player-view #hero-view #titles-view {
-  position: absolute;
-  z-index: 3;
-  display: table;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  color: #fff;
-  font-family: 'radikalbold', sans-serif;
-  text-align: center; }
-
-#player-view #hero-view #titles-view.overlay {
-  background: #f3f3f3; }
-
-#player-view #hero-view .play-btn {
-  display: none;
-  font-size: 5em; }
-
-#player-view #hero-view .play-btn:hover {
-  color: #f75f36;
-  cursor: pointer; }
-
-#player-view #hero-view #titles-view .titles {
-  display: table-cell;
-  vertical-align: middle; }
-
-#player-view #hero-view #titles-view .titles .scene {
-  display: none; }
-
-#player-view #hero-view #titles-view h1,
-#player-view #hero-view #titles-view h2 {
-  position: relative;
-  text-shadow: 1px 5px 5px rgba(25, 56, 72, 0.4);
-  opacity: 0;
-  -webkit-transition: left 1s, right 1s, opacity 0.5s;
-  transition: left 1s, right 1s, opacity 0.5s; }
-
-#player-view #hero-view #titles-view h1 {
-  left: 100px;
-  font-size: 2.6em;
-  line-height: 1.6em; }
-
-#player-view #hero-view #titles-view h2 {
-  left: -100px;
-  font-size: 3.4em;
-  line-height: 1.2em;
-  text-transform: uppercase; }
-
-#player-view #piste-view #loading-splash,
-#player-view #piste-view .compass {
-  display: none; }
-
-#player-view #piste-view {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  -webkit-box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2);
-  -moz-box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2);
-  box-shadow: 0px 5px 10px 1px rgba(25, 56, 72, 0.2); }
-
-/* GAME VIEW */
-/******************************************/
-#page-view .game-view {
-  /* mla*/
-  display: none;
-  position: relative;
-  padding-bottom: 40px;
-  text-align: center;
-  background-color: #FFF; }
-
-#page-view .game-view a.link:hover {
-  color: inherit;
-  text-decoration: none; }
-
-#page-view .game-container-view {
-  padding-bottom: 32px;
-  margin: 36px auto 0 auto; }
-
-#page-view .game-view .grab img {
-  width: 208px; }
-
-#page-view .game-view .synopsis {
-  padding-bottom: 46px;
-  text-align: center; }
-
-#page-view .game-view .synopsis .text {
-  margin: 0 20px; }
-
-#page-view .game-view .synopsis .overview {
-  padding-top: 8px; }
-
-#page-view .game-view .synopsis .btns {
-  padding-top: 12px; }
-
-#page-view .game-view .synopsis h1 {
-  font-family: 'radikalbold', sans-serif;
-  font-size: 2em; }
-
-#page-view .game-view .synopsis h2 {
-  font-family: 'radikalregular', sans-serif;
-  padding-top: 10px;
-  font-size: 1em;
-  line-height: 1.4em;
-  text-transform: uppercase; }
-
-#page-view .game-view .synopsis .overview {
-  font-size: 0.9em; }
-
-#page-view .game-view .synopsis .btns .btn {
-  margin: 0 4px 0 4px; }
-
-#page-view .game-view .synopsis .btns .btn:first-child {
-  margin-left: 0; }
-
-#page-view .game-view .synopsis .btns .btn:last-child {
-  margin-right: 0; }
-
 /* HERO VIEW */
 /******************************************/
 #hero-view {
@@ -509,42 +379,6 @@
     top: -100px; }
   #footer-view .mr-logo {
     width: 200px; }
-  #player-view #hero-view {
-    height: 490px; }
-  #player-view #hero-view #titles-view h1 {
-    font-size: 3.6em; }
-  #player-view #hero-view #titles-view h2 {
-    font-size: 4.6em; }
-  #player-view .signup {
-    top: -22px; }
-  #page-view .game-container-view {
-    margin-top: 62px;
-    width: 670px; }
-  #page-view .game-view .grab {
-    float: left;
-    width: 322px;
-    text-align: left; }
-  #page-view .game-view .grab img {
-    width: auto; }
-  #page-view .game-view .synopsis {
-    margin: 0;
-    padding: 52px 0 0 0;
-    width: 348px;
-    text-align: left; }
-  #page-view .game-view .synopsis .text {
-    margin: 0; }
-  #page-view .game-view .synopsis h1 {
-    font-size: 2.5em; }
-  #page-view .game-view .synopsis h2 {
-    font-size: 1.2em; }
-  #page-view .game-view .synopsis .overview {
-    padding-right: 14px;
-    font-size: 1em; }
-  #page-view .game-view .synopsis .btns {
-    padding-top: 12px; }
-  #page-view .game-view .stripe {
-    top: -86px;
-    height: 86px; }
   #hero-view .image {
     height: 406px; }
     #hero-view .image img {
@@ -661,11 +495,6 @@
 
 /* Small devices (tablets, 992px and up) */
 @media (min-width: 992px) {
-  #player-view {
-    margin: 0 auto 0 auto;
-    width: 942px; }
-  #player-view .flare1 {
-    display: inline-block; }
   #hero-view .titles-container .titles {
     margin: 0 auto;
     padding: 0;
