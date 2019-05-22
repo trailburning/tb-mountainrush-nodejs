@@ -239,6 +239,10 @@
 
   .image {
     height: 470px;
+
+    img {
+      margin-left: 60px;
+    }
   }
 
   .titles-container {
@@ -260,13 +264,13 @@
       }
 
       h1 {
-        font-size: 3em;
+        font-size: 2.9em;
         line-height: 1em;
         text-transform: uppercase;
       }
 
       h2 {
-        font-size: 1.9em;
+        font-size: 1.8em;
         line-height: 1em;
       }
     } 
@@ -317,16 +321,8 @@
   }
 
   .btns {
-    padding-top: 12px;
-
     .btn {
-      margin: 0 4px 0 4px;
-    }
-    .btn:first-child {
-      margin-left: 0;
-    }
-    .btn:last-child {
-      margin-right: 0;
+      margin: 12px 8px 0 0;
     }
   }
 }
@@ -794,6 +790,10 @@
   #hero-view {
     .image {
       height: 406px;
+
+      img {
+        margin-left: 0;
+      }
     }
 
     .titles-container {
