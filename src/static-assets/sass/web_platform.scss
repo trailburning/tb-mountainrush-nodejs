@@ -144,6 +144,12 @@ form {
     margin: 4px 0;
   }
 
+  textarea {
+    &.field {
+      height: 150px;
+    }
+  }
+
   label {
     margin: 0;
     text-transform: uppercase;

@@ -119,6 +119,9 @@ video::-webkit-media-controls-start-playback-button {
 form .field {
   margin: 4px 0; }
 
+form textarea.field {
+  height: 150px; }
+
 form label {
   margin: 0;
   text-transform: uppercase; }
