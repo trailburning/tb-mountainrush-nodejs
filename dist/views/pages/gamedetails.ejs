@@ -86,12 +86,43 @@ var TEST_PROGRESS = '';
       <div class="modal-content">
         <div class="modal-body">
           <div class="details">
+            <div class="title"><h1>Challenge Preferences</h1></div>
+            
+            <form name="frmupdate" method="post">
+
+            <div class="intro-text centre-text description">
+            Enter your team name
+            </div>
+
+            <div class="form-group">
+              <div class="form-label top"></div><input class="field form-control" name="fundraising-team-name" id="fundraising-team-name" value="{{= game.name }}">
+            </div>
+
+            <div class="intro-text centre-text description">
+            Say a little something about your team challenge
+            </div>
+
+            <div class="form-group">
+              <div class="form-label top"></div><textarea class="field form-control" name="fundraising-team-msg" id="fundraising-team-msg">{{= game.description }}</textarea>
+            </div>
+
+            <div class="form-button">
+              <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('defs.please_wait') %>">Update text</button>
+            </div>
+
+            </form>
+
             <form action="<%= Defs.MRAPIURL %>/campaign/<%= Campaign.CampaignID %>/game/<%= Defs.GameID %>/upload" name="frmupload" method="post" enctype="multipart/form-data">
 
-            <div class="title"><h1>Challenge Preferences</h1></div>
             <div class="intro-text centre-text description">
             Select your challenge picture...
             </div>
+
+            {{ if (game.media.length) { }} 
+              <img src="https://mountainrush-media.imgix.net/<%= Campaign.CampaignID %>/<%= Defs.GameID %>/{{= game.media[0].id }}?fm=jpg&w=120&q=80">
+            {{ } else { }}
+              <img src="https://mountainrush-assets.imgix.net/pages/olivier-miche-102259-unsplash.jpg?fm=jpg&w=120&q=80">
+            {{ } }}
 
             <div class="form-group">
               <input type="file" id="upload_file" name="upload_file" />

@@ -14,13 +14,41 @@ define([
     render: function(){
       var self = this;
 
-      function uploadMedia() {
-        var bar = $('.bar', $(self.el));
-        var percent = $('.percent', $(self.el));
+      function updateDetails(elForm) {
+        var strTeamName = $('#fundraising-team-name', elForm).val();
+        var strTeamDescription = $('#fundraising-team-msg', elForm).val();
+
+        var jsonData = {name: strTeamName, description: strTeamDescription};
+
+        var url = GAME_API_URL + 'campaign/' + CAMPAIGN_ID + '/game/' + GAME_ID + '/update';
+//        console.log(url);
+        $.ajax({
+          type: 'post',
+          dataType: 'json',
+          url: url,
+          data: JSON.stringify(jsonData),
+          error: function(data) {
+            $('.update-btn', $(self.el)).button('reset');
+
+            console.log('error');
+            console.log(data);  
+          },
+          success: function(data) {
+            $('.update-btn', $(self.el)).button('reset');
+
+            console.log('success');
+            console.log(data);
+          }
+        });
+      }
+
+      function uploadMedia(elForm) {
+        var bar = $('.bar', elForm);
+        var percent = $('.percent', elForm);
 
         $('form', $(self.el)).ajaxForm({
           beforeSubmit: function() {
-            $('.progress', $(self.el)).show();
+            $('.progress', elForm).show();
             var percentVal = '0%';
             bar.width(percentVal)
             percent.html(percentVal);
@@ -54,12 +82,22 @@ define([
         }); 
       }
       
-      $(this.el).html(this.template({ game: this.options.jsonCurrGame }));
+      $(this.el).html(this.template({ game: this.options.jsonGame }));
+
+      $('.update-btn', $(this.el)).click(function(evt){
+        evt.preventDefault();
+
+        $(this).button('loading');
+
+        var elForm = $(this).closest('form');
+        updateDetails(elForm);
+      });
 
       $('.upload-btn', $(this.el)).click(function(evt){
         $(this).button('loading');
 
-        uploadMedia();
+        var elForm = $(this).closest('form');
+        uploadMedia(elForm);
       });
 
       $('.big-close-btn', $(this.el)).click(function(evt){
