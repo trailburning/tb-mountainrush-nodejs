@@ -1,17 +1,18 @@
 {{ var fundraising_item = fundraising.items[fundraising.random_item_pos] }}
 
 <div class="fundraising">
-  <% if (Campaign.ClientShortName == 'WWF') { %>
+  {{ if (content) { }}
     <h2>Want to see more during your climb?</h2>
     <div class="intro-text centre-text">
     Support <%= Campaign.ClientShortName %> when you <%= Campaign.CampaignName %> and unlock special content by adding fundraising to your challenge!
     </div>
-  <% } else { %>  
+
+  {{ } else { }}
     <h2>Want to do more during your climb?</h2>
     <div class="intro-text centre-text">
     Do more with your <%= Campaign.CampaignName %> challenge and support <%= Campaign.ClientShortName %>!
     </div>
-  <% } %>  
+  {{ } }}
 </div>
 
 <div class="shopping-list">

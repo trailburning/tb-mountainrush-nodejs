@@ -23,6 +23,7 @@ define([
                          gameEnd: '',
                          duration: 0,
                          multiplayer: 0,
+                         content: 0,
                          games: null}
     },
 
@@ -105,6 +106,7 @@ define([
             self.jsonFields.gameID = data[0].id;
             self.jsonFields.gameEnd = data[0].game_end;
             self.jsonFields.multiplayer = data[0].multiplayer;
+            self.jsonFields.content = data[0].content;
 
             self.createGamePlayer();
           }
