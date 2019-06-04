@@ -16,6 +16,7 @@ define([
                          playerID: 0,
                          type: '',
                          multiplayer: 0,
+                         content: 0,
                          gameStart: '',
                          gameStartFormatted: {
                           day: '',
@@ -30,6 +31,7 @@ define([
       this.jsonFields.playerID = jsonFields.playerID;
       this.jsonFields.type = jsonFields.type;
       this.jsonFields.multiplayer = jsonFields.multiplayer;
+      this.jsonFields.content = jsonFields.content;
       this.jsonFields.gameStart = jsonFields.gameStart;
     },
 

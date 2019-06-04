@@ -127,7 +127,7 @@ define([
 //          PLAYER_TOKEN = 'b8a1bc6ca786c95f1e639c42615320782d8a9d22'; // MR - Trailburning
 //          PLAYER_TOKEN = '3e43a998394b56e0616e3ccd4085ba762f83e861'; // CFYW - Amelia
 //        } 
-//        changeState(STATE_GAME_CREATE);
+//        changeState(STATE_GAME_CREATED);
 //        return;
 
         if (PLAYER_TOKEN != '') { // do we have a passed player?

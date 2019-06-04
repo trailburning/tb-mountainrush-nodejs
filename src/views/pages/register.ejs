@@ -270,6 +270,8 @@ var TEST = '<%= Defs.Test %>';
           </div>
         <% } %>
       {{ } else { }}
+        {{ var content = currGame.content }}
+
         <% include ../partials/registerAddFundraisingTemplate.ejs %>
       {{ }; }}
     <% } %>
@@ -485,6 +487,8 @@ var TEST = '<%= Defs.Test %>';
   </div>
 
   <% if (Campaign.CampaignFundraisingProvider) { %>
+    {{ var content = fields.content }}
+
     <% include ../partials/registerAddFundraisingTemplate.ejs %>
   <% } else { %>
     <div class="social">
