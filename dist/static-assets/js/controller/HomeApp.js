@@ -19,8 +19,9 @@ define([
   'views/DeviceCapableModalView',
   'views/PromotionModalView',
   'views/DemoVideoView',
+  'views/ChallengesView',
   'views/SocialPhotosView'
-], function(_, Backbone, jqueryUI, cookie, truncate, imageScale, imagesLoaded, animateNumber, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, DeviceCapableModalView, PromotionModalView, DemoVideoView, SocialPhotosView){
+], function(_, Backbone, jqueryUI, cookie, truncate, imageScale, imagesLoaded, animateNumber, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, DeviceCapableModalView, PromotionModalView, DemoVideoView, ChallengesView, SocialPhotosView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -32,12 +33,8 @@ define([
   var initialize = function() {
     var self = this;
 
-    app.dispatcher.on("Mountain3DView:deviceNotCapable", onDeviceNotCapable);
-    app.dispatcher.on("Mountain3DView:onLocationLoaded", onMountain3DViewReady);
+    app.dispatcher.on("ChallengesView:ready", onChallengesReady);
     app.dispatcher.on("SocialPhotosView:feedready", onSocialPhotosFeedReady);
-
-    var bLoaderComplete = false, bMapReady = false, bAttractor = false, nAttractorState = 0;
-    var arrScenes = new Array;
 
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
 
@@ -58,14 +55,6 @@ define([
       }
     });    
 
-    function checkReady() {
-      if (bLoaderComplete && bMapReady) {
-        $('#player-view #hero-view #titles-view').removeClass('overlay');
-        $('#loader-view').hide();
-        $('#player-view #hero-view .play-btn').show();
-      }
-    }
-
     function handleResize() {
       var nWindowHeight = $(window).height();
     }
@@ -75,36 +64,15 @@ define([
     });
     handleResize();
 
-    // tween loader
-    $('#loader-view').show();
-    $('.percent')
-      .prop('number', 0)
-      .animateNumber(
-        {
-          number: 100,
-          numberStep: function(now, tween) {
-            var target = $(tween.elem);
-            target.text(Math.round(now));
-          }
-        },
-        5000,
-        'easeInOutQuad',
-        function() {
-//          console.log('LoaderComplete');
-          bLoaderComplete = true;
-          checkReady();
-        }
-      );
-
     var mountainModel = new Backbone.Model();
     var mountainPlayerView = null;
 
     var languageSelectorView = new LanguageSelectorView({ el: '#language-selector-view' });
     languageSelectorView.render();
+    var challengesView = new ChallengesView({ el: '#challenges-available-view' });
+    challengesView.load();
     var socialPhotosView = new SocialPhotosView({ el: '#community-photos-view', feed: '' });
     socialPhotosView.loadFeed();
-
-    getJourney();
 
     enableUserActions(DEF_CLIENT_ID);
 
@@ -149,16 +117,6 @@ define([
       demoVideoView.show();
     });
 
-    function getJourney() {
-      var url = TB_API_URL + '/journeys/' + TB_JOURNEY_ID + TB_API_EXT;
-//      console.log(url);
-      $.getJSON(url, function(result){
-        var jsonJourney = result.body.journeys[0];
-
-        mountainModel = new Backbone.Model(jsonJourney);
-      });
-    }
-
     function onDeviceNotCapable() {
       // there was a problem
       deviceCapableModalView.render(null);
@@ -180,10 +138,9 @@ define([
       }
     }
 
-    function onMountain3DViewReady() {
-      bMapReady = true;
-
-      checkReady();
+    function onChallengesReady() {
+      $('#challenges-loader-view').hide();
+      challengesView.render();      
     }
 
     function onSocialPhotosFeedReady() {

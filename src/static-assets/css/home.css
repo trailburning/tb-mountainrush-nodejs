@@ -423,6 +423,11 @@
       font-size: 2.4em; }
     #challenges-view h2 {
       font-size: 1.2em; }
+    #challenges-view .loader-view {
+      margin-top: 40px; }
+      #challenges-view .loader-view .double-bounce1,
+      #challenges-view .loader-view .double-bounce2 {
+        background-color: #FFF; }
     #challenges-view .cards-container {
       padding: 22px 0 0 0; }
     #challenges-view .cards {
