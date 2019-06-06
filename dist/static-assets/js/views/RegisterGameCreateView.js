@@ -128,7 +128,7 @@ define([
             self.bSponsoredDialogShown = true;
 
             // fire event
-            app.dispatcher.trigger("RegisterGameCreateView:sponsoredGameSelected");
+//            app.dispatcher.trigger("RegisterGameCreateView:sponsoredGameSelected");
           }
         }
 
@@ -148,7 +148,7 @@ define([
         }
       }
 
-      $(this.el).html(this.template({ currGame: self.currGame, gameLevels: options.gameLevels, gameOptions: options.gameOptions }));
+      $(this.el).html(this.template({ currGame: self.currGame, gameLevels: options.gameLevels, gameSelLevel: LEVEL_ID, gameOptions: options.gameOptions }));
 
       // get defaults
       $('.pill.active').each(function(index){

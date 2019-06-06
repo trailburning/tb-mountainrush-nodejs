@@ -10,7 +10,6 @@
 var APP = 'HomeApp';
 var GAME_API_URL = '<%= Defs.MRAPIURL %>';
 var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
-var TB_JOURNEY_ID = '59a0091680d4a677217766';
 </script>
 
 <div class="container-fluid nopadding">
@@ -87,40 +86,14 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
     <h1>Are you ready?</h1>
     <h2>Reach your summit!</h2>
 
-    <div class="cards-container">
-      <div class="cards">
-        <div class="card">
-          <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/Zugspitze.png?fm=jpg&w=640&q=80"></div>
-          <div class="content">
-          <h2>Zugspitze</h2>
-          <div class="overview">
-          <strong>Germany</strong> - Climb 2 070m
-          </div>
-          <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate" class="btn mr-btn btn-primary">Select challenge</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/Großglockner.png?fm=jpg&w=640&q=80"></div>
-          <div class="content">
-          <h2>Großglockner</h2>
-          <div class="overview">
-          <strong>Austria</strong> - Climb 2 651m
-          </div>
-          <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate" class="btn mr-btn btn-primary">Select challenge</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/MontBlanc.png?fm=jpg&w=640&q=80"></div>
-          <div class="content">
-          <h2>Mont Blanc</h2>
-          <div class="overview">
-          <strong>France</strong> - Climb 3 950m
-          </div>
-          <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate" class="btn mr-btn btn-primary">Select challenge</a>
-          </div>
-        </div>
+    <div id="challenges-loader-view" class="loader-view">
+      <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
       </div>
     </div>
+
+    <div id="challenges-available-view"></div>
   </div>
 
   <div id="campaigns-view">
@@ -263,6 +236,25 @@ var TB_JOURNEY_ID = '59a0091680d4a677217766';
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+</script>
+
+<script type="text/template" id="challengesViewTemplate">
+  <div class="cards-container">
+    <div class="cards">
+    {{ _.each(challenges, function(challenge, index) { }}
+      <div class="card">
+        <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/{{= challenge.image }}?fm=jpg&w=640&q=80"></div>
+        <div class="content">
+        <h2>{{= challenge.name }}</h2>
+        <div class="overview">
+        <strong>{{= challenge.region }}</strong> - Climb {{= challenge.ascent }}m
+        </div>
+        <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/level/{{= challenge.id }}/gamecreate" class="btn mr-btn btn-primary">Select challenge</a>
+        </div>
+      </div>
+    {{ }); }}
+    </div>
+  </div>
 </script>
 
 <script type="text/template" id="communityPhotosViewTemplate">

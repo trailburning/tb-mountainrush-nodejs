@@ -31,6 +31,10 @@ function fillCampaignData(req, data) {
       campaign.CampaignFundraisingDonation = campaignData.fundraising_donation;
       campaign.CampaignFundraising = campaignFundraising;    
       campaign.CampaignLanguages = campaignData.languages;
+      campaign.CampaignLevelID = null;
+      if (req.params.levelID) {
+        campaign.CampaignLevelID = req.params.levelID;
+      }
 
       // only accept selected locale if it's available
       var selLang = campaign.CampaignLanguages[0]; // def to 1st lang
@@ -54,7 +58,7 @@ function getCampaignDataByCampaign(req, campaignID, callback) {
   var request = require('request');
 
   var url = process.env.MR_API_URL + 'campaign/' + campaignID;
-  console.log(url);
+//  console.log(url);
   request.get({
       url: url,
       json: true,
@@ -77,7 +81,7 @@ function getCampaignDataByGame(req, gameID, callback) {
   var request = require('request');
 
   var url = process.env.MR_API_URL + 'game/' + gameID + '/campaign';
-  console.log(url);
+//  console.log(url);
   request.get({
       url: url,
       json: true,
@@ -220,7 +224,7 @@ function handlePageRegister(req, res, strPageState) {
     getCampaignProviderConnectData(req.params.campaignID, function(err, data){ 
       if (data) {
         defs.StravaOauthConnectURL = data.oauthConnectURL;
-      
+
         res.render('pages/register', {Defs: defs, Campaign: campaign});
       }
       else {
@@ -543,6 +547,31 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/campaign/:campaignID/level/:levelID/register', function(req, res) {
+    var defs = helper.getDefs(req);
+    defs.PageRegisterState = 'register';
+    defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
+
+    getCampaignDataByCampaign(req, req.params.campaignID, function(err, campaign){ 
+      // do we have a connect code from Strava?
+      if (req.query.code) {
+        // Use code to get token
+        getCampaignProviderConnectDataAndToken(req.params.campaignID, req.query.code, function(err, data){ 
+          defs.StravaOauthConnectURL = data.oauthConnectURL;
+          defs.StravaToken = data.token;
+          
+          res.render('pages/register', {Defs: defs, Campaign: campaign});
+        });
+      } else {
+        getCampaignProviderConnectData(req.params.campaignID, function(err, data){ 
+          defs.StravaOauthConnectURL = data.oauthConnectURL;
+          
+          res.render('pages/register', {Defs: defs, Campaign: campaign});
+        });        
+      }
+    });
+  });
+
   app.get('/campaign/:campaignID/profile', function(req, res) {
     handlePageRegister(req, res, 'register');
   });
@@ -556,6 +585,10 @@ module.exports = function(app) {
   });
 
   app.get('/campaign/:campaignID/gamecreate', function(req, res) {
+    handlePageRegister(req, res, 'gamecreate');
+  });
+
+  app.get('/campaign/:campaignID/level/:levelID/gamecreate', function(req, res) {
     handlePageRegister(req, res, 'gamecreate');
   });
 
