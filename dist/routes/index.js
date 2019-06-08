@@ -262,6 +262,18 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/campaign/:campaignID/game/:gameID/cause/:causeID/fundraise', function(req, res) {
+    var defs = helper.getDefs(req);
+    defs.GameID = req.params.gameID;
+    defs.CauseID = req.params.causeID;
+    defs.PageRegisterState = 'fundraise';
+    defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
+
+    getCampaignDataByCampaign(req, req.params.campaignID, function(err, campaign){ 
+      res.render('pages/register', {Defs: defs, Campaign: campaign});
+    });
+  });
+
   app.get('/campaign/:campaignID/game/:gameID/fundraisecreated', function(req, res) {
     var defs = helper.getDefs(req);
     defs.GameID = req.params.gameID;
