@@ -98,13 +98,8 @@ define([
       });
     },
 
-    render: function(options){
-      var self = this;
-      var fTargetAmount = 0;
-      
-      $(this.el).html(this.template({ campaign: options.jsonCampaign }));
-
-      var elForm = $('form', $(this.el));
+    postrender: function(self){
+      var elForm = $('form', $(self.el));
       elForm.submit(function(evt){
         evt.preventDefault();
 
@@ -120,6 +115,18 @@ define([
 
           self.createFundraiserPage(self.jsonFields.email, self.jsonFields.password, self.jsonFields.targetAmount, self.jsonFields.supporterMsg, self.jsonFields.justGivingOptIn, self.jsonFields.charityOptIn);
         }
+      });
+    },
+
+    render: function(options){
+      var self = this;
+      
+      var url = GAME_API_URL + 'game/' + this.jsonFields.gameID + '/player/' + this.jsonFields.playerID + '/cause';
+//      console.log(url);
+      $.getJSON(url, function(result){
+        $(self.el).html(self.template({ campaign: options.jsonCampaign, cause: result[0] }));
+
+        self.postrender(self);
       });
 
       return this;

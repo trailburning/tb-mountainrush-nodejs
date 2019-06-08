@@ -112,7 +112,7 @@ define([
 
       $('.btn-fundraise', $(self.el)).click(function(evt){
         // fire event
-        app.dispatcher.trigger("RegisterWelcomeConnectedView:fundraiseClick");
+        app.dispatcher.trigger("RegisterWelcomeConnectedView:fundraiseClick", $(this).attr('data-cause-id'));
       });
 
       $('.link-invite', $(self.el)).click(function(evt){
@@ -135,18 +135,15 @@ define([
       var self = this;
 
       if (self.jsonFields.currGame) {
-        var url = GAME_API_URL + 'game/' + self.jsonFields.currGame.gameID + '/fundraising/shoppinglist';
+        var url = GAME_API_URL + 'campaign/' + CAMPAIGN_ID + '/fundraising/causes';
 //        console.log(url);
         $.getJSON(url, function(result){
-          var nRndItem = Math.floor(Math.random() * Math.floor(result.items.length));
-          result.random_item_pos = nRndItem;
-
-          $(self.el).html(self.template({ campaign: options.jsonCampaign, player: self.jsonPlayer, currGame: self.jsonFields.currGame, fundraising: result }));
+          $(self.el).html(self.template({ campaign: options.jsonCampaign, player: self.jsonPlayer, currGame: self.jsonFields.currGame, causes: result }));
           self.postrender(self);
         });
       }
       else {
-        $(self.el).html(self.template({ campaign: options.jsonCampaign, player: self.jsonPlayer, currGame: self.jsonFields.currGame, fundraising: null }));
+        $(self.el).html(self.template({ campaign: options.jsonCampaign, player: self.jsonPlayer, currGame: self.jsonFields.currGame, causes: null }));
         self.postrender(self);        
       }
 

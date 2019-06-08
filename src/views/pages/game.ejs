@@ -329,7 +329,7 @@ var Demo = <%= Defs.Demo %>;
 </script>
 
 <script type="text/template" id="fundraisingShoppingModalViewTemplate">
-  {{ var fundraising_item = fundraising.items[fundraising.random_item_pos] }}
+  {{ var fundraising_item = fundraising[0].items[0] }}
 
   <div class="modal fade shopping-list-overlay" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">

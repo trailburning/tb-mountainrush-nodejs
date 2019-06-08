@@ -59,7 +59,8 @@
   <div class="scroll-container">
     <div class="scroll">
       {{ _.each(players, function(player, index) { }}
-        {{ var fundraising_item = fundraising.items[fundraising.random_item_pos] }}
+        {{ var cause = fundraising[0] }}
+        {{ var fundraising_item = fundraising[0].items[0] }}
 
         <div class="player" data-id="{{= player.id }}">
           <div class="player-stats">
@@ -183,7 +184,7 @@
                     <div class="shopping-list">
                       <% include ../partials/shoppingListItem.ejs %>
                       <div class="donate-item">
-                      <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/game/<%= Defs.GameID %>/fundraise" class="btn mr-btn btn-primary btn-fundraise">Enable Fundraising</a>
+                      <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/game/<%= Defs.GameID %>/cause/{{= cause.id }}/fundraise" class="btn mr-btn btn-primary btn-fundraise">Enable Fundraising</a>
                       </div>
                     </div>                
                   </div>
@@ -246,7 +247,7 @@
                     <div class="shopping-list">
                       <% include ../partials/shoppingListItem.ejs %>
                       <div class="donate-item">
-                      <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/game/<%= Defs.GameID %>/fundraise" class="btn mr-btn btn-primary btn-large double btn-fundraise"><div>Enable Fundraising</div><div>Now</div></a>
+                      <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/game/<%= Defs.GameID %>/cause/{{= cause.id }}/fundraise" class="btn mr-btn btn-primary btn-large double btn-fundraise"><div>Enable Fundraising</div><div>Now</div></a>
                       </div>
                     </div>
                   </div>

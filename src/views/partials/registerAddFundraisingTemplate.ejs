@@ -1,4 +1,5 @@
-{{ var fundraising_item = fundraising.items[fundraising.random_item_pos] }}
+{{ var cause = causes[0] }}
+{{ var fundraising_item = causes[0].items[0] }}
 
 <div class="fundraising">
   {{ if (content) { }}
@@ -6,11 +7,10 @@
     <div class="intro-text centre-text">
     Support <%= Campaign.ClientShortName %> when you <%= Campaign.CampaignName %> and unlock special content by adding fundraising to your challenge!
     </div>
-
   {{ } else { }}
     <h2>Want to do more during your climb?</h2>
     <div class="intro-text centre-text">
-    Do more with your <%= Campaign.CampaignName %> challenge and support <%= Campaign.ClientShortName %>!
+    Do more with your <%= Campaign.CampaignName %> challenge and support a worthy cause!
     </div>
   {{ } }}
 </div>
@@ -21,5 +21,5 @@
 
 <div class="btns">
   <div class="donate-item visible-xs"><span class="btn mr-btn btn-primary btn-fundraise">Enable Fundraising</span></div>
-  <div class="donate-item hidden-xs"><span class="btn mr-btn btn-primary double btn-fundraise"><div>Enable Fundraising</div><div>Now</div></span></div>
+  <div class="donate-item hidden-xs"><span class="btn mr-btn btn-primary double btn-fundraise" data-cause-id="{{= cause.id }}"><div>Enable Fundraising</div><div>Now</div></span></div>
 </div>

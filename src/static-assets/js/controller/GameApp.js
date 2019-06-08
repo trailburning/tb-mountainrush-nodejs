@@ -301,7 +301,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
           $('.donate-btn').show();
           // show if player not already signed in, not already shown and a donation id is not present (passed when a donation has been made) and we have a shopping list item
-          if (!FundraisingShoppingModelShown && getUserCookie(CLIENT_ID) == undefined && (FUNDRAISING_DONATION_ID == '') && jsonCurrGame.jsonFundraising.items.length) {
+          if (!FundraisingShoppingModelShown && getUserCookie(CLIENT_ID) == undefined && (FUNDRAISING_DONATION_ID == '') && jsonCurrGame.jsonFundraising[0].items.length) {
             FundraisingShoppingModelShown = true;
             fundraisingShoppingModalView.render(this.currPlayerModel, jsonCurrGame);
             // delay before showing

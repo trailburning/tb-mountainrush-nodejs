@@ -127,7 +127,7 @@ define([
 //          PLAYER_TOKEN = 'b8a1bc6ca786c95f1e639c42615320782d8a9d22'; // MR - Trailburning
 //          PLAYER_TOKEN = '3e43a998394b56e0616e3ccd4085ba762f83e861'; // CFYW - Amelia
 //        } 
-//        changeState(STATE_GAME_CREATED);
+//        changeState(STATE_FUNDRAISING_PAGE_CREATE);
 //        return;
 
         if (PLAYER_TOKEN != '') { // do we have a passed player?
@@ -172,6 +172,11 @@ define([
               var jsonPlayer = getUserCookies(jsonCampaign.clientID);
               getPlayer(jsonCampaign.clientID, jsonPlayer.token, function(jsonPlayer) {
                 jsonCurrPlayer = jsonPlayer;
+
+                if (CAUSE_ID != '') {
+                  setGamePlayerCause(GAME_ID, jsonCurrPlayer.id, CAUSE_ID);
+                }
+
                 changeState(STATE_FUNDRAISING_SIGNIN);
                 showActivePlayer();
                 enableUserActions(CLIENT_ID);
@@ -207,6 +212,27 @@ define([
       })
       .fail(function() {
         callbackFunction();
+      });
+    }
+
+    function setGamePlayerCause(gameID, playerID, causeID) {
+      var jsonData = {causeID: causeID};
+
+      var url = GAME_API_URL + "fundraiser/game/" + gameID + "/player/" + playerID + "/cause";
+//      console.log(url);
+      $.ajax({
+        type: 'post',
+        dataType: 'json',
+        url: url,
+        data: JSON.stringify(jsonData),
+        error: function(data) {
+          console.log('error');
+          console.log(data);
+        },
+        success: function(data) {
+          console.log('success');
+          console.log(data);
+        }
       });
     }
 
@@ -593,7 +619,25 @@ define([
       changeState(STATE_GAME_CREATED);
     }
 
-    function onRegisterFundraiseClick() {
+    function onRegisterFundraiseClick(causeID) {
+      var jsonWelcomeFields = registerWelcomeConnectedView.getFields();
+
+      var gameID = registerGameCreateView.getFields().gameID;
+      var playerID = jsonWelcomeFields.playerID;
+
+      if (GAME_ID != '') {
+        // do we have a passed game id?
+        gameID = GAME_ID;
+        if (jsonCurrPlayer) {
+          playerID = jsonCurrPlayer.id;
+        }
+      }
+      else if (jsonWelcomeFields.currGame) {
+        // if we have a current game then use that!
+        gameID = jsonWelcomeFields.currGame.game;
+      }
+
+      setGamePlayerCause(gameID, playerID, causeID);
       changeState(STATE_FUNDRAISING_SIGNIN);
     }
 

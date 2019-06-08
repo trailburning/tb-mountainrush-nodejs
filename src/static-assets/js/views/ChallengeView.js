@@ -46,13 +46,10 @@ define([
       $.getJSON(url, function(result){
         self.jsonGame = result[0]; 
 
-        var url = GAME_API_URL + 'game/' + self.options.gameID + '/fundraising/shoppinglist';
+        var url = GAME_API_URL + 'campaign/' + CAMPAIGN_ID + '/fundraising/causes';
 //        console.log(url);
         $.getJSON(url, function(result){
-          self.jsonGame.jsonFundraising = result; 
-
-          var nRndItem = Math.floor(Math.random() * Math.floor(result.items.length));
-          self.jsonGame.jsonFundraising.random_item_pos = nRndItem;
+          self.jsonGame.jsonFundraising = result;
         });
 
         // fire event

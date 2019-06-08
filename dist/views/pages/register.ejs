@@ -26,6 +26,7 @@ var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
 var CAMPAIGN_INVITATION_CODE = '<%= Campaign.CampaignInvitationCode %>';
 var CAMPAIGN_FUNDRAISING_CURRENCY = '<%= Campaign.CampaignFundraisingCurrency %>';
 var GAME_ID = '<%= Defs.GameID %>';
+var CAUSE_ID = '<%= Defs.CauseID %>';
 var PLAYER_TOKEN = '<%= Defs.StravaToken %>';
 var REGISTER_STATE = '<%= Defs.PageRegisterState %>';
 var TEST = '<%= Defs.Test %>';
@@ -506,7 +507,7 @@ var TEST = '<%= Defs.Test %>';
 
 <script type="text/template" id="registerFundraisingCreateViewTemplate">
   <h1>Fundraising</h1>
-  <div class="intro-text centre-text">You're nearly there! Set your target and tell us if <%= Campaign.ClientShortName %> can keep you informed about their work and other ways you can help.</div>
+  <div class="intro-text centre-text">You're nearly there! Set your target and tell us if {{= cause.shortname }} can keep you informed about their work and other ways you can help.</div>
 
   <form>
   <div class="form-group">
@@ -518,7 +519,7 @@ var TEST = '<%= Defs.Test %>';
     <div class="help-block">Please set at least {{= campaign.fundraising_currency_symbol }}<%= Campaign.CampaignFundraisingMinimum %> as your fundraising target</div>
   </div>
   <div class="form-group">
-    <div class="form-info">I’m happy for {{= campaign.client_name }} to keep me informed, by email, about the impact of my fundraising and other ways to stay involved including future events, campaigns and appeals.</div>
+    <div class="form-info">I’m happy for {{= cause.name }} to keep me informed, by email, about the impact of my fundraising and other ways to stay involved including future events, campaigns and appeals.</div>
   </div>
   <div class="form-container">
     <div class="form-check">
@@ -533,7 +534,7 @@ var TEST = '<%= Defs.Test %>';
     </div>
     <div class="help-block">Please select your communication preference</div>
     <div class="form-group">
-      <div class="form-info form-note ">NOTE: {{= campaign.client_name }} will receive your details and may need to contact you to support you in this fundraising effort. You can update your preferences directly with {{= campaign.client_name }} at any time.</div>
+      <div class="form-info form-note ">NOTE: {{= cause.name }} will receive your details and may need to contact you to support you in this fundraising effort. You can update your preferences directly with {{= cause.name }} at any time.</div>
     </div>    
   </div>
 
@@ -688,7 +689,7 @@ var TEST = '<%= Defs.Test %>';
 
 <script type="text/template" id="registerFundraisingPageCreateViewTemplate">
   <h1>Fundraising</h1>
-  <div class="intro-text centre-text">You're nearly there! Set your target and tell us if <%= Campaign.ClientShortName %> can keep you informed about their conservation work and other ways you can help.</div>
+  <div class="intro-text centre-text">You're nearly there! Set your target and tell us if {{= cause.shortname }} can keep you informed about their conservation work and other ways you can help.</div>
 
   <form>
   <div class="form-group">
@@ -705,7 +706,7 @@ var TEST = '<%= Defs.Test %>';
   </div>
 -->  
   <div class="form-group">
-    <div class="form-info">I’m happy for {{= campaign.client_name }} to keep me informed, by email, about the impact of my fundraising and other ways to stay involved including future events, campaigns and appeals.</div>
+    <div class="form-info">I’m happy for {{= cause.name }} to keep me informed, by email, about the impact of my fundraising and other ways to stay involved including future events, campaigns and appeals.</div>
   </div>
   <div class="form-container">
     <div class="form-check">
@@ -720,7 +721,7 @@ var TEST = '<%= Defs.Test %>';
     </div>
     <div class="help-block">Please select your communication preference</div>
     <div class="form-group">
-      <div class="form-info form-note ">NOTE: {{= campaign.client_name }} will receive your details and may need to contact you to support you in this fundraising effort. You can update your preferences directly with {{= campaign.client_name }} at any time.</div>
+      <div class="form-info form-note ">NOTE: {{= cause.name }} will receive your details and may need to contact you to support you in this fundraising effort. You can update your preferences directly with {{= cause.name }} at any time.</div>
     </div>    
   </div>
 
