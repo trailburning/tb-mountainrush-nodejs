@@ -976,7 +976,8 @@ img.scale {
   outline: none;
   border: none;
   border-top: 1px solid #000; }
-  .game-invite-view .suggest .ui-autocomplete .ui-state-focus .match-name {
+  .game-invite-view .suggest .ui-autocomplete .ui-state-focus .match-name,
+  .game-invite-view .suggest .ui-autocomplete .ui-state-focus .match-detail {
     color: #fff; }
 
 .game-invite-view input.ui-autocomplete-loading {
