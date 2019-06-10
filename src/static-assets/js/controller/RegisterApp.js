@@ -335,7 +335,7 @@ define([
       hideView();
 
       updateURLState(nNewState);
-
+      console.log(nNewState);
       switch (nNewState) {
         case STATE_PLAYER_INVITATION:
           var jsonFields = registerInvitationView.getFields();
