@@ -205,7 +205,7 @@ define([
       var self = this;
 
       var url = GAME_API_URL + "client/" + clientID + "/player/" + playerToken;
-      console.log(url);
+//      console.log(url);
       $.getJSON(url, function(result){
         storeUserCookies(clientID, playerToken, result[0]);
         callbackFunction(result[0]);
@@ -335,7 +335,7 @@ define([
       hideView();
 
       updateURLState(nNewState);
-      console.log(nNewState);
+
       switch (nNewState) {
         case STATE_PLAYER_INVITATION:
           var jsonFields = registerInvitationView.getFields();
