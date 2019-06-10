@@ -174,12 +174,12 @@ define([
                 jsonCurrPlayer = jsonPlayer;
 
                 if (CAUSE_ID != '') {
-                  setGamePlayerCause(GAME_ID, jsonCurrPlayer.id, CAUSE_ID);
+                  setGamePlayerCause(GAME_ID, jsonCurrPlayer.id, CAUSE_ID, function() {
+                    changeState(STATE_FUNDRAISING_SIGNIN);
+                    showActivePlayer();
+                    enableUserActions(CLIENT_ID);
+                  });
                 }
-
-                changeState(STATE_FUNDRAISING_SIGNIN);
-                showActivePlayer();
-                enableUserActions(CLIENT_ID);
               });
               break;
 
@@ -215,7 +215,7 @@ define([
       });
     }
 
-    function setGamePlayerCause(gameID, playerID, causeID) {
+    function setGamePlayerCause(gameID, playerID, causeID, callback) {
       var jsonData = {causeID: causeID};
 
       var url = GAME_API_URL + "fundraiser/game/" + gameID + "/player/" + playerID + "/cause";
@@ -232,6 +232,8 @@ define([
         success: function(data) {
           console.log('success');
           console.log(data);
+
+          callback();
         }
       });
     }
@@ -637,8 +639,9 @@ define([
         gameID = jsonWelcomeFields.currGame.game;
       }
 
-      setGamePlayerCause(gameID, playerID, causeID);
-      changeState(STATE_FUNDRAISING_SIGNIN);
+      setGamePlayerCause(gameID, playerID, causeID, function() {
+        changeState(STATE_FUNDRAISING_SIGNIN);  
+      });
     }
 
     function onRegisterFundraisingSigninValidUser() {

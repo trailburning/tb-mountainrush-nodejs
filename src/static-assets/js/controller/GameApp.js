@@ -831,8 +831,17 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         $('body').addClass('single-player');
       }
 
+      var ownerHasACause = false;
+      // see if owner has a cause?
+      var ownerPlayer = _.where(jsonGame.players, {id: jsonGame.ownerPlayerID})[0];
+      if (ownerPlayer) {
+        if (ownerPlayer.cause.length) {
+          ownerHasACause = true;
+        }
+      }
+
       // are we a sponsored game?
-      if (jsonGame.sponsored) {
+      if (jsonGame.sponsored || ownerHasACause) {
         $('body').addClass('sponsored');
       }
 
