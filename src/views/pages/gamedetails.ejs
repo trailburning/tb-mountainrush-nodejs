@@ -221,7 +221,7 @@ var TEST_PROGRESS = '';
           </div>
         </div>
 
-        {{ if (game.fundraising) { }}
+        {{ if (gameOwnerPlayer.cause.length) { }}
           <div class="fundraise">
             <div class="raised">
             <strong>
@@ -266,15 +266,17 @@ var TEST_PROGRESS = '';
       </div>
     </div>
 
-    <div class="fundraise-sticker-container">
-      <div class="fundraise-sticker">
-        <div class="details">
-          <div class="percent" style="top: {{= (100 - page.totalRaisedPercentageOfFundraisingTarget) }}%;height: {{= page.totalRaisedPercentageOfFundraisingTarget }}%;"></div>
-          <div class="raised">{{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}<span class="amount">{{= Math.round(page.totalRaisedOnline) }}</span></div>
-          <div class="target"><%= __('game.fundraising.summary.raised') %> {{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}{{= page.fundraisingTarget }}<br/><%= __('game.fundraising.summary.team_target') %></div>
+    {{ if (gameOwnerPlayer.cause.length) { }}
+      <div class="fundraise-sticker-container">
+        <div class="fundraise-sticker">
+          <div class="details">
+            <div class="percent" style="top: {{= (100 - page.totalRaisedPercentageOfFundraisingTarget) }}%;height: {{= page.totalRaisedPercentageOfFundraisingTarget }}%;"></div>
+            <div class="raised">{{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}<span class="amount">{{= Math.round(page.totalRaisedOnline) }}</span></div>
+            <div class="target"><%= __('game.fundraising.summary.raised') %> {{ if (page.currencySymbol.length > 1) { }}<span class="fat-currency-symbol">{{= page.currencySymbol }}</span>{{ } else { }}{{= page.currencySymbol }}{{ } }}{{= page.fundraisingTarget }}<br/><%= __('game.fundraising.summary.team_target') %></div>
+          </div>
         </div>
       </div>
-    </div>
+    {{ } }}
 
     <div class="visible-xs">
       <div class="team-details">
