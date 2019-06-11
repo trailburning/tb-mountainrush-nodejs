@@ -50,10 +50,10 @@ define([
 //        console.log(url);
         $.getJSON(url, function(result){
           self.jsonGame.jsonFundraising = result;
-        });
 
-        // fire event
-        app.dispatcher.trigger("ChallengeView:ready", self.jsonGame);
+          // fire event
+          app.dispatcher.trigger("ChallengeView:ready", self.jsonGame);          
+        });
       });
     }
 
