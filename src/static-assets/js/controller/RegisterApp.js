@@ -462,13 +462,14 @@ define([
           if (GAME_ID != '') {
             // do we have a passed game id?
             gameID = GAME_ID;
-            if (jsonCurrPlayer) {
-              playerID = jsonCurrPlayer.id;
-            }
           }
           else if (jsonWelcomeFields.currGame) {
             // if we have a current game then use that!
             gameID = jsonWelcomeFields.currGame.game;
+          }
+
+          if (jsonCurrPlayer) {
+            playerID = jsonCurrPlayer.id;
           }
 
           var jsonCreateFields = registerFundraisingCreateView.getFields();
@@ -511,7 +512,6 @@ define([
             registerFundraisingSigninView.render({ jsonCampaign: jsonCampaign });
             showView('#register-fundraising-signin-view');
           }
-
           break;
 
         case STATE_FUNDRAISING_SIGNUP:
@@ -637,6 +637,10 @@ define([
       else if (jsonWelcomeFields.currGame) {
         // if we have a current game then use that!
         gameID = jsonWelcomeFields.currGame.game;
+      }
+
+      if (jsonCurrPlayer) {
+        playerID = jsonCurrPlayer.id;
       }
 
       setGamePlayerCause(gameID, playerID, causeID, function() {

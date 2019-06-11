@@ -256,6 +256,46 @@
       }      
     }
   }
+
+  .image-container {
+    position: relative;
+  }
+
+  .raise-sticker {
+    position: absolute;
+    top: 28px;
+    right: 32px;
+    width: 150px;
+    height: 150px;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    background: #f85f36;
+
+    .currency_symbol {
+      padding-right: 4px;
+    }
+
+    .total {
+      padding-top: 12px;
+      font-size: 2.55em;
+    }
+
+    .title {
+      text-transform: uppercase;
+      padding-top: 18px;
+      font-size: 1.2em;
+      line-height: 1em;
+    }
+
+    .title-sub {
+      padding: 10px 12px;
+      font-size: 0.9em;
+      line-height: 1.3em;
+    }
+  }
 }
 
 /* CHALLENGES VIEW */
