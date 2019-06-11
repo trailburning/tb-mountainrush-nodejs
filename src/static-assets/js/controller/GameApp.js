@@ -840,8 +840,8 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         }
       }
 
-      // are we a sponsored game?
-      if (jsonGame.sponsored || ownerHasACause) {
+      // are we a sponsored game, or a default template with a cause?
+      if (jsonGame.sponsored || (CAMPAIGN_TEMPLATE == 'default' && ownerHasACause)) {
         $('body').addClass('sponsored');
       }
 
