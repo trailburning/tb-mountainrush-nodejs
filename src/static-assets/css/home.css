@@ -71,10 +71,7 @@
       color: #FFF; }
       #hero-view .titles-container .titles h1,
       #hero-view .titles-container .titles h2 {
-        font-family: 'radikalbold', sans-serif;
-        text-shadow: 1px 5px 5px rgba(25, 56, 72, 0.4);
-        -webkit-transition: left 1s, right 1s, opacity 0.5s;
-        transition: left 1s, right 1s, opacity 0.5s; }
+        font-family: 'radikalbold', sans-serif; }
       #hero-view .titles-container .titles h1 {
         font-size: 2.9em;
         line-height: 1em;
