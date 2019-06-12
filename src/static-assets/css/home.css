@@ -107,6 +107,7 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase; }
   #details-view .btns .btn {
     margin: 12px 8px 0 0; }
@@ -125,6 +126,7 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase; }
   #howtoguide-view .howtoguide-container-view .step-view {
     text-align: center; }
@@ -150,27 +152,27 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase; }
   #feature-view img {
     width: 100%; }
   #feature-view .text {
     padding: 30px 0 0 0; }
     #feature-view .text .overview {
-      padding: 0 0 18px 0; }
-    #feature-view .text .logos {
-      padding-bottom: 18px; }
-      #feature-view .text .logos img {
+      padding: 0 0 22px 0; }
+    #feature-view .text .action {
+      display: inline-block;
+      width: 50%;
+      vertical-align: top; }
+    #feature-view .text .feature_logo {
+      display: inline-block;
+      width: 50%;
+      height: 54px;
+      vertical-align: top;
+      text-align: right; }
+      #feature-view .text .feature_logo img {
         width: auto;
         height: 100%; }
-      #feature-view .text .logos .rn_logo {
-        display: inline-block;
-        height: 26px;
-        padding-right: 28px; }
-      #feature-view .text .logos .feature_logo {
-        display: inline-block;
-        height: 54px;
-        padding-left: 28px;
-        border-left: 1px solid #d8dee2; }
   #feature-view .image-container {
     position: relative; }
   #feature-view .raise-sticker {
@@ -188,7 +190,8 @@
     #feature-view .raise-sticker .currency_symbol {
       padding-right: 4px; }
     #feature-view .raise-sticker .total {
-      padding-top: 12px;
+      font-family: 'radikalbold', sans-serif;
+      padding-top: 15px;
       font-size: 2.55em; }
     #feature-view .raise-sticker .title {
       text-transform: uppercase;
@@ -197,7 +200,7 @@
       line-height: 1em; }
     #feature-view .raise-sticker .title-sub {
       padding: 10px 12px;
-      font-size: 0.9em;
+      font-size: 0.8em;
       line-height: 1.3em; }
 
 /* CHALLENGES VIEW */
@@ -221,6 +224,7 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase; }
   #challenges-view .cards-container {
     text-align: center;
@@ -261,7 +265,7 @@
     font-family: 'radikalregular', sans-serif;
     padding-top: 10px;
     font-size: 1em;
-    line-height: 1.4em;
+    line-height: 1.3em;
     text-transform: uppercase; }
   #campaigns-view .text .overview {
     padding: 10px 0 8px 0; }
@@ -289,6 +293,7 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase; }
   #get-active-view .cards-container {
     text-align: center;
@@ -342,6 +347,7 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase; }
   #community-view h3 {
     padding-bottom: 15px;

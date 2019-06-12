@@ -152,6 +152,7 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase;
   }
 
@@ -179,6 +180,7 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase;
   }
 
@@ -217,6 +219,7 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase;
   }  
 
@@ -228,29 +231,26 @@
     padding: 30px 0 0 0;
 
     .overview {
-      padding: 0 0 18px 0;
+      padding: 0 0 22px 0;
     }
 
-    .logos {
-      padding-bottom: 18px;
+    .action {
+      display: inline-block;
+      width: 50%;
+      vertical-align: top;
+    }
+
+    .feature_logo {
+      display: inline-block;
+      width: 50%;
+      height: 54px;
+      vertical-align: top;
+      text-align: right;
 
       img {
         width: auto;
         height: 100%;
       }
-
-      .rn_logo {
-        display: inline-block;
-        height: 26px;      
-        padding-right: 28px;
-      }
-
-      .feature_logo {
-        display: inline-block;
-        height: 54px;
-        padding-left: 28px;
-        border-left: 1px solid #d8dee2;
-      }      
     }
   }
 
@@ -276,7 +276,8 @@
     }
 
     .total {
-      padding-top: 12px;
+      font-family: 'radikalbold', sans-serif;
+      padding-top: 15px;
       font-size: 2.55em;
     }
 
@@ -289,7 +290,7 @@
 
     .title-sub {
       padding: 10px 12px;
-      font-size: 0.9em;
+      font-size: 0.8em;
       line-height: 1.3em;
     }
   }
@@ -321,6 +322,7 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase;
   }
 
@@ -383,7 +385,7 @@
     font-family: 'radikalregular', sans-serif;
     padding-top: 10px;
     font-size: 1em;
-    line-height: 1.4em;
+    line-height: 1.3em;
     text-transform: uppercase;
   }
 
@@ -426,6 +428,7 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase;
   }
 
@@ -504,6 +507,7 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase;
   }
 

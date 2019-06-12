@@ -85,12 +85,11 @@ var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
   <div id="feature-view">
     <div class="image">
       <div class="image-container">
-        <div class="visible-xs"><a href="https://worldbicyclerelief.org" target="_blank"><img src="https://mountainrush-assets.imgix.net/clients/default/shopping-list/WBR_Education_Tamara_800x532px.jpg?fm=jpg&q=80"></a></div>
-        <div class="hidden-xs"><a href="https://worldbicyclerelief.org" target="_blank"><img src="https://mountainrush-assets.imgix.net/clients/default/shopping-list/WBR_Education_Tamara_800x532px.jpg?fm=jpg&w=456&h=358&fit=crop&q=80"></a></div>
+        <a href="https://worldbicyclerelief.org" target="_blank"><img src="https://mountainrush-assets.imgix.net/clients/default/shopping-list/WBR_Education_Tamara_800x532px.jpg?fm=jpg&q=80"></a>
         <div class="raise-sticker">
           <div class="title">Raise</div>
           <div class="total"><span class="currency_symbol">€</span>134</div>
-          <div class="title-sub">to buy a bike and change a life</div>
+          <div class="title-sub">to provide a bike and change a life</div>
         </div>
       </div>
     </div>
@@ -103,18 +102,17 @@ var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
       </div>
 
       <div class="logos">
-        <div class="rn_logo"><a href="https://www.raisenow.com" target="_blank"><img src="static-assets/images/temp/Logo_RaiseNow_BW.svg"></a></div>
-        <div class="feature_logo">
+<!--        
+        <a href="https://www.raisenow.com" target="_blank"><img src="static-assets/images/temp/Logo_RaiseNow_BW.svg"></a>
+-->        
+        <div class="action"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate" class="btn mr-btn btn-primary">Fundraise</a></div><div class="feature_logo">
 <!--          
           <img src="https://mountainrush-assets.imgix.net/clients/wbr/logos/logo_wbr.png">
 -->
           <a href="https://worldbicyclerelief.org" target="_blank"><img src="static-assets/images/temp/WBR RGB.png"></a>
-          
         </div>
       </div>
       
-
-      <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate" class="btn mr-btn btn-primary">Fundraise</a>
     </div>
   </div>
 
