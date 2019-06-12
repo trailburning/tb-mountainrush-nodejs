@@ -152,6 +152,7 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase;
   }
 
@@ -165,7 +166,7 @@
 /* HOW TO GUIDE VIEW */
 /******************************************/
 #howtoguide-view {
-  padding: 40px 16px 40px 16px;
+  padding: 40px 16px 65px 16px;
   text-align: center;
   background: #efefef;
 
@@ -179,6 +180,7 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase;
   }
 
@@ -197,6 +199,103 @@
 
     .btns {
       padding: 28px 0 0 0;
+    }
+  }
+}
+
+/* FEATURE VIEW */
+/******************************************/
+#feature-view {
+  padding: 64px 16px 64px 16px;
+  background: #FFF;
+
+  h1 {
+    padding-bottom: 14px;
+    font-family: 'radikalbold', sans-serif;
+    font-size: 2em;
+  }
+
+  h2 {
+    padding-bottom: 10px;
+    font-family: 'radikalbold', sans-serif;
+    font-size: 1em;
+    line-height: 1.3em;
+    text-transform: uppercase;
+  }  
+
+  img {
+    width: 100%;
+  }
+
+  .text {
+    padding: 30px 0 0 0;
+
+    .overview {
+      padding: 0 0 22px 0;
+    }
+
+    .action {
+      display: inline-block;
+      width: 50%;
+      vertical-align: top;
+    }
+
+    .feature_logo {
+      display: inline-block;
+      width: 50%;
+      height: 54px;
+      vertical-align: top;
+      text-align: right;
+
+      img {
+        width: auto;
+        height: 100%;
+      }
+    }
+  }
+
+  .image-container {
+    position: relative;
+  }
+
+  .raise-sticker-container {
+    position: absolute;
+    top: -116px;
+    width: 100%;
+
+    .raise-sticker {
+      margin: 0 auto;
+      width: 150px;
+      height: 150px;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      background: #f85f36;
+
+      .currency_symbol {
+        padding-right: 4px;
+      }
+
+      .total {
+        font-family: 'radikalbold', sans-serif;
+        padding-top: 15px;
+        font-size: 2.55em;
+      }
+
+      .title {
+        text-transform: uppercase;
+        padding-top: 18px;
+        font-size: 1.2em;
+        line-height: 1em;
+      }
+
+      .title-sub {
+        padding: 10px 12px;
+        font-size: 0.8em;
+        line-height: 1.3em;
+      }
     }
   }
 }
@@ -227,6 +326,7 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase;
   }
 
@@ -289,7 +389,7 @@
     font-family: 'radikalregular', sans-serif;
     padding-top: 10px;
     font-size: 1em;
-    line-height: 1.4em;
+    line-height: 1.3em;
     text-transform: uppercase;
   }
 
@@ -332,6 +432,7 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase;
   }
 
@@ -410,6 +511,7 @@
     padding-bottom: 10px;
     font-family: 'radikalbold', sans-serif;
     font-size: 1em;
+    line-height: 1.3em;
     text-transform: uppercase;
   }
 
@@ -534,9 +636,7 @@
   }
 
   .stripe {
-/* mla*/
-  display: none;
-
+    display: none;
     z-index: 1;
     position: absolute;
     width: 100%;
@@ -639,6 +739,30 @@
     }
   }
 
+  #feature-view {
+    margin: 0 auto;
+    text-align: center;
+    padding: 64px 0px 64px 0px;
+
+    h1 {
+      font-size: 2.4em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+      line-height: 1.3em;
+    }
+
+    .image {
+      padding: 30px 16px 0 16px;
+    }
+
+    .text {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+  
   #challenges-view {
     padding: 64px 0 78px 0;
 
@@ -790,6 +914,34 @@
         margin: 0 auto;
         width: 842px;
       }
+    }
+  }
+
+  #feature-view {
+    .raise-sticker-container {
+      width: auto;
+      top: 28px;
+      left: initial;
+      right: 32px;
+
+      .raise-sticker {
+        margin: 0;
+      }
+    }
+
+    .text {
+      display: inline-block;
+      vertical-align: top;
+      width: 482px;
+      padding: 0 0 0 50px;
+      text-align: left;
+    }
+
+    .image {
+      display: inline-block;
+      padding: 0;
+      vertical-align: top;
+      width: 458px;
     }
   }
 
