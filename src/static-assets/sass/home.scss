@@ -166,7 +166,7 @@
 /* HOW TO GUIDE VIEW */
 /******************************************/
 #howtoguide-view {
-  padding: 40px 16px 40px 16px;
+  padding: 40px 16px 65px 16px;
   text-align: center;
   background: #efefef;
 
@@ -258,40 +258,44 @@
     position: relative;
   }
 
-  .raise-sticker {
+  .raise-sticker-container {
     position: absolute;
-    top: 28px;
-    right: 32px;
-    width: 150px;
-    height: 150px;
-    color: #fff;
-    text-align: center;
-    overflow: hidden;
-    border-radius: 50%;
-    border: 6px solid #fff;
-    background: #f85f36;
+    top: -116px;
+    width: 100%;
 
-    .currency_symbol {
-      padding-right: 4px;
-    }
+    .raise-sticker {
+      margin: 0 auto;
+      width: 150px;
+      height: 150px;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      background: #f85f36;
 
-    .total {
-      font-family: 'radikalbold', sans-serif;
-      padding-top: 15px;
-      font-size: 2.55em;
-    }
+      .currency_symbol {
+        padding-right: 4px;
+      }
 
-    .title {
-      text-transform: uppercase;
-      padding-top: 18px;
-      font-size: 1.2em;
-      line-height: 1em;
-    }
+      .total {
+        font-family: 'radikalbold', sans-serif;
+        padding-top: 15px;
+        font-size: 2.55em;
+      }
 
-    .title-sub {
-      padding: 10px 12px;
-      font-size: 0.8em;
-      line-height: 1.3em;
+      .title {
+        text-transform: uppercase;
+        padding-top: 18px;
+        font-size: 1.2em;
+        line-height: 1em;
+      }
+
+      .title-sub {
+        padding: 10px 12px;
+        font-size: 0.8em;
+        line-height: 1.3em;
+      }
     }
   }
 }
@@ -914,6 +918,17 @@
   }
 
   #feature-view {
+    .raise-sticker-container {
+      width: auto;
+      top: 28px;
+      left: initial;
+      right: 32px;
+
+      .raise-sticker {
+        margin: 0;
+      }
+    }
+
     .text {
       display: inline-block;
       vertical-align: top;

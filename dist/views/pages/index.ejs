@@ -76,8 +76,10 @@ var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
       </div>
 
       <div class="btns">
-        <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
-        <span class="visible-player-inactive"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
+        <span class="hidden-xs hidden-sm">
+          <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
+          <span class="visible-player-inactive"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
+        </span>
       </div>
     </div>
   </div>
@@ -86,10 +88,12 @@ var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
     <div class="image">
       <div class="image-container">
         <a href="https://worldbicyclerelief.org" target="_blank"><img src="https://mountainrush-assets.imgix.net/clients/default/shopping-list/WBR_Education_Tamara_800x532px.jpg?fm=jpg&q=80"></a>
-        <div class="raise-sticker">
-          <div class="title">Raise</div>
-          <div class="total"><span class="currency_symbol">€</span>134</div>
-          <div class="title-sub">to provide a bike and change a life</div>
+        <div class="raise-sticker-container">
+          <div class="raise-sticker">
+            <div class="title">Raise</div>
+            <div class="total"><span class="currency_symbol">€</span>134</div>
+            <div class="title-sub">to provide a bike and change a life</div>
+          </div>
         </div>
       </div>
     </div>
@@ -105,12 +109,13 @@ var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
 <!--        
         <a href="https://www.raisenow.com" target="_blank"><img src="static-assets/images/temp/Logo_RaiseNow_BW.svg"></a>
 -->        
-        <div class="action"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate" class="btn mr-btn btn-primary">Fundraise</a></div><div class="feature_logo">
+        <div class="action">
+          <h2>Fundraising coming 14.06.2019!</h2>
 <!--          
-          <img src="https://mountainrush-assets.imgix.net/clients/wbr/logos/logo_wbr.png">
--->
-          <a href="https://worldbicyclerelief.org" target="_blank"><img src="static-assets/images/temp/WBR RGB.png"></a>
-        </div>
+          <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate" class="btn 
+          mr-btn btn-primary">Fundraise</a>
+-->          
+        </div><div class="feature_logo"><a href="https://worldbicyclerelief.org" target="_blank"><img src="https://mountainrush-assets.imgix.net/clients/wbr/logos/WBR RGB.png"></a></div>
       </div>
       
     </div>
