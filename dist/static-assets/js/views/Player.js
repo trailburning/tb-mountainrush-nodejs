@@ -357,7 +357,7 @@ define([
           }
 
           if (nPhotos > DEF_NUM_PHOTOS_TO_SHOW) {
-            if (playerActivityMorePhotosView) {
+            if (this.playerActivityMorePhotosView) {
               this.playerActivityMorePhotosView.render().el;
             }
           }
