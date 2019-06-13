@@ -554,7 +554,7 @@ module.exports = function(app) {
 
     // get cause details
     getGamePlayerCause(req.params.gameID, req.params.playerID, function(err, cause){
-      defs.FundraisingProviderCauseCode = cause.provider_cause_code;
+      defs.FundraisingProviderCauseCode = cause.provider_client_cause_code;
 
       getCampaignDataByGame(req, defs.GameID, function(err, campaign){ 
         res.render('pages/gamedonate', {Defs: defs, Campaign: campaign});

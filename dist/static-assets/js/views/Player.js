@@ -44,6 +44,7 @@ define([
       this.elPlayerSummary = null;
       this.elPlayerList = null;
       this.elPlayerDetail = null;
+      this.playerActivityMorePhotosView = null;
     },
 
     create: function(){
@@ -356,7 +357,9 @@ define([
           }
 
           if (nPhotos > DEF_NUM_PHOTOS_TO_SHOW) {
-            this.playerActivityMorePhotosView.render().el;
+            if (this.playerActivityMorePhotosView) {
+              this.playerActivityMorePhotosView.render().el;
+            }
           }
         }
       }
