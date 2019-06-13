@@ -164,6 +164,9 @@ define([
           elCountdownContainer.show();
         });
 
+        // render game photo
+        gamePhotoView.render(jsonCurrGame);
+
         getDonations();
       }
 
@@ -215,6 +218,8 @@ define([
     function onGameLoaded(jsonGame) {
       jsonCurrGame = jsonGame;
 
+      $('#loader-view').hide();
+
       if (jsonGame.description) {
         jsonGame.description_formatted = formatText(jsonGame.description);
       }
@@ -241,8 +246,6 @@ define([
       }
 
       challengeCancelModalView.setGame(jsonCurrGame);
-
-      gamePhotoView.render(jsonCurrGame);
 
       getJourney(jsonGame.journeyID, jsonGame.mountain3DName);
     }
@@ -378,8 +381,6 @@ define([
 
     function onPlayerActivityPhotosPhotoRendered(params) {
     }
-
-    $('#loader-view').show();
 
     // check for player
     if (getUserCookie(CLIENT_ID) != undefined) {
