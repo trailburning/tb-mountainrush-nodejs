@@ -100,6 +100,29 @@ function getCampaignDataByGame(req, gameID, callback) {
   });
 }
 
+function getGamePlayerCause(gameID, playerID, callback) {
+  var request = require('request');
+
+  var url = process.env.MR_API_URL + 'game/' + gameID + '/player/' + playerID + '/cause';
+//  console.log(url);
+  request.get({
+      url: url,
+      json: true,
+      headers: {'User-Agent': 'request'}
+    }, (err, res, data) => {
+      if (err) {
+        console.log('Error:', err);
+        return callback(err, null);
+      } else if (res.statusCode !== 200) {
+        console.log('Status:', res.statusCode);
+        return callback(err, null);
+      } else {
+        // data is already parsed as JSON:
+        return callback(err, data[0]);
+      }
+  });
+}
+
 function getCampaignProviderConnectData(campaignID, callback) {
   var request = require('request');
 
@@ -529,8 +552,13 @@ module.exports = function(app) {
       defs.FundraisingDonationAmount = req.query.amount;
     }
 
-    getCampaignDataByGame(req, defs.GameID, function(err, campaign){ 
-      res.render('pages/gamedonate', {Defs: defs, Campaign: campaign});
+    // get cause details
+    getGamePlayerCause(req.params.gameID, req.params.playerID, function(err, cause){
+      defs.FundraisingProviderCauseCode = cause.provider_cause_code;
+
+      getCampaignDataByGame(req, defs.GameID, function(err, campaign){ 
+        res.render('pages/gamedonate', {Defs: defs, Campaign: campaign});
+      });
     });
   });
 

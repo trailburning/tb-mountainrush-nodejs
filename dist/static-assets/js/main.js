@@ -36,7 +36,7 @@ require.config({
     videojs: '//vjs.zencdn.net/4.12/video',
     modernizr: 'libs/modernizr-custom',
     mapbox: 'https://api.mapbox.com/mapbox.js/v2.4.0/mapbox',
-    raisenow: 'https://widget.raisenow.com/widgets/lema/amp-test/js/dds-init-widget-en'
+    raisenow: 'https://widget.raisenow.com/widgets/lema/' + FUNDRAISING_PROVIDER_CAUSE_CODE + '/js/dds-init-widget-en'
   },
   shim: {
     'jqueryUI' : {
