@@ -22,6 +22,9 @@
 <% if (Defs.PlayerGoal) { %>
   <meta property="og:url" content="https://mountainrush.co.uk/game/<%= Defs.GameID %>/player/<%= Defs.PlayerID %>/goal/<%= Defs.PlayerGoal %>"/>
   <meta property="og:image" content="<%= Defs.SocialImage %>"/>
+<% } else if (Defs.GroupGoal) { %>
+  <meta property="og:url" content="https://mountainrush.co.uk/game/<%= Defs.GameID %>/details/groupgoal/<%= Defs.GroupGoal %>"/>
+  <meta property="og:image" content="<%= Defs.SocialImage %>"/>
 <% } else if (Defs.PlayerProgress) { %>
   <meta property="og:url" content="https://mountainrush.co.uk/game/<%= Defs.GameID %>/player/<%= Defs.PlayerID %>/progress/<%= Defs.PlayerProgress %>"/>
   <meta property="og:image" content="<%= Defs.SocialImage %>"/>

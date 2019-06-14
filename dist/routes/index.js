@@ -192,10 +192,15 @@ function getSocialImage(gameID, callback) {
   });
 }
 
-function getSocialImageGoal(gameID, goal, callback) {
+function getSocialImageGoal(gameID, goal, bGroupGoal, callback) {
   var request = require('request');
 
-  var url = process.env.MR_API_URL + 'game/' + gameID + '/socialimage/goal/' + goal;
+  var param = 'goal';
+  if (bGroupGoal) {
+    param = 'groupgoal';
+  }
+
+  var url = process.env.MR_API_URL + 'game/' + gameID + '/socialimage/' + param + '/' + goal;
 //  console.log(url);
   request.get({
       url: url,
@@ -517,10 +522,25 @@ module.exports = function(app) {
 
     getCampaignDataByGame(req, defs.GameID, function(err, campaign){ 
       // get social goal image
-      getSocialImageGoal(defs.GameID, defs.PlayerGoal, function(err, strImage){ 
+      getSocialImageGoal(defs.GameID, defs.PlayerGoal, false, function(err, strImage){ 
         defs.SocialImage = strImage;
 
         res.render('pages/game', {Defs: defs, Campaign: campaign});
+      });
+    });
+  });
+
+  app.get('/game/:gameID/details/groupgoal/:goal', function(req, res) {
+    var defs = helper.getDefs(req);
+    defs.GameID = req.params.gameID;
+    defs.GroupGoal = req.params.goal;
+
+    getCampaignDataByGame(req, defs.GameID, function(err, campaign){ 
+      // get social goal image
+      getSocialImageGoal(defs.GameID, defs.GroupGoal, true, function(err, strImage){ 
+        defs.SocialImage = strImage;
+
+        res.render('pages/gamedetails', {Defs: defs, Campaign: campaign});
       });
     });
   });
