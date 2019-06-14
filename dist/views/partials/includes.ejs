@@ -25,6 +25,9 @@
 <% } else if (Defs.PlayerProgress) { %>
   <meta property="og:url" content="https://mountainrush.co.uk/game/<%= Defs.GameID %>/player/<%= Defs.PlayerID %>/progress/<%= Defs.PlayerProgress %>"/>
   <meta property="og:image" content="<%= Defs.SocialImage %>"/>
+<% } else if (Defs.GameProgress) { %>
+  <meta property="og:url" content="https://mountainrush.co.uk/game/<%= Defs.GameID %>/details/progress/<%= Defs.GameProgress %>"/>
+  <meta property="og:image" content="<%= Defs.SocialImage %>"/>
 <% } else if (Defs.GameID) { %>
   <meta property="og:url" content="https://mountainrush.co.uk/game/<%= Defs.GameID %>"/>
   <% if (Campaign.CampaignTemplate == 'default') { %>

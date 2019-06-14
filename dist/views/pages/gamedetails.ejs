@@ -464,18 +464,30 @@ var TEST_PROGRESS = '';
       </div>
     </div>
 
+    {{ var socialShareURL = '' }}
+
+    {{ if (gameOwnerPlayer.cause.length) { }}
+      {{ if (page.fundraisingTarget > 0) { }}
+        {{ socialShareURL = 'groupgoal/' + Math.round(page.fundraisingTarget) }}
+      {{ } }}
+
+      {{ if (page.totalRaisedOnline > 0) { }}
+        {{ socialShareURL = 'progress/' + Math.round(page.totalRaisedOnline) }}
+      {{ } }}
+    {{ } }}
+
     <div class="share-detail visible-xs visible-sm">
       <div class="share-text"><%= __('defs.social.share_team_msg') %></div>
       <div class="btns">
-      <a href="http://www.facebook.com/share.php?u=<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>" class="btn mr-btn btn-primary" target="_blank"><i class="fa fa-facebook"></i></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20the%20<%= Campaign.CampaignName %>%20challenge%20-%20<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>" class="btn mr-btn btn-primary" target="_blank"><i class="fa fa-twitter"></i></a>
+      <a href="http://www.facebook.com/share.php?u=<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/details/{{= socialShareURL }}" class="btn mr-btn btn-primary" target="_blank"><i class="fa fa-facebook"></i></a><a href="https://twitter.com/intent/tweet?text=Check%20out%20the%20<%= Campaign.CampaignName %>%20challenge%20-%20<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/details" class="btn mr-btn btn-primary" target="_blank"><i class="fa fa-twitter"></i></a>
       </div>
     </div>
 
     <div class="share-detail hidden-xs hidden-sm">
       <div class="share-text"><%= __('defs.social.share_team_msg') %></div>
       <div class="btns">
-      <a href="http://www.facebook.com/share.php?u=<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>" class="btn mr-btn btn-primary double" target="_blank"><div><%= __('defs.social.share_facebook') %></div><div><i class="fa fa-facebook"></i></div></a>
-      <a href="https://twitter.com/intent/tweet?text=Check%20out%20the%20<%= Campaign.CampaignName %>%20challenge%20-%20<%= Defs.BaseHTTPSURL %>game/<%= Defs.GameID %>" class="btn mr-btn btn-primary double" target="_blank"><div><%= __('defs.social.share_twitter') %></div><div><i class="fa fa-twitter"></i></div></a>
+      <a href="http://www.facebook.com/share.php?u=<%= Defs.BaseHTTPSURL %>/game/<%= Defs.GameID %>/details/{{= socialShareURL }}" class="btn mr-btn btn-primary double" target="_blank"><div><%= __('defs.social.share_facebook') %></div><div><i class="fa fa-facebook"></i></div></a>
+      <a href="https://twitter.com/intent/tweet?text=Check%20out%20the%20<%= Campaign.CampaignName %>%20challenge%20-%20<%= Defs.BaseHTTPSURL %>game/<%= Defs.GameID %>/details" class="btn mr-btn btn-primary double" target="_blank"><div><%= __('defs.social.share_twitter') %></div><div><i class="fa fa-twitter"></i></div></a>
       </div>
     </div>
 

@@ -542,6 +542,29 @@ module.exports = function(app) {
       });
     });
   });
+
+  app.get('/game/:gameID/details/progress/:progress', function(req, res) {
+    var defs = helper.getDefs(req);
+    defs.GameID = req.params.gameID;
+    defs.GameProgress = req.params.progress;
+
+    getCampaignDataByGame(req, defs.GameID, function(err, campaign){ 
+      if (campaign) {
+        // get social goal image
+        getSocialImageProgress(defs.GameID, defs.GameProgress, function(err, strImage){ 
+          defs.SocialImage = strImage;
+
+          res.render('pages/gamedetails', {Defs: defs, Campaign: campaign});
+        });
+      }
+      else {
+        getCampaignDataByCampaign(req, process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+        });        
+      }
+    });
+  });
+
   app.get('/game/:gameID/player/:playerID/donate', function(req, res) {
     var defs = helper.getDefs(req);
     defs.PlayerID = req.params.playerID;
