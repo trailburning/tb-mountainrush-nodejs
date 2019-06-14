@@ -258,7 +258,8 @@ var TEST_PROGRESS = '';
         {{ } else { }}
           {{= game.level_name }}
         {{ } }}
-        </h1>for {{= game.campaign_name }}
+        </h1>
+        for {{ if (gameOwnerPlayer.cause.length) { }}{{= gameOwnerPlayer.cause[0].shortname }}{{ } else { }}{{= game.campaign_name }}{{ } }}
         </div>
         <div class="summit-container">
           {{ if (players.length > 1) { }}
@@ -295,7 +296,7 @@ var TEST_PROGRESS = '';
         {{ } else { }}
           {{= game.level_name }}
         {{ } }}
-        </h1>for {{= game.campaign_name }}
+        </h1>for {{ if (gameOwnerPlayer.cause.length) { }}{{= gameOwnerPlayer.cause[0].shortname }}{{ } else { }}{{= game.campaign_name }}{{ } }}
         </div>
         <div class="summit-container">
           <div class="summit">
