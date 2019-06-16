@@ -424,6 +424,12 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
 }();
 drift.SNIPPET_VERSION = '0.3.1';
 drift.load('9rrhxkp5p82i');
+
+drift.on('ready',function(api, payload) {
+  drift.config({
+    enableCampaigns: false
+  })
+})
 </script>
 <!-- End of Async Drift Code -->
 
