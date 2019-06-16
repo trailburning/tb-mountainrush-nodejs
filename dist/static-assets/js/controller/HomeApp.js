@@ -18,10 +18,11 @@ define([
   'views/PlayerGameView',
   'views/DeviceCapableModalView',
   'views/PromotionModalView',
+  'views/PlayerSearchView',
   'views/DemoVideoView',
   'views/ChallengesView',
   'views/SocialPhotosView'
-], function(_, Backbone, jqueryUI, cookie, truncate, imageScale, imagesLoaded, animateNumber, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, DeviceCapableModalView, PromotionModalView, DemoVideoView, ChallengesView, SocialPhotosView){
+], function(_, Backbone, jqueryUI, cookie, truncate, imageScale, imagesLoaded, animateNumber, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, DeviceCapableModalView, PromotionModalView, PlayerSearchView, DemoVideoView, ChallengesView, SocialPhotosView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -69,6 +70,8 @@ define([
 
     var languageSelectorView = new LanguageSelectorView({ el: '#language-selector-view' });
     languageSelectorView.render();
+    var playerSearchView = new PlayerSearchView({ el: '#supporter-search-view', campaignID: CAMPAIGN_ID, hostURL: HOST_URL });
+    playerSearchView.render();    
     var challengesView = new ChallengesView({ el: '#challenges-available-view' });
     challengesView.load();
     var socialPhotosView = new SocialPhotosView({ el: '#community-photos-view', feed: '' });
