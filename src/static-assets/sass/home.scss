@@ -372,6 +372,112 @@
   }
 }
 
+/* SUPPORTER SEARCH VIEW */
+/******************************************/
+#supporter-search-view {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  text-align: center;
+  background-color: #000;
+  -webkit-box-shadow: 0px 10px 10px 0 rgba(25,56,72,0.2);
+  -moz-box-shadow: 0px 10px 10px 0 rgba(25,56,72,0.2);
+  box-shadow: 0px 10px 10px 0 rgba(25,56,72,0.2);
+}
+
+#supporter-search-view h1 {
+  color: #fff;
+}
+
+#supporter-search-view .supporter-search-container {
+  padding: 50px 16px 0 16px;
+  height: 100%;
+}
+
+#supporter-search-view .search-panel {
+  position: relative;
+  padding-top: 12px;
+  text-align: left;
+  border: none;
+}
+
+#supporter-search-view .search-panel input {
+  width: 100%;
+  height: 46px;
+  padding: 0 15px 0 15px;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #474747;
+  border-radius: 0;
+  border: none;
+  outline: none;
+  box-shadow:none;
+  -webkit-box-shadow:none; 
+}
+
+.suggest .ui-autocomplete {
+  z-index: 2;
+  text-align: left;
+  font-size: .9em;
+  width: 288px;
+}
+
+.suggest .ui-autocomplete strong {
+}
+
+.suggest .ui-corner-all {
+  border-radius: 0px;
+}
+
+.suggest .ui-widget-content {
+  background: #FFF;
+}
+
+.suggest .ui-widget-content {
+  padding: 0px;
+  border: 1px solid #2e3c51;
+}
+
+.suggest .ui-autocomplete li {
+  border-top: 1px solid #000;
+  font-size: 1.1em;
+  padding: 12px 15px;
+  background: #545454;
+}
+
+.suggest .ui-autocomplete li:hover {
+  cursor: pointer;
+}
+
+.suggest .ui-autocomplete li .match-name {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.suggest .ui-autocomplete li .match-game {
+  padding-left: 12px;
+  color: #9b9b9b;
+}
+
+.suggest .ui-autocomplete {
+  left: 0px !important;
+}
+
+.suggest .ui-autocomplete li:last-child {
+  border-bottom: none;  
+}
+
+.suggest .ui-autocomplete .ui-state-focus {
+  background: #6d6d6d;
+  outline: none;
+  border: none;
+  border-top: 1px solid #000;
+}
+
+input.ui-autocomplete-loading { 
+  background:url(../images/ui/Spinner-1s-34px.gif) no-repeat 95% center; 
+}
 
 /* CAMPAIGNS VIEW */
 /******************************************/
