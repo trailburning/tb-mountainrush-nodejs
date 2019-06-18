@@ -18,7 +18,10 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
 
   <div id="hero-view">
     <div class="image fade_on_ready">
+<!--      
       <img class="scale" src="https://mountainrush-assets.imgix.net/pages/img_header2.png?fm=jpg&q=80&w=1280">
+-->      
+      <img class="scale" src="https://mountainrush-assets.imgix.net/pages/polina-rytova-1636380-unsplash_EDITED.png?fm=jpg&q=80&w=1280">
     </div>
 
     <div class="titles-container">
@@ -410,6 +413,12 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
 }();
 drift.SNIPPET_VERSION = '0.3.1';
 drift.load('9rrhxkp5p82i');
+
+drift.on('ready',function(api, payload) {
+  drift.config({
+    enableCampaigns: false
+  })
+})
 </script>
 <!-- End of Async Drift Code -->
 
