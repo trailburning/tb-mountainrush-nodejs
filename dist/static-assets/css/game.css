@@ -479,7 +479,8 @@ body.fundraising.single-player #player-view .list .team {
     text-align: right; }
   #player-view .detail .team {
     display: none;
-    padding-top: 26px; }
+    padding-top: 20px;
+    padding-bottom: 20px; }
 
 body.fundraising #player-view .detail .team {
   display: block; }
