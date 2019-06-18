@@ -662,7 +662,13 @@ body.fundraising #player-view .detail .player .latest-activity {
   font-size: 1.4em;
   color: #fff; }
 
+/*
+mla
 body.fundraising #player-view .detail .player .fundraising-donation-view.above-photos {
+  display: block;
+}
+*/
+body.fundraising-campaign #player-view .detail .player .fundraising-donation-view.above-photos {
   display: block; }
 
 #player-view .detail .player .fundraising-donation-view .shopping-list-sticker-container {
