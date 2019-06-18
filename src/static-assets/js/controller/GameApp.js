@@ -87,6 +87,11 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     var timeoutShopID = null, timeoutStoryID = null;
     var FundraisingShoppingModelShown = false;
 
+    // are we fundraising?
+    if (GAME_FUNDRAISING) {
+      $('body').addClass('fundraising-campaign');
+    }
+
     $('#loader-view').show();
 
     // check for player

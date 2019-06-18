@@ -59,6 +59,11 @@ define([
 
     var jsonRoute = null;
   
+      // are we fundraising?
+    if (GAME_FUNDRAISING) {
+      $('body').addClass('fundraising-campaign');
+    }
+
     $('#loader-view').show();
   
     function getActivePlayerByToken(playerToken) {
