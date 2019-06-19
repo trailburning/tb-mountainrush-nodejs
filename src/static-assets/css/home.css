@@ -259,14 +259,12 @@
 #supporter-search-view {
   position: relative;
   width: 100%;
-  height: 190px;
+  height: 332px;
   text-align: center;
-  background-color: #000;
-  -webkit-box-shadow: 0px 10px 10px 0 rgba(25, 56, 72, 0.2);
-  -moz-box-shadow: 0px 10px 10px 0 rgba(25, 56, 72, 0.2);
-  box-shadow: 0px 10px 10px 0 rgba(25, 56, 72, 0.2); }
+  background-color: #0a1e29; }
 
 #supporter-search-view h1 {
+  font-family: 'radikalbold', sans-serif;
   color: #fff; }
 
 #supporter-search-view .supporter-search-container {
@@ -286,12 +284,31 @@
   font-size: 1.2em;
   text-transform: uppercase;
   color: #fff;
-  background-color: #474747;
+  background-color: #3c5b6f;
   border-radius: 0;
   border: none;
   outline: none;
   box-shadow: none;
   -webkit-box-shadow: none; }
+  #supporter-search-view .search-panel input::placeholder {
+    /* Firefox, Chrome, Opera */
+    color: #fff; }
+  #supporter-search-view .search-panel input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #fff; }
+  #supporter-search-view .search-panel input::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #fff; }
+
+#supporter-search-view .supporter-avatar-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+  #supporter-search-view .supporter-avatar-container .supporter-avatar {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    background: url(../images/avatar.png) no-repeat top center; }
 
 .suggest .ui-autocomplete {
   z-index: 2;
@@ -313,7 +330,7 @@
   border-top: 1px solid #000;
   font-size: 1.1em;
   padding: 12px 15px;
-  background: #545454; }
+  background: #3c5b6f; }
 
 .suggest .ui-autocomplete li:hover {
   cursor: pointer; }
@@ -324,7 +341,7 @@
 
 .suggest .ui-autocomplete li .match-game {
   padding-left: 12px;
-  color: #9b9b9b; }
+  color: #fff; }
 
 .suggest .ui-autocomplete {
   left: 0px !important; }
@@ -333,10 +350,10 @@
   border-bottom: none; }
 
 .suggest .ui-autocomplete .ui-state-focus {
-  background: #6d6d6d;
+  background: #0a1e29;
   outline: none;
   border: none;
-  border-top: 1px solid #000; }
+  border-top: 1px solid #0a1e29; }
 
 input.ui-autocomplete-loading {
   background: url(../images/ui/Spinner-1s-34px.gif) no-repeat 95% center; }
@@ -345,8 +362,7 @@ input.ui-autocomplete-loading {
 /******************************************/
 #campaigns-view {
   padding: 44px 16px 56px 16px;
-  color: #fff;
-  background-color: #091e29; }
+  background-color: #efefef; }
   #campaigns-view h1 {
     font-family: 'radikalbold', sans-serif;
     font-size: 2em; }
@@ -636,6 +652,20 @@ input.ui-autocomplete-loading {
         flex-direction: column;
         margin-left: 14px;
         margin-right: 14px; }
+  #supporter-search-view {
+    height: 200px; }
+    #supporter-search-view .supporter-search-container {
+      width: 600px;
+      margin: 0 auto; }
+      #supporter-search-view .supporter-search-container .supporter-search-content {
+        width: 358px;
+        float: right; }
+  #supporter-search-view .supporter-avatar-container {
+    width: auto; }
+    #supporter-search-view .supporter-avatar-container .supporter-avatar {
+      margin: 0; }
+  .suggest .ui-autocomplete {
+    width: 358px; }
   #community-view {
     padding-top: 74px; }
     #community-view h1 {
