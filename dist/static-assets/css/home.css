@@ -259,7 +259,7 @@
 #supporter-search-view {
   position: relative;
   width: 100%;
-  height: 332px;
+  height: 352px;
   text-align: center;
   background-color: #0a1e29; }
 
@@ -303,6 +303,7 @@
 #supporter-search-view .supporter-avatar-container {
   position: absolute;
   bottom: 0;
+  left: 0;
   width: 100%; }
   #supporter-search-view .supporter-avatar-container .supporter-avatar {
     width: 150px;
@@ -356,7 +357,8 @@
   border-top: 1px solid #0a1e29; }
 
 input.ui-autocomplete-loading {
-  background: url(../images/ui/Spinner-1s-34px.gif) no-repeat 95% center; }
+  background: url(../images/ui/Spinner-1s-34px_blue.gif) no-repeat 95% center;
+  /* loading.io */ }
 
 /* CAMPAIGNS VIEW */
 /******************************************/
@@ -659,9 +661,13 @@ input.ui-autocomplete-loading {
       margin: 0 auto; }
       #supporter-search-view .supporter-search-container .supporter-search-content {
         width: 358px;
-        float: right; }
+        margin: 0 auto; }
+        #supporter-search-view .supporter-search-container .supporter-search-content .test {
+          position: relative;
+          left: 100px; }
   #supporter-search-view .supporter-avatar-container {
-    width: auto; }
+    width: auto;
+    left: auto; }
     #supporter-search-view .supporter-avatar-container .supporter-avatar {
       margin: 0; }
   .suggest .ui-autocomplete {
