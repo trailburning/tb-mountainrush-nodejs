@@ -89,7 +89,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
     // are we fundraising?
     if (GAME_FUNDRAISING) {
-      $('body').addClass('fundraising');
+      $('body').addClass('fundraising-campaign');
     }
 
     $('#loader-view').show();
@@ -843,6 +843,10 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       // are we a sponsored game, or a default template with a cause?
       if (jsonGame.sponsored || (CAMPAIGN_TEMPLATE == 'default' && ownerHasACause)) {
         $('body').addClass('sponsored');
+      }
+      // do we have a cause?
+      if (ownerHasACause) {
+        $('body').addClass('fundraising');
       }
 
       challengeCancelModalView.setGame(jsonCurrGame);

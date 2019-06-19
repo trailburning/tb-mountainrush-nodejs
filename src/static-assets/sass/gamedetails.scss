@@ -503,6 +503,10 @@ body.fundraising #player-view {
 
 /* DONATIONS */
 /******************************************/
+#player-view .fundraising-donations-view {
+  display: none;
+}
+
 body.fundraising #player-view .fundraising-donations-view {
   display: block;
   padding: 42px 12px 32px 12px;
