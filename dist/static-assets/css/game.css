@@ -218,7 +218,6 @@ body.sponsored .sponsor-view .title strong {
   overflow: hidden; }
 
 body.fundraising #player-view .summary {
-  height: 72px;
   overflow: initial; }
 
 #player-view .summary.min,
