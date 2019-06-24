@@ -635,9 +635,10 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           var nMarkerPos = mountainEventsCollection.indexOf(mountainStoryModel);
 
           // is the player fundraising, or is the first 'free' marker?
-          // or is the player not in a fundraising game?
+          // or is the player not in a fundraising game or is the game sponsored?
           var fFundRaisingGoal = this.currPlayerModel.get('fundraising_goal');
-          if (((fFundRaisingGoal && fFundRaisingGoal > 0) || (nMarkerPos == 0)) || (!GAME_FUNDRAISING))  {
+
+          if (((fFundRaisingGoal && fFundRaisingGoal > 0) || (nMarkerPos == 0)) || (!GAME_FUNDRAISING) || jsonCurrGame.sponsored)  {
             // bring up feature overlay
             mountainStoryModalView.render(jsonCurrGame, this.currPlayerModel, mountainStoryModel);
             mountainStoryModalView.show();
@@ -737,10 +738,15 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           // is it different from what the player has already seen?
           if (latestEnabledMarkerID != activePlayer.get('latestMarkerID')) {
             var nMarkerPos = mountainEventsCollection.indexOf(latestEnabledMarker);
-            // it is, but is the player fundraising, or is the first 'free' marker?
-            // or is this not a fundraiaing game?
+
+            // is the player fundraising, or is the first 'free' marker?
+            // or is the player not in a fundraising game or is the game sponsored?
             var fFundRaisingGoal = activePlayer.get('fundraising_goal');
-            if (((fFundRaisingGoal && fFundRaisingGoal > 0) || (nMarkerPos == 0)) || (!GAME_FUNDRAISING))  {
+
+            // mla
+            console.log('ace');
+
+            if (((fFundRaisingGoal && fFundRaisingGoal > 0) || (nMarkerPos == 0)) || (!GAME_FUNDRAISING) || jsonCurrGame.sponsored)  {
               // yes so update marker
               setLatestEnabledMarker(latestEnabledMarkerID);
             }
