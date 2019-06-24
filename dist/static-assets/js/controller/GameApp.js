@@ -743,9 +743,6 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
             // or is the player not in a fundraising game or is the game sponsored?
             var fFundRaisingGoal = activePlayer.get('fundraising_goal');
 
-            // mla
-            console.log('ace');
-
             if (((fFundRaisingGoal && fFundRaisingGoal > 0) || (nMarkerPos == 0)) || (!GAME_FUNDRAISING) || jsonCurrGame.sponsored)  {
               // yes so update marker
               setLatestEnabledMarker(latestEnabledMarkerID);
