@@ -12,6 +12,15 @@
 /* GAME DETAILS MODAL VIEW */
 /******************************************/
 #game-details-modal-view {
+  form textarea.field {
+    height: 100px;
+  }
+
+  .form-button {
+    display: inline-block;
+    margin: 0 4px;
+  }
+
   .progressbar {
     height: 20px; 
 

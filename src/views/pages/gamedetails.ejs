@@ -127,7 +127,9 @@ var TEST_PROGRESS = '';
             </div>
 
             {{ if (game.media.length) { }} 
-              <img src="https://mountainrush-media.imgix.net/<%= Campaign.CampaignID %>/<%= Defs.GameID %>/{{= game.media[0].id }}?fm=jpg&w=120&q=80">
+              <div class="mediaPreview">
+                <img src="https://mountainrush-media.imgix.net/<%= Campaign.CampaignID %>/<%= Defs.GameID %>/{{= game.media[0].id }}?fm=jpg&w=120&q=80">
+              </div>
             {{ } else { }}
               <img src="https://mountainrush-assets.imgix.net/pages/olivier-miche-102259-unsplash.jpg?fm=jpg&w=120&q=80">
             {{ } }}
@@ -146,6 +148,12 @@ var TEST_PROGRESS = '';
             <div class="form-button">
               <button type="submit" class="btn mr-btn btn-primary upload-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('defs.please_wait') %>">Upload Picture</button>
             </div>
+
+            {{ if (game.media.length) { }} 
+              <div class="form-button">
+                <span class="btn mr-btn btn-primary remove-btn" data-id="{{= game.media[0].id }}" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('defs.please_wait') %>">Remove Picture</span>
+              </div>
+            {{ } }}
 
             </form>
           </div>

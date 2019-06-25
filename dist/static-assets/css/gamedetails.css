@@ -6,6 +6,13 @@
 
 /* GAME DETAILS MODAL VIEW */
 /******************************************/
+#game-details-modal-view form textarea.field {
+  height: 100px; }
+
+#game-details-modal-view .form-button {
+  display: inline-block;
+  margin: 0 4px; }
+
 #game-details-modal-view .progressbar {
   height: 20px; }
   #game-details-modal-view .progressbar .progress {
