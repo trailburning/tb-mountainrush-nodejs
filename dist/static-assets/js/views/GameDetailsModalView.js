@@ -78,10 +78,36 @@ define([
             if (xhr.responseText) {
               console.log(xhr.responseText);
             }
+
+            location.reload();                        
           }
         }); 
       }
-      
+
+      function removeMedia(mediaID) {
+        var url = GAME_API_URL + 'campaign/' + CAMPAIGN_ID + '/game/' + GAME_ID + '/media/' + mediaID;
+        console.log(url);
+        $.ajax({
+          type: 'delete',
+          dataType: 'json',
+          url: url,
+          error: function(data) {
+            $('.remove-btn', $(self.el)).button('reset');
+
+            console.log('error');
+            console.log(data);  
+          },
+          success: function(data) {
+            $('.remove-btn', $(self.el)).button('reset');
+
+            console.log('success');
+            console.log(data);
+
+            location.reload();            
+          }
+        });
+      }      
+
       $(this.el).html(this.template({ game: this.options.jsonGame }));
 
       $('.update-btn', $(this.el)).click(function(evt){
@@ -91,6 +117,12 @@ define([
 
         var elForm = $(this).closest('form');
         updateDetails(elForm);
+      });
+
+      $('.remove-btn', $(this.el)).click(function(evt){
+        $(this).button('loading');
+
+        removeMedia($(this).attr('data-id'));
       });
 
       $('.upload-btn', $(this.el)).click(function(evt){
