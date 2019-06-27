@@ -425,7 +425,7 @@ module.exports = function(app) {
       }
       else {
         getCampaignDataByCampaign(req, process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
-          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+          res.render('pages/game-error', {Defs: defs, Campaign: campaign});
         });        
       }
     });
@@ -454,7 +454,7 @@ module.exports = function(app) {
       }
       else {
         getCampaignDataByCampaign(req, process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
-          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+          res.render('pages/game-error', {Defs: defs, Campaign: campaign});
         });        
       }
     });
@@ -483,7 +483,7 @@ module.exports = function(app) {
       }
       else {
         getCampaignDataByCampaign(req, process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
-          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+          res.render('pages/game-error', {Defs: defs, Campaign: campaign});
         });        
       }
     });
