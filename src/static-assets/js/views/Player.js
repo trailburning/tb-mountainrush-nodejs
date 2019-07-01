@@ -340,7 +340,6 @@ define([
       var elPhotos = $('.posts .photos', elParent);
       if (!this.currPhotoActivityId || (this.currPhotoActivityId == params.PlayerActivityPhotosView.activityID)) {
         var nPhotos = $('.post.active', elParent).length;
-        console.log('photos:'+nPhotos);
         // as we get photos we can hide the blank placeholders
         $('.post.inactive', elParent).each(function(index) {
           if (index < nPhotos) {
@@ -358,7 +357,6 @@ define([
           }
 
           if (nPhotos > DEF_NUM_PHOTOS_TO_SHOW) {
-            console.log('test:'+nPhotos*' : '+DEF_NUM_PHOTOS_TO_SHOW);
             if (this.playerActivityMorePhotosView) {
               this.playerActivityMorePhotosView.render().el;
             }
