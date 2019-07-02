@@ -340,13 +340,13 @@ define([
           });
 
           if (elPhotos.hasClass('show-all')) {
-            params.PlayerActivityPhotoView.el.removeClass('no-show');
+            playerActivityPhotoView.el.removeClass('no-show');
           }
           else {
             // show 1st photos
 
             if (nPhotos <= DEF_NUM_PHOTOS_TO_SHOW) {
-              params.PlayerActivityPhotoView.el.removeClass('no-show');
+              playerActivityPhotoView.el.removeClass('no-show');
             }
   
             if (nPhotos > DEF_NUM_PHOTOS_TO_SHOW) {
