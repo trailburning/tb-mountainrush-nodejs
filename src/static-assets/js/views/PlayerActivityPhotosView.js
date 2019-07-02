@@ -40,8 +40,6 @@ define([
         if (index < nPhotos) {        
           var photoView = new PlayerActivityPhotoView({ elParent: self.el, model: new Backbone.Model(photo), player: self.options.player });
           photoView.render();
-
-          photoView.el.attr('photo-test', photo.urls['640']);
           
           // fire event
           app.dispatcher.trigger("PlayerActivityPhotosView:photoRendered", {PlayerActivityPhotosView: self, PlayerActivityPhotoView: photoView});

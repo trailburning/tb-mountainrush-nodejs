@@ -334,13 +334,13 @@ define([
     onPlayerActivityPhotosPhotoRendered: function (params) {
       var elParent = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"]');
 
-      if (this.model.get('id') != 'dzYVzpNYJo') {
-//        return;
-      }
-
       // no player so use page
       if (!elParent.length) {
+        console.log('NO PARENT');
         elParent = $('#page-view');
+      }
+      else {
+        console.log('FOUND PARENT');        
       }
 
       var elPhotos = $('.posts .photos', elParent);
@@ -358,8 +358,6 @@ define([
         }
         else {
           // show 1st photos
-
-          console.log('player:'+this.model.get('id')+' : '+nPhotos+' : '+DEF_NUM_PHOTOS_TO_SHOW);
 
 //          if (nPhotos <= DEF_NUM_PHOTOS_TO_SHOW) {
           if (nPhotos < DEF_NUM_PHOTOS_TO_SHOW) {
