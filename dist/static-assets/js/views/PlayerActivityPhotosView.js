@@ -41,6 +41,8 @@ define([
           var photoView = new PlayerActivityPhotoView({ elParent: self.el, model: new Backbone.Model(photo), player: self.options.player });
           photoView.render();
 
+          console.log(photoView);
+
           // fire event
           app.dispatcher.trigger("PlayerActivityPhotosView:photoRendered", {PlayerActivityPhotosView: self, PlayerActivityPhotoView: photoView});
         }
