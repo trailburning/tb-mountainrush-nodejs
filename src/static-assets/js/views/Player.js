@@ -11,7 +11,7 @@ var METRE_TO_FOOT = 3.28084;
 var KM_TO_MILE = 0.621371;
 
 //var DEF_NUM_PHOTOS_TO_SHOW = 6;
-var DEF_NUM_PHOTOS_TO_SHOW = 4;
+var DEF_NUM_PHOTOS_TO_SHOW = 2;
 
 define([
   'underscore', 
