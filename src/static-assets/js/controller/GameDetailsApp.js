@@ -369,6 +369,10 @@ define([
     }
 
     function onPlayerActivityPhotosLoaded(playerActivityPhotosView) {
+      function photoRendered(playerActivityPhotosView, playerActivityPhotoView) {
+        console.log('callback');
+      }
+
       if (playerActivityPhotosView.jsonPhotos.length) {
         $('#players-overview-view .with-photos').show();
         $('#players-overview-view .without-photos').hide();
@@ -379,7 +383,7 @@ define([
         if (nPhotoRendered < MAX_PLAYER_PHOTOS) {
           playerModel.set('activityPhotosRendered', nPhotoRendered+1);
           // render
-          playerActivityPhotosView.render(1).el;
+          playerActivityPhotosView.render(photoRendered, 1).el;
         }
       }
     }
