@@ -333,6 +333,10 @@ define([
     onPlayerActivityPhotosPhotoRendered: function (params) {
       var elParent = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"]');
 
+      if (this.model.get('id') != 'dzYVzpNYJo') {
+        return;
+      }
+
       console.log('player:'+this.model.get('id')+' : onPlayerActivityPhotosPhotoRendered');
 
       // no player so use page
@@ -361,7 +365,7 @@ define([
           if (nPhotos <= DEF_NUM_PHOTOS_TO_SHOW) {
             console.log('player:'+this.model.get('id')+' : '+nPhotos+' : SHOW');
 
-//            params.PlayerActivityPhotoView.el.removeClass('no-show');
+            params.PlayerActivityPhotoView.el.removeClass('no-show');
           }
 
           if (nPhotos > DEF_NUM_PHOTOS_TO_SHOW) {
