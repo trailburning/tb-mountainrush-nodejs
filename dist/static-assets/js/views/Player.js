@@ -308,9 +308,29 @@ define([
     },
 
     onPlayerActivityPhotosLoaded: function (playerActivityPhotosView) {
-// mla
-      function photoRendered(PlayerActivityPhotosView, PlayerActivityPhotoView) {
-        console.log('callback');
+      var self = this;
+
+      function photoRendered(playerActivityPhotosView, playerActivityPhotoView) {
+        console.log('callback:'+this.model.get('id'));
+
+        var elParent = $('#players-detail-view .player[data-id="' + self.model.get('id') + '"]');
+
+        // no player so use page
+        if (!elParent.length) {
+          console.log('NO PARENT');
+          elParent = $('#page-view');
+        }
+        else {
+          console.log('FOUND PARENT');        
+        }
+
+        var elPhotos = $('.posts .photos', elParent);
+        if (!self.currPhotoActivityId || (self.currPhotoActivityId == playerActivityPhotosView.activityID)) {
+          var nPhotos = $('.post.active', elParent).length;
+
+          console.log('l:'+nPhotos);
+        }
+        
       }
 
       if (this.currPhotoActivityId == playerActivityPhotosView.activityID) {
@@ -337,6 +357,7 @@ define([
     },
 
     onPlayerActivityPhotosPhotoRendered: function (params) {
+/*      
       var elParent = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"]');
 
       // no player so use page
@@ -386,6 +407,7 @@ define([
           }
         }
       }
+*/
     }
   });
 
