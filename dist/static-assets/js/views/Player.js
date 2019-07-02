@@ -308,6 +308,11 @@ define([
     },
 
     onPlayerActivityPhotosLoaded: function (playerActivityPhotosView) {
+// mla
+      function photoRendered(PlayerActivityPhotosView, PlayerActivityPhotoView) {
+        console.log('callback');
+      }
+
       if (this.currPhotoActivityId == playerActivityPhotosView.activityID) {
         if (playerActivityPhotosView.jsonPhotos.length) {
           this.currPlayerActivityPhotosView = playerActivityPhotosView;
@@ -321,7 +326,7 @@ define([
           $('.without-photos', this.elPlayerDetail).hide();
 
           // render
-          playerActivityPhotosView.render().el;
+          playerActivityPhotosView.render(photoRendered).el;
         }
 
         //any more?

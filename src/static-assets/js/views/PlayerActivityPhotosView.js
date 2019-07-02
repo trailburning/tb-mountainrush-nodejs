@@ -29,7 +29,7 @@ define([
       });
     },
 
-    render: function(nMaxPhotos){
+    render: function(callback, nMaxPhotos){
       var self = this;
       var nPhotos = this.jsonPhotos.length;
       if (nMaxPhotos) {
@@ -45,6 +45,8 @@ define([
 
           // fire event
           app.dispatcher.trigger("PlayerActivityPhotosView:photoRendered", {PlayerActivityPhotosView: self, PlayerActivityPhotoView: photoView});
+
+          callback(self, photoView);
         }
       });
 
