@@ -344,9 +344,6 @@ define([
 
       var elPhotos = $('.posts .photos', elParent);
       if (!this.currPhotoActivityId || (this.currPhotoActivityId == params.PlayerActivityPhotosView.activityID)) {
-
-        console.log('player:'+this.model.get('id')+' : photo rendered');
-
         var nPhotos = $('.post.active', elParent).length;
         // as we get photos we can hide the blank placeholders
         $('.post.inactive', elParent).each(function(index) {
@@ -368,6 +365,9 @@ define([
             console.log('player:'+this.model.get('id')+' : '+nPhotos+' : SHOW');
 
             params.PlayerActivityPhotoView.el.removeClass('no-show');
+          }
+          else {
+            console.log('player:'+this.model.get('id')+' : '+nPhotos+' : NO SHOW');            
           }
 
 //          if (nPhotos > DEF_NUM_PHOTOS_TO_SHOW) {
