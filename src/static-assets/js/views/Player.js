@@ -27,7 +27,6 @@ define([
   var Player = Backbone.View.extend({
     initialize: function(options){
       app.dispatcher.on("PlayerActivityPhotosView:loaded", this.onPlayerActivityPhotosLoaded, this);
-      app.dispatcher.on("PlayerActivityPhotosView:photoRendered", this.onPlayerActivityPhotosPhotoRendered, this);
       app.dispatcher.on("PlayerActivityMorePhotosView:click", this.onPlayerActivityMorePhotosClick, this);
 
       this.options = options;
@@ -307,6 +306,46 @@ define([
     },
 
     onPlayerActivityPhotosLoaded: function (playerActivityPhotosView) {
+      var self = this;
+
+      function photoRendered(playerActivityPhotosView, playerActivityPhotoView) {
+        var elParent = $('#players-detail-view .player[data-id="' + self.model.get('id') + '"]');
+
+        // no player so use page
+        if (!elParent.length) {
+          elParent = $('#page-view');
+        }
+
+        var elPhotos = $('.posts .photos', elParent);
+        if (!self.currPhotoActivityId || (self.currPhotoActivityId == playerActivityPhotosView.activityID)) {
+          var nPhotos = $('.post.active', elParent).length;
+
+          // as we get photos we can hide the blank placeholders
+          $('.post.inactive', elParent).each(function(index) {
+            if (index < nPhotos) {
+              $(this).hide();
+            }
+          });
+
+          if (elPhotos.hasClass('show-all')) {
+            playerActivityPhotoView.el.removeClass('no-show');
+          }
+          else {
+            // show 1st photos
+
+            if (nPhotos <= DEF_NUM_PHOTOS_TO_SHOW) {
+              playerActivityPhotoView.el.removeClass('no-show');
+            }
+  
+            if (nPhotos > DEF_NUM_PHOTOS_TO_SHOW) {
+              if (self.playerActivityMorePhotosView) {
+                self.playerActivityMorePhotosView.render().el;
+              }
+            }
+          }
+        }
+      }
+
       if (this.currPhotoActivityId == playerActivityPhotosView.activityID) {
         if (playerActivityPhotosView.jsonPhotos.length) {
           this.currPlayerActivityPhotosView = playerActivityPhotosView;
@@ -320,7 +359,7 @@ define([
           $('.without-photos', this.elPlayerDetail).hide();
 
           // render
-          playerActivityPhotosView.render().el;
+          playerActivityPhotosView.render(photoRendered).el;
         }
 
         //any more?
@@ -328,41 +367,7 @@ define([
           this.getActivityPhotosByPos(this.nCurrPhotoActivity + 1);
         }
       }
-    },
 
-    onPlayerActivityPhotosPhotoRendered: function (params) {
-      var elParent = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"]');
-      // no player so use page
-      if (!elParent.length) {
-        elParent = $('#page-view');
-      }
-
-      var elPhotos = $('.posts .photos', elParent);
-      if (!this.currPhotoActivityId || (this.currPhotoActivityId == params.PlayerActivityPhotosView.activityID)) {
-        var nPhotos = $('.post.active', elParent).length;
-        // as we get photos we can hide the blank placeholders
-        $('.post.inactive', elParent).each(function(index) {
-          if (index < nPhotos) {
-            $(this).hide();
-          }
-        });
-
-        if (elPhotos.hasClass('show-all')) {
-          params.PlayerActivityPhotoView.el.removeClass('no-show');
-        }
-        else {
-          // show 1st photos
-          if (nPhotos <= DEF_NUM_PHOTOS_TO_SHOW) {
-            params.PlayerActivityPhotoView.el.removeClass('no-show');
-          }
-
-          if (nPhotos > DEF_NUM_PHOTOS_TO_SHOW) {
-            if (this.playerActivityMorePhotosView) {
-              this.playerActivityMorePhotosView.render().el;
-            }
-          }
-        }
-      }
     }
   });
 
