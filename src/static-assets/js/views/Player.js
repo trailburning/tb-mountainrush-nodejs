@@ -355,10 +355,13 @@ define([
         }
         else {
           // show 1st photos
-          if (nPhotos <= DEF_NUM_PHOTOS_TO_SHOW) {
-            console.log('player:'+this.model.get('id')+' : '+nPhotos+' : '+DEF_NUM_PHOTOS_TO_SHOW);
 
-            params.PlayerActivityPhotoView.el.removeClass('no-show');
+          console.log('player:'+this.model.get('id')+' : '+nPhotos+' : '+DEF_NUM_PHOTOS_TO_SHOW);
+
+          if (nPhotos <= DEF_NUM_PHOTOS_TO_SHOW) {
+            console.log('player:'+this.model.get('id')+' : '+nPhotos+' : SHOW');
+
+//            params.PlayerActivityPhotoView.el.removeClass('no-show');
           }
 
           if (nPhotos > DEF_NUM_PHOTOS_TO_SHOW) {
