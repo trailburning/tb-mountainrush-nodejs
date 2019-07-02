@@ -10,7 +10,8 @@ var IMPERIAL_LONG = 'mi.';
 var METRE_TO_FOOT = 3.28084;
 var KM_TO_MILE = 0.621371;
 
-var DEF_NUM_PHOTOS_TO_SHOW = 6;
+//var DEF_NUM_PHOTOS_TO_SHOW = 6;
+var DEF_NUM_PHOTOS_TO_SHOW = 4;
 
 define([
   'underscore', 
@@ -364,7 +365,7 @@ define([
           if (nPhotos < DEF_NUM_PHOTOS_TO_SHOW) {
             console.log('player:'+this.model.get('id')+' : '+nPhotos+' : SHOW');
 
-            params.PlayerActivityPhotoView.el.removeClass('no-show');
+//            params.PlayerActivityPhotoView.el.removeClass('no-show');
           }
           else {
             console.log('player:'+this.model.get('id')+' : '+nPhotos+' : NO SHOW');            

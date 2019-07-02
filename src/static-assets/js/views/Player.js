@@ -365,7 +365,7 @@ define([
           if (nPhotos < DEF_NUM_PHOTOS_TO_SHOW) {
             console.log('player:'+this.model.get('id')+' : '+nPhotos+' : SHOW');
 
-            params.PlayerActivityPhotoView.el.removeClass('no-show');
+//            params.PlayerActivityPhotoView.el.removeClass('no-show');
           }
           else {
             console.log('player:'+this.model.get('id')+' : '+nPhotos+' : NO SHOW');            
