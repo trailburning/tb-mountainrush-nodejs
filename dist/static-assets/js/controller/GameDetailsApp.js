@@ -47,7 +47,6 @@ define([
     app.dispatcher.on("ChallengeCancelModalView:challengeCancelled", onChallengeCancelled);
     app.dispatcher.on("PlayersOverviewView:playerClick", onPlayerClicked);
     app.dispatcher.on("PlayerActivityPhotosView:loaded", onPlayerActivityPhotosLoaded);
-    app.dispatcher.on("PlayerActivityPhotosView:photoRendered", onPlayerActivityPhotosPhotoRendered);
 
     var challengeView = null, gameDetailsModalView = null;
     var mountainModel = new Backbone.Model();
@@ -386,9 +385,6 @@ define([
           playerActivityPhotosView.render(photoRendered, 1).el;
         }
       }
-    }
-
-    function onPlayerActivityPhotosPhotoRendered(params) {
     }
 
     // check for player
