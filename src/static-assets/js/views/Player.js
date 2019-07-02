@@ -311,7 +311,7 @@ define([
       var self = this;
 
       function photoRendered(playerActivityPhotosView, playerActivityPhotoView) {
-        console.log('callback:'+this.model.get('id'));
+        console.log('callback:'+self.model.get('id'));
 
         var elParent = $('#players-detail-view .player[data-id="' + self.model.get('id') + '"]');
 
@@ -329,8 +329,11 @@ define([
           var nPhotos = $('.post.active', elParent).length;
 
           console.log('l:'+nPhotos);
+
+          playerActivityPhotoView.el.attr('test', nPhotos);
+
         }
-        
+
       }
 
       if (this.currPhotoActivityId == playerActivityPhotosView.activityID) {
