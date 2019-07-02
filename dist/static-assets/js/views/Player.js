@@ -320,10 +320,6 @@ define([
         if (!self.currPhotoActivityId || (self.currPhotoActivityId == playerActivityPhotosView.activityID)) {
           var nPhotos = $('.post.active', elParent).length;
 
-          console.log('l:'+nPhotos);
-
-          playerActivityPhotoView.el.attr('test', nPhotos);
-
           // as we get photos we can hide the blank placeholders
           $('.post.inactive', elParent).each(function(index) {
             if (index < nPhotos) {
