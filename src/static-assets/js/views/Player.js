@@ -334,10 +334,10 @@ define([
       var elParent = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"]');
 
       if (this.model.get('id') != 'dzYVzpNYJo') {
-        return;
+//        return;
       }
 
-      console.log('player:'+this.model.get('id')+' : onPlayerActivityPhotosPhotoRendered');
+      console.log('player:'+this.model.get('id')+' : photo rendered');
 
       // no player so use page
       if (!elParent.length) {
