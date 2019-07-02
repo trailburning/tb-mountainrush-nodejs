@@ -332,8 +332,30 @@ define([
 
           playerActivityPhotoView.el.attr('test', nPhotos);
 
-        }
+          // as we get photos we can hide the blank placeholders
+          $('.post.inactive', elParent).each(function(index) {
+            if (index < nPhotos) {
+              $(this).hide();
+            }
+          });
 
+          if (elPhotos.hasClass('show-all')) {
+            params.PlayerActivityPhotoView.el.removeClass('no-show');
+          }
+          else {
+            // show 1st photos
+
+            if (nPhotos <= DEF_NUM_PHOTOS_TO_SHOW) {
+              params.PlayerActivityPhotoView.el.removeClass('no-show');
+            }
+  
+            if (nPhotos > DEF_NUM_PHOTOS_TO_SHOW) {
+              if (self.playerActivityMorePhotosView) {
+                self.playerActivityMorePhotosView.render().el;
+              }
+            }
+          }
+        }
       }
 
       if (this.currPhotoActivityId == playerActivityPhotosView.activityID) {
