@@ -359,8 +359,6 @@ define([
         else {
           // show 1st photos
 
-          console.log('player:'+this.model.get('id')+' : '+nPhotos+' : '+DEF_NUM_PHOTOS_TO_SHOW);
-
 //          if (nPhotos <= DEF_NUM_PHOTOS_TO_SHOW) {
           if (nPhotos < DEF_NUM_PHOTOS_TO_SHOW) {
             console.log('player:'+this.model.get('id')+' : '+nPhotos+' : ON');
