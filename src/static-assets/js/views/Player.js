@@ -332,6 +332,9 @@ define([
 
     onPlayerActivityPhotosPhotoRendered: function (params) {
       var elParent = $('#players-detail-view .player[data-id="' + this.model.get('id') + '"]');
+
+      console.log('player:'+this.model.get('id')+' : onPlayerActivityPhotosPhotoRendered');
+
       // no player so use page
       if (!elParent.length) {
         elParent = $('#page-view');
@@ -353,6 +356,8 @@ define([
         else {
           // show 1st photos
           if (nPhotos <= DEF_NUM_PHOTOS_TO_SHOW) {
+            console.log('player:'+this.model.get('id')+' : '+nPhotos+' : '+DEF_NUM_PHOTOS_TO_SHOW);
+
             params.PlayerActivityPhotoView.el.removeClass('no-show');
           }
 
