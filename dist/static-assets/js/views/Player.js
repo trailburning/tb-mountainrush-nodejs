@@ -363,7 +363,7 @@ define([
           if (nPhotos < DEF_NUM_PHOTOS_TO_SHOW) {
             console.log('player:'+this.model.get('id')+' : '+nPhotos+' : ON');
 
-            console.log('url:'+params.PlayerActivityPhotoView.model.get('urls')['640']);
+            console.log('url2:'+params.PlayerActivityPhotoView.model.get('urls')['640']);
 
             params.PlayerActivityPhotoView.el.attr('test', nPhotos);
 
