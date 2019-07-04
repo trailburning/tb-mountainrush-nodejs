@@ -376,6 +376,18 @@ define([
         $('#players-overview-view .with-photos').show();
         $('#players-overview-view .without-photos').hide();
 
+        // total photos
+        var elPhotos = $('#players-overview-view .posts .photos');
+        var nPhotos = $('.post.active', elPhotos).length;
+
+        // as we get photos we can hide the blank placeholders
+        $('.post.inactive', elPhotos).each(function(index) {
+          console.log('inactive');
+          if (index < nPhotos) {
+            $(this).hide();
+          }
+        });
+
         var playerModel = playerActivityPhotosView.getPlayer();
         var nPhotoRendered = Number(playerModel.get('activityPhotosRendered'));
         // have we reached the player render limit?
