@@ -379,8 +379,6 @@ define([
         var elPhotos = $('#players-overview-view .posts .photos');
         var nPhotos = $('.post.active', elPhotos).length;
 
-        console.log('photos:'+nPhotos);
-
         // as we get photos we can hide the blank placeholders
         $('.post.inactive', elPhotos).each(function(index) {
           if (index < nPhotos) {
