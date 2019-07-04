@@ -369,7 +369,6 @@ define([
 
     function onPlayerActivityPhotosLoaded(playerActivityPhotosView) {
       function photoRendered(playerActivityPhotosView, playerActivityPhotoView) {
-        console.log('callback');
       }
 
       if (playerActivityPhotosView.jsonPhotos.length) {
@@ -380,9 +379,10 @@ define([
         var elPhotos = $('#players-overview-view .posts .photos');
         var nPhotos = $('.post.active', elPhotos).length;
 
+        console.log('photos:'+nPhotos);
+
         // as we get photos we can hide the blank placeholders
         $('.post.inactive', elPhotos).each(function(index) {
-          console.log('inactive');
           if (index < nPhotos) {
             $(this).hide();
           }
