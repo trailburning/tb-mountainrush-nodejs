@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include ../partials/includes.ejs %>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<% if (Campaign.CampaignTemplate != 'default') { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/web_platform.css' rel='stylesheet' />
+<% } %>
+<link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<link href='/static-assets/css/games.css' rel='stylesheet' />
+<% include ../partials/analyticsFBPixel.ejs %>
+</head>
+<body>
+<script>
+var APP = 'GamesApp';
+var GAME_API_URL = '<%= Defs.MRAPIURL %>';
+var HOST_URL = '<%= Defs.BaseHTTPSURL %>';
+var CLIENT_ID = '<%= Campaign.ClientID %>';
+var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
+var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
+var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>';
+</script>
+
+<div class="container-fluid nopadding">
+  <% if (Campaign.CampaignTemplate == 'default') { %>
+    <% include ../partials/header.ejs %>
+  <% } else { %>
+    <%- include('../partials/' + Campaign.CampaignTemplate + '/header.ejs') %>
+  <% } %>
+
+  <div id="page-view">
+    <div id="hero-view">
+      <div class="image fade_on_ready">        
+      <% if (Campaign.CampaignTemplate == 'default') { %>
+        <img class="scale" src="https://mountainrush-assets.imgix.net/pages/olivier-miche-102259-unsplash.jpg?fm=jpg&q=80&w=1280">
+      <% } else { %>
+        <img class="scale" src="https://tbassets2.imgix.net/images/brands/mountainrush/clients/<%= Campaign.CampaignTemplate %>/pages/WW185891.jpg?fm=jpg&q=80&w=1280">
+      <% } %>
+      </div>
+    </div>
+
+    <div id="page-content-view">
+      <div class="content-view">
+        <h1>Challenges</h1>
+
+        <div id="challenges-monitor-view"></div>
+
+        <div id="loader-view">
+          <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-sticker-container">
+        <div class="campaign-sticker">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if (Campaign.CampaignTemplate == 'default') { %>
+    <% include ../partials/footer.ejs %>
+  <% } else { %>
+    <%- include('../partials/' + Campaign.CampaignTemplate + '/footer.ejs') %>
+  <% } %>
+</div>
+
+<div id="mobileTest" class="visible-xs"></div>
+<div id="demo-video-view"></div>
+
+<script type="text/template" id="challengesMonitorViewTemplate">
+  <div class="players-ranking">
+
+  {{ _.each(challenges, function(challenge, index) { }}
+    <div class="player-ranking-title visible-xs">
+      {{ if (challenge.game_state == 'active') { }}<div class="icon"></div>{{ } }}
+      <div class="player-title">{{= challenge.name }}</div>
+    </div>
+
+    <ul>
+      <li class="player-ranking-title hidden-xs">
+        {{ if (challenge.game_state == 'active') { }}<div class="icon"></div>{{ } }}
+        <div class="player-title">{{= challenge.name }}</div>
+      </li>
+
+      {{ _.each(challenge.players, function(player, index) { }}
+        <li class="player-ranking" data-game-id="{{= challenge.id }}" data-id="{{= player.id }}" data-pos="{{= index }}">
+          <div class="photo">
+            <div class="avatar"><img src="{{= player.avatar }}"></div>
+            <div class="photo-icon {{ if (player.mediaCaptured) { }}show{{ } }}"><i class="fa fa-camera"></i></div>
+          </div>
+          <div class="overview">
+          <h1 class="truncate" data-truncate="15">{{= player.firstname }} {{= player.lastname }}</h1>
+          {{ if (player.elevationToSummit) { }}
+            {{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m <%= __('game.to_summit') %>
+          {{ } else { }}
+          <%= __('game.summited_long') %>
+          {{ } }}
+          </div>
+          <div class="hidden-xs">
+            <div class="fundraising">
+            {{ if (player.fundraising_goal && player.fundraising_goal > 0) { }}
+              <h1>{{= player.fundraising_currency_symbol }}{{= player.fundraising_raised }}</h1>
+              of {{= player.fundraising_currency_symbol }}{{= player.fundraising_goal }} target
+            {{ } }}
+            </div>
+          </div>
+          <div class="right">
+            <div class="player-btns">
+              <div class="player-btn">
+              </div>
+            </div>
+          </div>
+
+          <div class="visible-xs">
+            <div class="fundraising-mini">
+              <div class="fundraising-details">
+              Raised <strong>{{= player.fundraising_currency_symbol }}{{= player.fundraising_raised }}</strong> of <strong>{{= player.fundraising_currency_symbol }}{{= player.fundraising_goal }}</strong> target
+              </div>
+            </div>
+          </div>
+        </li>
+      {{ }); }}
+    </ul>
+  {{ }); }}
+  </div>
+</script>
+
+<% include ../partials/demoVideoTemplate.ejs %>
+<% include ../partials/analytics.ejs %>
+<script data-main="/static-assets/js/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+</html>

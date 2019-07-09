@@ -1,0 +1,214 @@
+h1,
+h2 {
+  padding: 0 0 4px 0;
+  font-family: 'radikalbold', sans-serif;
+  line-height: 1.2em;
+  text-transform: uppercase; }
+
+h1 {
+  font-size: 1.8em;
+  text-align: left; }
+
+h2 {
+  padding-top: 20px;
+  font-size: 1.2em; }
+
+#loader-view {
+  padding-top: 40px; }
+
+/* FOOTER VIEW */
+/******************************************/
+#footer-view .logo-container {
+  display: none; }
+
+/* HERO VIEWS */
+/******************************************/
+#hero-view {
+  position: relative; }
+  #hero-view .image {
+    width: 100%;
+    height: 220px; }
+
+/* PAGE CONTENT VIEW */
+/******************************************/
+#page-content-view {
+  position: relative;
+  background-color: #FFF;
+  min-height: 500px; }
+  #page-content-view a.link,
+  #page-content-view a.link:active,
+  #page-content-view a.link:visited {
+    color: inherit;
+    text-decoration: underline; }
+  #page-content-view a.link:hover {
+    color: inherit;
+    text-decoration: none; }
+  #page-content-view #lema-container.lema-container {
+    margin: 0 auto; }
+  #page-content-view .centre-text {
+    text-align: left; }
+  #page-content-view .campaign-sticker-container {
+    display: none;
+    position: absolute;
+    bottom: -62px;
+    width: 100%; }
+  #page-content-view .campaign-sticker {
+    margin: 0 auto; }
+
+/* CONTENT VIEW */
+/******************************************/
+.content-view {
+  padding: 52px 16px; }
+  .content-view .intro-text {
+    padding-top: 4px;
+    font-size: 1.2em; }
+
+/* CHALLENGES MONITOR VIEW */
+/******************************************/
+#challenges-monitor-view li {
+  padding: 16px 8px 16px 10px;
+  text-align: left;
+  color: #a5b4bd; }
+
+#challenges-monitor-view .players-ranking {
+  padding: 24px 0 40px 0; }
+  #challenges-monitor-view .players-ranking .player-ranking-title {
+    padding: 10px 8px 8px 20px;
+    text-align: center;
+    color: #3c5b6e;
+    background: #f8f8f8;
+    font-family: 'radikalbold', sans-serif;
+    font-size: 0.8em;
+    text-transform: uppercase; }
+    #challenges-monitor-view .players-ranking .player-ranking-title .icon {
+      display: inline-block;
+      vertical-align: top;
+      margin-top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: #f75f36; }
+    #challenges-monitor-view .players-ranking .player-ranking-title .player-title {
+      display: inline-block;
+      width: 200px;
+      padding-left: 10px; }
+  #challenges-monitor-view .players-ranking .player-ranking {
+    padding: 16px 8px 16px 10px;
+    text-align: left;
+    color: #a5b4bd; }
+    #challenges-monitor-view .players-ranking .player-ranking:hover {
+      cursor: pointer;
+      background: #ebebeb; }
+    #challenges-monitor-view .players-ranking .player-ranking h1 {
+      color: #44b6f7;
+      text-align: left;
+      font-family: 'radikalbold', sans-serif;
+      padding-bottom: 2px;
+      font-size: 1.2em; }
+    #challenges-monitor-view .players-ranking .player-ranking .photo {
+      float: left;
+      position: relative;
+      width: 48px;
+      padding-top: 0;
+      padding-left: 0; }
+    #challenges-monitor-view .players-ranking .player-ranking .photo-icon {
+      display: none;
+      position: absolute;
+      top: -5px;
+      left: 28px;
+      width: 20px;
+      height: 20px;
+      background: #f75f36;
+      border-radius: 50%;
+      overflow: hidden; }
+      #challenges-monitor-view .players-ranking .player-ranking .photo-icon i {
+        vertical-align: top;
+        font-size: 0.8em;
+        width: 100%;
+        line-height: 20px;
+        text-align: center;
+        color: #fff; }
+      #challenges-monitor-view .players-ranking .player-ranking .photo-icon .show {
+        display: block; }
+    #challenges-monitor-view .players-ranking .player-ranking .overview {
+      float: left;
+      padding-top: 2px;
+      padding-left: 10px; }
+    #challenges-monitor-view .players-ranking .player-ranking .fundraising {
+      float: left;
+      padding-top: 2px;
+      padding-left: 10px; }
+    #challenges-monitor-view .players-ranking .player-ranking .fundraising-mini {
+      clear: both; }
+      #challenges-monitor-view .players-ranking .player-ranking .fundraising-mini .fundraising-details {
+        padding-top: 8px;
+        color: #3c5b6e; }
+
+#challenges-monitor-view .photo {
+  float: left;
+  position: relative;
+  width: 48px;
+  padding-top: 0;
+  padding-left: 0; }
+
+#challenges-monitor-view .photo-icon {
+  /*  
+  display: none;
+*/
+  position: absolute;
+  top: -5px;
+  left: 28px;
+  width: 20px;
+  height: 20px;
+  background: #f75f36;
+  border-radius: 50%;
+  overflow: hidden; }
+  #challenges-monitor-view .photo-icon i {
+    vertical-align: top;
+    font-size: 0.8em;
+    width: 100%;
+    line-height: 20px;
+    text-align: center;
+    color: #fff; }
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  h1 {
+    text-align: center; }
+  #hero-view .image {
+    height: 360px; }
+  #page-content-view .campaign-sticker-container {
+    z-index: 2;
+    display: block; }
+  #page-content-view .centre-text {
+    padding-left: 32px;
+    padding-right: 32px; }
+  #challenges-monitor-view .players-ranking {
+    padding-left: 0;
+    padding-right: 0; }
+    #challenges-monitor-view .players-ranking .player-ranking-title {
+      text-align: left; }
+    #challenges-monitor-view .players-ranking .player-ranking {
+      height: 75px;
+      padding-left: 20px;
+      padding-bottom: 0; }
+      #challenges-monitor-view .players-ranking .player-ranking .photo {
+        width: 58px; }
+      #challenges-monitor-view .players-ranking .player-ranking .overview {
+        width: 200px;
+        border-left: 1px solid #a5b4bd; }
+      #challenges-monitor-view .players-ranking .player-ranking .fundraising {
+        border-left: 1px solid #a5b4bd; } }
+
+/* Small devices (tablets, 992px and up) */
+@media (min-width: 992px) {
+  #hero-view {
+    -webkit-box-shadow: 0px 10px 10px 0 rgba(25, 56, 72, 0.2);
+    -moz-box-shadow: 0px 10px 10px 0 rgba(25, 56, 72, 0.2);
+    box-shadow: 0px 10px 10px 0 rgba(25, 56, 72, 0.2); }
+    #hero-view .image {
+      height: 484px; }
+  #page-content-view {
+    margin: -236px auto 0 auto;
+    width: 670px; } }
