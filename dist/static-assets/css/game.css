@@ -777,8 +777,8 @@ mla
   padding-left: 16px; }
 
 #player-view .shopping-list-sticker-container {
-  position: absolute;
-  bottom: -62px;
+  position: relative;
+  bottom: 62px;
   width: 100%; }
 
 #player-view .shopping-list-sticker-container .shopping-list-sticker {
