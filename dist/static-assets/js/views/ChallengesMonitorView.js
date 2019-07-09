@@ -45,7 +45,7 @@ define([
           player.elevationToSummit = fElevationToSummit;
 
           // modify avatar to use image proxy with campaign fallback
-          player.avatar = GAME_API_URL + 'imageproxy.php?url=' + player.avatar + '&urlfallback=http://mountainrush.co.uk/static-assets/images/' + CAMPAIGN_TEMPLATE + '/avatar_unknown.jpg';
+          player.avatar = GAME_API_URL + 'imageproxy.php?url=' + player.avatar + '&urlfallback=https://www.mountainrush.co.uk/static-assets/images/' + CAMPAIGN_TEMPLATE + '/avatar_unknown.jpg';
         });
       });
 

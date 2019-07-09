@@ -611,7 +611,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         }
         strImage = strImageHost + strImage;
 
-        bEnabled = mountain3DView.addMarker(event.get('id'), event.get('coords'), fProgressKM, strImage, strImageHost + 'http://mountainrush.trailburning.com/static-assets/images/markers/marker-event-unlocked.png', strImageHost + 'http://mountainrush.trailburning.com/static-assets/images/markers/marker-event-locked.png');
+        bEnabled = mountain3DView.addMarker(event.get('id'), event.get('coords'), fProgressKM, strImage, strImageHost + 'https://www.mountainrush.trailburning.com/static-assets/images/markers/marker-event-unlocked.png', strImageHost + 'https://www.mountainrush.trailburning.com/static-assets/images/markers/marker-event-locked.png');
 
         if (bEnabled) {
           latestMarker = event;
@@ -682,7 +682,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       if (mountainEventsCollection.length && activePlayer) {
         bRenderFlag = false;
       }
-      mountain3DView.addFlag(strImageHost + 'http://mountainrush.trailburning.com/static-assets/images/' + strCampaignFolder + 'markers/marker-location.png', bRenderFlag);
+      mountain3DView.addFlag(strImageHost + 'https://www.mountainrush.trailburning.com/static-assets/images/' + strCampaignFolder + 'markers/marker-location.png', bRenderFlag);
       mountain3DView.showBaseData();
 
       $('#players-summary-view .player-summary, #player-view .player-ranking, #players-detail-view .player-name').click(function(evt){
@@ -917,7 +917,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
       model.set('progress', fProgress);
       // modify avatar to use image proxy with campaign fallback
-      model.set('avatar', GAME_API_URL + 'imageproxy.php?url=' + model.get('avatar') + '&urlfallback=http://mountainrush.co.uk/static-assets/images/' + CAMPAIGN_TEMPLATE + '/avatar_unknown.jpg');
+      model.set('avatar', GAME_API_URL + 'imageproxy.php?url=' + model.get('avatar') + '&urlfallback=https://www.mountainrush.co.uk/static-assets/images/' + CAMPAIGN_TEMPLATE + '/avatar_unknown.jpg');
 
       nPlayersLoaded++;
 
