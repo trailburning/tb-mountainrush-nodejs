@@ -682,7 +682,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       if (mountainEventsCollection.length && activePlayer) {
         bRenderFlag = false;
       }
-      mountain3DView.addFlag(strImageHost + 'https://www.mountainrush.trailburning.com/static-assets/images/' + strCampaignFolder + 'markers/marker-location.png', bRenderFlag);
+      mountain3DView.addFlag(strImageHost + 'https://www.mountainrush.co.uk/static-assets/images/' + strCampaignFolder + 'markers/marker-location.png', bRenderFlag);
       mountain3DView.showBaseData();
 
       $('#players-summary-view .player-summary, #player-view .player-ranking, #players-detail-view .player-name').click(function(evt){
