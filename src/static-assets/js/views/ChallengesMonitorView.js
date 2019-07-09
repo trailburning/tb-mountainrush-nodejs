@@ -46,6 +46,10 @@ define([
 
           // modify avatar to use image proxy with campaign fallback
           player.avatar = GAME_API_URL + 'imageproxy.php?url=' + player.avatar + '&urlfallback=https://www.mountainrush.co.uk/static-assets/images/' + CAMPAIGN_TEMPLATE + '/avatar_unknown.jpg';
+
+          if (!player.fundraising_raised) {
+            player.fundraising_raised = 0;
+          }
         });
       });
 

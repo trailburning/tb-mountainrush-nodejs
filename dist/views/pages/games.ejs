@@ -116,9 +116,11 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
 
           <div class="visible-xs">
             <div class="fundraising-mini">
-              <div class="fundraising-details">
-              Raised <strong>{{= player.fundraising_currency_symbol }}{{= player.fundraising_raised }}</strong> of <strong>{{= player.fundraising_currency_symbol }}{{= player.fundraising_goal }}</strong> target
-              </div>
+              {{ if (player.fundraising_goal && player.fundraising_goal > 0) { }}
+                <div class="fundraising-details">
+                Raised <strong>{{= player.fundraising_currency_symbol }}{{= player.fundraising_raised }}</strong> of <strong>{{= player.fundraising_currency_symbol }}{{= player.fundraising_goal }}</strong> target
+                </div>
+              {{ } }}
             </div>
           </div>
         </li>
