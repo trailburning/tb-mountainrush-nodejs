@@ -329,6 +329,21 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/campaign/:campaignID/games', function(req, res) {
+    var defs = helper.getDefs(req);
+
+    getCampaignDataByCampaign(req, req.params.campaignID, function(err, campaign){ 
+      if (campaign) {
+        res.render('pages/games', {Defs: defs, Campaign: campaign});
+      }
+      else {
+        getCampaignDataByCampaign(req, process.env.MR_DEF_CAMPAIGN, function(err, campaign){ 
+          res.render('pages/page-error', {Defs: defs, Campaign: campaign});
+        });
+      }
+    });
+  });
+
   app.get('/campaign/:campaignID/privacy', function(req, res) {
     var defs = helper.getDefs(req);
     defs.ImageCopyright = '© Sabrina Schumann / WWF-US';
