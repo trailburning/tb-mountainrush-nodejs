@@ -20,30 +20,30 @@
 
 <meta property="og:type" content="website" />
 <% if (Defs.PlayerGoal) { %>
-  <meta property="og:url" content="https://mountainrush.co.uk/game/<%= Defs.GameID %>/player/<%= Defs.PlayerID %>/goal/<%= Defs.PlayerGoal %>"/>
+  <meta property="og:url" content="https://www.mountainrush.co.uk/game/<%= Defs.GameID %>/player/<%= Defs.PlayerID %>/goal/<%= Defs.PlayerGoal %>"/>
   <meta property="og:image" content="<%= Defs.SocialImage %>"/>
 <% } else if (Defs.GroupGoal) { %>
-  <meta property="og:url" content="https://mountainrush.co.uk/game/<%= Defs.GameID %>/details/groupgoal/<%= Defs.GroupGoal %>"/>
+  <meta property="og:url" content="https://www.mountainrush.co.uk/game/<%= Defs.GameID %>/details/groupgoal/<%= Defs.GroupGoal %>"/>
   <meta property="og:image" content="<%= Defs.SocialImage %>"/>
 <% } else if (Defs.PlayerProgress) { %>
-  <meta property="og:url" content="https://mountainrush.co.uk/game/<%= Defs.GameID %>/player/<%= Defs.PlayerID %>/progress/<%= Defs.PlayerProgress %>"/>
+  <meta property="og:url" content="https://www.mountainrush.co.uk/game/<%= Defs.GameID %>/player/<%= Defs.PlayerID %>/progress/<%= Defs.PlayerProgress %>"/>
   <meta property="og:image" content="<%= Defs.SocialImage %>"/>
 <% } else if (Defs.GameProgress) { %>
-  <meta property="og:url" content="https://mountainrush.co.uk/game/<%= Defs.GameID %>/details/progress/<%= Defs.GameProgress %>"/>
+  <meta property="og:url" content="https://www.mountainrush.co.uk/game/<%= Defs.GameID %>/details/progress/<%= Defs.GameProgress %>"/>
   <meta property="og:image" content="<%= Defs.SocialImage %>"/>
 <% } else if (Defs.GameID) { %>
-  <meta property="og:url" content="https://mountainrush.co.uk/game/<%= Defs.GameID %>"/>
+  <meta property="og:url" content="https://www.mountainrush.co.uk/game/<%= Defs.GameID %>"/>
   <% if (Campaign.CampaignTemplate == 'default') { %>
   <meta property="og:image" content="<%= Defs.SocialImage %>"/>
   <% } else { %>
-  <meta property="og:image" content="https://mountainrush.co.uk/static-assets/images/<%= Campaign.CampaignTemplate %>/190524_2_share_facebook.jpg"/>
+  <meta property="og:image" content="https://www.mountainrush.co.uk/static-assets/images/<%= Campaign.CampaignTemplate %>/190524_2_share_facebook.jpg"/>
   <% } %>
 <% } else if (Campaign.CampaignName) { %>
   <meta property="og:url" content="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>"/>
-  <meta property="og:image" content="https://mountainrush.co.uk/static-assets/images/<%= Campaign.CampaignTemplate %>/190524_2_share_facebook.jpg"/>
+  <meta property="og:image" content="https://www.mountainrush.co.uk/static-assets/images/<%= Campaign.CampaignTemplate %>/190524_2_share_facebook.jpg"/>
 <% } else { %>
-  <meta property="og:url" content="https://mountainrush.co.uk/"/>
-  <meta property="og:image" content="https://mountainrush.co.uk/static-assets/images/190524_2_share_facebook.jpg"/>
+  <meta property="og:url" content="https://www.mountainrush.co.uk/"/>
+  <meta property="og:image" content="https://www.mountainrush.co.uk/static-assets/images/190524_2_share_facebook.jpg"/>
 <% } %>
 
 <meta property="og:image:width" content="1200"/>
