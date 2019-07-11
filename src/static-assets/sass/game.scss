@@ -945,10 +945,6 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
 #player-view .detail {
   .share-detail {
     padding: 38px 0 16px 0;
-/*    
-mla
-    border-top: 1px solid #d7d7d7;
-*/    
     color: #a3a3a3;
     text-align: center;
 
@@ -1606,6 +1602,12 @@ mla
       float: left;
       margin-top: -55px;
       width: 670px;
+
+      .share-detail {
+        .btns {
+          padding-bottom: 16px;      
+        }
+      }
     }
   }
 

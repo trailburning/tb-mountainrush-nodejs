@@ -746,10 +746,6 @@ body.fundraising #player-view .detail .player .fundraising-donations-view {
 
 #player-view .detail .share-detail {
   padding: 38px 0 16px 0;
-  /*    
-mla
-    border-top: 1px solid #d7d7d7;
-*/
   color: #a3a3a3;
   text-align: center; }
   #player-view .detail .share-detail .share-text {
@@ -1182,6 +1178,8 @@ mla
       float: left;
       margin-top: -55px;
       width: 670px; }
+      #player-view .detail .share-detail .btns {
+        padding-bottom: 16px; }
   body.single-player #player-view .detail-container {
     width: 100%; }
   body.single-player #player-view .detail {
