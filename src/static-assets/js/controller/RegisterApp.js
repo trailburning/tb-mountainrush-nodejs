@@ -120,7 +120,7 @@ define([
 
         nState = STATE_INIT;
         nPrevState = STATE_INIT;
-
+        
 //        if (TEST) {
 //          removeUserCookie(CLIENT_ID);
 //          PLAYER_TOKEN = '9b69f66ee9a7d20702a5b9771322388df8cb886a'; // MR - Matt
