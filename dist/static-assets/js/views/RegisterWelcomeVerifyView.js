@@ -61,10 +61,10 @@ define([
                   break;
               }
             }
-          }
-          else {
-            // fire event
-            app.dispatcher.trigger("RegisterWelcomeVerifyView:userUpdated");
+            else {
+              // fire event
+              app.dispatcher.trigger("RegisterWelcomeVerifyView:userUpdated");
+            }
           }
         }
       });
