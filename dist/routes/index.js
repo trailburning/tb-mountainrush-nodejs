@@ -632,7 +632,7 @@ module.exports = function(app) {
         getCampaignProviderConnectDataAndToken(req.params.campaignID, req.query.code, function(err, data){ 
           defs.StravaOauthConnectURL = data.oauthConnectURL;
           defs.StravaToken = data.token;
-          defs.StravaAthleteID = data.athlete.id;
+          defs.PlayerID = data.playerID;
           
           res.render('pages/register', {Defs: defs, Campaign: campaign});
         });
