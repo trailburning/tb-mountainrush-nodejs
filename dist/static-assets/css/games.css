@@ -73,7 +73,7 @@ h2 {
 #challenges-monitor-view .players-ranking {
   padding: 24px 0 40px 0; }
   #challenges-monitor-view .players-ranking .player-ranking-title {
-    padding: 10px 8px 8px 20px;
+    padding: 10px 20px 8px 20px;
     text-align: left;
     color: #3c5b6e;
     background: #f8f8f8;
@@ -94,7 +94,6 @@ h2 {
       display: inline-block; }
       #challenges-monitor-view .players-ranking .player-ranking-title .details .player-title {
         display: inline-block;
-        width: 200px;
         padding-left: 10px; }
     #challenges-monitor-view .players-ranking .player-ranking-title .countdown {
       width: 50%;
