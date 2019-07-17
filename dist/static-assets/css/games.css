@@ -74,7 +74,7 @@ h2 {
   padding: 24px 0 40px 0; }
   #challenges-monitor-view .players-ranking .player-ranking-title {
     padding: 10px 8px 8px 20px;
-    text-align: center;
+    text-align: left;
     color: #3c5b6e;
     background: #f8f8f8;
     font-family: 'radikalbold', sans-serif;
@@ -89,10 +89,17 @@ h2 {
       border-radius: 50%;
       overflow: hidden;
       background-color: #f75f36; }
-    #challenges-monitor-view .players-ranking .player-ranking-title .player-title {
+    #challenges-monitor-view .players-ranking .player-ranking-title .details {
+      width: 50%;
+      display: inline-block; }
+      #challenges-monitor-view .players-ranking .player-ranking-title .details .player-title {
+        display: inline-block;
+        width: 200px;
+        padding-left: 10px; }
+    #challenges-monitor-view .players-ranking .player-ranking-title .countdown {
+      width: 50%;
       display: inline-block;
-      width: 200px;
-      padding-left: 10px; }
+      text-align: right; }
   #challenges-monitor-view .players-ranking .player-ranking {
     padding: 16px 8px 16px 10px;
     text-align: left;
@@ -187,8 +194,6 @@ h2 {
   #challenges-monitor-view .players-ranking {
     padding-left: 0;
     padding-right: 0; }
-    #challenges-monitor-view .players-ranking .player-ranking-title {
-      text-align: left; }
     #challenges-monitor-view .players-ranking .player-ranking {
       height: 75px;
       padding-left: 20px;
