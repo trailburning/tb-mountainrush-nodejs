@@ -74,15 +74,30 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
   <div class="players-ranking">
 
   {{ _.each(challenges, function(challenge, index) { }}
+
+    {{ var timerDetails = '' }}
+
+    {{ if (challenge.game_state == 'active') { }}
+      {{ timerDetails = 'Finishes ' + challenge.game_end_ago }}
+    {{ } else if (challenge.game_state == 'pending') { }}
+      {{ timerDetails = 'Starts ' + challenge.game_start_ago }}
+    {{ } else if (challenge.game_state == 'complete') { }}
+      {{ timerDetails = 'Finished ' + challenge.game_end_ago }}
+    {{ } }}
+
     <div class="player-ranking-title visible-xs">
-      {{ if (challenge.game_state == 'active') { }}<div class="icon"></div>{{ } }}
-      <div class="player-title">{{= challenge.name }}</div>
+      <div class="details">
+        {{ if (challenge.game_state == 'active') { }}<div class="icon"></div>{{ } }}
+        <div class="player-title">{{= challenge.name }}</div>
+      </div><div class="countdown">{{= timerDetails }}</div>
     </div>
 
     <ul>
       <li class="player-ranking-title hidden-xs">
-        {{ if (challenge.game_state == 'active') { }}<div class="icon"></div>{{ } }}
-        <div class="player-title">{{= challenge.name }}</div>
+        <div class="details">
+          {{ if (challenge.game_state == 'active') { }}<div class="icon"></div>{{ } }}
+          <div class="player-title">{{= challenge.name }}</div>
+        </div><div class="countdown">{{= timerDetails }}</div>
       </li>
 
       {{ _.each(challenge.players, function(player, index) { }}

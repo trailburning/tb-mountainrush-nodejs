@@ -1,7 +1,8 @@
 define([
   'underscore', 
-  'backbone'
-], function(_, Backbone){
+  'backbone',
+  'moment'
+], function(_, Backbone, moment){
 
   var ChallengesMonitorView = Backbone.View.extend({
     initialize: function(options){
@@ -30,6 +31,10 @@ define([
       }
 
       $.each(this.result, function(nChallenge, challenge){
+        // store moment versions of dates
+        challenge.game_start_ago = moment(challenge.game_start).fromNow();
+        challenge.game_end_ago = moment(challenge.game_end).fromNow();
+
         $.each(challenge.players, function(nPlayer, player){
           player.mediaCaptured = (player.bMediaCaptured == '1' ? true : false);
 

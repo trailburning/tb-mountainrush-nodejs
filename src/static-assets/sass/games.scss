@@ -100,7 +100,7 @@ h2 {
 
   .player-ranking-title {
     padding: 10px 8px 8px 20px;
-    text-align: center;
+    text-align: left;
     color: #3c5b6e;
     background: #f8f8f8;
     font-family: 'radikalbold', sans-serif;
@@ -118,10 +118,22 @@ h2 {
       background-color: #f75f36;
     }
 
-    .player-title {
+    .details {
+      width: 50%;
       display: inline-block;
-      width: 200px;
-      padding-left: 10px;
+
+      .player-title {
+        display: inline-block;
+        width: 200px;
+        padding-left: 10px;
+      }
+
+    }
+
+    .countdown {
+      width: 50%;
+      display: inline-block;
+      text-align: right;
     }
   }
 
@@ -255,10 +267,6 @@ h2 {
   #challenges-monitor-view .players-ranking {
     padding-left: 0;
     padding-right: 0;
-
-    .player-ranking-title {
-      text-align: left;
-    }
 
     .player-ranking {
       height: 75px;
