@@ -15,7 +15,7 @@ define([
     load: function(){
       var self = this;
 
-      var url = GAME_API_URL + "campaign/" + CAMPAIGN_ID + "/monitorgames";
+      var url = GAME_API_URL + "campaign/" + CAMPAIGN_ID + "/monitorgames/30";
 //      console.log(url);
       $.getJSON(url, function(result){
         self.result = result;
