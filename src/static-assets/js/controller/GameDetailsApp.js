@@ -375,6 +375,15 @@ define([
         $('#players-overview-view .with-photos').show();
         $('#players-overview-view .without-photos').hide();
 
+        var playerModel = playerActivityPhotosView.getPlayer();
+        var nPhotoRendered = Number(playerModel.get('activityPhotosRendered'));
+        // have we reached the player render limit?
+        if (nPhotoRendered < MAX_PLAYER_PHOTOS) {
+          playerModel.set('activityPhotosRendered', nPhotoRendered+1);
+          // render
+          playerActivityPhotosView.render(photoRendered, 1).el;
+        }
+
         // total photos
         var elPhotos = $('#players-overview-view .posts .photos');
         var nPhotos = $('.post.active', elPhotos).length;
@@ -385,15 +394,6 @@ define([
             $(this).hide();
           }
         });
-
-        var playerModel = playerActivityPhotosView.getPlayer();
-        var nPhotoRendered = Number(playerModel.get('activityPhotosRendered'));
-        // have we reached the player render limit?
-        if (nPhotoRendered < MAX_PLAYER_PHOTOS) {
-          playerModel.set('activityPhotosRendered', nPhotoRendered+1);
-          // render
-          playerActivityPhotosView.render(photoRendered, 1).el;
-        }
       }
     }
 
