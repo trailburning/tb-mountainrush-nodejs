@@ -389,10 +389,7 @@ define([
         var nPhotos = $('.post.active', elPhotos).length;
 
         // as we get photos we can hide the blank placeholders
-        console.log('photos:'+nPhotos);
-
         $('.post.inactive', elPhotos).each(function(index) {
-          console.log(index+' : '+nPhotos);
           if (index < nPhotos) {
             $(this).hide();
           }
