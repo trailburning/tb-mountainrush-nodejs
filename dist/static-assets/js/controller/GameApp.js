@@ -502,6 +502,23 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       challengeView.load();
     }
 
+    function setPlayerLastSeenChallenge() {
+      var url = GAME_API_URL + 'game/' + GAME_ID + '/player/' + activePlayer.id + '/lastseen';
+//      console.log(url);
+      $.ajax({
+        type: 'get',
+        url: url,
+        error: function(data) {
+          console.log('error');
+          console.log(data);
+        },
+        success: function(data) {
+//          console.log('success');
+//          console.log(data);
+        }
+      });
+    }
+
     function setLatestEnabledMarker(markerID) {
       var jsonData = {markerID: markerID};
 
@@ -897,6 +914,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       var player = playerCollection.get(playerID);
       if (player) {
         activePlayer = player;
+        setPlayerLastSeenChallenge();
       }
       buildGame();
     }

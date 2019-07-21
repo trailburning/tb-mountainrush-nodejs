@@ -1,8 +1,11 @@
+var LAST_SEEN_SECS = 86400;
+
 define([
   'underscore', 
   'backbone',
-  'bootstrap'
-], function(_, Backbone, bootstrap){
+  'bootstrap',
+  'moment'
+], function(_, Backbone, bootstrap, moment){
 
   var PlayerGameView = Backbone.View.extend({
     initialize: function(options){
@@ -26,7 +29,10 @@ define([
         // look for an active or pending game
         $.each(self.jsonResult.games, function(index, game){
           if (game.game_state == 'active' || game.game_state == 'pending') {
-            self.bActiveGame = true;
+            // only show if not recentl visited
+            if (game.last_seen_secs_ago > LAST_SEEN_SECS) {
+              self.bActiveGame = true;
+            }
           }
         });
 
