@@ -189,9 +189,12 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
           </div>
           <a href="mailto:hello@mountainrush.co.uk" class="btn mr-btn btn-primary">Enquire</a>
 
-          <div class="avatar"><img src="/static-assets/images/activities/hiking.png"></div>
+          <div class="avatar activity"><img src="/static-assets/images/activities/hike.png"></div>
           </div>
         </div>
+
+        <div id="events-view"></div>
+
 <!--
         <div class="card">
           <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/pages/highlands_sm.png?fm=jpg&q=80"></div>
@@ -219,7 +222,7 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
           <a href="https://www.strava.com/athletes/13456019" target="_blank"><div class="avatar"><img src="/static-assets/images/avatars/federico_dalpra.png"></div></a>
           </div>
         </div>
--->
+
         <div class="card">
           <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/pages/IMG_0161.jpg?fm=jpg&w=800&q=80"></div>
           <div class="content">
@@ -232,7 +235,7 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
           <a href="https://www.strava.com/athletes/13456019" target="_blank"><div class="avatar"><img src="/static-assets/images/avatars/matt_allbeury.png"></div></a>
           </div>
         </div>
-
+-->
 <!--
         <div class="card">
           <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/pages/lakedistrict_sm.png?fm=jpg&q=80"></div>
@@ -253,11 +256,11 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
           <div class="content">
           <h2>Saxon Switzerland</h2>
           <div class="overview">
-          Saxon Switzerland 21k Trail Run<br/>with <strong>Federico Dalprà</strong>
+          Saxon Switzerland 21k Trail Run<br/><strong>Coming Soon</strong>
           </div>
           <a href="mailto:hello@mountainrush.co.uk" class="btn mr-btn btn-primary">Enquire</a>
 
-          <a href="https://www.strava.com/athletes/13456019" target="_blank"><div class="avatar"><img src="/static-assets/images/avatars/federico_dalpra.png"></div></a>
+          <div class="avatar activity"><img src="/static-assets/images/activities/hike.png"></div>
           </div>
         </div>
 
@@ -364,6 +367,23 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
     {{ }); }}
     </div>
   </div>
+</script>
+
+<script type="text/template" id="eventsViewTemplate">
+  {{ _.each(events, function(event, index) { }}
+    <div class="card">
+      <div class="image"><img class="scale" src="{{= event.logo.url }}"></div>
+      <div class="content">
+      <h2>{{= event.description.text }}</h2>
+      <div class="overview">
+      {{= event.name.text }}<br/>
+      <strong>{{= event.start.formatted_day }}</strong> {{= event.start.formatted_date }}
+      </div>
+      <a href="{{= event.url }}" target="_blank" class="btn mr-btn btn-primary">View Event</a>
+      <div class="avatar activity"><img src="/static-assets/images/activities/run.png"></div>
+      </div>
+    </div>
+  {{ }); }}
 </script>
 
 <script type="text/template" id="communityPhotosViewTemplate">

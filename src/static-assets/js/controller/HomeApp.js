@@ -21,8 +21,9 @@ define([
   'views/PlayerSearchView',
   'views/DemoVideoView',
   'views/ChallengesView',
+  'views/EventsView',
   'views/SocialPhotosView'
-], function(_, Backbone, jqueryUI, cookie, truncate, imageScale, imagesLoaded, animateNumber, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, DeviceCapableModalView, PromotionModalView, PlayerSearchView, DemoVideoView, ChallengesView, SocialPhotosView){
+], function(_, Backbone, jqueryUI, cookie, truncate, imageScale, imagesLoaded, animateNumber, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, DeviceCapableModalView, PromotionModalView, PlayerSearchView, DemoVideoView, ChallengesView, EventsView, SocialPhotosView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -35,6 +36,7 @@ define([
     var self = this;
 
     app.dispatcher.on("ChallengesView:ready", onChallengesReady);
+    app.dispatcher.on("EventsView:feedready", onEventsFeedReady);
     app.dispatcher.on("SocialPhotosView:feedready", onSocialPhotosFeedReady);
 
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
@@ -74,6 +76,10 @@ define([
     playerSearchView.render();    
     var challengesView = new ChallengesView({ el: '#challenges-available-view' });
     challengesView.load();
+
+    var eventsView = new EventsView({ el: '#events-view' });
+    eventsView.loadFeed();
+
     var socialPhotosView = new SocialPhotosView({ el: '#community-photos-view', feed: '' });
     socialPhotosView.loadFeed();
 
@@ -144,6 +150,11 @@ define([
     function onChallengesReady() {
       $('#challenges-loader-view').hide();
       challengesView.render();      
+    }
+
+    function onEventsFeedReady() {
+//      $('#events-loader-view').hide();
+      eventsView.render();
     }
 
     function onSocialPhotosFeedReady() {
