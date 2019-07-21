@@ -153,7 +153,7 @@ define([
     }
 
     function onEventsFeedReady() {
-//      $('#events-loader-view').hide();
+      $('#events-loader-view').hide();
       eventsView.render();
     }
 
