@@ -39,10 +39,15 @@ define([
       
       var attribs = {};
 
-      // format dates
+      // add extra data
       $.each(this.result.events, function(index, event) {
         event.start.formatted_day = moment(event.start.local).format('dddd');
         event.start.formatted_date = moment(event.start.local).format('MMMM Do');
+        // what type of activity is it?
+        event.activity = 'hike';
+        if (event.name.text.includes('run')) {
+          event.activity = 'run';
+        }
       });
 
       attribs = this.result;

@@ -179,21 +179,7 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
     <h2>Join us for an active adventure and smash your challenge!</h2>
 
     <div class="cards-container">
-      <div class="cards">
-        <div class="card">
-          <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/pages/van_sm.png?fm=jpg&q=80"></div>
-          <div class="content">
-          <h2>Expeditions</h2>
-          <div class="overview">
-          Get totally off grid and<br/>into the wild!
-          </div>
-          <a href="mailto:hello@mountainrush.co.uk" class="btn mr-btn btn-primary">Enquire</a>
-
-          <div class="avatar activity"><img src="/static-assets/images/activities/hike.png"></div>
-          </div>
-        </div>
-
-        <div id="events-view"></div>
+      <div id="events-view"></div>
 
 <!--
         <div class="card">
@@ -249,22 +235,7 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
           <a href="https://www.strava.com/athletes/1468255?oq=jones" target="_blank"><div class="avatar"><img src="/static-assets/images/avatars/tom_jones.png"></div></a>
           </div>
         </div>
--->        
-
-        <div class="card">
-          <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/pages/antonio-mendes-2Yuyb_evISI-unsplash.jpg?fm=jpg&w=800&q=80"></div>
-          <div class="content">
-          <h2>Saxon Switzerland</h2>
-          <div class="overview">
-          Saxon Switzerland 21k Trail Run<br/><strong>Coming Soon</strong>
-          </div>
-          <a href="mailto:hello@mountainrush.co.uk" class="btn mr-btn btn-primary">Enquire</a>
-
-          <div class="avatar activity"><img src="/static-assets/images/activities/hike.png"></div>
-          </div>
-        </div>
-
-      </div>
+-->
     </div>
   </div>
 
@@ -370,20 +341,35 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
 </script>
 
 <script type="text/template" id="eventsViewTemplate">
-  {{ _.each(events, function(event, index) { }}
+  <div class="cards">
     <div class="card">
-      <div class="image"><img class="scale" src="{{= event.logo.url }}"></div>
+      <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/pages/van_sm.png?fm=jpg&q=80"></div>
       <div class="content">
-      <h2>{{= event.description.text }}</h2>
+      <h2>Expeditions</h2>
       <div class="overview">
-      {{= event.name.text }}<br/>
-      <strong>{{= event.start.formatted_day }}</strong> {{= event.start.formatted_date }}
+      Get totally off grid and<br/>into the wild!
       </div>
-      <a href="{{= event.url }}" target="_blank" class="btn mr-btn btn-primary">View Event</a>
-      <div class="avatar activity"><img src="/static-assets/images/activities/run.png"></div>
+      <a href="mailto:hello@mountainrush.co.uk" class="btn mr-btn btn-primary">Enquire</a>
+
+      <div class="avatar activity"><img src="/static-assets/images/activities/hike.png"></div>
       </div>
     </div>
-  {{ }); }}
+
+    {{ _.each(events, function(event, index) { }}
+      <div class="card">
+        <div class="image"><img class="scale" src="{{= event.logo.url }}"></div>
+        <div class="content">
+        <h2>{{= event.description.text }}</h2>
+        <div class="overview">
+        {{= event.name.text }}<br/>
+        <strong>{{= event.start.formatted_day }}</strong> {{= event.start.formatted_date }}
+        </div>
+        <a href="{{= event.url }}" target="_blank" class="btn mr-btn btn-primary">View Event</a>
+        <div class="avatar activity"><img src="/static-assets/images/activities/{{= event.activity }}.png"></div>
+        </div>
+      </div>
+    {{ }); }}
+  </div>
 </script>
 
 <script type="text/template" id="communityPhotosViewTemplate">
