@@ -364,18 +364,20 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
     </div>
 
     {{ _.each(events, function(event, index) { }}
-      <div class="card">
-        <div class="image"><img class="scale" src="{{= event.logo.url }}"></div>
-        <div class="content">
-        <h2>{{= event.description.text }}</h2>
-        <div class="overview">
-        {{= event.name.text }}<br/>
-        <strong>{{= event.start.formatted_day }}</strong> {{= event.start.formatted_date }}
+      {{ if (event.status == 'live') { }}
+        <div class="card">
+          <div class="image"><img class="scale" src="{{= event.logo.url }}"></div>
+          <div class="content">
+          <h2>{{= event.description.text }}</h2>
+          <div class="overview">
+          {{= event.name.text }}<br/>
+          <strong>{{= event.start.formatted_day }}</strong> {{= event.start.formatted_date }}
+          </div>
+          <a href="{{= event.url }}" target="_blank" class="btn mr-btn btn-primary">View Event</a>
+          <div class="avatar activity"><img src="/static-assets/images/activities/{{= event.activity }}.png"></div>
+          </div>
         </div>
-        <a href="{{= event.url }}" target="_blank" class="btn mr-btn btn-primary">View Event</a>
-        <div class="avatar activity"><img src="/static-assets/images/activities/{{= event.activity }}.png"></div>
-        </div>
-      </div>
+      {{ } }}
     {{ }); }}
   </div>
 </script>
