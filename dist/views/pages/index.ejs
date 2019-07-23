@@ -368,9 +368,9 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
         <div class="card">
           <div class="image"><img class="scale" src="{{= event.logo.url }}"></div>
           <div class="content">
-          <h2>{{= event.description.text }}</h2>
+          <h2>{{= event.name.text }}</h2>
           <div class="overview">
-          {{= event.name.text }}<br/>
+          {{= event.description.text }}<br/>
           <strong>{{= event.start.formatted_day }}</strong> {{= event.start.formatted_date }}
           </div>
           <a href="{{= event.url }}" target="_blank" class="btn mr-btn btn-primary">View Event</a>
