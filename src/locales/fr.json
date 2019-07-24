@@ -101,7 +101,13 @@
       "no": "No thanks",
       "title": "Cancel Challenge",
       "description": "Are you sure you want to cancel your %s %s challenge?"
-    }    
+    },
+    "challenge_leave": {
+      "yes": "Yes please",
+      "no": "No thanks",
+      "title": "Leave Challenge",
+      "description": "Are you sure you want to leave your %s %s challenge?"
+    }
   },
   "register": {
     "help": {
@@ -257,6 +263,7 @@
     },
     "game_cancel": {
       "cancel": "cancel",
+      "leave": "leave",
       "msg": "Don't like your challenge?  You can %s it" 
     },        
     "invite_friends": {

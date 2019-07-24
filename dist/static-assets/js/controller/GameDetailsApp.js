@@ -28,9 +28,10 @@ define([
   'views/PlayersOverviewView',
   'views/PlayerActivityPhotosView',
   'views/ChallengeCancelModalView',
+  'views/ChallengeLeaveModalView',
   'views/GameInviteView',  
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, jqueryUI, jqueryForm, cookie, truncate, modernizr, imageScale, moment, countdown, turf, imagesLoaded, videojs, GamePhotoView, SponsorView, LanguageSelectorView, ActivePlayerView, Player, FundraisingDonationsView, GameDetailsModalView, ChallengeView, PlayersOverviewView, PlayerActivityPhotosView, ChallengeCancelModalView, GameInviteView, DemoVideoView){
+], function(_, Backbone, bootstrap, jqueryUI, jqueryForm, cookie, truncate, modernizr, imageScale, moment, countdown, turf, imagesLoaded, videojs, GamePhotoView, SponsorView, LanguageSelectorView, ActivePlayerView, Player, FundraisingDonationsView, GameDetailsModalView, ChallengeView, PlayersOverviewView, PlayerActivityPhotosView, ChallengeCancelModalView, ChallengeLeaveModalView, GameInviteView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -44,7 +45,9 @@ define([
 
     app.dispatcher.on("PlayersOverviewView:inviteClick", onPlayerInviteClick);
     app.dispatcher.on("PlayersOverviewView:cancelGameClick", onCancelGameClick);
+    app.dispatcher.on("PlayersOverviewView:leaveGameClick", onLeaveGameClick);
     app.dispatcher.on("ChallengeCancelModalView:challengeCancelled", onChallengeCancelled);
+    app.dispatcher.on("ChallengeLeaveModalView:challengeLeft", onChallengeLeft);
     app.dispatcher.on("PlayersOverviewView:playerClick", onPlayerClicked);
     app.dispatcher.on("PlayerActivityPhotosView:loaded", onPlayerActivityPhotosLoaded);
 
@@ -290,6 +293,7 @@ define([
       var player = playerCollection.get(playerID);
       if (player) {
         activePlayer = player;
+        challengeLeaveModalView.setGamePlayer(jsonCurrGame, activePlayer);
       }
       buildGame();
     }
@@ -357,10 +361,21 @@ define([
       challengeCancelModalView.show();
     }
 
+    function onLeaveGameClick() {
+      challengeLeaveModalView.render();
+      challengeLeaveModalView.show();
+    }
+
     function onChallengeCancelled() {
       // visit profile
       window.location.href = HOST_URL+'/campaign/' + CAMPAIGN_ID + '/profile';
     }
+
+    function onChallengeLeft() {
+      // visit profile
+      window.location.href = HOST_URL+'/campaign/' + CAMPAIGN_ID + '/profile';
+    }
+
 
     function onPlayerClicked(playerID) {
       // visit profile
@@ -425,6 +440,7 @@ define([
 
     var gamePhotoView = new GamePhotoView({ el: '#photo-view' }); 
     var challengeCancelModalView = new ChallengeCancelModalView({ el: '#challenge-cancel-modal-view' });
+    var challengeLeaveModalView = new ChallengeLeaveModalView({ el: '#challenge-leave-modal-view' });
     var gameInviteView = new GameInviteView({ el: '#game-invite-view', clientID: CLIENT_ID });
     var sponsorView = new SponsorView({ el: '#sponsor-big-container-view' });
 

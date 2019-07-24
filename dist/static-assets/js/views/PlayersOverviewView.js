@@ -52,6 +52,11 @@ define([
         app.dispatcher.trigger("PlayersOverviewView:cancelGameClick");
       });
 
+      $('.link-leave', $(this.el)).click(function(evt){        
+        // fire event
+        app.dispatcher.trigger("PlayersOverviewView:leaveGameClick");
+      });
+
       $('.link-invite', $(this.el)).click(function(evt){        
         // fire event
         app.dispatcher.trigger("PlayersOverviewView:inviteClick");
