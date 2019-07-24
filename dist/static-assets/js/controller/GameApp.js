@@ -44,6 +44,7 @@ define([
   'views/MountainLockedStoryModalView',
   'views/MountainStoryModalView',
   'views/ChallengeCancelModalView',
+  'views/ChallengeLeaveModalView',
   'views/GameInviteView',
   'views/FundraisingShoppingModalView',
   'views/DemoVideoView'
@@ -51,7 +52,7 @@ define([
 /* player.js */
 FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentView, PlayerActivityMorePhotosView, PlayerActivityPhotosView, PlayerActivityPhotoView,
 /* player.js */
-  SponsorView, LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, ChallengePendingModalView, ChallengeCompleteModalView, MountainLockedStoryModalView, MountainStoryModalView, ChallengeCancelModalView, GameInviteView, FundraisingShoppingModalView, DemoVideoView){
+  SponsorView, LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, ChallengePendingModalView, ChallengeCompleteModalView, MountainLockedStoryModalView, MountainStoryModalView, ChallengeCancelModalView, ChallengeLeaveModalView, GameInviteView, FundraisingShoppingModalView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -70,7 +71,9 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     app.dispatcher.on("PlayerActivityPhotoView:click", onPlayerActivityPhotoClicked);
     app.dispatcher.on("PlayersDetailView:inviteClick", onPlayerInviteClick);
     app.dispatcher.on("PlayersDetailView:cancelGameClick", onCancelGameClick);
+    app.dispatcher.on("PlayersDetailView:leaveGameClick", onLeaveGameClick);
     app.dispatcher.on("ChallengeCancelModalView:challengeCancelled", onChallengeCancelled);
+    app.dispatcher.on("ChallengeLeaveModalView:challengeLeft", onChallengeLeft);
 
     var challengeView = null;
     var mountainModel = new Backbone.Model();
@@ -110,6 +113,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
 
     var challengeCancelModalView = new ChallengeCancelModalView({ el: '#challenge-cancel-modal-view' });
+    var challengeLeaveModalView = new ChallengeLeaveModalView({ el: '#challenge-leave-modal-view' });
     var deviceCapableModalView = new DeviceCapableModalView({ el: '#device-capable-modal-view' });
     var challengePendingModalView = new ChallengePendingModalView({ el: '#challenge-pending-modal-view' });
     var challengeCompleteModalView = new ChallengeCompleteModalView({ el: '#challenge-complete-modal-view' });
@@ -915,6 +919,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       if (player) {
         activePlayer = player;
         setPlayerLastSeenChallenge();
+        challengeLeaveModalView.setGamePlayer(jsonCurrGame, activePlayer);
       }
       buildGame();
     }
@@ -983,7 +988,17 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       challengeCancelModalView.show();
     }
 
+    function onLeaveGameClick() {
+      challengeLeaveModalView.render();
+      challengeLeaveModalView.show();
+    }
+
     function onChallengeCancelled() {
+      // visit profile
+      window.location.href = HOST_URL+'/campaign/' + CAMPAIGN_ID + '/profile';
+    }
+
+    function onChallengeLeft() {
       // visit profile
       window.location.href = HOST_URL+'/campaign/' + CAMPAIGN_ID + '/profile';
     }
