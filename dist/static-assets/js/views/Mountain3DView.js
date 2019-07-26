@@ -529,9 +529,7 @@ define([
       }
     },
 
-    addFlag: function(strImage, bRender) {
-      console.log(strImage);
-      
+    addFlag: function(strImage, bRender) {      
       var fLat = this.jsonRoute.geometry.coordinates[this.jsonRoute.geometry.coordinates.length-1][1];
       var fLong = this.jsonRoute.geometry.coordinates[this.jsonRoute.geometry.coordinates.length-1][0];
 
