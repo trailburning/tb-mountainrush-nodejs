@@ -367,7 +367,7 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
     {{ _.each(events, function(event, index) { }}
       {{ if (event.status == 'live') { }}
         <div class="card">
-          <div class="image"><img class="scale" src="{{= event.logo.url }}"></div>
+          <a href="{{= event.url }}" target="_blank"><div class="image"><img class="scale" src="{{= event.logo.url }}"></div></a>
           <div class="content">
           <h2>{{= event.name.text }}</h2>
           <div class="overview">
