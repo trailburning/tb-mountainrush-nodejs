@@ -45,7 +45,7 @@ define([
         event.start.formatted_date = moment(event.start.local).format('MMMM Do');
         // what type of activity is it?
         event.activity = 'hike';
-        if (event.name.text.includes('run')) {
+        if (event.name.text.toLowerCase().includes('run')) {
           event.activity = 'run';
         }
       });
