@@ -350,20 +350,20 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
 
 <script type="text/template" id="eventsViewTemplate">
   <div class="cards">
-<!--    
-    <div class="card">
-      <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/pages/van_sm.png?fm=jpg&q=80"></div>
-      <div class="content">
-      <h2>Expeditions</h2>
-      <div class="overview">
-      Get totally off grid and<br/>into the wild!
+    {{ if (_.where(events, {status:'live'}).length < 3) { }}
+      <div class="card">
+        <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/pages/van_sm.png?fm=jpg&q=80"></div>
+        <div class="content">
+        <h2>Weekend Micro Adventures</h2>
+        <div class="overview">
+        Get totally off grid and<br/>into the wild!
+        </div>
+        <a href="mailto:hello@mountainrush.co.uk" class="btn mr-btn btn-primary">Enquire</a>
+        <div class="avatar activity"><img src="/static-assets/images/activities/run.png"></div>
+        </div>
       </div>
-      <a href="mailto:hello@mountainrush.co.uk" class="btn mr-btn btn-primary">Enquire</a>
+    {{ } }}
 
-      <div class="avatar activity"><img src="/static-assets/images/activities/hike.png"></div>
-      </div>
-    </div>
--->
     {{ _.each(events, function(event, index) { }}
       {{ if (event.status == 'live') { }}
         <div class="card">
