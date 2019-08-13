@@ -65,6 +65,8 @@ define([
   var initialize = function() {
     var self = this;
 
+    $('body').addClass('web');
+
     app.dispatcher.on("RegisterInvitationView:inviteSuccess", onInvitationSuccess);
     app.dispatcher.on("RegisterWelcomeVerifyView:userUpdated", onVerifySuccess);
     app.dispatcher.on("RegisterWelcomeConnectedView:createGameClick", onCreateGameClick);

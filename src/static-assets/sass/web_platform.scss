@@ -972,6 +972,7 @@ form {
 /* FOOTER VIEW */
 /******************************************/
 #footer-view {
+  display: none;
   position: relative;
   height: 154px;
   background: #fff;
@@ -1401,6 +1402,10 @@ img.scale {
 /******************************************/
 [class*="visible-player-"] {
   display: none;
+}
+
+.web #footer-view {
+  display: block;
 }
 
 /* Small devices (tablets, 768px and up) */

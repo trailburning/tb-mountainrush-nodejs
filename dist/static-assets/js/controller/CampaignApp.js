@@ -34,6 +34,8 @@ define([
   var initialize = function() {
     var self = this;
 
+    $('body').addClass('web');
+
     app.dispatcher.on("CampaignSummaryStickerView:feedready", onCampaignSummaryStickerFeedReady);
     app.dispatcher.on("CampaignSummaryView:feedready", onCampaignSummaryFeedReady);
     app.dispatcher.on("PlayerLeaderboardView:feedready", onPlayerLeaderboardFeedReady);

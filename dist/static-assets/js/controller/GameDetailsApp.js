@@ -43,6 +43,8 @@ define([
   var initialize = function() {
     var self = this;
 
+    $('body').addClass('web');
+
     app.dispatcher.on("PlayersOverviewView:inviteClick", onPlayerInviteClick);
     app.dispatcher.on("PlayersOverviewView:cancelGameClick", onCancelGameClick);
     app.dispatcher.on("PlayersOverviewView:leaveGameClick", onLeaveGameClick);
