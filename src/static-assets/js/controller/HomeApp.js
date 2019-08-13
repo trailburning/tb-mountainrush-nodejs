@@ -84,7 +84,8 @@ define([
     var playerSearchView = new PlayerSearchView({ el: '#supporter-search-view', campaignID: CAMPAIGN_ID, hostURL: HOST_URL });
     playerSearchView.render();    
     var challengesView = new ChallengesView({ el: '#challenges-available-view' });
-    challengesView.load();
+// mla    
+//    challengesView.load();
 
     var eventsView = new EventsView({ el: '#events-view' });
     eventsView.loadFeed();
@@ -142,6 +143,9 @@ define([
     }
 
     function onPlayerGameViewReady() {
+      // now load challenges
+      challengesView.load();
+
       // show game view if we have an active game
       if (playerGameView.getActiveGame()) {
         playerGameView.render();
@@ -158,7 +162,7 @@ define([
 
     function onChallengesReady() {
       $('#challenges-loader-view').hide();
-      challengesView.render();      
+      challengesView.render(playerGameView.getPlayerGames());
     }
 
     function onEventsFeedReady() {

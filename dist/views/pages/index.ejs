@@ -332,18 +332,35 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
 <script type="text/template" id="challengesViewTemplate">
   <div class="cards-container">
     <div class="cards">
-    {{ _.each(challenges, function(challenge, index) { }}
-      <div class="card">
-        <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/{{= challenge.image }}?fm=jpg&w=640&q=80"></div>
-        <div class="content">
-        <h2>{{= challenge.name }}</h2>
-        <div class="overview">
-        <strong>{{= challenge.region }}</strong> - Climb {{= challenge.ascent }}m
+    {{ var activeGames = _.where(playerchallenges, {game_state:'active'}) }}
+
+    {{ if (activeGames.length) { }}
+      {{ _.each(activeGames, function(challenge, index) { }}
+        <div class="card">
+          <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/{{= challenge.image }}?fm=jpg&w=640&q=80"></div>
+          <div class="content">
+          <h2>{{= challenge.name }}</h2>
+          <div class="overview">
+          <strong>{{= challenge.region }}</strong> - Climb {{= challenge.ascent }}m
+          </div>
+          <a href="<%= Defs.BaseHTTPSURL %>/game/{{= challenge.game }}" class="btn mr-btn btn-primary">View active challenge</a>
+          </div>
         </div>
-        <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/level/{{= challenge.id }}/gamecreate" class="btn mr-btn btn-primary">Select challenge</a>
+      {{ }); }}
+    {{ } else { }}
+      {{ _.each(challenges, function(challenge, index) { }}
+        <div class="card">
+          <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/{{= challenge.image }}?fm=jpg&w=640&q=80"></div>
+          <div class="content">
+          <h2>{{= challenge.name }}</h2>
+          <div class="overview">
+          <strong>{{= challenge.region }}</strong> - Climb {{= challenge.ascent }}m
+          </div>
+          <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/level/{{= challenge.id }}/gamecreate" class="btn mr-btn btn-primary">Select challenge</a>
+          </div>
         </div>
-      </div>
-    {{ }); }}
+      {{ }); }}
+    {{ } }}
     </div>
   </div>
 </script>
