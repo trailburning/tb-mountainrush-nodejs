@@ -24,12 +24,12 @@ define([
       });
     },
     
-    render: function(){
+    render: function(jsonPlayerGames){
       if (!this.result) {
         return;
       }
 
-      $(this.el).html(this.template({challenges: this.result}));
+      $(this.el).html(this.template({challenges: this.result, playerchallenges: jsonPlayerGames}));
 
       $('img.scale', $(this.el)).imageScale({
         'rescaleOnResize': true

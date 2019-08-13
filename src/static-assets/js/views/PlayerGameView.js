@@ -13,10 +13,19 @@ define([
 
       this.options = options;
       this.bActiveGame = false;
+      this.jsonResult = null;
     },
 
     getActiveGame: function(){
       return this.bActiveGame;
+    },
+
+    getPlayerGames: function(){
+      if (!this.jsonResult) {
+        return null;
+      }
+      
+      return this.jsonResult.games;
     },
 
     getPlayerGame: function(clientID){
