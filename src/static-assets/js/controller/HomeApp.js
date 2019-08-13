@@ -109,7 +109,7 @@ define([
         activePlayerView.render();
       });
 
-      var playerGameView = new PlayerGameView({ el: '#player-game-view', playerToken: jsonUser.token });
+      var playerGameView = new PlayerGameView({ el: '#player-game-view', playerID: jsonUser.user });
       playerGameView.getPlayerGame(DEF_CLIENT_ID);
     }
     else {

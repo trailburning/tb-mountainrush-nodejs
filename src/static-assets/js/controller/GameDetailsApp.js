@@ -70,8 +70,8 @@ define([
 
     $('#loader-view').show();
   
-    function getActivePlayerByToken(playerToken) {
-      var url = GAME_API_URL + "client/" + CLIENT_ID + "/playertoken/" + playerToken;
+    function getActivePlayerByID(playerID) {
+      var url = GAME_API_URL + "player/" + playerID + "/details";
 //      console.log(url);
       $.getJSON(url, function(result){
         onActivePlayerLoaded(result[0].id);
@@ -351,7 +351,8 @@ define([
 
       // check for active player
       if (getUserCookie(CLIENT_ID) != undefined) {
-        getActivePlayerByToken(getUserCookie(CLIENT_ID));
+        var jsonUser = getUserCookies(CLIENT_ID);
+        getActivePlayerByID(jsonUser.user);
       }
       else {
         buildGame();
