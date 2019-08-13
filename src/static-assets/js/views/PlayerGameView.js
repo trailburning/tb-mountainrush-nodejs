@@ -31,7 +31,7 @@ define([
     getPlayerGame: function(clientID){
       var self = this;
 
-      var url = GAME_API_URL + "client/" + clientID + "/playertoken/" + self.options.playerToken;
+      var url = GAME_API_URL + "player/" + self.options.playerID + "/details";
 //      console.log(url);
       $.getJSON(url, function(result){
         self.jsonResult = result[0];
