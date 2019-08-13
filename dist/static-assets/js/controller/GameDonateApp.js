@@ -27,6 +27,8 @@ define([
   var initialize = function() {
     var self = this;
 
+    $('body').addClass('web');
+
     function showActivePlayer() {
       var jsonUser = getUserCookies(CLIENT_ID);
 

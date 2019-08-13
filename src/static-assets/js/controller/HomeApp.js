@@ -35,6 +35,10 @@ define([
   var initialize = function() {
     var self = this;
 
+    // mla test
+//    $('body').addClass('app');
+    $('body').addClass('web');
+
     app.dispatcher.on("ChallengesView:ready", onChallengesReady);
     app.dispatcher.on("EventsView:feedready", onEventsFeedReady);
     app.dispatcher.on("SocialPhotosView:feedready", onSocialPhotosFeedReady);
