@@ -36,8 +36,13 @@ define([
     var self = this;
 
     // mla test
-//    $('body').addClass('app');
-    $('body').addClass('web');
+//    removeDeviceCookies();
+    if (!getDeviceCookies()) {
+      storeDeviceCookies(DEF_DEVICE_TYPE);
+//      storeDeviceCookies('app');
+    }
+    var jsonDevice = getDeviceCookies();
+    $('body').addClass(jsonDevice.devicetype);
 
     app.dispatcher.on("ChallengesView:ready", onChallengesReady);
     app.dispatcher.on("EventsView:feedready", onEventsFeedReady);

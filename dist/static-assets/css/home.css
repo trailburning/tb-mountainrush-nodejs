@@ -1,3 +1,6 @@
+body.app {
+  background: #0a1e29; }
+
 .beta {
   z-index: 3;
   position: absolute;

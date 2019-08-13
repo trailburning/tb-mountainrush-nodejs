@@ -3,7 +3,7 @@ var COOKIE_DELIM = '_';
 var DEF_CLIENT_ID = 'djJrblYlXV'; // Mountain Rush
 var TB_API_EXT = '';
 var TB_API_URL = 'https://api.trailburning.com/v2';
-
+var DEF_DEVICE_TYPE = 'web';
 var FUNDRAISING_PROVIDER_RAISENOW = 'RaiseNow';
 var FUNDRAISING_PROVIDER_JUSTGIVING = 'JustGiving';
 
@@ -251,6 +251,30 @@ function getUserCookies(clientID){
     return false;
   }
   return { user: $.cookie(cookiePrefix +'user'), token: $.cookie(cookiePrefix +'usertoken'), firstname: $.cookie(cookiePrefix + 'firstname'), avatar: $.cookie(cookiePrefix + 'avatar') };
+}
+
+function storeDeviceCookies(deviceType){
+  var cookiePrefix = COOKIE_PREFIX + COOKIE_DELIM;
+
+  // store in cookies
+  $.removeCookie(cookiePrefix + 'devicetype', { path: '/' });
+  
+  $.cookie(cookiePrefix + 'devicetype', deviceType, { expires: 365, path: '/' });
+}
+
+function removeDeviceCookies(){
+  var cookiePrefix = COOKIE_PREFIX + COOKIE_DELIM;
+
+  $.removeCookie(cookiePrefix + 'devicetype', { path: '/' });
+}
+
+function getDeviceCookies(){
+  var cookiePrefix = COOKIE_PREFIX + COOKIE_DELIM;
+
+  if ($.cookie(cookiePrefix + 'devicetype') == undefined) {
+    return false;
+  }
+  return { devicetype: $.cookie(cookiePrefix +'devicetype') };
 }
 
 function getLangCookie(){

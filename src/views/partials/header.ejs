@@ -1,7 +1,7 @@
 <div id="header-view">
   <div class="header-container">
     <div class="mini-menu">
-      <a href="#mainmenu" role="button" data-toggle="collapse"><div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div></a>
+      <a href="#mainmenu" role="button" data-toggle="collapse" class="nav"><div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div></a>
       <div class="logo-view">
         <div class="logo"><a href="<%= Defs.BaseHTTPSURL %>"><div></div></a></div>
       </div>
@@ -20,6 +20,12 @@
           <li class="user-action action-signup"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('menu.signup') %></a></li>
           <li class="user-action action-profile"><span class="active-player-view"></span></li>
         </ul>
+
+        <div class="menus-simple">
+          <div class="user-action action-profile">
+          <span class="active-player-view"></span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -40,5 +46,9 @@
     {{ firstname = 'unknown' }}
   {{ } }}
 
-  <div class="name"><a class="link" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/profile"><%= __('menu.greeting') %> {{= firstname }}!</a></div>
+  <div class="name">
+  <a class="link" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/profile">
+  <div class="avatar"><img src="{{= player.avatar }}"></div>
+  <div class="greeting"><%= __('menu.greeting') %> {{= firstname }}!</div>
+  </a></div>
 </script>

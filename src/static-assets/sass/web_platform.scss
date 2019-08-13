@@ -866,17 +866,33 @@ form {
 #header-view .name {
   display: inline-block;
   vertical-align: top;
+
+  .avatar,
+  .greeting {
+    display: none;
+  }
 }
 
 #header-view .mini-menu {
   color: #FFF;
+
+  .nav {
+    float: left;
+    display: none;
+  }
+
+  .avatar {
+    margin-top: 6px;
+    width: 32px;
+    height: 32px;
+  }
 }
+
 #header-view .mini-menu .link:hover {
   border-bottom: none;
 }
 
 #header-view .mini-menu .hamburger {
-  float: left;
   width: 42px;
   height: 44px;
   line-height: 44px;
@@ -934,7 +950,13 @@ form {
   background-size: 161px 15px;
 }
 
+#header-view .full-menu .menus-simple {
+  display: none;
+  float: right;
+}
+
 #header-view .full-menu .menus {
+  display: none;
   float: right;
   padding: 0 0 0 30px;
   font-family: 'radikalregular';
@@ -1398,15 +1420,42 @@ img.scale {
   }
 }
 
+.ui-helper-hidden-accessible {
+  display: none;
+}
+
 /* VISIBLE PLAYER */
 /******************************************/
 [class*="visible-player-"] {
   display: none;
 }
 
-.web #footer-view {
-  display: block;
+.web {
+  #header-view {
+
+    .full-menu .menus,
+    .name .greeting {
+      display: block;
+    }
+
+    .mini-menu .nav {
+      display: block;
+    }
+  }
+
+  #footer-view {
+    display: block;
+  }
 }
+
+.app {
+  #header-view {
+    .full-menu .menus-simple,
+    .name .avatar {
+      display: block;
+    }
+  }
+} 
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
