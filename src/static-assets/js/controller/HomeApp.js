@@ -38,8 +38,8 @@ define([
     // mla test
 //    removeDeviceCookies();
     if (!getDeviceCookies()) {
-      storeDeviceCookies(DEF_DEVICE_TYPE);
-//      storeDeviceCookies('app');
+//      storeDeviceCookies(DEF_DEVICE_TYPE);
+      storeDeviceCookies('app');
     }
     var jsonDevice = getDeviceCookies();
     $('body').addClass(jsonDevice.devicetype);
