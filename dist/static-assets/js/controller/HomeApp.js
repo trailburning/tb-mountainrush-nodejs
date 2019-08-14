@@ -79,8 +79,6 @@ define([
     var playerSearchView = new PlayerSearchView({ el: '#supporter-search-view', campaignID: CAMPAIGN_ID, hostURL: HOST_URL });
     playerSearchView.render();    
     var challengesView = new ChallengesView({ el: '#challenges-available-view' });
-// mla    
-//    challengesView.load();
 
     var eventsView = new EventsView({ el: '#events-view' });
     eventsView.loadFeed();
@@ -114,6 +112,9 @@ define([
     }
     else {
       $('.visible-player-inactive').show();
+
+      // now load challenges
+      challengesView.load();
 
       // fire up promotion
 
@@ -157,7 +158,13 @@ define([
 
     function onChallengesReady() {
       $('#challenges-loader-view').hide();
-      challengesView.render(playerGameView.getPlayerGames());
+
+      var jsonPlayerGames = null;
+      if (playerGameView) {
+        jsonPlayerGames = playerGameView.getPlayerGames()
+      }
+
+      challengesView.render(jsonPlayerGames);
     }
 
     function onEventsFeedReady() {
