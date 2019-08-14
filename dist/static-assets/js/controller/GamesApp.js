@@ -26,6 +26,8 @@ define([
   var initialize = function() {
     var self = this;
 
+    $('body').addClass('web');
+
     $('#loader-view').show();
 
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
