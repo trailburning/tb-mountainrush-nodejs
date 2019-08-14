@@ -64,11 +64,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
   var initialize = function() {
     var self = this;
 
-    if (!getDeviceCookies()) {
-      storeDeviceCookies(DEF_DEVICE_TYPE);
-    }
-    var jsonDevice = getDeviceCookies();
-    $('body').addClass(jsonDevice.devicetype);
+    $('body').addClass('web');
 
     app.dispatcher.on("Mountain3DView:deviceNotCapable", onDeviceNotCapable);
     app.dispatcher.on("Mountain3DView:onLocationLoaded", onLocationLoaded);

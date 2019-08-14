@@ -36,13 +36,8 @@ define([
     var self = this;
 
     // mla test
-//    removeDeviceCookies();
-    if (!getDeviceCookies()) {
-//      storeDeviceCookies(DEF_DEVICE_TYPE);
-      storeDeviceCookies('app');
-    }
-    var jsonDevice = getDeviceCookies();
-    $('body').addClass(jsonDevice.devicetype);
+//    $('body').addClass('app');
+    $('body').addClass('web');
 
     app.dispatcher.on("ChallengesView:ready", onChallengesReady);
     app.dispatcher.on("EventsView:feedready", onEventsFeedReady);
@@ -84,6 +79,8 @@ define([
     var playerSearchView = new PlayerSearchView({ el: '#supporter-search-view', campaignID: CAMPAIGN_ID, hostURL: HOST_URL });
     playerSearchView.render();    
     var challengesView = new ChallengesView({ el: '#challenges-available-view' });
+// mla    
+//    challengesView.load();
 
     var eventsView = new EventsView({ el: '#events-view' });
     eventsView.loadFeed();
@@ -117,9 +114,6 @@ define([
     }
     else {
       $('.visible-player-inactive').show();
-
-      // now load challenges
-      challengesView.load();
 
       // fire up promotion
 
@@ -163,13 +157,7 @@ define([
 
     function onChallengesReady() {
       $('#challenges-loader-view').hide();
-
-      var jsonPlayerGames = null;
-      if (playerGameView) {
-        jsonPlayerGames = playerGameView.getPlayerGames()
-      }
-
-      challengesView.render(jsonPlayerGames);
+      challengesView.render(playerGameView.getPlayerGames());
     }
 
     function onEventsFeedReady() {
