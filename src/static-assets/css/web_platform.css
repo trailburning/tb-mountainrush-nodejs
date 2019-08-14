@@ -55,6 +55,11 @@ body.ready .show-when-ready {
 .fat-currency-symbol {
   font-size: 0.5em; }
 
+/* DRIFT */
+/******************************************/
+#drift-widget-container {
+  display: none; }
+
 /* IMAGE */
 /******************************************/
 img.fade_on_load {
@@ -770,6 +775,10 @@ form .warning {
   #header-view .name .avatar,
   #header-view .name .greeting {
     display: none; }
+  #header-view .name .avatar {
+    background: none;
+    border: none;
+    border-radius: 0; }
 
 #header-view .mini-menu {
   color: #FFF; }
@@ -1199,6 +1208,9 @@ img.scale {
 /******************************************/
 [class*="visible-player-"] {
   display: none; }
+
+.web #drift-widget-container {
+  display: block; }
 
 .web #header-view .full-menu .menus,
 .web #header-view .name .greeting {

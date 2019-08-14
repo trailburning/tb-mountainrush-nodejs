@@ -68,6 +68,12 @@ body.ready .show-when-ready {
   font-size: 0.5em;
 }
 
+/* DRIFT */
+/******************************************/
+#drift-widget-container {
+  display: none;
+}
+
 /* IMAGE */
 /******************************************/
 img.fade_on_load {
@@ -871,6 +877,12 @@ form {
   .greeting {
     display: none;
   }
+
+  .avatar {
+    background: none;
+    border: none;
+    border-radius: 0;
+  }
 }
 
 #header-view .mini-menu {
@@ -1431,8 +1443,11 @@ img.scale {
 }
 
 .web {
-  #header-view {
+  #drift-widget-container {
+    display: block;
+  }
 
+  #header-view {
     .full-menu .menus,
     .name .greeting {
       display: block;

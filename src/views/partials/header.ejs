@@ -48,7 +48,11 @@
 
   <div class="name">
   <a class="link" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/profile">
-  <div class="avatar"><img src="{{= player.avatar }}"></div>
+  <div class="avatar">
+
+  <img src="/static-assets/images/avatars/avatar vector.svg">
+  
+  </div>
   <div class="greeting"><%= __('menu.greeting') %> {{= firstname }}!</div>
   </a></div>
 </script>
