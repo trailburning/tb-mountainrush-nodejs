@@ -5,23 +5,10 @@ define([
 
   var ChallengesView = Backbone.View.extend({
     initialize: function(options){
-      this.template = _.template($('#challengesViewTemplate').text());
+      this.template = _.template($('#challengesContentViewTemplate').text());
 
       this.options = options;
-      this.result = null;
-    },
-
-    load: function(){
-      var self = this;
-
-      var url = GAME_API_URL + "campaign/" + CAMPAIGN_ID + "/gamelevels";
-//      console.log(url);
-      $.getJSON(url, function(result){
-        self.result = result;
-
-        // fire event
-        app.dispatcher.trigger("ChallengesView:ready", self);
-      });
+      this.playerGameView = null;
     },
     
     render: function(jsonPlayerGames){
@@ -36,6 +23,19 @@ define([
       });
 
       return this;
+    },
+
+    load: function() {
+      var self = this;
+
+      var url = GAME_API_URL + "campaign/" + CAMPAIGN_ID + "/gamelevels";
+//      console.log(url);
+      $.getJSON(url, function(result){
+        self.result = result;
+
+        // fire event
+        app.dispatcher.trigger("ChallengesView:ready", self);
+      });
     }
     
   });

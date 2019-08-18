@@ -127,9 +127,6 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
   </div>
 
   <div id="challenges-view">
-    <h1>Are you ready?</h1>
-    <h2>Reach your summit!</h2>
-
     <div id="challenges-loader-view" class="loader-view">
       <div class="spinner">
         <div class="double-bounce1"></div>
@@ -137,7 +134,7 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
       </div>
     </div>
 
-    <div id="challenges-available-view"></div>
+    <div id="challenges-content-view"></div>
   </div>
 
   <div id="supporter-search-view">
@@ -329,11 +326,19 @@ var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>'
   </div><!-- /.modal -->
 </script>
 
-<script type="text/template" id="challengesViewTemplate">
+<script type="text/template" id="challengesContentViewTemplate">
+  {{ var activeGames = _.where(playerchallenges, {game_state:'active'}) }}
+
+  {{ if (activeGames.length) { }}
+    <h1>Active Challenge</h1>
+    <h2>Reach your summit!</h2>
+  {{ } else { }}
+    <h1>Are you ready?</h1>
+    <h2>Reach your summit!</h2>
+  {{ } }}
+
   <div class="cards-container">
     <div class="cards">
-    {{ var activeGames = _.where(playerchallenges, {game_state:'active'}) }}
-
     {{ if (activeGames.length) { }}
       {{ _.each(activeGames, function(challenge, index) { }}
         <div class="card">
