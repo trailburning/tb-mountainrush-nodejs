@@ -83,7 +83,7 @@ define([
     languageSelectorView.render();
     var playerSearchView = new PlayerSearchView({ el: '#supporter-search-view', campaignID: CAMPAIGN_ID, hostURL: HOST_URL });
     playerSearchView.render();    
-    var challengesView = new ChallengesView({ el: '#challenges-available-view' });
+    var challengesView = new ChallengesView({ el: '#challenges-content-view' });
 
     var eventsView = new EventsView({ el: '#events-view' });
     eventsView.loadFeed();
