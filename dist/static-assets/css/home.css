@@ -558,6 +558,9 @@ input.ui-autocomplete-loading {
 .web #community-view {
   display: block; }
 
+.app #challenges-view {
+  background: #173545; }
+
 .app #challenges-view,
 .app #supporter-search-view {
   display: block; }

@@ -544,7 +544,8 @@ drift.on('ready',function(api, payload) {
 <!-- Example of how to use Piste API -->
 <script type="text/javascript">
 function mobileApp(strType, strModel, strOS) {
-  alert(strType+' '+strModel+' : '+strOS);
+  console.log('mobileApp');
+  alert(strType+' : '+strModel+' : '+strOS);
 }
 
 if ( typeof Procedural === 'undefined' ) { Procedural = {}; }
