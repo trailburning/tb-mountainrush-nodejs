@@ -3,6 +3,8 @@ var app = app || {};
 var SEASON_SUMMER  = 0;
 var SEASON_WINTER  = 1;
 
+var DEVICE_TYPE = DEVICE_TYPE_WEB;
+
 define([
   'underscore',
   'backbone',
@@ -35,11 +37,18 @@ define([
   var initialize = function() {
     var self = this;
 
-    // mla test
-//    removeDeviceCookies();
+    if (DEVICE_SOURCE == 'web') {
+      removeDeviceCookies();
+      DEVICE_TYPE = DEVICE_TYPE_WEB;
+    }
+
+    if (DEVICE_SOURCE == 'ios') {
+      removeDeviceCookies();
+      DEVICE_TYPE = DEVICE_TYPE_APP;
+    }
+
     if (!getDeviceCookies()) {
-//      storeDeviceCookies(DEF_DEVICE_TYPE);
-      storeDeviceCookies('app');
+      storeDeviceCookies(DEVICE_TYPE);
     }
     var jsonDevice = getDeviceCookies();
     $('body').addClass(jsonDevice.devicetype);

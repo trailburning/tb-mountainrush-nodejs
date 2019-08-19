@@ -3,7 +3,8 @@ var COOKIE_DELIM = '_';
 var DEF_CLIENT_ID = 'djJrblYlXV'; // Mountain Rush
 var TB_API_EXT = '';
 var TB_API_URL = 'https://api.trailburning.com/v2';
-var DEF_DEVICE_TYPE = 'web';
+var DEVICE_TYPE_WEB = 'web';
+var DEVICE_TYPE_APP = 'app';
 var FUNDRAISING_PROVIDER_RAISENOW = 'RaiseNow';
 var FUNDRAISING_PROVIDER_JUSTGIVING = 'JustGiving';
 
