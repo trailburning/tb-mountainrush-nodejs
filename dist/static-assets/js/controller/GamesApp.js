@@ -26,7 +26,11 @@ define([
   var initialize = function() {
     var self = this;
 
-    $('body').addClass('web');
+    if (!getDeviceCookies()) {
+      storeDeviceCookies(DEF_DEVICE_TYPE);
+    }
+    var jsonDevice = getDeviceCookies();
+    $('body').addClass(jsonDevice.devicetype);
 
     $('#loader-view').show();
 

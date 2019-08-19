@@ -1,3 +1,7 @@
+body.app {
+  background: #0a1e29;
+}
+
 .beta {
   z-index: 3;
   position: absolute;
@@ -782,6 +786,10 @@ input.ui-autocomplete-loading {
 .web #get-active-view,
 .web #community-view {
   display: block;
+}
+
+.app #challenges-view {
+  background: rgb(23,53,69);
 }
 
 .app #challenges-view,
