@@ -38,8 +38,8 @@ module.exports = {
     defs.BaseHTTPSURL = this.BaseHTTPSURL(req);
     defs.CurrentYear = new Date().getFullYear();
     defs.DeviceSource = '';
-    if (req.param("source") != undefined) {
-      defs.DeviceSource = req.param("source");
+    if (req.query.source != undefined) {
+      defs.DeviceSource = req.query.source;
     }
 
     return defs;
