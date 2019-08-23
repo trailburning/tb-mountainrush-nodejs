@@ -274,10 +274,6 @@ module.exports = function(app) {
   app.get('/', function(req, res) {
     var defs = helper.getDefs(req);
 
-    if (req.param("source") != undefined) {
-      defs.source = req.param("source");
-    }
-
     getCampaignDataByCampaign(req, 'djJrblYlXV', function(err, campaign){ 
       res.render('pages/index', {Defs: defs, Campaign: campaign});
     });
