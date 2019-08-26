@@ -742,6 +742,7 @@ form .warning {
 /* HEADER VIEW */
 /******************************************/
 #header-view {
+  display: none;
   position: relative;
   font-family: radikallight,sans-serif;
   width: 100%;
@@ -1212,18 +1213,15 @@ img.scale {
 .web #drift-widget-container {
   display: block; }
 
-.web #header-view .full-menu .menus,
-.web #header-view .name .greeting {
+.web #header-view {
   display: block; }
-
-.web #header-view .mini-menu .nav {
-  display: block; }
+  .web #header-view .full-menu .menus,
+  .web #header-view .name .greeting {
+    display: block; }
+  .web #header-view .mini-menu .nav {
+    display: block; }
 
 .web #footer-view {
-  display: block; }
-
-.app #header-view .full-menu .menus-simple,
-.app #header-view .name .avatar {
   display: block; }
 
 /* Small devices (tablets, 768px and up) */

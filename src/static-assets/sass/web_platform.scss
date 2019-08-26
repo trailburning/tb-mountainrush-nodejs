@@ -839,6 +839,7 @@ form {
 /* HEADER VIEW */
 /******************************************/
 #header-view {
+  display: none;
   position: relative;
   font-family: radikallight,sans-serif;
   width: 100%;
@@ -1448,6 +1449,8 @@ img.scale {
   }
 
   #header-view {
+    display: block;
+
     .full-menu .menus,
     .name .greeting {
       display: block;
@@ -1462,15 +1465,6 @@ img.scale {
     display: block;
   }
 }
-
-.app {
-  #header-view {
-    .full-menu .menus-simple,
-    .name .avatar {
-      display: block;
-    }
-  }
-} 
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
