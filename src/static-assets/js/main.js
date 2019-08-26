@@ -5,6 +5,7 @@ var TB_API_EXT = '';
 var TB_API_URL = 'https://api.trailburning.com/v2';
 var DEVICE_TYPE_WEB = 'web';
 var DEVICE_TYPE_APP = 'app';
+var DEF_DEVICE_TYPE = DEVICE_TYPE_WEB;
 var FUNDRAISING_PROVIDER_RAISENOW = 'RaiseNow';
 var FUNDRAISING_PROVIDER_JUSTGIVING = 'JustGiving';
 
