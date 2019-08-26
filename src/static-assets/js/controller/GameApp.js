@@ -569,7 +569,11 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
         $('#player-view .summary-max').removeClass('expanded');
 
-        var nMapHeight = nWindowHeight - $('#header-view').height();
+        var nMapHeight = nWindowHeight;
+        // when not app we include a header bar
+        if (!$('body').hasClass('app')) {
+          nMapHeight = nWindowHeight - $('#header-view').height();
+        }
 
         $('#map-view').addClass('full-height');
         $('#map-view.full-height .map').css('height', nMapHeight);
