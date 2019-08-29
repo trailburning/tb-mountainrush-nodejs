@@ -196,19 +196,11 @@ function updateUserCookies(clientID, strUser, strFirstname, strAvatar){
   }
 }
 
-function storeUserCookies(clientID, token, objUser){
+function storeUserCookies(clientID, objUser){
   var cookiePrefix = COOKIE_PREFIX + COOKIE_DELIM + clientID + COOKIE_DELIM;
   if (clientID == DEF_CLIENT_ID) {
     cookiePrefix = COOKIE_PREFIX + COOKIE_DELIM;
   }
-
-  // store in cookies
-  $.removeCookie(cookiePrefix + 'usertoken', { path: '/' });
-  $.removeCookie(cookiePrefix + 'user', { path: '/' });
-  $.removeCookie(cookiePrefix + 'firstname', { path: '/' });
-  $.removeCookie(cookiePrefix + 'avatar', { path: '/' });
-  
-  $.cookie(cookiePrefix + 'usertoken', token, { expires: 365, path: '/' });
 
   updateUserCookies(clientID, objUser.id, objUser.firstname, objUser.avatar);
 }
@@ -231,15 +223,6 @@ function getUserCookie(clientID){
     cookiePrefix = COOKIE_PREFIX + COOKIE_DELIM;
   }
 
-  return $.cookie(cookiePrefix + 'usertoken');
-}
-
-function getUserIDCookie(clientID){
-  var cookiePrefix = COOKIE_PREFIX + COOKIE_DELIM + clientID + COOKIE_DELIM;
-  if (clientID == DEF_CLIENT_ID) {
-    cookiePrefix = COOKIE_PREFIX + COOKIE_DELIM;
-  }
-
   return $.cookie(cookiePrefix + 'user');
 }
 
@@ -249,10 +232,10 @@ function getUserCookies(clientID){
     cookiePrefix = COOKIE_PREFIX + COOKIE_DELIM;
   }
 
-  if ($.cookie(cookiePrefix + 'usertoken') == undefined) {
+  if ($.cookie(cookiePrefix + 'user') == undefined) {
     return false;
   }
-  return { user: $.cookie(cookiePrefix +'user'), token: $.cookie(cookiePrefix +'usertoken'), firstname: $.cookie(cookiePrefix + 'firstname'), avatar: $.cookie(cookiePrefix + 'avatar') };
+  return { user: $.cookie(cookiePrefix +'user'), firstname: $.cookie(cookiePrefix + 'firstname'), avatar: $.cookie(cookiePrefix + 'avatar') };
 }
 
 function storeDeviceCookies(deviceType){

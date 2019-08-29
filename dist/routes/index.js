@@ -631,7 +631,6 @@ module.exports = function(app) {
         // Use code to get token
         getCampaignProviderConnectDataAndToken(req.params.campaignID, req.query.code, function(err, data){ 
           defs.StravaOauthConnectURL = data.oauthConnectURL;
-          defs.StravaToken = data.token;
           defs.PlayerID = data.playerID;
           
           res.render('pages/register', {Defs: defs, Campaign: campaign});
@@ -657,7 +656,7 @@ module.exports = function(app) {
         // Use code to get token
         getCampaignProviderConnectDataAndToken(req.params.campaignID, req.query.code, function(err, data){ 
           defs.StravaOauthConnectURL = data.oauthConnectURL;
-          defs.StravaToken = data.token;
+          defs.PlayerID = data.playerID;
           
           res.render('pages/register', {Defs: defs, Campaign: campaign});
         });
