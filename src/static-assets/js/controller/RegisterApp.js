@@ -129,27 +129,26 @@ define([
         
 //        if (TEST) {
 //          removeUserCookie(CLIENT_ID);
-//          PLAYER_TOKEN = '9b69f66ee9a7d20702a5b9771322388df8cb886a'; // MR - Matt
-//          PLAYER_TOKEN = 'b8a1bc6ca786c95f1e639c42615320782d8a9d22'; // MR - Trailburning
-//          PLAYER_TOKEN = '3e43a998394b56e0616e3ccd4085ba762f83e861'; // CFYW - Amelia
+//          PLAYER_ID = 'b31r7RZ7Xo'; // MR - Matt
+//          PLAYER_ID = 'gxAZjLl4XR'; // CFYW - Amelia
 //        } 
 //        changeState(STATE_FUNDRAISING_PAGE_CREATE);
 //        return;
 
-        if (PLAYER_TOKEN != '') { // do we have a passed player?
+        if (PLAYER_ID != '') { // do we have a passed player?
           changeState(STATE_PLAYER_SIGNEDUP);
         }
         else if (getUserCookie(CLIENT_ID) != undefined) { // do we have a player in the cookie?
           switch (REGISTER_STATE) {
             case 'prefs':
               // we want to show player prefs, first get player deats
-              var token = PLAYER_TOKEN;
+              var playerID = PLAYER_ID;
               if (getUserCookie(jsonCampaign.clientID) != undefined) {
                 var jsonPlayer = getUserCookies(jsonCampaign.clientID);
-                token = jsonPlayer.token;
+                playerID = jsonPlayer.user;
               }
 
-              getPlayer(jsonCampaign.clientID, token, function(jsonPlayer) {
+              getPlayer(jsonCampaign.clientID, playerID, function(jsonPlayer) {
                 jsonCurrPlayer = jsonPlayer;
                 changeState(STATE_PLAYER_PREFERENCES);
                 showActivePlayer();
@@ -159,13 +158,13 @@ define([
 
             case 'gamecreate':
               // we want to show player prefs, first get player deats
-              var token = PLAYER_TOKEN;
+              var playerID = PLAYER_ID;
               if (getUserCookie(jsonCampaign.clientID) != undefined) {
                 var jsonPlayer = getUserCookies(jsonCampaign.clientID);
-                token = jsonPlayer.token;
+                playerID = jsonPlayer.user;
               }
 
-              getPlayer(jsonCampaign.clientID, token, function(jsonPlayer) {
+              getPlayer(jsonCampaign.clientID, playerID, function(jsonPlayer) {
                 jsonCurrPlayer = jsonPlayer;
                 changeState(STATE_GAME_CREATE);
                 showActivePlayer();
@@ -176,7 +175,7 @@ define([
             case 'fundraise':
               // we want to enable fundraising, first get player deats
               var jsonPlayer = getUserCookies(jsonCampaign.clientID);
-              getPlayer(jsonCampaign.clientID, jsonPlayer.token, function(jsonPlayer) {
+              getPlayer(jsonCampaign.clientID, jsonPlayer.user, function(jsonPlayer) {
                 jsonCurrPlayer = jsonPlayer;
 
                 if (CAUSE_ID != '') {
@@ -207,13 +206,13 @@ define([
       });
     }
 
-    function getPlayer(clientID, playerToken, callbackFunction) {
+    function getPlayer(clientID, playerID, callbackFunction) {
       var self = this;
 
-      var url = GAME_API_URL + "client/" + clientID + "/player/" + playerToken;
+      var url = GAME_API_URL + "client/" + clientID + "/player/" + playerID;
 //      console.log(url);
       $.getJSON(url, function(result){
-        storeUserCookies(clientID, playerToken, result[0]);
+        storeUserCookies(clientID, result[0]);
         callbackFunction(result[0]);
       })
       .fail(function() {
@@ -358,13 +357,13 @@ define([
           break;
 
         case STATE_PLAYER_SIGNUP_VERIFY:
-          var token = PLAYER_TOKEN;
+          var playerID = PLAYER_ID;
           if (getUserCookie(jsonCampaign.clientID) != undefined) {
             var jsonPlayer = getUserCookies(jsonCampaign.clientID);
-            token = jsonPlayer.token;
+            playerID = jsonPlayer.user;
           }
 
-          getPlayer(jsonCampaign.clientID, token, function(jsonPlayer) {
+          getPlayer(jsonCampaign.clientID, playerID, function(jsonPlayer) {
             jsonCurrPlayer = jsonPlayer;
 
             registerWelcomeVerifyView.setPlayer(jsonCampaign.clientID, jsonCurrPlayer);
@@ -378,13 +377,13 @@ define([
           break;
 
         case STATE_PLAYER_SIGNEDUP:
-          var token = PLAYER_TOKEN;
+          var playerID = PLAYER_ID;
           if (getUserCookie(jsonCampaign.clientID) != undefined) {
             var jsonPlayer = getUserCookies(jsonCampaign.clientID);
-            token = jsonPlayer.token;
+            playerID = jsonPlayer.user;
           }
 
-          getPlayer(jsonCampaign.clientID, token, function(jsonPlayer) {
+          getPlayer(jsonCampaign.clientID, playerID, function(jsonPlayer) {
             if (jsonPlayer) {
               jsonCurrPlayer = jsonPlayer;
 
