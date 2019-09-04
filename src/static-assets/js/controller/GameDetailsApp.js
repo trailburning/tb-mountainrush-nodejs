@@ -150,7 +150,7 @@ define([
       var dLocalGameEnd = new Date(jsonCurrGame.game_end);
 
       // is game active?
-      if ((dLocalGameStart < dLocalGameNow) || Demo) {
+      if (dLocalGameStart < dLocalGameNow) {
         var elCountdownContainer = $('.countdown-container');
         var strDay = elCountdownContainer.attr('data-value-day');
         var strDays = elCountdownContainer.attr('data-value-days');
