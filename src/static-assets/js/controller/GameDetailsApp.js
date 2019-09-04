@@ -171,12 +171,12 @@ define([
             + '</span>'));
           elCountdownContainer.show();
         });
-
-        // render game photo
-        gamePhotoView.render(jsonCurrGame);
-
-        getDonations();
       }
+
+      // render game photo
+      gamePhotoView.render(jsonCurrGame);
+
+      getDonations();
 
       var elPhotos = $('#players-overview-view .posts .photos');
 
