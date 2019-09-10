@@ -46,34 +46,6 @@ define([
       this.playerActivityMorePhotosView = null;
     },
 
-    create: function(){
-      var self = this;
-
-      var jsonData = {avatar: 'none',
-                      firstname: 'Fred',
-                      lastname: 'Blogs',
-                      email: 'me@me.com',
-                      city: 'this one',
-                      country: 'world'};
-
-      var url = GAME_API_URL + "player";
-//      console.log(url);
-      $.ajax({
-        type: 'post',
-        dataType: 'json',
-        url: url,
-        data: JSON.stringify(jsonData),
-        error: function(data) {
-          console.log('error');
-          console.log(data);
-        },
-        success: function(data) {
-          console.log('success');
-          console.log(data);
-        }
-      });
-    },
-
     getProgress: function(){
       var self = this;
 
