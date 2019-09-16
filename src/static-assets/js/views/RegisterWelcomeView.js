@@ -21,24 +21,6 @@ define([
       return this.jsonFields;
     },
 
-    getPlayer: function(clientID) {
-      var self = this;
-
-      var url = GAME_API_URL + "client/" + clientID + "/playertoken/" + this.jsonFields.playerToken;
-//      console.log(url);
-      $.getJSON(url, function(result){
-        $('.get-btn', $(self.el)).button('reset');
-
-        self.jsonFields.playerID = result[0].id;
-        self.jsonFields.firstname = result[0].firstname;
-        self.jsonFields.avatar = result[0].avatar;
-        self.jsonFields.games = result[0].games;
-
-        // fire event
-        app.dispatcher.trigger("RegisterWelcomeViewTemplate:playerRetrieved");
-      });
-    },
-
     render: function(options){
       var self = this;
 
