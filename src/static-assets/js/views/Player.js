@@ -85,14 +85,10 @@ define([
         // what sort of challenge do we have?
         self.model.set('ascentChallenge', true);
         if (self.options.journeyDistance > 0) {
-          console.log('DISTANCE CHALLENGE');
           self.model.set('ascentChallenge', false);
 
-          console.log(fDistance+' : '+self.options.journeyDistance);
           var fDistancePercent = (fDistance / self.options.journeyDistance) * 100;
           self.model.set('distancePercent', fDistancePercent);
-
-          console.log(fAscentPercent+' : '+fDistancePercent);
         }
 
         self.model.set('distance', fDistance);

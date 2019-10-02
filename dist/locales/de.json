@@ -229,10 +229,12 @@
 	"game": {
 		"to_summit": "to summit",
 		"climbed": "climbed",
+    "covered": "covered",
 		"summited": "Summit!",
 		"summited_long": "summit reached",
 		"unknown_location": "Where am I?",
 		"climbed_on": "climbed on",
+    "covered_on": "covered on",
 		"player_position": {
 			"position": {
 				"first": "st",
@@ -245,7 +247,8 @@
 		"latest_activity": {
 			"title": "Latest Activity:",
 			"climbed": "Climbed",
-			"over": "over"
+      "over": "over",
+      "progressed": "Progressed"
 		},
 		"view_strava": "View on Strava",
 		"photos": {
