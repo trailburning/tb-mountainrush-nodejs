@@ -77,9 +77,19 @@ define([
         }
 
         self.model.set('mediaCaptured', self.jsonProgress.bMediaCaptured == '1' ? true : false);
+
         // calc progress
         var fAscentPercent = (fElevationGain / self.options.journeyAscent) * 100;
         self.model.set('elevationGainPercent', fAscentPercent);
+
+        // what sort of challenge do we have?
+        self.model.set('ascentChallenge', true);
+        if (self.options.journeyDistance > 0) {
+          self.model.set('ascentChallenge', false);
+
+          var fDistancePercent = (fDistance / self.options.journeyDistance) * 100;
+          self.model.set('distancePercent', fDistancePercent);
+        }
 
         self.model.set('distance', fDistance);
         self.model.set('elevationGain', fElevationGain);
@@ -88,11 +98,18 @@ define([
         if (fElevationGain < self.options.journeyAscent) {
           fElevationToSummit = self.options.journeyAscent - fElevationGain;
         }
-
         self.model.set('elevationToSummit', fElevationToSummit);
+
+        var fDistanceToSummit = 0;
+        if (fDistance < self.options.journeyDistance) {
+          fDistanceToSummit = self.options.journeyDistance - fDistance;
+        }
+        self.model.set('distanceToSummit', fDistanceToSummit);
 
         // contains date player reached ascent, if they did that is
         self.model.set('ascentCompleted', self.jsonProgress.ascentCompleted);
+        // contains date player reached distance, if they did that is
+        self.model.set('distanceCompleted', self.jsonProgress.distanceCompleted);
 
         // set fundraising details
         self.model.set('fundraisingCurrencySymbol', self.jsonProgress.fundraising_currency_symbol);
