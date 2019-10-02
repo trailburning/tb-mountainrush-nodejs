@@ -483,7 +483,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
       // get player activity data
       playerCollection.each(function(model){
-        var player = new Player({ model: model, gameID: GAME_ID, journeyLength: mountainModel.get('distance'), journeyAscent: jsonCurrGame.ascent });
+        var player = new Player({ model: model, gameID: GAME_ID, journeyLength: mountainModel.get('distance'), journeyAscent: jsonCurrGame.ascent, journeyDistance: jsonCurrGame.distance });
 
 //        player.create();
         player.getProgress();
@@ -944,8 +944,17 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       // default to complete
       var fProgress = mountainModel.get('distance');
       // if not complete then calc how far
-      if (model.get('elevationGainPercent') < 100) {
-        fProgress = (model.get('elevationGainPercent') * mountainModel.get('distance')) / 100;
+      if (model.get('ascentChallenge')) {
+        // ascent challenge
+        if (model.get('elevationGainPercent') < 100) {
+          fProgress = (model.get('elevationGainPercent') * mountainModel.get('distance')) / 100;
+        }
+      }
+      else {
+        // distance challenge
+        if (model.get('distancePercent') < 100) {
+          fProgress = (model.get('distancePercent') * mountainModel.get('distance')) / 100;
+        }
       }
 
       model.set('progress', fProgress);
