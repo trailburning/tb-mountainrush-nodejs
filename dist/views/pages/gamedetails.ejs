@@ -278,7 +278,13 @@ var TEST_PROGRESS = '';
             </div>
           {{ } }}
           <div class="summit">
-            <h1>{{= game.ascent }}m</h1>{{= game.level_name }}
+            <h1>
+            {{ if (game.ascentChallenge) { }}
+              {{= game.ascent }}m
+            {{ } else { }}
+              {{= (game.distance / 1000).toFixed(0) }}km
+            {{ } }}
+            </h1>{{= game.level_name }}
           </div>
         </div>
       </div>
@@ -309,7 +315,13 @@ var TEST_PROGRESS = '';
         </div>
         <div class="summit-container">
           <div class="summit">
-            <h1>{{= game.ascent }}m</h1>{{= game.level_name }}
+            <h1>
+            {{ if (game.ascentChallenge) { }}
+              {{= game.ascent }}m
+            {{ } else { }}
+              {{= (game.distance / 1000).toFixed(0) }}km
+            {{ } }}
+            </h1>{{= game.level_name }}
           </div>
           {{ if (players.length > 1) { }}
             <div class="pos">
@@ -394,11 +406,22 @@ var TEST_PROGRESS = '';
             </div>
             <div class="overview">
             <h1 class="truncate" data-truncate="15">{{= player.firstname }} {{= player.lastname }}</h1>
-            {{ if (player.elevationToSummit) { }}
-              {{ if (player.elevationToSummit < 1) { }}{{= player.elevationToSummit }}{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m <%= __('game.to_summit') %>
+
+
+            {{ if (game.ascentChallenge) { }}
+              {{ if (player.elevationToSummit) { }}
+                {{ if (player.elevationToSummit < 1) { }}1{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m <%= __('game.to_summit') %>
+              {{ } else { }}
+                <%= __('game.summited_long') %>
+              {{ } }}
             {{ } else { }}
-            <%= __('game.summited_long') %>
+              {{ if (player.distanceToSummit) { }}
+                {{ if (player.distanceToSummit < 1) { }}1{{ } else { }}{{= (player.distanceToSummit / 1000).toFixed(1) }}{{ } }}km <%= __('game.to_summit') %>
+              {{ } else { }}
+                <%= __('game.summited_long') %>
+              {{ } }}
             {{ } }}
+
             </div>
             <div class="hidden-xs">
               <div class="fundraising">
