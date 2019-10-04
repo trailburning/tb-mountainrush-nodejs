@@ -358,7 +358,12 @@ var DEVICE_SOURCE = '<%= Defs.DeviceSource %>';
           <div class="content">
           <h2>{{= challenge.name }}</h2>
           <div class="overview">
-          <strong>{{= challenge.region }}</strong> - Climb {{= challenge.ascent }}m
+          <strong>{{= challenge.region }}</strong> -
+          {{ if (challenge.distance > 0) { }}
+            {{= (challenge.distance / 1000).toFixed(0) }}km Challenge
+          {{ } else { }}
+            Climb {{= challenge.ascent }}m
+          {{ } }}
           </div>
           <a href="<%= Defs.BaseHTTPSURL %>/game/{{= challenge.game }}" class="btn mr-btn btn-primary">View active challenge</a>
           </div>
