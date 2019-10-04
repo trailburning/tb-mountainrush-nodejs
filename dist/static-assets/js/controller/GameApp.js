@@ -483,7 +483,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
       // get player activity data
       playerCollection.each(function(model){
-        var player = new Player({ model: model, gameID: GAME_ID, journeyLength: mountainModel.get('distance'), journeyAscent: jsonCurrGame.ascent, journeyDistance: jsonCurrGame.distance });
+        var player = new Player({ gameModel: jsonCurrGame, model: model, gameID: GAME_ID, journeyLength: mountainModel.get('distance'), journeyAscent: jsonCurrGame.ascent, journeyDistance: jsonCurrGame.distance });
 
 //        player.create();
         player.getProgress();
@@ -858,6 +858,12 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     function onGameLoaded(jsonGame) {
       jsonCurrGame = jsonGame;
 
+      // what sort of challenge do we have?
+      jsonGame.ascentChallenge = true;
+      if (jsonGame.distance > 0) {
+        jsonGame.ascentChallenge = false;
+      }
+
       playerCollection = new Backbone.Collection(jsonGame.players);
 
       // are we a single player game?
@@ -976,10 +982,17 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       }
       playerCollection.sort();
 
-      // sub sort by when ascent completed
+      // sub sort by when ascent/distance completed
       playerCollection.comparator = function(model) {
-        if (model.get('ascentCompleted')) {
-          return Date.parse(model.get('ascentCompleted'));
+        if (jsonCurrGame.ascentChallenge) {
+          if (model.get('ascentCompleted')) {
+            return Date.parse(model.get('ascentCompleted'));
+          }
+        }
+        else {
+          if (model.get('distanceCompleted')) {
+            return Date.parse(model.get('distanceCompleted'));
+          }
         }
       }
       playerCollection.sort();
