@@ -355,10 +355,17 @@ define([
       }
       playerCollection.sort();
 
-      // sub sort by when ascent completed
+      // sub sort by when ascent/distance completed
       playerCollection.comparator = function(model) {
-        if (model.get('ascentCompleted')) {
-          return Date.parse(model.get('ascentCompleted'));
+        if (jsonCurrGame.ascentChallenge) {
+          if (model.get('ascentCompleted')) {
+            return Date.parse(model.get('ascentCompleted'));
+          }
+        }
+        else {
+          if (model.get('distanceCompleted')) {
+            return Date.parse(model.get('distanceCompleted'));
+          }
         }
       }
       playerCollection.sort();

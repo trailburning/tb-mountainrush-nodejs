@@ -83,10 +83,7 @@ define([
         self.model.set('elevationGainPercent', fAscentPercent);
 
         // what sort of challenge do we have?
-        self.model.set('ascentChallenge', true);
         if (self.options.journeyDistance > 0) {
-          self.model.set('ascentChallenge', false);
-
           var fDistancePercent = (fDistance / self.options.journeyDistance) * 100;
           self.model.set('distancePercent', fDistancePercent);
         }
