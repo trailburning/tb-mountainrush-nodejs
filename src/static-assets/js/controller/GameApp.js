@@ -626,6 +626,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       var strImageHost = GAME_API_URL + 'imageproxy.php?url=';
 
       var fProgressKM = activePlayer.get('progress');
+      console.log(fProgressKM);
       var bEnabled = false;
       var latestMarker = null;
 
@@ -950,7 +951,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       // default to complete
       var fProgress = mountainModel.get('distance');
       // if not complete then calc how far
-      if (model.get('ascentChallenge')) {
+      if (jsonCurrGame.ascentChallenge) {
         // ascent challenge
         if (model.get('elevationGainPercent') < 100) {
           fProgress = (model.get('elevationGainPercent') * mountainModel.get('distance')) / 100;
@@ -962,6 +963,8 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           fProgress = (model.get('distancePercent') * mountainModel.get('distance')) / 100;
         }
       }
+
+      console.log('t:'+fProgress);
 
       model.set('progress', fProgress);
       // modify avatar to use image proxy with campaign fallback
