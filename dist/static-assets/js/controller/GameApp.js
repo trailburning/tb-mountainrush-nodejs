@@ -964,8 +964,6 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         }
       }
 
-      console.log('t:'+fProgress);
-
       model.set('progress', fProgress);
       // modify avatar to use image proxy with campaign fallback
       model.set('avatar', GAME_API_URL + 'imageproxy.php?url=' + model.get('avatar') + '&urlfallback=https://www.mountainrush.co.uk/static-assets/images/' + CAMPAIGN_TEMPLATE + '/avatar_unknown.jpg');
