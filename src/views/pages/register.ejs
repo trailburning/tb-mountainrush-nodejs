@@ -417,7 +417,13 @@ var TEST = '<%= Defs.Test %>';
           <ul class="form-field pills" data-id="level">
           {{ _.each(gameLevels, function(gameLevel, index) { }}
             <li>
-              <span class="pill {{ if (gameSelLevel == gameLevel.id || (!gameSelLevel && index == 0)) { }}active{{ } }}" data-id="{{= gameLevel.id }}" data-season-id="{{= gameLevel.seasonDefault }}" data-sponsored="{{= gameLevel.sponsored }}">{{= gameLevel.name }} {{= gameLevel.ascent }}m</span>
+              <span class="pill {{ if (gameSelLevel == gameLevel.id || (!gameSelLevel && index == 0)) { }}active{{ } }}" data-id="{{= gameLevel.id }}" data-season-id="{{= gameLevel.seasonDefault }}" data-sponsored="{{= gameLevel.sponsored }}">{{= gameLevel.name }} 
+              {{ if (gameLevel.distance > 0) { }}
+                {{= (gameLevel.distance / 1000).toFixed(0) }}km
+              {{ } else { }}
+                {{= gameLevel.ascent }}m
+              {{ } }}
+              </span>
             </li>
           {{ }); }}
           </ul>
