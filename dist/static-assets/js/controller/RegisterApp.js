@@ -224,7 +224,7 @@ define([
       var jsonData = {causeID: causeID};
 
       var url = GAME_API_URL + "fundraiser/game/" + gameID + "/player/" + playerID + "/cause";
-//      console.log(url);
+      console.log(url);
       $.ajax({
         type: 'post',
         dataType: 'json',
