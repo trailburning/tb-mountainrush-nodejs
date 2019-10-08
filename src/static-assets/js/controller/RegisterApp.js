@@ -459,15 +459,10 @@ define([
           break;
 
         case STATE_FUNDRAISING_CREATE:
-          console.log('t1');
-          console.log(registerWelcomeConnectedView);
           var jsonWelcomeFields = registerWelcomeConnectedView.getFields();
 
           var gameID = registerGameCreateView.getFields().gameID;
           var playerID = jsonWelcomeFields.playerID;
-
-          console.log(gameID);
-          console.log(playerID);
 
           if (GAME_ID != '') {
             // do we have a passed game id?
