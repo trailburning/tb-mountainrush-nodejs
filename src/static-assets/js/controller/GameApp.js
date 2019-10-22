@@ -626,7 +626,6 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       var strImageHost = GAME_API_URL + 'imageproxy.php?url=';
 
       var fProgressKM = activePlayer.get('progress');
-      console.log(fProgressKM);
       var bEnabled = false;
       var latestMarker = null;
 
