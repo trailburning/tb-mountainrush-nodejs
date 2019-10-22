@@ -450,10 +450,14 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     }
 
     function getJourney(journeyID, mountain3DName) {
-      var url = TB_API_URL + '/journeys/' + journeyID + TB_API_EXT;
-//      console.log(url);
+//      var url = TB_API_URL + '/journeys/' + journeyID + TB_API_EXT;
+      var url = GAME_API_URL + 'route/5dzYVbYJow';
+      console.log(url);
       $.getJSON(url, function(result){
-        var jsonJourney = result.body.journeys[0];
+//        var jsonJourney = result.body.journeys[0];
+        var jsonJourney = result[0];
+        console.log(jsonJourney);
+
         mountainModel = new Backbone.Model(jsonJourney);
 
         jsonRoute = {
@@ -626,7 +630,6 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       var strImageHost = GAME_API_URL + 'imageproxy.php?url=';
 
       var fProgressKM = activePlayer.get('progress');
-      console.log(fProgressKM);
       var bEnabled = false;
       var latestMarker = null;
 
