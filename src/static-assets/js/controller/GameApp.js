@@ -452,7 +452,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     function getJourney(journeyID, mountain3DName) {
 //      var url = TB_API_URL + '/journeys/' + journeyID + TB_API_EXT;
       var url = GAME_API_URL + 'route/5dzYVbYJow';
-      console.log(url);
+//      console.log(url);
       $.getJSON(url, function(result){
 //        var jsonJourney = result.body.journeys[0];
         var jsonJourney = result[0];
