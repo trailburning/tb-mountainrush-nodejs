@@ -440,23 +440,20 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       focusPlayer(nCurrPlayer);
     }
 
-    function getJourneyEvents(journeyID) {
-      var url = TB_API_URL + '/journeys/' + journeyID + '/events' + TB_API_EXT;
+    function getJourneyEvents(routeID) {
+      var url = GAME_API_URL + 'route/' + routeID + '/events';
 //      console.log(url);
       $.getJSON(url, function(result){
-        mountainEventsCollection = new Backbone.Collection(result.body.events);
+        mountainEventsCollection = new Backbone.Collection(result.events);
         setupMap();
       });
     }
 
-    function getJourney(journeyID, mountain3DName) {
-//      var url = TB_API_URL + '/journeys/' + journeyID + TB_API_EXT;
-      var url = GAME_API_URL + 'route/5dzYVbYJow';
+    function getJourney(routeID, mountain3DName) {
+      var url = GAME_API_URL + 'route/' + routeID;
 //      console.log(url);
       $.getJSON(url, function(result){
-//        var jsonJourney = result.body.journeys[0];
         var jsonJourney = result[0];
-        console.log(jsonJourney);
 
         mountainModel = new Backbone.Model(jsonJourney);
 
@@ -477,8 +474,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         });
         // set distance
         mountainModel.set('distance', turf.length(jsonRoute, {units: 'kilometers'}));
-//        setupMap(mountain3DName);
-        getJourneyEvents(journeyID);
+        getJourneyEvents(routeID);
       });
     }
 
@@ -637,10 +633,12 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         var strImage = '';
 
         if (event.get('assets').length) {
+          var asset = event.get('assets')[0];
+
           // select 1st image asset
-          $.each(event.get('assets')[0].media, function(index, media){
-            if (media.mime_type == 'image/jpeg') {
-              strImage = media.path + escape('?fm=jpg&w=64&h=64&fit=crop&q=80');
+          $.each(asset.media, function(index, media){
+            if (media.mimeType == 'image/jpeg') {
+              strImage = 'http://mountainrush-media.imgix.net/routes/' + asset.id + '/' + media.id + '/' + media.name + escape('?fm=jpg&w=64&h=64&fit=crop&q=80');
             }
           });
         }
@@ -665,10 +663,9 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
         // focus on feature
         var coords = mountainStoryModel.get('coords');
-        mountain3DView.focusLocation(coords[0], coords[1]);
+        mountain3DView.focusLocation(coords[1], coords[0]);
         timeoutStoryID = window.setTimeout(function(){
           var nMarkerPos = mountainEventsCollection.indexOf(mountainStoryModel);
-
           // is the player fundraising, or is the first 'free' marker?
           // or is the player not in a fundraising game or is the game sponsored?
           var fFundRaisingGoal = this.currPlayerModel.get('fundraising_goal');
@@ -931,7 +928,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
           elCountdownContainer.show();
         });
       }
-      getJourney(jsonGame.journeyID, jsonGame.mountain3DName);
+      getJourney(jsonGame.routeID, jsonGame.mountain3DName);
     }
 
     function onActivePlayerLoaded(playerID) {
