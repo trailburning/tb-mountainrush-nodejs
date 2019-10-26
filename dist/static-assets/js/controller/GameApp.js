@@ -441,7 +441,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     }
 
     function getJourneyEvents(routeID) {
-      var url = GAME_API_URL + 'route/' + routeID + '/events';
+      var url = GAME_API_URL + 'route/' + routeID + '/events/lang/' + CAMPAIGN_SEL_LANGUAGE;
 //      console.log(url);
       $.getJSON(url, function(result){
         mountainEventsCollection = new Backbone.Collection(result.events);
