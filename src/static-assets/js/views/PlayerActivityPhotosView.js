@@ -19,7 +19,7 @@ define([
       var self = this;
 
       var url = GAME_API_URL + "game/" + self.options.gameID + "/player/" + self.options.playerID + "/activity/" + self.options.activityID + "/photos";
-//      console.log(url);
+      console.log(url);
       $.getJSON(url, function(result){
         self.activityID = self.options.activityID;
         self.jsonPhotos = result;
