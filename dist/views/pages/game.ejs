@@ -281,8 +281,8 @@ var Demo = <%= Defs.Demo %>;
               {{ if (_.where(asset.media, {mimeType:'video/mp4'}).length) { }}
                 {{ var mediaVideo = _.where(asset.media, {mimeType:'video/mp4'})[0] }}
 
-                {{ if (_.where(asset.media, {credit: game.type.toLowerCase()})[0]) { }}
-                  {{ mediaVideo = _.where(asset.media, {credit: game.type.toLowerCase()})[0] }}
+                {{ if (_.where(asset.media, {category: game.type.toLowerCase()})[0]) { }}
+                  {{ mediaVideo = _.where(asset.media, {category: game.type.toLowerCase()})[0] }}
                 {{ } }}
 
                 <div class="video">
