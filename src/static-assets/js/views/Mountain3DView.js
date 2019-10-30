@@ -482,8 +482,8 @@ define([
       }
 
       // look for point on line
-      pt.geometry.coordinates[1] = coord[0];
-      pt.geometry.coordinates[0] = coord[1];
+      pt.geometry.coordinates[0] = coord[0];
+      pt.geometry.coordinates[1] = coord[1];
 
       var snapped = turf.pointOnLine(this.jsonRoute, pt);
 
