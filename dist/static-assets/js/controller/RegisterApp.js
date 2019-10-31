@@ -4,10 +4,11 @@ var STATE_INIT = 0;
 var STATE_PLAYER_INVITATION = 1;
 var STATE_PLAYER_SIGNUP = 2;
 var STATE_PLAYER_SIGNUP_VERIFY = 3;
-var STATE_PLAYER_SIGNEDUP = 4;
-var STATE_PLAYER_PREFERENCES = 5;
-var STATE_GAME_CREATE = 6;
-var STATE_GAME_CREATED = 7;
+var STATE_PLAYER_SIGNUP_PAYWALL = 4;
+var STATE_PLAYER_SIGNEDUP = 5;
+var STATE_PLAYER_PREFERENCES = 6;
+var STATE_GAME_CREATE = 7;
+var STATE_GAME_CREATED = 8;
 
 // RaiseNow  doesn't require anything!
 var STATE_FUNDRAISING_CREATE = 10;
@@ -39,6 +40,7 @@ define([
   'views/RegisterInvitationView',
   'views/RegisterWelcomeView',
   'views/RegisterWelcomeVerifyView',
+  'views/RegisterWelcomePaywallView',
   'views/RegisterWelcomeConnectedView',
   'views/RegisterWelcomePreferencesView',
   'views/RegisterGameCreateView',
@@ -53,7 +55,7 @@ define([
   'views/ChallengeCancelModalView',
   'views/PromotionModalView',
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, cookie, truncate, modernizr, dateFormat, datepicker, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, RegisterInvitationView, RegisterWelcomeView, RegisterWelcomeVerifyView, RegisterWelcomeConnectedView, RegisterWelcomePreferencesView, RegisterGameCreateView, RegisterGameCreatedView, RegisterGamesView, RegisterFundraisingCreateView, RegisterFundraisingCreatedView, RegisterFundraisingSigninView, RegisterFundraisingSignupView, RegisterFundraisingPageCreateView, RegisterFundraisingPageCreatedView, ChallengeCancelModalView, PromotionModalView, DemoVideoView){
+], function(_, Backbone, bootstrap, cookie, truncate, modernizr, dateFormat, datepicker, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, RegisterInvitationView, RegisterWelcomeView, RegisterWelcomeVerifyView, RegisterWelcomePaywallView, RegisterWelcomeConnectedView, RegisterWelcomePreferencesView, RegisterGameCreateView, RegisterGameCreatedView, RegisterGamesView, RegisterFundraisingCreateView, RegisterFundraisingCreatedView, RegisterFundraisingSigninView, RegisterFundraisingSignupView, RegisterFundraisingPageCreateView, RegisterFundraisingPageCreatedView, ChallengeCancelModalView, PromotionModalView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -73,6 +75,7 @@ define([
 
     app.dispatcher.on("RegisterInvitationView:inviteSuccess", onInvitationSuccess);
     app.dispatcher.on("RegisterWelcomeVerifyView:userUpdated", onVerifySuccess);
+    app.dispatcher.on("RegisterWelcomePaywallView:userUpdated", onPaywallSuccess);
     app.dispatcher.on("RegisterWelcomeConnectedView:createGameClick", onCreateGameClick);
     app.dispatcher.on("RegisterWelcomeConnectedView:fundraiseClick", onRegisterFundraiseClick);
     app.dispatcher.on("RegisterWelcomeConnectedView:cancelGameClick", onCancelGameClick);
@@ -104,6 +107,7 @@ define([
     var registerInvitationView = new RegisterInvitationView({ el: '#register-invitation-view', code: CAMPAIGN_INVITATION_CODE });
     var registerWelcomeView = new RegisterWelcomeView({ el: '#register-welcome-view' });
     var registerWelcomeVerifyView = new RegisterWelcomeVerifyView({ el: '#register-welcome-verify-view' });
+    var registerWelcomePaywallView = new RegisterWelcomePaywallView({ el: '#register-welcome-paywall-view' });
     var registerWelcomeConnectedView = new RegisterWelcomeConnectedView({ el: '#register-welcome-connected-view' });
     var registerWelcomePreferencesView = new RegisterWelcomePreferencesView({ el: '#register-welcome-preferences-view' });
     var registerGameCreateView = new RegisterGameCreateView({ el: '#register-game-create-view' });
@@ -302,6 +306,10 @@ define([
           vars[nPagePos] = 'register';
           break;
 
+        case STATE_PLAYER_SIGNUP_PAYWALL:
+          vars[nPagePos] = 'register';
+          break;
+
         case STATE_PLAYER_SIGNEDUP:
           vars[nPagePos] = 'profile';
           break;
@@ -376,6 +384,26 @@ define([
           showView('#register-welcome-verify-view');
           break;
 
+        case STATE_PLAYER_SIGNUP_PAYWALL:
+          var playerID = PLAYER_ID;
+          if (getUserCookie(jsonCampaign.clientID) != undefined) {
+            var jsonPlayer = getUserCookies(jsonCampaign.clientID);
+            playerID = jsonPlayer.user;
+          }
+
+          getPlayer(jsonCampaign.clientID, playerID, function(jsonPlayer) {
+            jsonCurrPlayer = jsonPlayer;
+
+            registerWelcomePaywallView.setPlayer(jsonCampaign.clientID, jsonCurrPlayer);
+            registerWelcomePaywallView.render({ jsonCampaign: jsonCampaign });
+
+            showActivePlayer();
+            enableUserActions(CLIENT_ID);
+          });
+
+          showView('#register-welcome-paywall-view');          
+          break;
+
         case STATE_PLAYER_SIGNEDUP:
           var playerID = PLAYER_ID;
           if (getUserCookie(jsonCampaign.clientID) != undefined) {
@@ -399,11 +427,18 @@ define([
 
               // do we have an email address?
               if (jsonCurrPlayer.email != '') {
-                registerWelcomeConnectedView.setPlayer(jsonCampaign.clientID, jsonCurrPlayer);
-                registerWelcomeConnectedView.render({ jsonCampaign: jsonCampaign });
+                // do we have a paywall?
+                if (jsonCampaign.campaign_paywall_amount && !jsonCurrPlayer.paywall_amount) {
+                  // no payment so show paywall
+                  changeState(STATE_PLAYER_SIGNUP_PAYWALL);
+                }
+                else {
+                  registerWelcomeConnectedView.setPlayer(jsonCampaign.clientID, jsonCurrPlayer);
+                  registerWelcomeConnectedView.render({ jsonCampaign: jsonCampaign });
 
-                showActivePlayer();
-                enableUserActions(CLIENT_ID);              
+                  showActivePlayer();
+                  enableUserActions(CLIENT_ID);                                
+                }
               }
               else {
                 // no email so we need to verify
@@ -598,6 +633,10 @@ define([
     }
 
     function onVerifySuccess() {
+      changeState(STATE_PLAYER_SIGNEDUP);
+    }
+
+    function onPaywallSuccess() {
       changeState(STATE_PLAYER_SIGNEDUP);
     }
 
