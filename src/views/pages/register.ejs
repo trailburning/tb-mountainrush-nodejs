@@ -26,6 +26,7 @@ var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
 var CAMPAIGN_INVITATION_CODE = '<%= Campaign.CampaignInvitationCode %>';
 var CAMPAIGN_FUNDRAISING_CURRENCY = '<%= Campaign.CampaignFundraisingCurrency %>';
 var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>';
+var STRIPE_API_KEY = '<%= Defs.StripeAPIKey %>';
 var GAME_ID = '<%= Defs.GameID %>';
 var CAUSE_ID = '<%= Defs.CauseID %>';
 var PLAYER_ID = '<%= Defs.PlayerID %>';
@@ -228,19 +229,21 @@ var TEST = '<%= Defs.Test %>';
     {{ firstname = 'unknown' }}
   {{ } }}
 
-  <h1><%= __('register.welcome_connected.title') %></h1>
+  <h1><%= __('register.welcome_paywall.title') %></h1>
 
   <div class="intro-text centre-text">
-  There is a fee for signing up to this campaign.
+  There is a <strong>{{= campaign.paywall_currency_symbol }}{{= campaign.paywall_amount }}</strong> fee to complete the signup of this campaign.
   </div>
 
-  <form action="/charge" method="post" id="payment-form">
+  <form action="/charge" method="post" id="payment-form" class="stripe">
     <div class="form-row">
-      <label for="card-element">
-        Credit or debit card
-      </label>
-      <div id="card-element">
-        <!-- A Stripe Element will be inserted here. -->
+
+      <div class="form-group">
+        <div class="form-label"><label for="card-element">Credit or debit card</label></div>
+
+        <div id="card-element">
+          <!-- A Stripe Element will be inserted here. -->
+        </div>
       </div>
 
       <!-- Used to display form errors. -->
@@ -248,25 +251,17 @@ var TEST = '<%= Defs.Test %>';
     </div>
 
     <div class="btns">
-    <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('register.welcome_verify.update') %></button>
+    <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>">Make {{= campaign.paywall_currency_symbol }}{{= campaign.paywall_amount }} Payment</button>
     </div>
-  </form>
 
-  <form>
-  <div class="form-group">
-    <div class="form-label"><label>Payment</label></div><input class="field form-control required" id="paywall-payment" value="">
-    <div class="help-block">Please enter an amount</div>
-  </div>
-<!--
-  <div class="btns">
-  <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('register.welcome_verify.update') %></button>
-  </div>
--->
-  <div class="err">
-    <div class="msg" data-msg="already-exists">
-    <p>Unknown Error</p>
-    </div>
-  </div>  
+    <div class="err">
+      <div class="msg" data-msg="incorrect-cvc"><p>Incorrect CVC</p></div>
+      <div class="msg" data-msg="card-declined"><p>Card Declined</p></div>
+      <div class="msg" data-msg="expired-card"><p>Expired Card</p></div>
+      <div class="msg" data-msg="incorrect-number"><p>Incorrect Number</p></div>
+      <div class="msg" data-msg="processing-error"><p>Processing Error</p></div>
+      <div class="msg" data-msg="unknown-err"><p>Unknown Payment Error</p></div>
+    </div>      
   </form>
 </script>
 

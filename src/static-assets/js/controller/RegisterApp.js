@@ -75,7 +75,7 @@ define([
 
     app.dispatcher.on("RegisterInvitationView:inviteSuccess", onInvitationSuccess);
     app.dispatcher.on("RegisterWelcomeVerifyView:userUpdated", onVerifySuccess);
-    app.dispatcher.on("RegisterWelcomePaywallView:userUpdated", onPaywallSuccess);
+    app.dispatcher.on("RegisterWelcomePaywallView:chargeSuccess", onPaywallSuccess);
     app.dispatcher.on("RegisterWelcomeConnectedView:createGameClick", onCreateGameClick);
     app.dispatcher.on("RegisterWelcomeConnectedView:fundraiseClick", onRegisterFundraiseClick);
     app.dispatcher.on("RegisterWelcomeConnectedView:cancelGameClick", onCancelGameClick);
@@ -428,7 +428,7 @@ define([
               // do we have an email address?
               if (jsonCurrPlayer.email != '') {
                 // do we have a paywall?
-                if (jsonCampaign.campaign_paywall_amount && !jsonCurrPlayer.paywall_amount) {
+                if (jsonCampaign.paywall_amount && !jsonCurrPlayer.paywall_amount) {
                   // no payment so show paywall
                   changeState(STATE_PLAYER_SIGNUP_PAYWALL);
                 }
