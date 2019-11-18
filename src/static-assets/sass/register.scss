@@ -59,6 +59,38 @@ ul.pills li {
   color: #2e3c51;
 }
 
+/**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+.StripeElement {
+  box-sizing: border-box;
+
+  height: 40px;
+
+  padding: 10px 12px;
+
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: white;
+
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
 /* DATEPICKER */
 /******************************************/
 .datepicker td span.active.active, .datepicker td span.active.disabled, .datepicker td span.active:active, .datepicker td span.active:focus, .datepicker td span.active:hover, .datepicker td span.active[disabled], .datepicker td.active.active, .datepicker td.active.disabled, .datepicker td.active:active, .datepicker td.active:focus, .datepicker td.active:hover, .datepicker td.active:hover.active, .datepicker td.active:hover.disabled, .datepicker td.active:hover:active, .datepicker td.active:hover:focus, .datepicker td.active:hover:hover, .datepicker td.active:hover[disabled], .datepicker td.active[disabled] {
@@ -167,6 +199,25 @@ ul.pills li {
 
   .form-label {
     display: block;
+  }
+
+  form.stripe {
+    .form-label {
+      width: auto;
+    }
+
+    #card-element {
+      margin: 4px 0;
+    }
+    
+    #card-errors {
+      margin-top: 5px;
+      margin-bottom: 10px;
+      color: #ff705f;
+      font-family: radikalbold,sans-serif;
+      font-size: .9em;
+      text-transform: uppercase;
+    }
   }
 
   .form-label.top {

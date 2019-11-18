@@ -133,6 +133,9 @@
       "greeting": "Hi %s, we need a valid email address to keep you updated on your challenge progress.",
       "update": "Complete signup"
     },
+    "welcome_paywall": {
+      "title": "Complete Signup"
+    },
 		"welcome_connected": {
 			"title": "Danke für's Anmelden",
 			"game_current": {
