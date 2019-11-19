@@ -130,9 +130,6 @@
       "greeting": "Hi %s, we need a valid email address to keep you updated on your challenge progress.",
       "update": "Complete signup"
     },
-    "welcome_paywall": {
-      "title": "Complete Signup"
-    },
 		"welcome_connected": {
 			"title": "Thanks for signing up",
 			"game_current": {
@@ -174,6 +171,9 @@
       }
 		},
 		"please_wait": "Please Wait",
+    "game_create_paywall": {
+      "title": "Create Challenge"
+    },
 		"game_create": {
 			"title": "Create Challenge",
 			"description": "Choose your challenge preferences",

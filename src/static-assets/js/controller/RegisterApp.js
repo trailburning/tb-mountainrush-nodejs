@@ -4,9 +4,9 @@ var STATE_INIT = 0;
 var STATE_PLAYER_INVITATION = 1;
 var STATE_PLAYER_SIGNUP = 2;
 var STATE_PLAYER_SIGNUP_VERIFY = 3;
-var STATE_PLAYER_SIGNUP_PAYWALL = 4;
-var STATE_PLAYER_SIGNEDUP = 5;
-var STATE_PLAYER_PREFERENCES = 6;
+var STATE_PLAYER_SIGNEDUP = 4;
+var STATE_PLAYER_PREFERENCES = 5;
+var STATE_GAME_CREATE_PAYWALL = 6;
 var STATE_GAME_CREATE = 7;
 var STATE_GAME_CREATED = 8;
 
@@ -40,9 +40,9 @@ define([
   'views/RegisterInvitationView',
   'views/RegisterWelcomeView',
   'views/RegisterWelcomeVerifyView',
-  'views/RegisterWelcomePaywallView',
   'views/RegisterWelcomeConnectedView',
   'views/RegisterWelcomePreferencesView',
+  'views/RegisterGameCreatePaywallView',
   'views/RegisterGameCreateView',
   'views/RegisterGameCreatedView',
   'views/RegisterGamesView',
@@ -55,7 +55,7 @@ define([
   'views/ChallengeCancelModalView',
   'views/PromotionModalView',
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, cookie, truncate, modernizr, dateFormat, datepicker, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, RegisterInvitationView, RegisterWelcomeView, RegisterWelcomeVerifyView, RegisterWelcomePaywallView, RegisterWelcomeConnectedView, RegisterWelcomePreferencesView, RegisterGameCreateView, RegisterGameCreatedView, RegisterGamesView, RegisterFundraisingCreateView, RegisterFundraisingCreatedView, RegisterFundraisingSigninView, RegisterFundraisingSignupView, RegisterFundraisingPageCreateView, RegisterFundraisingPageCreatedView, ChallengeCancelModalView, PromotionModalView, DemoVideoView){
+], function(_, Backbone, bootstrap, cookie, truncate, modernizr, dateFormat, datepicker, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, RegisterInvitationView, RegisterWelcomeView, RegisterWelcomeVerifyView, RegisterWelcomeConnectedView, RegisterWelcomePreferencesView, RegisterGameCreatePaywallView, RegisterGameCreateView, RegisterGameCreatedView, RegisterGamesView, RegisterFundraisingCreateView, RegisterFundraisingCreatedView, RegisterFundraisingSigninView, RegisterFundraisingSignupView, RegisterFundraisingPageCreateView, RegisterFundraisingPageCreatedView, ChallengeCancelModalView, PromotionModalView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -75,13 +75,13 @@ define([
 
     app.dispatcher.on("RegisterInvitationView:inviteSuccess", onInvitationSuccess);
     app.dispatcher.on("RegisterWelcomeVerifyView:userUpdated", onVerifySuccess);
-    app.dispatcher.on("RegisterWelcomePaywallView:chargeSuccess", onPaywallSuccess);
     app.dispatcher.on("RegisterWelcomeConnectedView:createGameClick", onCreateGameClick);
     app.dispatcher.on("RegisterWelcomeConnectedView:fundraiseClick", onRegisterFundraiseClick);
     app.dispatcher.on("RegisterWelcomeConnectedView:cancelGameClick", onCancelGameClick);
     app.dispatcher.on("RegisterWelcomeConnectedView:prefsClick", onPrefsClick);
     app.dispatcher.on("RegisterWelcomePreferencesView:prefsUpdated", onRegisterPreferencesPrefsUpdated);
     app.dispatcher.on("RegisterWelcomePreferencesView:backClick", onRegisterBackClick);
+    app.dispatcher.on("RegisterGameCreatePaywallView:chargeSuccess", onPaywallSuccess);
     app.dispatcher.on("RegisterGameCreateView:sponsoredGameSelected", onSponsoredGameSelected);
     app.dispatcher.on("RegisterGameCreateView:gameCreated", onRegisterGameCreated);
     app.dispatcher.on("RegisterGameCreatedView:fundraiseClick", onRegisterFundraiseClick);
@@ -107,9 +107,9 @@ define([
     var registerInvitationView = new RegisterInvitationView({ el: '#register-invitation-view', code: CAMPAIGN_INVITATION_CODE });
     var registerWelcomeView = new RegisterWelcomeView({ el: '#register-welcome-view' });
     var registerWelcomeVerifyView = new RegisterWelcomeVerifyView({ el: '#register-welcome-verify-view' });
-    var registerWelcomePaywallView = new RegisterWelcomePaywallView({ el: '#register-welcome-paywall-view' });
     var registerWelcomeConnectedView = new RegisterWelcomeConnectedView({ el: '#register-welcome-connected-view' });
     var registerWelcomePreferencesView = new RegisterWelcomePreferencesView({ el: '#register-welcome-preferences-view' });
+    var registerGameCreatePaywallView = new RegisterGameCreatePaywallView({ el: '#register-game-create-paywall-view' });
     var registerGameCreateView = new RegisterGameCreateView({ el: '#register-game-create-view' });
     var registerGameCreatedView = new RegisterGameCreatedView({ el: '#register-game-created-view' });
     var registerGamesView = new RegisterGamesView({ el: '#register-games-view' });
@@ -170,7 +170,16 @@ define([
 
               getPlayer(jsonCampaign.clientID, playerID, function(jsonPlayer) {
                 jsonCurrPlayer = jsonPlayer;
-                changeState(STATE_GAME_CREATE);
+
+                // do we have a paywall?
+                if (jsonCampaign.paywall_amount && !jsonCurrPlayer.paywall_amount) {
+                  // no payment so show paywall
+                  changeState(STATE_GAME_CREATE_PAYWALL);
+                }
+                else {
+                  changeState(STATE_GAME_CREATE);
+                }
+
                 showActivePlayer();
                 enableUserActions(CLIENT_ID);
               });
@@ -306,16 +315,16 @@ define([
           vars[nPagePos] = 'register';
           break;
 
-        case STATE_PLAYER_SIGNUP_PAYWALL:
-          vars[nPagePos] = 'register';
-          break;
-
         case STATE_PLAYER_SIGNEDUP:
           vars[nPagePos] = 'profile';
           break;
 
         case STATE_PLAYER_PREFERENCES:
           vars[nPagePos] = 'preferences';
+          break;
+
+        case STATE_GAME_CREATE_PAYWALL:
+          vars[nPagePos] = 'gamecreate';
           break;
 
         case STATE_GAME_CREATE:
@@ -384,7 +393,7 @@ define([
           showView('#register-welcome-verify-view');
           break;
 
-        case STATE_PLAYER_SIGNUP_PAYWALL:
+        case STATE_GAME_CREATE_PAYWALL:
           var playerID = PLAYER_ID;
           if (getUserCookie(jsonCampaign.clientID) != undefined) {
             var jsonPlayer = getUserCookies(jsonCampaign.clientID);
@@ -394,14 +403,14 @@ define([
           getPlayer(jsonCampaign.clientID, playerID, function(jsonPlayer) {
             jsonCurrPlayer = jsonPlayer;
 
-            registerWelcomePaywallView.setPlayer(jsonCampaign.clientID, jsonCurrPlayer);
-            registerWelcomePaywallView.render({ jsonCampaign: jsonCampaign });
+            registerGameCreatePaywallView.setPlayer(jsonCampaign.clientID, jsonCurrPlayer);
+            registerGameCreatePaywallView.render({ jsonCampaign: jsonCampaign });
 
             showActivePlayer();
             enableUserActions(CLIENT_ID);
           });
 
-          showView('#register-welcome-paywall-view');          
+          showView('#register-game-create-paywall-view');          
           break;
 
         case STATE_PLAYER_SIGNEDUP:
@@ -427,18 +436,11 @@ define([
 
               // do we have an email address?
               if (jsonCurrPlayer.email != '') {
-                // do we have a paywall?
-                if (jsonCampaign.paywall_amount && !jsonCurrPlayer.paywall_amount) {
-                  // no payment so show paywall
-                  changeState(STATE_PLAYER_SIGNUP_PAYWALL);
-                }
-                else {
-                  registerWelcomeConnectedView.setPlayer(jsonCampaign.clientID, jsonCurrPlayer);
-                  registerWelcomeConnectedView.render({ jsonCampaign: jsonCampaign });
+                registerWelcomeConnectedView.setPlayer(jsonCampaign.clientID, jsonCurrPlayer);
+                registerWelcomeConnectedView.render({ jsonCampaign: jsonCampaign });
 
-                  showActivePlayer();
-                  enableUserActions(CLIENT_ID);                                
-                }
+                showActivePlayer();
+                enableUserActions(CLIENT_ID);                                
               }
               else {
                 // no email so we need to verify
@@ -637,11 +639,19 @@ define([
     }
 
     function onPaywallSuccess() {
-      changeState(STATE_PLAYER_SIGNEDUP);
+      changeState(STATE_GAME_CREATE);
     }
 
     function onCreateGameClick() {
-      changeState(STATE_GAME_CREATE);
+      // MLA
+      // do we have a paywall?
+      if (jsonCampaign.paywall_amount && !jsonCurrPlayer.paywall_amount) {
+        // no payment so show paywall
+        changeState(STATE_GAME_CREATE_PAYWALL);
+      }
+      else {
+        changeState(STATE_GAME_CREATE);
+      }
     }
 
     function onRegisterBackClick() {
