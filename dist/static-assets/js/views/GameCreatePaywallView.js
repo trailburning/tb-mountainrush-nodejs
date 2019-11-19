@@ -4,9 +4,9 @@ define([
   'bootstrap'
 ], function(_, Backbone, bootstrap){
 
-  var RegisterWelcomePaywallView = Backbone.View.extend({
+  var GameCreatePaywallView = Backbone.View.extend({
     initialize: function(options){
-      this.template = _.template($('#registerWelcomePaywallViewTemplate').text());
+      this.template = _.template($('#gameCreatePaywallViewTemplate').text());
 
       this.options = options;
       this.jsonPlayer = null;
@@ -96,7 +96,7 @@ define([
               }
               else {
                 // fire event
-                app.dispatcher.trigger("RegisterWelcomePaywallView:chargeSuccess");              
+                app.dispatcher.trigger("GameCreatePaywallView:chargeSuccess");              
               }
             }
           }
@@ -166,5 +166,5 @@ define([
 
   });
 
-  return RegisterWelcomePaywallView;
+  return GameCreatePaywallView;
 });
