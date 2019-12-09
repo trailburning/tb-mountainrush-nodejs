@@ -21,7 +21,7 @@ require.config({
     imageScale: 'libs/image-scale.min',
     imagesLoaded: 'https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min',
     turf: 'https://npmcdn.com/@turf/turf@5.1.6/turf.min',
-    piste: 'https://planet.procedural.eu/procedural-js/0.3.2/procedural',
+    piste: 'https://planet.procedural.eu/procedural-js/0.4.1/procedural',
     detector: 'https://planet.procedural.eu/procedural.detector',
     numeral: 'https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min',
     animateNumber: 'https://cdnjs.cloudflare.com/ajax/libs/jquery-animateNumber/0.0.14/jquery.animateNumber.min',
