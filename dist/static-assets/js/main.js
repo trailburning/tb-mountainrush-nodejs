@@ -37,7 +37,7 @@ require.config({
     cookie: 'libs/js.cookie',
     videojs: '//vjs.zencdn.net/4.12/video',
     modernizr: 'libs/modernizr-custom',
-    mapbox: 'https://api.mapbox.com/mapbox.js/v2.4.0/mapbox',
+    mapboxgl: 'https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl',
     raisenow: 'https://widget.raisenow.com/widgets/lema/' + FUNDRAISING_PROVIDER_CAUSE_CODE + '/js/dds-init-widget-en'
   },
   shim: {

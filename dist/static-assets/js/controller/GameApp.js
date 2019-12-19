@@ -37,7 +37,8 @@ define([
   'views/PlayersSummaryView',
   'views/PlayersListView',
   'views/PlayersDetailView',
-  'views/Mountain3DView',
+  'views/Challenge2DView',
+  'views/Challenge3DView',
   'views/DeviceCapableModalView',
   'views/ChallengePendingModalView',
   'views/ChallengeCompleteModalView',
@@ -52,7 +53,7 @@ define([
 /* player.js */
 FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentView, PlayerActivityMorePhotosView, PlayerActivityPhotosView, PlayerActivityPhotoView,
 /* player.js */
-  SponsorView, LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Mountain3DView, DeviceCapableModalView, ChallengePendingModalView, ChallengeCompleteModalView, MountainLockedStoryModalView, MountainStoryModalView, ChallengeCancelModalView, ChallengeLeaveModalView, GameInviteView, FundraisingShoppingModalView, DemoVideoView){
+  SponsorView, LanguageSelectorView, ActivePlayerView, Player, PlayerChallengeSuccessView, ChallengeView, PlayersSummaryView, PlayersListView, PlayersDetailView, Challenge2DView, Challenge3DView, DeviceCapableModalView, ChallengePendingModalView, ChallengeCompleteModalView, MountainLockedStoryModalView, MountainStoryModalView, ChallengeCancelModalView, ChallengeLeaveModalView, GameInviteView, FundraisingShoppingModalView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -70,10 +71,12 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     var jsonDevice = getDeviceCookies();
     $('body').addClass(jsonDevice.devicetype);
 
-    app.dispatcher.on("Mountain3DView:deviceNotCapable", onDeviceNotCapable);
-    app.dispatcher.on("Mountain3DView:onLocationLoaded", onLocationLoaded);
-    app.dispatcher.on("Mountain3DView:onFeaturesLoaded", onFeaturesLoaded);
-    app.dispatcher.on("Mountain3DView:onFeatureClicked", onFeatureClicked);
+    app.dispatcher.on("Challenge3DView:deviceNotCapable", onDeviceNotCapable);
+    app.dispatcher.on("Challenge3DView:onLocationLoaded", onLocationLoaded);
+    app.dispatcher.on("Challenge3DView:onFeaturesLoaded", onFeaturesLoaded);
+    app.dispatcher.on("Challenge3DView:onFeatureClicked", onFeatureClicked);
+    app.dispatcher.on("Challenge2DView:onLocationLoaded", onLocationLoaded);
+    app.dispatcher.on("Challenge2DView:onFeaturesLoaded", onFeaturesLoaded);
     app.dispatcher.on("PlayerActivityPhotoView:click", onPlayerActivityPhotoClicked);
     app.dispatcher.on("PlayersDetailView:inviteClick", onPlayerInviteClick);
     app.dispatcher.on("PlayersDetailView:cancelGameClick", onCancelGameClick);
@@ -86,7 +89,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     var mountainEventsCollection = null;
     var nPlayersLoaded = 0;
     var playerCollection = null;
-    var mountain3DView = null;
+    var challengeView = null;
     var nCurrPlayer = -1;
     var currPlayerModel = null;
     var activePlayer = null;
@@ -240,12 +243,18 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       }
     }
 
-    function setupMap(mountain3DName) {
+    function setupMap(challengeName) {
       var arrMapPoint = mountainModel.get('route_points')[Math.round(mountainModel.get('route_points').length / 2)].coords;
 
-      mountain3DView = new Mountain3DView({ el: '#piste-view', arrMapPoint: arrMapPoint, mountainType: Number(jsonCurrGame.mountainType), geography: Number(jsonCurrGame.season) });
-      mountain3DView.show();
-      mountain3DView.render();
+      if (jsonCurrGame.ascentChallenge) {
+        challengeView = new Challenge3DView({ el: '#piste-view', arrMapPoint: arrMapPoint, mountainType: Number(jsonCurrGame.mountainType), geography: Number(jsonCurrGame.season) });
+      }
+      else {
+        challengeView = new Challenge2DView({ el: '#piste-view', arrMapPoint: arrMapPoint, mountainType: Number(jsonCurrGame.mountainType), geography: Number(jsonCurrGame.season) });
+      }
+
+      challengeView.show();
+      challengeView.render();
     }
 
     function focusPlayer(nPlayer) {
@@ -265,9 +274,9 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
       if (activePlayer) {
         if (activePlayer.get('id') == this.currPlayerModel.get('id')) {
-          mountain3DView.showMarkers();
+          challengeView.showMarkers();
         } else {
-          mountain3DView.hideMarkers();
+          challengeView.hideMarkers();
         }
       }
 
@@ -276,17 +285,17 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
       var bOrbitPlayer = this.currPlayerModel.get('elevationToSummit') ? false : true;
 
-      if (mountain3DView) {
+      if (challengeView) {
         // do we have a marker to show?
-        if (showLatestEnabledMarkerID) {          
-          mountain3DView.selectPlayerNoSelect(this.currPlayerModel.get('playerObj').model.get('id'));
+        if (showLatestEnabledMarkerID) {
+          challengeView.selectPlayerNoSelect(this.currPlayerModel.get('playerObj').model.get('id'));
           focusStory(showLatestEnabledMarkerID);  
 
           showLatestEnabledMarkerID = null;
         }
         else {
           // just select player
-          mountain3DView.selectPlayer(this.currPlayerModel.get('playerObj').model.get('id'), bOrbitPlayer);
+          challengeView.selectPlayer(this.currPlayerModel.get('playerObj').model.get('id'), bOrbitPlayer);
         }
       }
 
@@ -449,7 +458,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       });
     }
 
-    function getJourney(routeID, mountain3DName) {
+    function getJourney(routeID, challengeName) {
       var url = GAME_API_URL + 'route/' + routeID;
 //      console.log(url);
       $.getJSON(url, function(result){
@@ -644,7 +653,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         }
         strImage = strImageHost + strImage;
 
-        bEnabled = mountain3DView.addMarker(event.get('id'), event.get('coords'), fProgressKM, strImage, strImageHost + 'http://www.mountainrush.trailburning.com/static-assets/images/markers/marker-event-unlocked.png', strImageHost + 'http://www.mountainrush.trailburning.com/static-assets/images/markers/marker-event-locked.png');
+        bEnabled = challengeView.addMarker(event.get('id'), event.get('coords'), fProgressKM, strImage, strImageHost + 'http://www.mountainrush.trailburning.com/static-assets/images/markers/marker-event-unlocked.png', strImageHost + 'http://www.mountainrush.trailburning.com/static-assets/images/markers/marker-event-locked.png');
 
         if (bEnabled) {
           latestMarker = event;
@@ -663,7 +672,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
         // focus on feature
         var coords = mountainStoryModel.get('coords');
-        mountain3DView.focusLocation(coords[1], coords[0]);
+        challengeView.focusLocation(coords[1], coords[0]);
         timeoutStoryID = window.setTimeout(function(){
           var nMarkerPos = mountainEventsCollection.indexOf(mountainStoryModel);
           // is the player fundraising, or is the first 'free' marker?
@@ -706,7 +715,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       // modify images to use image proxy
       var strImageHost = GAME_API_URL + 'imageproxy.php?url=';
 
-      mountain3DView.addRouteData(mountainModel.get('route_points'));
+      challengeView.addRouteData(mountainModel.get('route_points'));
 
       var bRenderFlag = true;
 
@@ -714,8 +723,8 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       if (mountainEventsCollection.length && activePlayer) {
         bRenderFlag = false;
       }
-      mountain3DView.addFlag(strImageHost + 'https://www.mountainrush.co.uk/static-assets/images/' + strCampaignFolder + 'markers/marker-location.png', bRenderFlag);
-      mountain3DView.showBaseData();
+      challengeView.addFlag(strImageHost + 'https://www.mountainrush.co.uk/static-assets/images/' + strCampaignFolder + 'markers/marker-location.png', bRenderFlag);
+      challengeView.showBaseData();
 
       $('#players-summary-view .player-summary, #player-view .player-ranking, #players-detail-view .player-name').click(function(evt){
         selectPlayer(Number($(this).attr('data-pos')));
@@ -784,7 +793,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         }
       }
 
-      mountain3DView.addPlayers(playerCollection, activePlayer);
+      challengeView.addPlayers(playerCollection, activePlayer);
       mapReady();
     }
 
@@ -821,7 +830,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
 
       switch (id) {
         case FLAG_ID:
-          mountain3DView.playRoute();
+          challengeView.playRoute();
           break;
 
         default:
@@ -834,7 +843,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
             // is it a player?
             var playerModel = playerCollection.get(id);
             if (playerModel != undefined) {
-              mountain3DView.playRoute();
+              challengeView.playRoute();
               // force player update to get latest player details from provider
               playerModel.get('playerObj').getLatestDetails();
             }
@@ -1059,15 +1068,15 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
             break;
 
           case 48: // 0
-            mountain3DView.playRoute();
+            challengeView.playRoute();
             break;
 
           case 49: // 1
-            mountain3DView.setSeason(SEASON_SUMMER_EUROPE);
+            challengeView.setSeason(SEASON_SUMMER_EUROPE);
             break;
 
           case 50: // 2
-            mountain3DView.setSeason(SEASON_WINTER_EUROPE);
+            challengeView.setSeason(SEASON_WINTER_EUROPE);
             break;
         }
       });
