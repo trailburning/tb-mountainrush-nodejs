@@ -1,3 +1,21 @@
+var SEASON_SUMMER_EUROPE  = 0;
+var SEASON_WINTER_EUROPE  = 1;
+var SEASON_SUMMER_EQUATOR  = 2;
+
+var ROUTE_ID = 3000;
+var FLAG_ID = 4000;
+
+var STATE_INIT = 0;
+var STATE_READY = 1;
+var STATE_SELECT_PLAYER = 2;
+var STATE_SELECT_PLAYER_NO_SELECT = 3;
+var STATE_SELECT_PLAYER_AND_ORBIT = 4;
+
+var MOUNTAIN_TYPE_GULLYS = 0;
+var MOUNTAIN_TYPE_SMOOTH = 1;
+
+var MARKER_FADE_DISTANCE = 10000;
+
 define([
   'underscore', 
   'backbone',
@@ -18,6 +36,8 @@ define([
       this.bFlagVisible = false;
       this.currPlayerID = null;
       this.arrRouteCoords = null;
+
+      this.currPlayerMarker = null;
 
       mapboxgl.accessToken = 'pk.eyJ1IjoibWFsbGJldXJ5IiwiYSI6IjJfV1MzaE0ifQ.scrjDE31p7wBx7-GemqV3A';
     },
@@ -97,12 +117,63 @@ define([
 
     addRouteData: function(arrRouteCoords){
       this.arrRouteCoords = arrRouteCoords;
+
+      this.jsonRoute = {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": []
+        }
+      };
+
+      var self = this;
+      $.each(arrRouteCoords, function(index) {
+        self.jsonRoute.geometry.coordinates.push(this.coords);
+      });
     },
 
     selectPlayer: function(id, bOrbitPlayer){
+      var player = null;
+
+      if (this.timeoutID) {
+        window.clearTimeout(this.timeoutID);
+      }
+
+      this.nState = STATE_SELECT_PLAYER;
+
+      if (bOrbitPlayer) {
+        this.nState = STATE_SELECT_PLAYER_AND_ORBIT;
+        this.hideFlag();
+      }
+      else {
+        this.showFlag();
+      }
+
+      // remove current player
+      if (this.currPlayerID) {
+        player = this.playerCollection.get(this.currPlayerID);
+        this.hidePlayer(this.currPlayerID);
+      }
+
+      this.currPlayerID = id;
+
+      this.showPlayer(this.currPlayerID);
     },
 
-    showMarkers: function() {
+    selectMarker: function(nID){
+//      Procedural.focusOnFeature(MARKER_BASE_ID + nID);
+    },
+
+    hideMarkers: function(){
+      $.each(this.arrMarkers, function(index, jsonMarker){
+//        Procedural.removeOverlay(jsonMarker.name);
+      });
+    },
+
+    showMarkers: function(){
+      $.each(this.arrMarkers, function(index, jsonMarker){
+//        Procedural.addOverlay(jsonMarker);
+      });
     },
 
     showFlag: function() {
@@ -112,6 +183,32 @@ define([
     },
 
     hideFlag: function() {
+    },
+
+    showPlayer: function(id){
+      var player = this.playerCollection.get(id);
+      var jsonPlayer = player.get('jsonPlayer');
+
+      var el = document.createElement('div');
+      el.className = 'marker-player';
+      el.innerHTML = '<div class="avatar"><img src="' + jsonPlayer.features[0].properties.image + '"></div>';
+
+      var point = jsonPlayer.features[0].geometry.coordinates;
+
+      this.currPlayerMarker = new mapboxgl.Marker(el)
+          .setLngLat(point)
+          .setOffset([0, -30])
+          .addTo(this.map);
+
+      this.map.flyTo({ center: point, zoom: 14, speed: 0.5 });
+    },
+
+    hidePlayer: function(id){
+      var player = this.playerCollection.get( id );
+
+      if (this.currPlayerMarker) {
+        this.currPlayerMarker.remove();
+      }
     },
 
     addPlayers: function(playerCollection, activePlayer){
@@ -135,6 +232,43 @@ define([
     },
 
     buildPlayerJSON: function(id, fProgressKM, strAvatar, nPosLabel, bShowPosLabel, bAllowPlayerSelect, nFadeDistance) {
+      var along = turf.along(this.jsonRoute, fProgressKM, {units: 'kilometers'});
+      var fLat = along.geometry.coordinates[1];
+      var fLong = along.geometry.coordinates[0];
+      var bPlayerOverlapsMarker = false;
+
+      // see if the active player overlaps a marker
+      var nOverlapYAdjust = 0, nOverlapCaretYAdjust = 0, nOverlapPosYAdjust = 0, nDecimalPlaces = 3;
+      if (this.activePlayer) {
+        if (id == this.activePlayer.get('id')) {
+          $.each(this.arrMarkers, function(index, jsonMarker){
+            if (fLat == jsonMarker.features[0].geometry.coordinates[1] && (fLong = jsonMarker.features[0].geometry.coordinates[0])) {
+              bPlayerOverlapsMarker = true;
+            }
+          });
+        }
+      }
+
+      var jsonPlayer = {
+        "name": id,
+        "features": [
+          {
+            "geometry": {
+              "type": "Point",
+              "coordinates": [ fLong, fLat ]
+            },
+            "type": "Feature",
+            "id": id,
+            "properties": {
+              "image": strAvatar,
+              "height": 64,
+              "width": 64,
+            }
+          }
+        ]
+      }
+
+      return jsonPlayer;
     },
 
     render: function(){
@@ -145,13 +279,14 @@ define([
         style: 'mapbox://styles/mallbeury/cju5ji8pi0tay1fqixz92aqy8', // outdoors custom
         center: [self.options.arrMapPoint[0], self.options.arrMapPoint[1]], // starting position
         zoom: 12,
-        pitch: 50,
         interactive: true,
         attributionControl: false
       });
 
-      // fire event
-      app.dispatcher.trigger("Challenge2DView:onLocationLoaded");
+      this.map.on('load', function () {
+        // fire event
+        app.dispatcher.trigger("Challenge2DView:onLocationLoaded");
+      });
 
       return this;
     }

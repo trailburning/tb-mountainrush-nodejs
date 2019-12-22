@@ -11,6 +11,9 @@
 <% if (Campaign.CampaignTemplate != 'default') { %>
   <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/game.css' rel='stylesheet' />
 <% } %>
+
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+
 <% include ../partials/analyticsFBPixel.ejs %>
 </head>
 
@@ -42,7 +45,7 @@ var Demo = <%= Defs.Demo %>;
         <%- include('../partials/' + Campaign.CampaignTemplate + '/header.ejs') %>
       <% } %>
 
-      <div id="game-view">
+        <div id="game-view">
         <div id="sponsor-big-container-view"></div>
 
         <div id="map-view">
@@ -431,6 +434,6 @@ var Demo = <%= Defs.Demo %>;
 
 <!-- Example of how to use Piste API -->
 <script type="text/javascript">
-if ( typeof Procedural === 'undefined' ) { Procedural = {}; }
+//if ( typeof Procedural === 'undefined' ) { Procedural = {}; }
 </script>
 </html>

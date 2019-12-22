@@ -1,4 +1,4 @@
-.PFDinTextPro-Regular { 
+.PFDinTextPro-Regular {
   font-family: PFDinTextPro-Regular;
   font-weight: normal;
   font-style: normal;
@@ -33,6 +33,10 @@ ul {
 li {
   margin: 0;
   padding: 0;
+}
+
+*:focus {
+  outline: none;
 }
 
 .link,
@@ -214,7 +218,7 @@ form {
 
 /* DROPDOWN */
 /******************************************/
-.mr-dropdown button {  
+.mr-dropdown button {
   min-width: 150px;
   margin: 0;
   padding: 3px 0 3px 7px;
@@ -264,13 +268,13 @@ form {
   outline: none;
   overflow: hidden;
 
-  &.active.focus, 
-  &.active:focus, 
-  &.focus, 
-  &:active.focus, 
-  &:active:focus, 
+  &.active.focus,
+  &.active:focus,
+  &.focus,
+  &:active.focus,
+  &:active:focus,
   &:focus {
-    outline: none;  
+    outline: none;
   }
 
   &.btn-primary {
@@ -847,14 +851,14 @@ form {
   background: #193848;
 }
 
-#header-view .link, #header-view a.link, #mainmenu ul li a, #mainmenu .link, 
-#header-view .link:visited, #header-view a.link:visited, #mainmenu ul li a:visited, 
+#header-view .link, #header-view a.link, #mainmenu ul li a, #mainmenu .link,
+#header-view .link:visited, #header-view a.link:visited, #mainmenu ul li a:visited,
 #header-view .link:active, #header-view a.link:active, #mainmenu ul li a:active {
   text-decoration: none;
   color: inherit;
 }
 #header-view .link:hover, #header-view a.link:hover,
-#header-view ul li.active .link, #header-view ul li.active a.link, 
+#header-view ul li.active .link, #header-view ul li.active a.link,
 #mainmenu ul li.active a, #mainmenu ul li:hover a,
 #mainmenu ul li:hover .link {
   text-decoration: none;
@@ -935,7 +939,7 @@ form {
 #header-view .mini-menu .action-profile {
   float: right;
   padding-right: 8px;
-  line-height: 44px;  
+  line-height: 44px;
 }
 
 #header-view .mini-menu .signup {
@@ -1014,7 +1018,7 @@ form {
 }
 
 #footer-view a,
-#footer-view a:hover, 
+#footer-view a:hover,
 #footer-view a:active,
 #footer-view a:visited {
   color: inherit;
@@ -1053,7 +1057,7 @@ form {
 }
 
 #footer-view .right .icons a,
-#footer-view .right .icons a:hover, 
+#footer-view .right .icons a:hover,
 #footer-view .right .icons a:active,
 #footer-view .right .icons a:visited {
   text-decoration: none;
@@ -1097,10 +1101,10 @@ img.scale {
 /* GAME INVITE */
 /******************************************/
 .game-invite-view {
-  .view-auto-friend {    
+  .view-auto-friend {
   }
 
-  .view-manual-friend {    
+  .view-manual-friend {
     display: none;
   }
 
@@ -1164,7 +1168,7 @@ img.scale {
     }
 
     li:first-child {
-      border-top: none;  
+      border-top: none;
     }
 
     .ui-state-focus {
@@ -1180,8 +1184,8 @@ img.scale {
     }
   }
 
-  input.ui-autocomplete-loading { 
-    background:url(../images/ui/Spinner-1s-34px_light.gif) no-repeat 95% center; 
+  input.ui-autocomplete-loading {
+    background:url(../images/ui/Spinner-1s-34px_light.gif) no-repeat 95% center;
   }
 }
 
@@ -1424,10 +1428,10 @@ img.scale {
 }
 
 @keyframes sk-bounce {
-  0%, 100% { 
+  0%, 100% {
     transform: scale(0.0);
     -webkit-transform: scale(0.0);
-  } 50% { 
+  } 50% {
     transform: scale(1.0);
     -webkit-transform: scale(1.0);
   }
@@ -1542,7 +1546,7 @@ img.scale {
       .progressbar {
         margin-left: auto;
         margin-right: auto;
-        width: 320px; 
+        width: 320px;
       }
     }
   }
@@ -1568,7 +1572,7 @@ img.scale {
     padding-top: 14px;
   }
 
-  .fundraise-sticker {  
+  .fundraise-sticker {
     -webkit-box-shadow: 0px 5px 5px 0 rgba(25,56,72,0.2);
     -moz-box-shadow: 0px 5px 5px 0 rgba(25,56,72,0.2);
     box-shadow: 0px 5px 5px 0 rgba(25,56,72,0.2);
