@@ -215,6 +215,13 @@ body.sponsored .sponsor-view .title strong {
   height: 100%;
   vertical-align: top; }
 
+.marker-flag {
+  width: 32px;
+  height: 39px; }
+
+.marker-flag img {
+  width: 100%; }
+
 /* PLAYER VIEW */
 /******************************************/
 #player-view {

@@ -177,12 +177,53 @@ define([
     },
 
     showFlag: function() {
-    },
+      if (!this.bFlagVisible) {
+        this.bFlagVisible = true;
 
-    addFlag: function(strImage, bRender) {
+        var el = document.createElement('div');
+        el.className = 'marker-flag';
+        el.innerHTML = '<img src="' + this.jsonFlag.features[0].properties.image + '">';
+
+        var point = this.jsonFlag.features[0].geometry.coordinates;
+
+        this.currPlayerMarker = new mapboxgl.Marker(el)
+            .setLngLat(point)
+            .setOffset([0, -19])
+            .addTo(this.map);
+      }
     },
 
     hideFlag: function() {
+      if (this.bFlagVisible) {
+        this.bFlagVisible = false;
+
+//        Procedural.removeOverlay( this.jsonFlag.features[0].id );
+      }
+    },
+
+    addFlag: function(strImage, bRender) {
+      var fLat = this.jsonRoute.geometry.coordinates[this.jsonRoute.geometry.coordinates.length-1][1];
+      var fLong = this.jsonRoute.geometry.coordinates[this.jsonRoute.geometry.coordinates.length-1][0];
+
+      var jsonFlag = {
+        "name": FLAG_ID,
+        "features": [ {
+          "geometry": {
+            "type": "Point",
+            "coordinates": [ fLong, fLat ]
+          },
+          "type": "Feature",
+          "id": FLAG_ID,
+          "properties": {
+            "image": strImage,
+            "height": 39,
+            "width": 32,
+          }
+        }
+        ]
+      }
+
+      this.jsonFlag = jsonFlag;
     },
 
     showPlayer: function(id){
@@ -276,8 +317,8 @@ define([
 
       this.map = new mapboxgl.Map({
         container: this.el, // container id
-        style: 'mapbox://styles/mallbeury/cju5ji8pi0tay1fqixz92aqy8', // outdoors custom
-        center: [self.options.arrMapPoint[0], self.options.arrMapPoint[1]], // starting position
+        style: 'mapbox://styles/mallbeury/ck4i4tr9q0gir1co28gaq1fmo',
+        center: [self.options.arrMapPoint[0], self.options.arrMapPoint[1]],
         zoom: 12,
         interactive: true,
         attributionControl: false

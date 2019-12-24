@@ -246,7 +246,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     function setupMap(challengeName) {
       var arrMapPoint = mountainModel.get('route_points')[Math.round(mountainModel.get('route_points').length / 2)].coords;
 
-      if (jsonCurrGame.ascentChallenge == -1) {
+      if (jsonCurrGame.ascentChallenge) {
         challengeView = new Challenge3DView({ el: '#piste-view', arrMapPoint: arrMapPoint, mountainType: Number(jsonCurrGame.mountainType), geography: Number(jsonCurrGame.season) });
       }
       else {
