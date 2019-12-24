@@ -24,7 +24,7 @@ define([
   'piste'
 ], function(_, Backbone, turf, detector, piste){
 
-  var Mountain3DView = Backbone.View.extend({
+  var Challenge3DView = Backbone.View.extend({
     initialize: function(options){
       this.options = options;
 
@@ -55,7 +55,7 @@ define([
           this.nState = STATE_READY;
 
           // fire event
-          app.dispatcher.trigger("Mountain3DView:onFeaturesLoaded");
+          app.dispatcher.trigger("Challenge3DView:onFeaturesLoaded");
           break;
 
         case STATE_SELECT_PLAYER:
@@ -367,7 +367,7 @@ define([
       });
 
       // fire event
-//      app.dispatcher.trigger("Mountain3DView:onMarkersReady");
+//      app.dispatcher.trigger("Challenge3DView:onMarkersReady");
     },
 
     buildMarkerOff: function(id, fLat, fLong, strMarkerImageOff, nFadeDistance){
@@ -664,7 +664,7 @@ define([
           Procedural.init( container );
 
           // fire event
-          app.dispatcher.trigger("Mountain3DView:onLocationLoaded");
+          app.dispatcher.trigger("Challenge3DView:onLocationLoaded");
         };
 
         Procedural.onFeaturesLoaded = function () {
@@ -673,7 +673,7 @@ define([
 
         Procedural.onFeatureClicked = function ( id ) {
           // fire event
-          app.dispatcher.trigger("Mountain3DView:onFeatureClicked", id);
+          app.dispatcher.trigger("Challenge3DView:onFeatureClicked", id);
         }
 
         Procedural.onLocationFocused = function () {
@@ -691,7 +691,7 @@ define([
         }
         else {
           // fire event
-          app.dispatcher.trigger("Mountain3DView:deviceNotCapable");          
+          app.dispatcher.trigger("Challenge3DView:deviceNotCapable");
         }
       };
 
@@ -707,5 +707,5 @@ define([
 
   });
 
-  return Mountain3DView;
+  return Challenge3DView;
 });
