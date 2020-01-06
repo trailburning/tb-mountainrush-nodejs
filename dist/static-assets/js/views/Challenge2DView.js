@@ -36,7 +36,6 @@ define([
       this.bFlagVisible = false;
       this.currPlayerID = null;
       this.arrRouteCoords = null;
-      this.currPlayerMarker = null, flagMarker = null;
 
       mapboxgl.accessToken = 'pk.eyJ1IjoibWFsbGJldXJ5IiwiYSI6IjJfV1MzaE0ifQ.scrjDE31p7wBx7-GemqV3A';
     },
@@ -180,16 +179,20 @@ define([
       if (!this.bFlagVisible) {
         this.bFlagVisible = true;
 
-        var el = document.createElement('div');
-        el.className = 'marker-flag';
-        el.innerHTML = '<img src="' + this.jsonFlag.features[0].properties.image + '">';
+        this.jsonFlag.flagMarker.addTo(this.map);
+        /*
+				var el = document.createElement('div');
+				el.className = 'marker-flag';
+				el.innerHTML = '<img src="' + this.jsonFlag.features[0].properties.image + '">';
 
-        var point = this.jsonFlag.features[0].geometry.coordinates;
+				var point = this.jsonFlag.features[0].geometry.coordinates;
 
-        this.flagMarker = new mapboxgl.Marker(el)
-            .setLngLat(point)
-            .setOffset([0, -19])
-            .addTo(this.map);
+				this.flagMarker = new mapboxgl.Marker(el)
+					.setLngLat(point)
+					.setOffset([0, -19])
+					.addTo(this.map);
+
+		 */
       }
     },
 
@@ -197,9 +200,7 @@ define([
       if (this.bFlagVisible) {
         this.bFlagVisible = false;
 
-        if (this.flagMarker) {
-          this.flagMarker.remove();
-        }
+        this.jsonFlag.flagMarker.remove();
       }
     },
 
@@ -225,6 +226,16 @@ define([
         ]
       }
 
+      var el = document.createElement('div');
+      el.className = 'marker-flag';
+      el.innerHTML = '<img src="' + jsonFlag.features[0].properties.image + '">';
+
+      var point = jsonFlag.features[0].geometry.coordinates;
+
+      jsonFlag.flagMarker = new mapboxgl.Marker(el)
+          .setLngLat(point)
+          .setOffset([0, -19]);
+
       this.jsonFlag = jsonFlag;
     },
 
@@ -232,35 +243,17 @@ define([
       var player = this.playerCollection.get(id);
       var jsonPlayer = player.get('jsonPlayer');
 
-      var jsonPlayerAvatar = jsonPlayer.features[0];
+      jsonPlayer.playerMarker.addTo(this.map);
 
-      var el = document.createElement('div');
-      el.className = 'marker-player';
-      el.innerHTML = '<div class="avatar-container"><div class="avatar"><img src="' + jsonPlayerAvatar.properties.image + '"></div></div>';
-
-      // more than one feature means we want to render the position
-      if (jsonPlayer.features.length > 1) {
-        var jsonPlayerPos = jsonPlayer.features[1];
-
-        el.innerHTML += '<div class="pos" style="background: ' + jsonPlayerPos.properties.background + '">' + jsonPlayerPos.properties.name + '</div>';
-      }
-
-      var point = jsonPlayerAvatar.geometry.coordinates;
-
-      this.currPlayerMarker = new mapboxgl.Marker(el)
-          .setLngLat(point)
-          .setOffset([0, -30])
-          .addTo(this.map);
-
+      var point = jsonPlayer.features[0].geometry.coordinates;
       this.map.flyTo({ center: point, zoom: 14, speed: 0.5 });
     },
 
     hidePlayer: function(id){
       var player = this.playerCollection.get( id );
+      var jsonPlayer = player.get('jsonPlayer');
 
-      if (this.currPlayerMarker) {
-        this.currPlayerMarker.remove();
-      }
+      jsonPlayer.playerMarker.remove();
     },
 
     addPlayers: function(playerCollection, activePlayer){
@@ -352,6 +345,25 @@ define([
           ]
         }
       }
+      
+      var jsonPlayerAvatar = jsonPlayer.features[0];
+
+      var el = document.createElement('div');
+      el.className = 'marker-player';
+      el.innerHTML = '<div class="avatar-container"><div class="avatar"><img src="' + jsonPlayerAvatar.properties.image + '"></div></div>';
+
+      // more than one feature means we want to render the position
+      if (jsonPlayer.features.length > 1) {
+        var jsonPlayerPos = jsonPlayer.features[1];
+
+        el.innerHTML += '<div class="pos" style="background: ' + jsonPlayerPos.properties.background + '">' + jsonPlayerPos.properties.name + '</div>';
+      }
+
+      var point = jsonPlayerAvatar.geometry.coordinates;
+
+      jsonPlayer.playerMarker = new mapboxgl.Marker(el)
+          .setLngLat(point)
+          .setOffset([0, -30]);
 
       return jsonPlayer;
     },
