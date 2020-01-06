@@ -231,7 +231,11 @@ body.sponsored .sponsor-view .title strong {
 .marker-player {
 }
 
-.marker-player:before {
+.marker-player .avatar-container {
+  position: relative;
+}
+
+.marker-player .avatar-container:before {
   content: ' ';
   position: absolute;
   bottom: -4px;
@@ -256,6 +260,18 @@ body.sponsored .sponsor-view .title strong {
   width: 100%;
   height: 100%;
   vertical-align: top;
+}
+
+.marker-player .pos {
+  width: 23px;
+  height: 23px;
+  line-height: 23px;
+  overflow: hidden;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  margin: 8px auto 0 auto;
 }
 
 .marker-flag {
