@@ -284,6 +284,9 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       updateURLPlayer(this.currPlayerModel.get('id'));
 
       var bOrbitPlayer = this.currPlayerModel.get('elevationToSummit') ? false : true;
+      if (!jsonCurrGame.ascentChallenge) {
+        bOrbitPlayer = this.currPlayerModel.get('distanceToSummit') ? false : true;
+      }
 
       if (challengeView) {
         // do we have a marker to show?
@@ -953,7 +956,8 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     function onPlayerLoaded(model) {
       if (TEST_PROGRESS) {
         if (TEST_PROGRESS >= 0) {
-          model.set('elevationGainPercent', TEST_PROGRESS)
+          model.set('elevationGainPercent', TEST_PROGRESS);
+          model.set('distancePercent', TEST_PROGRESS);
         }
       }
 
