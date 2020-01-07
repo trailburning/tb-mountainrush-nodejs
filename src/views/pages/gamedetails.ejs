@@ -416,9 +416,9 @@ var TEST_PROGRESS = '';
               {{ } }}
             {{ } else { }}
               {{ if (player.distanceToSummit) { }}
-                {{ if (player.distanceToSummit < 1) { }}1{{ } else { }}{{= (player.distanceToSummit / 1000).toFixed(1) }}{{ } }}km <%= __('game.to_summit') %>
+                {{ if (player.distanceToSummit < 1) { }}1{{ } else { }}{{= (player.distanceToSummit / 1000).toFixed(1) }}{{ } }}km <%= __('game.to_complete') %>
               {{ } else { }}
-                <%= __('game.summited_long') %>
+                <%= __('game.completed_long') %>
               {{ } }}
             {{ } }}
 

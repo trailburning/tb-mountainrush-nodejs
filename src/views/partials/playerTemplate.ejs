@@ -17,9 +17,9 @@
           {{ } }}
         {{ } else { }}
           {{ if (player.distanceToSummit) { }}
-            <h1>{{ if (player.distanceToSummit < 1) { }}1{{ } else { }}{{= (player.distanceToSummit / 1000).toFixed(1) }}{{ } }}km</h1><%= __('game.to_summit') %>
+            <h1>{{ if (player.distanceToSummit < 1) { }}1{{ } else { }}{{= (player.distanceToSummit / 1000).toFixed(1) }}{{ } }}km</h1><%= __('game.to_complete') %>
           {{ } else { }}
-            <h1><%= __('game.summited') %></h1>{{= (player.distance / 1000).toFixed(1) }}km <%= __('game.covered') %>
+            <h1><%= __('game.completed') %></h1>{{= (player.distance / 1000).toFixed(1) }}km <%= __('game.covered') %>
           {{ } }}
         {{ } }}
         </div>
@@ -59,9 +59,9 @@
         {{ } }}
       {{ } else { }}
         {{ if (player.distanceToSummit) { }}
-          {{ if (player.distanceToSummit < 1) { }}1{{ } else { }}{{= (player.distanceToSummit / 1000).toFixed(1) }}{{ } }}km <%= __('game.to_summit') %>
+          {{ if (player.distanceToSummit < 1) { }}1{{ } else { }}{{= (player.distanceToSummit / 1000).toFixed(1) }}{{ } }}km <%= __('game.to_complete') %>
         {{ } else { }}
-          <%= __('game.summited_long') %>
+          <%= __('game.completed_long') %>
         {{ } }}
       {{ } }}
       </div>
@@ -103,13 +103,13 @@
                   {{ if (player.elevationToSummit) { }}
                     <h1>{{ if (player.elevationToSummit < 1) { }}1{{ } else { }}{{= Math.round(player.elevationToSummit) }}{{ } }}m</h1><%= __('game.to_summit') %><br/>{{= game.level_name }}
                   {{ } else { }}
-                    <h1>Summit!</h1>{{= Math.round(player.elevationGain) }}m <%= __('game.climbed_on') %><br/>{{= game.level_name }}
+                    <h1><%= __('game.summited') %></h1>{{= Math.round(player.elevationGain) }}m <%= __('game.climbed_on') %><br/>{{= game.level_name }}
                   {{ } }}
                 {{ } else { }}
                   {{ if (player.distanceToSummit) { }}
-                    <h1>{{ if (player.distanceToSummit < 1) { }}1{{ } else { }}{{= (player.distanceToSummit / 1000).toFixed(1) }}{{ } }}km</h1><%= __('game.to_summit') %><br/>{{= game.level_name }}
+                    <h1>{{ if (player.distanceToSummit < 1) { }}1{{ } else { }}{{= (player.distanceToSummit / 1000).toFixed(1) }}{{ } }}km</h1><%= __('game.to_complete') %><br/>{{= game.level_name }}
                   {{ } else { }}
-                    <h1>Summit!</h1>{{= (player.distance / 1000).toFixed(1) }}km <%= __('game.covered_on') %><br/>{{= game.level_name }}
+                    <h1><%= __('game.completed') %></h1>{{= (player.distance / 1000).toFixed(1) }}km <%= __('game.covered_on') %><br/>{{= game.level_name }}
                   {{ } }}
                 {{ } }}
                 </div>
