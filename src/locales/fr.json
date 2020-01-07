@@ -221,9 +221,12 @@
   "game": {
     "to_summit": "to summit",
     "climbed": "climbed",
+    "to_complete": "to complete",
     "covered": "covered",
     "summited": "Summit!",
     "summited_long": "summit reached",
+    "completed": "Completed!",
+    "completed_long": "challenge completed",
     "unknown_location": "Where am I?",
     "climbed_on": "climbed on",
     "covered_on": "covered on",

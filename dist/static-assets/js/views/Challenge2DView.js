@@ -175,24 +175,111 @@ define([
       });
     },
 
+    buildMarkerOff: function(id, fLat, fLong, strMarkerImageOff, nFadeDistance){
+      var jsonMarker = {
+        "name": id,
+        "features": [
+          {
+            "geometry": {
+              "type": "Point",
+              "coordinates": [ fLong, fLat ]
+            },
+            "type": "Feature",
+            "id": id,
+            "properties": {
+              "image": strMarkerImageOff,
+              "height": 24,
+              "width": 24,
+            }
+          }
+        ]
+      }
+      return jsonMarker;
+    },
+
+    buildMarkerOn: function(id, fLat, fLong, strMarkerImage, strMarkerImageOn, nFadeDistance){
+      var jsonMarker = {
+        "name": id,
+        "features": [
+          {
+            "geometry": {
+              "type": "Point",
+              "coordinates": [ fLong, fLat ]
+            },
+            "type": "Feature",
+            "id": id,
+            "properties": {
+              "image": strMarkerImage,
+              "height": 48,
+              "width": 48,
+            }
+          },
+          {
+            "geometry": {
+              "type": "Point",
+              "coordinates": [ fLong, fLat ]
+            },
+            "type": "Feature",
+            "id": id,
+            "properties": {
+              "image": strMarkerImageOn,
+              "height": 24,
+              "width": 24,
+            }
+          }
+        ]
+      }
+
+      return jsonMarker;
+    },
+
+    addMarker: function(id, coord, fProgressKM, strMarkerImage, strMarkerImageOn, strMarkerImageOff){
+      var pt = {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "type": "Point",
+          "coordinates": []
+        }
+      }
+
+      // look for point on line
+      pt.geometry.coordinates[0] = coord[0];
+      pt.geometry.coordinates[1] = coord[1];
+
+      var snapped = turf.pointOnLine(this.jsonRoute, pt);
+
+      fLat = snapped.geometry.coordinates[1];
+      fLong = snapped.geometry.coordinates[0];
+
+      // slice route at point
+      var ptStart = turf.point([this.jsonRoute.geometry.coordinates[0][0], this.jsonRoute.geometry.coordinates[0][1]]);
+      var ptMarker = turf.point([fLong, fLat]);
+      var sliced = turf.lineSlice(ptStart, ptMarker, this.jsonRoute.geometry);
+
+      var fMarkerKM = turf.length(sliced, {units: 'kilometers'});
+      var bEnable = false;
+
+      if (Number(fProgressKM) >= Number(fMarkerKM)) {
+        bEnable = true;
+      }
+
+      if (bEnable) {
+        jsonMarker = this.buildMarkerOn(id, fLat, fLong, strMarkerImage, strMarkerImageOn, MARKER_FADE_DISTANCE);
+      }
+      else {
+        jsonMarker = this.buildMarkerOff(id, fLat, fLong, strMarkerImageOff, MARKER_FADE_DISTANCE);
+      }
+      this.arrMarkers.push(jsonMarker);
+
+      return bEnable;
+    },
+
     showFlag: function() {
       if (!this.bFlagVisible) {
         this.bFlagVisible = true;
 
         this.jsonFlag.flagMarker.addTo(this.map);
-        /*
-				var el = document.createElement('div');
-				el.className = 'marker-flag';
-				el.innerHTML = '<img src="' + this.jsonFlag.features[0].properties.image + '">';
-
-				var point = this.jsonFlag.features[0].geometry.coordinates;
-
-				this.flagMarker = new mapboxgl.Marker(el)
-					.setLngLat(point)
-					.setOffset([0, -19])
-					.addTo(this.map);
-
-		 */
       }
     },
 
@@ -345,7 +432,7 @@ define([
           ]
         }
       }
-      
+
       var jsonPlayerAvatar = jsonPlayer.features[0];
 
       var el = document.createElement('div');
