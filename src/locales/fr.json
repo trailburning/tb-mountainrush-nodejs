@@ -1,6 +1,6 @@
 {
   "menu": {
-    "demo": "Demo Video",
+    "demo": "Promo Video",
     "example": "Example Game",
     "signup": "Sign up",
     "signout": "Sign out",
@@ -43,7 +43,7 @@
     "text_fundraise": "Oh and you can %s too!",
     "fundraise": "fundraise",
     "signup": "Sign up",
-    "demo": "Demo Video",
+    "demo": "Promo Video",
     "fundraising_provider": "Fundraising by %s"
   },
   "community": {
