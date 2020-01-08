@@ -305,7 +305,7 @@ define([
       // enabled so add event marker
       if (bEnable) {
         el.innerHTML = '<div class="avatar-container"><div class="avatar"><img src="' + jsonMarker.features[1].properties.image + '"></div></div>' + el.innerHTML;
-        nYOffset = -50;
+        nYOffset = -40;
       }
 
       var point = jsonMarker.features[0].geometry.coordinates;
@@ -488,19 +488,20 @@ define([
       var el = document.createElement('div');
       el.className = 'marker-player';
       el.innerHTML = '<div class="avatar-container"><div class="avatar"><img src="' + jsonPlayerAvatar.properties.image + '"></div></div>';
+      var nYOffset = 0;
 
       // more than one feature means we want to render the position
       if (jsonPlayer.features.length > 1) {
         var jsonPlayerPos = jsonPlayer.features[1];
 
         el.innerHTML += '<div class="pos" style="background: ' + jsonPlayerPos.properties.background + '">' + jsonPlayerPos.properties.name + '</div>';
+        nYOffset = -40;
       }
 
       var point = jsonPlayerAvatar.geometry.coordinates;
-
       jsonPlayer.playerMarker = new mapboxgl.Marker(el)
           .setLngLat(point)
-          .setOffset([0, -30]);
+          .setOffset([0, nYOffset]);
 
       return jsonPlayer;
     },
