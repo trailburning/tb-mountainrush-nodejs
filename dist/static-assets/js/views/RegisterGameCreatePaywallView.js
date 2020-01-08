@@ -38,7 +38,7 @@ define([
         form.appendChild(hiddenInput);
 
         var jsonData = {token: token.id};
-//        console.log(jsonData);
+        console.log(jsonData);
 
         var url = GAME_API_URL + 'campaign/' + CAMPAIGN_ID + '/player/' + self.jsonFields.playerID + '/paywall/payment';;
 //        console.log(url);

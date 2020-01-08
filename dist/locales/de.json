@@ -259,9 +259,11 @@
 		"view_strava": "View on Strava",
 		"photos": {
 			"waiting": {
-				"description": "Waiting for photos of %s's journey to the summit..."
+				"description": "Waiting for photos of %s's journey to the summit...",
+				"description_distance": "Waiting for photos of %s's journey..."
 			},
 			"description": "Check out %s's journey to the summit!",
+			"description_distance": "Check out %s's journey!",
 			"show_more": "Show more photos"
 		},
 		"fundraising": {
