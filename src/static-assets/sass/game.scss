@@ -228,6 +228,53 @@ body.sponsored .sponsor-view .title strong {
   font-family: 'radikallight', sans-serif;
 }
 
+.marker-event {
+}
+
+.marker-event .avatar-container {
+  position: relative;
+}
+
+.marker-event .avatar-container:before {
+  content: ' ';
+  position: absolute;
+  bottom: -4px;
+  left: 25px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: #FFF transparent transparent transparent;
+}
+
+.marker-event .avatar {
+  border: 2px solid #fff;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.marker-event .avatar img {
+  width: 100%;
+  vertical-align: top;
+}
+
+.marker-event .marker-image {
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #fff;
+  text-align: center;
+  margin: 8px auto 0 auto;
+}
+
+.marker-event .marker-image img {
+  width: 100%;
+}
+
 .marker-player {
 }
 

@@ -159,19 +159,44 @@ define([
       this.showPlayer(this.currPlayerID);
     },
 
+    selectPlayerNoSelect: function(id){
+      var player = null;
+
+      if (this.timeoutID) {
+        window.clearTimeout(this.timeoutID);
+      }
+
+      this.nState = STATE_SELECT_PLAYER_NO_SELECT;
+
+      this.showFlag();
+
+      // remove current player
+      if (this.currPlayerID) {
+        player = this.playerCollection.get(this.currPlayerID);
+        this.hidePlayer(this.currPlayerID);
+      }
+
+      this.currPlayerID = id;
+
+      this.showPlayer(this.currPlayerID);
+    },
+
     selectMarker: function(nID){
 //      Procedural.focusOnFeature(MARKER_BASE_ID + nID);
     },
 
     hideMarkers: function(){
       $.each(this.arrMarkers, function(index, jsonMarker){
-//        Procedural.removeOverlay(jsonMarker.name);
+        jsonMarker.eventMarker.remove();
       });
     },
 
     showMarkers: function(){
+      var self = this;
+
       $.each(this.arrMarkers, function(index, jsonMarker){
-//        Procedural.addOverlay(jsonMarker);
+        // mla
+        jsonMarker.eventMarker.addTo(self.map);
       });
     },
 
@@ -209,9 +234,9 @@ define([
             "type": "Feature",
             "id": id,
             "properties": {
-              "image": strMarkerImage,
-              "height": 48,
-              "width": 48,
+              "image": strMarkerImageOn,
+              "height": 24,
+              "width": 24,
             }
           },
           {
@@ -222,9 +247,9 @@ define([
             "type": "Feature",
             "id": id,
             "properties": {
-              "image": strMarkerImageOn,
-              "height": 24,
-              "width": 24,
+              "image": strMarkerImage,
+              "height": 48,
+              "width": 48,
             }
           }
         ]
@@ -271,6 +296,31 @@ define([
         jsonMarker = this.buildMarkerOff(id, fLat, fLong, strMarkerImageOff, MARKER_FADE_DISTANCE);
       }
       this.arrMarkers.push(jsonMarker);
+
+      var el = document.createElement('div');
+      el.className = 'marker-event';
+      el.innerHTML = '<div class="marker-image"><img src="' + jsonMarker.features[0].properties.image + '"></div>';
+      var nYOffset = 0;
+
+      // enabled so add event marker
+      if (bEnable) {
+        el.innerHTML = '<div class="avatar-container"><div class="avatar"><img src="' + jsonMarker.features[1].properties.image + '"></div></div>' + el.innerHTML;
+        nYOffset = -50;
+      }
+
+      var point = jsonMarker.features[0].geometry.coordinates;
+
+      jsonMarker.eventMarker = new mapboxgl.Marker(el)
+          .setLngLat(point)
+          .setOffset([0, nYOffset]);
+
+      // store id
+      jsonMarker.eventMarker.getElement().setAttribute('data-id', id);
+      // handle click
+      jsonMarker.eventMarker.getElement().addEventListener('click', function(evt) {
+        // fire event
+        app.dispatcher.trigger("Challenge2DView:onFeatureClicked", $(this).attr('data-id'));
+      });
 
       return bEnable;
     },
@@ -453,6 +503,10 @@ define([
           .setOffset([0, -30]);
 
       return jsonPlayer;
+    },
+
+    focusLocation: function(fLat, fLong) {
+      this.map.flyTo({ center: [fLong, fLat], zoom: 14, speed: 0.5 });
     },
 
     render: function(){
