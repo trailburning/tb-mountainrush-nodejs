@@ -1,6 +1,6 @@
 {
 	"menu": {
-		"demo": "Demo-Video",
+		"demo": "Promo-Video",
 		"example": "Beispielspiel",
 		"signup": "Registrieren",
 		"signout": "Abmelden",
@@ -43,7 +43,7 @@
 		"text_fundraise": "Dabei kannst Du auch %s sammeln!",
 		"fundraise": "Spenden",
 		"signup": "Registrieren",
-		"demo": "Demo-Video",
+		"demo": "Promo-Video",
 		"fundraising_provider": "Spendensammlung durch %s"
 	},
 	"community": {
