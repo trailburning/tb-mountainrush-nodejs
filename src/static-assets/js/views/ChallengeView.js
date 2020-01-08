@@ -42,7 +42,7 @@ define([
       var self = this;
 
       var url = GAME_API_URL + "game/" + self.options.gameID;
-      console.log(url);
+//      console.log(url);
       $.getJSON(url, function(result){
         self.jsonGame = result[0]; 
 

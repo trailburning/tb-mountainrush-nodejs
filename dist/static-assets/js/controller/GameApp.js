@@ -251,8 +251,6 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       var arrMapPoint = mountainModel.get('route_points')[Math.round(mountainModel.get('route_points').length / 2)].coords;
 
       // select view renderer
-      console.log(jsonCurrGame.levelView);
-
       switch(Number(jsonCurrGame.levelView)) {
         case LEVEL_VIEW_3D_PROCEDURAL:
           challengeView = new Challenge3DView({ el: '#piste-view', arrMapPoint: arrMapPoint, mountainType: Number(jsonCurrGame.mountainType), geography: Number(jsonCurrGame.season) });
