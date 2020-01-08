@@ -3,6 +3,9 @@ var app = app || {};
 var SHOP_TIMER_DELAY = 8000;
 var STORY_TIMER_DELAY = 1000;
 
+var LEVEL_VIEW_2D_MAPBOX = 0;
+var LEVEL_VIEW_3D_PROCEDURAL = 1;
+
 define([
   'underscore',
   'backbone',
@@ -77,6 +80,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     app.dispatcher.on("Challenge3DView:onFeatureClicked", onFeatureClicked);
     app.dispatcher.on("Challenge2DView:onLocationLoaded", onLocationLoaded);
     app.dispatcher.on("Challenge2DView:onFeaturesLoaded", onFeaturesLoaded);
+    app.dispatcher.on("Challenge2DView:onFeatureClicked", onFeatureClicked);
     app.dispatcher.on("PlayerActivityPhotoView:click", onPlayerActivityPhotoClicked);
     app.dispatcher.on("PlayersDetailView:inviteClick", onPlayerInviteClick);
     app.dispatcher.on("PlayersDetailView:cancelGameClick", onCancelGameClick);
@@ -246,11 +250,17 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
     function setupMap(challengeName) {
       var arrMapPoint = mountainModel.get('route_points')[Math.round(mountainModel.get('route_points').length / 2)].coords;
 
-      if (jsonCurrGame.ascentChallenge) {
-        challengeView = new Challenge3DView({ el: '#piste-view', arrMapPoint: arrMapPoint, mountainType: Number(jsonCurrGame.mountainType), geography: Number(jsonCurrGame.season) });
-      }
-      else {
-        challengeView = new Challenge2DView({ el: '#piste-view', arrMapPoint: arrMapPoint, mountainType: Number(jsonCurrGame.mountainType), geography: Number(jsonCurrGame.season) });
+      // select view renderer
+      console.log(jsonCurrGame.levelView);
+
+      switch(Number(jsonCurrGame.levelView)) {
+        case LEVEL_VIEW_3D_PROCEDURAL:
+          challengeView = new Challenge3DView({ el: '#piste-view', arrMapPoint: arrMapPoint, mountainType: Number(jsonCurrGame.mountainType), geography: Number(jsonCurrGame.season) });
+          break;
+
+        default:
+          challengeView = new Challenge2DView({ el: '#piste-view', arrMapPoint: arrMapPoint, mountainType: Number(jsonCurrGame.mountainType), geography: Number(jsonCurrGame.season) });
+          break;
       }
 
       challengeView.show();
