@@ -251,17 +251,17 @@
 
             <div class="posts">
               <div class="welcome without-photos">
-                {{ if (player.distanceToSummit) { }}
-                  {{= '<%= __('game.photos.waiting.description_distance') %>'.replace('%s', firstname) }}
-                {{ } else { }}^
+                {{ if (game.ascentChallenge) { }}
                   {{= '<%= __('game.photos.waiting.description') %>'.replace('%s', firstname) }}
+                {{ } else { }}
+                  {{= '<%= __('game.photos.waiting.description_distance') %>'.replace('%s', firstname) }}
                 {{ } }}
               </div>
               <div class="welcome with-photos">
-                {{ if (player.distanceToSummit) { }}
-                  {{= '<%= __('game.photos.description_distance') %>'.replace('%s', firstname) }}
-                {{ } else { }}
+                {{ if (game.ascentChallenge) { }}
                   {{= '<%= __('game.photos.description') %>'.replace('%s', firstname) }}
+                {{ } else { }}
+                  {{= '<%= __('game.photos.description_distance') %>'.replace('%s', firstname) }}
                 {{ } }}
               </div>
               <div class="photos">
