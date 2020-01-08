@@ -488,7 +488,7 @@ define([
       var el = document.createElement('div');
       el.className = 'marker-player';
       el.innerHTML = '<div class="avatar-container"><div class="avatar"><img src="' + jsonPlayerAvatar.properties.image + '"></div></div>';
-      var nYOffset = 0;
+      var nYOffset = -30;
 
       // more than one feature means we want to render the position
       if (jsonPlayer.features.length > 1) {

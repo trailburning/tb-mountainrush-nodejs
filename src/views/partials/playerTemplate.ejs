@@ -18,7 +18,7 @@
         {{ } else { }}
           {{ if (player.distanceToSummit) { }}
             <h1>{{ if (player.distanceToSummit < 1) { }}1{{ } else { }}{{= (player.distanceToSummit / 1000).toFixed(1) }}{{ } }}km</h1><%= __('game.to_complete') %>
-          {{ } else { }}
+          {{ } else { }}^
             <h1><%= __('game.completed') %></h1>{{= (player.distance / 1000).toFixed(1) }}km <%= __('game.covered') %>
           {{ } }}
         {{ } }}
@@ -250,8 +250,20 @@
             {{ } }}
 
             <div class="posts">
-              <div class="welcome without-photos">{{= '<%= __('game.photos.waiting.description') %>'.replace('%s', firstname) }}</div>
-              <div class="welcome with-photos">{{= '<%= __('game.photos.description') %>'.replace('%s', firstname) }}</div>
+              <div class="welcome without-photos">
+                {{ if (player.distanceToSummit) { }}
+                  {{= '<%= __('game.photos.waiting.description_distance') %>'.replace('%s', firstname) }}
+                {{ } else { }}^
+                  {{= '<%= __('game.photos.waiting.description') %>'.replace('%s', firstname) }}
+                {{ } }}
+              </div>
+              <div class="welcome with-photos">
+                {{ if (player.distanceToSummit) { }}
+                  {{= '<%= __('game.photos.description_distance') %>'.replace('%s', firstname) }}
+                {{ } else { }}
+                  {{= '<%= __('game.photos.description') %>'.replace('%s', firstname) }}
+                {{ } }}
+              </div>
               <div class="photos">
                 <div class="post inactive" data-uploaded-time="0">
                   <div class="image">
