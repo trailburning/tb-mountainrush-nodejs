@@ -10,7 +10,7 @@ var STATE_GAME_CREATE_PAYWALL = 6;
 var STATE_GAME_CREATE = 7;
 var STATE_GAME_CREATED = 8;
 
-// RaiseNow  doesn't require anything!
+// RaiseNow doesn't require anything!
 var STATE_FUNDRAISING_CREATE = 10;
 var STATE_FUNDRAISING_CREATED = 11;
 
@@ -170,9 +170,9 @@ define([
 
               getPlayer(jsonCampaign.clientID, playerID, function(jsonPlayer) {
                 jsonCurrPlayer = jsonPlayer;
-
+                
                 // do we have a paywall?
-                if (jsonCampaign.paywall_amount && !jsonCurrPlayer.paywall_amount) {
+                if (jsonCampaign.paywall_amount && (jsonCurrPlayer.campaign_paywall.length == 0)) {
                   // no payment so show paywall
                   changeState(STATE_GAME_CREATE_PAYWALL);
                 }
@@ -222,7 +222,7 @@ define([
     function getPlayer(clientID, playerID, callbackFunction) {
       var self = this;
 
-      var url = GAME_API_URL + "client/" + clientID + "/player/" + playerID;
+      var url = GAME_API_URL + "campaign/" + CAMPAIGN_ID + "/player/" + playerID;
 //      console.log(url);
       $.getJSON(url, function(result){
         storeUserCookies(clientID, result[0]);
