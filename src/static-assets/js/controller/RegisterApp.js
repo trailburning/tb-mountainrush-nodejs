@@ -170,7 +170,7 @@ define([
 
               getPlayer(jsonCampaign.clientID, playerID, function(jsonPlayer) {
                 jsonCurrPlayer = jsonPlayer;
-                
+
                 // do we have a paywall?
                 if (jsonCampaign.paywall_amount && (jsonCurrPlayer.campaign_paywall.length == 0)) {
                   // no payment so show paywall
