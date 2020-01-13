@@ -177,7 +177,12 @@
     },
 		"please_wait": "Please Wait",
     "game_create_paywall": {
-      "title": "Create Challenge"
+      "title": "Create Challenge",
+		"description": "There is a <strong>%s</strong> fee to take part in this challenge.",
+		"payment": {
+			"title": "Credit or debit card",
+			"payment_button": "Make %s Payment"
+		}
     },
 		"game_create": {
 			"title": "Create Challenge",

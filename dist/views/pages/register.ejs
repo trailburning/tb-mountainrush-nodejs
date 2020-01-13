@@ -410,14 +410,14 @@ var TEST = '<%= Defs.Test %>';
   <h1><%= __('register.game_create_paywall.title') %></h1>
 
   <div class="intro-text centre-text">
-  There is a <strong>{{= campaign.paywall_currency_symbol }}{{= campaign.paywall_amount }}</strong> fee to take part in this challenge.
+  {{= '<%- __('register.game_create_paywall.description') %>'.replace('%s', campaign.paywall_currency_symbol + campaign.paywall_amount) }}
   </div>
 
   <form action="/charge" method="post" id="payment-form" class="stripe">
     <div class="form-row">
 
       <div class="form-group">
-        <div class="form-label"><label for="card-element">Credit or debit card</label></div>
+        <div class="form-label"><label for="card-element">{{= '<%- __('register.game_create_paywall.payment.title') %>' }}</label></div>
 
         <div id="card-element">
           <!-- A Stripe Element will be inserted here. -->
@@ -429,7 +429,7 @@ var TEST = '<%= Defs.Test %>';
     </div>
 
     <div class="btns">
-    <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>">Make {{= campaign.paywall_currency_symbol }}{{= campaign.paywall_amount }} Payment</button>
+    <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>">{{= '<%- __('register.game_create_paywall.payment.payment_button') %>'.replace('%s', campaign.paywall_currency_symbol + campaign.paywall_amount) }}</button>
     </div>
 
     <div class="err">
