@@ -204,8 +204,11 @@
 			"title": "Challenge ready!",
 			"description": "Your challenge is now ready and will start on:",
 			"view_challenge": "View Challenge",
-			"invite_friends": "Invite friends",
-			"invite_friends_challenge": "%s to your challenge!",
+			"invite_friends": {
+				"title": "Want more of a challenge?",
+				"link": "Invite friends",
+				"description": "%s to your challenge!"
+			},
 			"social": {
 				"title": "Get social",
 				"description": "Let everyone know what you're doing and share!"

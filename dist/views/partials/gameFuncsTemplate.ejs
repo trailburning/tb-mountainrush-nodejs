@@ -1,6 +1,6 @@
 <div class="game-funcs">
 {{ if (game.ownerPlayerID == activePlayer.id) { }}
-  {{ if (game.multiplayer && (game.stateDetail != 'complete')) { }}
+  {{ if (Number(game.multiplayer) && (game.stateDetail != 'complete')) { }}
     <p><%- __('game.invite_friends.msg_invite', '<span class="link link-invite">' + __('game.invite_friends.msg_title') + '</span>') %></p>
   {{ } }}
 

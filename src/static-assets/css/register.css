@@ -1,16 +1,3 @@
-h1,
-h2 {
-  padding: 0 0 4px 0;
-  font-family: 'radikalbold', sans-serif;
-  line-height: 1.2em;
-  text-transform: uppercase; }
-
-h1 {
-  font-size: 1.8em; }
-
-h2 {
-  font-size: 1.2em; }
-
 ul.pills {
   padding: 0;
   margin: 0;
@@ -140,6 +127,19 @@ ul.pills li {
 .register-views {
   padding: 52px 16px; }
 
+.register-views h1,
+.register-views h2 {
+  padding: 0 0 4px 0;
+  font-family: 'radikalbold', sans-serif;
+  line-height: 1.2em;
+  text-transform: uppercase; }
+
+.register-views h1 {
+  font-size: 1.8em; }
+
+.register-views h2 {
+  font-size: 1.2em; }
+
 /* REGISTER VIEW */
 /******************************************/
 .register-view {
@@ -221,6 +221,8 @@ ul.pills li {
   .register-view .connect {
     padding: 12px 0 20px 0; }
   .register-view .social {
+    padding-top: 40px; }
+  .register-view .invite-friends {
     padding-top: 40px; }
   .register-view .fundraising {
     padding-top: 40px; }

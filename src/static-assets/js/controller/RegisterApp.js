@@ -52,10 +52,11 @@ define([
   'views/RegisterFundraisingSignupView',
   'views/RegisterFundraisingPageCreateView',
   'views/RegisterFundraisingPageCreatedView',
+  'views/GameInviteView',
   'views/ChallengeCancelModalView',
   'views/PromotionModalView',
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, cookie, truncate, modernizr, dateFormat, datepicker, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, RegisterInvitationView, RegisterWelcomeView, RegisterWelcomeVerifyView, RegisterWelcomeConnectedView, RegisterWelcomePreferencesView, RegisterGameCreatePaywallView, RegisterGameCreateView, RegisterGameCreatedView, RegisterGamesView, RegisterFundraisingCreateView, RegisterFundraisingCreatedView, RegisterFundraisingSigninView, RegisterFundraisingSignupView, RegisterFundraisingPageCreateView, RegisterFundraisingPageCreatedView, ChallengeCancelModalView, PromotionModalView, DemoVideoView){
+], function(_, Backbone, bootstrap, cookie, truncate, modernizr, dateFormat, datepicker, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, RegisterInvitationView, RegisterWelcomeView, RegisterWelcomeVerifyView, RegisterWelcomeConnectedView, RegisterWelcomePreferencesView, RegisterGameCreatePaywallView, RegisterGameCreateView, RegisterGameCreatedView, RegisterGamesView, RegisterFundraisingCreateView, RegisterFundraisingCreatedView, RegisterFundraisingSigninView, RegisterFundraisingSignupView, RegisterFundraisingPageCreateView, RegisterFundraisingPageCreatedView, GameInviteView, ChallengeCancelModalView, PromotionModalView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -84,6 +85,7 @@ define([
     app.dispatcher.on("RegisterGameCreatePaywallView:chargeSuccess", onPaywallSuccess);
     app.dispatcher.on("RegisterGameCreateView:sponsoredGameSelected", onSponsoredGameSelected);
     app.dispatcher.on("RegisterGameCreateView:gameCreated", onRegisterGameCreated);
+    app.dispatcher.on("RegisterGameCreatedView:inviteClick", onRegisterInviteClick);
     app.dispatcher.on("RegisterGameCreatedView:fundraiseClick", onRegisterFundraiseClick);
     app.dispatcher.on("RegisterFundraisingCreateView:fundraisingCreated", onRegisterFundraisingCreated);
     app.dispatcher.on("RegisterFundraisingSigninView:validUser", onRegisterFundraisingSigninValidUser);
@@ -113,6 +115,7 @@ define([
     var registerGameCreateView = new RegisterGameCreateView({ el: '#register-game-create-view' });
     var registerGameCreatedView = new RegisterGameCreatedView({ el: '#register-game-created-view' });
     var registerGamesView = new RegisterGamesView({ el: '#register-games-view' });
+    var gameInviteView = new GameInviteView({ el: '#game-invite-view', clientID: CLIENT_ID });
 
     var registerFundraisingCreateView = new RegisterFundraisingCreateView({ el: '#register-fundraising-create-view' });
     var registerFundraisingCreatedView = new RegisterFundraisingCreatedView({ el: '#register-fundraising-created-view' });
@@ -136,7 +139,7 @@ define([
 //          PLAYER_ID = 'b31r7RZ7Xo'; // MR - Matt
 //          PLAYER_ID = 'gxAZjLl4XR'; // CFYW - Amelia
 //        } 
-//        changeState(STATE_FUNDRAISING_PAGE_CREATE);
+//        changeState(STATE_GAME_CREATED);
 //        return;
 
         if (PLAYER_ID != '') { // do we have a passed player?
@@ -400,6 +403,8 @@ define([
             playerID = jsonPlayer.user;
           }
 
+          console.log('t3');
+
           getPlayer(jsonCampaign.clientID, playerID, function(jsonPlayer) {
             jsonCurrPlayer = jsonPlayer;
 
@@ -643,9 +648,8 @@ define([
     }
 
     function onCreateGameClick() {
-      // MLA
       // do we have a paywall?
-      if (jsonCampaign.paywall_amount && !jsonCurrPlayer.paywall_amount) {
+      if (jsonCampaign.paywall_amount && (jsonCurrPlayer.campaign_paywall.length == 0)) {
         // no payment so show paywall
         changeState(STATE_GAME_CREATE_PAYWALL);
       }
@@ -673,6 +677,15 @@ define([
 
     function onRegisterGameCreated() {
       changeState(STATE_GAME_CREATED);
+    }
+
+    function onRegisterInviteClick() {
+      var jsonCreateFields = gameInviteView.getFields();
+      jsonCreateFields.gameID = registerGameCreateView.getFields().gameID;
+      gameInviteView.setFields(jsonCreateFields);
+      gameInviteView.render();
+
+      $('#invite-friend-modal-view .modal').modal();
     }
 
     function onRegisterFundraiseClick(causeID) {
