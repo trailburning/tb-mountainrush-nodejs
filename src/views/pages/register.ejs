@@ -126,6 +126,19 @@ var TEST = '<%= Defs.Test %>';
 
 <div id="challenge-cancel-modal-view"></div>
 <div id="promotion-modal-view"></div>
+<div id="invite-friend-modal-view">
+  <div class="modal msg-overlay" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="details">
+            <div id="game-invite-view"></div>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
 
 <div id="mobileTest" class="visible-xs"></div>
 <div id="demo-video-view"></div>
@@ -541,6 +554,15 @@ var TEST = '<%= Defs.Test %>';
   <div class="btns">
     <a href="<%= Defs.BaseHTTPSURL %>/game/{{= fields.gameID }}" class="btn mr-btn"><%= __('register.game_created.view_challenge') %></a>
   </div>
+
+  {{ if (Number(fields.multiplayer)) { }}
+    <div class="invite-friends">
+      <h2><%- __('register.game_created.invite_friends.title') %></h2>
+      <div class="intro-text centre-text">
+        <%- __('register.game_created.invite_friends.description', '<span class="link link-invite">' + __('register.game_created.invite_friends.link') + '</span>') %>
+      </div>
+    </div>
+  {{ }; }}
 
   <% if (Campaign.CampaignFundraisingProvider) { %>
     {{ var content = fields.content }}
