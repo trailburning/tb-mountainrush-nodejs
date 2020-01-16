@@ -473,6 +473,8 @@ define([
           jsonFields.campaignID = CAMPAIGN_ID;
           jsonFields.playerID = jsonCurrPlayer.id;
           jsonFields.games = jsonCurrPlayer.games; // we may have an active game already!
+          jsonFields.campaignStartDate = jsonCampaign.start_date;
+          jsonFields.campaignEndDate = jsonCampaign.end_date;
 
           // get campaign game levels
           var url = GAME_API_URL + 'campaign/' + jsonFields.campaignID + '/gamelevels';

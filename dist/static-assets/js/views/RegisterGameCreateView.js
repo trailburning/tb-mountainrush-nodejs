@@ -13,6 +13,8 @@ define([
       this.currGame = null;
 
       this.jsonFields = {campaignID: 0,
+                        campaignStartDate: '',
+                        campaignEndDate: '',
                          ownerPlayerID: 0,
                          gameID: 0,
                          playerID: 0,
@@ -33,6 +35,8 @@ define([
 
     setFields: function(jsonFields) {
       this.jsonFields.campaignID = jsonFields.campaignID;
+      this.jsonFields.campaignStartDate = jsonFields.campaignStartDate;
+      this.jsonFields.campaignEndDate = jsonFields.campaignEndDate;
 
       // see if there's an active game
       this.currGame = _.where(this.jsonFields.games, {game_state:'active'})[0];
@@ -155,12 +159,29 @@ define([
         pillSelected($(this));
       });
 
-      var nowTemp = new Date();
-      var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+      var dtTemp = new Date();
+      // do we have a campaign start date?
+      if (this.jsonFields.campaignStartDate) {
+        dtTemp = new Date(this.jsonFields.campaignStartDate);
+      }
+      var dtMinStart = new Date(dtTemp.getFullYear(), dtTemp.getMonth(), dtTemp.getDate(), 0, 0, 0, 0);
+
+      var dtMaxStart = null;
+      // do we have a campaign end date?
+      if (this.jsonFields.campaignEndDate) {
+        dtMaxStart = new Date(this.jsonFields.campaignEndDate);
+        dtMaxStart = new Date(dtMaxStart.getFullYear(), dtMaxStart.getMonth(), dtMaxStart.getDate(), 0, 0, 0, 0);
+      }
+
       this.startDate = $('#dpd1').datepicker({
         format: 'dd/mm/yyyy',
         onRender: function(date) {
-          return date.valueOf() < now.valueOf() ? 'disabled' : '';
+          if (dtMaxStart) {
+            return (date.valueOf() < dtMinStart.valueOf() || date.valueOf() > dtMaxStart.valueOf()) ? 'disabled' : '';
+          }
+          else {
+            return date.valueOf() < dtMinStart.valueOf() ? 'disabled' : '';
+          }
         }
       }).on('changeDate', function(ev) {
         self.startDate.hide();
@@ -168,7 +189,7 @@ define([
 
       // def start today
       if (this.startDate) {
-        var dtStart = now;
+        var dtStart = dtMinStart;
         dtStart.setDate(dtStart.getDate());
         this.startDate.setValue(dtStart);
       }
