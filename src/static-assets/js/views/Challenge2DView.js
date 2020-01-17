@@ -515,7 +515,7 @@ define([
 
       this.map = new mapboxgl.Map({
         container: this.el, // container id
-        style: 'mapbox://styles/mallbeury/ck4i4tr9q0gir1co28gaq1fmo',
+        style: 'mapbox://styles/mapbox/cjaudgl840gn32rnrepcb9b9g',
         center: [self.options.arrMapPoint[0], self.options.arrMapPoint[1]],
         zoom: 12,
         interactive: true,
@@ -523,6 +523,21 @@ define([
       });
 
       this.map.on('load', function () {
+        self.map.addSource('dem', {
+          'type': 'raster-dem',
+          'url': 'mapbox://mapbox.terrain-rgb'
+        });
+        self.map.addLayer(
+            {
+              'id': 'hillshading',
+              'source': 'dem',
+              'type': 'hillshade'
+              // insert below waterway-river-canal-shadow;
+              // where hillshading sits in the Mapbox Outdoors style
+            },
+            'waterway-river-canal-shadow'
+        );
+
         // fire event
         app.dispatcher.trigger("Challenge2DView:onLocationLoaded");
       });
