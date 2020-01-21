@@ -620,6 +620,14 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/campaign/:campaignID/donate', function(req, res) {
+    var defs = helper.getDefs(req);
+
+    getCampaignDataByCampaign(req, req.params.campaignID, function(err, campaign){
+      res.render('pages/campaigndonate', {Defs: defs, Campaign: campaign});
+    });
+  });
+
   app.get('/campaign/:campaignID/register', function(req, res) {
     var defs = helper.getDefs(req);
     defs.PageRegisterState = 'register';
