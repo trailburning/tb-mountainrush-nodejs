@@ -89,10 +89,10 @@ var STRIPE_API_KEY = '<%= Defs.StripeAPIKey %>';
 <div id="demo-video-view"></div>
 
 <script type="text/template" id="campaignDonateViewTemplate">
-  <h1><%= __('register.game_create_paywall.title') %></h1>
+  <h1><%= __('campaign_donation.title') %></h1>
 
   <div class="intro-text centre-text">
-    {{= '<%- __('register.game_create_paywall.description') %>'.replace('%s', campaign.paywall_currency_symbol + campaign.paywall_amount) }}
+    {{= '<%- __('campaign_donation.description') %>'.replace('%s', campaign.name) }}
   </div>
 
   <form action="/charge" method="post" id="payment-form" class="stripe">

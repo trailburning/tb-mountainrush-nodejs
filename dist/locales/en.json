@@ -173,7 +173,7 @@
 		"please_wait": "Please Wait",
     "game_create_paywall": {
 		"title": "Create Challenge",
-		"description": "There is a <strong>%s</strong> fee to take part in this challenge.",
+		"description": "There is a <strong>%s</strong> fee to take part in this %s challenge.",
 		"payment": {
 			"title": "Credit or debit card",
 			"payment_button": "Make %s Payment"
@@ -298,6 +298,10 @@
 			"one": "day",
 			"other": "days"
 		}
+	},
+	"campaign_donation": {
+		"title": "Campaign donation",
+		"description": "Please choose your donation to the %s campaign"
 	},
 	"defs": {
     "strava_app": "Strava App",

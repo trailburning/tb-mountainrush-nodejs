@@ -423,7 +423,7 @@ var TEST = '<%= Defs.Test %>';
   <h1><%= __('register.game_create_paywall.title') %></h1>
 
   <div class="intro-text centre-text">
-  {{= '<%- __('register.game_create_paywall.description') %>'.replace('%s', campaign.paywall_currency_symbol + campaign.paywall_amount) }}
+  {{= '<%- __('register.game_create_paywall.description') %>'.replace('%s', campaign.paywall_currency_symbol + campaign.paywall_amount).replace('%s', campaign.name) }}
   </div>
 
   <form action="/charge" method="post" id="payment-form" class="stripe">
