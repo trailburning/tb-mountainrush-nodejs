@@ -162,17 +162,6 @@ ul.pills li {
     padding: 20px 0; }
   .register-view .form-label {
     display: block; }
-  .register-view form.stripe .form-label {
-    width: auto; }
-  .register-view form.stripe #card-element {
-    margin: 4px 0; }
-  .register-view form.stripe #card-errors {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    color: #ff705f;
-    font-family: radikalbold,sans-serif;
-    font-size: .9em;
-    text-transform: uppercase; }
   .register-view .form-label.top {
     vertical-align: top; }
   .register-view .preferences label {

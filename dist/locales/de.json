@@ -323,7 +323,7 @@
 	},
 	"campaign_donation": {
 		"title": "Campaign donation",
-		"description": "Please choose your donation to the %s campaign"
+		"description": "Please select your donation to the %s campaign."
 	},
 	"defs": {
     "strava_app": "Strava App",

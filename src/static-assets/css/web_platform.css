@@ -690,6 +690,20 @@ form .warning {
 
 /* STRIPE */
 /******************************************/
+form.stripe .form-label {
+  width: auto; }
+
+form.stripe #card-element {
+  margin: 4px 0; }
+
+form.stripe #card-errors {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #ff705f;
+  font-family: radikalbold,sans-serif;
+  font-size: .9em;
+  text-transform: uppercase; }
+
 .StripeElement {
   box-sizing: border-box;
   height: 40px;

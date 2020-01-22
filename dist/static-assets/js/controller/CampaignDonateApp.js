@@ -43,9 +43,23 @@ define([
 
     function getCampaign(callbackFunction) {
       var url = GAME_API_URL + "campaign/" + CAMPAIGN_ID;
-      console.log(url);
+//      console.log(url);
       $.getJSON(url, function (result) {
         callbackFunction(result[0]);
+      });
+    }
+
+    function getPlayer(clientID, playerID, callbackFunction) {
+      var self = this;
+
+      var url = GAME_API_URL + "campaign/" + CAMPAIGN_ID + "/player/" + playerID;
+//      console.log(url);
+      $.getJSON(url, function(result){
+        storeUserCookies(clientID, result[0]);
+        callbackFunction(result[0]);
+      })
+      .fail(function() {
+        callbackFunction();
       });
     }
 
@@ -54,10 +68,26 @@ define([
     
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
 
+    var campaignDonateView = new CampaignDonateView({ el: '#campaign-donate-view' });
     // check for player
     if (getUserCookie(CLIENT_ID) != undefined) {
       showActivePlayer();
     }
+
+    getCampaign(function(jsonCampaign) {
+      // check for player
+      if (getUserCookie(CLIENT_ID) != undefined) {
+        var jsonPlayer = getUserCookies(jsonCampaign.clientID);
+        getPlayer(jsonCampaign.clientID, jsonPlayer.user, function(jsonPlayer) {
+          campaignDonateView.setPlayer(CLIENT_ID, jsonPlayer);
+
+          campaignDonateView.render({ jsonCampaign: jsonCampaign });
+        });
+      }
+      else {
+        campaignDonateView.render({ jsonCampaign: jsonCampaign });
+      }
+    });
 
     $('.signout').click(function(evt){
       removeUserCookie(CLIENT_ID);
@@ -73,11 +103,6 @@ define([
     });
 
     enableUserActions(CLIENT_ID);
-
-    var campaignDonateView = new CampaignDonateView({ el: '#campaign-donate-view' });
-    getCampaign(function(jsonCampaign) {
-      campaignDonateView.render({ jsonCampaign: jsonCampaign });
-      });
 
     var elImages = $('body');
     var imgLoad = imagesLoaded(elImages);

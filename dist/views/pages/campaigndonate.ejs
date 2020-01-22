@@ -9,7 +9,6 @@
 <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <link href='/static-assets/css/datepicker.css' rel='stylesheet' />
 <link href='/static-assets/css/page.css' rel='stylesheet' />
-<link href='/static-assets/css/campaigndonate.css' rel='stylesheet' />
 <% if (Campaign.CampaignTemplate != 'default') { %>
   <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/page.css' rel='stylesheet' />
 <% } %>
@@ -60,19 +59,8 @@ var STRIPE_API_KEY = '<%= Defs.StripeAPIKey %>';
           </div>
         </div>
 
-        <div class="intro-text centre-text">
+        <div id="campaign-donate-view"></div>
 
-          <div id="campaign-donate-view"></div>
-
-        </div>
-
-      </div>
-
-      <div id="game-donation-step-view"></div>
-
-      <div class="campaign-sticker-container">
-        <div class="campaign-sticker">
-        </div>
       </div>
 
     </div>
@@ -89,6 +77,12 @@ var STRIPE_API_KEY = '<%= Defs.StripeAPIKey %>';
 <div id="demo-video-view"></div>
 
 <script type="text/template" id="campaignDonateViewTemplate">
+  {{ var email = '' }}
+
+  {{ if (player) { }}
+    {{ email = player.email }}
+  {{ } }}
+
   <h1><%= __('campaign_donation.title') %></h1>
 
   <div class="intro-text centre-text">
@@ -97,6 +91,11 @@ var STRIPE_API_KEY = '<%= Defs.StripeAPIKey %>';
 
   <form action="/charge" method="post" id="payment-form" class="stripe">
     <div class="form-row">
+
+      <div class="form-group">
+        <div class="form-label"><label><%= __('register.preferences.game_email') %></label></div><input class="field form-control required" id="email-address" value="{{= email }}" type="email">
+        <div class="help-block"><%= __('register.preferences.game_email_help') %></div>
+      </div>
 
       <div class="form-group">
         <div class="form-label"><label for="card-element">{{= '<%- __('register.game_create_paywall.payment.title') %>' }}</label></div>

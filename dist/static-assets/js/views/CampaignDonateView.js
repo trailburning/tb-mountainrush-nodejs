@@ -37,11 +37,16 @@ define([
         hiddenInput.setAttribute('value', token.id);
         form.appendChild(hiddenInput);
 
-        var jsonData = {token: token.id};
+        var elForm = $('form', $(self.el));
+        var strEmail = $('#email-address', elForm).val();
+
+        var jsonData = {token: token.id,
+          amount: 10,
+          email: strEmail};
         console.log(jsonData);
 
-        var url = GAME_API_URL + 'campaign/' + CAMPAIGN_ID + '/player/' + self.jsonFields.playerID + '/paywall/payment';;
-//        console.log(url);
+        var url = GAME_API_URL + 'campaign/' + CAMPAIGN_ID + '/payment';;
+        console.log(url);
 
         $.ajax({
           type: 'post',
@@ -96,7 +101,7 @@ define([
               }
               else {
                 // fire event
-                app.dispatcher.trigger("RegisterGameCreatePaywallView:chargeSuccess");              
+                app.dispatcher.trigger("CampaignDonateView:chargeSuccess");
               }
             }
           }
