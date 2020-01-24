@@ -403,8 +403,6 @@ define([
             playerID = jsonPlayer.user;
           }
 
-          console.log('t3');
-
           getPlayer(jsonCampaign.clientID, playerID, function(jsonPlayer) {
             jsonCurrPlayer = jsonPlayer;
 

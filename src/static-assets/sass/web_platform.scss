@@ -149,7 +149,32 @@ video::-webkit-media-controls-start-playback-button {
   display: none;
 }
 
+.form-view {
+  .intro-text {
+    padding-top: 4px;
+    font-size: 1.2em;
+  }
+
+  .centre-text {
+    text-align: center;
+  }
+
+  .btns {
+    padding-top: 30px;
+
+    .btn {
+      margin: 0 14px 14px 14px;
+    }
+  }
+
+  .btn {
+    font-size: 1.2em;
+  }
+}
+
 form {
+  padding-top: 32px;
+
   .field {
     margin: 4px 0;
   }
@@ -158,6 +183,34 @@ form {
     &.field {
       height: 150px;
     }
+  }
+
+  .form-group,
+  .form-check {
+    margin: 0;
+    padding: 6px 0;
+  }
+
+  .form-button {
+    padding: 20px 0;
+  }
+
+  .form-label {
+    display: block;
+  }
+
+  .form-label.top {
+    vertical-align: top;
+  }
+
+  .form-label label {
+    padding: 0;
+    font-family: 'radikalbold', sans-serif;
+  }
+
+  input[type='checkbox'],
+  input[type='radio'] {
+    margin-right: 8px;
   }
 
   label {
@@ -1581,7 +1634,23 @@ img.scale {
     width: auto;
   }
 
+  .form-view .centre-text {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+
+  form .field {
+    display: inline-block;
+    width: 240px;
+    text-align: left;
+    vertical-align: middle;
+  }
+
   .modal {
+    .description {
+      padding: 12px 60px;
+    }
+
     form {
       input,
       .progressbar {
@@ -1630,10 +1699,6 @@ img.scale {
 
   .fundraise-sticker .details .target:before {
     padding-top: 8px;
-  }
-
-  .modal .description {
-    padding: 12px 60px;
   }
 }
 

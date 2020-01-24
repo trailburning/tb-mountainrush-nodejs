@@ -1,5 +1,10 @@
 var app = app || {};
 
+var STATE_INIT = 0;
+var STATE_DONATE = 1;
+var STATE_DONATE_PAYMENT = 2;
+var STATE_DONATE_THANKS = 3;
+
 define([
   'underscore',
   'backbone',
@@ -11,10 +16,12 @@ define([
   'imagesLoaded',
   'videojs',
   'views/CampaignDonateView',
+  'views/CampaignDonatePaymentView',
+  'views/CampaignDonateThanksView',
   'views/LanguageSelectorView',
   'views/ActivePlayerView',
   'views/DemoVideoView'
-], function(_, Backbone, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, CampaignDonateView, LanguageSelectorView, ActivePlayerView, DemoVideoView){
+], function(_, Backbone, bootstrap, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, CampaignDonateView, CampaignDonatePaymentView, CampaignDonateThanksView, LanguageSelectorView, ActivePlayerView, DemoVideoView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -26,11 +33,63 @@ define([
   var initialize = function() {
     var self = this;
 
-    if (!getDeviceCookies()) {
-      storeDeviceCookies(DEF_DEVICE_TYPE);
+    app.dispatcher.on("CampaignDonateView:success", onCampaignDonateSuccess);
+    app.dispatcher.on("CampaignDonatePaymentView:success", onCampaignDonatePaymentSuccess);
+
+    var jsonCurrCampaign = null;
+    var jsonCurrUser = null;
+    var nState = STATE_INIT;
+    var nPrevState = STATE_INIT;
+
+    function changeState(nNewState) {
+      var jsonFields;
+
+      hideView();
+
+      switch (nNewState) {
+        case STATE_DONATE:
+          var jsonFields = campaignDonateView.getFields();
+
+          jsonFields.jsonCampaign = jsonCurrCampaign;
+          jsonFields.jsonPlayer = jsonCurrUser;
+          campaignDonateView.setFields(jsonFields);
+
+          campaignDonateView.render();
+          showView('#campaign-donate-view');
+          break;
+
+        case STATE_DONATE_PAYMENT:
+          var jsonFields = campaignDonateView.getFields();
+
+          campaignDonatePaymentView.setFields(jsonFields);
+
+          campaignDonatePaymentView.render();
+          showView('#campaign-donate-payment-view');
+          break;
+
+        case STATE_DONATE_THANKS:
+          var jsonFields = campaignDonateView.getFields();
+
+          campaignDonateThanksView.setFields(jsonFields);
+
+          campaignDonateThanksView.render();
+          showView('#campaign-donate-thanks-view');
+          break;
+      }
+      nPrevState = nState;
+      nState = nNewState;
     }
-    var jsonDevice = getDeviceCookies();
-    $('body').addClass(jsonDevice.devicetype);
+
+    function hideView() {
+      $('#page-loader-view').show();
+      $('.donate-view').hide();
+    }
+
+    function showView(viewID) {
+      $('#page-loader-view').hide();
+
+      $(viewID).show();
+    }
 
     function showActivePlayer() {
       var jsonUser = getUserCookies(CLIENT_ID);
@@ -63,29 +122,47 @@ define([
       });
     }
 
+    function onCampaignDonateSuccess() {
+      changeState(STATE_DONATE_PAYMENT);
+    }
+
+    function onCampaignDonatePaymentSuccess() {
+      changeState(STATE_DONATE_THANKS);
+    }
+
+    if (!getDeviceCookies()) {
+      storeDeviceCookies(DEF_DEVICE_TYPE);
+    }
+    var jsonDevice = getDeviceCookies();
+    $('body').addClass(jsonDevice.devicetype);
+
     var languageSelectorView = new LanguageSelectorView({ el: '#language-selector-view' });
     languageSelectorView.render();
     
     var demoVideoView = new DemoVideoView({ el: '#demo-video-view' });
 
     var campaignDonateView = new CampaignDonateView({ el: '#campaign-donate-view' });
+    var campaignDonatePaymentView = new CampaignDonatePaymentView({ el: '#campaign-donate-payment-view' });
+    var campaignDonateThanksView = new CampaignDonateThanksView({ el: '#campaign-donate-thanks-view' });
+
     // check for player
     if (getUserCookie(CLIENT_ID) != undefined) {
       showActivePlayer();
     }
 
     getCampaign(function(jsonCampaign) {
+      jsonCurrCampaign = jsonCampaign;
+
       // check for player
       if (getUserCookie(CLIENT_ID) != undefined) {
         var jsonPlayer = getUserCookies(jsonCampaign.clientID);
         getPlayer(jsonCampaign.clientID, jsonPlayer.user, function(jsonPlayer) {
-          campaignDonateView.setPlayer(CLIENT_ID, jsonPlayer);
-
-          campaignDonateView.render({ jsonCampaign: jsonCampaign });
+          jsonCurrUser = jsonPlayer;
+          changeState(STATE_DONATE);
         });
       }
       else {
-        campaignDonateView.render({ jsonCampaign: jsonCampaign });
+        changeState(STATE_DONATE);
       }
     });
 

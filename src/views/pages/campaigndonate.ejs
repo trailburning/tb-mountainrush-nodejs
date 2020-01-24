@@ -9,6 +9,7 @@
 <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <link href='/static-assets/css/datepicker.css' rel='stylesheet' />
 <link href='/static-assets/css/page.css' rel='stylesheet' />
+  <link href='/static-assets/css/campaigndonate.css' rel='stylesheet' />
 <% if (Campaign.CampaignTemplate != 'default') { %>
   <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/page.css' rel='stylesheet' />
 <% } %>
@@ -45,25 +46,37 @@ var STRIPE_API_KEY = '<%= Defs.StripeAPIKey %>';
     </div>
 
     <div id="page-content-view">
-      <div class="content-view">
 
-        <div class="step-container">
-          <div class="step">
-            <div class="step-image">
-            <% if (Campaign.CampaignTemplate == 'default') { %>
-              <img class="step-fundraising active" src="/static-assets/images/ui/fundraising.svg">
-            <% } else { %>
-              <img class="step-fundraising active" src="/static-assets/images/<%= Campaign.CampaignTemplate %>/ui/fundraising.svg">
-            <% } %>
-            </div>
+      <div class="step-container">
+        <div class="step">
+          <div class="step-image">
+          <% if (Campaign.CampaignTemplate == 'default') { %>
+            <img class="step-fundraising active" src="/static-assets/images/ui/fundraising.svg">
+          <% } else { %>
+            <img class="step-fundraising active" src="/static-assets/images/<%= Campaign.CampaignTemplate %>/ui/fundraising.svg">
+          <% } %>
           </div>
         </div>
+      </div>
 
-        <div id="campaign-donate-view"></div>
+      <div id="page-loader-view" class="loader-view">
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+        </div>
+      </div>
 
+      <div class="content-view form-view donate-views">
+        <div class="donate-view" id="campaign-donate-view"></div>
+        <div class="donate-view" id="campaign-donate-payment-view"></div>
+        <div class="donate-view" id="campaign-donate-thanks-view"></div>
+        <div class="support">
+          <% include ../partials/support.ejs %>
+        </div>
       </div>
 
     </div>
+
   </div>
 
   <% if (Campaign.CampaignTemplate == 'default') { %>
@@ -80,7 +93,7 @@ var STRIPE_API_KEY = '<%= Defs.StripeAPIKey %>';
   {{ var email = '' }}
 
   {{ if (player) { }}
-    {{ email = player.email }}
+  {{ email = player.email }}
   {{ } }}
 
   <h1><%= __('campaign_donation.title') %></h1>
@@ -89,13 +102,27 @@ var STRIPE_API_KEY = '<%= Defs.StripeAPIKey %>';
     {{= '<%- __('campaign_donation.description') %>'.replace('%s', campaign.name) }}
   </div>
 
+  <form>
+    <div class="form-group">
+      <div class="form-label"><label><%= __('register.preferences.game_email') %></label></div><input class="field form-control required" id="email-address" value="{{= email }}" type="email">
+      <div class="help-block"><%= __('register.preferences.game_email_help') %></div>
+    </div>
+
+    <div class="btns">
+      <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('campaign_donation.button') %></button>
+    </div>
+  </form>
+</script>
+
+<script type="text/template" id="campaignDonatePaymentViewTemplate">
+  <h1><%= __('campaign_donation_payment.title') %></h1>
+
+  <div class="intro-text centre-text">
+    {{= '<%- __('campaign_donation_payment.description') %>' }}
+  </div>
+
   <form action="/charge" method="post" id="payment-form" class="stripe">
     <div class="form-row">
-
-      <div class="form-group">
-        <div class="form-label"><label><%= __('register.preferences.game_email') %></label></div><input class="field form-control required" id="email-address" value="{{= email }}" type="email">
-        <div class="help-block"><%= __('register.preferences.game_email_help') %></div>
-      </div>
 
       <div class="form-group">
         <div class="form-label"><label for="card-element">{{= '<%- __('register.game_create_paywall.payment.title') %>' }}</label></div>
@@ -122,6 +149,19 @@ var STRIPE_API_KEY = '<%= Defs.StripeAPIKey %>';
       <div class="msg" data-msg="unknown-err"><p>Unknown Payment Error</p></div>
     </div>
   </form>
+</script>
+
+<script type="text/template" id="campaignDonateThanksViewTemplate">
+  <h1><%= __('campaign_donation_thanks.title') %></h1>
+
+  <div class="intro-text centre-text">
+    {{= '<%- __('campaign_donation_thanks.description') %>'.replace('%s', campaign.name) }}
+  </div>
+
+  <div class="btns">
+    <a class="btn mr-btn btn-primary" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>"><%= __('campaign_donation_thanks.button') %></a>
+  </div>
+
 </script>
 
 <% include ../partials/demoVideoTemplate.ejs %>

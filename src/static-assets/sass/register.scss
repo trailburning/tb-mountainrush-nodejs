@@ -170,53 +170,16 @@ ul.pills li {
   display: none;
   padding-bottom: 32px;
 
-  .intro-text {
-    padding-top: 4px;
-    font-size: 1.2em;
-  }
-
   .form-back {
     display: block;
-  }
-
-  form {
-    padding-top: 32px;
   }
 
   textarea {
     height: 150px;
   }
 
-  .form-group,
-  .form-check {
-    margin: 0;
-    padding: 6px 0;
-  }
-
-  .form-button {
-    padding: 20px 0;
-  }
-
-  .form-label {
-    display: block;
-  }
-
-  .form-label.top {
-    vertical-align: top;  
-  }
-
   .preferences label {
     text-transform: none;
-  }
-
-  .form-label label {
-    padding: 0;
-    font-family: 'radikalbold', sans-serif;
-  }
-
-  input[type='checkbox'],
-  input[type='radio'] {
-    margin-right: 8px;
   }
 
   .calendar {
@@ -290,18 +253,6 @@ ul.pills li {
     padding-top: 22px;
   }
 
-  .btns {
-    padding-top: 30px;
-
-    .btn {
-      margin: 0 14px 14px 14px;
-    }
-  }
-
-  .btn {
-    font-size: 1.2em;
-  }
-
   .challenge {
     margin-top: 12px;
   }
@@ -347,11 +298,6 @@ a:hover, .link:hover {
     display: block;
   }
 
-  .register-view .centre-text {
-    padding-left: 120px;
-    padding-right: 120px;
-  }
-
   .register-view .form-label {
     display: inline-block;
     width: 180px;
@@ -368,13 +314,6 @@ a:hover, .link:hover {
   .register-view .form-label label {
     padding: 0 22px 0 0;
     text-align: right;
-  }
-
-  .register-view .field {
-    display: inline-block;
-    width: 240px;
-    text-align: left;
-    vertical-align: middle;
   }
 
   .register-view input[type='checkbox'] {
