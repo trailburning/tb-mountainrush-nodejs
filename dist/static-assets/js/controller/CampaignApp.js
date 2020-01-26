@@ -17,12 +17,13 @@ define([
   'views/ChallengeVoteModalView',
   'views/CampaignSummaryStickerView',
   'views/CampaignSummaryView',
+  'views/ChallengesView',
   'views/PlayerLeaderboardView',
   'views/PlayerSearchView',
   'views/DemoVideoView',
   'views/SocialFeatureView',
   'views/SocialPhotosView'
-], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, ChallengeVoteModalView, CampaignSummaryStickerView, CampaignSummaryView, PlayerLeaderboardView, PlayerSearchView, DemoVideoView, SocialFeatureView, SocialPhotosView){
+], function(_, Backbone, bootstrap, jqueryUI, cookie, truncate, modernizr, imageScale, imagesLoaded, videojs, LanguageSelectorView, ActivePlayerView, PlayerGameView, ChallengeVoteModalView, CampaignSummaryStickerView, CampaignSummaryView, ChallengesView, PlayerLeaderboardView, PlayerSearchView, DemoVideoView, SocialFeatureView, SocialPhotosView){
   app.dispatcher = _.clone(Backbone.Events);
 
   _.templateSettings = {
@@ -42,6 +43,7 @@ define([
 
     app.dispatcher.on("CampaignSummaryStickerView:feedready", onCampaignSummaryStickerFeedReady);
     app.dispatcher.on("CampaignSummaryView:feedready", onCampaignSummaryFeedReady);
+    app.dispatcher.on("ChallengesView:ready", onChallengesReady);
     app.dispatcher.on("PlayerLeaderboardView:feedready", onPlayerLeaderboardFeedReady);
     app.dispatcher.on("SocialFeatureView:feedready", onSocialFeatureFeedReady);
     app.dispatcher.on("SocialFeatureView:feednotavailable", onSocialFeatureFeedNotAvailable);
@@ -81,6 +83,17 @@ define([
     function onCampaignSummaryFeedReady() {
       $('#summary-loader-view').hide();
       campaignSummaryView.render();
+    }
+
+    function onChallengesReady() {
+      $('#challenges-loader-view').hide();
+
+      var jsonPlayerGames = null;
+      if (playerGameView) {
+        jsonPlayerGames = playerGameView.getPlayerGames()
+      }
+
+      challengesView.render(jsonPlayerGames);
     }
 
     function onPlayerLeaderboardFeedReady() {
@@ -187,6 +200,9 @@ define([
 
     var campaignSummaryView = new CampaignSummaryView({ el: '#campaign-summary-view', campaignID: CAMPAIGN_ID });
     campaignSummaryView.loadFeed();
+
+    var challengesView = new ChallengesView({ el: '#challenges-content-view' });
+    challengesView.load();
 
     var playerLeaderboardView = new PlayerLeaderboardView({ el: '#leaderboard-view', campaignID: CAMPAIGN_ID });
     playerLeaderboardView.loadFeed();

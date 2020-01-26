@@ -706,7 +706,6 @@ input.ui-autocomplete-loading {
     bottom: 164px;
     right: 62px; }
   #challenges-view {
-    margin: -138px auto 44px auto;
     width: 940px; }
     #challenges-view .challenges-container-view {
       display: flex;

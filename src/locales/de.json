@@ -154,8 +154,8 @@
 			"previous_challenges": "Previous",
 			"greeting": "Hi %s,",
 			"preferences": {
-				"game_notifications_on": "during your climb you'll receive activity emails with your progress up the mountain, click %s if you'd rather not get them.",
-				"game_notifications_off": "during your climb you won't receive any activity emails with your progress up the mountain, click %s if you'd like to get them.",
+				"game_notifications_on": "during your challenge you'll receive activity emails with your progress, click %s if you'd rather not get them.",
+				"game_notifications_off": "during your challenge you won't receive any activity progress emails, click %s if you'd like to get them.",
 				"here": "here"
 			}
 		},

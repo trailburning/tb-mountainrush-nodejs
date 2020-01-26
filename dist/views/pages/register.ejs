@@ -489,7 +489,13 @@ var TEST = '<%= Defs.Test %>';
           <h2><%= __('register.game_create.fixed_ascent') %></h2>
           <ul class="form-field pills" data-id="level">
           {{ _.each(gameLevels, function(gameLevel, index) { }}
-            <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameLevel.id }}" data-season-id="{{= gameLevel.seasonDefault }}">{{= gameLevel.name }} {{= gameLevel.ascent }}m</span></li>
+            <li><span class="pill {{ if (index == 0) { }}active{{ } }}" data-id="{{= gameLevel.id }}" data-season-id="{{= gameLevel.seasonDefault }}">{{= gameLevel.name }}
+              {{ if (gameLevel.distance > 0) { }}
+                {{= (gameLevel.distance / 1000).toFixed(0) }}km
+              {{ } else { }}
+                {{= gameLevel.ascent }}m
+              {{ } }}
+            </span></li>
           {{ }); }}
           </ul>
         {{ } }}
