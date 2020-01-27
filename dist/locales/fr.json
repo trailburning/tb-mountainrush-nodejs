@@ -149,8 +149,8 @@
       "previous_challenges": "Previous",
       "greeting": "Hi %s,",
       "preferences": {
-        "game_notifications_on": "during your climb you'll receive activity emails with your progress up the mountain, click %s if you'd rather not get them.",
-        "game_notifications_off": "during your climb you won't receive any activity emails with your progress up the mountain, click %s if you'd like to get them.",
+        "game_notifications_on": "during your challenge you'll receive activity emails with your progress, click %s if you'd rather not get them.",
+        "game_notifications_off": "during your challenge you won't receive any activity progress emails, click %s if you'd like to get them.",
         "here": "here"
       }
     },
@@ -173,7 +173,7 @@
     "please_wait": "Please Wait",
     "game_create_paywall": {
       "title": "Create Challenge",
-      "description": "There is a <strong>%s</strong> fee to take part in this challenge.",
+      "description": "There is a <strong>%s</strong> fee to take part in this %s challenge.",
       "payment": {
         "title": "Credit or debit card",
         "payment_button": "Make %s Payment"
@@ -309,6 +309,20 @@
       "one": "day",
       "other": "days"
     }
+  },
+  "campaign_donation": {
+    "title": "Campaign donation",
+    "description": "Please select your donation to the %s campaign.",
+    "button": "Payment details"
+  },
+  "campaign_donation_payment": {
+    "title": "Payment details",
+    "description": "Please fill in your payment details."
+  },
+  "campaign_donation_thanks": {
+    "title": "Thank you!",
+    "description": "Thank you for your donation to the %s campaign.",
+    "button": "Visit campaign"
   },
   "defs": {
     "strava_app": "Strava App",

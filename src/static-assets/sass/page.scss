@@ -8,7 +8,6 @@ h2 {
 
 h1 {
   font-size: 1.8em;
-  text-align: left;
 }
 
 h2 {
@@ -33,8 +32,23 @@ h2 {
   }
 }
 
+/* PAGE LOADER VIEW */
+/******************************************/
+#page-loader-view {
+  padding-top: 100px;
+}
+
 /* PAGE CONTENT VIEW */
 /******************************************/
+.centre-text {
+  text-align: left;
+}
+
+.intro-text {
+  padding-top: 4px;
+  font-size: 1.2em;
+}
+
 #page-content-view {
   position: relative;
   background-color: #FFF;
@@ -55,10 +69,6 @@ h2 {
 
   #lema-container.lema-container {
     margin: 0 auto;      
-  }
-
-  .centre-text {
-    text-align: left;
   }
 
   .campaign-sticker-container {
@@ -82,11 +92,6 @@ h2 {
     padding: 0 0 10px 20px;
     list-style: initial;
   }
-
-  .intro-text {
-    padding-top: 4px;
-    font-size: 1.2em;
-  }
 }
 
 /* Small devices (tablets, 768px and up) */
@@ -99,15 +104,15 @@ h2 {
     height: 360px;
   }
 
+  .centre-text {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
   #page-content-view {
     .campaign-sticker-container {
       z-index: 2;
       display: block;
-    }
-
-    .centre-text {
-      padding-left: 32px;
-      padding-right: 32px;
     }
   }
 }

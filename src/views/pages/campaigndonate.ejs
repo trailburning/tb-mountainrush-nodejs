@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include ../partials/includes.ejs %>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<% if (Campaign.CampaignTemplate != 'default') { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/web_platform.css' rel='stylesheet' />
+<% } %>
+<link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<link href='/static-assets/css/datepicker.css' rel='stylesheet' />
+<link href='/static-assets/css/page.css' rel='stylesheet' />
+  <link href='/static-assets/css/campaigndonate.css' rel='stylesheet' />
+<% if (Campaign.CampaignTemplate != 'default') { %>
+  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/page.css' rel='stylesheet' />
+<% } %>
+<% include ../partials/analyticsFBPixel.ejs %>
+</head>
+<body>
+<script>
+var APP = 'CampaignDonateApp';
+var GAME_API_URL = '<%= Defs.MRAPIURL %>';
+var HOST_URL = '<%= Defs.BaseHTTPSURL %>';
+var CLIENT_ID = '<%= Campaign.ClientID %>';
+var CAMPAIGN_ID = '<%= Campaign.CampaignID %>';
+var CAMPAIGN_TEMPLATE = '<%= Campaign.CampaignTemplate %>';
+var FUNDRAISING_PROVIDER_CAUSE_CODE = '<%= Defs.FundraisingProviderCauseCode %>';
+var STRIPE_API_KEY = '<%= Defs.StripeAPIKey %>';
+</script>
+
+<div class="container-fluid nopadding">
+  <% if (Campaign.CampaignTemplate == 'default') { %>
+    <% include ../partials/header.ejs %>
+  <% } else { %>
+    <%- include('../partials/' + Campaign.CampaignTemplate + '/header.ejs') %>
+  <% } %>
+
+  <div id="page-view">
+    <div id="hero-view">
+      <div class="image fade_on_ready">        
+      <% if (Campaign.CampaignTemplate == 'default') { %>
+        <img class="scale" src="https://mountainrush-assets.imgix.net/pages/olivier-miche-102259-unsplash.jpg?fm=jpg&q=80&w=1280">
+      <% } else { %>
+        <img class="scale" src="https://tbassets2.imgix.net/images/brands/mountainrush/clients/<%= Campaign.CampaignTemplate %>/pages/WW185891.jpg?fm=jpg&q=80&w=1280">
+      <% } %>
+      </div>
+    </div>
+
+    <div id="page-content-view">
+
+      <div class="step-container">
+        <div class="step">
+          <div class="step-image">
+          <% if (Campaign.CampaignTemplate == 'default') { %>
+            <img class="step-fundraising active" src="/static-assets/images/ui/fundraising.svg">
+          <% } else { %>
+            <img class="step-fundraising active" src="/static-assets/images/<%= Campaign.CampaignTemplate %>/ui/fundraising.svg">
+          <% } %>
+          </div>
+        </div>
+      </div>
+
+      <div id="page-loader-view" class="loader-view">
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+        </div>
+      </div>
+
+      <div class="content-view form-view donate-views">
+        <div class="donate-view" id="campaign-donate-view"></div>
+        <div class="donate-view" id="campaign-donate-payment-view"></div>
+        <div class="donate-view" id="campaign-donate-thanks-view"></div>
+        <div class="support">
+          <% include ../partials/support.ejs %>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <% if (Campaign.CampaignTemplate == 'default') { %>
+    <% include ../partials/footer.ejs %>
+  <% } else { %>
+    <%- include('../partials/' + Campaign.CampaignTemplate + '/footer.ejs') %>
+  <% } %>
+</div>
+
+<div id="mobileTest" class="visible-xs"></div>
+<div id="demo-video-view"></div>
+
+<script type="text/template" id="campaignDonateViewTemplate">
+  {{ var email = '' }}
+
+  {{ if (player) { }}
+  {{ email = player.email }}
+  {{ } }}
+
+  <h1><%= __('campaign_donation.title') %></h1>
+
+  <div class="intro-text centre-text">
+    {{= '<%- __('campaign_donation.description') %>'.replace('%s', campaign.name) }}
+  </div>
+
+  <form>
+    <div class="form-group">
+      <div class="form-label"><label><%= __('register.preferences.game_email') %></label></div><input class="field form-control required" id="email-address" value="{{= email }}" type="email">
+      <div class="help-block"><%= __('register.preferences.game_email_help') %></div>
+    </div>
+
+    <div class="btns">
+      <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>"><%= __('campaign_donation.button') %></button>
+    </div>
+  </form>
+</script>
+
+<script type="text/template" id="campaignDonatePaymentViewTemplate">
+  <h1><%= __('campaign_donation_payment.title') %></h1>
+
+  <div class="intro-text centre-text">
+    {{= '<%- __('campaign_donation_payment.description') %>' }}
+  </div>
+
+  <form action="/charge" method="post" id="payment-form" class="stripe">
+    <div class="form-row">
+
+      <div class="form-group">
+        <div class="form-label"><label for="card-element">{{= '<%- __('register.game_create_paywall.payment.title') %>' }}</label></div>
+
+        <div id="card-element">
+          <!-- A Stripe Element will be inserted here. -->
+        </div>
+      </div>
+
+      <!-- Used to display form errors. -->
+      <div id="card-errors" role="alert"></div>
+    </div>
+
+    <div class="btns">
+      <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>">{{= '<%- __('register.game_create_paywall.payment.payment_button') %>'.replace('%s', campaign.paywall_currency_symbol + campaign.paywall_amount) }}</button>
+    </div>
+
+    <div class="err">
+      <div class="msg" data-msg="incorrect-cvc"><p>Incorrect CVC</p></div>
+      <div class="msg" data-msg="card-declined"><p>Card Declined</p></div>
+      <div class="msg" data-msg="expired-card"><p>Expired Card</p></div>
+      <div class="msg" data-msg="incorrect-number"><p>Incorrect Number</p></div>
+      <div class="msg" data-msg="processing-error"><p>Processing Error</p></div>
+      <div class="msg" data-msg="unknown-err"><p>Unknown Payment Error</p></div>
+    </div>
+  </form>
+</script>
+
+<script type="text/template" id="campaignDonateThanksViewTemplate">
+  <h1><%= __('campaign_donation_thanks.title') %></h1>
+
+  <div class="intro-text centre-text">
+    {{= '<%- __('campaign_donation_thanks.description') %>'.replace('%s', campaign.name) }}
+  </div>
+
+  <div class="btns">
+    <a class="btn mr-btn btn-primary" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>"><%= __('campaign_donation_thanks.button') %></a>
+  </div>
+
+</script>
+
+<% include ../partials/demoVideoTemplate.ejs %>
+<% include ../partials/analytics.ejs %>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script data-main="/static-assets/js/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+</html>

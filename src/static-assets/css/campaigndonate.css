@@ -1,0 +1,47 @@
+/* DONATE VIEWS */
+/******************************************/
+.donate-views {
+  padding: 52px 16px; }
+
+.donate-views h1,
+.donate-views h2 {
+  padding: 0 0 4px 0;
+  font-family: 'radikalbold', sans-serif;
+  line-height: 1.2em;
+  text-transform: uppercase; }
+
+.donate-views h1 {
+  font-size: 1.8em; }
+
+.donate-views h2 {
+  font-size: 1.2em; }
+
+/* DONATE VIEW */
+/******************************************/
+.donate-view {
+  display: none;
+  padding-bottom: 32px; }
+
+a .link,
+a:active, .link:active,
+a:visited .link:visited {
+  color: inherit;
+  text-decoration: underline; }
+
+a:hover, .link:hover {
+  cursor: pointer;
+  text-decoration: none; }
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #hero-view .image {
+    height: 360px; } }
+
+/* Small devices (tablets, 992px and up) */
+@media (min-width: 992px) {
+  #hero-view {
+    -webkit-box-shadow: 0px 10px 10px 0 rgba(25, 56, 72, 0.2);
+    -moz-box-shadow: 0px 10px 10px 0 rgba(25, 56, 72, 0.2);
+    box-shadow: 0px 10px 10px 0 rgba(25, 56, 72, 0.2); }
+  #hero-view .image {
+    height: 484px; } }

@@ -124,57 +124,79 @@ video::-webkit-media-controls-start-playback-button {
 .form-back {
   display: none; }
 
-form .field {
-  margin: 4px 0; }
+.form-view .intro-text {
+  padding-top: 4px;
+  font-size: 1.2em; }
 
-form textarea.field {
-  height: 150px; }
+.form-view .centre-text {
+  text-align: center; }
 
-form label {
-  margin: 0;
-  text-transform: uppercase; }
+.form-view .btns {
+  padding-top: 30px; }
+  .form-view .btns .btn {
+    margin: 0 14px 14px 14px; }
 
-form .form-note {
-  color: #b0b0b0; }
+.form-view .btn {
+  font-size: 1.2em; }
 
-form .form-control {
-  padding: 8px;
-  font-size: inherit;
-  background: #f7f7f7;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  -webkit-appearance: none;
-  resize: none; }
-
-form .help-block {
-  display: none;
-  font-family: 'radikalbold', sans-serif;
-  font-size: 0.9em;
-  text-transform: uppercase; }
-
-form .has-error .help-block {
-  color: #ff705f; }
-
-form .info {
-  display: none;
-  color: #155724; }
-
-form .terms {
-  font-size: 0.95em; }
-
-form .msg {
-  font-family: 'radikalbold', sans-serif;
-  font-size: 0.9em;
-  text-transform: uppercase; }
-
-form .err {
-  display: none;
-  color: #ff705f; }
-
-form .warning {
-  display: none;
-  color: #856404; }
+form {
+  padding-top: 32px; }
+  form .field {
+    margin: 4px 0; }
+  form textarea.field {
+    height: 150px; }
+  form .form-group,
+  form .form-check {
+    margin: 0;
+    padding: 6px 0; }
+  form .form-button {
+    padding: 20px 0; }
+  form .form-label {
+    display: block; }
+  form .form-label.top {
+    vertical-align: top; }
+  form .form-label label {
+    padding: 0;
+    font-family: 'radikalbold', sans-serif; }
+  form input[type='checkbox'],
+  form input[type='radio'] {
+    margin-right: 8px; }
+  form label {
+    margin: 0;
+    text-transform: uppercase; }
+  form .form-note {
+    color: #b0b0b0; }
+  form .form-control {
+    padding: 8px;
+    font-size: inherit;
+    background: #f7f7f7;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-appearance: none;
+    resize: none; }
+  form .help-block {
+    display: none;
+    font-family: 'radikalbold', sans-serif;
+    font-size: 0.9em;
+    text-transform: uppercase; }
+  form .has-error .help-block {
+    color: #ff705f; }
+  form .info {
+    display: none;
+    color: #155724; }
+  form .terms {
+    font-size: 0.95em; }
+  form .msg {
+    font-family: 'radikalbold', sans-serif;
+    font-size: 0.9em;
+    text-transform: uppercase; }
+  form .err {
+    display: none;
+    color: #ff705f; }
+  form .warning {
+    display: none;
+    color: #856404; }
 
 /* DROPDOWN */
 /******************************************/
@@ -687,6 +709,42 @@ form .warning {
 
 .step-container .step-image img {
   width: 100%; }
+
+/* STRIPE */
+/******************************************/
+form.stripe .form-label {
+  width: auto; }
+
+form.stripe #card-element {
+  margin: 4px 0; }
+
+form.stripe #card-errors {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #ff705f;
+  font-family: radikalbold,sans-serif;
+  font-size: .9em;
+  text-transform: uppercase; }
+
+.StripeElement {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease; }
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df; }
+
+.StripeElement--invalid {
+  border-color: #fa755a; }
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important; }
 
 /* FUNDRAISE STICKER */
 /******************************************/
@@ -1269,6 +1327,16 @@ img.scale {
     width: 486px; }
   .modal.shopping-list-overlay .shopping-list .shopping-list-item {
     width: auto; }
+  .form-view .centre-text {
+    padding-left: 120px;
+    padding-right: 120px; }
+  form .field {
+    display: inline-block;
+    width: 240px;
+    text-align: left;
+    vertical-align: middle; }
+  .modal .description {
+    padding: 12px 60px; }
   .modal form input,
   .modal form .progressbar {
     margin-left: auto;
@@ -1297,9 +1365,7 @@ img.scale {
     font-size: 0.9em;
     line-height: 1.6em; }
   .fundraise-sticker .details .target:before {
-    padding-top: 8px; }
-  .modal .description {
-    padding: 12px 60px; } }
+    padding-top: 8px; } }
 
 /* Small devices (tablets, 992px and up) */
 @media (min-width: 992px) {

@@ -145,44 +145,12 @@ ul.pills li {
 .register-view {
   display: none;
   padding-bottom: 32px; }
-  .register-view .intro-text {
-    padding-top: 4px;
-    font-size: 1.2em; }
   .register-view .form-back {
     display: block; }
-  .register-view form {
-    padding-top: 32px; }
   .register-view textarea {
     height: 150px; }
-  .register-view .form-group,
-  .register-view .form-check {
-    margin: 0;
-    padding: 6px 0; }
-  .register-view .form-button {
-    padding: 20px 0; }
-  .register-view .form-label {
-    display: block; }
-  .register-view form.stripe .form-label {
-    width: auto; }
-  .register-view form.stripe #card-element {
-    margin: 4px 0; }
-  .register-view form.stripe #card-errors {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    color: #ff705f;
-    font-family: radikalbold,sans-serif;
-    font-size: .9em;
-    text-transform: uppercase; }
-  .register-view .form-label.top {
-    vertical-align: top; }
   .register-view .preferences label {
     text-transform: none; }
-  .register-view .form-label label {
-    padding: 0;
-    font-family: 'radikalbold', sans-serif; }
-  .register-view input[type='checkbox'],
-  .register-view input[type='radio'] {
-    margin-right: 8px; }
   .register-view .calendar {
     position: relative;
     margin: 20px auto 0 auto;
@@ -228,12 +196,6 @@ ul.pills li {
     padding-top: 40px; }
   .register-view .shopping-list {
     padding-top: 22px; }
-  .register-view .btns {
-    padding-top: 30px; }
-    .register-view .btns .btn {
-      margin: 0 14px 14px 14px; }
-  .register-view .btn {
-    font-size: 1.2em; }
   .register-view .challenge {
     margin-top: 12px; }
   .register-view .invitation-accepted,
@@ -264,9 +226,6 @@ a:hover, .link:hover {
   #register-process-view .campaign-sticker-container {
     z-index: 2;
     display: block; }
-  .register-view .centre-text {
-    padding-left: 120px;
-    padding-right: 120px; }
   .register-view .form-label {
     display: inline-block;
     width: 180px;
@@ -279,11 +238,6 @@ a:hover, .link:hover {
   .register-view .form-label label {
     padding: 0 22px 0 0;
     text-align: right; }
-  .register-view .field {
-    display: inline-block;
-    width: 240px;
-    text-align: left;
-    vertical-align: middle; }
   .register-view input[type='checkbox'] {
     width: auto; }
   .register-view .form-info {
