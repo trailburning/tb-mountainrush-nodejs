@@ -1,55 +1,23 @@
 <div id="hero-view">
-    <div class="image fade_on_ready"><img class="scale" src="https://mountainrush-assets.imgix.net/pages/olivier-miche-102259-unsplash.jpg?fm=jpg&q=80&w=1280"></div>
+    <div class="image fade_on_ready"><img class="scale" src="https://mountainrush-assets.imgix.net/pages/img_header2.png?fm=jpg&q=80&w=1280"></div>
 
     <div class="hero-container">
         <div class="campaign-title">
             <div class="campaign-tagline">
-                Climb<br/>For Your<br/><span class="bigger">World</span>
+                Reaching<br/>Summits</span>
             </div>
             <div class="campaign-tagline2 visible-xs">
-                Join WWF's<br/>fundraising event
+                Raising Funds
             </div>
             <div class="campaign-tagline2 hidden-xs">
-                Join WWF's fundraising event
+                Raising Funds
             </div>
             <div class="campaign-tagline3 visible-xs">
-                Get active and help us protect<br/>iconic species and their habitats
+                Mountain Rush promotes physical activity<br/>and local exploration in a fun package:<br/>alone or with friends, raising funds<br/>for a cause or just for fun.<br/>Try it now for free!
             </div>
             <div class="campaign-tagline3 hidden-xs">
-                Get active and help us protect iconic<br/>species and their habitats
+                Mountain Rush promotes physical activity<br/>and local exploration in a fun package:<br/>alone or with friends, raising funds<br/>for a cause or just for fun.<br/>Try it now for free!
             </div>
-        </div>
-    </div>
-</div>
-
-<div id="challenges-view">
-    <div id="challenges-loader-view" class="loader-view">
-        <div class="spinner">
-            <div class="double-bounce1"></div>
-            <div class="double-bounce2"></div>
-        </div>
-    </div>
-
-    <div id="challenges-content-view"></div>
-</div>
-
-<div id="intro-view">
-    <div class="intro-container-view">
-        <h1>Climb For Your World</h1>
-        <h2>Get active and get outdoors</h2>
-        <div class="text">Hike, run or cycle your local hills, peaks and mountains to help us protect iconic species and their habitats.</div>
-
-        <div class="video-container">
-            <div class="video">
-                <video id="media_intro" url="https://tbassets2.imgix.net/images/brands/mountainrush/clients/wwf-uk/assets/WWF_1080_youtube.m4v" class="media-player video-js vjs-default-skin" controls preload="none" width="auto" height="auto" poster="https://tbassets2.imgix.net/images/brands/mountainrush/clients/wwf-uk/assets/MR_strava_wwf_img_0000_girl.png?fm=jpg&w=420&h=236&fit=crop&q=80">
-                    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-                </video>
-            </div>
-        </div>
-
-        <div class="btns">
-            <span class="visible-xs"><a class="btn mr-btn btn-primary" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><%= __('defs.countmein') %></a></span>
-            <span class="hidden-xs"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.countmein') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
         </div>
     </div>
 </div>
@@ -72,13 +40,45 @@
             <div class="step-view">
                 <div class="image" style="background-image: url('/static-assets/images/<%= Campaign.CampaignTemplate %>/howtoguide/step_icon3@2x.png')"></div>
                 <h2><%= __('how_to_guide.fundraise.title') %></h2>
-                <%- __('how_to_guide.fundraise.description_charity').replace(/\n/g, '<br/>') %>
+                <%- __('how_to_guide.fundraise.description').replace(/\n/g, '<br/>') %>
             </div>
         </div>
 
         <div class="btns">
             <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
             <span class="visible-player-inactive"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
+        </div>
+    </div>
+</div>
+
+<div id="challenges-view">
+    <div id="challenges-loader-view" class="loader-view">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+
+    <div id="challenges-content-view"></div>
+</div>
+
+<div id="intro-view">
+    <div class="intro-container-view">
+        <h1>A challenging game</h1>
+        <h2>To virtually ascend real mountains</h2>
+        <div class="text">Mountain Rush promotes physical activity and local exploration in a fun package: alone or with friends, raising funds for a cause or just for fun. Try it now for free!</div>
+
+        <div class="video-container">
+            <div class="video">
+                <video id="media_intro" url="http://assets.mountainrush.co.uk/marketing/demo/MountainRush.mp4" class="media-player video-js vjs-default-skin" controls preload="none" width="auto" height="auto" poster="http://assets.mountainrush.co.uk/marketing/demo/180201_MountainRush.png">
+                    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                </video>
+            </div>
+        </div>
+
+        <div class="btns">
+            <span class="visible-xs"><a class="btn mr-btn btn-primary" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><%= __('defs.countmein') %></a></span>
+            <span class="hidden-xs"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.countmein') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
         </div>
     </div>
 </div>
@@ -134,9 +134,9 @@
 </div>
 
 <div id="community-view">
-    <h1>Climb For Your World</h1>
-    <h2>from wherever you are</h2>
-    <div class="text">Check out where our fundraisers are climbing by searching #climbforyourworld</div>
+    <h1>Journey to the Summit</h1>
+    <h2>Follow our mountain rush climbers</h2>
+    <div class="text">#playmountainrush</div>
 
     <div id="community-photos-loader-view" class="loader-view">
         <div class="spinner">

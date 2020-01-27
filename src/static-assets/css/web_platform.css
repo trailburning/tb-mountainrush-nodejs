@@ -1060,6 +1060,8 @@ img.scale {
   padding-top: 12px;
   text-align: left;
   border: none; }
+  .game-invite-view .search-panel .search-location {
+    text-align: center; }
   .game-invite-view .search-panel input {
     text-transform: uppercase; }
 
