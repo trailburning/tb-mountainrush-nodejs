@@ -302,11 +302,12 @@
 	"campaign_donation": {
 		"title": "Campaign donation",
 		"description": "Please select your donation to the %s campaign.",
-		"button": "Payment details"
+		"button": "Procees to payment"
 	},
 	"campaign_donation_payment": {
 		"title": "Payment details",
-		"description": "Please fill in your payment details."
+		"description": "Please fill in your payment details.",
+		"button": "Make %s donation"
 	},
 	"campaign_donation_thanks": {
 		"title": "Thank you!",

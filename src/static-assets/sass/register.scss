@@ -1,35 +1,3 @@
-ul.pills {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-ul.pills li {
-  display: inline-block;
-  line-height: 35px;
-  margin-left: 8px;
-  margin-right: 8px;
-  margin-bottom: 18px;
-}
-
-.pill {
-  border: 1px #f7f7f7 solid;
-  text-decoration: none;
-  background: #f7f7f7;
-  border-radius: 5px;
-  padding: 8px;
-  color: inherit;
-}
-
-.pill.active,
-.pill:hover {
-  cursor: pointer;
-  border: 1px #ea6f5f solid;
-  text-decoration: none;
-  background: #FFF;
-  color: #ea6f5f
-}
-
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #2e3c51;
 }

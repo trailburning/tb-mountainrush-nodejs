@@ -10,7 +10,8 @@ define([
 
       this.options = options;
       this.jsonFields = {jsonCampaign: null,
-        jsonPlayer: null}
+                          jsonPlayer: null,
+                          amount: 0}
     },
 
     getFields: function() {
@@ -20,6 +21,7 @@ define([
     setFields: function(jsonFields) {
       this.jsonFields.jsonCampaign = jsonFields.jsonCampaign;
       this.jsonFields.jsonPlayer = jsonFields.jsonPlayer;
+      this.jsonFields.amount = jsonFields.amount;
     },
 
     render: function(){
@@ -37,7 +39,7 @@ define([
 
         console.log(self.jsonFields);
         var jsonData = {token: token.id,
-          amount: 10,
+          amount: self.jsonFields.amount,
           email: self.jsonFields.jsonPlayer.email};
         console.log(jsonData);
 
@@ -158,7 +160,7 @@ define([
         });
       }
 
-      $(this.el).html(this.template({ campaign: this.jsonFields.jsonCampaign, player: this.jsonFields.jsonPlayer }));
+      $(this.el).html(this.template({ campaign: this.jsonFields.jsonCampaign, player: this.jsonFields.jsonPlayer, amount: this.jsonFields.amount }));
 
       setupStripe();
 
