@@ -21,6 +21,8 @@
 .donate-view {
   display: none;
   padding-bottom: 32px; }
+  .donate-view .form-field {
+    font-size: 1.2em; }
 
 a .link,
 a:active, .link:active,

@@ -154,55 +154,28 @@
 </div>
 
 <script type="text/template" id="challengesContentViewTemplate">
-    {{ var activeGames = _.where(playerchallenges, {game_state:'active'}) }}
-
-    {{ if (activeGames.length) { }}
-    <h1>Active Challenge</h1>
-    <h2>Reach your summit!</h2>
-    {{ } else { }}
     <h1>Are you ready?</h1>
     <h2>Reach your summit!</h2>
-    {{ } }}
 
     <div class="cards-container">
         <div class="cards">
-            {{ if (activeGames.length) { }}
-            {{ _.each(activeGames, function(challenge, index) { }}
-            <div class="card">
-                <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/{{= challenge.image }}?fm=jpg&w=640&q=80"></div>
-                <div class="content">
-                    <h2>{{= challenge.name }}</h2>
-                    <div class="overview">
-                        <strong>{{= challenge.region }}</strong> -
-                        {{ if (challenge.distance > 0) { }}
-                        {{= (challenge.distance / 1000).toFixed(0) }}km Challenge
-                        {{ } else { }}
-                        Climb {{= challenge.ascent }}m
-                        {{ } }}
-                    </div>
-                    <a href="<%= Defs.BaseHTTPSURL %>/game/{{= challenge.game }}" class="btn mr-btn btn-primary">View active challenge</a>
+        {{ _.each(challenges, function(challenge, index) { }}
+        <div class="card">
+            <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/{{= challenge.image }}?fm=jpg&w=640&q=80"></div>
+            <div class="content">
+                <h2>{{= challenge.name }}</h2>
+                <div class="overview">
+                    <strong>{{= challenge.region }}</strong>
+                    {{ if (challenge.distance > 0) { }}
+                    {{= (challenge.distance / 1000).toFixed(0) }}km Challenge
+                    {{ } else { }}
+                    Climb {{= challenge.ascent }}m
+                    {{ } }}
                 </div>
+                <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/level/{{= challenge.id }}/gamecreate" class="btn mr-btn btn-primary">Select challenge</a>
             </div>
-            {{ }); }}
-            {{ } else { }}
-            {{ _.each(challenges, function(challenge, index) { }}
-            <div class="card">
-                <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/{{= challenge.image }}?fm=jpg&w=640&q=80"></div>
-                <div class="content">
-                    <h2>{{= challenge.name }}</h2>
-                    <div class="overview">
-                        <strong>{{= challenge.region }}</strong>
-                        {{ if (challenge.distance > 0) { }}
-                        {{= (challenge.distance / 1000).toFixed(0) }}km Challenge
-                        {{ } else { }}
-                        Climb {{= challenge.ascent }}m
-                        {{ } }}
-                    </div>
-                    <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/level/{{= challenge.id }}/gamecreate" class="btn mr-btn btn-primary">Select challenge</a>
-                </div>
-            </div>
-            {{ }); }}
-            {{ } }}
+        </div>
+        {{ }); }}
         </div>
     </div>
 </script>

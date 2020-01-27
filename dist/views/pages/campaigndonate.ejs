@@ -103,6 +103,15 @@ var STRIPE_API_KEY = '<%= Defs.StripeAPIKey %>';
   </div>
 
   <form>
+    <div class="form-block">
+      <ul class="form-field pills">
+        <li><span class="pill active" data-id="5">{{= campaign.paywall_currency_symbol }}5</span></li>
+        <li><span class="pill" data-id="10">{{= campaign.paywall_currency_symbol }}10</span></li>
+        <li><span class="pill" data-id="20">{{= campaign.paywall_currency_symbol }}20</span></li>
+        <li><span class="pill" data-id="10">{{= campaign.paywall_currency_symbol }}<input class="form-control" type="number" value="10"></span></li>
+      </ul>
+    </div>
+
     <div class="form-group">
       <div class="form-label"><label><%= __('register.preferences.game_email') %></label></div><input class="field form-control required" id="email-address" value="{{= email }}" type="email">
       <div class="help-block"><%= __('register.preferences.game_email_help') %></div>
@@ -137,7 +146,7 @@ var STRIPE_API_KEY = '<%= Defs.StripeAPIKey %>';
     </div>
 
     <div class="btns">
-      <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>">{{= '<%- __('register.game_create_paywall.payment.payment_button') %>'.replace('%s', campaign.paywall_currency_symbol + campaign.paywall_amount) }}</button>
+      <button type="submit" class="btn mr-btn btn-primary update-btn" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> <%= __('register.please_wait') %>">{{= '<%- __('campaign_donation_payment.button') %>'.replace('%s', campaign.paywall_currency_symbol + amount) }}</button>
     </div>
 
     <div class="err">

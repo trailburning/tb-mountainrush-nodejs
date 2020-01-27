@@ -47,6 +47,125 @@ h2 {
 
 /* CHALLENGES VIEW */
 /******************************************/
+#challenges-custom-view {
+  position: relative;
+  padding: 100px 0 12px 0;
+
+  .challenges-container-view {
+    font-size: 1.2em;
+    line-height: 1.3em;
+
+    .vote-view {
+      display: none;
+    }
+
+    .challenge-view {
+      position: relative;
+      margin: 12px;
+      padding: 14px;
+      background: #FFF;
+      box-shadow: 0px 5px 10px rgba(25, 56, 72, 0.2);
+
+      .coming-soon {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      .campaign-sticker {
+        width: 105px;
+        height: 105px;
+        background: url(../../images/wwf-uk/wwf_sabyinyo.svg) no-repeat top center;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .image-container {
+          position: relative;
+
+          .image {
+            width: 100%;
+
+            img {
+              width: 100%;
+            }
+          }
+
+          .blank {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: #eeeeeb;
+            -webkit-box-shadow: inset 4px 4px 0px 0px rgba(235,235,230,1);
+            -moz-box-shadow: inset 4px 4px 0px 0px rgba(235,235,230,1);
+            box-shadow: inset 4px 4px 0px 0px rgba(235,235,230,1);
+
+            .text {
+              position: absolute;
+              top: 50%;
+              left: 0;
+              width: 100%;
+              margin-top: -62px;
+              text-align: center;
+              font-size: 3.2em;
+              line-height: 1em;
+              text-transform: uppercase;
+              font-family: 'wwfregular', sans-serif;
+              background-color: #d6d3ca;
+              color: transparent;
+              text-shadow: 2px 2px 3px rgba(255,255,255,0.3);
+              -webkit-background-clip: text;
+              -moz-background-clip: text;
+              background-clip: text;
+            }
+          }
+
+          .campaign-sticker {
+            position: absolute;
+            bottom: 16px;
+            left: 12px;
+          }
+        }
+
+        .text-container {
+          padding: 20px 0 0 0;
+
+          p {
+            padding: 6px 0;
+          }
+
+          .form-container {
+            padding: 8px 0;
+
+            .form-check {
+              margin: 11px 0;
+            }
+          }
+        }
+
+        .butty {
+          margin-top: auto;
+          padding: 0 0 6px 0;
+        }
+      }
+    }
+  }
+
+  input[type='radio'] {
+    margin-right: 12px;
+  }
+}
+
+
+
+
+
+
+
+
 #challenges-view {
   .challenge-view {
     .campaign-sticker {
@@ -157,6 +276,45 @@ h2 {
     height: 440px;
   }
 
+  #challenges-custom-view {
+    padding: 0;
+
+    .challenges-container-view {
+      .vote-view {
+        display: block;
+      }
+
+      .challenge-view {
+        .content {
+          .image-container {
+            .image {
+              height: 320px;
+              background-repeat: no-repeat;
+              background-size: cover;
+
+              img {
+                display: none;
+              }
+            }
+
+            .campaign-sticker {
+              bottom: 25px;
+              left: 30px;
+            }
+          }
+
+          .text-container {
+            padding: 30px 20px 0 20px;
+          }
+
+          .butty {
+            padding: 0 20px 20px 20px;
+          }
+        }
+      }
+    }
+  }
+
   #supporter-search-view .supporter-search-container {
     background-position: bottom left;
   }
@@ -168,8 +326,30 @@ h2 {
     height: 178px;
   }
 
-  #challenges-view {
+  #challenges-custom-view {
+    width: 940px;
     margin: -138px auto 44px auto;
+
+    .challenges-container-view {
+      display: flex;
+      margin: 0 -12px;
+
+      .challenge-view {
+        width: 300px;
+
+        .content {
+          .image-container {
+            .image {
+              height: 256px;
+            }
+          }
+        }
+      }
+
+      .challenge-view:first-child {
+        width: 620px;
+      }
+    }
   }
 }
 

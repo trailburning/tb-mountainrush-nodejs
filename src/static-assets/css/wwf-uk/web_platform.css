@@ -21,6 +21,13 @@ body {
 form .help-block {
   font-family: 'PFDINTextPro-Black', sans-serif; }
 
+/* PILLS */
+/******************************************/
+.pill.active,
+.pill:hover {
+  border-color: #f16d49;
+  color: #f16d49; }
+
 /* MODAL */
 /******************************************/
 .modal .title {
