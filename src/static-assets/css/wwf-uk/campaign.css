@@ -110,7 +110,9 @@ h2 {
 /* Small devices (tablets, 992px and up) */
 @media (min-width: 992px) {
   #header-view {
-    height: 178px; } }
+    height: 178px; }
+  #challenges-view {
+    margin: -138px auto 44px auto; } }
 
 @media (min-width: 1024px) {
   #hero-view .hero-container {
