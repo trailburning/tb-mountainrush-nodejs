@@ -55,7 +55,6 @@ define([
 
         // check custom pill value
         $('.pill.active input').each(function(index) {
-          console.log('input:'+$(this).val());
           // override
           self.jsonFields.amount = $(this).val();
         });
