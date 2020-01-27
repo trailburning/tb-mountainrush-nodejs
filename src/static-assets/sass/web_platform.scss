@@ -1257,6 +1257,10 @@ img.scale {
     text-align: left;
     border: none;
 
+    .search-location {
+      text-align: center;
+    }
+
     input {
       text-transform: uppercase;
     }
