@@ -179,3 +179,161 @@
         </div>
     </div>
 </script>
+
+<script type="text/template" id="socialFeatureViewTemplate">
+    <div class="community-feature-container-view">
+        {{ var firstPost = juicer.posts.items[0] }}
+
+        {{ if (firstPost) { }}
+            <h1>#{{= firstPost.source.term }}</h1>
+        {{ } }}
+
+        {{ _.each(juicer.posts.items, function(post, index) { }}
+        <div class="content">
+            <div class="image"><a href="{{= post.full_url }}" target="_blank"><img src="{{= post.image }}"></a></div>
+            <div class="text">
+                {{= post.message }}
+                <div class="engagement">
+                    {{ if (post.likes >= 1) { }}
+                    <span class="likes"><i class="icon fa fa-heart"></i> {{= post.likes }}</span>
+                    {{ } }}
+
+                    {{ if (post.comments >= 1) { }}
+                    <i class="icon fa fa-comment"></i> {{= post.comments }}
+                    {{ } }}
+                </div>
+            </div>
+        </div>
+        {{ }); }}
+    </div>
+</script>
+
+<script type="text/template" id="campaignSummaryViewTemplate">
+    <div class="summary-total-raised">
+        <div class="total-raised-sticker">
+            <div class="total"><span class="currency_symbol">{{ if (campaign_challenges[0].fundraising_currency_symbol.length > 1) { }}<span class="fat-currency-symbol">{{= campaign_challenges[0].fundraising_currency_symbol }}</span>{{ } else { }}{{= campaign_challenges[0].fundraising_currency_symbol }}{{ } }}</span>{{= Math.round(campaign_challenges[0].total_fundraising_raised) }}</div>
+            <div class="break"></div>
+            <div class="title">Total Raised</div>
+            <div class="title-sub">by climb for your world</div>
+        </div>
+    </div>
+
+    <div class="summary-break"></div>
+
+    <div class="summary-total-climbed">
+        <div class="total">{{= total_ascent_formatted }}</div>
+        <div class="title">Metres Climbed</div>
+    </div>
+</script>
+
+<script type="text/template" id="leaderboardViewTemplate">
+    {{ _.each(players, function(player, index) { }}
+    <div class="leader">
+        <div class="content">
+            <div class="marker">
+                {{ var strURL = '<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>' }}
+                {{ if (player.gameID) { }}
+                {{ strURL = '<%= Defs.BaseHTTPSURL %>/game/' + player.gameID + '/player/' + player.id }}
+                {{ } }}
+                <a href="{{= strURL }}"><div class="avatar">
+                        <% if (Campaign.CampaignTemplate == 'default') { %>
+                            <img src="<%= Defs.MRAPIURL %>imageproxy.php?url={{= player.avatar }}">
+                        <% } else { %>
+                            <img src="<%= Defs.MRAPIURL %>imageproxy.php?url={{= player.avatar }}&urlfallback=https://www.mountainrush.co.uk/static-assets/images/<%= Campaign.CampaignTemplate %>/avatar_unknown.jpg">
+                        <% } %>
+                    </div></a>
+            </div>
+            <div class="fundraise-detail">
+                <div class="name">{{= player.firstname }} {{= player.lastname }}</div>
+                <div class="climbed">Climbed {{= Math.round(player.ascent) }} m</div>
+                <div class="amount-detail">Raised<span class="amount">
+          {{ if (player.fundraising_currency_symbol) { }}{{ if (player.fundraising_currency_symbol.length > 1) { }}<span class="fat-currency-symbol">{{= player.fundraising_currency_symbol }}</span>{{ } else { }}{{= player.fundraising_currency_symbol }}{{ } }}{{ } else { }}${{ } }}{{= Math.round(player.fundraising_raised) }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ }); }}
+</script>
+
+<script type="text/template" id="communityPhotosViewTemplate">
+    {{ _.each(juicer.posts.items, function(post, index) { }}<div class="post">
+        <div class="media">
+            <a href="{{= post.full_url }}" target="_blank"><div class="image" style="background-image: url('{{= post.image }}')"></div>
+                <div class="likes ago">
+                    {{ if (post.likes >= 1) { }}
+                    <i class="icon fa fa-heart"></i> {{= post.likes }}
+                    {{ } }}
+                </div>
+            </a>
+        </div>
+        <div class="details">
+            <div class="text">
+                <div class="name"><a href="{{= post.full_url }}" target="_blank">{{= post.poster_name }}</a></div>
+                <div class="credit truncate"  data-truncate="62"> {{= post.message }}</div>
+            </div>
+        </div>
+    </div>{{ }); }}
+</script>
+
+<script type="text/template" id="playerGameViewTemplate">
+    <div class="modal msg-overlay" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    {{ var activeGames = _.where(player.games, {game_state:'active'}) }}
+                    {{ var pendingGames = _.where(player.games, {game_state:'pending'}) }}
+
+                    {{ if (activeGames.length) { }}
+                    {{ var currGame = activeGames[0] }}
+
+                    {{ activityDescription = '' }}
+
+                    {{ if (currGame.type == 'Run') { }}
+                    {{ activityDescription = '<%= __('defs.activities.run') %>' }}
+                    {{ } else if (currGame.type == 'Ride') { }}
+                    {{ activityDescription = '<%= __('defs.activities.ride') %>' }}
+                    {{ } else if (currGame.type == 'Hike') { }}
+                    {{ activityDescription = '<%= __('defs.activities.hike') %>' }}
+                    {{ } }}
+
+                    <div class="details">
+                        <div class="title"><%= __('overlay.challenge.latest.title') %></div>
+                        <div class="description">
+                            {{= '<%= __('overlay.challenge.latest.description') %>'.replace('%s', player.firstname).replace('%s', '<strong>' + currGame.name + '</strong> <span class="lowercase">' + activityDescription + '</span>') }}
+                        </div>
+                    </div>
+
+                    <div class="action-fields">
+                        <div class="action-field"><a href="<%= Defs.BaseHTTPSURL %>/game/{{= currGame.game }}" class="btn mr-btn btn-primary"><%= __('overlay.challenge.yes') %></a></div>
+                        <div class="action-field"><span class="btn mr-btn" data-dismiss="modal"><%= __('overlay.challenge.no') %></span></div>
+                    </div>
+                    {{ } else if (pendingGames.length) { }}
+                    {{ var currGame = pendingGames[0] }}
+
+                    {{ activityDescription = '' }}
+
+                    {{ if (currGame.type == 'Run') { }}
+                    {{ activityDescription = '<%= __('defs.activities.run') %>' }}
+                    {{ } else if (currGame.type == 'Ride') { }}
+                    {{ activityDescription = '<%= __('defs.activities.ride') %>' }}
+                    {{ } else if (currGame.type == 'Hike') { }}
+                    {{ activityDescription = '<%= __('defs.activities.hike') %>' }}
+                    {{ } }}
+
+                    <div class="details">
+                        <div class="title"><%= __('overlay.challenge.upcoming.title') %></div>
+                        <div class="description">
+                            {{= '<%= __('overlay.challenge.upcoming.description') %>'.replace('%s', player.firstname).replace('%s', '<strong>' + currGame.name + '</strong> <span class="lowercase">' + activityDescription + '</span>') }}
+                        </div>
+                    </div>
+
+                    <div class="action-fields">
+                        <div class="action-field"><a href="<%= Defs.BaseHTTPSURL %>/game/{{= currGame.game }}" class="btn mr-btn btn-primary">Yes please</a></div>
+                        <div class="action-field"><span class="btn mr-btn" data-dismiss="modal">Maybe later</span></div>
+                    </div>
+                    {{ } }}
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</script>
