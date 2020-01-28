@@ -30,8 +30,10 @@ define([
         return;
       }
 
-      var jsonContent = this.result[0];
-      jsonContent.total_ascent_formatted = numeral(Math.round(jsonContent.total_ascent)).format('0,0');
+      var jsonContent = this.result;
+      if (jsonContent.campaign_challenges.length) {
+        jsonContent.total_ascent_formatted = numeral(Math.round(jsonContent.campaign_challenges[0].total_ascent)).format('0,0');
+      }
 
       $(this.el).html(this.template(jsonContent));
 
