@@ -217,8 +217,7 @@ define([
     socialPhotosView.loadFeed();
 
     $('img.scale').imageScale({
-      'rescaleOnResize': true,
-      'align': 'top'
+      'rescaleOnResize': true
     });
 
     var elImages = $('body');

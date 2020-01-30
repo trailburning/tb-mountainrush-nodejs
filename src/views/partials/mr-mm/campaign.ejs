@@ -13,13 +13,24 @@
                 Raising Funds
             </div>
             <div class="campaign-tagline3 visible-xs">
-                Mountain Rush promotes physical activity<br/>and local exploration in a fun package:<br/>alone or with friends, raising funds<br/>for a cause or just for fun.<br/>Try it now for free!
+            Not everyone can run when they want, where they want.<br/>Support Somali runners by virtually running a Mogadishu<br/>Marathon race from wherever you are.
             </div>
             <div class="campaign-tagline3 hidden-xs">
-                Mountain Rush promotes physical activity<br/>and local exploration in a fun package:<br/>alone or with friends, raising funds<br/>for a cause or just for fun.<br/>Try it now for free!
+            Not everyone can run when they want, where they want.<br/>Support Somali runners by virtually running a Mogadishu<br/>Marathon race from wherever you are.
             </div>
         </div>
     </div>
+</div>
+
+<div id="challenges-view">
+    <div id="challenges-loader-view" class="loader-view">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+
+    <div id="challenges-content-view"></div>
 </div>
 
 <div id="howtoguide-view">
@@ -49,17 +60,6 @@
             <span class="visible-player-inactive"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
         </div>
     </div>
-</div>
-
-<div id="challenges-view">
-    <div id="challenges-loader-view" class="loader-view">
-        <div class="spinner">
-            <div class="double-bounce1"></div>
-            <div class="double-bounce2"></div>
-        </div>
-    </div>
-
-    <div id="challenges-content-view"></div>
 </div>
 
 <div id="intro-view">
@@ -106,20 +106,6 @@
     </div>
 </div>
 
-<div id="leader-view">
-    <h1>Leaderboard</h1>
-    <div class="text">High five to our top fundraisers. You're awesome!</div>
-
-    <div id="leader-loader-view" class="loader-view">
-        <div class="spinner">
-            <div class="double-bounce1"></div>
-            <div class="double-bounce2"></div>
-        </div>
-    </div>
-
-    <div id="leaderboard-view" class="leaders"></div>
-</div>
-
 <div id="supporter-search-view">
     <div class="supporter-search-container">
         <div class="supporter-search-content">
@@ -154,9 +140,6 @@
 </div>
 
 <script type="text/template" id="challengesContentViewTemplate">
-    <h1>Are you ready?</h1>
-    <h2>Reach your summit!</h2>
-
     <div class="cards-container">
         <div class="cards">
         {{ _.each(challenges, function(challenge, index) { }}

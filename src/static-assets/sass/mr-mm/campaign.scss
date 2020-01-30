@@ -1,0 +1,48 @@
+body {
+  color: #000;
+}
+
+/* HEADER VIEW */
+/******************************************/
+#header-view {
+}
+
+/* HERO VIEW */
+/******************************************/
+#hero-view {
+  background: #4C85C5;
+
+  .image.ready {
+    opacity: 0.15;
+  }
+
+  .campaign-tagline3 {
+    font-family: 'dincond-mediumregular';
+    line-height: 1.3em;
+  }
+}
+
+
+/* CHALLENGES VIEW */
+/******************************************/
+#challenges-view {
+  background: #FFF;
+
+  .loader-view {
+    .double-bounce1,
+    .double-bounce2 {
+      background-color: #ff582c;
+    }
+  }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+}
+
+/* Small devices (tablets, 992px and up) */
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1024px) {
+}

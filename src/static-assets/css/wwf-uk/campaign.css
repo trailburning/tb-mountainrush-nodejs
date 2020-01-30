@@ -200,6 +200,12 @@ h2 {
 @media (min-width: 992px) {
   #header-view {
     height: 178px; }
+  #hero-view,
+  #hero-view .image {
+    height: 620px; }
+  #hero-view .campaign-title {
+    left: 105px;
+    bottom: 166px; }
   #challenges-custom-view {
     width: 940px;
     margin: -138px auto 44px auto; }
