@@ -16,6 +16,7 @@ function fillCampaignData(req, data) {
       var campaign = new Object();
       campaign.ClientID = campaignData.clientID;
       campaign.ClientShortName = campaignData.client_shortname;
+      campaign.ClientDescription = campaignData.client_description;
       campaign.CampaignID = campaignData.id;
       campaign.CampaignName = campaignData.name;
       campaign.CampaignTemplate = campaignData.template;

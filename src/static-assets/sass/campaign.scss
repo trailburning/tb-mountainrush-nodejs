@@ -30,6 +30,17 @@ h2 {
 /******************************************/
 #header-view {
   position: relative;
+
+  .link, a.link,
+  .link:visited, a.link:visited,
+  .link:active, a.link:active {
+    color: #fff;
+  }
+
+  .link:hover, a.link:hover,
+  ul li.active .link, ul li.active a.link {
+    color: #fff;
+  }
 }
 
 /* PAGE VIEW */
@@ -729,6 +740,12 @@ input.ui-autocomplete-loading {
     font-size: 1em;
   }
 
+  #header-view {
+    position: absolute;
+    top: 0;
+    background: transparent;
+  }
+
   #hero-view,
   #hero-view .image {
     height: 486px;
@@ -949,12 +966,12 @@ input.ui-autocomplete-loading {
 @media (min-width: 992px) {  
   #hero-view,
   #hero-view .image {
-    height: 620px;
+    height: 482px;
   }
 
   #hero-view .campaign-title {
     left: 105px;
-    bottom: 166px;
+    bottom: 114px;
   }
 
   #campaign-summary-sticker-view {
