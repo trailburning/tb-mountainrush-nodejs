@@ -39,7 +39,14 @@ h2 {
   line-height: 0.85em; }
 
 #hero-view .campaign-title .campaign-tagline2 {
-  font-family: 'PFDINTextPro-Black', sans-serif; }
+  font-family: 'PFDINTextPro-Black', sans-serif;
+  margin-top: 20px;
+  font-size: 1.2em;
+  text-transform: uppercase; }
+
+#hero-view .campaign-title .campaign-tagline3 {
+  margin-top: 5px;
+  font-size: 1.2em; }
 
 /* CHALLENGES VIEW */
 /******************************************/

@@ -9,8 +9,16 @@ body {
   background: #4C85C5; }
   #hero-view .image.ready {
     opacity: 0.15; }
+  #hero-view .campaign-tagline {
+    text-transform: uppercase;
+    line-height: 1.3em; }
+  #hero-view .campaign-tagline2 {
+    padding: 10px 0;
+    font-family: 'din_condensedbold';
+    font-size: 4em;
+    line-height: 1em;
+    text-transform: uppercase; }
   #hero-view .campaign-tagline3 {
-    font-family: 'dincond-mediumregular';
     line-height: 1.3em; }
 
 /* CHALLENGES VIEW */

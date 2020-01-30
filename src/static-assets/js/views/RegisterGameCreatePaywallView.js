@@ -95,8 +95,14 @@ define([
                 }
               }
               else {
-                // fire event
-                app.dispatcher.trigger("RegisterGameCreatePaywallView:chargeSuccess");              
+                if (data.id) {
+                  // fire event
+                  app.dispatcher.trigger("RegisterGameCreatePaywallView:chargeSuccess");
+                }
+                else {
+                  $('.msg[data-msg=unknown-err]', $(self.el)).show();
+                  $('.err', $(self.el)).show();
+                }
               }
             }
           }

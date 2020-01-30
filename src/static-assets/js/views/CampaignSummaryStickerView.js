@@ -30,7 +30,7 @@ define([
         return;
       }
 
-      var fTotalRaised = 0, strCurrency = '', total_ascent_formatted = 0;
+      var fTotalRaised = 0, strCurrency = '', total_ascent_formatted = 0, total_players = 0;
       var jsonContent = this.result;
 
       if (jsonContent.campaign_players_paywall.length) {
@@ -47,11 +47,13 @@ define([
         strCurrency = jsonContent.campaign_challenges[0].fundraising_currency_symbol;
         fTotalRaised += Number(jsonContent.campaign_challenges[0].total_fundraising_raised);
         total_ascent_formatted = numeral(Math.round(jsonContent.campaign_challenges[0].total_ascent)).format('0,0');
+        total_players = Number(jsonContent.campaign_challenges[0].total_players);
       }
 
       jsonContent.fundraising_currency_symbol = strCurrency;
       jsonContent.total_raised = fTotalRaised;
       jsonContent.total_ascent_formatted = total_ascent_formatted;
+      jsonContent.total_players = total_players;
 
       $(this.el).html(this.template(jsonContent));
 
