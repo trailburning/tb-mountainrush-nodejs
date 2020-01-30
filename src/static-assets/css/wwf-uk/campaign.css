@@ -166,9 +166,6 @@ h2 {
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  #header-view {
-    position: absolute;
-    top: 0; }
   #hero-view {
     margin-top: 26px; }
     #hero-view .campaign-sticker {
