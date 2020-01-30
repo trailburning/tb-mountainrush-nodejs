@@ -25,7 +25,18 @@ h2 {
 /* HERO VIEW */
 /******************************************/
 #hero-view .campaign-title .campaign-tagline {
-  font-family: 'wwfregular', sans-serif; }
+  font-family: 'wwfregular', sans-serif;
+  font-size: 3.5em;
+  line-height: 0.9em;
+  color: #fff;
+  text-transform: uppercase;
+  -webkit-text-shadow: 0 10px 10px rgba(25, 56, 72, 0.2);
+  -moz-text-shadow: 0 10px 10px rgba(25, 56, 72, 0.2);
+  text-shadow: 0 10px 10px rgba(25, 56, 72, 0.2); }
+
+#hero-view .campaign-title .campaign-tagline .bigger {
+  font-size: 1.2em;
+  line-height: 0.85em; }
 
 #hero-view .campaign-title .campaign-tagline2 {
   font-family: 'PFDINTextPro-Black', sans-serif; }
@@ -168,6 +179,10 @@ h2 {
 @media (min-width: 768px) {
   #hero-view {
     margin-top: 26px; }
+    #hero-view .campaign-title .campaign-tagline {
+      font-size: 5.8em; }
+      #hero-view .campaign-title .campaign-tagline .bigger {
+        font-size: 1.2em; }
     #hero-view .campaign-sticker {
       width: 108px;
       height: 108px; }
