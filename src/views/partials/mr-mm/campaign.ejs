@@ -7,10 +7,10 @@
             Run with Midnight Runners
             </div>
             <div class="campaign-tagline2 visible-xs">
-            and race the Mogadishu Marathon
+            and race the<br/>Mogadishu Marathon
             </div>
             <div class="campaign-tagline2 hidden-xs">
-            and race the Mogadishu Marathon
+            and race the<br/>Mogadishu Marathon
             </div>
             <div class="campaign-tagline3 visible-xs">
             Not everyone can run when they want, where they want.<br/>Support Somali runners by virtually running a Mogadishu<br/>Marathon race from wherever you are.
@@ -155,7 +155,7 @@
                     Climb {{= challenge.ascent }}m
                     {{ } }}
                 </div>
-                <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/level/{{= challenge.id }}/gamecreate" class="btn mr-btn btn-primary">Select challenge</a>
+                <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/level/{{= challenge.id }}/gamecreate" class="btn mr-btn btn-primary">Select race</a>
             </div>
         </div>
         {{ }); }}
@@ -204,8 +204,8 @@
     <div class="summary-break"></div>
 
     <div class="summary-total-climbed">
-        <div class="total">{{= total_ascent_formatted }}</div>
-        <div class="title">Metres Climbed</div>
+        <div class="total">{{= total_players }}</div>
+        <div class="title">Players</div>
     </div>
 </script>
 

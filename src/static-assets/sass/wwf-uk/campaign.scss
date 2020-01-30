@@ -49,8 +49,18 @@ h2 {
     line-height: 0.85em;
   }
 
-  .campaign-title .campaign-tagline2 {
-    font-family: 'PFDINTextPro-Black', sans-serif;
+  .campaign-title {
+    .campaign-tagline2 {
+      font-family: 'PFDINTextPro-Black', sans-serif;
+      margin-top: 20px;
+      font-size: 1.2em;
+      text-transform: uppercase;
+    }
+
+    .campaign-tagline3 {
+      margin-top: 5px;
+      font-size: 1.2em;
+    }
   }
 }
 
@@ -268,7 +278,6 @@ h2 {
     margin-top: 26px;
 
     .campaign-title {
-
       .campaign-tagline {
         font-size: 5.8em;
 
