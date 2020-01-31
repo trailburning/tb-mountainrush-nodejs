@@ -19,6 +19,31 @@ body {
   font-family: 'dincond-mediumregular';
   font-size: 16px;
   line-height: 1.3em;
+  background: none;
+}
+
+#header-view .mini-menu .logo {
+  padding-top: 0;
+  font-family: 'din_condensedbold';
+  font-size: 1.2em;
+  line-height: 44px;
+  text-transform: uppercase;
+  color: #FFF;
+}
+
+#header-view .mini-menu .logo a {
+  color: #FFF;
+}
+
+#header-view .full-menu .logo {
+  font-family: 'din_condensedbold';
+  font-size: 2em;
+  line-height: 72px;
+  text-transform: uppercase;
+}
+
+#header-view .full-menu .logo a {
+  color: inherit;
 }
 
 .form-view {
