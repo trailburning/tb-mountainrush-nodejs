@@ -3,6 +3,9 @@ body {
 
 /* HEADER VIEW */
 /******************************************/
+#header-view .full-menu .logo {
+  display: none; }
+
 /* HERO VIEW */
 /******************************************/
 #hero-view {

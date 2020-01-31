@@ -4,11 +4,8 @@
       <a href="#mainmenu" role="button" data-toggle="collapse" class="nav"><div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div></a>
       <div class="logo-view">
         <div class="logo">
-          <% if (Campaign.CampaignShortName == 'mountainrush') { %>
-            <a href="<%= Defs.BaseHTTPSURL %>"><div></div></a>
-          <% } else { %>
-            <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>"><div></div></a>
-          <% } %>
+
+            <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>">Mogadishu Marathon</a>
         </div>
       </div>
       <div class="user-action action-signup"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('menu.signup') %></a></div>
@@ -17,13 +14,7 @@
     <div class="full-menu">
       <div class="bar"></div>
       <div class="menu-container">
-        <div class="logo">
-          <% if (Campaign.CampaignShortName == 'mountainrush') { %>
-            <a href="<%= Defs.BaseHTTPSURL %>"><div></div></a>
-          <% } else { %>
-            <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>"><div></div></a>
-          <% } %>
-        </div>
+        <div class="logo"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>">Mogadishu Marathon</a></div>
         <ul class="menus">
           <li><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/donate" class="btn mr-btn">Donate</a></li>
           <li class="user-action action-signup"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('menu.signup') %></a></li>
