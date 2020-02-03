@@ -1,6 +1,16 @@
 body {
   color: #000; }
 
+h1 {
+  padding: 0 0 8px 0;
+  font-family: 'din_condensedbold';
+  text-transform: none; }
+
+h2 {
+  padding: 0 0 8px 0;
+  font-family: 'dincond-mediumregular';
+  text-transform: none; }
+
 /* HEADER VIEW */
 /******************************************/
 #header-view .full-menu .logo {
@@ -14,15 +24,18 @@ body {
     opacity: 0.15; }
   #hero-view .campaign-tagline {
     text-transform: uppercase;
+    font-size: 1.44em;
     line-height: 1.3em; }
   #hero-view .campaign-tagline2 {
     padding: 10px 0;
     font-family: 'din_condensedbold';
-    font-size: 4em;
+    font-size: 4.5em;
     line-height: 1em;
     text-transform: uppercase; }
   #hero-view .campaign-tagline3 {
-    line-height: 1.3em; }
+    font-family: 'dincond-mediumregular';
+    font-size: 1.4em;
+    line-height: 1.2em; }
 
 /* CHALLENGES VIEW */
 /******************************************/
@@ -31,6 +44,35 @@ body {
   #challenges-view .loader-view .double-bounce1,
   #challenges-view .loader-view .double-bounce2 {
     background-color: #ff582c; }
+  #challenges-view h2 {
+    font-family: futura-pt-bold, sans-serif;
+    font-weight: 700;
+    font-style: normal; }
+
+/* INTRO VIEW */
+/******************************************/
+#intro-view {
+  background: #000;
+  color: #FFF;
+  font-size: 1em;
+  line-height: 1.4em; }
+  #intro-view h1 {
+    color: #FFF;
+    font-size: 3.4em; }
+  #intro-view h2 {
+    color: #FFF;
+    font-size: 1.4em; }
+
+/* HOW To GUIDE VIEW */
+/******************************************/
+#howtoguide-view {
+  background: #E3E6EA;
+  font-size: inherit; }
+  #howtoguide-view h2 {
+    font-family: futura-pt-bold, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    text-transform: uppercase; }
 
 /* Small devices (tablets, 768px and up) */
 /* Small devices (tablets, 992px and up) */
