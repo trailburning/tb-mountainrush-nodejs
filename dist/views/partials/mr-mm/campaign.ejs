@@ -33,6 +33,28 @@
     <div id="challenges-content-view"></div>
 </div>
 
+<div id="intro-view">
+    <div class="intro-container-view">
+        <h1>Samia Yusuf Memorial Run</h1>
+        <h2>The Mogadishu Marathon honors Samia Yusuf Omar, an Olympic runner from Somalia, who drowned attempting to cross the Mediterranean Sea in 2008.</h2>
+        <div class="text">Although she met the same fate as many refugees around the world, her story is that of an incredibly strong and resistant female runner, fighting the status quo, and dreaming of the freedom to run.
+        </div>
+
+        <div class="video-container">
+            <div class="video">
+                <video id="media_intro" url="https://mountainrush-assets.imgix.net/marketing/demo/MountainRush.mp4" class="media-player video-js vjs-default-skin" controls preload="none" width="auto" height="auto" poster="https://mountainrush-assets.imgix.net/marketing/demo/180201_MountainRush.png">
+                    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                </video>
+            </div>
+        </div>
+
+        <div class="btns">
+            <span class="visible-xs"><a class="btn mr-btn btn-primary" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><%= __('defs.countmein') %></a></span>
+            <span class="hidden-xs"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.countmein') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
+        </div>
+    </div>
+</div>
+
 <div id="howtoguide-view">
     <div class="howtoguide-container-view">
         <h1>How to get started</h1>
@@ -58,27 +80,6 @@
         <div class="btns">
             <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
             <span class="visible-player-inactive"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
-        </div>
-    </div>
-</div>
-
-<div id="intro-view">
-    <div class="intro-container-view">
-        <h1>A challenging game</h1>
-        <h2>To virtually ascend real mountains</h2>
-        <div class="text">Mountain Rush promotes physical activity and local exploration in a fun package: alone or with friends, raising funds for a cause or just for fun. Try it now for free!</div>
-
-        <div class="video-container">
-            <div class="video">
-                <video id="media_intro" url="https://mountainrush-assets.imgix.net/marketing/demo/MountainRush.mp4" class="media-player video-js vjs-default-skin" controls preload="none" width="auto" height="auto" poster="https://mountainrush-assets.imgix.net/marketing/demo/180201_MountainRush.png">
-                    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-                </video>
-            </div>
-        </div>
-
-        <div class="btns">
-            <span class="visible-xs"><a class="btn mr-btn btn-primary" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><%= __('defs.countmein') %></a></span>
-            <span class="hidden-xs"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.countmein') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
         </div>
     </div>
 </div>
