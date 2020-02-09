@@ -67,24 +67,23 @@
         <div class="steps-container-view">
             <div class="step-view">
                 <div class="image" style="background-image: url('/static-assets/images/<%= Campaign.CampaignTemplate %>/howtoguide/step_icon1@2x.png')"></div>
-                <h2><%= __('how_to_guide.challenge.title') %></h2>
-                <%- __('how_to_guide.challenge.description').replace(/\n/g, '<br/>') %>
+                <h2>1. Sign up</h2>
+                100% of your registration fee will be used to<br/>cover travel costs for Somali’s from the<br/>regions to join a race, and support the only<br/>free local ambulance in Mogadishu.
             </div>
             <div class="step-view">
                 <div class="image" style="background-image: url('/static-assets/images/<%= Campaign.CampaignTemplate %>/howtoguide/step_icon2@2x.png')"></div>
-                <h2>
-                    <%= __('how_to_guide.active.title') %></h2>
-                <%- __('how_to_guide.active.description', '<a class="link" href="https://www.strava.com/mobile" target="_blank">' +  __('defs.strava_app') + '</a>').replace(/\n/g, '<br/>') %>
+                <h2>2. Join our community</h2>
+                Download the Strava app and on race day,<br/>March 6th, run your chosen distance. Why<br/>not also join a Midnight Runners free event,<br/>simply sign up with myCrew.
             </div>
             <div class="step-view">
                 <div class="image" style="background-image: url('/static-assets/images/<%= Campaign.CampaignTemplate %>/howtoguide/step_icon3@2x.png')"></div>
-                <h2><%= __('how_to_guide.fundraise.title') %></h2>
-                <%- __('how_to_guide.fundraise.description').replace(/\n/g, '<br/>') %>
+                <h2>3. Celebrate your achievement</h2>
+                Cross the finishing line and celebrate with<br/>your friends. You have just made a statement<br/>to the world: Running and the freedom to run<br/>is for everyone!
             </div>
         </div>
 
         <div class="btns">
-            <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
+            <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div>Choose your race</div><div><i class="fa fa-arrow-right"></i></div></a></span>
             <span class="visible-player-inactive"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
         </div>
     </div>
@@ -140,7 +139,7 @@
     <div id="community-photos-view" class="photos"></div>
 
     <div class="btns">
-        <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
+        <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div>Choose your race</div><div><i class="fa fa-arrow-right"></i></div></a></span>
         <span class="visible-player-inactive"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
     </div>
 </div>

@@ -33,11 +33,7 @@
   <meta property="og:image" content="<%= Defs.SocialImage %>"/>
 <% } else if (Defs.GameID) { %>
   <meta property="og:url" content="https://www.mountainrush.co.uk/game/<%= Defs.GameID %>"/>
-  <% if (Campaign.CampaignTemplate == 'default') { %>
   <meta property="og:image" content="<%= Defs.SocialImage %>"/>
-  <% } else { %>
-  <meta property="og:image" content="https://www.mountainrush.co.uk/static-assets/images/<%= Campaign.CampaignTemplate %>/190524_2_share_facebook.jpg"/>
-  <% } %>
 <% } else if (Campaign.CampaignName) { %>
   <meta property="og:url" content="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>"/>
   <meta property="og:image" content="https://www.mountainrush.co.uk/static-assets/images/<%= Campaign.CampaignTemplate %>/190524_2_share_facebook.jpg"/>
