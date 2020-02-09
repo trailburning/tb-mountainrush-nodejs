@@ -3,21 +3,27 @@
 
     <div class="hero-container">
         <div class="campaign-title">
-            <div class="campaign-tagline">
-            Run with Midnight Runners
+            <div class="visible-xs logo"><img src="/static-assets/images/<%= Campaign.CampaignTemplate %>/logos/logo_white.png"></div>
+
+            <div class="taglines">
+                <div class="campaign-tagline">
+                Run with Midnight Runners
+                </div>
+                <div class="campaign-tagline2 visible-xs">
+                and race the<br/>Mogadishu Marathon
+                </div>
+                <div class="campaign-tagline2 hidden-xs">
+                and race the<br/>Mogadishu Marathon
+                </div>
+                <div class="campaign-tagline3 visible-xs">
+                Not everyone can run when they want, where they want. Support Somali runners by virtually running a Mogadishu Marathon race from wherever you are.
+                </div>
+                <div class="campaign-tagline3 hidden-xs">
+                Not everyone can run when they want, where they want.<br/>Support Somali runners by virtually running a Mogadishu<br/>Marathon race from wherever you are.
+                </div>
             </div>
-            <div class="campaign-tagline2 visible-xs">
-            and race the<br/>Mogadishu Marathon
-            </div>
-            <div class="campaign-tagline2 hidden-xs">
-            and race the<br/>Mogadishu Marathon
-            </div>
-            <div class="campaign-tagline3 visible-xs">
-            Not everyone can run when they want, where they want.<br/>Support Somali runners by virtually running a Mogadishu<br/>Marathon race from wherever you are.
-            </div>
-            <div class="campaign-tagline3 hidden-xs">
-            Not everyone can run when they want, where they want.<br/>Support Somali runners by virtually running a Mogadishu<br/>Marathon race from wherever you are.
-            </div>
+
+            <div class="hidden-xs logo"><img src="/static-assets/images/<%= Campaign.CampaignTemplate %>/logos/logo_white.png"></div>
         </div>
     </div>
 </div>
@@ -57,7 +63,7 @@
 
 <div id="howtoguide-view">
     <div class="howtoguide-container-view">
-        <h1>How to get started</h1>
+        <h1>How it works</h1>
         <div class="steps-container-view">
             <div class="step-view">
                 <div class="image" style="background-image: url('/static-assets/images/<%= Campaign.CampaignTemplate %>/howtoguide/step_icon1@2x.png')"></div>
@@ -110,10 +116,10 @@
 <div id="supporter-search-view">
     <div class="supporter-search-container">
         <div class="supporter-search-content">
-            <h1>Find a <span class="show-when-signed-in">fellow </span>climber</h1>
+            <h1>Find a <span class="show-when-signed-in">fellow </span>runner</h1>
             <div class="search-panel search suggest ui-front">
                 <div class="search-location">
-                    <input name="search-text" id="search-text" class="search-field" type="text" placeholder="Climber" spellcheck="false">
+                    <input name="search-text" id="search-text" class="search-field" type="text" placeholder="Type a name" spellcheck="false">
                 </div>
             </div>
         </div>
@@ -121,9 +127,8 @@
 </div>
 
 <div id="community-view">
-    <h1>Journey to the Summit</h1>
-    <h2>Follow our mountain rush climbers</h2>
-    <div class="text">#playmountainrush</div>
+    <h1>Run with us</h1>
+    <h2>Follow our Mogadishu Runners<br/>#mogadishumarathon</h2>
 
     <div id="community-photos-loader-view" class="loader-view">
         <div class="spinner">
@@ -146,15 +151,20 @@
         {{ _.each(challenges, function(challenge, index) { }}
         <div class="card">
             <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/{{= challenge.image }}?fm=jpg&w=640&q=80"></div>
+
             <div class="content">
-                <h2>{{= challenge.name }}</h2>
                 <div class="overview">
-                    <strong>{{= challenge.region }}</strong>
-                    {{ if (challenge.distance > 0) { }}
-                    {{= (challenge.distance / 1000).toFixed(0) }}km Challenge
-                    {{ } else { }}
-                    Climb {{= challenge.ascent }}m
-                    {{ } }}
+
+                    <span class="distance">{{ if (challenge.distance > 0) { }}{{= (challenge.distance / 1000).toFixed(0) }}{{ } else { }} {{= challenge.ascent }}{{ } }}</span>
+
+                    <div class="details">
+
+                    <span class="measure">{{ if (challenge.distance > 0) { }}km{{ } else { }}m{{ } }}</span>
+                    <br/>
+                    {{ if (challenge.distance > 0) { }}Challenge{{ } else { }}Climb{{ } }}
+
+                    </div>
+
                 </div>
                 <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/level/{{= challenge.id }}/gamecreate" class="btn mr-btn btn-primary">Select race</a>
             </div>
@@ -193,12 +203,13 @@
 </script>
 
 <script type="text/template" id="campaignSummaryViewTemplate">
+    <h1>Fundraising</h1>
     <div class="summary-total-raised">
         <div class="total-raised-sticker">
             <div class="total"><span class="currency_symbol">{{ if (fundraising_currency_symbol.length > 1) { }}<span class="fat-currency-symbol">{{= fundraising_currency_symbol }}</span>{{ } else { }}{{= fundraising_currency_symbol }}{{ } }}</span>{{= Math.round(total_raised) }}</div>
             <div class="break"></div>
-            <div class="title">Total Raised</div>
-            <div class="title-sub">by climb for your world</div>
+            <div class="title">Raised</div>
+            <div class="title-sub">for Mogadishu Marathon projects</div>
         </div>
     </div>
 
@@ -206,7 +217,7 @@
 
     <div class="summary-total-climbed">
         <div class="total">{{= total_players }}</div>
-        <div class="title">Players</div>
+        <div class="title">Runners</div>
     </div>
 </script>
 

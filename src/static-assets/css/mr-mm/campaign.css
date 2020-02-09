@@ -1,31 +1,58 @@
-body {
-  color: #000; }
-
 h1 {
   padding: 0 0 8px 0;
   font-family: 'din_condensedbold';
-  text-transform: none; }
+  font-size: 3.4em;
+  color: #000;
+  text-transform: uppercase; }
 
 h2 {
   padding: 0 0 8px 0;
   font-family: 'dincond-mediumregular';
+  color: #000;
   text-transform: none; }
+
+#page-view {
+  font-family: futura-pt, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1.3em; }
 
 /* HEADER VIEW */
 /******************************************/
 #header-view .full-menu .logo {
   display: none; }
 
+#header-view .mini-menu .logo a:focus,
+#header-view .mini-menu .logo a:hover {
+  text-decoration: none; }
+
 /* HERO VIEW */
 /******************************************/
 #hero-view {
+  height: 560px;
   background: #4C85C5; }
+  #hero-view .image {
+    height: 560px; }
+  #hero-view .logo {
+    padding: 0 0 10px 0; }
+    #hero-view .logo img {
+      width: 155px; }
+  #hero-view .campaign-title {
+    position: absolute;
+    top: initial;
+    left: initial;
+    right: initial;
+    bottom: 48px;
+    padding: 0 20px;
+    width: 100%; }
   #hero-view .image.ready {
     opacity: 0.15; }
   #hero-view .campaign-tagline {
+    font-family: 'din_condensedbold';
     text-transform: uppercase;
-    font-size: 1.44em;
-    line-height: 1.3em; }
+    font-size: 1.4em;
+    line-height: 1.2em; }
   #hero-view .campaign-tagline2 {
     padding: 10px 0;
     font-family: 'din_condensedbold';
@@ -40,6 +67,7 @@ h2 {
 /* CHALLENGES VIEW */
 /******************************************/
 #challenges-view {
+  padding: 16px 0 40px 0;
   background: #FFF; }
   #challenges-view .loader-view .double-bounce1,
   #challenges-view .loader-view .double-bounce2 {
@@ -48,6 +76,37 @@ h2 {
     font-family: futura-pt-bold, sans-serif;
     font-weight: 700;
     font-style: normal; }
+  #challenges-view .cards .card {
+    display: flex;
+    margin: 24px auto 0 auto;
+    width: 300px;
+    color: #000;
+    background: none;
+    font-family: 'din_condensedbold';
+    font-size: 1.4em;
+    text-transform: uppercase; }
+    #challenges-view .cards .card .content {
+      padding: 0 0 36px 0;
+      text-align: right;
+      border-bottom: 2px solid #FF9208; }
+      #challenges-view .cards .card .content .overview {
+        padding: 0 0 4px 0; }
+    #challenges-view .cards .card .details {
+      display: inline-block;
+      text-align: left; }
+    #challenges-view .cards .card .distance {
+      font-size: 4.5em;
+      line-height: 1em; }
+    #challenges-view .cards .card .measure {
+      font-size: 2.4em;
+      line-height: 1em; }
+    #challenges-view .cards .card .image {
+      width: 140px;
+      height: 140px;
+      overflow: hidden;
+      border-radius: 50%; }
+  #challenges-view .card:last-child .content {
+    border-bottom: none; }
 
 /* INTRO VIEW */
 /******************************************/
@@ -66,13 +125,94 @@ h2 {
 /* HOW To GUIDE VIEW */
 /******************************************/
 #howtoguide-view {
-  background: #E3E6EA;
-  font-size: inherit; }
+  background: #E3E6EA; }
   #howtoguide-view h2 {
     font-family: futura-pt-bold, sans-serif;
     font-weight: 700;
     font-style: normal;
     text-transform: uppercase; }
 
+/* SUPPORTER SEARCH VIEW */
+/******************************************/
+#supporter-search-view {
+  height: 350px; }
+
+/* COMMUNITY CLIMBER FEATURE VIEW */
+/******************************************/
+#community-climber-feature-view {
+  padding-top: 46px;
+  padding-bottom: 46px; }
+
+/* SUMMARY VIEW */
+/******************************************/
+#summary-view {
+  background: #E3E6EA;
+  text-align: center; }
+  #summary-view .summary-container {
+    padding: 66px 0; }
+    #summary-view .summary-container h1 {
+      padding: 0 0 26px 0; }
+    #summary-view .summary-container .summary-total-climbed {
+      font-family: 'din_condensedbold';
+      font-size: 1.4em;
+      color: #000; }
+      #summary-view .summary-container .summary-total-climbed .total {
+        font-size: 3.4em; }
+  #summary-view .summary-break {
+    border-bottom: 2px solid #FF9208; }
+
+/* COMMUNITY VIEW */
+/******************************************/
+#community-view {
+  padding-top: 46px;
+  padding-bottom: 46px; }
+  #community-view h2 {
+    font-size: 1.4em; }
+  #community-view .post {
+    color: #9b9b9b; }
+
 /* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #hero-view {
+    height: 482px; }
+    #hero-view .image {
+      height: 482px; }
+    #hero-view .taglines {
+      float: left; }
+    #hero-view .logo {
+      float: right; }
+      #hero-view .logo img {
+        width: 224px; }
+  #challenges-view .cards-container {
+    padding: 0; }
+    #challenges-view .cards-container .cards .card {
+      position: relative;
+      width: auto; }
+      #challenges-view .cards-container .cards .card .image {
+        margin: 0 auto; }
+      #challenges-view .cards-container .cards .card .content {
+        padding: 24px 0 0 0;
+        text-align: center;
+        border-bottom: none; }
+        #challenges-view .cards-container .cards .card .content .overview {
+          padding: 0 0 4px 0; }
+      #challenges-view .cards-container .cards .card .image {
+        width: 160px;
+        height: 160px; }
+  #summary-view .summary-break {
+    border-right: 2px solid #FF9208; } }
+
 /* Small devices (tablets, 992px and up) */
+@media (min-width: 992px) {
+  #hero-view .logo img {
+    width: 312px; }
+  #hero-view .hero-container {
+    margin: 0 auto;
+    width: 880px; }
+  #hero-view .campaign-title {
+    padding: 0;
+    left: 0;
+    bottom: 112px; }
+  #challenges-view .cards-container {
+    margin: 0 auto;
+    width: 840px; } }
