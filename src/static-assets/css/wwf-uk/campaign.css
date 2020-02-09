@@ -146,6 +146,18 @@ h2 {
 .summary-total-climbed .title {
   font-family: 'PFDINTextPro-Black', sans-serif; }
 
+/* HOW TO GUIDE VIEW */
+/******************************************/
+#howtoguide-view {
+  font-size: 1.2em;
+  line-height: 1.3em; }
+
+/* COMMUNITY CLIMBER FEATURE VIEW */
+/******************************************/
+#community-climber-feature-view {
+  font-size: 1.2em;
+  line-height: 1.3em; }
+
 /* LEADER VIEW */
 /******************************************/
 #leader-view {
@@ -166,11 +178,15 @@ h2 {
 
 /* COMMUNITY VIEW */
 /******************************************/
-#community-view .post .name a,
-#community-view .post .name a:hover,
-#community-view .post .name a:active,
-#community-view .post .name a:visited {
-  color: #474747; }
+#community-view {
+  font-size: 1.2em; }
+  #community-view .post {
+    font-size: 0.7em; }
+    #community-view .post .name a,
+    #community-view .post .name a:hover,
+    #community-view .post .name a:active,
+    #community-view .post .name a:visited {
+      color: #474747; }
 
 /* AUTOCOMPLETE */
 /******************************************/
@@ -184,6 +200,10 @@ h2 {
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+  h1 {
+    font-size: 1.55em; }
+  h2 {
+    font-size: 1em; }
   #hero-view {
     margin-top: 26px; }
     #hero-view .campaign-title .campaign-tagline {

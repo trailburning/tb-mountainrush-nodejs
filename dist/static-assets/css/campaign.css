@@ -121,9 +121,7 @@ h2 {
 /******************************************/
 #howtoguide-view {
   padding: 70px 16px 30px 16px;
-  text-align: center;
-  font-size: 1.2em;
-  line-height: 1.3em; }
+  text-align: center; }
   #howtoguide-view .howtoguide-container-view .step-view {
     text-align: center; }
     #howtoguide-view .howtoguide-container-view .step-view .image {
@@ -140,8 +138,6 @@ h2 {
 #community-climber-feature-view {
   padding: 32px 16px;
   text-align: center;
-  font-size: 1.2em;
-  line-height: 1.3em;
   background: #fff;
   border-bottom: solid #ebebe9 2px; }
   #community-climber-feature-view .content {
@@ -450,7 +446,6 @@ input.ui-autocomplete-loading {
 /******************************************/
 #community-view {
   padding: 46px 16px 56px 16px;
-  font-size: 1.2em;
   text-align: center;
   background-color: #fff; }
   #community-view .loader-view {
@@ -461,7 +456,6 @@ input.ui-autocomplete-loading {
     vertical-align: top;
     width: 256px;
     padding: 32px 0 0 0;
-    font-size: 0.7em;
     text-align: left; }
     #community-view .post:nth-child(1), #community-view .post:nth-child(2), #community-view .post:nth-child(3), #community-view .post:nth-child(4) {
       display: block; }
@@ -539,10 +533,6 @@ input.ui-autocomplete-loading {
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  h1 {
-    font-size: 1.55em; }
-  h2 {
-    font-size: 1em; }
   #header-view {
     position: absolute;
     top: 0;

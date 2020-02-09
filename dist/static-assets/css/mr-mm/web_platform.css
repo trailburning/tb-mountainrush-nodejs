@@ -13,11 +13,6 @@
   font-style: normal; }
 
 body {
-  font-family: futura-pt, sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 14px;
-  line-height: 1.3em;
   color: #000;
   background: none; }
 
@@ -29,6 +24,10 @@ body {
   text-transform: uppercase;
   color: #FFF;
   vertical-align: middle; }
+
+#header-view .mini-menu .logo a:focus,
+#header-view .mini-menu .logo a:hover {
+  text-decoration: none; }
 
 #header-view .mini-menu .logo a {
   color: #FFF; }
@@ -42,23 +41,23 @@ body {
 #header-view .full-menu .logo a {
   color: inherit; }
 
+#header-view .full-menu .logo a:focus,
+#header-view .full-menu .logo a:hover {
+  text-decoration: none; }
+
 .form-view .btn {
   font-size: inherit; }
 
 .form-view .intro-text {
   line-height: 1.3em; }
 
-form .form-label label {
-  font-family: 'din_condensedbold'; }
-
 /* MODAL */
 /******************************************/
 .modal .title {
-  font-family: inherit;
-  color: #4C85C5; }
+  color: #FF582C; }
 
 .modal strong {
-  color: #4C85C5; }
+  color: #FF582C; }
 
 /* BUTTONS */
 /******************************************/
