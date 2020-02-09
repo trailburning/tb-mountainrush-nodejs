@@ -1,3 +1,6 @@
-.register-views h1,
-.register-views h2 {
-  font-family: 'din_condensedbold'; }
+/* HERO VIEW */
+/******************************************/
+#hero-view {
+  background: #4C85C5; }
+  #hero-view .image.ready {
+    opacity: 0.15; }
