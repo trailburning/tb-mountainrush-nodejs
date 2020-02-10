@@ -16,40 +16,55 @@ body {
   color: #000;
   background: none; }
 
-#header-view .mini-menu .logo {
-  padding-top: 2px;
-  font-family: 'din_condensedbold';
-  font-size: 1.2em;
-  line-height: 44px;
-  text-transform: uppercase;
+/* HEADER VIEW */
+/******************************************/
+#header-view {
+  background: #000; }
+  #header-view .mini-menu .logo {
+    padding-top: 2px;
+    font-family: 'din_condensedbold';
+    font-size: 1.2em;
+    line-height: 44px;
+    text-transform: uppercase;
+    color: #FFF;
+    vertical-align: middle; }
+  #header-view .mini-menu .logo a:focus,
+  #header-view .mini-menu .logo a:hover {
+    text-decoration: none; }
+  #header-view .mini-menu .logo a {
+    color: #FFF; }
+  #header-view .full-menu .logo {
+    font-family: 'din_condensedbold';
+    font-size: 2em;
+    line-height: 72px;
+    text-transform: uppercase; }
+  #header-view .full-menu .logo a {
+    color: inherit; }
+  #header-view .full-menu .logo a:focus,
+  #header-view .full-menu .logo a:hover {
+    text-decoration: none; }
+
+/* FOOTER VIEW */
+/******************************************/
+#footer-view {
+  height: 286px;
   color: #FFF;
-  vertical-align: middle; }
-
-#header-view .mini-menu .logo a:focus,
-#header-view .mini-menu .logo a:hover {
-  text-decoration: none; }
-
-#header-view .mini-menu .logo a {
-  color: #FFF; }
-
-#header-view .full-menu .logo {
-  font-family: 'din_condensedbold';
-  font-size: 2em;
-  line-height: 72px;
-  text-transform: uppercase; }
-
-#header-view .full-menu .logo a {
-  color: inherit; }
-
-#header-view .full-menu .logo a:focus,
-#header-view .full-menu .logo a:hover {
-  text-decoration: none; }
-
-.form-view .btn {
-  font-size: inherit; }
-
-.form-view .intro-text {
-  line-height: 1.3em; }
+  background: #000; }
+  #footer-view .footer-container {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    color: #FFF; }
+  #footer-view .client-logo {
+    padding-bottom: 26px; }
+  #footer-view .left img {
+    height: 38px; }
+  #footer-view .mr-dropdown button {
+    border: 1px solid #FFF; }
+    #footer-view .mr-dropdown button .caret {
+      color: #FFF; }
+  #footer-view .mr-dropdown .dropdown-menu {
+    color: #000;
+    border-color: #FFF; }
 
 /* MODAL */
 /******************************************/
@@ -78,3 +93,17 @@ body {
 /******************************************/
 .double-bounce1, .double-bounce2 {
   background-color: #ff582c; }
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #footer-view {
+    height: 144px; }
+    #footer-view .left img {
+      padding-right: 8px; }
+    #footer-view .client-logo {
+      display: inline-block;
+      padding: 0; }
+      #footer-view .client-logo img {
+        padding-right: 32px; }
+    #footer-view .right .block {
+      padding-top: 0; } }
