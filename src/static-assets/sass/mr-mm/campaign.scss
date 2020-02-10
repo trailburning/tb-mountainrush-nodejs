@@ -16,7 +16,6 @@ h2 {
 
 #page-view {
   font-family: futura-pt, sans-serif;
-  font-weight: 600;
   font-style: normal;
   font-size: 14px;
   line-height: 1.3em;
@@ -209,10 +208,84 @@ h2 {
   }
 }
 
+/* SPONSOR FEATURE VIEW */
+/******************************************/
+#sponsor-feature-view {
+  position: relative;
+  height: 592px;
+  color: #FFF;
+  background: #000;
+  text-align: center;
+
+  .image {
+    height: 592px;
+
+    &.ready {
+      opacity: 0.45;
+    }
+  }
+
+  .sponsor-feature-container-view {
+    position: absolute;
+    bottom: 22px;
+    padding: 0 16px;
+
+    .logo {
+      margin: 0 auto;
+      padding-bottom: 22px;
+      width: 98px;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  h1 {
+    padding: 0;
+    color: #FFF;
+  }
+
+  .btns {
+    padding: 12px 0;
+
+    .btn {
+      margin: 10px 2px;
+    }
+  }
+
+  .text {
+    font-family: 'dincond-mediumregular';
+    font-size: 1.4em;
+    line-height: 1.2em;
+  }
+}
+
 /* SUPPORTER SEARCH VIEW */
 /******************************************/
 #supporter-search-view {
   height: 350px;
+  background-color: #2260A6;
+
+  .supporter-search-container {
+    position: absolute;
+    top: 96px;
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .image {
+    height: 350px;
+
+    &.image.ready {
+      opacity: 0.7;
+    }
+  }
+
+  .search-panel input {
+    color: #000;
+    background-color: #E3E6EA;
+  }
 }
 
 /* COMMUNITY CLIMBER FEATURE VIEW */
