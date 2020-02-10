@@ -2,6 +2,7 @@ h1 {
   padding: 0 0 8px 0;
   font-family: 'din_condensedbold';
   font-size: 3.4em;
+  line-height: 1em;
   color: #000;
   text-transform: uppercase;
 }
@@ -168,19 +169,30 @@ h2 {
 /* INTRO VIEW */
 /******************************************/
 #intro-view {
+  padding: 64px 16px;
   background: #000;
   color: #FFF;
   font-size: 1em;
   line-height: 1.4em;
+  text-align: left;
 
   h1 {
     color: #FFF;
-    font-size: 3.4em;
   }
 
   h2 {
     color: #FFF;
     font-size: 1.4em;
+  }
+
+  .intro-container-view {
+    .text {
+      padding: 0;
+    }
+
+    .video-container {
+      padding-top: 64px;
+    }
   }
 }
 
@@ -308,6 +320,11 @@ h2 {
     }
   }
 
+  #intro-view .intro-container-view {
+    margin: 0 auto;
+    width: 720px;
+  }
+
   #summary-view {
     .summary-break {
       border-right: 2px solid #FF9208;
@@ -340,6 +357,26 @@ h2 {
     .cards-container {
       margin: 0 auto;
       width: 840px;
+    }
+  }
+
+  #intro-view {
+    .intro-container-view {
+      width: 840px;
+
+      .content-container {
+        display: flex;
+
+        .video-container {
+          padding-top: 0;
+          width: 50%;
+        }
+
+        .text-container {
+          padding-left: 44px;
+          width: 50%;
+        }
+      }
     }
   }
 }

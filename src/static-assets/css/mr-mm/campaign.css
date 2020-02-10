@@ -2,6 +2,7 @@ h1 {
   padding: 0 0 8px 0;
   font-family: 'din_condensedbold';
   font-size: 3.4em;
+  line-height: 1em;
   color: #000;
   text-transform: uppercase; }
 
@@ -111,16 +112,21 @@ h2 {
 /* INTRO VIEW */
 /******************************************/
 #intro-view {
+  padding: 64px 16px;
   background: #000;
   color: #FFF;
   font-size: 1em;
-  line-height: 1.4em; }
+  line-height: 1.4em;
+  text-align: left; }
   #intro-view h1 {
-    color: #FFF;
-    font-size: 3.4em; }
+    color: #FFF; }
   #intro-view h2 {
     color: #FFF;
     font-size: 1.4em; }
+  #intro-view .intro-container-view .text {
+    padding: 0; }
+  #intro-view .intro-container-view .video-container {
+    padding-top: 64px; }
 
 /* HOW To GUIDE VIEW */
 /******************************************/
@@ -199,6 +205,9 @@ h2 {
       #challenges-view .cards-container .cards .card .image {
         width: 160px;
         height: 160px; }
+  #intro-view .intro-container-view {
+    margin: 0 auto;
+    width: 720px; }
   #summary-view .summary-break {
     border-right: 2px solid #FF9208; } }
 
@@ -215,4 +224,14 @@ h2 {
     bottom: 112px; }
   #challenges-view .cards-container {
     margin: 0 auto;
-    width: 840px; } }
+    width: 840px; }
+  #intro-view .intro-container-view {
+    width: 840px; }
+    #intro-view .intro-container-view .content-container {
+      display: flex; }
+      #intro-view .intro-container-view .content-container .video-container {
+        padding-top: 0;
+        width: 50%; }
+      #intro-view .intro-container-view .content-container .text-container {
+        padding-left: 44px;
+        width: 50%; } }
