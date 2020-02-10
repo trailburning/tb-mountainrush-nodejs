@@ -151,8 +151,15 @@ h2 {
       opacity: 0.45; }
   #sponsor-feature-view .sponsor-feature-container-view {
     position: absolute;
-    bottom: 22px;
+    top: 0;
+    height: 100%;
     padding: 0 16px; }
+    #sponsor-feature-view .sponsor-feature-container-view .aligner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      flex-direction: column; }
     #sponsor-feature-view .sponsor-feature-container-view .logo {
       margin: 0 auto;
       padding-bottom: 22px;
@@ -254,6 +261,11 @@ h2 {
   #intro-view .intro-container-view {
     margin: 0 auto;
     width: 720px; }
+  #sponsor-feature-view .sponsor-feature-container-view {
+    width: 100%; }
+    #sponsor-feature-view .sponsor-feature-container-view .aligner {
+      width: 672px;
+      margin: 0 auto; }
   #summary-view .summary-break {
     border-right: 2px solid #FF9208; } }
 

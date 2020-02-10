@@ -227,8 +227,17 @@ h2 {
 
   .sponsor-feature-container-view {
     position: absolute;
-    bottom: 22px;
+    top: 0;
+    height: 100%;
     padding: 0 16px;
+
+    .aligner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      flex-direction: column;
+    }
 
     .logo {
       margin: 0 auto;
@@ -396,6 +405,17 @@ h2 {
   #intro-view .intro-container-view {
     margin: 0 auto;
     width: 720px;
+  }
+
+  #sponsor-feature-view {
+    .sponsor-feature-container-view {
+      width: 100%;
+
+      .aligner {
+        width: 672px;
+        margin: 0 auto;
+      }
+    }
   }
 
   #summary-view {

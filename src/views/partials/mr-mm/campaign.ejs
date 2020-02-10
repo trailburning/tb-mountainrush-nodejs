@@ -94,25 +94,23 @@
 </div>
 
 <div id="sponsor-feature-view">
-
-    <div class="image fade_on_ready"><img class="scale" src="https://mountainrush-assets.imgix.net/clients/<%= Campaign.CampaignTemplate %>/pages/default.jpg?fm=jpg&q=80&w=1280"></div>
-
+    <div class="image fade_on_ready"><img class="scale" src="https://mountainrush-assets.imgix.net/clients/<%= Campaign.CampaignTemplate %>/pages/midnightrunners-hands.jpg?fm=jpg&q=80"></div>
     <div class="sponsor-feature-container-view">
+        <div class="aligner">
+            <div class="logo"><img src="/static-assets/images/logos/MR_MONO_WHITE_01.png"></div>
 
-        <div class="logo"><img src="/static-assets/images/logos/MR_MONO_WHITE_01.png"></div>
+            <h1>Making a statement: running and the freedom to run is for everyone</h1>
 
-        <h1>Making a statement: running and the freedom to run is for everyone</h1>
+            <div class="btns">
+                <a class="btn mr-btn btn-primary" href="">Join a city run</a>
+                <a class="btn mr-btn btn-primary" href="">Choose a race</a>
+            </div>
 
-        <div class="btns">
-            <a class="btn mr-btn btn-primary" href="">Join a city run</a>
-            <a class="btn mr-btn btn-primary" href="">Choose a race</a>
-        </div>
-
-        <div class="text">
-        Join a Midnight Runners city run or signup for a virtual Mogadishu Marathon race
+            <div class="text">
+            Join a Midnight Runners city run or signup for a virtual Mogadishu Marathon race
+            </div>
         </div>
     </div>
-
 </div>
 
 <div id="community-climber-feature-view">
@@ -176,21 +174,19 @@
         <div class="cards">
         {{ _.each(challenges, function(challenge, index) { }}
         <div class="card">
+<!--
             <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/{{= challenge.image }}?fm=jpg&w=640&q=80"></div>
+-->
+            <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/clients/<%= Campaign.CampaignTemplate %>/pages/midnightrunners-hands.jpg?fm=jpg&w=640&q=80"></div>
 
             <div class="content">
                 <div class="overview">
-
                     <span class="distance">{{ if (challenge.distance > 0) { }}{{= (challenge.distance / 1000).toFixed(0) }}{{ } else { }} {{= challenge.ascent }}{{ } }}</span>
-
                     <div class="details">
-
                     <span class="measure">{{ if (challenge.distance > 0) { }}km{{ } else { }}m{{ } }}</span>
                     <br/>
                     {{ if (challenge.distance > 0) { }}Challenge{{ } else { }}Climb{{ } }}
-
                     </div>
-
                 </div>
                 <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/level/{{= challenge.id }}/gamecreate" class="btn mr-btn btn-primary">Select race</a>
             </div>
