@@ -14,7 +14,6 @@ h2 {
 
 #page-view {
   font-family: futura-pt, sans-serif;
-  font-weight: 600;
   font-style: normal;
   font-size: 14px;
   line-height: 1.3em; }
@@ -138,10 +137,57 @@ h2 {
     font-style: normal;
     text-transform: uppercase; }
 
+/* SPONSOR FEATURE VIEW */
+/******************************************/
+#sponsor-feature-view {
+  position: relative;
+  height: 592px;
+  color: #FFF;
+  background: #000;
+  text-align: center; }
+  #sponsor-feature-view .image {
+    height: 592px; }
+    #sponsor-feature-view .image.ready {
+      opacity: 0.45; }
+  #sponsor-feature-view .sponsor-feature-container-view {
+    position: absolute;
+    bottom: 22px;
+    padding: 0 16px; }
+    #sponsor-feature-view .sponsor-feature-container-view .logo {
+      margin: 0 auto;
+      padding-bottom: 22px;
+      width: 98px; }
+      #sponsor-feature-view .sponsor-feature-container-view .logo img {
+        width: 100%; }
+  #sponsor-feature-view h1 {
+    padding: 0;
+    color: #FFF; }
+  #sponsor-feature-view .btns {
+    padding: 12px 0; }
+    #sponsor-feature-view .btns .btn {
+      margin: 10px 2px; }
+  #sponsor-feature-view .text {
+    font-family: 'dincond-mediumregular';
+    font-size: 1.4em;
+    line-height: 1.2em; }
+
 /* SUPPORTER SEARCH VIEW */
 /******************************************/
 #supporter-search-view {
-  height: 350px; }
+  height: 350px;
+  background-color: #2260A6; }
+  #supporter-search-view .supporter-search-container {
+    position: absolute;
+    top: 96px;
+    width: 100%;
+    padding: 0 16px; }
+  #supporter-search-view .image {
+    height: 350px; }
+    #supporter-search-view .image.image.ready {
+      opacity: 0.7; }
+  #supporter-search-view .search-panel input {
+    color: #000;
+    background-color: #E3E6EA; }
 
 /* COMMUNITY CLIMBER FEATURE VIEW */
 /******************************************/
