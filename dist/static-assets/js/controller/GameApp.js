@@ -488,6 +488,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
             "coordinates": []
           }
         };
+
         // build geoJSON route
         $.each(mountainModel.get('route_points'), function(index) {
           jsonRoute.geometry.coordinates.push(this.coords);

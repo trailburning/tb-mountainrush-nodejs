@@ -14,9 +14,9 @@ define([
     loadFeed: function(){
       var self = this;
 
-      var url = 'https://www.juicer.io/api/feeds/playmountainrush?per=12';
+      var url = 'https://www.juicer.io/api/feeds/playmountainrush?per=8';
       if (this.options.feed != '') {
-        url = 'https://www.juicer.io/api/feeds/' + this.options.feed + '?per=12';
+        url = 'https://www.juicer.io/api/feeds/' + this.options.feed + '?per=8';
       }
 //      console.log(url);
       $.getJSON(url, function(result){
