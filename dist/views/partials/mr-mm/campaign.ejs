@@ -174,11 +174,7 @@
         <div class="cards">
         {{ _.each(challenges, function(challenge, index) { }}
         <div class="card">
-<!--
             <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/{{= challenge.image }}?fm=jpg&w=640&q=80"></div>
--->
-            <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/clients/<%= Campaign.CampaignTemplate %>/pages/midnightrunners-hands.jpg?fm=jpg&w=640&q=80"></div>
-
             <div class="content">
                 <div class="overview">
                     <span class="distance">{{ if (challenge.distance > 0) { }}{{= (challenge.distance / 1000).toFixed(0) }}{{ } else { }} {{= challenge.ascent }}{{ } }}</span>
