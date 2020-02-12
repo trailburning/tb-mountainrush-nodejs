@@ -735,6 +735,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       if (mountainEventsCollection.length && activePlayer) {
         bRenderFlag = false;
       }
+
       challengeView.addFlag(strImageHost + 'https://www.mountainrush.co.uk/static-assets/images/' + strCampaignFolder + 'markers/marker-location.png', bRenderFlag);
       challengeView.showBaseData();
 
