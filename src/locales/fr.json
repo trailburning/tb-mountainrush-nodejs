@@ -87,14 +87,14 @@
     "challenge_upcoming": {
       "title": "Challenge",
       "social": {
-        "description": "Share so that everyone can follow progress to the summit!"
+        "description": "Share so that everyone can follow progress of the challenge!"
       },
       "description": "This %s challenge starts on %s at %s local time."
     },
     "okay": "Okay",
     "challenge_complete": {
       "title": "Challenge Over",
-      "description": "You can still share this challenge and inspire others to take on a %s virtual ascent!"
+      "description": "You can still share this challenge and inspire others!"
     },
     "challenge_cancel": {
       "yes": "Yes please",

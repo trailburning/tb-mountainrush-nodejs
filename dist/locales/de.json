@@ -81,23 +81,20 @@
 			},
 			"upcoming": {
 				"title": "Nächtes Spiel",
-				"description": "Hallo %s, willst Du Dein nächstes %s Spiel anschauen?",
-				"social": {
-					"description": "overlay.challenge.upcoming.social.description"
-				}
+				"description": "Hallo %s, willst Du Dein nächstes %s Spiel anschauen?"
 			}
 		},
 		"challenge_upcoming": {
 			"title": "Spiel",
 			"social": {
-				"description": "Teile, damit Alle Deine Reise zum Gipfel folgen können!"
+				"description": "Teile, damit Alle Deine Reise!"
 			},
 			"description": "Dieses %s Spiel fängt am %s um %s (lokale Uhrzeit)."
 		},
 		"okay": "Okay",
 		"challenge_complete": {
 			"title": "Geschafft",
-			"description": "Teile es noch, um andere Leute inspirieren, wie sie auch %s virtuell besteigen könnten!"
+			"description": "Teile es noch, um andere Leute inspirieren!"
 		},
     "challenge_cancel": {
       "yes": "Yes please",
