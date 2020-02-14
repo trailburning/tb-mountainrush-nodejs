@@ -36,7 +36,6 @@ module.exports = {
     defs.MRAPIURL = process.env.MR_API_URL;
     defs.BaseHTTPURL = this.BaseHTTPURL(req);
     defs.BaseHTTPSURL = this.BaseHTTPSURL(req);
-    defs.StripeAPIKey = process.env.STRIPE_API_KEY;
     defs.CurrentYear = new Date().getFullYear();
     defs.DeviceSource = '';
     if (req.query.source != undefined) {
