@@ -36,6 +36,10 @@ function fillCampaignData(req, data) {
       if (req.params.levelID) {
         campaign.CampaignLevelID = req.params.levelID;
       }
+      campaign.CampaignStripeAPIKey = process.env.STRIPE_API_KEY_TEST;
+      if (campaignData.live_payments == 1) {
+        campaign.CampaignStripeAPIKey = process.env.STRIPE_API_KEY_LIVE;
+      }
 
       // only accept selected locale if it's available
       var selLang = campaign.CampaignLanguages[0]; // def to 1st lang

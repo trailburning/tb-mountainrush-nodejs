@@ -16,7 +16,6 @@ define([
     },
 
     getFields: function() {
-      console.log(this.jsonFields);
       return this.jsonFields;
     },
 
