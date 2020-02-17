@@ -21,6 +21,9 @@ body {
 #mainmenu {
   color: #000; }
 
+#header-view .full-menu .signup {
+  margin-top: 0; }
+
 #header-view .link:hover,
 #header-view a.link:hover,
 #header-view ul li.active .link,
