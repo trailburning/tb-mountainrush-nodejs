@@ -313,7 +313,7 @@
   "campaign_donation": {
     "title": "Campaign donation",
     "description": "Please select your donation to the %s campaign.",
-    "button": "Procees to payment"
+    "button": "Proceed to payment"
   },
   "campaign_donation_payment": {
     "title": "Payment details",
