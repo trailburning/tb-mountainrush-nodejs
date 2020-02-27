@@ -374,7 +374,7 @@ input.ui-autocomplete-loading {
 /******************************************/
 #campaigns-view {
   display: none;
-  padding: 44px 16px 56px 16px;
+  padding: 14px 16px 56px 16px;
   background-color: #efefef; }
   #campaigns-view h1 {
     font-family: 'radikalbold', sans-serif;
@@ -385,10 +385,12 @@ input.ui-autocomplete-loading {
     font-size: 1em;
     line-height: 1.3em;
     text-transform: uppercase; }
-  #campaigns-view .text .overview {
-    padding: 10px 0 8px 0; }
-  #campaigns-view .image {
+  #campaigns-view .campaign {
     padding: 30px 0 0 0; }
+    #campaigns-view .campaign .text .overview {
+      padding: 10px 0 8px 0; }
+    #campaigns-view .campaign .image {
+      padding: 30px 0 0 0; }
   #campaigns-view img {
     width: 100%; }
 
@@ -662,7 +664,7 @@ input.ui-autocomplete-loading {
   #campaigns-view {
     margin: 0 auto;
     text-align: center;
-    padding: 44px 0px 44px 0px; }
+    padding: 14px 0px 44px 0px; }
     #campaigns-view h1 {
       font-size: 2.4em; }
     #campaigns-view h2 {
@@ -763,7 +765,7 @@ input.ui-autocomplete-loading {
     vertical-align: top;
     width: 458px; }
   #campaigns-view {
-    padding: 68px 0px 80px 0px; }
+    padding: 38px 0px 80px 0px; }
     #campaigns-view .text {
       display: inline-block;
       vertical-align: top;
