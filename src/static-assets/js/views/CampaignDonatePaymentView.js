@@ -43,7 +43,7 @@ define([
           email: self.jsonFields.jsonPlayer.email};
         console.log(jsonData);
 
-        var url = GAME_API_URL + 'campaign/' + CAMPAIGN_ID + '/payment';;
+        var url = GAME_API_URL + 'campaign/' + CAMPAIGN_ID + '/payment';
         console.log(url);
 
         $.ajax({
@@ -112,7 +112,7 @@ define([
         });
       }
 
-      function setupStripe() {
+      function setupStripe(clientSecret) {
         var stripe = Stripe(STRIPE_API_KEY);
         var elements = stripe.elements();
 
@@ -140,6 +140,52 @@ define([
         // Add an instance of the card Element into the `card-element` <div>.
         card.mount('#card-element');
 
+        card.addEventListener('change', ({error}) => {
+          const displayError = document.getElementById('card-errors');
+          if (error) {
+            displayError.textContent = error.message;
+          } else {
+            displayError.textContent = '';
+          }
+        });
+
+        var form = document.getElementById('payment-form');
+
+        form.addEventListener('submit', function(ev) {
+          ev.preventDefault();
+
+          $('.err', $(self.el)).hide();
+          $('.err .msg', $(self.el)).hide();
+
+          $('.update-btn', $(self.el)).button('loading');
+
+          stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+              card: card
+            }
+          }).then(function(result) {
+            $('.update-btn', $(self.el)).button('reset');
+
+            if (result.error) {
+              // Show error to your customer (e.g., insufficient funds)
+              console.log(result.error.message);
+            } else {
+
+              // The payment has been processed!
+              if (result.paymentIntent.status === 'succeeded') {
+                // Show a success message to your customer
+                // There's a risk of the customer closing the window before callback
+                // execution. Set up a webhook or plugin to listen for the
+                // payment_intent.succeeded event that handles any business critical
+                // post-payment actions.
+
+                // fire event
+                app.dispatcher.trigger("CampaignDonatePaymentView:success");
+              }
+            }
+          });
+        });
+/*
         // Handle form submission.
         var form = document.getElementById('payment-form');
         form.addEventListener('submit', function(event) {
@@ -164,11 +210,36 @@ define([
             }
           });
         });
+
+ */
       }
 
       $(this.el).html(this.template({ campaign: this.jsonFields.jsonCampaign, player: this.jsonFields.jsonPlayer, amount: this.jsonFields.amount }));
 
-      setupStripe();
+      // perform payment intent
+      var jsonData = {amount: self.jsonFields.amount,
+        email: self.jsonFields.jsonPlayer.email};
+      console.log(jsonData);
+
+      var url = GAME_API_URL + 'campaign/' + CAMPAIGN_ID + '/paymenttest';
+      console.log(url);
+
+      $.ajax({
+        type: 'post',
+        dataType: 'json',
+        url: url,
+        data: JSON.stringify(jsonData),
+        error: function (data) {
+          console.log('error');
+          console.log(data);
+        },
+        success: function (data) {
+          console.log('success');
+          console.log(data);
+
+          setupStripe(data.client_secret);
+        }
+      });
 
       return this;
     }
