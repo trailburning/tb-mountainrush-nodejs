@@ -12,11 +12,11 @@ define([
       this.jsonPlayer = null;
       this.jsonFields = {clientID: 0,
                          playerID: 0,
-                         amount: 0}
+                         amount: 0,
+                         email: ''}
     },
 
     getFields: function() {
-//      console.log(this.jsonFields);
       return this.jsonFields;
     },
 
@@ -63,7 +63,7 @@ define([
         if (bValid) {
           $('.update-btn', $(self.el)).button('loading');
 
-          var strEmail = $('#email-address', elForm).val();
+          self.jsonFields.email = $('#email-address', elForm).val();
 
           // fire event
           app.dispatcher.trigger("CampaignDonateView:success");
