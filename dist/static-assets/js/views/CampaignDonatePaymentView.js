@@ -11,7 +11,8 @@ define([
       this.options = options;
       this.jsonFields = {jsonCampaign: null,
                           jsonPlayer: null,
-                          amount: 0}
+                          amount: 0,
+                          email: ''}
     },
 
     getFields: function() {
@@ -22,6 +23,7 @@ define([
       this.jsonFields.jsonCampaign = jsonFields.jsonCampaign;
       this.jsonFields.jsonPlayer = jsonFields.jsonPlayer;
       this.jsonFields.amount = jsonFields.amount;
+      this.jsonFields.email = jsonFields.email;
     },
 
     render: function(){
@@ -40,7 +42,7 @@ define([
         console.log(self.jsonFields);
         var jsonData = {token: token.id,
           amount: self.jsonFields.amount,
-          email: self.jsonFields.jsonPlayer.email};
+          email: self.jsonFields.email};
         console.log(jsonData);
 
         var url = GAME_API_URL + 'campaign/' + CAMPAIGN_ID + '/payment';;
