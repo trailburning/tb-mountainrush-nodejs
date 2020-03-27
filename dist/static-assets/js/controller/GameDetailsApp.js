@@ -266,16 +266,17 @@ define([
 
       challengeCancelModalView.setGame(jsonCurrGame);
 
-      getJourney(jsonGame.journeyID, jsonGame.mountain3DName);
+      getJourney(jsonGame.routeID, jsonGame.mountain3DName);
     }
 
-    function getJourney(journeyID, mountain3DName) {
+    function getJourney(routeID, challengeName) {
       var self = this;
 
-      var url = TB_API_URL + '/journeys/' + journeyID + TB_API_EXT;
+      var url = GAME_API_URL + 'route/' + routeID;
 //      console.log(url);
       $.getJSON(url, function(result){
-        var jsonJourney = result.body.journeys[0];
+        var jsonJourney = result[0];
+
         mountainModel = new Backbone.Model(jsonJourney);
 
         jsonRoute = {
