@@ -503,11 +503,22 @@ define([
           .setLngLat(point)
           .setOffset([0, nYOffset]);
 
+      // store id
+      jsonPlayer.playerMarker.getElement().setAttribute('data-id', id);
+      // handle click
+      jsonPlayer.playerMarker.getElement().addEventListener('click', function(evt) {
+        // fire event
+        app.dispatcher.trigger("Challenge2DView:onFeatureClicked", $(this).attr('data-id'));
+      });
+
       return jsonPlayer;
     },
 
     focusLocation: function(fLat, fLong) {
       this.map.flyTo({ center: [fLong, fLat], zoom: 14, speed: 0.5 });
+    },
+
+    playRoute: function() {
     },
 
     render: function(){
