@@ -77,43 +77,6 @@ body {
   }
 }
 
-/* FOOTER VIEW */
-/******************************************/
-#footer-view {
-  height: 286px;
-  color: #FFF;
-  background: #000;
-
-  .footer-container {
-    padding-top: 32px;
-    padding-bottom: 32px;
-    color: #FFF;
-  }
-
-  .client-logo {
-    padding-bottom: 26px;
-  }
-
-  .left img {
-    height: 38px;
-  }
-
-  .mr-dropdown {
-    button {
-      border: 1px solid #FFF;
-
-      .caret {
-        color: #FFF;
-      }
-    }
-
-    .dropdown-menu {
-      color: #000;
-      border-color: #FFF;
-    }
-  }
-}
-
 /* MODAL */
 /******************************************/
 .modal {
@@ -158,29 +121,6 @@ body {
       .menus {
         color: #000;
       }
-    }
-  }
-
-  #footer-view {
-    height: 144px;
-
-    .left {
-      img {
-        padding-right: 8px;
-      }
-    }
-
-    .client-logo {
-      display: inline-block;
-      padding: 0;
-
-      img {
-        padding-right: 32px;
-      }
-    }
-
-    .right .block {
-      padding-top: 0;
     }
   }
 }

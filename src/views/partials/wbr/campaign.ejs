@@ -1,5 +1,8 @@
 <div id="hero-view">
+<!--
     <div class="image fade_on_ready"><img class="scale" src="https://mountainrush-assets.imgix.net/clients/<%= Campaign.CampaignTemplate %>/pages/03.a-Education-Hero.jpg?fm=jpg&q=80&w=1280"></div>
+-->
+    <div class="image fade_on_ready"><img class="scale" src="https://worldbicyclerelief.org/wp-content/uploads/2019/09/04.-How-We-Work_Partners.jpg"></div>
 
     <div class="titles-container">
         <div class="titles">
@@ -36,21 +39,20 @@
         <div class="steps-container-view">
             <div class="step-view">
                 <div class="image" style="background-image: url('/static-assets/images/<%= Campaign.CampaignTemplate %>/howtoguide/step_icon1@2x.png')"></div>
-                <h2><%= __('how_to_guide.challenge.title') %></h2>
+                <h2>Select your challenge</h2>
                 Set the time frame and choose<br/>
                 if you’re hiking, running,<br/>
                 cycling or all 3!
             </div>
             <div class="step-view">
                 <div class="image" style="background-image: url('/static-assets/images/<%= Campaign.CampaignTemplate %>/howtoguide/step_icon2@2x.png')"></div>
-                <h2>
-                <%= __('how_to_guide.active.title') %></h2>
+                <h2>Get Active</h2>
                 Download the Strava App and start<br/>
                 tracking your climbing.
             </div>
             <div class="step-view">
                 <div class="image" style="background-image: url('/static-assets/images/<%= Campaign.CampaignTemplate %>/howtoguide/step_icon3@2x.png')"></div>
-                <h2><%= __('how_to_guide.fundraise.title') %></h2>
+                <h2>Start Fundraising</h2>
                 Aim high and share your progress with<br/>
                 friends and family.
             </div>
@@ -58,7 +60,7 @@
 
         <div class="btns">
         <span class="hidden-xs hidden-sm">
-          <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
+          <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div>Select Challenge</div><div><i class="fa fa-arrow-right"></i></div></a></span>
           <span class="visible-player-inactive"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
         </span>
         </div>
@@ -116,16 +118,13 @@
 <div id="supporter-search-view">
     <div class="supporter-search-container">
         <div class="supporter-search-content">
-
             <div class="test">
-
-                <h1>Find a <span class="show-when-signed-in">fellow </span>fundraiser</h1>
+                <h1>Find a fundraiser</h1>
                 <div class="search-panel search suggest ui-front">
                     <div class="search-location">
                         <input name="search-text" id="search-text" class="search-field" type="text" placeholder="Fundraiser" spellcheck="false">
                     </div>
                 </div>
-
             </div>
         </div>
 

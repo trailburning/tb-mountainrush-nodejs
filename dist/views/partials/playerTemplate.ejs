@@ -321,8 +321,20 @@
             <div class="fundraising-donations-view">
               <div class="donations">
                 <div class="title"><%= __('game.fundraising.donations.title') %></div>
-                <div class="welcome without-donations">{{= '<%= __('game.fundraising.donations.waiting.description') %>'.replace('%s', firstname) }}</div>
-                <div class="welcome with-donations">{{= '<%= __('game.fundraising.donations.description') %>'.replace('%s', firstname) }}</div>
+                <div class="welcome without-donations">
+                {{ if (game.ascentChallenge) { }}
+                  {{= '<%= __('game.fundraising.donations.waiting.description') %>'.replace('%s', firstname) }}
+                {{ } else { }}
+                  {{= '<%= __('game.fundraising.donations.waiting.description_distance') %>'.replace('%s', firstname) }}
+                {{ } }}
+                </div>
+                <div class="welcome with-donations">
+                {{ if (game.ascentChallenge) { }}
+                {{= '<%= __('game.fundraising.donations.description') %>'.replace('%s', firstname) }}
+                {{ } else { }}
+                {{= '<%= __('game.fundraising.donations.description_distance') %>'.replace('%s', firstname) }}
+                {{ } }}
+                </div>
                 <div class="fundraisers"></div>
               </div>
             </div>
