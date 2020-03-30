@@ -8,9 +8,13 @@
   <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/web_platform.css' rel='stylesheet' />
 <% } %>
 <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-<link href='/static-assets/css/campaign.css' rel='stylesheet' />
-<% if (Campaign.CampaignTemplate != 'default') { %>
-  <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/campaign.css' rel='stylesheet' />
+
+<% if (Campaign.CampaignTemplate == 'default' || Campaign.CampaignTemplate == 'wbr') { %>
+    <link href='/static-assets/css/home.css' rel='stylesheet' />
+    <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/home.css' rel='stylesheet' />
+<% } else { %>
+    <link href='/static-assets/css/campaign.css' rel='stylesheet' />
+    <link href='/static-assets/css/<%= Campaign.CampaignTemplate %>/campaign.css' rel='stylesheet' />
 <% } %>
 
   <% include ../partials/analyticsFBPixel.ejs %>

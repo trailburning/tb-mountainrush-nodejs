@@ -1,0 +1,469 @@
+h1 {
+  padding: 0 0 8px 0;
+  font-size: 3.4em;
+  line-height: 1em;
+  color: #000;
+  text-transform: uppercase;
+}
+
+h2 {
+  padding: 0 0 8px 0;
+  color: #000;
+  text-transform: none;
+}
+
+#page-view {
+  font-size: 14px;
+  line-height: 1.3em;
+}
+
+/* HEADER VIEW */
+/******************************************/
+#header-view {
+  .full-menu {
+    .logo {
+      display: none;
+    }
+  }
+
+  .mini-menu {
+    .logo {
+      a:focus,
+      a:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+/* HERO VIEW */
+/******************************************/
+#hero-view {
+  height: 560px;
+  background: #4C85C5;
+
+  .image {
+    height: 560px;
+  }
+
+  .logo {
+    padding: 0 0 10px 0;
+
+    img {
+      width: 155px;
+    }
+  }
+
+  .campaign-title {
+    position: absolute;
+    top: initial;
+    left: initial;
+    right: initial;
+    bottom: 48px;
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  .image.ready {
+    opacity: 0.15;
+  }
+
+  .campaign-tagline {
+    text-transform: uppercase;
+    font-size: 1.4em;
+    line-height: 1.2em;
+  }
+
+  .campaign-tagline2 {
+    padding: 10px 0;
+    font-size: 4.5em;
+    line-height: 1em;
+    text-transform: uppercase;
+  }
+
+  .campaign-tagline3 {
+    font-size: 1.4em;
+    line-height: 1.2em;
+  }
+}
+
+/* CHALLENGES VIEW */
+/******************************************/
+#challenges-view {
+  padding: 16px 0 40px 0;
+  background: #FFF;
+
+  .loader-view {
+    .double-bounce1,
+    .double-bounce2 {
+      background-color: #ff582c;
+    }
+  }
+
+  h2 {
+    font-family: futura-pt-bold, sans-serif;
+    font-weight: 700;
+    font-style: normal
+  }
+
+  .cards {
+    .card {
+      display: flex;
+      margin: 24px auto 0 auto;
+      width: 300px;
+      color: #000;
+      background: none;
+      font-size: 1.4em;
+      text-transform: uppercase;
+
+      .content {
+        padding: 0 0 36px 0;
+        text-align: right;
+        border-bottom: 2px solid #FF9208;
+
+        .overview {
+          padding: 0 0 4px 0;
+        }
+      }
+
+      .details {
+        display: inline-block;
+        text-align: left;
+      }
+
+      .distance {
+        font-size: 4.5em;
+        line-height: 1em;
+      }
+
+      .measure {
+        font-size: 2.4em;
+        line-height: 1em;
+      }
+
+      .image {
+        width: 140px;
+        height: 140px;
+        overflow: hidden;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .card:last-child {
+    .content {
+      border-bottom: none;
+    }
+  }
+}
+
+/* INTRO VIEW */
+/******************************************/
+#intro-view {
+  padding: 64px 16px;
+  background: #000;
+  color: #FFF;
+  font-size: 1em;
+  line-height: 1.4em;
+  text-align: left;
+
+  h1 {
+    color: #FFF;
+  }
+
+  h2 {
+    color: #FFF;
+    font-size: 1.4em;
+  }
+
+  .intro-container-view {
+    .text {
+      padding: 0;
+    }
+
+    .video-container {
+      padding-top: 64px;
+    }
+  }
+}
+
+/* HOW To GUIDE VIEW */
+/******************************************/
+#howtoguide-view {
+  background: #E3E6EA;
+
+  h2 {
+    font-family: futura-pt-bold, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    text-transform: uppercase;
+  }
+}
+
+/* SPONSOR FEATURE VIEW */
+/******************************************/
+#sponsor-feature-view {
+  position: relative;
+  height: 592px;
+  color: #FFF;
+  background: #000;
+  text-align: center;
+
+  .image {
+    height: 592px;
+
+    &.ready {
+      opacity: 0.45;
+    }
+  }
+
+  .sponsor-feature-container-view {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    padding: 0 16px;
+
+    .aligner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      flex-direction: column;
+    }
+
+    .logo {
+      margin: 0 auto;
+      padding-bottom: 22px;
+      width: 98px;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  h1 {
+    padding: 0;
+    color: #FFF;
+  }
+
+  .btns {
+    padding: 12px 0;
+
+    .btn {
+      margin: 10px 2px;
+    }
+  }
+
+  .text {
+    font-family: 'dincond-mediumregular';
+    font-size: 1.4em;
+    line-height: 1.2em;
+  }
+}
+
+/* SUPPORTER SEARCH VIEW */
+/******************************************/
+#supporter-search-view {
+  height: 350px;
+  background-color: #2260A6;
+
+  .supporter-search-container {
+    position: absolute;
+    top: 96px;
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .image {
+    height: 350px;
+
+    &.image.ready {
+      opacity: 0.7;
+    }
+  }
+
+  .search-panel input {
+    color: #000;
+    background-color: #E3E6EA;
+  }
+}
+
+/* COMMUNITY CLIMBER FEATURE VIEW */
+/******************************************/
+#community-climber-feature-view {
+  padding-top: 46px;
+  padding-bottom: 46px;
+}
+
+/* SUMMARY VIEW */
+/******************************************/
+#summary-view {
+  background: #E3E6EA;
+  text-align: center;
+
+  .summary-container {
+    padding: 66px 0;
+
+    h1 {
+      padding: 0 0 26px 0;
+    }
+
+    .summary-total-climbed {
+      font-size: 1.4em;
+      color: #000;
+
+      .total {
+        font-size: 3.4em;
+      }
+    }
+  }
+
+  .summary-break {
+    border-bottom: 2px solid #FF9208;
+  }
+}
+
+/* COMMUNITY VIEW */
+/******************************************/
+#community-view {
+  padding-top: 46px;
+  padding-bottom: 46px;
+
+  h2 {
+    font-size: 1.4em;
+  }
+
+  .post {
+    color: #9b9b9b;
+  }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #hero-view {
+    height: 482px;
+
+    .image {
+      height: 482px;
+    }
+
+    .taglines {
+      float: left;
+    }
+
+    .logo {
+      float: right;
+
+      img {
+        width: 224px;
+      }
+    }
+  }
+
+  #challenges-view {
+    .cards-container {
+      padding: 0;
+
+      .cards {
+        .card {
+          position: relative;
+          width: auto;
+
+          .image {
+            margin: 0 auto;
+          }
+
+          .content {
+            padding: 24px 0 0 0;
+            text-align: center;
+            border-bottom: none;
+
+            .overview {
+              padding: 0 0 4px 0;
+            }
+          }
+
+          .image {
+            width: 160px;
+            height: 160px;
+          }
+        }
+      }
+    }
+  }
+
+  #intro-view .intro-container-view {
+    margin: 0 auto;
+    width: 720px;
+  }
+
+  #sponsor-feature-view {
+    .sponsor-feature-container-view {
+      width: 100%;
+
+      .aligner {
+        width: 672px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  #summary-view {
+    .summary-break {
+      border-right: 2px solid #FF9208;
+    }
+  }
+}
+
+/* Small devices (tablets, 992px and up) */
+@media (min-width: 992px) {
+  #hero-view {
+    .logo {
+      img {
+        width: 312px;
+      }
+    }
+
+    .hero-container {
+      margin: 0 auto;
+      width: 880px;
+    }
+
+    .campaign-title {
+      padding: 0;
+      left: 0;
+      bottom: 112px;
+    }
+  }
+
+  #challenges-view {
+    .cards-container {
+      margin: 0 auto;
+      width: 840px;
+    }
+  }
+
+  #intro-view {
+    .intro-container-view {
+      width: 840px;
+
+      .content-container {
+        display: flex;
+
+        .video-container {
+          padding-top: 0;
+          width: 50%;
+        }
+
+        .text-container {
+          padding-left: 44px;
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+}
