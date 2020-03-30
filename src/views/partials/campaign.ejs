@@ -1,22 +1,38 @@
 <div id="hero-view">
-    <div class="image fade_on_ready"><img class="scale" src="https://mountainrush-assets.imgix.net/pages/img_header2.png?fm=jpg&q=80&w=1280"></div>
+    <div class="image fade_on_ready">
+        <!--
+              <img class="scale" src="https://mountainrush-assets.imgix.net/pages/polina-rytova-1636380-unsplash_blue.png?fm=jpg&q=80&w=1280">
+        -->
+        <img class="scale" src="https://mountainrush-assets.imgix.net/pages/img_header2.png?fm=jpg&q=80&w=1280">
+    </div>
 
-    <div class="hero-container">
-        <div class="campaign-title">
-            <div class="campaign-tagline">
-                Reaching<br/>Summits</span>
+    <div class="titles-container">
+        <div class="titles">
+            <h1>Reaching<br/>
+                Summits</h1>
+            <h2>Raising Funds</h2>
+        </div>
+    </div>
+</div>
+
+<div id="details-view">
+    <div class="content-container">
+        <div class="content">
+            <div class="text">
+                <h1><%= __('welcome.title') %></h1>
+                <h2><%= __('welcome.description') %></h2>
+                <div class="overview">
+                    <p><%= __('welcome.text') %></p>
+                </div>
             </div>
-            <div class="campaign-tagline2 visible-xs">
-                Raising Funds
+            <div class="btns">
+                <span class="visible-player-active"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate" class="signup btn mr-btn btn-primary"><%= __('defs.challenge.create') %></a> </span>
+                <span class="visible-player-inactive"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('defs.signup') %></a> </span>
+                <span class="btn mr-btn demo-video"><%= __('welcome.demo') %></span>
             </div>
-            <div class="campaign-tagline2 hidden-xs">
-                Raising Funds
-            </div>
-            <div class="campaign-tagline3 visible-xs">
-                Mountain Rush promotes physical activity<br/>and local exploration in a fun package:<br/>alone or with friends, raising funds<br/>for a cause or just for fun.<br/>Try it now for free!
-            </div>
-            <div class="campaign-tagline3 hidden-xs">
-                Mountain Rush promotes physical activity<br/>and local exploration in a fun package:<br/>alone or with friends, raising funds<br/>for a cause or just for fun.<br/>Try it now for free!
+
+            <div class="phone-container">
+                <div class="phone"><img src="/static-assets/images/phone.png"></div>
             </div>
         </div>
     </div>
@@ -25,6 +41,7 @@
 <div id="howtoguide-view">
     <div class="howtoguide-container-view">
         <h1>How to get started</h1>
+        <h2>Three steps to a successful challenge</h2>
         <div class="steps-container-view">
             <div class="step-view">
                 <div class="image" style="background-image: url('/static-assets/images/<%= Campaign.CampaignTemplate %>/howtoguide/step_icon1@2x.png')"></div>
@@ -45,9 +62,48 @@
         </div>
 
         <div class="btns">
-            <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
-            <span class="visible-player-inactive"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
+        <span class="hidden-xs hidden-sm">
+          <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
+          <span class="visible-player-inactive"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
+        </span>
         </div>
+    </div>
+</div>
+
+<div id="feature-view">
+    <div class="image">
+        <div class="image-container">
+            <a href="https://worldbicyclerelief.org" target="_blank"><img src="https://mountainrush-assets.imgix.net/clients/default/shopping-list/WBR_Education_Tamara_800x532px.jpg?fm=jpg&q=80"></a>
+            <div class="raise-sticker-container">
+                <div class="raise-sticker">
+                    <div class="title">Raise</div>
+                    <div class="total"><span class="currency_symbol">€</span>134</div>
+                    <div class="title-sub">to provide a bike and change a life</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text">
+        <h1>Featured charity</h1>
+        <h2>Walking is the primary mode of transportation for many people in the developing world.</h2>
+        <div class="overview">
+            Going to school or to work, visiting the health clinic, and delivering goods to market are more challenging and sometimes impossible. Distance is a barrier. Everyday tasks can quickly become a struggle against time and fatigue. World Bicycle Relief builds and distributes specially-designed, locally assembled, rugged bicycles and provides them to students, healthcare workers and entrepreneurs.
+        </div>
+
+        <div class="logos">
+            <!--
+                    <a href="https://www.raisenow.com" target="_blank"><img src="static-assets/images/temp/Logo_RaiseNow_BW.svg"></a>
+            -->
+            <div class="action">
+                <!--
+                          <h2>Fundraising coming 14.06.2019!</h2>
+                -->
+                <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate" class="btn
+          mr-btn btn-primary">Fundraise</a>
+            </div><div class="feature_logo"><a href="https://worldbicyclerelief.org" target="_blank"><img src="https://mountainrush-assets.imgix.net/clients/wbr/logos/WBR RGB.png"></a></div>
+        </div>
+
     </div>
 </div>
 
@@ -62,81 +118,34 @@
     <div id="challenges-content-view"></div>
 </div>
 
-<div id="intro-view">
-    <div class="intro-container-view">
-        <h1>A challenging game</h1>
-        <h2>To virtually ascend real mountains</h2>
-        <div class="text">Mountain Rush promotes physical activity and local exploration in a fun package: alone or with friends, raising funds for a cause or just for fun. Try it now for free!</div>
-
-        <div class="video-container">
-            <div class="video">
-                <video id="media_intro" url="https://mountainrush-assets.imgix.net/marketing/demo/MountainRush.mp4" class="media-player video-js vjs-default-skin" controls preload="none" width="auto" height="auto" poster="https://mountainrush-assets.imgix.net/marketing/demo/180201_MountainRush.png">
-                    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-                </video>
-            </div>
-        </div>
-
-        <div class="btns">
-            <span class="visible-xs"><a class="btn mr-btn btn-primary" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><%= __('defs.countmein') %></a></span>
-            <span class="hidden-xs"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.countmein') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
-        </div>
-    </div>
-</div>
-
-<div id="community-climber-feature-view">
-    <div id="community-feature-loader-view" class="loader-view">
-        <div class="spinner">
-            <div class="double-bounce1"></div>
-            <div class="double-bounce2"></div>
-        </div>
-    </div>
-
-    <div id="community-feature-view"></div>
-</div>
-
-<div id="summary-view">
-    <div class="summary-container">
-        <div id="summary-loader-view" class="loader-view">
-            <div class="spinner">
-                <div class="double-bounce1"></div>
-                <div class="double-bounce2"></div>
-            </div>
-        </div>
-        <div id="campaign-summary-view"></div>
-    </div>
-</div>
-
-<div id="leader-view">
-    <h1>Leaderboard</h1>
-    <div class="text">High five to our top fundraisers. You're awesome!</div>
-
-    <div id="leader-loader-view" class="loader-view">
-        <div class="spinner">
-            <div class="double-bounce1"></div>
-            <div class="double-bounce2"></div>
-        </div>
-    </div>
-
-    <div id="leaderboard-view" class="leaders"></div>
-</div>
-
 <div id="supporter-search-view">
     <div class="supporter-search-container">
         <div class="supporter-search-content">
-            <h1>Find a <span class="show-when-signed-in">fellow </span>climber</h1>
-            <div class="search-panel search suggest ui-front">
-                <div class="search-location">
-                    <input name="search-text" id="search-text" class="search-field" type="text" placeholder="Climber" spellcheck="false">
+
+            <div class="test">
+
+                <h1>Find a <span class="show-when-signed-in">fellow </span>climber</h1>
+                <div class="search-panel search suggest ui-front">
+                    <div class="search-location">
+                        <input name="search-text" id="search-text" class="search-field" type="text" placeholder="Climber" spellcheck="false">
+                    </div>
                 </div>
+
             </div>
+        </div>
+
+        <div class="supporter-avatar-container">
+            <div class="supporter-avatar"></div>
         </div>
     </div>
 </div>
 
 <div id="community-view">
-    <h1>Journey to the Summit</h1>
-    <h2>Follow our mountain rush climbers</h2>
-    <div class="text">#playmountainrush</div>
+    <h1><%= __('community.title') %></h1>
+    <h2><%= __('community.description') %></h2>
+    <h3>#playmountainrush</h3>
+
+    <div class="icons"><a href="https://www.instagram.com/playmountainrush" target="_blank"><i class="fa fa-instagram"></i></a></div>
 
     <div id="community-photos-loader-view" class="loader-view">
         <div class="spinner">
@@ -146,12 +155,9 @@
     </div>
 
     <div id="community-photos-view" class="photos"></div>
-
-    <div class="btns">
-        <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
-        <span class="visible-player-inactive"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
-    </div>
 </div>
+
+<div class="stripe"></div>
 
 <script type="text/template" id="challengesContentViewTemplate">
     <h1>Are you ready?</h1>

@@ -990,9 +990,9 @@ form.stripe {
   background: #193848;
 }
 
-#header-view .link, #header-view a.link, #mainmenu ul li a, #mainmenu .link,
-#header-view .link:visited, #header-view a.link:visited, #mainmenu ul li a:visited,
-#header-view .link:active, #header-view a.link:active, #mainmenu ul li a:active {
+#page-view #header-view .link, #header-view .link, #header-view a.link, #mainmenu ul li a, #mainmenu .link,
+#page-view #header-view .link:visited #header-view .link:visited, #header-view a.link:visited, #mainmenu ul li a:visited,
+#page-view #header-view .link:active #header-view .link:active, #header-view a.link:active, #mainmenu ul li a:active {
   text-decoration: none;
   color: inherit;
 }

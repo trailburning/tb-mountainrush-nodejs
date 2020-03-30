@@ -1,16 +1,8 @@
 <div id="hero-view">
-    <div class="image fade_on_ready">
-        <!--
-              <img class="scale" src="https://mountainrush-assets.imgix.net/pages/polina-rytova-1636380-unsplash_blue.png?fm=jpg&q=80&w=1280">
-        -->
-        <img class="scale" src="https://mountainrush-assets.imgix.net/pages/img_header2.png?fm=jpg&q=80&w=1280">
-    </div>
+    <div class="image fade_on_ready"><img class="scale" src="https://mountainrush-assets.imgix.net/clients/<%= Campaign.CampaignTemplate %>/pages/03.a-Education-Hero.jpg?fm=jpg&q=80&w=1280"></div>
 
     <div class="titles-container">
         <div class="titles">
-            <h1>Reaching<br/>
-                Summits</h1>
-            <h2>Raising Funds</h2>
         </div>
     </div>
 </div>
@@ -19,16 +11,15 @@
     <div class="content-container">
         <div class="content">
             <div class="text">
-                <h1><%= __('welcome.title') %></h1>
-                <h2><%= __('welcome.description') %></h2>
+                <h1>A challenging game</h1>
+                <h2>With Mountain Rush</h2>
                 <div class="overview">
-                    <p><%= __('welcome.text') %></p>
+                Mountain Rush promotes physical activity and local exploration in a fun package: alone or with friends, raising funds that make a difference.
                 </div>
             </div>
             <div class="btns">
                 <span class="visible-player-active"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate" class="signup btn mr-btn btn-primary"><%= __('defs.challenge.create') %></a> </span>
                 <span class="visible-player-inactive"><a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register" class="signup btn mr-btn btn-primary"><%= __('defs.signup') %></a> </span>
-                <span class="btn mr-btn demo-video"><%= __('welcome.demo') %></span>
             </div>
 
             <div class="phone-container">
@@ -46,18 +37,22 @@
             <div class="step-view">
                 <div class="image" style="background-image: url('/static-assets/images/<%= Campaign.CampaignTemplate %>/howtoguide/step_icon1@2x.png')"></div>
                 <h2><%= __('how_to_guide.challenge.title') %></h2>
-                <%- __('how_to_guide.challenge.description').replace(/\n/g, '<br/>') %>
+                Set the time frame and choose<br/>
+                if you’re hiking, running,<br/>
+                cycling or all 3!
             </div>
             <div class="step-view">
                 <div class="image" style="background-image: url('/static-assets/images/<%= Campaign.CampaignTemplate %>/howtoguide/step_icon2@2x.png')"></div>
                 <h2>
-                    <%= __('how_to_guide.active.title') %></h2>
-                <%- __('how_to_guide.active.description', '<a class="link" href="https://www.strava.com/mobile" target="_blank">' +  __('defs.strava_app') + '</a>').replace(/\n/g, '<br/>') %>
+                <%= __('how_to_guide.active.title') %></h2>
+                Download the Strava App and start<br/>
+                tracking your climbing.
             </div>
             <div class="step-view">
                 <div class="image" style="background-image: url('/static-assets/images/<%= Campaign.CampaignTemplate %>/howtoguide/step_icon3@2x.png')"></div>
                 <h2><%= __('how_to_guide.fundraise.title') %></h2>
-                <%- __('how_to_guide.fundraise.description').replace(/\n/g, '<br/>') %>
+                Aim high and share your progress with<br/>
+                friends and family.
             </div>
         </div>
 
@@ -85,7 +80,7 @@
     </div>
 
     <div class="text">
-        <h1>Featured charity</h1>
+        <h1>The Need</h1>
         <h2>Walking is the primary mode of transportation for many people in the developing world.</h2>
         <div class="overview">
             Going to school or to work, visiting the health clinic, and delivering goods to market are more challenging and sometimes impossible. Distance is a barrier. Everyday tasks can quickly become a struggle against time and fatigue. World Bicycle Relief builds and distributes specially-designed, locally assembled, rugged bicycles and provides them to students, healthcare workers and entrepreneurs.
@@ -124,10 +119,10 @@
 
             <div class="test">
 
-                <h1>Find a <span class="show-when-signed-in">fellow </span>climber</h1>
+                <h1>Find a <span class="show-when-signed-in">fellow </span>fundraiser</h1>
                 <div class="search-panel search suggest ui-front">
                     <div class="search-location">
-                        <input name="search-text" id="search-text" class="search-field" type="text" placeholder="Climber" spellcheck="false">
+                        <input name="search-text" id="search-text" class="search-field" type="text" placeholder="Fundraiser" spellcheck="false">
                     </div>
                 </div>
 
@@ -161,27 +156,27 @@
 
 <script type="text/template" id="challengesContentViewTemplate">
     <h1>Are you ready?</h1>
-    <h2>Reach your summit!</h2>
+    <h2>Join the movement!</h2>
 
     <div class="cards-container">
         <div class="cards">
-        {{ _.each(challenges, function(challenge, index) { }}
-        <div class="card">
-            <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/{{= challenge.image }}?fm=jpg&w=640&q=80"></div>
-            <div class="content">
-                <h2>{{= challenge.name }}</h2>
-                <div class="overview">
-                    <strong>{{= challenge.region }}</strong>
-                    {{ if (challenge.distance > 0) { }}
-                    {{= (challenge.distance / 1000).toFixed(0) }}km Challenge
-                    {{ } else { }}
-                    Climb {{= challenge.ascent }}m
-                    {{ } }}
+            {{ _.each(challenges, function(challenge, index) { }}
+            <div class="card">
+                <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/{{= challenge.image }}?fm=jpg&w=640&q=80"></div>
+                <div class="content">
+                    <h2>{{= challenge.name }}</h2>
+                    <div class="overview">
+                        <strong>{{= challenge.region }}</strong>
+                        {{ if (challenge.distance > 0) { }}
+                        {{= (challenge.distance / 1000).toFixed(0) }}km Challenge
+                        {{ } else { }}
+                        Climb {{= challenge.ascent }}m
+                        {{ } }}
+                    </div>
+                    <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/level/{{= challenge.id }}/gamecreate" class="btn mr-btn btn-primary">Select challenge</a>
                 </div>
-                <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/level/{{= challenge.id }}/gamecreate" class="btn mr-btn btn-primary">Select challenge</a>
             </div>
-        </div>
-        {{ }); }}
+            {{ }); }}
         </div>
     </div>
 </script>
@@ -191,7 +186,7 @@
         {{ var firstPost = juicer.posts.items[0] }}
 
         {{ if (firstPost) { }}
-            <h1>#{{= firstPost.source.term }}</h1>
+        <h1>#{{= firstPost.source.term }}</h1>
         {{ } }}
 
         {{ _.each(juicer.posts.items, function(post, index) { }}
