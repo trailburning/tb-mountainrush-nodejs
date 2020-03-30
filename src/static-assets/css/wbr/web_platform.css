@@ -49,28 +49,6 @@ body {
   #header-view .full-menu .logo a:hover {
     text-decoration: none; }
 
-/* FOOTER VIEW */
-/******************************************/
-#footer-view {
-  height: 286px;
-  color: #FFF;
-  background: #000; }
-  #footer-view .footer-container {
-    padding-top: 32px;
-    padding-bottom: 32px;
-    color: #FFF; }
-  #footer-view .client-logo {
-    padding-bottom: 26px; }
-  #footer-view .left img {
-    height: 38px; }
-  #footer-view .mr-dropdown button {
-    border: 1px solid #FFF; }
-    #footer-view .mr-dropdown button .caret {
-      color: #FFF; }
-  #footer-view .mr-dropdown .dropdown-menu {
-    color: #000;
-    border-color: #FFF; }
-
 /* MODAL */
 /******************************************/
 .modal .title {
@@ -104,15 +82,4 @@ body {
   #header-view {
     background: #FFF; }
     #header-view .full-menu .menus {
-      color: #000; }
-  #footer-view {
-    height: 144px; }
-    #footer-view .left img {
-      padding-right: 8px; }
-    #footer-view .client-logo {
-      display: inline-block;
-      padding: 0; }
-      #footer-view .client-logo img {
-        padding-right: 32px; }
-    #footer-view .right .block {
-      padding-top: 0; } }
+      color: #000; } }

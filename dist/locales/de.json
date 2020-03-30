@@ -274,9 +274,11 @@
 		"fundraising": {
 			"donations": {
 				"waiting": {
-					"description": "Waiting for donations to help %s to the summit..."
+					"description": "Waiting for donations to help %s to the summit...",
+					"description_distance": "Waiting for donations to help %s's journey..."
 				},
 				"description": "Check out who's helping %s to the summit!",
+				"description_distance": "Check out who's helping %s's journey!",
 				"title": "donations",
 				"anonymous": "Anonymous",
 				"donated": "Donated"
