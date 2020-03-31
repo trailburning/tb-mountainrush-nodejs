@@ -81,11 +81,11 @@ body {
 /******************************************/
 .modal {
   .title {
-    color: #FF582C;
+    color: #ed1c24;
   }
 
   strong {
-    color: #FF582C;
+    color: #ed1c24;
   }
 }
 
@@ -107,7 +107,12 @@ body {
 }
 
 .fundraise-sticker {
-  background-color: #ed1c24;
+  background-color: #1b6d85;
+}
+
+.pill.active, .pill:hover {
+  border: 1px #ed1c24 solid;
+  color: #ed1c24;
 }
 
 /* LOADER VIEW */
