@@ -266,11 +266,11 @@ var TEST = '<%= Defs.Test %>';
       </div>  
       <div class="btns">
       {{ if (currGame.game_state == 'active') { }}
-        <a href="<%= Defs.BaseHTTPSURL %>/game/{{= currGame.game }}" class="btn mr-btn"><%= __('register.welcome_connected.game_active') %></a>
+        <a href="<%= Defs.BaseHTTPSURL %>/game/{{= currGame.game }}" class="btn mr-btn btn-primary"><%= __('register.welcome_connected.game_active') %></a>
       {{ } else if (currGame.game_state == 'pending') { }}
-        <a href="<%= Defs.BaseHTTPSURL %>/game/{{= currGame.game }}" class="btn mr-btn"><%= __('register.welcome_connected.game_upcoming') %></a>
+        <a href="<%= Defs.BaseHTTPSURL %>/game/{{= currGame.game }}" class="btn mr-btn btn-primary"><%= __('register.welcome_connected.game_upcoming') %></a>
       {{ } else { }}
-        <a href="<%= Defs.BaseHTTPSURL %>/game/{{= currGame.game }}" class="btn mr-btn"><%= __('register.welcome_connected.game') %></a>
+        <a href="<%= Defs.BaseHTTPSURL %>/game/{{= currGame.game }}" class="btn mr-btn btn-primary"><%= __('register.welcome_connected.game') %></a>
       {{ }; }}
       </div>
     </div>
