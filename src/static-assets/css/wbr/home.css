@@ -2,3 +2,6 @@
 /******************************************/
 #hero-view .image img {
   margin-left: 0; }
+
+#feature-view .raise-sticker-container .raise-sticker {
+  background-color: #ed1c24; }

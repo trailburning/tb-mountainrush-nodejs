@@ -99,17 +99,21 @@ body {
   color: #FFF;
   border-radius: 0;
   border: none;
-  background-color: #FF9208;
+  background-color: #999999;
 }
 
 .mr-btn.btn-primary {
-  background-color: #FF582C;
+  background-color: #ed1c24;
+}
+
+.fundraise-sticker {
+  background-color: #ed1c24;
 }
 
 /* LOADER VIEW */
 /******************************************/
 .double-bounce1, .double-bounce2 {
-  background-color: #ff582c;
+  background-color: #ed1c24;
 }
 
 /* Small devices (tablets, 768px and up) */
