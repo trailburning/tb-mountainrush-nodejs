@@ -36,15 +36,9 @@
   <meta property="og:image" content="<%= Defs.SocialImage %>"/>
 <% } else if (Campaign.CampaignName) { %>
   <meta property="og:url" content="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>"/>
-<!--
-  <meta property="og:image" content="https://www.mountainrush.co.uk/static-assets/images/<%= Campaign.CampaignTemplate %>/200401_share_facebook.jpg"/>
--->
   <meta property="og:image" content="https://mountainrush-assets.imgix.net/clients/<%= Campaign.CampaignTemplate %>/social/share_facebook.jpg?fm=jpg&q=80"/>
 <% } else { %>
   <meta property="og:url" content="https://www.mountainrush.co.uk/"/>
-<!--
-  <meta property="og:image" content="https://www.mountainrush.co.uk/static-assets/images/200401_share_facebook.jpg"/>
--->
   <meta property="og:image" content="https://mountainrush-assets.imgix.net/clients/default/social/share_facebook.jpg?fm=jpg&q=80"/>
 <% } %>
 
