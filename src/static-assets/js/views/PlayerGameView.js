@@ -38,7 +38,7 @@ define([
         // look for an active or pending game
         $.each(self.jsonResult.games, function(index, game){
           if (game.game_state == 'active' || game.game_state == 'pending') {
-            // only show if not recentl visited
+            // only show if not recently visited
             if (game.last_seen_secs_ago > LAST_SEEN_SECS) {
               self.bActiveGame = true;
             }
