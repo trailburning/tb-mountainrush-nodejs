@@ -23,7 +23,7 @@ define([
   'mapboxgl'
 ], function(_, Backbone, turf, mapboxgl){
 
-  var Challenge3DView = Backbone.View.extend({
+  var Challenge2DView = Backbone.View.extend({
     initialize: function(options){
       this.options = options;
 
@@ -80,6 +80,11 @@ define([
     },
 
     showBaseData: function(){
+      var strRouteColor = '#f75f36';
+      if (this.options.routeColor) {
+        strRouteColor = this.options.routeColor;
+      }
+
       var mapPoints = new Array;
       $.each(this.arrRouteCoords, function(index, point){
         mapPoints.push(new Array([point.coords[0]], [point.coords[1]]));
@@ -104,7 +109,7 @@ define([
           "line-cap": "round"
         },
         "paint": {
-          "line-color": "#f75f36",
+          "line-color": strRouteColor,
           "line-width": 3
         }
       });
@@ -548,5 +553,5 @@ define([
 
   });
 
-  return Challenge3DView;
+  return Challenge2DView;
 });

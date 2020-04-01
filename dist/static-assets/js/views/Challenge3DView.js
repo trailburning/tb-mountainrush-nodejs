@@ -79,6 +79,11 @@ define([
     },
 
     showBaseData: function(){
+      var strRouteColor = '#f75f36';
+      if (this.options.routeColor) {
+        strRouteColor = this.options.routeColor;
+      }
+
       var jsonMapRoute = {
         "name": "Route",
         "type": "FeatureCollection",
@@ -89,7 +94,7 @@ define([
           "properties": {
             "selectable": false,
             "name": "",
-            "color": "#f75f36",
+            "color": strRouteColor,
             "thickness": 3
           },
           "geometry": {
