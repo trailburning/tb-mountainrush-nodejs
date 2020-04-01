@@ -253,11 +253,11 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
       // select view renderer
       switch(Number(jsonCurrGame.levelView)) {
         case LEVEL_VIEW_3D_PROCEDURAL:
-          challengeView = new Challenge3DView({ el: '#piste-view', arrMapPoint: arrMapPoint, mountainType: Number(jsonCurrGame.mountainType), geography: Number(jsonCurrGame.season) });
+          challengeView = new Challenge3DView({ el: '#piste-view', arrMapPoint: arrMapPoint, mountainType: Number(jsonCurrGame.mountainType), geography: Number(jsonCurrGame.season), routeColor: CAMPAIGN_OVERRIDE_ROUTE_COLOR });
           break;
 
         default:
-          challengeView = new Challenge2DView({ el: '#piste-view', arrMapPoint: arrMapPoint, mountainType: Number(jsonCurrGame.mountainType), geography: Number(jsonCurrGame.season) });
+          challengeView = new Challenge2DView({ el: '#piste-view', arrMapPoint: arrMapPoint, mountainType: Number(jsonCurrGame.mountainType), geography: Number(jsonCurrGame.season), routeColor: CAMPAIGN_OVERRIDE_ROUTE_COLOR });
           break;
       }
 

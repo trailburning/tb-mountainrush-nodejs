@@ -60,7 +60,7 @@
 
         <div class="btns">
         <span class="hidden-xs hidden-sm">
-          <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div>Select Challenge</div><div><i class="fa fa-arrow-right"></i></div></a></span>
+          <span class="visible-player-active"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/gamecreate"><div><%= __('defs.challenge.create') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
           <span class="visible-player-inactive"><a class="btn mr-btn btn-primary double" href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/register"><div><%= __('defs.signup') %></div><div><i class="fa fa-arrow-right"></i></div></a></span>
         </span>
         </div>
@@ -172,7 +172,7 @@
                         Climb {{= challenge.ascent }}m
                         {{ } }}
                     </div>
-                    <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/level/{{= challenge.id }}/gamecreate" class="btn mr-btn btn-primary">Select challenge</a>
+                    <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/level/{{= challenge.id }}/gamecreate" class="btn mr-btn btn-primary"><%= __('defs.challenge.create') %></a>
                 </div>
             </div>
             {{ }); }}

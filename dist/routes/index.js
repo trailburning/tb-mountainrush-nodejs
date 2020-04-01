@@ -24,6 +24,8 @@ function fillCampaignData(req, data) {
       campaign.CampaignDescription = campaignData.description;
       campaign.CampaignTemplate = campaignData.template;
       campaign.CampaignJuicerFeed = campaignData.juicer_feed;
+      campaign.CampaignOverrideRouteColor = campaignData.override_route_color;
+      console.log('c:'+campaignData.override_route_color);
       campaign.CampaignInvitationCode = campaignData.invitation_code;
       campaign.CampaignFundraisingCurrency = campaignData.fundraising_currency;
       campaign.CampaignFundraisingMinimum = campaignData.fundraising_minimum;

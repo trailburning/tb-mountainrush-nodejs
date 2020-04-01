@@ -144,8 +144,8 @@
 			"yes": "Accept",
 			"no": "Reject",
 			"game_accepted": "You now have a %s %s challenge!",
-			"game_rejected": "Challenge rejected! You can now create your own challenge.",
-			"game_create": "Create Challenge",
+			"game_rejected": "Challenge rejected! You can now select your own challenge.",
+			"game_create": "Select Challenge",
 			"previous_challenges": "Previous",
 			"greeting": "Hi %s,",
 			"preferences": {
@@ -172,7 +172,7 @@
 		},
 		"please_wait": "Please Wait",
     "game_create_paywall": {
-		"title": "Create Challenge",
+		"title": "Select Challenge",
 		"description": "There is a <strong>%s</strong> fee to take part in this %s challenge.",
 		"payment": {
 			"title": "Credit or debit card",
@@ -180,7 +180,7 @@
 		}
 	},
 		"game_create": {
-			"title": "Create Challenge",
+			"title": "Select Challenge",
 			"description": "Choose your challenge preferences",
 			"choose_ascent": "How much challenge are you up for?",
 			"fixed_ascent": "Your challenge will be:",
@@ -188,7 +188,7 @@
 			"fixed_activity": "Your activity will be:",
 			"choose_duration": "How long would you like to complete your challenge?",
 			"choose_start": "When will you start your challenge?",
-			"create_challenge": "Create Challenge",
+			"create_challenge": "Select Challenge",
       "errors": {
         "active_game": {
           "title": "Active Challenge",
@@ -323,7 +323,7 @@
   	"strava_app": "Strava App",
 		"donate": "Donate",
     "challenge": {
-      "create": "Create Challenge",
+      "create": "Select Challenge",
       "select": "Select Challenge",
       "view": "View Challenge"
     },
