@@ -135,11 +135,11 @@
 </div>
 
 <div id="community-view">
-    <h1><%= __('community.title') %></h1>
-    <h2><%= __('community.description') %></h2>
-    <h3>#playmountainrush</h3>
+    <h1>Join the movement</h1>
+    <h2>Changing lives with bicycles</h2>
+    <h3>#worldbicyclerelief</h3>
 
-    <div class="icons"><a href="https://www.instagram.com/playmountainrush" target="_blank"><i class="fa fa-instagram"></i></a></div>
+    <div class="icons"><a href="https://www.instagram.com/worldbicyclerelief" target="_blank"><i class="fa fa-instagram"></i></a></div>
 
     <div id="community-photos-loader-view" class="loader-view">
         <div class="spinner">
@@ -161,7 +161,7 @@
         <div class="cards">
             {{ _.each(challenges, function(challenge, index) { }}
             <div class="card">
-                <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/{{= challenge.image }}?fm=jpg&w=640&q=80"></div>
+                <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/level/{{= challenge.id }}/gamecreate"><div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/{{= challenge.image }}?fm=jpg&w=640&q=80"></div></a>
                 <div class="content">
                     <h2>{{= challenge.name }}</h2>
                     <div class="overview">
