@@ -162,7 +162,7 @@
         <div class="cards">
         {{ _.each(challenges, function(challenge, index) { }}
         <div class="card">
-            <div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/{{= challenge.image }}?fm=jpg&w=640&q=80"></div>
+            <a href="<%= Defs.BaseHTTPSURL %>/campaign/<%= Campaign.CampaignID %>/level/{{= challenge.id }}/gamecreate"><div class="image"><img class="scale" src="https://mountainrush-assets.imgix.net/challenges/{{= challenge.image }}?fm=jpg&w=640&q=80"></div></a>
             <div class="content">
                 <h2>{{= challenge.name }}</h2>
                 <div class="overview">
