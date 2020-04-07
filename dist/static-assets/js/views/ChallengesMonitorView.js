@@ -31,6 +31,12 @@ define([
       }
 
       $.each(this.result, function(nChallenge, challenge){
+        // what sort of challenge do we have?
+        challenge.ascentChallenge = true;
+        if (challenge.distance > 0) {
+          challenge.ascentChallenge = false;
+        }
+
         // store moment versions of dates
         challenge.game_start_ago = moment(challenge.game_start).fromNow();
         challenge.game_end_ago = moment(challenge.game_end).fromNow();
@@ -46,8 +52,13 @@ define([
           if (Number(player.ascent) < Number(challenge.ascent)) {
             fElevationToSummit = Number(challenge.ascent) - Number(player.ascent);
           }
-
           player.elevationToSummit = fElevationToSummit;
+
+          var fDistanceToSummit = 0;
+          if (Number(player.distance) < Number(challenge.distance)) {
+            fDistanceToSummit = Number(challenge.distance) - Number(player.distance);
+          }
+          player.distanceToSummit = fDistanceToSummit;
 
           // modify avatar to use image proxy with campaign fallback
           player.avatar = GAME_API_URL + 'imageproxy.php?url=' + player.avatar + '&urlfallback=https://www.mountainrush.co.uk/static-assets/images/' + CAMPAIGN_TEMPLATE + '/avatar_unknown.jpg';
