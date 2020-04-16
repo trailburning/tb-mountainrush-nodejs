@@ -104,9 +104,9 @@ define([
         self.model.set('distanceToSummit', fDistanceToSummit);
 
         // contains date player reached ascent, if they did that is
-        self.model.set('ascentCompleted', self.jsonProgress.ascentCompleted);
+        self.model.set('ascentCompleted', self.jsonProgress.challengeCompleted);
         // contains date player reached distance, if they did that is
-        self.model.set('distanceCompleted', self.jsonProgress.distanceCompleted);
+        self.model.set('distanceCompleted', self.jsonProgress.challengeCompleted);
 
         // set fundraising details
         self.model.set('fundraisingCurrencySymbol', self.jsonProgress.fundraising_currency_symbol);
