@@ -64,7 +64,7 @@ function getCampaignDataByCampaign(req, campaignID, callback) {
   var request = require('request');
 
   var url = process.env.MR_API_URL + 'campaign/' + campaignID;
-//  console.log(url);
+  console.log(url);
   request.get({
       url: url,
       json: true,
