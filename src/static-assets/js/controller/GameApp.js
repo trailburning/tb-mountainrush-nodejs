@@ -665,7 +665,7 @@ FundraisingDonationSummaryView, FundraisingDonationsView, PlayerActivityCommentV
         }
         strImage = strImageHost + strImage;
 
-        bEnabled = challengeView.addMarker(event.get('id'), event.get('coords'), fProgressKM, strImage, strImageHost + 'http://www.mountainrush.trailburning.com/static-assets/images/markers/marker-event-unlocked.png', strImageHost + 'http://www.mountainrush.trailburning.com/static-assets/images/markers/marker-event-locked.png');
+        bEnabled = challengeView.addMarker(event.get('id'), event.get('coords'), fProgressKM, strImage, strImageHost + 'https://www.mountainrush.co.uk/static-assets/images/markers/marker-event-unlocked.png', strImageHost + 'https://www.mountainrush.co.uk/static-assets/images/markers/marker-event-locked.png');
 
         if (bEnabled) {
           latestMarker = event;
