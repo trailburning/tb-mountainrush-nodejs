@@ -37,9 +37,9 @@
     }
   },
 	"welcome": {
-		"title": "A challenging game",
-		"description": "To virtually ascend real mountains",
-		"text": "Mountain Rush promotes physical activity and local exploration in a fun package: alone or with friends, raising funds for a cause or just for fun. Try it now for free!",
+		"title": "Get active",
+		"description": "with a positive impact challenge",
+		"text": "Mountain Rush promotes physical activity and local exploration in a fun package: alone or with friends, raising funds to plant trees or just for fun. Try it now for free!",
 		"text_fundraise": "Oh and you can %s too!",
 		"fundraise": "fundraise",
 		"signup": "Sign up",
