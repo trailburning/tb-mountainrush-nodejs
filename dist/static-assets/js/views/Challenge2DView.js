@@ -531,7 +531,8 @@ define([
 
       this.map = new mapboxgl.Map({
         container: this.el, // container id
-        style: 'mapbox://styles/mallbeury/ck4i4tr9q0gir1co28gaq1fmo',
+//        style: 'mapbox://styles/mallbeury/ck4i4tr9q0gir1co28gaq1fmo',
+        style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
         center: [self.options.arrMapPoint[0], self.options.arrMapPoint[1]],
         zoom: 12,
         interactive: true,
@@ -541,7 +542,22 @@ define([
       this.map.on('load', function () {
         self.map.addSource('dem', {
           'type': 'raster-dem',
-          'url': 'mapbox://mapbox.terrain-rgb'
+          'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+          'tileSize': 512
+        });
+
+        // add the DEM source as a terrain layer with exaggerated height
+        self.map.setTerrain({ 'source': 'dem', 'exaggeration': 1.5 });
+
+        // add a sky layer that will show when the map is highly pitched
+        self.map.addLayer({
+          'id': 'sky',
+          'type': 'sky',
+          'paint': {
+            'sky-type': 'atmosphere',
+            'sky-atmosphere-sun': [0.0, 0.0],
+            'sky-atmosphere-sun-intensity': 15
+          }
         });
 
         // fire event
