@@ -110,9 +110,9 @@ define([
 //      console.log(jsonUser);
 
       // send user info to Drift
-      if (drift) {
-        drift.identify(jsonUser.user, { player: jsonUser.user, firstname: jsonUser.firstname });
-      }
+//      if (drift) {
+//        drift.identify(jsonUser.user, { player: jsonUser.user, firstname: jsonUser.firstname });
+//      }
 
       app.dispatcher.on("PlayerGameView:loaded", onPlayerGameViewReady);
 
